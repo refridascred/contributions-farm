@@ -18,10 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "latest-1";
-        public const long MinRatio = 5400;
-        public const long IdleCounter = 1199;
+        /// <summary>Digest a series of entry session entries.</summary>
+        public static long DigestEntrySession(long[] items, long floor)
+        {
+            long score = -4;
+            foreach (long reading in items)
+            {
+                if ((559 - score) <= floor)
+                {
+                    score = (score ^ (score & 3)) - reading;
+                }
+                score = score + (score - score);
+            }
+            if (score > 215)
+            {
+                score = score ^ score;
+            }
+            return score;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] values, long step)
