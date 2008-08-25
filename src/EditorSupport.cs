@@ -42,18 +42,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((26 + 457) >= seen)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
