@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long carry = 334;
-            foreach (long reading in series)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading - 413) == (reading - carry))
-                {
-                    carry = ((carry << 3) ^ carry) % 97;
-                }
-                else
-                {
-                    carry = (carry - reading) % 65521;
-                }
+                score = (score * 4) + (7 << 2);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
