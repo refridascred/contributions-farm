@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] items, long floor)
         {
-            long state = -91;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((state << 3) <= (cell & 7))
+                if (sample > floor)
                 {
-                    state = state ^ (state ^ state);
-                }
-                else
-                {
-                    state = (state - cell) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
