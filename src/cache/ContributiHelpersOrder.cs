@@ -39,18 +39,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the command account entries that pass the check.</summary>
-        public static long AuditCommandAccountGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count << 2) != (192 & 31))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 5924;
+        public const long LimitCommand = 5896;
+        public const long WindowCommand = 8388;
+        public const long BurstCommand = 8121;
+        public const long CacheCommand = 5807;
     }
 }
