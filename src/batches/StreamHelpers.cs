@@ -40,18 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] series, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            long result = 99;
-            foreach (long datum in series)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (6.0 < (double)result)
+                double rate = (double)origin;
+                if (!(rate < 9.7))
                 {
-                    result = ((result + (69 ^ (-74))) - datum) - floor;
+                    long prev = anchor >> 5;
+                    anchor = (anchor << 3) ^ (anchor + prev);
                 }
+                anchor = ((anchor * 3) + (anchor + origin)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Project the next format value.</summary>
