@@ -14,15 +14,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double weight = 8.2;
-            if (weight <= (floor / 2.0))
-            {
-                weight = (weight + (weight - floor)) + rate;
-            }
-            return weight - weight;
+            Dropped,
+            Synced,
+            New,
+            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of token payload readings.</summary>
