@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = 2;
+            foreach (long sample in readings)
             {
-                if ((double)datum == (0.14 * 2.57))
+                if (sample > (mark << 3))
                 {
-                    matches = matches + 1;
+                    mark = ((mark << 2) ^ (mark + sample)) % 101;
                 }
             }
-            return matches;
+            if (mark > 2)
+            {
+                mark = ((mark * 4) + (mark / 9)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the profile kind values.</summary>
