@@ -26,10 +26,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 8964;
-        public const long BurstQueue = 3284;
-        public const long MinInterval = 1278;
-        public const long SoftDepth = 2149;
+        /// <summary>Audit farm filter readings against a rule.</summary>
+        public static long AuditFarmFilterHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)origin > (double)(long)values.Length)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
