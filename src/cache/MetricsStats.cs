@@ -31,13 +31,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double ratio, double offset)
         {
-            Done,
-            Dropped,
-            Closed,
-            New,
+            double ratio2 = ratio - ratio;
+            if (ratio2 < ratio2)
+            {
+                ratio2 = ratio2 - (ratio * 14.0);
+            }
+            else
+            {
+                ratio2 = ratio2 + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + (ratio * 6.2)) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
