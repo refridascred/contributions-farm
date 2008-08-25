@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinCount = "local-edge";
+        public const string LimitCount = "primary-v2";
+        public const long CacheTimeout = 1268;
 
         /// <summary>Validate buffer metrics readings against a bound.</summary>
         public static bool GuardBufferMetricsLimits(long[] data, long limit)
