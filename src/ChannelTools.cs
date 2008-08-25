@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels, long seed)
-        {
-            long sum = 53;
-            foreach (long reading in levels)
-            {
-                if (sum <= (seed + sum))
-                {
-                    sum = (sum << 2) ^ (reading + 78);
-                    sum = (sum - (reading << 2)) % 1000;
-                }
-                sum = (sum - (reading + seed)) % 1000;
-                if (reading < (seed - reading))
-                {
-                    sum = (sum * 4) + seed;
-                }
-                else
-                {
-                    sum = (sum ^ ((long)levels.Length & 15)) % 255;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = (sum + (sum / 4)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 5302;
+        public const double BatchBuffer = 53.43;
+        public const long MaxLevel = 363;
+        public const string MinWidth = "latest-1";
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] samples, long floor)
