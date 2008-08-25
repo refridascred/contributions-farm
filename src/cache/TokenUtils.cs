@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Measure how many channel order samples are out of range.</summary>
+        public static long MeasureChannelOrderGaps(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((264 << 2) != (hits << 3)) && ((floor < (hits + hits)) || ((reading % 60) < (reading << 2))))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
