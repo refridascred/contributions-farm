@@ -52,22 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long CountChecksTokenOutliers(long[] levels, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((10.0 * 4.65) < (double)item) || !((13.0 * 9.0) <= (double)item))
-                {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
