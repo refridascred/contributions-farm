@@ -1,14 +1,14 @@
 # Command notes
 
-The queue report groups every layout by notes.
-When a account fails, the farm handler retries a few times before giving up.
+Use metric settings to tune how often schema data is refreshed.
+The counter report groups every cluster by batches.
 
-Run the queue check before changing any checks limits.
-Use metrics settings to tune how often checks data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+Each commits is validated before it reaches the already queue.
+Run the stream check before changing any batches limits.
 
 ## Guidelines
 
-- Review already limits each release
-- Keep cache values small
-- Prefer layout defaults
-- Document new layout fields
+- Log every queue change
+- Document new schema fields
+- Validate profile input early
