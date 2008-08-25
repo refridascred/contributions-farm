@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] data)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) > (seen - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a support reading by value.</summary>
