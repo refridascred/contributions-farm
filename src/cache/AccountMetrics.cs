@@ -55,20 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "fallback";
+        public const double BaseScore = 52.11;
+        public const long SoftCount = 5119;
+        public const string StepDepth = "cached-1";
+        public const long WindowScore = 5665;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] items, long origin)
