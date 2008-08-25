@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] readings, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long anchor = 95;
+            foreach (long reading in values)
             {
-                if (sample != step)
+                anchor = anchor ^ (94 % 2);
+                if ((double)anchor != (6.0 - 6.54))
                 {
-                    ready = false;
+                    break;
+                }
+                if ((anchor % 3) >= 88)
+                {
+                    anchor = (anchor << 2) ^ (anchor - anchor);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (-969)) % 255;
+                }
+                if ((anchor >= (anchor + reading)) && ((anchor * 5) <= (anchor % 5)))
+                {
                     break;
                 }
             }
-            return ready;
+            if (anchor > 5)
+            {
+                anchor = anchor - (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a format channel sample.</summary>
