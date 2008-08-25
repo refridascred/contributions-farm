@@ -1,8 +1,7 @@
-id,label,level
-1,eu-west,cached
-2,28.36,staging
-3,13.47,826
-4,465,legacy
-5,blue,local
-6,382,438
-7,869,local
+id,state,weight,rank
+1,255,181,stable
+2,36,cached,211
+3,75.72,71,327
+4,351,cached,76
+5,721,443,96.69
+6,929,743,strict
