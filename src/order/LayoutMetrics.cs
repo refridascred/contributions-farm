@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double WindowInterval = 74.17;
         public const long BaseLevel = 139;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long target)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up batch samples.</summary>
