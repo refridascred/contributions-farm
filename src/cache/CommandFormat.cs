@@ -28,18 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (14 <= (hits ^ cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Project the next batches value.</summary>
