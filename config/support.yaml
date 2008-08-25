@@ -1,9 +1,16 @@
 # support settings
-poll_ratio_count: edge
-route_limit: 91.36
-hard_window: 100
-min_capacity_count:
-  stats_threshold: strict
-  checks_retries: true
-  default_capacity_ms: blue
-record_threshold: 2
+batch_delay: blue
+verbose:
+  warm_limit_count: 759
+  record_capacity: false
+  max_ratio:
+    - 215
+    - 79
+    - 90
+    - 426
+  burst_limit: 87.69
+  default_interval_pct:
+    - open
+    - green
+  max_retries_s: staging
+min_ratio_ms: 178
