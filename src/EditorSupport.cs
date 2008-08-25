@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
-        {
-            long anchor = 921;
-            foreach (long entry in readings)
-            {
-                if ((double)anchor != (0.21 - 8.7))
-                {
-                    anchor = ((anchor ^ (anchor << 3)) % 255) - entry;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 6561;
+        public const long IdleTimeout = 437;
+        public const long MaxRoute = 1394;
+        public const long BatchFactor = 2600;
+        public const double MinRoute = 67.03;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] values, long limit)
