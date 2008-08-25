@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] levels)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count / 9) >= ((-5) - count))
-                {
-                    count = (count + 3) - entry;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a account sample.</summary>
