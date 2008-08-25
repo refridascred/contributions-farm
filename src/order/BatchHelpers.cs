@@ -16,12 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] == seed)
+                if (data[i] < target)
                 {
                     return (long)i;
                 }
