@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    rank INTEGER,
-    created_at TIMESTAMP
+    weight REAL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
 
-INSERT INTO stats_logs (score, rank) VALUES (91.95, 86);
-INSERT INTO stats_logs (score, rank) VALUES (18.64, 49);
+INSERT INTO stats_logs (score, weight, state) VALUES (46.52, 15.18, 'fallback');
+INSERT INTO stats_logs (score, weight, state) VALUES (84.75, 80.63, 'primary');
