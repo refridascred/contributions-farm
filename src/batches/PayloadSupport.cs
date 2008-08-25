@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] data, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((matches & 1) <= 53)
+                if ((((long)levels.Length * 5) < datum) || ((datum << 2) <= datum))
                 {
-                    matches = ((matches + 3) ^ sample) + bound;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
