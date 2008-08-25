@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultInterval = 4980;
-        public const string StepDepth = "open-edge";
-        public const long WindowRatio = 881;
-        public const double DefaultSize = 65.62;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Pending,
+            Closed,
+            Active,
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] levels)
