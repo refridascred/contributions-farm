@@ -1,11 +1,8 @@
 # support settings
-dry_run:
-  - 236
-  - 57
-  - 101
-cache_delay_ms:
-  - cached
-  - primary
+enabled: 6588
+hard_retries_pct:
+  - open
   - strict
-  - primary
-order_window: false
+  - green
+  - blue
+graph_delay: green
