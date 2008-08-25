@@ -13,18 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] samples)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry % 100) != (entry / 6))
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
