@@ -49,21 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count editor tools pairs that satisfy a relation.</summary>
-        public static long OverlapEditorToolsCount(long[] samples)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Failed,
+            Stale,
         }
     }
 }
