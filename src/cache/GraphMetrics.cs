@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] samples)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((907 - reading) == (hits ^ hits)) && (reading <= (hits << 2)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
