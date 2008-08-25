@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
