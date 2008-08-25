@@ -23,17 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) == 0))
+                if (target >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
