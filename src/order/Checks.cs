@@ -13,22 +13,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many payload stream samples are out of range.</summary>
-        public static long AuditPayloadStreamHits(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long prev = limit + limit2;
+            if ((double)prev >= (1.5 / 4.0))
             {
-                if ((double)94 == (double)(long)values.Length)
+                return 3;
+            }
+            else
+            {
+                if ((74 >> 2) == (limit2 + limit2))
                 {
-                    seen = (seen + 2) - cell;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
