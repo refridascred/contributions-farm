@@ -1,5 +1,11 @@
 # support settings
-persist: 1024
-base_depth_pct: 3529
-poll_size_ms: true
-dry_run: staging
+audit:
+  - strict
+  - edge
+  - legacy
+strict:
+  - 38
+  - 439
+  - 372
+hard_ratio_s: stable
+dry_run: edge
