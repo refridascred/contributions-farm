@@ -44,12 +44,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "fallback";
-        public const double BaseScore = 52.11;
-        public const long SoftCount = 5119;
-        public const string StepDepth = "cached-1";
-        public const long WindowScore = 5665;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long origin, long target)
+        {
+            if ((double)target == (0.6 + 3.31))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= (-4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target <= 1) && ((5.2 - 17.0) == (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((target << 2) < origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long FoldReport(long[] levels, long floor)
