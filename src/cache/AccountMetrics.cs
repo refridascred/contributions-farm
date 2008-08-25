@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long seed, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] items)
         {
-            long gap = seed + offset;
-            if (((gap ^ (-46)) <= (seed - gap)) && (94 >= gap))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + offset) >= offset)
+                if (!((datum & 127) < (datum / 2)) && ((datum / 8) <= (hits / 4)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed & 255) > (seed + gap)) && ((6.9 * 8.94) == (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
