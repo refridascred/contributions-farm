@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const long MinWidth = 6224;
         public const string WindowScore = "fallback-edge";
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double weight, double span)
+        /// <summary>Locate a cache support reading by value.</summary>
+        public static long LookupCacheSupportIndex(long[] values, long target)
         {
-            double weight2 = weight;
-            return (weight2 + (6.35 - weight2)) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two route measurements.</summary>
