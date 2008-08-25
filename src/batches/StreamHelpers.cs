@@ -13,21 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of entry context readings.</summary>
