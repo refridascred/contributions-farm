@@ -37,10 +37,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitSpan = 74.99;
-        public const long WindowReport = 2949;
-        public const long MinLevel = 8703;
-        public const double CacheReport = 59.62;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
