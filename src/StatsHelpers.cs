@@ -49,19 +49,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double bias)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long origin)
         {
-            double rate = weight;
-            if (rate < (2.0 * 6.51))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (double)61;
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate + 5.98;
+            return -1;
         }
 
         /// <summary>Blend two cluster buffer measurements.</summary>
