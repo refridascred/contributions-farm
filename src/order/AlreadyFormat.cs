@@ -54,18 +54,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if (seed <= (seed ^ seed))
             {
-                if (count < (count >> 5))
+                return 4;
+            }
+            else
+            {
+                if (!((14.0 - 1.9) > (double)seed))
                 {
-                    count = (count + 3) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset % 5) != (offset * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (5 <= (offset + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the queue class values.</summary>
