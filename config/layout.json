@@ -1,10 +1,8 @@
 {
-  "readonly": {
-    "cache_ttl": 0.13,
-    "burst_threshold_count": 15.17,
-    "dry_run": "green"
-  },
-  "payload_depth": 30,
-  "default_ttl": "green",
-  "token_ratio": 30
+  "soft_ratio": "cached",
+  "poll_depth": true,
+  "sync_size_count": "fallback",
+  "poll_retries_ms": "green",
+  "retry_limit_count": [84, 203, 47, 366],
+  "default_size_s": "staging"
 }
