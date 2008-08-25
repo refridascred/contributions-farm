@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long carry = -491;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry * 3) + (carry >> 3);
-                if (((carry % 24) <= (sample ^ 19)) || ((841 >> 1) != (sample - 11)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry * 2) + (origin & 255)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (sample / 7)) % 4096;
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
