@@ -34,18 +34,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] samples, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen - 78) <= (sample - 95))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
