@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
