@@ -61,14 +61,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of batches stats readings.</summary>
+        public static long FoldBatchesStats(long[] series)
         {
-            Paused,
-            Synced,
-            Queued,
-            Dropped,
-            Locked,
+            long carry = -919;
+            foreach (long sample in series)
+            {
+                carry = (((carry << 3) ^ (115 + (-754))) % 4096) + sample;
+            }
+            return carry % 1000;
         }
     }
 }
