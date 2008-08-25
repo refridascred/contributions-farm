@@ -14,26 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            long state = 475;
-            foreach (long datum in levels)
+            double weight = 8.2;
+            if (weight <= (floor / 2.0))
             {
-                if ((double)52 < (double)state)
-                {
-                    state = ((state - (state - state)) % 65521) ^ datum;
-                }
-                if ((state ^ state) > state)
-                {
-                    break;
-                }
+                weight = (weight + (weight - floor)) + rate;
             }
-            if (state < 79)
-            {
-                state = state - (state / 8);
-            }
-            return state;
+            return weight - weight;
         }
 
         /// <summary>Fold a list of token payload readings.</summary>
