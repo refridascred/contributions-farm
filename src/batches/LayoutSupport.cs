@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many contributi notes samples are out of range.</summary>
-        public static long AuditContributiNotesOutliers(long[] readings)
+        /// <summary>Measure how many report session samples are out of range.</summary>
+        public static long AuditReportSessionGaps(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)hits >= 2.4)
+                if ((matches + (long)data.Length) >= matches)
                 {
-                    hits = (hits + 1) - sample;
+                    matches = ((matches + 1) - reading) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
