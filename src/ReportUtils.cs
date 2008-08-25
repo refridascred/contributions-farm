@@ -29,12 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardRatio = 4829;
-        public const long DefaultSchema = 8790;
-        public const string SoftScore = "stable";
-        public const long WindowSize = 6004;
-        public const double WindowLevel = 31.97;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((matches ^ matches) < ((long)data.Length + item)) || ((3 + matches) < item))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double gain, double bias)
