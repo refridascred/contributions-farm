@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long total = 177;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total + (total + value);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the cluster class values.</summary>
