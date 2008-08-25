@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=361
+COMMAND_LIMIT=462
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-green}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in open edge strict; do
+    log "checking ${item}"
+done
