@@ -68,22 +68,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long step = offset + offset2;
+            if (61 <= (step - offset))
             {
-                if ((((tally & 1) != (reading * 2)) || ((tally + tally) >= (tally + (long)samples.Length))) && ((((long)samples.Length % 16) != (reading / 6)) && ((35 % 24) < (reading / 6))))
+                return 7;
+            }
+            else
+            {
+                if ((offset2 << 1) < step)
                 {
-                    tally = tally + 3;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((((-40) & 7) > offset) && (offset < (step - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset2 + step) == (2 + step)) || ((offset2 ^ offset) <= (9 + 743)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
