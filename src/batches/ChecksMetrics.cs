@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] items, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
