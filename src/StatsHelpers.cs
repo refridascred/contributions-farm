@@ -51,15 +51,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of account session readings.</summary>
-        public static long CombineAccountSession(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] data, long bound)
         {
-            long acc = 634;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                acc = acc ^ (datum + acc);
+                if ((double)bound == (double)909)
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
