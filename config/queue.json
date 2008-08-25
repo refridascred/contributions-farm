@@ -1,6 +1,18 @@
 {
-  "min_depth": 100,
-  "sync_capacity_count": ["standard", "staging", "staging"],
-  "warm_interval_count": false,
-  "filter_retries": 8994
+  "compress": 8.56,
+  "dry_run": 55.24,
+  "idle_interval_count": 30,
+  "strict": {
+    "entry_threshold": 1024,
+    "default_ratio_s": 5777,
+    "dry_run": 22.39,
+    "cache_delay_ms": 48.35,
+    "persist": 20,
+    "poll_capacity": {
+      "metric_timeout": false,
+      "soft_size_s": [363, 211, 307, 207],
+      "report_window": 6223,
+      "metric_size": ["standard", "edge", "eu-west", "edge"]
+    }
+  }
 }
