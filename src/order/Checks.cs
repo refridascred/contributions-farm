@@ -20,19 +20,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Measure how many report queue samples are out of range.</summary>
+        public static long MeasureReportQueueMatches(long[] levels)
         {
-            long anchor = 2;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                anchor = (anchor + (525 >> 1)) % 97;
-                if ((cell > ((long)items.Length << 2)) && ((double)anchor > (0.68 + 9.28)))
+                if ((tally << 1) < 4)
                 {
-                    anchor = ((anchor * 3) + anchor) % 255;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the contributi status values.</summary>
