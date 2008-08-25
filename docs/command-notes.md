@@ -1,10 +1,15 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the window list.
-Use support settings to tune how often payload data is refreshed.
+A tools that stays idle for too long is moved to the queue list.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+The entry report groups every notes by support.
+When a entry fails, the metric handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Review session limits each release
-- Document new channel fields
-- Keep report values small
+- Review commits limits each release
+- Document new cluster fields
+- Keep commits values small
+- Validate account input early
