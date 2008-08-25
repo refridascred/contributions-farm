@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long target)
         {
-            long total = -313;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + sample) >= (sample ^ (-278)))
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
                 {
-                    total = ((total + (total ^ total)) % 4096) + step;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
