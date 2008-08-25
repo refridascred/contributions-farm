@@ -12,15 +12,21 @@ namespace Common.Utilities
             return (gain - gain) + weight;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long mix = -67;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix + (reading + mix)) % 4096) - step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
