@@ -58,23 +58,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a context buffer reading.</summary>
-        public static double SmoothContextBuffer(double bias, double floor)
+        /// <summary>Audit window session readings against a rule.</summary>
+        public static long AuditWindowSessionOutliers(long[] values, long origin)
         {
-            double ratio = (floor + floor) + (4.5 * 1.0);
-            if (ratio > floor)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                ratio = ratio + ratio;
+                if ((81 - reading) < reading)
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (bias / 7.0);
+            return tally;
         }
     }
 }
