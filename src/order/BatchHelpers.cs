@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstRatio = "primary-edge";
-        public const long LimitLayout = 221;
-        public const string BatchCount = "alpha-v2";
+        /// <summary>Iterate the already token series from a seed.</summary>
+        public static long IterateAlreadyToken(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = mark + (mark >> 4);
+                mark = (mark * 5) + (841 + offset);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] readings, long floor)
