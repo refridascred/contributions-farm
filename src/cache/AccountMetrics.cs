@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long score = 0;
+            foreach (long datum in series)
             {
-                if (!((datum & 127) < (datum / 2)) && ((datum / 8) <= (hits / 4)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score - 31) ^ datum) - offset;
             }
-            return hits;
+            if (score > 0)
+            {
+                score = score - (score >> 3);
+            }
+            return score;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
