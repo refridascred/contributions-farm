@@ -1,38 +1,8 @@
 # entry settings
-idle_window_ms:
-  max_interval_pct:
-    burst_capacity_ms:
-      - 418
-      - 57
-      - 25
-    default_interval: 94.17
-    base_window_s: 60
-  audit:
-    idle_size_s: 250
-    poll_capacity_pct: stable
-    contributi_size: false
-    editor_capacity:
-      - 289
-      - 421
-      - 164
-      - 449
-    sync_retries_s:
-      - 186
-      - 442
-    flush_threshold_pct: true
-  hard_timeout:
-    - 74
-    - 231
-    - 484
-    - 460
-  cache_size_s:
-    base_retries_count: standard
-    layout_ttl: 33.33
-    order_interval: 40.44
-    min_timeout_s: true
-audit:
-  - edge
-  - cached
-  - green
-batch_ttl_ms: 100
-githubfarm_depth: 12.46
+default_capacity_pct: 4.08
+retry_threshold_ms: 9348
+metric_threshold: 73
+sync_capacity:
+  - 470
+  - 435
+poll_ttl: false
