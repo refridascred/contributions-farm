@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            Failed,
+            Draft,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Project the next payload value.</summary>
