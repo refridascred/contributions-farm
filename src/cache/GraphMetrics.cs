@@ -92,10 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchWidth = "standard-edge";
-        public const long DefaultBuffer = 9129;
-        public const double BurstBuffer = 62.12;
-        public const long RetryBuffer = 5387;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
