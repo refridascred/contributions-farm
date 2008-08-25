@@ -60,17 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] levels, long origin)
+        /// <summary>Validate cluster token readings against a bound.</summary>
+        public static bool GuardClusterTokenRange(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (levels[i] >= origin)
+                if (item != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
