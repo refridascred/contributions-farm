@@ -54,31 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long step, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long seed)
         {
-            if ((17.0 * 9.87) == (double)step)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 3) <= (bound + step))
+                if (items[i] >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - step) > (step << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
