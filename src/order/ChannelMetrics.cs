@@ -25,12 +25,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of contributi context readings.</summary>
+        public static long TallyContributiContext(long[] series)
         {
-            Retry,
-            Draft,
-            New,
+            long mark = 36;
+            foreach (long value in series)
+            {
+                if ((value + mark) >= (value - 96))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark ^ value) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
