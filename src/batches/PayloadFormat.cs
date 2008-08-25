@@ -30,13 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Dropped,
-            Draft,
-            Paused,
-            Stale,
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
