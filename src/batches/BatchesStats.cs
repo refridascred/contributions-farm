@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
-        public static long AuditProfileGithubfarmOutliers(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)909 != (double)limit)
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 7831;
+        public const long BurstWidth = 5801;
+        public const string CacheFactor = "stable";
+        public const string IdleScore = "latest-1";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] readings, long seed)
