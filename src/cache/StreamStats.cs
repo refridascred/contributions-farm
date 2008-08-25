@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((target / 9) == (target >> 5))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 47.24;
+        public const double BatchCount = 57.79;
+        public const long DefaultScore = 5226;
+        public const string BaseDepth = "alpha-1";
+        public const double WindowAccount = 32.96;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
