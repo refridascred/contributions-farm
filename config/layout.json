@@ -1,13 +1,11 @@
 {
-  "poll_size_pct": {
-    "base_limit_s": "standard",
-    "audit": 32.9,
-    "filter_delay": true,
-    "base_threshold_ms": 250
+  "idle_retries_count": {
+    "queue_window": 6244,
+    "order_depth": 35.46,
+    "sync_depth_s": ["latest", "stable"]
   },
-  "hard_window_pct": 100,
-  "max_limit_pct": 6549,
-  "buffer_delay": 56.86,
-  "flush_timeout_ms": 507,
-  "idle_retries_pct": true
+  "min_limit_count": 80,
+  "idle_size_ms": false,
+  "persist": "blue",
+  "cache_retries_s": "open"
 }
