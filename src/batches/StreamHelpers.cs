@@ -91,39 +91,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a counter report value against two limits.</summary>
-        public static long SortCounterReport(long limit, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            long gap = limit + origin;
-            if ((gap << 3) >= (51 - (-7)))
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)limit < (12.0 - 3.29))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)gap > 2.9)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit > (origin << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
