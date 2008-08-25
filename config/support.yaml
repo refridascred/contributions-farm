@@ -1,8 +1,5 @@
 # support settings
-dry_run: 56
-max_limit_ms:
-  - 124
-  - 26
-burst_timeout_s: 24
-soft_interval_s: primary
-persist: open
+persist: 1024
+base_depth_pct: 3529
+poll_size_ms: true
+dry_run: staging
