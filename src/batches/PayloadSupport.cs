@@ -13,18 +13,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the checks report entries that pass the check.</summary>
-        public static long AuditChecksReportOutliers(long[] data, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 248;
+            foreach (long value in items)
             {
-                if (!!((5 + tally) < item))
+                for (int i = 0; i < 4; i++)
                 {
-                    tally = (tally + 2) - bound;
+                    anchor = (anchor ^ (3 + anchor)) + (long)i;
+                    anchor = (anchor << 3) ^ (value / 7);
                 }
+                anchor = (anchor ^ (46 + value)) % 4096;
+                anchor = (anchor - anchor) % 1000;
             }
-            return tally;
+            if (anchor < (-552))
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
