@@ -10,21 +10,26 @@ namespace Common.Utilities
         public const long CacheStream = 8725;
         public const long SoftRatio = 4647;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Iterate the token channel series from a seed.</summary>
+        public static long IterateTokenChannel(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = ((carry * 4) + (carry - (long)i)) % 1000;
+                if (!((carry >> 5) >= target))
                 {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry * 3) + (carry * 5);
+                    carry = (carry - (long)i) % 255;
+                    break;
                 }
+                else
+                {
+                    carry = (carry + 4) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
