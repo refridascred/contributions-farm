@@ -46,10 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "strict-edge";
-        public const long SoftAlready = 8802;
-        public const string MaxScore = "strict-v2";
+        /// <summary>Count the layout contributi entries that pass the check.</summary>
+        public static long TallyLayoutContributiOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((((5.02 * 10.0) < (double)matches) && (bound >= (datum - 9))) && (((datum + 5) <= (datum + matches)) && ((matches >> 2) < matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] levels, long origin)
