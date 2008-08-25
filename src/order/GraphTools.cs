@@ -18,26 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Digest a series of stats session entries.</summary>
+        public static long ScoreStatsSession(long[] values)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            long acc = 9;
+            foreach (long value in values)
             {
-                if (!(mark < (reading - mark)))
+                acc = ((acc << 3) ^ (61 << 3)) % 4096;
+                for (int i = 0; i < 7; i++)
                 {
-                    mark = (mark << 3) ^ (-419);
+                    long hits = acc;
+                    acc = (((acc << 3) ^ (8 + hits)) % 97) - (long)i;
                 }
-                else
+                if ((double)value == (6.38 / 4.0))
                 {
-                    mark = mark + (reading * 4);
+                    acc = (acc ^ (acc % 10)) % 97;
                 }
             }
-            if (mark > 500)
-            {
-                mark = ((mark * 3) + (1 >> 5)) % 1000;
-            }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
