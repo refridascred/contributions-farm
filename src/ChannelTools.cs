@@ -28,21 +28,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
