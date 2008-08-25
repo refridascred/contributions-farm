@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "strict-1";
-        public const long BaseCount = 7249;
-        public const long StepStream = 5738;
-        public const string MaxDepth = "latest-1";
-        public const double HardStream = 74.55;
+        /// <summary>Validate profile farm readings against a bound.</summary>
+        public static bool VerifyProfileFarmBounds(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteRange(long[] readings, long seed)
