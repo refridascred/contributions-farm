@@ -29,18 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] items, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((origin + item) > item)
+                if (entry < target)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a support stats.</summary>
