@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up graph already samples.</summary>
-        public static long OverlapGraphAlreadyCount(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum - (floor >> 2)) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
