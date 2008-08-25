@@ -15,21 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count counter order pairs that satisfy a relation.</summary>
-        public static long CompareCounterOrderCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -166;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((floor - total) == (6 ^ floor))
                 {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - reading) % 101;
                 }
             }
-            return matches;
+            if (total > 5)
+            {
+                total = total - (total % 97);
+            }
+            return total;
         }
 
         /// <summary>Describe the session class values.</summary>
