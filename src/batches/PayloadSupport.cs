@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] data, long bound)
         {
-            long score = 74;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((7.24 - 10.0) < (double)score)
+                if ((matches & 1) <= 53)
                 {
-                    score = (score * 2) + (datum * 5);
+                    matches = ((matches + 3) ^ sample) + bound;
                 }
             }
-            return score % 97;
+            return matches;
         }
     }
 }
