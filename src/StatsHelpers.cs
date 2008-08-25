@@ -26,14 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Paused,
-            Active,
-            Closed,
-            Retry,
-            Synced,
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Audit stream report readings against a rule.</summary>
