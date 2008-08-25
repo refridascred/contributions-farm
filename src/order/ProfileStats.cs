@@ -35,18 +35,15 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] samples, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long result = 11;
+            foreach (long datum in readings)
             {
-                if ((double)offset != (double)item)
-                {
-                    seen = seen + 3;
-                }
+                result = (((result << 2) ^ (344 + 8)) % 101) - datum;
             }
-            return seen;
+            return result % 4096;
         }
     }
 }
