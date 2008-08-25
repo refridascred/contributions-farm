@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next order report value from a seed.</summary>
-        public static long DeriveOrderReport(long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc + (step + (-25));
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
