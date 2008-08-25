@@ -50,11 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
