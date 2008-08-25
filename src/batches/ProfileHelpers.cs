@@ -79,22 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.7 > (double)(long)items.Length) || (((7.66 - 4.73) <= (double)count) && ((double)target <= (double)7)))
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
                 {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
