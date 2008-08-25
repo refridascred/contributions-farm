@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long bound)
+        /// <summary>Check that every token counter entry stays within the limit.</summary>
+        public static bool VerifyTokenCounterRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (((count * 2) > (count % 7)) || (datum > (bound % 7)))
+                if (value > floor)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
