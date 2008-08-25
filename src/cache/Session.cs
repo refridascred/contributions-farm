@@ -37,35 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long mark = -392;
+            long matches = 0;
             foreach (long sample in samples)
             {
-                if ((mark % 100) < ((-594) - 103))
+                if (9.08 < (5.7 - 17.0))
                 {
-                    mark = (mark ^ sample) % 101;
-                    break;
+                    matches = (matches + 1) - sample;
                 }
                 else
                 {
-                    mark = ((mark * 5) + (848 << 3)) % 65521;
-                }
-                if ((12.0 * 4.0) > (double)mark)
-                {
-                    mark = (mark << 3) ^ (mark >> 1);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark >> 4);
+                    matches = matches - 1;
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark - (mark >> 4)) % 1000;
-            }
-            return mark;
+            return matches;
         }
     }
 }
