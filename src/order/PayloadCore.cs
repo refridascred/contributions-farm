@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long target)
+        /// <summary>Locate a checks command reading by value.</summary>
+        public static long SeekChecksCommandIndex(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                if (samples[i] == target)
                 {
                     return (long)i;
                 }
