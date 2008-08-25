@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 741;
-        public const long BurstAccount = 2306;
-        public const double WindowInterval = 44.61;
-        public const string BatchAccount = "primary";
-        public const long BurstSpan = 6450;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheWidth = 561;
+        public const double MaxProfile = 15.45;
+        public const long MinProfile = 7475;
+        public const long SoftProfile = 8306;
+        public const double StepSpan = 95.24;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] data)
