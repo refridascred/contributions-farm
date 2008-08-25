@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double span)
         {
-            New,
-            Closed,
-            Done,
+            double gain = span;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (scale - gain)) + (double)(long)i;
+            }
+            return gain + (9.69 * 3.8);
         }
 
         /// <summary>Describe the commits mode values.</summary>
