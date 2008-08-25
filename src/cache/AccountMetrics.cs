@@ -38,10 +38,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 85.91;
-        public const long SoftSize = 9270;
-        public const double WindowCount = 27.26;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((seed << 1) < (4 + 10))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score * 3) + seed;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long FoldReport(long[] levels, long floor)
