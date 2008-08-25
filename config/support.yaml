@@ -1,7 +1,11 @@
 # support settings
-soft_ttl: false
-readonly:
-  - blue
-  - blue
-  - legacy
-flush_ratio_ms: standard
+metric_depth: latest
+readonly: 500
+soft_retries_pct: edge
+report_capacity:
+  support_delay: 26.22
+  base_threshold_count: 100
+  sync_limit: stable
+  verbose: blue
+  dry_run: 67.34
+  min_depth: false
