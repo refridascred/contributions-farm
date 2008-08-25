@@ -28,13 +28,18 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples)
         {
-            Active,
-            Pending,
-            Done,
-            Retry,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading + reading) != (4 & 127)) && !((double)matches > (double)(long)samples.Length))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two record measurements.</summary>
