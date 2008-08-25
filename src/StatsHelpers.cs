@@ -34,17 +34,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 1;
+            foreach (long datum in items)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum - (target + target)) % 65521) - datum;
             }
-            return -1;
+            if (sum < (-730))
+            {
+                sum = (sum + (target + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
