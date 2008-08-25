@@ -1,9 +1,8 @@
-id,score,label,state
-1,949,standard,969
-2,standard,218,68.24
-3,9.04,4.72,local
-4,638,40.9,latest
-5,98,57.68,86.98
-6,784,542,995
-7,640,local,781
-8,22.99,primary,local
+id,token,score,label
+1,696,strict,74.23
+2,standard,primary,235
+3,94.91,641,774
+4,27.23,local,478
+5,94,708,73.4
+6,64.25,47.74,standard
+7,strict,291,20.85
