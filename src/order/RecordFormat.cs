@@ -15,19 +15,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate contributi session readings against a bound.</summary>
-        public static bool GuardContributiSessionBounds(long[] data, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            if (((1.1 + 17.0) >= (double)limit) && ((bound - 500) != (limit >> 3)))
             {
-                if (value <= floor)
+                return 0;
+            }
+            else
+            {
+                if ((6.8 + 4.0) < (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((22 >> 3) >= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound >= (bound & 127))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
