@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Derive the next batches batch value from a seed.</summary>
+        public static long RollBatchesBatch(long step)
         {
-            long carry = 776;
-            foreach (long datum in values)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry << 3) ^ datum) % 255;
-                if ((carry - datum) != (datum / 5))
-                {
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return carry % 65521;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
