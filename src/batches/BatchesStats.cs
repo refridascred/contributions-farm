@@ -35,11 +35,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double scale, double bias)
-        {
-            double weight = bias;
-            return weight + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRatio = 1953;
+        public const double StepRecord = 32.28;
+        public const long SoftRecord = 5232;
+        public const long StepRatio = 8543;
+        public const string CacheSpan = "standard-edge";
     }
 }
