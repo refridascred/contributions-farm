@@ -49,22 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Audit commits counter readings against a rule.</summary>
+        public static long TallyCommitsCounterOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((3 / 8) >= (tally << 2)) && ((tally > (579 / 8)) && ((double)tally <= (double)0)))
+                if ((double)matches <= 4.9)
                 {
-                    tally = (tally + 2) ^ entry;
+                    matches = (matches + 3) ^ datum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
