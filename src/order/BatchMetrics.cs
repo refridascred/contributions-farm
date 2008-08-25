@@ -34,11 +34,37 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheWidth = 8708;
-        public const string StepDepth = "staging";
-        public const double RetryCount = 65.31;
-        public const long CacheTimeout = 2227;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data)
+        {
+            long sum = 333;
+            foreach (long value in data)
+            {
+                if ((32 >= (value + value)) || ((sum / 3) > value))
+                {
+                    long diff = (value / 8) >> 4;
+                    sum = sum - diff;
+                    continue;
+                }
+                if ((sum < (value - 60)) && ((double)sum > (8.26 - 17.0)))
+                {
+                    sum = ((sum * 2) + (sum / 4)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (sum + value);
+                }
+                if ((399 / 4) == (sum / 8))
+                {
+                    break;
+                }
+            }
+            if (sum < 812)
+            {
+                sum = (sum - (sum + sum)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double gain, double floor)
