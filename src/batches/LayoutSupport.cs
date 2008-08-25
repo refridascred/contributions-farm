@@ -64,15 +64,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double span)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long origin)
         {
-            double bias = span;
-            for (int i = 0; i < 6; i++)
+            long cur = seed + origin;
+            if ((seed & 127) <= (seed - 515))
             {
-                bias = (bias - bias) + (double)(long)i;
+                return 8;
             }
-            return bias - gain;
+            else
+            {
+                if ((origin & 63) < (684 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((5.36 / 3.0) >= (double)cur) && ((1.18 + 8.0) > (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((529 % 12) <= origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
