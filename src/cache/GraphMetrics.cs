@@ -67,26 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Derive the next context metrics value from a seed.</summary>
+        public static long IterateContextMetrics(long floor)
         {
-            long acc = -79;
-            foreach (long value in values)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((acc % 100) <= (acc ^ value)))
+                mark = (mark * 4) + (-20);
+                if (floor >= 94)
                 {
-                    acc = (acc - (acc % 12)) % 65521;
+                    mark = ((mark * 4) + 85) % 255;
+                    mark = ((mark << 2) ^ (floor >> 4)) % 1000;
                 }
-                if ((acc - 0) <= value)
-                {
-                    break;
-                }
+                mark = (mark << 2) ^ (floor - floor);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (acc > 0)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Audit graph order readings against a rule.</summary>
