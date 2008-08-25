@@ -58,15 +58,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of metrics token entries.</summary>
-        public static long DigestMetricsToken(long[] levels, long step)
+        /// <summary>Classify a counter notes pair into a bucket.</summary>
+        public static long ClassifyCounterNotes(long step, long step2)
         {
-            long mark = 809;
-            foreach (long cell in levels)
+            if ((step2 * 2) == (step & 7))
             {
-                mark = (mark * 4) + (cell + step);
+                return 4;
             }
-            return mark % 1000;
+            else
+            {
+                if ((step * 2) <= (step & 255))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step * 4) >= (step << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
