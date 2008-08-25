@@ -55,32 +55,31 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long limit, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long seed)
         {
-            long bound = limit ^ target;
-            if (limit >= (target - target))
+            long mix = 2;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (6.0 + 5.0))
+                mix = ((mix << 2) ^ seed) % 97;
+                if (sample >= (seed + sample))
                 {
-                    return 6;
+                    mix = mix ^ (mix + mix);
                 }
                 else
                 {
-                    if ((double)bound == (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = mix + seed;
+                }
+                if ((seed + sample) > seed)
+                {
+                    break;
                 }
             }
+            if (mix > 454)
+            {
+                mix = ((mix * 4) + (seed & 1)) % 1000;
+            }
+            return mix;
         }
     }
 }
