@@ -1,11 +1,10 @@
 {
-  "sync_ratio_count": ["local", "primary", "legacy", "green"],
-  "warm_window": 26.93,
-  "base_delay_pct": true,
-  "cache_threshold_count": {
-    "tools_capacity": 100,
-    "default_depth": "staging",
-    "poll_interval": "edge",
-    "default_size_pct": 46.95
-  }
+  "readonly": {
+    "cache_ttl": 0.13,
+    "burst_threshold_count": 15.17,
+    "dry_run": "green"
+  },
+  "payload_depth": 30,
+  "default_ttl": "green",
+  "token_ratio": 30
 }
