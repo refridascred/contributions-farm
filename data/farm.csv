@@ -1,8 +1,9 @@
-id,count,score
-1,211,660
-2,89.67,259
-3,primary,69.53
-4,staging,740
-5,24.16,local
-6,335,stable
-7,open,66.45
+id,region,level,state,token
+1,207,451,local,9
+2,681,223,legacy,open
+3,latest,713,94.19,87.53
+4,878,standard,794,486
+5,60.5,81,796,fallback
+6,859,814,531,11.42
+7,33.9,eu-west,169,green
+8,932,234,blue,edge
