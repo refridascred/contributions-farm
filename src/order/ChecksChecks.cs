@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long HardCount = 8087;
         public const long WindowBudget = 9241;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((long)items.Length > ((long)items.Length - tally))
+                if ((bound + 49) > hits)
                 {
-                    tally = (tally + 3) - entry;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
