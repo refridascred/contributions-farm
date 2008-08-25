@@ -1,12 +1,12 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-A batches that stays idle for too long is moved to the context list.
-The report helpers are pure functions, so they are safe to call from any thread.
+A farm that stays idle for too long is moved to the batches list.
+When a queue fails, the buffer handler retries a few times before giving up.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Prefer already defaults
-- Log every counter change
-- Validate counter input early
+- Prefer counter defaults
+- Keep report values small
+- Log every context change
+- Validate batches input early
