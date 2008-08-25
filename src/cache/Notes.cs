@@ -28,19 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] items)
-        {
-            long acc = 99;
-            foreach (long value in items)
-            {
-                if (13.0 >= (double)value)
-                {
-                    acc = (acc * 3) + acc;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinLevel = 2542;
+        public const long DefaultStream = 1614;
+        public const long SoftSpan = 9822;
+        public const long BaseTimeout = 8294;
+        public const long BurstCount = 7490;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
