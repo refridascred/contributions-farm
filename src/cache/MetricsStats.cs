@@ -65,14 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Queued,
-            Draft,
-            Stale,
-            Failed,
-            Done,
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
