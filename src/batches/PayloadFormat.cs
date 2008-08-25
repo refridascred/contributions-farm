@@ -12,19 +12,31 @@ namespace Common.Utilities
             return (scale2 + (double)(-916)) + offset;
         }
 
-        /// <summary>Validate graph contributi readings against a bound.</summary>
-        public static bool CheckGraphContributiRange(long[] samples, long floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long offset, long limit)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            if ((double)limit <= (double)31)
             {
-                if (datum != floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset >= (1.0 - 8.5))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >> 2) >= (limit + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the window state values.</summary>
