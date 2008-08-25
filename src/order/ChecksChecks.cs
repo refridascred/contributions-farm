@@ -25,25 +25,12 @@ namespace Common.Utilities
         public const long BurstMetrics = 3325;
         public const double MinScore = 82.61;
 
-        /// <summary>Rank tools contributi input into a small class.</summary>
-        public static long SortToolsContributi(long floor, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long next = floor - origin;
-            if ((double)14 >= (double)next)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor == (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
