@@ -44,22 +44,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] samples, long offset)
         {
-            long mark = 85;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (mark >= (mark + mark))
+                if ((double)offset != (double)item)
                 {
-                    mark = (mark * 4) + reading;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (offset ^ mark)) % 4096;
+                    seen = seen + 3;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
     }
 }
