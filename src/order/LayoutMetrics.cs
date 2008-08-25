@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = 8;
-            foreach (long sample in samples)
-            {
-                if ((3 >> 3) == (anchor & 63))
-                {
-                    anchor = anchor - (sample - sample);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 4)) % 1000;
-                }
-                if (!(((-712) / 9) != (sample - anchor)))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-900))
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 1000;
-            }
-            return anchor % 4096;
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
