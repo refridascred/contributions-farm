@@ -33,12 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstBudget = 4825;
-        public const long BatchMetric = 617;
-        public const long MaxTimeout = 8979;
-        public const long BurstFactor = 5719;
-        public const long DefaultMetric = 4520;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data, long offset)
+        {
+            long score = -644;
+            foreach (long value in data)
+            {
+                if ((offset + value) <= (value + score))
+                {
+                    score = score ^ (79 % 60);
+                }
+                else
+                {
+                    score = score - (value / 3);
+                }
+                if (5 >= (offset * 3))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
