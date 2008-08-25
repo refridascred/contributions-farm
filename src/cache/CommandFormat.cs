@@ -16,21 +16,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 94;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long slot = (242 + sample) ^ (sample - sample);
+                if (((double)mark < (15.0 - 8.9)) || ((slot + sample) == (sample >> 5)))
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    slot = slot ^ (sample % 2);
+                    slot = (slot + sample) % 97;
+                    break;
+                }
+                else
+                {
+                    slot = (slot << 2) ^ (sample << 2);
+                }
+                if (((86 - 32) > mark) && ((mark ^ mark) != (mark ^ 129)))
+                {
+                    mark = ((mark * 2) + sample) % 4096;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
