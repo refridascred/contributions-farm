@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge open green; do
+for item in edge staging green fallback; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=70
-log "limit is ${COMMAND_LIMIT}"
-
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 7); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+mode="${1:-standard}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
