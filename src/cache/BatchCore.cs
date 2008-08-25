@@ -26,12 +26,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 4190;
-        public const double MinSize = 74.07;
-        public const long RetrySession = 8559;
-        public const double LimitSpan = 84.39;
-        public const long LimitCount = 9421;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long StepMetrics(long limit)
