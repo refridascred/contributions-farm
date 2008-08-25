@@ -1,33 +1,12 @@
 # entry settings
-default_ttl_pct:
-  - 427
-  - 220
-  - 87
-  - 47
-burst_threshold: 84.33
-flush_delay_count: false
-idle_ratio: true
-cache_ttl: 82.45
-sync_size_count:
-  idle_window:
-    compress: primary
-    filter_delay: 7
-    retry_timeout: legacy
-    sync_depth: 250
-    hard_limit_count: 1024
-    warm_threshold_pct: 77.98
-  retry_limit_ms: 84
-  burst_window_pct:
-    stats_retries: blue
-    counter_window: 4754
-    base_limit:
-      - 121
-      - 315
-      - 401
-      - 91
-  batch_retries:
-    - staging
-    - green
-    - stable
-    - open
-  stream_delay: primary
+idle_ttl_s: 44.27
+cache_threshold_count: 6919
+support_size: 2229
+tools_interval:
+  - 386
+  - 419
+  - 266
+min_depth_s:
+  - open
+  - stable
+  - fallback
