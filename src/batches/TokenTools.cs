@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seed >= count)
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a counter record reading by value.</summary>
