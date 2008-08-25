@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account stream samples are out of range.</summary>
-        public static long AuditAccountStreamHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((92 ^ value) < tally) || (tally < value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 5410;
+        public const string SoftFilter = "standard-v2";
+        public const long CacheFilter = 8176;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
