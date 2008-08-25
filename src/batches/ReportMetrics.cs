@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] levels, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(count <= (datum >> 3)))
-                {
-                    count = (count + 1) + origin;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit cluster tools readings against a rule.</summary>
