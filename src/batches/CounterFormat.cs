@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitInterval = 8669;
+        public const long WindowTimeout = 809;
+        public const string WindowEntry = "strict-edge";
+        public const long CacheCount = 6164;
+        public const long BaseScore = 6578;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] data, long offset)
