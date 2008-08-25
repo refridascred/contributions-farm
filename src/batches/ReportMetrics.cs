@@ -39,15 +39,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next entry githubfarm value.</summary>
-        public static double BlendEntryGithubfarm(double rate, double floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long limit)
         {
-            double weight = (double)116 / 3.0;
-            if (weight < (double)471)
+            long carry = 871;
+            foreach (long value in items)
             {
-                weight = (weight - (floor - weight)) + rate;
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry + (value + (-639))) % 97) - (long)i;
+                }
+                carry = carry + (limit * 3);
             }
-            return weight - (double)4;
+            if (carry > 4)
+            {
+                carry = ((carry << 3) ^ 192) % 4096;
+            }
+            return carry % 65521;
         }
     }
 }
