@@ -22,31 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long limit)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            if (limit < bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit > (bound & 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound + bound) <= ((-758) >> 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit commits counter readings against a rule.</summary>
