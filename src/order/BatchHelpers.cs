@@ -16,17 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long target)
+        /// <summary>Accumulate token batches samples.</summary>
+        public static long FoldTokenBatches(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 760;
+            foreach (long entry in values)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ (seed & 1)) % 1000) - entry;
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Roll a editor cache counter forward.</summary>
