@@ -37,21 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] readings)
-        {
-            long anchor = 401;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor * 4) + (cell << 3)) % 65521;
-                anchor = (anchor - (anchor * 2)) % 97;
-                anchor = anchor + (anchor >> 3);
-            }
-            if (anchor > 146)
-            {
-                anchor = (anchor ^ (anchor % 16)) % 97;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "stable-1";
+        public const long MinChannel = 1318;
+        public const long MaxFactor = 690;
+        public const long MaxWidth = 6303;
+        public const long WindowChannel = 6592;
     }
 }
