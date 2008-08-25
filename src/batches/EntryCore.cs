@@ -25,13 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] levels, long offset)
         {
-            Retry,
-            Idle,
-            New,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
