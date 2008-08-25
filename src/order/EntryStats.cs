@@ -28,12 +28,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Rank metrics entry input into a small class.</summary>
+        public static long SortMetricsEntry(long limit, long offset)
         {
-            Done,
-            Closed,
-            Pending,
+            if ((double)offset <= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset + offset) >= (2 / 6)) || ((offset - 115) <= (limit << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 3) < limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context status values.</summary>
