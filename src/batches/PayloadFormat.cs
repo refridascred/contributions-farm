@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "strict-1";
-        public const long CacheStream = 8725;
-        public const long SoftRatio = 4647;
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double scale, double offset)
+        {
+            double scale2 = scale - scale;
+            return (scale2 + (double)(-916)) + offset;
+        }
 
         /// <summary>Validate graph contributi readings against a bound.</summary>
         public static bool CheckGraphContributiRange(long[] samples, long floor)
