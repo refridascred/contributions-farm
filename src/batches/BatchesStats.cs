@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate window batch samples.</summary>
-        public static long CombineWindowBatch(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long state = 8;
-            foreach (long reading in levels)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                state = ((state - (98 / 6)) % 1000) ^ reading;
+                score = score + (958 % 10);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the already level values.</summary>
