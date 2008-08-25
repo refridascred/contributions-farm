@@ -59,13 +59,15 @@ namespace Common.Utilities
             return bias2 + (double)872;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
