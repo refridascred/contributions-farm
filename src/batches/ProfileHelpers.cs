@@ -85,21 +85,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats schema pairs that satisfy a relation.</summary>
-        public static long PairStatsSchemaCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRatio = 6622;
+        public const string IdleWidth = "staging";
+        public const long BatchRoute = 2817;
+        public const double StepRoute = 76.95;
+        public const long CacheRoute = 2176;
     }
 }
