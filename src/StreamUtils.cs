@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] series, long offset)
+        /// <summary>Accumulate batches metric samples.</summary>
+        public static long WeighBatchesMetric(long[] items)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long sum = 68;
+            foreach (long item in items)
             {
-                if (value > offset)
+                if (!((152 >> 2) < item))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 3) + (3 * 5)) % 255;
                 }
             }
-            return ready;
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
