@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long CacheScore = 4140;
         public const double CacheTimeout = 79.96;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] levels, long target)
         {
-            Pending,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count - 2) != (sample << 1))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
     }
 }
