@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
+        public static long AuditEditorGithubfarmMatches(long[] readings, long step)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long reading in readings)
             {
-                if ((sample >> 4) != (sample * 2))
+                if ((8.82 * 7.3) >= (double)step)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
