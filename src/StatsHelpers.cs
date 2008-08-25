@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Roll a batches format counter forward.</summary>
+        public static long StepBatchesFormat(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((321 + sum) > sum) || ((bound * 3) > bound)))
                 {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ bound) % 1000;
                 }
+                sum = (sum << 2) ^ sum;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
