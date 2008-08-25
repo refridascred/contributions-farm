@@ -25,17 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 4;
+            foreach (long cell in values)
             {
-                if (values[i] > step)
+                if ((6.26 * 2.86) < (double)score)
                 {
-                    return (long)i;
+                    score = (((score << 2) ^ (score & 3)) % 1000) - cell;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
