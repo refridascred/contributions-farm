@@ -1,7 +1,15 @@
 {
-  "readonly": 90,
-  "metrics_capacity": [94, 444, 103],
-  "sync_timeout_s": 29,
-  "hard_ttl": "blue",
-  "flush_interval_ms": 2081
+  "cache_ratio": 1169,
+  "githubfarm_ratio": "staging",
+  "enabled": true,
+  "poll_retries_s": 1518,
+  "verbose": "legacy",
+  "audit": {
+    "max_size_ms": "local",
+    "audit": 12.22,
+    "editor_window": "stable",
+    "retry_depth_s": 14,
+    "layout_retries": ["strict", "staging", "strict"],
+    "filter_interval": true
+  }
 }
