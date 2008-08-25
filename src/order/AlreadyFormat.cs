@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload tools counter forward.</summary>
-        public static long IteratePayloadTools(long target)
+        /// <summary>Validate stats farm readings against a bound.</summary>
+        public static bool GuardStatsFarmRange(long[] levels, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                total = total - ((long)i * 3);
-                total = (total ^ target) % 4096;
-                total = ((total << 2) ^ 517) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
