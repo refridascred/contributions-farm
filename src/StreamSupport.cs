@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a queue metrics sample.</summary>
-        public static long SeekQueueMetricsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 2108;
+        public const double HardScore = 2.97;
+        public const long BurstCount = 214;
+        public const string BaseEditor = "fallback";
+        public const string BatchSize = "open";
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] readings, long offset)
