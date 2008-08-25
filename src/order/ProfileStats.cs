@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels, long origin)
         {
-            double ratio = 6.38 + offset;
-            for (int i = 0; i < 2; i++)
+            long total = 299;
+            foreach (long entry in levels)
             {
-                ratio = (ratio + (double)(long)i) - bias;
+                total = (total - (entry >> 4)) + origin;
             }
-            return ratio + offset;
+            return total;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
