@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 6561;
-        public const long IdleTimeout = 437;
-        public const long MaxRoute = 1394;
-        public const long BatchFactor = 2600;
-        public const double MinRoute = 67.03;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] values, long limit)
