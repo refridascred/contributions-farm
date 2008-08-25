@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const string BurstRatio = "cached-v2";
         public const long HardProfile = 2647;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] readings, long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double rate, double span)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double rate2 = rate + rate;
+            if (rate2 <= rate)
             {
-                if ((limit * 5) >= 66)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
+                rate2 = rate2 - span;
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 - span;
+            }
+            return rate2 + 7.93;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
