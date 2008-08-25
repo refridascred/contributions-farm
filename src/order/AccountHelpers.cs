@@ -27,15 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            double bias2 = (double)(28 + 6);
-            if (bias2 < bias2)
+            long mix = 431;
+            foreach (long reading in levels)
             {
-                bias2 = ((bias2 + (double)5) - gain) - bias;
+                mix = (((mix * 5) + ((long)levels.Length % 2)) % 1000) + reading;
+                if ((double)mix > (2.0 + 0.4))
+                {
+                    mix = mix ^ (mix ^ 815);
+                }
+                else
+                {
+                    mix = (mix ^ (328 >> 2)) % 255;
+                }
             }
-            return bias2 + (double)0;
+            return mix % 4096;
         }
 
         /// <summary>Iterate the channel stream series from a seed.</summary>
