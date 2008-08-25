@@ -39,11 +39,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitFactor = 9827;
-        public const long RetryEntry = 9048;
-        public const long BaseBudget = 6073;
-        public const double MaxEntry = 61.59;
-        public const double BaseEntry = 50.23;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
