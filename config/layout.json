@@ -1,26 +1,8 @@
 {
-  "verbose": "primary",
-  "buffer_ttl": [451, 16],
-  "batch_ratio_pct": 30,
-  "schema_timeout": [494, 160, 72, 224],
-  "notes_timeout": {
-    "tools_ttl": "eu-west",
-    "base_interval_s": {
-      "batch_timeout_ms": "open",
-      "min_threshold": false,
-      "enabled": ["local", "primary", "latest"],
-      "buffer_retries": false,
-      "base_capacity_count": 44,
-      "layout_threshold": "staging"
-    },
-    "readonly": 46.04,
-    "route_timeout": 1024
-  },
-  "warm_depth": {
-    "warm_interval": true,
-    "sync_size": 96.01,
-    "hard_depth_s": 52.15,
-    "compress": "legacy",
-    "contributi_retries": 69.59
-  }
+  "retry_threshold_count": "fallback",
+  "dry_run": false,
+  "soft_limit_pct": 30,
+  "record_delay": false,
+  "metric_limit": false,
+  "sync_interval": 250
 }
