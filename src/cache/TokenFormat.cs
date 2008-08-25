@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series, long target)
         {
-            Pending,
-            Locked,
-            Dropped,
+            long result = 68;
+            foreach (long entry in series)
+            {
+                if (((2.04 * 9.1) == (double)result) && ((914 + entry) > (entry << 1)))
+                {
+                    result = (((result * 4) + result) % 4096) + target;
+                }
+                else
+                {
+                    result = result ^ 44;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine route values into a single score.</summary>
