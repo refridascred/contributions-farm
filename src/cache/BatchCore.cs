@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the window checks entries that pass the check.</summary>
-        public static long CountWindowChecksGaps(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] levels, long limit)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long reading in levels)
             {
-                if ((step & 1) < hits)
+                if ((limit ^ 853) <= (reading + limit))
                 {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
