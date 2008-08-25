@@ -1,6 +1,19 @@
 {
-  "compress": 63,
-  "burst_ratio_pct": true,
-  "sync_limit": 74,
-  "verbose": 58.69
+  "checks_ttl": "latest",
+  "burst_window_ms": 8528,
+  "poll_depth_pct": "local",
+  "retry_delay_count": {
+    "hard_ttl_s": 1024,
+    "default_size": "standard",
+    "strict": {
+      "compress": false,
+      "already_limit": ["standard", "primary", "eu-west"],
+      "persist": 250,
+      "already_window": ["green", "stable"],
+      "burst_capacity_s": 15
+    },
+    "verbose": 53.93,
+    "route_timeout": 3707,
+    "sync_threshold_ms": "staging"
+  }
 }
