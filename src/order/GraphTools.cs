@@ -19,21 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up filter layout samples.</summary>
-        public static long CompareFilterLayoutCount(long[] series)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
