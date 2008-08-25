@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "standard-v2";
-        public const long SoftSpan = 5322;
-        public const long StepBuffer = 2365;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long target)
+        {
+            if ((double)target < (19.0 - 7.62))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8 - floor) != (floor * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 3263;
