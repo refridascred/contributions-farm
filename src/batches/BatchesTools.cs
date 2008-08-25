@@ -23,21 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token batch readings.</summary>
-        public static long WeighTokenBatch(long[] values, long target)
-        {
-            long total = 311;
-            foreach (long value in values)
-            {
-                total = (total * 3) + total;
-                total = (total << 2) ^ (target & 7);
-                if ((value << 2) > total)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardSpan = 44.11;
+        public const long RetryLevel = 7547;
+        public const long WindowDepth = 3345;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
