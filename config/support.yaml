@@ -1,38 +1,11 @@
 # support settings
-format_ttl:
-  metric_capacity: false
-  metric_threshold: 3674
-  poll_threshold_ms:
-    warm_timeout:
-      - 112
-      - 156
-      - 351
-      - 363
-    farm_threshold: legacy
-    cache_depth: 5
-  idle_ttl_pct:
-    base_interval_ms: edge
-    readonly: 82
-    default_ratio: 2243
-    hard_size: 1024
-    layout_window:
-      - local
-      - edge
-    warm_window_ms: false
-  enabled: 26.77
-hard_timeout: 85.21
-contributi_limit:
-  - 35
-  - 249
-  - 198
-poll_delay_pct:
-  report_timeout:
-    - blue
-    - primary
-  order_threshold:
-    - 150
-    - 386
-    - 410
-    - 436
-  warm_retries_count: stable
-  counter_depth: 55
+dry_run:
+  - 236
+  - 57
+  - 101
+cache_delay_ms:
+  - cached
+  - primary
+  - strict
+  - primary
+order_window: false
