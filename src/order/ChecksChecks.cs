@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long HardCount = 8087;
         public const long WindowBudget = 9241;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            Stale,
-            Retry,
-            Draft,
-            Locked,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((long)items.Length > ((long)items.Length - tally))
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the tools contributi entries that pass the check.</summary>
