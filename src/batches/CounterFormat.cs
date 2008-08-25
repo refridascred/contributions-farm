@@ -20,18 +20,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "fallback-edge";
+        public const double IdleSpan = 14.23;
+        public const long CacheTimeout = 860;
+        public const long WindowBudget = 3250;
+        public const long CacheCluster = 3182;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double SmoothEditor(double rate, double span)
