@@ -25,17 +25,25 @@ namespace Common.Utilities
         public const long BaseFormat = 1377;
         public const double MinBudget = 2.64;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long target)
+        /// <summary>Rank tools contributi input into a small class.</summary>
+        public static long SortToolsContributi(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = floor - origin;
+            if ((double)14 >= (double)next)
             {
-                if (levels[i] < target)
+                return 0;
+            }
+            else
+            {
+                if ((double)floor == (double)origin)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
