@@ -25,15 +25,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a format tools counter forward.</summary>
-        public static long StepFormatTools(long floor)
+        /// <summary>Combine schema cache values into a single score.</summary>
+        public static long ScoreSchemaCache(long[] data, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            long state = 54;
+            foreach (long reading in data)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (!(((0.5 / 7.0) != (double)reading) && (2 < reading)))
+                {
+                    state = ((state - (reading * 2)) % 97) + floor;
+                }
+                state = (state - (-36)) % 1000;
             }
-            return mix;
+            return state % 97;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
