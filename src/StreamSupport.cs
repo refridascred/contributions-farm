@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first session batches entry that matches the target.</summary>
-        public static long LocateSessionBatchesIndex(long[] samples, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (samples[i] <= offset)
+                if (reading > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
