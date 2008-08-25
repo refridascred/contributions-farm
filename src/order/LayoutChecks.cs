@@ -49,11 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchBudget = 810;
-        public const long DefaultLayout = 5377;
-        public const long LimitTimeout = 3086;
-        public const double MaxTimeout = 90.61;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (4.16 - 4.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long StepReport(long seed)
