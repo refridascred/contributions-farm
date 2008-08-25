@@ -1,17 +1,6 @@
 # support settings
-flush_retries_s: stable
-max_window_s:
-  - 213
-  - 478
-  - 368
-  - 137
-hard_interval_pct:
-  - 76
-  - 257
-  - 116
-  - 85
-enabled: primary
-audit:
-  - 395
-  - 412
-  - 300
+default_limit: fallback
+sync_ratio_ms: cached
+support_ttl: true
+sync_delay_pct: strict
+verbose: stable
