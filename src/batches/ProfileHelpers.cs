@@ -47,19 +47,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] samples, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
