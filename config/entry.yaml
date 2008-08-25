@@ -1,9 +1,14 @@
 # entry settings
-poll_ttl_count: true
-idle_timeout_s: 1910
-cache_ttl: 58
-batch_retries_ms:
-  - stable
-  - cached
-  - local
-poll_delay_ms: 500
+profile_ratio: 248
+schema_timeout: 53
+retry_retries_s:
+  batch_capacity_pct: fallback
+  profile_ratio: blue
+  compress:
+    - standard
+    - local
+  checks_depth: staging
+  flush_depth_s: true
+idle_retries: 30
+batch_threshold: 73.08
+retry_threshold_pct: false
