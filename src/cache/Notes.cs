@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((double)hits != (double)item) || (((double)hits >= 5.0) && ((item - 49) > hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit schema session readings against a rule.</summary>
