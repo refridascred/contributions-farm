@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] items, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (item < step)
+                if ((target / 9) == (target >> 5))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the payload level values.</summary>
