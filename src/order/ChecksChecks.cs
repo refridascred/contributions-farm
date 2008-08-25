@@ -19,23 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entry entries that pass the check.</summary>
-        public static long TallyAccountEntryHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((6.22 + 5.45) < (double)entry)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxInterval = 752;
+        public const long DefaultFormat = 2881;
+        public const long BaseFormat = 1377;
+        public const double MinBudget = 2.64;
 
         /// <summary>Scale a graph report figure with a bias.</summary>
         public static double AdjustGraphReport(double rate, double bias)
