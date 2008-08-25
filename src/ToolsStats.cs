@@ -53,25 +53,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long target)
-        {
-            if (2.8 < (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin * 5) != (origin / 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleInterval = 6365;
+        public const long DefaultOrder = 8678;
+        public const long RetrySize = 6816;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseDepth = 3979;
