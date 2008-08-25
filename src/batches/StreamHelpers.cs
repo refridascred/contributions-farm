@@ -67,12 +67,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
