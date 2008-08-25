@@ -66,39 +66,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long offset)
+        /// <summary>Adjust a already contributi reading.</summary>
+        public static double ProjectAlreadyContributi(double weight, double bias)
         {
-            long step = target ^ offset;
-            if ((step & 15) >= offset)
+            double weight2 = bias;
+            if (weight2 > (double)30)
             {
-                return 2;
+                weight2 = weight2 - (weight - 0.6);
             }
             else
             {
-                if (target < (offset ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ step) > (offset - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target & 255) <= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight2 = weight2 - 4.8;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight2 + weight2)) + (double)(long)i;
+            }
+            return weight2 + (double)(-96);
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
