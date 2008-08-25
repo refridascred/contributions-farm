@@ -20,20 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "fallback-edge";
+        public const long BaseQueue = 7524;
+        public const long CacheRatio = 827;
+        public const string CacheInterval = "standard-edge";
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
