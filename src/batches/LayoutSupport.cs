@@ -28,18 +28,29 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = 497;
+            foreach (long datum in values)
             {
-                if (((reading + reading) != (4 & 127)) && !((double)matches > (double)(long)samples.Length))
+                if ((5 - datum) <= (sum ^ datum))
                 {
-                    matches = matches + 3;
+                    sum = sum - ((long)values.Length - sum);
+                    sum = sum ^ (sum + datum);
+                }
+                if ((datum * 5) > datum)
+                {
+                    sum = ((sum << 3) ^ (261 + datum)) % 4096;
+                    continue;
+                }
+                sum = (sum - sum) % 65521;
+                if ((datum + sum) < (long)values.Length)
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
