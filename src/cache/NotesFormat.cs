@@ -38,10 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultSize = 2718;
-        public const double DefaultInterval = 55.85;
-        public const double WindowCount = 71.74;
-        public const string SoftFactor = "primary-edge";
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
