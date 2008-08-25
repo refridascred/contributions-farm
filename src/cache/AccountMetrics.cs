@@ -94,12 +94,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
