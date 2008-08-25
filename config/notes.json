@@ -1,13 +1,5 @@
 {
-  "idle_interval_s": "local",
-  "hard_interval_pct": "primary",
-  "strict": 97.08,
-  "command_retries": false,
-  "burst_threshold_count": {
-    "min_limit_s": "blue",
-    "context_ttl": "edge",
-    "contributi_ratio": "green",
-    "burst_threshold_s": 9.87,
-    "min_timeout": false
-  }
+  "default_interval_s": 61.21,
+  "verbose": "green",
+  "burst_capacity_s": 4374
 }
