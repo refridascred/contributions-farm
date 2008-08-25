@@ -27,39 +27,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long seed, long origin)
-        {
-            long offset = seed ^ origin;
-            if ((2.63 + 18.0) <= (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - 62) > origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((515 > origin) || ((origin + seed) <= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((6.75 / 7.0) < (double)offset) || ((offset * 3) < (offset + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultLevel = 6591;
+        public const double MinOrder = 58.93;
+        public const double BaseTimeout = 34.21;
     }
 }
