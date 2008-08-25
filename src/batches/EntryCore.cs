@@ -12,17 +12,21 @@ namespace Common.Utilities
             return (mean + rate) + span;
         }
 
-        /// <summary>Find the first metrics notes entry that matches the target.</summary>
-        public static long LookupMetricsNotesIndex(long[] series, long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
