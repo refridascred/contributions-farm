@@ -1,8 +1,11 @@
 # entry settings
-default_capacity_pct: 4.08
-retry_threshold_ms: 9348
-metric_threshold: 73
-sync_capacity:
-  - 470
-  - 435
-poll_ttl: false
+compress: latest
+base_threshold_pct: eu-west
+burst_ttl_s: 98
+default_threshold_ms:
+  cache_delay_ms: edge
+  soft_size_pct: 7939
+  persist: 100
+  min_interval_pct: false
+  poll_retries_pct: 5
+  batches_capacity: 3261
