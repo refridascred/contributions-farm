@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -25;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry << 2) ^ seed;
+                if ((double)(long)levels.Length == (double)2)
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 3) + (reading - seed)) % 101;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a metrics entry.</summary>
