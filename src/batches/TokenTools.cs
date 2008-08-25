@@ -31,15 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] values)
         {
-            double scale = (double)(48 + 77);
-            if (scale > (8.3 * 3.8))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                scale = scale + (double)91;
+                if (((datum - datum) != (seen ^ seen)) || ((double)seen <= (1.0 + 6.13)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return scale - (floor - rate);
+            return seen;
         }
     }
 }
