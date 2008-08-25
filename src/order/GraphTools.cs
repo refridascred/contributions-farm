@@ -41,25 +41,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a route tools pair into a bucket.</summary>
-        public static long ClassifyRouteTools(long floor, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] samples)
         {
-            long prev = floor ^ offset;
-            if ((offset + offset) <= (offset ^ prev))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (prev > (750 / 8))
+                if ((double)count <= (double)datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up context samples.</summary>
