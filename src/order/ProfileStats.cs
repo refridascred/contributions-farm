@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double offset)
         {
-            New,
-            Ready,
-            Idle,
+            double ratio = 6.38 + offset;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (double)(long)i) - bias;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Hold a profile entry.</summary>
