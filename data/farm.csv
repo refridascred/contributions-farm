@@ -1,7 +1,7 @@
-id,token,count,owner,rank
-1,edge,587,legacy,edge
-2,46.93,312,716,879
-3,98.44,797,stable,27.24
-4,431,729,eu-west,stable
-5,956,408,stable,legacy
-6,461,eu-west,latest,staging
+id,label,active
+1,55.85,47.7
+2,latest,14.83
+3,472,457
+4,719,373
+5,690,53.58
+6,554,549
