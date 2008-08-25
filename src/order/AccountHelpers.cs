@@ -67,16 +67,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the metric payload series from a seed.</summary>
-        public static long RollMetricPayload(long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor << 2) ^ (floor + 361);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (!((reading - matches) > (matches ^ 3)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
