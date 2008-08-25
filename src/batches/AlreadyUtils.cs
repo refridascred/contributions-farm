@@ -62,19 +62,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (8.74 >= (double)tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 2.99;
+        public const long HardEditor = 1234;
+        public const string BatchEditor = "fallback-1";
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
