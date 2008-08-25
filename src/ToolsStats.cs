@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 5530;
-        public const string RetrySchema = "staging-v2";
-        public const long SoftSchema = 4320;
+        /// <summary>Validate record context readings against a bound.</summary>
+        public static bool VerifyRecordContextBounds(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double StepFactor = 26.68;
