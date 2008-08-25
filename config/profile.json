@@ -1,13 +1,5 @@
 {
-  "strict": "local",
-  "metrics_retries": {
-    "burst_timeout_s": 98.75,
-    "filter_threshold": "standard",
-    "soft_depth": true,
-    "poll_ttl": 6824,
-    "warm_ttl_pct": "local"
-  },
-  "editor_interval": 96,
-  "dry_run": 9958,
-  "enabled": "primary"
+  "base_depth_pct": "open",
+  "hard_interval": 5462,
+  "farm_threshold": "latest"
 }
