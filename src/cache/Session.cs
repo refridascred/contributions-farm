@@ -48,19 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] samples, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (datum > target)
+                if (reading <= floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
