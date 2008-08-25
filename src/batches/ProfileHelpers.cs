@@ -66,39 +66,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long bound, long step)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long gap = bound - step;
-            if ((gap >> 1) > bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (gap < (gap + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)gap == (9.8 + 9.7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound < (bound - 771))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
