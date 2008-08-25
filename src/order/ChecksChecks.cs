@@ -26,12 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first payload editor entry that matches the target.</summary>
-        public static long LocatePayloadEditorIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
+                if ((data[i] < bound) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
