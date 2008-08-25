@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] levels, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (entry > bound)
+                if (datum <= floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
