@@ -22,38 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings)
         {
-            if ((origin + origin) > seed)
+            long state = 35;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-847) - origin) <= seed)
+                if (!((state - entry) >= (entry % 64)))
                 {
-                    return 7;
+                    state = ((state * 4) + (state >> 1)) % 4096;
+                    state = ((state * 5) + state) % 65521;
+                    break;
                 }
-                else
+                if (!((entry + state) > (31 * 2)))
                 {
-                    if (!(9 > origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < 91)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = (state - (entry + entry)) % 101;
+                }
+                if ((((-794) / 8) > entry) && ((double)state >= (8.0 / 8.0)))
+                {
+                    break;
                 }
             }
+            if (state < 80)
+            {
+                state = (state - (6 << 1)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
