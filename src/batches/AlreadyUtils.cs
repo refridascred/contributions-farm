@@ -49,12 +49,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Classify a support graph pair into a bucket.</summary>
+        public static long SortSupportGraph(long step, long floor)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long offset = step + floor;
+            if ((double)floor > (1.3 - 4.6))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - offset) >= (offset * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset >= step) && ((offset & 255) < offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
