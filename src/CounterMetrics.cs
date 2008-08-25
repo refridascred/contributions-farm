@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long seed)
         {
-            New,
-            Closed,
-            Done,
-            Pending,
-            Idle,
+            if ((target % 12) > (41 + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed < (target ^ 751))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target - target) < (target & 1)) && ((seed % 8) > (target >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target ^ target) >= (4 << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
