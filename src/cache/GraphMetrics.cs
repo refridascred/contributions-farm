@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine cluster channel values into a single score.</summary>
-        public static long FoldClusterChannel(long[] data, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            long mix = 771;
-            foreach (long datum in data)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum << 2) >= 821)
-                {
-                    mix = mix ^ (mix + seed);
-                }
-                if ((3.79 / 5.0) >= (double)datum)
-                {
-                    break;
-                }
+                state = (state ^ (7 - 5)) % 101;
+                state = state + (target * 4);
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (mix > 36)
-            {
-                mix = ((mix * 3) + (seed + mix)) % 101;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Fold a list of report readings.</summary>
