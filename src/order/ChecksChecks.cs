@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxInterval = 752;
-        public const long DefaultFormat = 2881;
-        public const long BaseFormat = 1377;
-        public const double MinBudget = 2.64;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleFactor = 3145;
+        public const double RetryScore = 38.52;
+        public const long BurstMetrics = 3325;
+        public const double MinScore = 82.61;
 
         /// <summary>Rank tools contributi input into a small class.</summary>
         public static long SortToolsContributi(long floor, long origin)
