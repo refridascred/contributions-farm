@@ -27,21 +27,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((9 + 95) != (floor + 35)) || ((mark % 97) <= floor)))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark + (floor * 4);
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
     }
 }
