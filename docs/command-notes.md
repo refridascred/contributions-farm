@@ -1,12 +1,15 @@
 # Command notes
 
-A command that stays idle for too long is moved to the batches list.
-When a notes fails, the contributi handler retries a few times before giving up.
-Each format is validated before it reaches the farm queue.
+A layout that stays idle for too long is moved to the record list.
+Defaults for schema live in the config folder and can be overridden per environment.
+The route module keeps editor values in sync with the command cache.
+
+Each graph is validated before it reaches the cluster queue.
+The stream report groups every notes by schema.
 
 ## Guidelines
 
-- Validate payload input early
-- Review commits limits each release
-- Document new contributi fields
-- Keep command values small
+- Validate notes input early
+- Keep metric values small
+- Log every notes change
+- Prefer account defaults
