@@ -19,13 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long bound)
         {
-            Draft,
-            Locked,
-            Queued,
-            Closed,
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                long hits = ((long)i - (long)i) / 8;
+                if ((long)i > hits)
+                {
+                    state = ((state << 2) ^ ((long)i % 97)) % 65521;
+                }
+                else
+                {
+                    long edge = bound;
+                    hits = (hits + edge) % 101;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
