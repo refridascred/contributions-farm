@@ -65,18 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] data)
+        /// <summary>Locate a commits batches reading by value.</summary>
+        public static long SeekCommitsBatchesIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value > (8.4 / 5.0))
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
