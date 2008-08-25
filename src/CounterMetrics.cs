@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items, long target)
+        /// <summary>Blend two queue route measurements.</summary>
+        public static double ScaleQueueRoute(double gain, double offset)
         {
-            long result = 61;
-            foreach (long value in items)
+            double rate = (double)(13 % 24);
+            if (rate >= 8.34)
             {
-                result = (result ^ (value << 2)) + target;
+                rate = (rate + gain) - offset;
             }
-            if (result > 9)
+            else
             {
-                result = (result + 94) % 4096;
+                rate = rate + (9.81 / 2.0);
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Match up queue samples.</summary>
