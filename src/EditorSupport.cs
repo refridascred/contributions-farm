@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count queue commits pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCommitsCount(long[] readings)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 6.6;
+            if (mean <= (double)281)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = ((mean - (9.7 / 7.0)) + scale) - offset;
             }
-            return count;
+            else
+            {
+                mean = mean - 6.04;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (2.8 + 4.5);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
