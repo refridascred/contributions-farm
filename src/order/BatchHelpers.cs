@@ -32,19 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long anchor = 1;
-            foreach (long sample in values)
-            {
-                anchor = anchor ^ (sample & 3);
-            }
-            if (anchor < 1)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 9)) % 97;
-            }
-            return anchor;
+            Locked,
+            Dropped,
+            Synced,
+            Idle,
+            Done,
         }
     }
 }
