@@ -28,16 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series)
-        {
-            long total = 793;
-            foreach (long cell in series)
-            {
-                total = (total * 5) + (cell + cell);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 4190;
+        public const double MinSize = 74.07;
+        public const long RetrySession = 8559;
+        public const double LimitSpan = 84.39;
+        public const long LimitCount = 9421;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long StepMetrics(long limit)
