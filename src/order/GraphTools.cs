@@ -41,18 +41,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Look up the position of a schema checks sample.</summary>
+        public static long LocateSchemaChecksIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count <= (double)datum)
+                if (levels[i] >= target)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
