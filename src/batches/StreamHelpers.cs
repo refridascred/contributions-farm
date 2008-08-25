@@ -85,35 +85,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long floor, long step)
+        /// <summary>Grade a counter report value against two limits.</summary>
+        public static long SortCounterReport(long limit, long origin)
         {
-            long prev = floor + step;
-            if ((75 >> 5) < (step / 8))
+            long gap = limit + origin;
+            if ((gap << 3) >= (51 - (-7)))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((step + floor) < (floor + step))
+                if ((double)limit < (12.0 - 3.29))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((step + (-62)) <= (floor << 1))
+                    if ((double)gap > 2.9)
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        if ((26 & 255) < prev)
+                        if (limit > (origin << 3))
                         {
-                            return 2;
+                            return 4;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
