@@ -40,13 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a graph buffer value against two limits.</summary>
+        public static long GradeGraphBuffer(long bound, long seed)
         {
-            Draft,
-            Active,
-            Synced,
-            Closed,
+            if ((seed / 8) != (seed + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 4) >= (bound >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound >> 2) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the format commits series from a seed.</summary>
