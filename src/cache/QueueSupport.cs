@@ -25,17 +25,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                result = (result - (result & 255)) % 255;
-                result = (result + result) % 101;
-                result = ((result * 2) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = (score ^ (offset & 127)) % 65521;
+                    score = (score << 2) ^ ((long)i2 & 31);
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Roll a order counter forward.</summary>
