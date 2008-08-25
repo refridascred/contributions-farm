@@ -62,14 +62,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Active,
-            Pending,
-            Stale,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 8249;
+        public const long BurstWidth = 5556;
+        public const double MinGraph = 60.5;
     }
 }
