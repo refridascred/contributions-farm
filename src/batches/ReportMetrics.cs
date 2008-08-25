@@ -35,18 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster tools readings against a rule.</summary>
-        public static long TallyClusterToolsGaps(long[] levels)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample ^ 4) == (sample & 63))
+                if (data[i] >= origin)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
