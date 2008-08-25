@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double bias2)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            double scale = (3.6 / 7.0) / 8.0;
-            return (scale - (bias + bias)) + bias2;
+            double load = (span - rate) + rate;
+            if (load >= load)
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (load * 1.0)) + (double)(long)i;
+            }
+            return load + rate;
         }
     }
 }
