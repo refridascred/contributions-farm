@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const long RetryRatio = 758;
         public const double BaseSize = 56.61;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] readings, long offset)
         {
-            Queued,
-            Failed,
-            Locked,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the buffer status values.</summary>
