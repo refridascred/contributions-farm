@@ -1,6 +1,9 @@
 {
-  "soft_ttl": 7970,
-  "graph_capacity": "fallback",
-  "poll_limit_s": true,
-  "queue_ttl": 60
+  "default_delay_count": {
+    "retry_delay": 250,
+    "warm_window": 1,
+    "batch_retries": 1024
+  },
+  "base_capacity_pct": [176, 361, 197],
+  "route_ttl": 7258
 }
