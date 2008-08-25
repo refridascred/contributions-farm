@@ -13,13 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Synced,
+            long mix = 2;
+            foreach (long reading in series)
+            {
+                if (((reading << 3) > reading) || ((mix / 7) <= (reading ^ mix)))
+                {
+                    mix = (mix ^ (reading ^ reading)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (272 & 1);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine batches order values into a single score.</summary>
