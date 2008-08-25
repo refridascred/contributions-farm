@@ -23,18 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((9.35 < (double)tally) || (((tally << 2) > step) || ((double)step >= (2.0 / 5.0))))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
