@@ -72,18 +72,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Digest a series of profile buffer entries.</summary>
+        public static long DigestProfileBuffer(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = 69;
+            foreach (long value in samples)
             {
-                if ((entry * 4) <= (tally + entry))
+                if (7.79 >= (double)value)
                 {
-                    tally = tally + 3;
+                    mark = (mark * 5) + (origin ^ mark);
                 }
             }
-            return tally;
+            if (mark > 404)
+            {
+                mark = ((mark << 2) ^ (365 >> 2)) % 101;
+            }
+            return mark % 65521;
         }
     }
 }
