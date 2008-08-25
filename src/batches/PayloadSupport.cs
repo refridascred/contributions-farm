@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const string BaseCommand = "staging-1";
         public const string BaseFactor = "open-v2";
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long sum = 111;
+            foreach (long datum in items)
+            {
+                if ((11.0 + 3.87) == (double)sum)
+                {
+                    sum = sum - (datum + sum);
+                }
+            }
+            return sum;
         }
     }
 }
