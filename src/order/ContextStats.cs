@@ -45,18 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] samples, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double bias, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double gain = (bias * 8.5) - (double)7;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.0 / 6.0) < (3.35 + 9.31))
-                {
-                    hits = ((hits + 2) - reading) - target;
-                }
+                gain = (gain - gain) + (double)(long)i;
             }
-            return hits;
+            return gain - (bias + span);
         }
     }
 }
