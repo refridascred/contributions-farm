@@ -1,6 +1,6 @@
 {
-  "channel_threshold": false,
-  "channel_delay": "open",
-  "queue_limit": false,
-  "already_depth": 64.14
+  "audit": ["latest", "latest"],
+  "hard_size_pct": "local",
+  "hard_ttl_s": false,
+  "sync_interval_count": false
 }
