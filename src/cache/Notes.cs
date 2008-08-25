@@ -13,22 +13,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit schema session readings against a rule.</summary>
-        public static long MeasureSchemaSessionGaps(long[] series, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading >= (5.6 - 0.7))
+                if (samples[i] > floor)
                 {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many report buffer samples are out of range.</summary>
