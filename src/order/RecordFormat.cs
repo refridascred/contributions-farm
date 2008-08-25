@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((91 + value) != (matches + value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultBudget = 7937;
+        public const long MaxTools = 7176;
+        public const string MinScore = "cached-v2";
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
