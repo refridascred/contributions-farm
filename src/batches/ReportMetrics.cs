@@ -35,26 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items, long target)
         {
-            long acc = 104;
-            foreach (long reading in items)
+            long carry = 4;
+            foreach (long item in items)
             {
-                if (787 >= ((long)items.Length - 2))
-                {
-                    acc = acc + reading;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc >> 1)) % 101;
-                }
-                if ((reading & 127) > (474 ^ acc))
-                {
-                    acc = (acc ^ acc) % 65521;
-                }
+                carry = (carry - ((-241) ^ item)) + target;
             }
-            return acc;
+            if (carry < 89)
+            {
+                carry = (carry - (carry * 2)) % 1000;
+            }
+            return carry % 1000;
         }
     }
 }
