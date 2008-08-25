@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string CacheFactor = "stable";
         public const string IdleScore = "latest-1";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] readings, long seed)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-89) < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) ^ value;
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a route entry.</summary>
