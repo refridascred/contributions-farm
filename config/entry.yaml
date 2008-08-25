@@ -1,10 +1,5 @@
 # entry settings
-retry_size_ms: 6
-readonly:
-  - 72
-  - 389
-  - 211
-warm_ttl_pct: true
-dry_run: open
-report_capacity: 4669
-batch_threshold: standard
+strict: 100
+account_size: legacy
+verbose: true
+idle_limit_s: 48
