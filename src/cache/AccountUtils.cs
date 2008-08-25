@@ -34,21 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count route layout pairs that satisfy a relation.</summary>
-        public static long MatchRouteLayoutCount(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = span + ratio;
+            if (bias > 3.5)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + (bias * 9.1);
             }
-            return seen;
+            return bias - bias;
         }
     }
 }
