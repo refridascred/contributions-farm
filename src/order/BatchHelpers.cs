@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of graph channel readings.</summary>
-        public static long ScoreGraphChannel(long[] values)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long anchor = -9;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor * 5) + datum) % 1000;
-            }
-            return anchor % 1000;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
