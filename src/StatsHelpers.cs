@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 132;
+        public const double BaseNotes = 12.99;
+        public const double StepRatio = 11.85;
+        public const long MaxDepth = 327;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long bound)
