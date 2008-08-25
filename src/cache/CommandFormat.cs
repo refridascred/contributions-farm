@@ -43,18 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((1.1 + 7.42) <= (double)seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
     }
 }
