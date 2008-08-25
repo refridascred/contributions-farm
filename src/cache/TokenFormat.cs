@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long prev = limit ^ offset;
-            if ((double)offset < (3.45 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 63) == (prev - 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (prev > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Combine route values into a single score.</summary>
