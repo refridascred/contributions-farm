@@ -36,11 +36,15 @@ namespace Common.Utilities
         public const long StepChecks = 7310;
         public const long RetryTimeout = 7516;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Derive the next notes channel value from a seed.</summary>
+        public static long StepNotesChannel(long seed)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
