@@ -67,18 +67,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window session readings against a rule.</summary>
-        public static long AuditWindowSessionOutliers(long[] values, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((81 - reading) < reading)
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
