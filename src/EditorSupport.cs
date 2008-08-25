@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double weight, double bias)
         {
-            New,
-            Retry,
-            Closed,
-            Queued,
+            double load = (double)(0 + 520);
+            if (load <= weight)
+            {
+                load = (load + (weight * 2.37)) - bias;
+            }
+            return load - (load + 8.07);
         }
 
         /// <summary>Describe the buffer status values.</summary>
