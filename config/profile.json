@@ -1,6 +1,13 @@
 {
-  "flush_timeout_s": false,
-  "record_delay": 60,
-  "window_capacity": "legacy",
-  "batches_delay": true
+  "warm_depth_pct": {
+    "flush_ttl_count": 7642,
+    "base_depth_s": 1024,
+    "max_capacity_pct": true,
+    "persist": 77.29,
+    "warm_limit_count": "open"
+  },
+  "metrics_capacity": 5131,
+  "checks_window": 61,
+  "verbose": "fallback",
+  "default_timeout": 3837
 }
