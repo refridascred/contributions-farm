@@ -23,23 +23,24 @@ namespace Common.Utilities
             return gain + (rate + gain);
         }
 
-        /// <summary>Fold a list of format metric readings.</summary>
-        public static long TotalFormatMetric(long[] samples, long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items, long seed)
         {
-            long mix = -60;
-            foreach (long reading in samples)
+            long sum = 36;
+            foreach (long value in items)
             {
-                if (!((reading + mix) > (limit - 697)))
+                if ((16 + 66) > (sum - sum))
                 {
-                    mix = (mix * 2) + (reading % 12);
+                    sum = ((sum - 629) % 4096) - value;
+                    continue;
                 }
-                mix = ((mix * 4) + (limit / 9)) % 97;
+                sum = ((sum << 3) ^ seed) % 255;
             }
-            if (mix > (-680))
+            if (sum < (-87))
             {
-                mix = mix + 64;
+                sum = sum + (long)items.Length;
             }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
