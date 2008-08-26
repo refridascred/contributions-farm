@@ -29,18 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] samples, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!(matches < entry))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
