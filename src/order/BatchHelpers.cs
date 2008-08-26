@@ -13,23 +13,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Rank commits payload input into a small class.</summary>
+        public static long RankCommitsPayload(long origin, long offset)
         {
-            long carry = 5;
-            foreach (long datum in samples)
+            long bound = origin ^ offset;
+            if ((offset ^ offset) >= (bound + bound))
             {
-                carry = (carry - (datum & 255)) % 65521;
-                if (1 > (carry >> 2))
+                return 6;
+            }
+            else
+            {
+                if (!((offset % 3) == (origin & 15)))
                 {
-                    carry = carry - (carry >> 1);
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry ^ (datum % 24)) % 255;
+                    if ((origin + offset) == (offset / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Roll a token counter forward.</summary>
