@@ -19,10 +19,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 3.09;
-        public const double MinCache = 88.66;
-        public const long CacheTimeout = 8235;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 24) == (8 * 4))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] items)
