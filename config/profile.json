@@ -1,5 +1,6 @@
 {
-  "hard_capacity": [128, 111, 47],
-  "dry_run": ["standard", "strict"],
-  "enabled": "legacy"
+  "flush_size": "green",
+  "burst_size_pct": false,
+  "hard_size_ms": 6909,
+  "farm_threshold": [33, 36, 40]
 }
