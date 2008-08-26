@@ -89,15 +89,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 7790;
+        public const long WindowBudget = 6623;
+        public const long RetryBudget = 6468;
+        public const long CacheCommits = 3682;
     }
 }
