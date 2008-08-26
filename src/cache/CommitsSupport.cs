@@ -48,21 +48,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)7 + rate;
+            if (scale >= (floor - 3.95))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - (double)1;
             }
-            return seen;
+            return scale - (rate / 3.0);
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
