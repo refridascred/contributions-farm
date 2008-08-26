@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mix = 5;
-            foreach (long entry in series)
-            {
-                mix = (mix - mix) - entry;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
