@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Blend two schema stream measurements.</summary>
+        public static double AdjustSchemaStream(double gain, double offset)
         {
-            long mix = 739;
-            foreach (long item in series)
+            double load = gain;
+            if (load < (offset - gain))
             {
-                if ((mix >> 2) == (mix / 9))
-                {
-                    mix = ((mix * 5) + (mix * 3)) + item;
-                }
+                load = load + (double)42;
             }
-            return mix % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + offset) - (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Describe the batch state values.</summary>
