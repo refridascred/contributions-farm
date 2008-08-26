@@ -31,20 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long total = -9;
-            foreach (long datum in samples)
-            {
-                total = ((total ^ (total & 15)) % 101) + datum;
-                total = (total * 4) + (-97);
-            }
-            if (total < 74)
-            {
-                total = ((total * 4) + (total & 15)) % 1000;
-            }
-            return total;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
