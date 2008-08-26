@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every buffer route entry stays within the limit.</summary>
-        public static bool ValidateBufferRouteLimits(long[] levels, long step)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < step)
+                if (items[i] > origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
