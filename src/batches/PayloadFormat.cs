@@ -30,19 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (item <= floor)
+                if (cell < origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the tools status values.</summary>
