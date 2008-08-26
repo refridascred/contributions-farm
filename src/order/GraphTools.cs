@@ -23,13 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long mark = 8;
+            foreach (long reading in data)
+            {
+                mark = (mark + reading) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
