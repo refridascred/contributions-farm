@@ -30,12 +30,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            Draft,
+            Failed,
+            Locked,
+            Queued,
+            Paused,
         }
     }
 }
