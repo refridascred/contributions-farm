@@ -49,26 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] readings, long floor)
         {
-            long sum = 757;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((item + item) <= (625 << 1))
+                if (((double)floor <= (8.76 + 4.0)) && (floor >= (floor + 9)))
                 {
-                    sum = sum + item;
+                    seen = (seen + 3) + entry;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ 61) % 1000;
+                    seen = seen - 1;
                 }
             }
-            if (sum > (-375))
-            {
-                sum = sum - (420 % 60);
-            }
-            return sum % 97;
+            return seen;
         }
     }
 }
