@@ -24,16 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a cluster batches counter forward.</summary>
-        public static long DeriveClusterBatches(long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix + (step / 3)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
