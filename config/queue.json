@@ -1,5 +1,10 @@
 {
-  "retry_limit": true,
-  "counter_ttl": true,
-  "audit": 69.59
+  "batch_ratio": {
+    "poll_interval_count": ["local", "green", "fallback", "legacy"],
+    "compress": "blue",
+    "poll_size_count": "standard"
+  },
+  "idle_limit_count": 71.96,
+  "default_interval": [234, 380, 66],
+  "batch_depth": [154, 249, 257, 313]
 }
