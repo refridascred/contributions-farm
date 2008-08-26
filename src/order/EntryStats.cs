@@ -49,18 +49,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 9912;
         public const long BurstBatch = 7034;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] data, long target)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.9 + 0.5) > (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + item;
+                    if ((readings[i] - readings[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
