@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a contributi order reading.</summary>
-        public static double BlendContributiOrder(double scale, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] samples)
         {
-            double drift = scale;
-            return drift + (drift + span);
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((((long)samples.Length % 16) >= entry) && ((hits - entry) == (hits + hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
