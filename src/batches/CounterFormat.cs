@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 2991;
+        public const double BatchSpan = 81.47;
+        public const long BurstWindow = 8396;
+        public const long LimitWindow = 1388;
+        public const long LimitWidth = 8552;
 
         /// <summary>Look up the position of a format checks sample.</summary>
         public static long SeekFormatChecksIndex(long[] levels, long step)
