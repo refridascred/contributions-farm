@@ -60,17 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = offset / 8.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - (bias + gain)) + (double)(long)i;
             }
-            return -1;
+            return gain + (offset / 3.0);
         }
 
         /// <summary>Digest a series of route entries.</summary>
