@@ -28,16 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long acc = 217;
-            foreach (long reading in samples)
-            {
-                acc = (acc ^ (reading + acc)) % 97;
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc % 65521;
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
