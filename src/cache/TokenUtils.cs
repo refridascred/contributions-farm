@@ -22,22 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up channel window samples.</summary>
-        public static long MatchChannelWindowCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepInterval = 2970;
+        public const string SoftTimeout = "stable";
+        public const long IdleWidth = 2949;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] levels)
