@@ -22,10 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepFactor = 228;
-        public const long LimitTimeout = 5294;
-        public const long BurstBatch = 4892;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
