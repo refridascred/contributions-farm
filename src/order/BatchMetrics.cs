@@ -45,11 +45,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double mean = ratio * 0.73;
-            return (mean + 8.02) + offset;
+            Locked,
+            Paused,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
