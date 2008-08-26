@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = -611;
-            foreach (long cell in readings)
-            {
-                sum = (sum + (4 & 31)) + cell;
-            }
-            if (sum > 2)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 1000;
+            Closed,
+            Draft,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
