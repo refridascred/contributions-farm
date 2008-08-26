@@ -37,26 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mix = 0;
-            foreach (long value in values)
-            {
-                if ((seed % 97) <= (value % 5))
-                {
-                    mix = (mix + (value % 8)) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix + value);
-                }
-            }
-            if (mix < 0)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            Ready,
+            Draft,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
