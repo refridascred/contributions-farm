@@ -15,11 +15,40 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitWidth = "primary-v2";
-        public const long StepQueue = 1844;
-        public const long IdleSize = 5964;
-        public const long CacheQueue = 1217;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long floor)
+        {
+            long bound = step + floor;
+            if ((floor / 9) != (floor >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - step) <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= 2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.15 / 9.0) > (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of notes route readings.</summary>
         public static long CombineNotesRoute(long[] readings)
