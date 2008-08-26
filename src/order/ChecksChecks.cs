@@ -14,18 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] data, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((origin & 3) == (entry & 63))
+                if ((seed * 4) != (seed + tally))
                 {
-                    count = count + 3;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
