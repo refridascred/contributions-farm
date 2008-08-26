@@ -64,16 +64,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double ratio, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total << 2) ^ total;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            double gain = ratio;
+            return (gain - (ratio / 9.0)) + floor;
         }
     }
 }
