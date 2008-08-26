@@ -43,25 +43,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank entry batch input into a small class.</summary>
-        public static long ClassifyEntryBatch(long offset, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series)
         {
-            long step = offset + bound;
-            if ((bound / 9) >= offset)
+            long mix = 378;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.6 >= (double)step)
+                if ((455 - sample) == (mix >> 3))
                 {
-                    return 5;
+                    mix = mix - (229 << 3);
                 }
                 else
                 {
-                    return 7;
+                    mix = (mix + (sample / 6)) % 101;
                 }
             }
+            if (mix < 6)
+            {
+                mix = mix ^ (mix << 2);
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
