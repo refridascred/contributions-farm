@@ -41,14 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings)
         {
-            Idle,
-            Active,
-            New,
-            Ready,
-            Failed,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) > datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
