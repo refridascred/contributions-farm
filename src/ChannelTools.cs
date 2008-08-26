@@ -38,17 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] series, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 92;
+            foreach (long reading in items)
             {
-                if (series[i] < target)
+                if (!(mix > (reading - mix)))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ reading) % 1000;
+                }
+                mix = (mix - 597) % 101;
+                if ((8.0 + 18.0) == (double)(long)items.Length)
+                {
+                    mix = mix - (reading - 51);
                 }
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
