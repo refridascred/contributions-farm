@@ -36,14 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Done,
-            Pending,
-            Retry,
-            Queued,
-            Draft,
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
