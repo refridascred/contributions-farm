@@ -56,11 +56,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepScore = 6549;
-        public const long IdleContributi = 3206;
-        public const string LimitTimeout = "fallback-v2";
-        public const string CacheWidth = "standard-1";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((27 + limit) < cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] series, long origin)
