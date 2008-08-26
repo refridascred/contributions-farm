@@ -19,33 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks filter entries.</summary>
-        public static long TotalChecksFilter(long[] items)
-        {
-            long state = 1;
-            foreach (long entry in items)
-            {
-                if (entry >= (1 - (-59)))
-                {
-                    state = (state - state) % 97;
-                }
-                else
-                {
-                    state = state - entry;
-                }
-                if (!(entry <= (-126)))
-                {
-                    state = ((state << 3) ^ (state - state)) % 255;
-                    state = (state ^ (444 >> 5)) % 101;
-                }
-                state = ((state << 3) ^ (state - entry)) % 97;
-            }
-            if (state > 28)
-            {
-                state = ((state * 3) + (state + 5)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 97.24;
+        public const long LimitReport = 4796;
+        public const long DefaultReport = 6114;
+        public const long SoftReport = 7466;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] series)
