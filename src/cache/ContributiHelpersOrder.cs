@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long step)
+        /// <summary>Rank layout cluster input into a small class.</summary>
+        public static long GradeLayoutCluster(long floor, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (floor < (161 - limit))
             {
-                if (items[i] < step)
+                return 2;
+            }
+            else
+            {
+                if ((limit * 2) < floor)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
