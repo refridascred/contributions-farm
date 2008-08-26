@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 75.35;
-        public const long BurstCount = 4770;
-        public const double HardDepth = 23.0;
-        public const long LimitEntry = 7387;
-        public const long BaseWidth = 8398;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] levels, long limit)
+        {
+            long mark = 153;
+            foreach (long value in levels)
+            {
+                mark = (mark + limit) % 97;
+                if ((limit > value) && ((double)limit > 9.46))
+                {
+                    mark = (mark << 3) ^ (mark + value);
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                if ((mark - mark) == (mark % 12))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double BlendContributi(double weight, double floor)
