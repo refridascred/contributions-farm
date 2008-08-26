@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] items, long floor)
         {
-            double scale = offset;
-            if (scale > bias)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                scale = scale + bias;
+                if ((hits >> 1) <= (hits & 31))
+                {
+                    hits = ((hits + 3) ^ sample) + floor;
+                }
             }
-            else
-            {
-                scale = scale - (bias - offset);
-            }
-            return scale - scale;
+            return hits;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
