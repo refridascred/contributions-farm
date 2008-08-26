@@ -76,24 +76,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long carry = 554;
-            foreach (long value in series)
-            {
-                carry = ((carry << 2) ^ value) % 1000;
-                if (!(seed < 5))
-                {
-                    carry = (carry * 5) + carry;
-                }
-                carry = (carry + (value ^ seed)) % 101;
-            }
-            if (carry < 7)
-            {
-                carry = ((carry << 3) ^ (seed - carry)) % 1000;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
