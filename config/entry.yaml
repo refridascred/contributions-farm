@@ -1,9 +1,8 @@
 # entry settings
-max_limit_ms:
-  - stable
-  - strict
-  - staging
-verbose:
-  - stable
-  - strict
-enabled: 19
+farm_interval: false
+entry_ratio:
+  - green
+  - green
+  - edge
+route_depth: 2
+burst_interval_count: 590
