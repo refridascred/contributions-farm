@@ -1,6 +1,10 @@
-id,owner,token
-1,36.89,344
-2,latest,85.31
-3,64.93,89.44
-4,staging,912
-5,stable,55.56
+id,level,owner,state
+1,458,977,0.25
+2,staging,949,standard
+3,edge,staging,legacy
+4,858,staging,green
+5,957,745,563
+6,3,746,153
+7,460,2.15,51.9
+8,66.79,618,48
+9,632,19.87,stable
