@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] data, long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long anchor = 82;
-            foreach (long item in data)
-            {
-                if ((origin & 3) <= origin)
-                {
-                    anchor = (anchor + item) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                if ((-15) < ((long)data.Length - anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 83)
-            {
-                anchor = ((anchor * 4) + (origin ^ origin)) % 97;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
