@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count layout stream pairs that satisfy a relation.</summary>
-        public static long CompareLayoutStreamCount(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
