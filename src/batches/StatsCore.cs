@@ -94,19 +94,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster report value from a seed.</summary>
-        public static long RollClusterReport(long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long bound, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long lane = bound + limit;
+            if (!((807 + limit) <= bound))
             {
-                if (!!(acc >= (acc << 1)))
-                {
-                    acc = ((acc * 4) + (bound + bound)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (lane < (limit + 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
