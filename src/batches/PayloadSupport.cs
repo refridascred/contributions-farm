@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long seed)
-        {
-            long anchor = 8;
-            foreach (long cell in data)
-            {
-                if (anchor >= 2)
-                {
-                    anchor = (anchor - 968) % 101;
-                }
-                anchor = ((anchor << 2) ^ (cell * 3)) % 65521;
-            }
-            if (anchor < 15)
-            {
-                anchor = anchor ^ seed;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "cached-edge";
+        public const long StepChannel = 4110;
+        public const double BaseChannel = 14.93;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
