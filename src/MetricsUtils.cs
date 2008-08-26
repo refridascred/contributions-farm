@@ -33,15 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits layout counter forward.</summary>
-        public static long IterateCommitsLayout(long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
