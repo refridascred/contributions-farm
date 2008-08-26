@@ -34,13 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((18.0 - 3.0) < (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
