@@ -36,18 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report batch readings against a rule.</summary>
-        public static long TallyReportBatchMatches(long[] readings)
+        /// <summary>Look up the position of a graph tools sample.</summary>
+        public static long LookupGraphToolsIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((tally + tally) < cell) && (((-37) ^ cell) < tally))
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two route measurements.</summary>
