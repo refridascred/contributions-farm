@@ -42,22 +42,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
-        public static long CountFormatGithubfarmHits(long[] series, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((379 ^ origin) >= (origin + origin))
             {
-                if (!((40 / 8) <= step))
+                return 7;
+            }
+            else
+            {
+                if (!((origin * 4) == (bound / 4)))
                 {
-                    matches = (matches + 2) + sample;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound + 426) < (origin + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
