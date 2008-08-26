@@ -1,6 +1,23 @@
 # entry settings
-hard_interval_ms:
-  - 166
-  - 422
-soft_ratio_ms: blue
-readonly: true
+retry_depth_count: 11.7
+base_retries_count:
+  - 236
+  - 228
+hard_ttl_ms: 22
+hard_threshold_count: strict
+session_capacity:
+  contributi_limit:
+    verbose: edge
+    compress: 79
+    warm_depth: eu-west
+    audit:
+      - local
+      - strict
+      - strict
+      - edge
+    layout_retries:
+      - 338
+      - 46
+      - 190
+  stream_size: 56
+  soft_threshold: true
