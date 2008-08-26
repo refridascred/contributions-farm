@@ -34,22 +34,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] levels)
-        {
-            long result = 498;
-            foreach (long value in levels)
-            {
-                if ((value + result) <= (value ^ result))
-                {
-                    result = (result + (result - 84)) % 4096;
-                }
-            }
-            if (result > 790)
-            {
-                result = ((result << 2) ^ (result & 15)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 449;
+        public const string DefaultBuffer = "legacy";
+        public const long RetryBuffer = 615;
     }
 }
