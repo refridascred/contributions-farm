@@ -48,19 +48,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the stats kind values.</summary>
