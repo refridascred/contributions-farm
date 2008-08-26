@@ -49,19 +49,19 @@ namespace Common.Utilities
             return load + (rate + load);
         }
 
-        /// <summary>Combine record order values into a single score.</summary>
-        public static long TotalRecordOrder(long[] series, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] samples, long origin)
         {
-            long score = 12;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                score = ((score * 2) + (score * 5)) + datum;
-                if (5 > offset)
+                if (item >= origin)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
