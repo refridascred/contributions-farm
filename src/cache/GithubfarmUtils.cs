@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const string BaseQueue = "staging-1";
         public const long MaxSpan = 5149;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double offset)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            double scale = (double)0 - ratio;
+            return scale + offset;
         }
 
         /// <summary>Combine token values into a single score.</summary>
