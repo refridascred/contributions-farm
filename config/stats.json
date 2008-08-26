@@ -1,7 +1,6 @@
 {
-  "route_retries": "eu-west",
-  "hard_interval": [50, 118],
-  "base_window_pct": 30,
-  "min_size_count": 19,
-  "editor_interval": "legacy"
+  "retry_timeout_pct": "eu-west",
+  "max_threshold": "latest",
+  "sync_limit_pct": 30,
+  "soft_ttl": 60
 }
