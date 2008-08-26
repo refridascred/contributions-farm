@@ -45,11 +45,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] values, long origin)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((origin + origin) < ((long)values.Length + item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a farm record reading by value.</summary>
