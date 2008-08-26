@@ -20,20 +20,12 @@ namespace Common.Utilities
         public const long CacheRatio = 827;
         public const string CacheInterval = "standard-edge";
 
-        /// <summary>Check that every farm cluster entry stays within the limit.</summary>
-        public static bool VerifyFarmClusterBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 1.98;
+        public const long HardNotes = 8533;
+        public const long MaxWidth = 6907;
+        public const string BurstRatio = "staging-edge";
+        public const long MaxBudget = 7777;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
