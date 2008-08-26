@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const double MinContext = 63.9;
         public const string WindowCount = "strict-edge";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((tally + cell) > (cell % 3))
-                {
-                    tally = tally + 2;
-                }
+                total = (total + (total * 2)) % 4096;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a session notes figure with a bias.</summary>
