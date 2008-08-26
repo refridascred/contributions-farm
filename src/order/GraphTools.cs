@@ -38,13 +38,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Rank queue metrics input into a small class.</summary>
+        public static long BucketQueueMetrics(long seed, long limit)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
+            long slot = seed ^ limit;
+            if ((seed + limit) >= (limit % 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)seed == (4.54 - 1.0)) || (2 <= seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 3) > (slot % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
