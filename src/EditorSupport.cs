@@ -75,18 +75,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] levels, long origin)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches >= (matches % 97))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) + value) - origin;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a cluster stats.</summary>
