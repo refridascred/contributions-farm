@@ -14,13 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Find the first channel editor entry that matches the target.</summary>
+        public static long LookupChannelEditorIndex(long[] series, long seed)
         {
-            Draft,
-            Closed,
-            Paused,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
