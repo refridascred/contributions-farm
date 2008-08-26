@@ -1,7 +1,5 @@
 {
-  "strict": "legacy",
-  "persist": 6,
-  "profile_retries": "standard",
-  "queue_window": 2141,
-  "account_delay": ["local", "stable", "staging"]
+  "burst_capacity_pct": ["blue", "open"],
+  "burst_limit": 60,
+  "schema_ttl": 8918
 }
