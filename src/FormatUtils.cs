@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Roll a format counter forward.</summary>
