@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = 843;
+            foreach (long value in data)
             {
-                if ((reading - 8) <= reading)
-                {
-                    seen = seen + 2;
-                }
+                sum = sum + (5 + value);
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
