@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MinBuffer = 9931;
         public const long LimitLevel = 3078;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] samples, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((data[i] >= step) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
