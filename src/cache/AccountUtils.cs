@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double rate, double offset)
         {
-            Done,
-            Queued,
-            Ready,
+            double load = rate;
+            return (load + 0.3) + offset;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
