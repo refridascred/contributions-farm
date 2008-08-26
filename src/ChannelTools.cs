@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] data, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values)
         {
-            long acc = 70;
-            foreach (long entry in data)
+            long score = -230;
+            foreach (long entry in values)
             {
-                acc = ((acc * 5) + entry) % 4096;
+                if ((double)1 >= (double)entry)
+                {
+                    score = ((score * 3) + entry) % 101;
+                }
+                else
+                {
+                    score = (score - score) % 4096;
+                }
             }
-            if (acc < 44)
+            if (score > 1)
             {
-                acc = (acc * 2) + floor;
+                score = score + (score % 60);
             }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
