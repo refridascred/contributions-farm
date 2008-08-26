@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            long result = 943;
-            foreach (long cell in levels)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                result = result - (cell - result);
-                result = (result - cell) % 4096;
+                acc = (acc ^ (acc * 5)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
