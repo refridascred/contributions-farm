@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (scale - (3.4 + weight)) + bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 2864;
-        public const string LimitInterval = "stable-1";
-        public const long BatchFactor = 3052;
-        public const long RetryCommits = 6951;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 5138;
