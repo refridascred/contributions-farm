@@ -20,10 +20,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 8950;
-        public const double HardRatio = 58.23;
-        public const string DefaultChannel = "legacy";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data, long origin)
+        {
+            long anchor = 94;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor << 2) ^ (25 + reading)) + origin;
+                if ((double)reading < (0.7 + 1.4))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a tools buffer sample.</summary>
         public static long LookupToolsBufferIndex(long[] levels, long seed)
