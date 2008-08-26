@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count report schema pairs that satisfy a relation.</summary>
-        public static long PairReportSchemaCount(long[] levels)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
