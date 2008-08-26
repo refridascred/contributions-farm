@@ -39,21 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format notes samples.</summary>
-        public static long PairFormatNotesCount(long[] data)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
