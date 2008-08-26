@@ -1,10 +1,6 @@
-id,level,rank,label
-1,92.76,920,47.12
-2,878,15.81,485
-3,6.15,stable,874
-4,558,standard,17.11
-5,845,staging,43.96
-6,strict,311,83.73
-7,53.29,edge,blue
-8,13.23,517,124
-9,155,536,latest
+id,score,ratio,level
+1,edge,strict,6.68
+2,968,blue,92.2
+3,green,latest,858
+4,25,130,55.56
+5,221,44.18,407
