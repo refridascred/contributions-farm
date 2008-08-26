@@ -24,18 +24,14 @@ namespace Common.Utilities
         public const double DefaultStats = 46.8;
         public const string MinRatio = "staging-v2";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (((double)matches >= (4.81 / 3.0)) && ((matches + 4) < (43 + 582)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Ready,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
