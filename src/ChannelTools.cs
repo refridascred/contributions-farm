@@ -15,33 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long limit2)
-        {
-            long prev = limit + limit2;
-            if ((prev & 127) > 6)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 8) == (prev * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((22 - limit) == (limit - limit)) && ((2.9 + 15.0) < 20.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseScore = 84;
+        public const long BatchScore = 1205;
+        public const long DefaultFactor = 8877;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheStream = 5123;
