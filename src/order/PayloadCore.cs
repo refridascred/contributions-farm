@@ -49,28 +49,35 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long seed)
         {
-            if ((target % 16) > (offset - offset))
+            if (seed > ((-455) >> 2))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)target >= (8.1 - 8.0))
+                if ((-658) >= seed)
                 {
                     return 3;
                 }
                 else
                 {
-                    if (!((0 & 127) != (offset - 0)))
+                    if ((76 - offset) == (seed / 6))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        return 0;
+                        if ((offset - offset) != (offset + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
