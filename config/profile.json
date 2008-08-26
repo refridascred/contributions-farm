@@ -1,8 +1,6 @@
 {
-  "soft_threshold_pct": true,
-  "session_delay": ["latest", "primary"],
-  "support_depth": "strict",
-  "soft_window_ms": "legacy",
-  "base_delay_ms": [54, 202],
-  "min_ttl_count": "green"
+  "entry_interval": true,
+  "soft_ttl_pct": 24.48,
+  "default_ttl_pct": false,
+  "default_delay_s": [459, 340]
 }
