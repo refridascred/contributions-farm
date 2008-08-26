@@ -22,17 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] series, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long target, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((target / 4) > target) || ((744 / 2) == (target % 2)))
             {
-                if ((series[i] <= seed) && ((series[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((limit / 8) < (-1))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
