@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile cluster figure with a bias.</summary>
-        public static double AdjustProfileCluster(double ratio, double offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double gain = (offset * 1.1) + (offset * 1.2);
-            if (gain >= gain)
-            {
-                gain = gain + (double)4;
-            }
-            else
-            {
-                gain = gain + (double)75;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (ratio / 3.0)) - (double)(long)i;
-            }
-            return gain - ratio;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
