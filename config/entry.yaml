@@ -1,13 +1,5 @@
 # entry settings
-retry_capacity:
-  flush_ttl: 78
-  min_threshold_ms: 6351
-  queue_ratio: 98.86
-commits_size: false
-cache_depth_pct: 85
-sync_retries_pct: fallback
-session_ttl:
-  - staging
-  - local
-  - green
-  - eu-west
+verbose: fallback
+base_size_s: staging
+default_delay: true
+soft_limit: blue
