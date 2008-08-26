@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double scale, double offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double rate = offset / 2.0;
-            if (rate > 9.88)
-            {
-                rate = (rate - rate) + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (double)1;
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
