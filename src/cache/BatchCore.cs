@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Audit notes report readings against a rule.</summary>
+        public static long AuditNotesReportOutliers(long[] values)
         {
-            long mix = 303;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mix = mix - (7 & 255);
-                if ((double)mix <= 8.39)
+                if ((double)matches <= (15.0 + 13.0))
                 {
-                    mix = ((mix * 5) + (datum + mix)) % 255;
+                    matches = (matches + 2) + cell;
                 }
-                if ((double)datum > 8.6)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (mix < 2)
-            {
-                mix = ((mix * 3) + (mix - mix)) % 101;
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Adjust a support reading.</summary>
