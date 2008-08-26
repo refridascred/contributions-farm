@@ -49,15 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings, long origin)
         {
-            double ratio = (double)(457 - 466);
-            for (int i = 0; i < 6; i++)
+            long state = 302;
+            foreach (long value in readings)
             {
-                ratio = ((ratio - (double)170) + (double)(long)i) + rate;
+                state = ((((state << 2) ^ (751 % 60)) % 65521) + value) + origin;
             }
-            return ratio - (offset - offset);
+            return state;
         }
 
         /// <summary>Find the first layout window entry that matches the target.</summary>
