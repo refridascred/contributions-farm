@@ -30,12 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] samples, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!(matches < entry))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
