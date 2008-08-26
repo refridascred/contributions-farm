@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
+                if (((long)i & 255) > (acc - acc))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (bound - acc)) % 1000;
+                    continue;
                 }
+                else
+                {
+                    acc = (acc - 0) % 101;
+                }
+                if ((bound << 3) != ((long)i * 4))
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
