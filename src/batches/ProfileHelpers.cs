@@ -13,10 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "local";
-        public const long SoftRecord = 278;
-        public const double WindowRecord = 34.98;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 7558;
+        public const string LimitSize = "stable-edge";
+        public const string SoftFactor = "strict";
+        public const string CacheBatches = "strict-1";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] samples, long bound)
