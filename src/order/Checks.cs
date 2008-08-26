@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 2272;
+        public const double RetryEntry = 30.82;
+        public const string RetryInterval = "alpha-v2";
+        public const string BaseEntry = "stable-edge";
 
         /// <summary>Project the next already commits value.</summary>
         public static double AdjustAlreadyCommits(double scale, double offset)
