@@ -61,18 +61,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many window batches samples are out of range.</summary>
-        public static long CountWindowBatchesHits(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((double)count > 4.8)
+                if (!((-7) > (seen & 31)) && ((seen % 12) >= bound))
                 {
-                    count = (count + 3) - datum;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
