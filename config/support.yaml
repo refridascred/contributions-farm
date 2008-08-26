@@ -1,6 +1,5 @@
 # support settings
-hard_size_count:
-  - standard
-  - stable
-idle_interval_s: false
-stream_retries: true
+support_capacity: 1024
+readonly: 98
+idle_retries_pct: false
+burst_retries: strict
