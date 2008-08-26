@@ -1,8 +1,20 @@
 # githubfarm settings
-persist: blue
-compress: open
-farm_retries: 60
-audit:
-  - legacy
-  - stable
-  - local
+burst_retries_count: true
+audit: 94.8
+batches_capacity: eu-west
+soft_window_pct:
+  notes_depth: 500
+  queue_size:
+    - blue
+    - standard
+    - primary
+    - cached
+  sync_capacity_s:
+    hard_limit_ms: staging
+    report_capacity: 75.97
+    cache_window_s:
+      - eu-west
+      - primary
+    min_interval: 7623
+  verbose: 100
+soft_size_pct: open
