@@ -44,10 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinWidth = 1683;
-        public const long DefaultSchema = 5475;
-        public const double BaseDepth = 25.05;
-        public const string HardSpan = "standard";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftTimeout = "strict-1";
+        public const long RetryScore = 9529;
+        public const long BaseGithubfarm = 3257;
+        public const long MinGithubfarm = 9308;
+        public const double WindowGithubfarm = 72.01;
     }
 }
