@@ -23,12 +23,10 @@ namespace Common.Utilities
         public const long BatchFactor = 3052;
         public const long RetryCommits = 6951;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 5138;
+        public const long CacheRatio = 662;
+        public const long WindowGraph = 6764;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] values)
