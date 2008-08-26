@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] items, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((bound << 3) == (entry >> 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a support info.</summary>
