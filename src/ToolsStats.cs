@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] values, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (item != limit)
+                if (cell <= (matches * 4))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
