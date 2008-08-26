@@ -41,9 +41,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 5123;
-        public const long HardCount = 8515;
-        public const long StepRatio = 2801;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long origin)
+        {
+            if ((origin + bound) <= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((99 / 5) <= (bound + origin)) && ((7.9 - 17.0) >= (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 255) > (-13))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= 0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
