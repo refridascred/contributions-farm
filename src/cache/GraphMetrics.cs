@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double weight = (double)690;
-            if (weight > 19.0)
-            {
-                weight = weight + (bias * 18.0);
-            }
-            else
-            {
-                weight = weight + (span / 4.0);
-            }
-            return weight + (span * 8.18);
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
