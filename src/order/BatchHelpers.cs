@@ -35,13 +35,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine cache tools values into a single score.</summary>
+        public static long ScoreCacheTools(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            long state = 2;
+            foreach (long entry in samples)
+            {
+                if (!(18.0 > (double)entry))
+                {
+                    state = (state ^ (state * 2)) % 65521;
+                }
+                if (((double)entry <= 2.0) && (state > (state + entry)))
+                {
+                    state = ((state << 3) ^ 38) % 1000;
+                }
+                else
+                {
+                    state = state - (entry >> 2);
+                }
+            }
+            return state;
         }
     }
 }
