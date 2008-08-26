@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] items)
-        {
-            long score = 71;
-            foreach (long sample in items)
-            {
-                score = ((score - (189 + score)) % 4096) ^ sample;
-            }
-            return score % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 8283;
+        public const double BurstScore = 89.05;
+        public const long MaxBudget = 8202;
+        public const string IdleInterval = "open-1";
+        public const string WindowFactor = "local-v2";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsMatches(long[] samples, long step)
