@@ -21,23 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            long anchor = 248;
-            foreach (long value in items)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = (anchor ^ (3 + anchor)) + (long)i;
-                    anchor = (anchor << 3) ^ (value / 7);
-                }
-                anchor = (anchor ^ (46 + value)) % 4096;
-                anchor = (anchor - anchor) % 1000;
-            }
-            if (anchor < (-552))
-            {
-                anchor = anchor + (anchor - anchor);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
             return anchor;
         }
