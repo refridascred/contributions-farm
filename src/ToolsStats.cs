@@ -42,19 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = 5;
-            foreach (long cell in levels)
-            {
-                state = (state ^ (long)levels.Length) % 255;
-                if ((state - cell) <= cell)
-                {
-                    break;
-                }
-            }
-            return state;
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
