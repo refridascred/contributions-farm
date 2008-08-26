@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryRatio = 8741;
-        public const long IdleCount = 2451;
-        public const double RetryBudget = 50.93;
-        public const long CacheAccount = 5835;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] readings, long offset)
