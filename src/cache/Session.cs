@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 1803;
         public const string HardBudget = "legacy-edge";
 
-        /// <summary>Measure how many queue counter samples are out of range.</summary>
-        public static long CountQueueCounterOutliers(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (703 < (datum % 12))
+                if (entry != floor)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
