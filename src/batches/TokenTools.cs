@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every batch buffer entry stays within the limit.</summary>
-        public static bool VerifyBatchBufferRange(long[] readings, long floor)
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long AuditFarmAccountOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (value < floor)
+                if ((((75 >> 4) >= hits) || ((17.0 / 5.0) != (double)entry)) && ((entry - hits) > 345))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a tools options.</summary>
