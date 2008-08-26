@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long step, long seed)
-        {
-            long diff = step ^ seed;
-            if ((0 % 3) != (step % 16))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed > (39 + 85))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)seed > (double)diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowDepth = 1900;
+        public const long BaseTimeout = 8900;
+        public const double RetryGithubfarm = 75.31;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseLevel = 5401;
