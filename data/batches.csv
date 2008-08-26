@@ -1,8 +1,6 @@
-id,count,active,weight
-1,32.74,272,760
-2,58.15,stable,staging
-3,standard,cached,183
-4,fallback,green,standard
-5,66.39,20.29,latest
-6,eu-west,eu-west,88
-7,792,952,open
+id,weight,owner
+1,340,963
+2,cached,eu-west
+3,41.23,69.42
+4,48.89,latest
+5,18.18,staging
