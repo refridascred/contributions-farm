@@ -56,18 +56,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] values, long origin)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!(origin > (value ^ value)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double weight = 8.3;
+            return ((weight + (weight / 3.0)) + scale) + span;
         }
     }
 }
