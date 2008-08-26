@@ -53,17 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark << 3) ^ (bound - 66)) % 101;
-                mark = mark ^ bound;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of stream githubfarm entries.</summary>
