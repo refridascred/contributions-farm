@@ -1,15 +1,6 @@
 {
-  "poll_window_pct": 35.5,
-  "soft_threshold": {
-    "enabled": {
-      "cache_limit": 500,
-      "sync_ratio_s": "standard",
-      "retry_ttl": "local"
-    },
-    "record_ttl": "primary",
-    "persist": "fallback",
-    "default_retries_s": 82,
-    "sync_size_pct": 96.13
-  },
-  "cache_ttl": ["legacy", "primary", "staging"]
+  "max_delay_pct": 30,
+  "persist": "fallback",
+  "audit": 250,
+  "retry_retries": false
 }
