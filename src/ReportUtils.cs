@@ -13,27 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine window already values into a single score.</summary>
-        public static long CombineWindowAlready(long[] series, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long state = 29;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 3) ^ (offset - offset);
-                if (!((1.2 + 17.0) < (double)reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 2) + (reading - reading)) % 1000;
-                }
-                else
-                {
-                    state = state ^ 42;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 0)
-            {
-                state = (state + (443 + state)) % 4096;
-            }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Find the first token layout entry that matches the target.</summary>
