@@ -20,11 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Match up format notes samples.</summary>
+        public static long PairFormatNotesCount(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
