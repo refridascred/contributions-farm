@@ -17,11 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 63.8;
-        public const string LimitCount = "latest-v2";
-        public const long MinCount = 3406;
-        public const string StepMetrics = "stable";
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] series, long floor)
