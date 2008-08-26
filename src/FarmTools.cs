@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + count) == (datum % 100))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi header.</summary>
