@@ -19,17 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] data, long offset)
+        /// <summary>Rank stream buffer input into a small class.</summary>
+        public static long RankStreamBuffer(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((floor & 15) != (step + step)))
             {
-                if (data[i] == offset)
+                return 6;
+            }
+            else
+            {
+                if (((0.6 - 10.0) == (double)step) && (floor <= (floor - floor)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema options.</summary>
