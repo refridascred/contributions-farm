@@ -1,7 +1,8 @@
 {
-  "route_capacity": ["primary", "local"],
-  "warm_depth": "primary",
-  "retry_depth_pct": "stable",
-  "idle_threshold_count": false,
-  "hard_delay": 250
+  "sync_interval_ms": [370, 175, 381],
+  "compress": "eu-west",
+  "soft_limit_count": [483, 224, 225, 286],
+  "poll_interval_s": 43,
+  "entry_limit": false,
+  "commits_threshold": 20
 }
