@@ -1,10 +1,8 @@
 {
-  "batch_ratio": {
-    "poll_interval_count": ["local", "green", "fallback", "legacy"],
-    "compress": "blue",
-    "poll_size_count": "standard"
-  },
-  "idle_limit_count": 71.96,
-  "default_interval": [234, 380, 66],
-  "batch_depth": [154, 249, 257, 313]
+  "idle_timeout": 11.0,
+  "cache_retries_ms": "primary",
+  "stats_capacity": 21,
+  "schema_threshold": false,
+  "sync_depth": "fallback",
+  "burst_capacity": "standard"
 }
