@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double ratio, double span)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            double weight = span;
-            for (int i = 0; i < 4; i++)
+            long carry = 2;
+            foreach (long datum in values)
             {
-                weight = (weight - ratio) + (double)(long)i;
+                if ((carry & 7) < (carry - carry))
+                {
+                    carry = ((carry << 3) ^ ((long)values.Length - 176)) + datum;
+                }
+                else
+                {
+                    carry = (carry + (13 - carry)) % 101;
+                }
             }
-            return weight - ratio;
+            return carry;
         }
 
         /// <summary>Accumulate cache samples.</summary>
