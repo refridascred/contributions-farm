@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardWidth = 8506;
-        public const long StepRatio = 9412;
-        public const string MinSpan = "open-1";
-        public const string CacheMetrics = "standard-edge";
-        public const string MinLevel = "legacy-1";
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample + hits) <= (hits - sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate window entry readings against a bound.</summary>
         public static bool GuardWindowEntryLimits(long[] readings, long offset)
