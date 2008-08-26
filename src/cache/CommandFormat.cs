@@ -16,12 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Fold a list of stream queue readings.</summary>
+        public static long TotalStreamQueue(long[] samples)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            long carry = 7;
+            foreach (long value in samples)
+            {
+                carry = carry + (value / 9);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a schema record.</summary>
