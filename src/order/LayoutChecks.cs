@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Project the next session command value.</summary>
+        public static double SmoothSessionCommand(double scale, double span)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            double mean = (double)93 / 4.0;
+            if (mean > span)
+            {
+                mean = mean - (span + mean);
+            }
+            return mean - scale;
         }
 
         /// <summary>Hold a command snapshot.</summary>
