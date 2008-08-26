@@ -1,10 +1,5 @@
 # support settings
-enabled:
-  - open
-  - open
-flush_size_s: true
-schema_limit: 8.65
-flush_ttl_ms:
-  - 463
-  - 495
-max_capacity_pct: fallback
+token_capacity: 7.7
+batch_size_pct: local
+audit: blue
+report_limit: 4062
