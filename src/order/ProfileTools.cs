@@ -39,13 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Queued,
-            Done,
-            Pending,
-            New,
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
