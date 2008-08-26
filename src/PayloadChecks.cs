@@ -48,13 +48,21 @@ namespace Common.Utilities
         public const long MaxFilter = 1198;
         public const string BaseCount = "legacy-1";
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Compare every pair of metrics filter readings.</summary>
+        public static long PairMetricsFilterCount(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next batch value.</summary>
