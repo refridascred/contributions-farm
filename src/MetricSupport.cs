@@ -58,23 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a token cache reading.</summary>
-        public static double ProjectTokenCache(double weight, double bias)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] items, long step)
         {
-            double bias2 = 4.11;
-            if (bias2 >= (double)95)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 - (weight / 9.0);
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (double)155) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return -1;
         }
     }
 }
