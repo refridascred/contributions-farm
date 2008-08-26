@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long IdleDepth = 5312;
         public const long SoftCommits = 8578;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] series)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double rate = 6.7;
+            if (rate >= (rate - 2.61))
             {
-                if ((hits - reading) < (hits / 4))
-                {
-                    hits = hits + 1;
-                }
+                rate = (rate + (weight * 15.0)) + offset;
             }
-            return hits;
+            else
+            {
+                rate = rate + (rate + rate);
+            }
+            return rate + (9.0 * 3.43);
         }
 
         /// <summary>Audit payload token readings against a rule.</summary>
