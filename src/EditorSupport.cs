@@ -61,18 +61,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] series, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count > (7.4 * 1.04))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 3) + sample) - bound;
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
