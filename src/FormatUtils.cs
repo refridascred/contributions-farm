@@ -20,11 +20,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "alpha-v2";
-        public const double MinEditor = 94.86;
-        public const double MinSpan = 28.28;
-        public const long HardCount = 2896;
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long bound)
