@@ -85,13 +85,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long bound)
         {
-            Draft,
-            Stale,
-            Ready,
-            Idle,
+            if ((origin - bound) <= (origin % 10))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((263 + bound) <= bound) && (bound >= (origin % 60)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin & 3) != (bound % 10)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
