@@ -30,20 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark << 2) ^ (mark >> 3);
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark ^ (48 << 1)) % 1000) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
