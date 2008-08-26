@@ -43,22 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] levels)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + seen) <= (seen - sample))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
