@@ -40,15 +40,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double drift = (double)(6 % 64);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + offset) - (double)(long)i) + bias;
-            }
-            return drift - (drift - drift);
+            Locked,
+            Draft,
+            Paused,
+            Done,
+            Failed,
         }
     }
 }
