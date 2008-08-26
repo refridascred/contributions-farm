@@ -1,4 +1,6 @@
 # githubfarm settings
-soft_size_count: 9033
-flush_ratio_s: true
-sync_depth_count: 3505
+sync_size_ms:
+  - 405
+  - 422
+poll_depth: 59.88
+entry_window: staging
