@@ -16,20 +16,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)bound <= (double)(long)i)
+                if (samples[i] >= target)
                 {
-                    score = (score ^ (bound << 1)) % 4096;
+                    return (long)i;
                 }
-                score = (score << 3) ^ ((long)i >> 1);
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
