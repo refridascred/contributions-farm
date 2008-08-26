@@ -41,23 +41,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Count the already buffer entries that pass the check.</summary>
+        public static long CountAlreadyBufferOutliers(long[] data)
         {
-            long carry = 291;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                carry = ((carry << 3) ^ carry) % 97;
-                if ((carry << 3) < (cell + 97))
+                if ((seen << 3) <= (item * 5))
                 {
-                    carry = carry - (carry ^ cell);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (cell & 31)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
