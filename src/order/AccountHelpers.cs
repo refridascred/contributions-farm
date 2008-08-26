@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor - (origin << 2)) % 1000;
-                anchor = (anchor * 3) + origin;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((result << 3) != (floor % 8))
                 {
-                    anchor = ((anchor ^ (anchor << 2)) % 101) - (long)i2;
+                    result = (result + floor) % 4096;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                else
+                {
+                    result = ((result * 3) + (result & 127)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
