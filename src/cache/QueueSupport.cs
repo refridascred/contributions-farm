@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Measure how many channel metric samples are out of range.</summary>
+        public static long TallyChannelMetricOutliers(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches - (-94)) < (matches - 442))
+                {
+                    matches = (matches + 3) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
