@@ -1,8 +1,8 @@
-id,owner,state,active
-1,97,443,edge
-2,32.2,241,staging
-3,528,68.13,945
-4,blue,136,924
-5,825,4.8,standard
-6,green,979,stable
-7,276,36,510
+id,state,count
+1,116,local
+2,blue,cached
+3,837,standard
+4,67.23,630
+5,98.7,15.64
+6,primary,788
+7,25,green
