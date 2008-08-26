@@ -47,17 +47,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 61;
+            foreach (long entry in samples)
             {
-                if (series[i] < limit)
+                if (anchor > ((long)samples.Length / 7))
                 {
-                    return (long)i;
+                    anchor = (anchor + (entry >> 2)) + bound;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
