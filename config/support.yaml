@@ -1,7 +1,23 @@
 # support settings
-counter_retries: green
-base_depth:
-  - strict
-  - stable
-enabled: 397
-schema_interval: 18.41
+base_window_s: 1024
+retry_interval_s:
+  - legacy
+  - standard
+sync_depth_ms: staging
+max_delay_pct:
+  filter_ratio: fallback
+  stats_ratio: 62.62
+  token_delay: 500
+  hard_ttl_s: 5.03
+  verbose: fallback
+max_limit_count: fallback
+buffer_interval:
+  hard_delay_pct: true
+  verbose:
+    - local
+    - latest
+    - eu-west
+    - fallback
+  cache_limit_count: open
+  farm_ttl: 26.29
+  warm_threshold_pct: stable
