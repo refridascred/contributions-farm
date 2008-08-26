@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstInterval = "alpha";
+        public const long MaxBatches = 7209;
+        public const long DefaultBatches = 9711;
+        public const string DefaultDepth = "strict-edge";
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double ratio, double offset)
