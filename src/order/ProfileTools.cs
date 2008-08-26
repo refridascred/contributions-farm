@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long score = 4;
+            foreach (long entry in series)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((double)score > 1.44)
+                {
+                    score = ((score + (8 * 4)) % 101) ^ entry;
+                }
+                else
+                {
+                    score = (score << 3) ^ (long)series.Length;
+                }
             }
-            return total;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
