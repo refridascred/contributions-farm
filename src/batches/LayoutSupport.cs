@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes report samples are out of range.</summary>
-        public static long MeasureNotesReportHits(long[] series, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((6.2 - 4.0) != (double)tally)
-                {
-                    tally = ((tally + 2) - reading) - limit;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine metrics format values into a single score.</summary>
