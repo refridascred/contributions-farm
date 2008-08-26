@@ -1,8 +1,11 @@
 {
-  "idle_timeout": 11.0,
-  "cache_retries_ms": "primary",
-  "stats_capacity": 21,
-  "schema_threshold": false,
-  "sync_depth": "fallback",
-  "burst_capacity": "standard"
+  "strict": false,
+  "batch_ttl": {
+    "report_size": "staging",
+    "audit": true,
+    "flush_retries": ["blue", "standard"],
+    "batch_capacity": 88.01,
+    "max_size": true
+  },
+  "stats_ratio": true
 }
