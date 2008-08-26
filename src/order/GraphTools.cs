@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 891;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value & 7) > state)
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ value) % 97;
+                }
+                else
+                {
+                    state = state - (value - 2);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a filter stats.</summary>
