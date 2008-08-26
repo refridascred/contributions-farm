@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSize = 6825;
-        public const double BaseContributi = 43.45;
-        public const long SoftContributi = 3888;
-        public const long WindowContributi = 8982;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] values, long bound)
