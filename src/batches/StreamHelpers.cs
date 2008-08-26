@@ -59,18 +59,11 @@ namespace Common.Utilities
         public const double MinInterval = 15.24;
         public const long BaseChecks = 4464;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] readings)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (6.74 >= (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double drift = 6.0;
+            return (drift + (bias / 6.0)) + weight;
         }
     }
 }
