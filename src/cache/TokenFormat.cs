@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const string WindowLevel = "cached-edge";
         public const string StepScore = "fallback";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] series, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long origin)
         {
-            long state = 391;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long value in readings)
             {
-                state = (((state * 3) + seed) % 1000) ^ entry;
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
