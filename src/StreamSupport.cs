@@ -25,21 +25,19 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Validate batches farm readings against a bound.</summary>
+        public static bool ValidateBatchesFarmBounds(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != bound)
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
