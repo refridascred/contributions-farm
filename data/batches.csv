@@ -1,7 +1,9 @@
-id,ratio,weight
-1,87.09,14.25
-2,blue,79.18
-3,627,108
-4,latest,fallback
-5,290,535
-6,372,818
+id,token,rank,label
+1,56.93,open,cached
+2,416,primary,763
+3,5.95,620,34.53
+4,212,89.24,69
+5,stable,824,cached
+6,5.42,fallback,52.32
+7,932,80.68,210
+8,143,614,legacy
