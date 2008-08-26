@@ -20,15 +20,15 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            double bias = 2.0;
-            for (int i = 0; i < 4; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                bias = ((bias + (weight / 4.0)) + (double)(long)i) + offset;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return bias - (bias * 6.0);
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
