@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((650 << 3) > (bound + reading))
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many route cluster samples are out of range.</summary>
