@@ -36,12 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
