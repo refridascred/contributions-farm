@@ -19,39 +19,18 @@ namespace Common.Utilities
             return ((ratio + (double)8) + gain) + span;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long target, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] data, long limit)
         {
-            long gap = target - floor;
-            if ((3 ^ floor) <= (floor % 5))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((1.0 - 2.2) <= (double)gap))
+                if ((5.1 * 0.2) == (double)item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor < (2.28 * 0.82))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap % 16) < floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 2) - limit;
                 }
             }
+            return count;
         }
     }
 }
