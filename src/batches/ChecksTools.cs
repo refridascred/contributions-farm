@@ -72,18 +72,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report queue readings against a rule.</summary>
-        public static long TallyReportQueueOutliers(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long sum = 757;
+            foreach (long item in levels)
             {
-                if ((523 % 97) > (count + 1))
+                if ((item + item) <= (625 << 1))
                 {
-                    count = (count + 3) + reading;
+                    sum = sum + item;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 61) % 1000;
                 }
             }
-            return count;
+            if (sum > (-375))
+            {
+                sum = sum - (420 % 60);
+            }
+            return sum % 97;
         }
     }
 }
