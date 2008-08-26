@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two metrics cluster measurements.</summary>
-        public static double AdjustMetricsCluster(double gain, double span)
-        {
-            double ratio = (double)(21 / 4);
-            if (ratio >= (span / 9.0))
-            {
-                ratio = (ratio - span) + gain;
-            }
-            else
-            {
-                ratio = ratio - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (span * 4.0)) - (double)(long)i;
-            }
-            return ratio - (ratio - 4.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 1296;
+        public const string IdleContext = "strict-1";
+        public const long BatchCount = 9037;
+        public const double MinContext = 63.9;
+        public const string WindowCount = "strict-edge";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] readings)
