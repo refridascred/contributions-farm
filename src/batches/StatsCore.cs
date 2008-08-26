@@ -50,40 +50,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a tools report value against two limits.</summary>
-        public static long BucketToolsReport(long step, long target)
-        {
-            long offset = step ^ target;
-            if (!((target + target) != (target * 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9.71 / 5.0) >= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) < (offset / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + target) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7996;
+        public const long RetryEntry = 2841;
+        public const long MinEntry = 9921;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long BucketStream(long bound, long limit)
