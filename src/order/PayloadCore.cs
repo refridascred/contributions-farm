@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Closed,
-            Pending,
-            Ready,
-            Idle,
-            Done,
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
