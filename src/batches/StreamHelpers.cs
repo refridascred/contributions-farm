@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
