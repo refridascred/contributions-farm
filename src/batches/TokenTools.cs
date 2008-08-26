@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = 65;
-            foreach (long datum in samples)
-            {
-                sum = (sum - (target >> 5)) ^ datum;
-            }
-            if (sum > 68)
-            {
-                sum = sum + (sum % 12);
-            }
-            return sum;
+            Active,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
