@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mean + (double)99;
         }
 
-        /// <summary>Combine buffer cache values into a single score.</summary>
-        public static long ScoreBufferCache(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] series, long step)
         {
-            long score = 160;
-            foreach (long item in items)
+            long anchor = 729;
+            foreach (long entry in series)
             {
-                if (7.6 <= (double)score)
+                if (((step * 4) != (entry >> 2)) && ((double)step <= (3.7 / 9.0)))
                 {
-                    score = ((score << 2) ^ score) + item;
+                    anchor = ((anchor << 2) ^ (17 % 16)) % 97;
                 }
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
