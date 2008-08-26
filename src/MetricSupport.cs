@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long seed)
+        /// <summary>Iterate the cache layout series from a seed.</summary>
+        public static long SeriesCacheLayout(long floor)
         {
-            long cur = bound + seed;
-            if ((bound + seed) <= (bound % 2))
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
+                mix = (mix ^ (floor ^ floor)) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound - cur) < (cur % 100))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound & 3) != (bound % 16)) && ((seed + cur) <= (bound << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.4 + 2.6) < (double)cur)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
