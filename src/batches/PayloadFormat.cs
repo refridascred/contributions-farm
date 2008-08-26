@@ -15,21 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Validate farm cluster readings against a bound.</summary>
+        public static bool ValidateFarmClusterLimits(long[] levels, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                carry = (carry << 2) ^ target;
-                carry = carry ^ (long)i;
-                if ((carry << 2) <= (target - target))
+                if (item >= bound)
                 {
-                    carry = (carry - ((long)i - carry)) % 255;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
