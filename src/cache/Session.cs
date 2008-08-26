@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double span)
         {
-            long anchor = 96;
-            foreach (long entry in items)
-            {
-                if ((325 >= (bound - entry)) || ((bound % 60) <= (anchor >> 5)))
-                {
-                    anchor = (anchor * 3) + (anchor + entry);
-                }
-            }
-            return anchor;
+            double rate = span / 3.0;
+            return (rate + (double)960) + scale;
         }
     }
 }
