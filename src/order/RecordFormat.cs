@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a format notes counter forward.</summary>
-        public static long DeriveFormatNotes(long origin)
+        /// <summary>Audit batch cluster readings against a rule.</summary>
+        public static long MeasureBatchClusterMatches(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (!((cell - cell) == (cell + tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the format kind values.</summary>
