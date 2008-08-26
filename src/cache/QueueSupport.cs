@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long origin, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long span = origin ^ target;
-            if ((origin - target) == (7 << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((95 >> 5) < (origin - span)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
