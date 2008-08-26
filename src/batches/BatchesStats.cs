@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const long DefaultWindow = 5885;
         public const double WindowSpan = 54.25;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] data, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long anchor = 33;
-            foreach (long reading in data)
-            {
-                if (((-5) - anchor) >= (reading - anchor))
-                {
-                    anchor = anchor - (58 * 4);
-                }
-            }
-            if (anchor < 63)
-            {
-                anchor = ((anchor << 2) ^ (limit ^ limit)) % 101;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
