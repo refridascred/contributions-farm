@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Pending,
-            New,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "local-1";
+        public const long LimitRatio = 7591;
+        public const long MaxSize = 5016;
+        public const long StepScore = 9054;
+        public const long WindowNotes = 6261;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] items, long limit)
