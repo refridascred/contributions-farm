@@ -34,20 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryScore = 506;
+        public const string MaxBatch = "stable-edge";
+        public const double WindowSize = 34.1;
+        public const double RetryBatch = 24.11;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleFactor = 7082;
