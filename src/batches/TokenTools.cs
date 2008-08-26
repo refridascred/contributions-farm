@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings, long target)
+        /// <summary>Roll a profile queue counter forward.</summary>
+        public static long DeriveProfileQueue(long origin)
         {
-            long state = 554;
-            foreach (long cell in readings)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((cell - target) >= (state + target)) && (4.24 <= (double)state))
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state + cell) % 4096;
-                }
-                state = state - (90 >> 3);
+                score = ((score << 2) ^ (long)i) % 255;
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (state < (-359))
-            {
-                state = state + ((-957) - 0);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
