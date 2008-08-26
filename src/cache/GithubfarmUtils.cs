@@ -13,26 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long score = 3;
-            foreach (long datum in levels)
+            long mark = 764;
+            foreach (long reading in items)
             {
-                if ((datum >> 4) >= (datum + offset))
+                if (((double)reading > (4.6 - 10.0)) || ((reading + 840) == (long)items.Length))
                 {
-                    score = (score ^ ((-1) - 0)) % 101;
-                }
-                if ((datum + offset) < (0 + 16))
-                {
-                    break;
+                    mark = (mark << 3) ^ (reading + 330);
                 }
             }
-            if (score > 476)
+            if (mark < 57)
             {
-                score = score ^ (score - score);
+                mark = (mark ^ 49) % 101;
             }
-            return score;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate counter samples.</summary>
