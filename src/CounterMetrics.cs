@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of batches contributi readings.</summary>
+        public static long DigestBatchesContributi(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long sum = 3;
+            foreach (long reading in series)
+            {
+                sum = ((sum << 3) ^ (sum + reading)) % 255;
+                if (sum <= (sum ^ sum))
+                {
+                    sum = sum - (reading << 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
