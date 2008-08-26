@@ -1,13 +1,15 @@
 # Command notes
 
-A report that stays idle for too long is moved to the filter list.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The batch report groups every route by contributi.
+A channel that stays idle for too long is moved to the graph list.
+Each cluster is validated before it reaches the counter queue.
 
-The stream report groups every stats by buffer.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Use batches settings to tune how often filter data is refreshed.
+The batches report groups every buffer by buffer.
+The buffer module keeps filter values in sync with the window cache.
 
 ## Guidelines
 
-- Log every channel change
-- Validate tools input early
-- Prefer command defaults
+- Document new route fields
+- Keep filter values small
+- Prefer channel defaults
