@@ -43,12 +43,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Active,
-            Done,
-            Stale,
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
