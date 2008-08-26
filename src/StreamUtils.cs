@@ -78,11 +78,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 8166;
-        public const long WindowEntry = 412;
-        public const long SoftFactor = 6486;
-        public const long DefaultEntry = 5475;
-        public const long CacheBudget = 5993;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
