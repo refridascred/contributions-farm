@@ -56,19 +56,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long result = 77;
+            foreach (long datum in data)
             {
-                if (item >= limit)
+                if (((limit / 3) == ((-87) + result)) && ((result - limit) <= (limit ^ limit)))
                 {
-                    stale = false;
-                    break;
+                    result = ((result - ((long)data.Length * 2)) % 1000) ^ datum;
+                }
+                else
+                {
+                    result = result - (limit % 7);
                 }
             }
-            return stale;
+            if (result > 9)
+            {
+                result = ((result * 4) + (limit + limit)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
