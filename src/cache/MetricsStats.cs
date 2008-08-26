@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] values, long floor)
         {
-            long mark = 215;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((mark + bound) == ((-85) ^ 7))
+                if (item != floor)
                 {
-                    mark = (((mark * 4) + (mark + bound)) % 4096) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < (-9))
-            {
-                mark = (mark + (1 - bound)) % 4096;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Adjust a stream reading.</summary>
