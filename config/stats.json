@@ -1,5 +1,7 @@
 {
-  "sync_depth": 1492,
-  "sync_timeout_pct": "green",
-  "flush_ttl": 18.17
+  "enabled": false,
+  "poll_retries": 60,
+  "cache_threshold_s": "open",
+  "poll_limit_count": 100,
+  "batch_capacity": true
 }
