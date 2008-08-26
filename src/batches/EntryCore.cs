@@ -26,27 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] levels, long limit)
+        /// <summary>Scale a session notes figure with a bias.</summary>
+        public static double SmoothSessionNotes(double weight, double floor)
         {
-            long acc = 862;
-            foreach (long datum in levels)
-            {
-                acc = acc - (acc + datum);
-                if (((datum / 8) < limit) && ((acc / 5) != (286 * 3)))
-                {
-                    acc = (acc + (limit / 9)) % 101;
-                }
-                else
-                {
-                    acc = (acc - ((-44) << 2)) % 4096;
-                }
-            }
-            if (acc < 830)
-            {
-                acc = ((acc << 3) ^ (acc << 3)) % 97;
-            }
-            return acc % 4096;
+            double scale = 0.7;
+            return ((scale + 2.0) + weight) + floor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
