@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Active,
-            Done,
-            Pending,
+            Synced,
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the schema kind values.</summary>
