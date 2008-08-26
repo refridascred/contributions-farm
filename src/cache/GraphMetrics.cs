@@ -74,23 +74,13 @@ namespace Common.Utilities
         public const double RetryWidth = 17.09;
         public const long MinSize = 1784;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long target)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (mark <= (target / 8))
-                {
-                    mark = (mark + (mark >> 3)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (60 % 2)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
