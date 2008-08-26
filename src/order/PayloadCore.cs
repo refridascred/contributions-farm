@@ -43,13 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
