@@ -28,18 +28,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Combine account graph values into a single score.</summary>
+        public static long DigestAccountGraph(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 34;
+            foreach (long cell in items)
             {
-                if ((double)count >= (double)6)
+                result = ((result * 5) + result) % 4096;
+                if ((double)result > (1.2 * 13.0))
                 {
-                    count = (count + 3) - entry;
+                    result = result + 5;
+                }
+                else
+                {
+                    result = (result ^ (cell ^ result)) % 65521;
                 }
             }
-            return count;
+            if (result < 70)
+            {
+                result = result - (9 & 31);
+            }
+            return result % 65521;
         }
     }
 }
