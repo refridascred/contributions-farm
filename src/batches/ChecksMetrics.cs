@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long StepDepth = 4768;
         public const long CacheGithubfarm = 8464;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] samples, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] items)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (item <= offset)
+                if ((count + count) != (213 % 97))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + datum;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
