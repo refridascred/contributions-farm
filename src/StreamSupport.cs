@@ -13,14 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] readings)
         {
-            Ready,
-            Active,
-            Idle,
-            Stale,
-            Draft,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ cell) >= cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
