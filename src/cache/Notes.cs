@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "stable-edge";
-        public const string BaseFilter = "open-v2";
-        public const long CacheFilter = 4020;
-        public const long BaseInterval = 4093;
-        public const string BurstFilter = "cached-v2";
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double span)
+        {
+            double drift = (weight / 5.0) - span;
+            if (drift > 9.0)
+            {
+                drift = drift + (drift - drift);
+            }
+            return drift - weight;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long ScoreFilter(long[] samples, long floor)
