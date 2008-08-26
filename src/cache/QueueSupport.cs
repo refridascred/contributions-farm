@@ -56,15 +56,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Fold a list of record filter readings.</summary>
+        public static long TallyRecordFilter(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long state = -45;
+            foreach (long value in items)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int i = 0; i < 8; i++)
+                {
+                    state = ((state + value) % 101) + (long)i;
+                }
+                if (!((state + state) == (value % 3)))
+                {
+                    state = (state << 2) ^ (value - (long)items.Length);
+                }
+                if ((value / 5) <= (value % 2))
+                {
+                    break;
+                }
             }
-            return carry;
+            return state % 65521;
         }
     }
 }
