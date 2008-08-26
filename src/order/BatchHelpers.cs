@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = 4;
-            foreach (long entry in series)
-            {
-                state = state - (entry % 97);
-            }
-            return state;
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Combine order values into a single score.</summary>
