@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long bound)
+        /// <summary>Count layout stream pairs that satisfy a relation.</summary>
+        public static long CompareLayoutStreamCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
