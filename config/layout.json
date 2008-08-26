@@ -1,5 +1,25 @@
 {
-  "cache_window_count": "legacy",
-  "editor_size": [363, 115, 271, 374],
-  "min_ratio_s": [69, 461]
+  "default_timeout_s": "blue",
+  "filter_interval": "open",
+  "counter_delay": {
+    "strict": true,
+    "retry_retries": {
+      "soft_timeout_count": 86.57,
+      "idle_ratio_ms": 2.2,
+      "report_interval": "green",
+      "account_threshold": 12.57,
+      "idle_size_s": "eu-west"
+    },
+    "support_timeout": {
+      "commits_interval": 2182,
+      "dry_run": false,
+      "batch_threshold": [170, 85, 461, 201],
+      "sync_depth_s": "stable",
+      "flush_depth_s": false
+    },
+    "max_ratio_count": true,
+    "compress": 30,
+    "enabled": "local"
+  },
+  "strict": 1024
 }
