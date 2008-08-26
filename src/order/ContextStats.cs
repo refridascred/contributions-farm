@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryCount = 22.56;
-        public const double HardStream = 84.48;
-        public const long BatchStream = 6605;
-        public const double BatchWidth = 56.58;
-        public const string CacheBudget = "strict-v2";
+        /// <summary>Validate metrics checks readings against a bound.</summary>
+        public static bool VerifyMetricsChecksLimits(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 1017;
