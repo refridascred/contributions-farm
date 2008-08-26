@@ -61,11 +61,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultLevel = 3789;
-        public const double BatchFarm = 14.87;
-        public const long DefaultFarm = 7117;
-        public const long HardCount = 6231;
-        public const double BaseFarm = 10.82;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
