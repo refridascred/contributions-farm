@@ -39,24 +39,11 @@ namespace Common.Utilities
         public const long SoftBudget = 1432;
         public const long LimitLevel = 5135;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data, long origin)
-        {
-            long mix = 361;
-            foreach (long value in data)
-            {
-                if ((value >> 5) <= origin)
-                {
-                    break;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (value << 1)) % 4096;
-                }
-                mix = (mix * 4) + origin;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSize = 4662;
+        public const long SoftGithubfarm = 4978;
+        public const long HardDepth = 6955;
+        public const long IdleTimeout = 5245;
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] series)
