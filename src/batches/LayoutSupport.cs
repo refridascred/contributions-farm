@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] items, long step)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((9 << 3) == (entry + step)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
