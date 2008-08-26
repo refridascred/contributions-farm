@@ -1,6 +1,12 @@
 # githubfarm settings
-sync_retries: 30
-report_limit: 47.03
-burst_retries_ms: 60
-dry_run: 2183
-tools_limit: legacy
+context_ratio: standard
+readonly: 5.66
+metrics_window:
+  notes_limit: 24.22
+  burst_depth_s: edge
+  sync_retries_count: eu-west
+  idle_delay: standard
+  retry_retries: 2696
+compress: 100
+warm_window_pct: fallback
+flush_timeout_s: stable
