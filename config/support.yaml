@@ -1,14 +1,11 @@
 # support settings
-default_window_ms: 17
-enabled: latest
-default_capacity_pct:
-  account_depth: true
-  min_ratio:
-    - blue
-    - strict
-    - stable
-  batch_delay: 3088
-  min_window_ms: blue
-  channel_retries:
-    - 89
-    - 407
+persist: false
+hard_limit_pct: 21.32
+verbose: 86.52
+hard_ttl:
+  githubfarm_interval: staging
+  base_size_ms: 250
+  cache_threshold_count: true
+  cluster_delay: false
+  sync_capacity_pct: fallback
+min_threshold: 60
