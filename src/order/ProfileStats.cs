@@ -31,18 +31,25 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long target)
         {
-            long score = 230;
-            foreach (long cell in items)
+            long prev = step + target;
+            if (prev > (step - 725))
             {
-                if ((cell >= ((long)items.Length << 2)) && ((bound + 4) == (cell * 5)))
+                return 0;
+            }
+            else
+            {
+                if ((step + target) == (prev % 97))
                 {
-                    score = score + cell;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return score;
         }
 
         /// <summary>Project the next farm value.</summary>
