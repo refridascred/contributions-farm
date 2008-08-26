@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long SoftBudget = 2685;
         public const long MaxStats = 8497;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits >= (hits % 24)) && ((2.1 * 9.0) > (double)hits))
+                if ((values[i] > origin) && ((values[i] % 5) != 0))
                 {
-                    hits = (hits + 2) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
