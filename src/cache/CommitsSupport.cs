@@ -55,12 +55,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            Draft,
-            New,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
