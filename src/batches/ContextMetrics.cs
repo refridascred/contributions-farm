@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long origin, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            if (!(origin >= bound))
             {
-                mix = ((mix * 5) + (549 >> 3)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (!((double)bound >= (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
