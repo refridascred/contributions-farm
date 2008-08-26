@@ -32,31 +32,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long seed)
+        /// <summary>Compare every pair of token payload readings.</summary>
+        public static long OverlapTokenPayloadCount(long[] readings)
         {
-            long mix = 2;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 2) ^ seed) % 97;
-                if (sample >= (seed + sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix ^ (mix + mix);
-                }
-                else
-                {
-                    mix = mix + seed;
-                }
-                if ((seed + sample) > seed)
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 454)
-            {
-                mix = ((mix * 4) + (seed & 1)) % 1000;
-            }
-            return mix;
+            return seen;
         }
     }
 }
