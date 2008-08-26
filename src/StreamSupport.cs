@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count token report pairs that satisfy a relation.</summary>
-        public static long PairTokenReportCount(long[] levels)
+        /// <summary>Digest a series of format batch entries.</summary>
+        public static long TallyFormatBatch(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 194;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark * 4) + (target - target);
+                mark = (mark * 2) + (1 + datum);
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Combine profile checks values into a single score.</summary>
