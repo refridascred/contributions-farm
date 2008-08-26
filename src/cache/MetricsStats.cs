@@ -61,19 +61,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchLevel = 5783;
+        public const double IdleStats = 12.18;
+        public const string MaxStats = "latest-edge";
     }
 }
