@@ -1,6 +1,21 @@
 {
-  "flush_retries_ms": "fallback",
-  "strict": [312, 484, 449],
-  "cache_ttl": 26,
-  "verbose": 24
+  "audit": 97.34,
+  "graph_capacity": 19.79,
+  "dry_run": 3,
+  "sync_capacity_s": {
+    "contributi_limit": 1024,
+    "cache_window": 100,
+    "strict": 92.67,
+    "hard_window": {
+      "min_depth": "blue",
+      "commits_window": 250,
+      "stats_interval": 250
+    },
+    "already_threshold": ["eu-west", "edge", "cached", "edge"],
+    "poll_capacity_s": {
+      "base_depth_ms": 1764,
+      "dry_run": 9635,
+      "compress": 250
+    }
+  }
 }
