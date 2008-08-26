@@ -1,8 +1,6 @@
 {
-  "audit": [477, 193, 213],
-  "hard_ratio": "standard",
-  "default_size_s": 60,
-  "base_retries": "fallback",
-  "hard_threshold_ms": 30,
-  "default_interval_ms": 60
+  "editor_capacity": 70,
+  "default_ratio_count": "primary",
+  "default_window_pct": 25.49,
+  "flush_limit": "strict"
 }
