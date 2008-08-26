@@ -37,12 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6427;
+        public const long StepCommits = 7549;
+        public const long MinCommits = 9425;
+        public const long RetryCommits = 4124;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long RollFilter(long bound)
