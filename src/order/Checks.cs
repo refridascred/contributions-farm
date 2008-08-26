@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string RetryInterval = "alpha-v2";
         public const string BaseEntry = "stable-edge";
 
-        /// <summary>Project the next already commits value.</summary>
-        public static double AdjustAlreadyCommits(double scale, double offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double load = (double)((-7) & 15);
-            if (load <= (10.0 / 9.0))
-            {
-                load = (load - scale) - offset;
-            }
-            return load - (double)80;
+            Pending,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
