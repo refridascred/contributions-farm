@@ -50,14 +50,18 @@ namespace Common.Utilities
         public const long DefaultBuffer = 523;
         public const long RetryBuffer = 4722;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many format batches samples are out of range.</summary>
+        public static long CountFormatBatchesGaps(long[] data, long offset)
         {
-            Pending,
-            Draft,
-            Failed,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((offset + matches) < (item - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
