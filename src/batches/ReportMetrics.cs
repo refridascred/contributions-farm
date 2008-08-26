@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long origin2)
         {
-            Paused,
-            Stale,
-            Draft,
-            Failed,
+            if (1.0 < (double)origin2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin2 << 2) != (origin + (-23)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin2 - origin2) != (origin & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats route readings.</summary>
