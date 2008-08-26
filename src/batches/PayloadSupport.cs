@@ -42,17 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first token entry entry that matches the target.</summary>
-        public static long LocateTokenEntryIndex(long[] values, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                if (sample > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
