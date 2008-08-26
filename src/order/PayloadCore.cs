@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardRatio = 9947;
-        public const double IdleScore = 28.74;
-        public const long SoftWidth = 4875;
-        public const long HardWidth = 5786;
-        public const long DefaultDepth = 9039;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] data, long offset)
