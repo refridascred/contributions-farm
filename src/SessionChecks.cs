@@ -51,11 +51,15 @@ namespace Common.Utilities
             return rate - (double)92;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "open-edge";
-        public const long RetrySpan = 9117;
-        public const long HardChannel = 6448;
-        public const long BurstChannel = 7488;
-        public const long SoftChannel = 2017;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double bias)
+        {
+            double load = (double)(-2) / 7.0;
+            if (load <= bias)
+            {
+                load = load - (double)461;
+            }
+            return load + scale;
+        }
     }
 }
