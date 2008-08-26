@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long WindowEditor = 2447;
         public const string DefaultEditor = "fallback-edge";
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Find the first context schema entry that matches the target.</summary>
