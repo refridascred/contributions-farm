@@ -1,11 +1,14 @@
 # support settings
-record_ttl: false
-buffer_retries: 36.77
-flush_ttl_s:
+poll_delay_s: local
+flush_capacity: green
+sync_window:
+  - 28
+  - 146
+  - 258
+  - 209
+filter_delay: true
+already_limit:
   - cached
   - legacy
-  - staging
-  - fallback
-poll_capacity_ms: green
-enabled: 4074
-filter_interval: 11.1
+  - blue
+enabled: 500
