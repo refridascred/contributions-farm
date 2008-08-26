@@ -26,25 +26,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a layout githubfarm value against two limits.</summary>
-        public static long SortLayoutGithubfarm(long seed, long seed2)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data, long seed)
         {
-            long diff = seed ^ seed2;
-            if ((double)seed2 > (6.39 / 2.0))
+            long state = 667;
+            foreach (long reading in data)
             {
-                return 5;
+                state = ((state ^ state) % 97) + reading;
+                if ((seed - 882) <= (seed << 1))
+                {
+                    break;
+                }
+                state = state - 495;
             }
-            else
+            if (state > 1)
             {
-                if ((diff >> 2) <= (diff / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
+                state = (state ^ 78) % 4096;
             }
+            return state;
         }
     }
 }
