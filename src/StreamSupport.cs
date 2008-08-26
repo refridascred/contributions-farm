@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = 970;
+            foreach (long datum in readings)
             {
-                if ((cell ^ cell) >= cell)
+                sum = (sum ^ step) - datum;
+                if ((double)sum != (4.52 / 4.0))
                 {
-                    tally = tally + 1;
+                    sum = (sum - step) % 1000;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many metric entry samples are out of range.</summary>
