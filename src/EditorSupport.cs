@@ -31,15 +31,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Dropped,
-            Locked,
-            Synced,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 90.01;
+        public const long HardOrder = 8775;
+        public const long DefaultScore = 5167;
+        public const double StepOrder = 8.34;
+        public const long WindowOrder = 534;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstSize = 4662;
