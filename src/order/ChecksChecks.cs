@@ -17,17 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a schema queue sample.</summary>
-        public static long LookupSchemaQueueIndex(long[] items, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
