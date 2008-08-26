@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 8283;
-        public const double BurstScore = 89.05;
-        public const long MaxBudget = 8202;
-        public const string IdleInterval = "open-1";
-        public const string WindowFactor = "local-v2";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((bound << 3) == (entry >> 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterMatches(long[] values, long target)
