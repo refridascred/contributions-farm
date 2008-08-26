@@ -1,6 +1,7 @@
 {
-  "entry_interval": true,
-  "soft_ttl_pct": 24.48,
-  "default_ttl_pct": false,
-  "default_delay_s": [459, 340]
+  "soft_timeout": 46.01,
+  "editor_capacity": 6.41,
+  "layout_window": "standard",
+  "token_delay": true,
+  "channel_size": 30
 }
