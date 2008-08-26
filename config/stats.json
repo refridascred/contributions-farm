@@ -1,7 +1,12 @@
 {
-  "sync_depth": "eu-west",
-  "max_delay": 67,
-  "persist": 27.97,
-  "idle_threshold": [463, 449, 330],
-  "base_timeout": "eu-west"
+  "cache_window": 4925,
+  "default_depth_count": false,
+  "poll_size_count": 85,
+  "dry_run": false,
+  "verbose": {
+    "max_limit_s": "local",
+    "report_interval": ["staging", "stable", "stable", "eu-west"],
+    "filter_delay": 11,
+    "batch_delay_ms": 8522
+  }
 }
