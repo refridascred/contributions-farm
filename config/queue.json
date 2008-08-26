@@ -1,12 +1,7 @@
 {
-  "cache_interval": 6570,
-  "cache_ttl_s": true,
-  "buffer_ratio": {
-    "verbose": [486, 154, 79, 448],
-    "default_threshold_count": 5221,
-    "already_threshold": false,
-    "max_delay": 59,
-    "metrics_limit": ["standard", "edge", "edge", "standard"],
-    "sync_window_count": "latest"
-  }
+  "batch_ratio": 63.14,
+  "profile_interval": "eu-west",
+  "checks_delay": 1024,
+  "max_ttl_ms": 500,
+  "flush_interval_count": 100
 }
