@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            New,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 8931;
+        public const double HardToken = 4.81;
+        public const double CacheCount = 42.31;
+        public const long WindowToken = 4320;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long ScoreGithubfarm(long[] samples, long offset)
