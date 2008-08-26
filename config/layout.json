@@ -1,20 +1,8 @@
 {
-  "min_depth_s": ["standard", "fallback", "standard", "cached"],
-  "retry_depth_ms": ["legacy", "strict", "edge"],
-  "notes_threshold": 19,
-  "hard_threshold_ms": 24.87,
-  "compress": {
-    "warm_threshold_count": false,
-    "min_size_ms": "green",
-    "verbose": false,
-    "contributi_limit": "green",
-    "audit": "strict"
-  },
-  "hard_ttl": {
-    "context_timeout": "stable",
-    "compress": "open",
-    "idle_delay_pct": "staging",
-    "idle_timeout": 78.32,
-    "cache_delay_ms": 87.56
-  }
+  "audit": "latest",
+  "flush_limit_count": true,
+  "payload_capacity": 0.62,
+  "compress": "standard",
+  "idle_window_count": 3950,
+  "max_interval_pct": "fallback"
 }
