@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Grade a command profile value against two limits.</summary>
+        public static long RankCommandProfile(long offset, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            if (!((offset % 64) >= offset))
             {
-                if ((result << 3) != (floor % 8))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit <= (1.0 / 2.0))
                 {
-                    result = (result + floor) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    result = ((result * 3) + (result & 127)) % 101;
+                    if ((90 * 4) == (limit >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.1 < (double)offset) && ((limit >> 5) <= (9 ^ 766)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
