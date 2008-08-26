@@ -1,20 +1,12 @@
 {
-  "warm_retries": "green",
-  "flush_depth_s": 27.51,
-  "flush_threshold": {
-    "stats_threshold": false,
-    "soft_retries": "latest",
-    "default_threshold": 21,
-    "warm_limit": {
-      "flush_retries_s": "primary",
-      "flush_delay_ms": 51.19,
-      "sync_ttl_pct": true,
-      "contributi_size": 7684,
-      "warm_delay_ms": "primary"
-    },
-    "base_interval_pct": 3238,
-    "cache_timeout_pct": ["fallback", "stable", "standard", "legacy"]
+  "stream_interval": false,
+  "strict": {
+    "retry_interval_ms": false,
+    "compress": [400, 357, 77, 391],
+    "dry_run": "fallback",
+    "payload_size": 25.76,
+    "enabled": ["blue", "local", "green", "eu-west"]
   },
-  "readonly": true,
-  "default_depth": false
+  "entry_limit": 6146,
+  "channel_size": 12
 }
