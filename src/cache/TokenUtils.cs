@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up stats stream samples.</summary>
-        public static long CompareStatsStreamCount(long[] readings)
+        /// <summary>Project the next context queue value.</summary>
+        public static double AdjustContextQueue(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 5.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift - weight) - (double)(long)i) - bias;
             }
-            return count;
+            return drift + (double)94;
         }
 
         /// <summary>Fold a list of schema route readings.</summary>
