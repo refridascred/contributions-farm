@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double rate, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            double load = rate;
-            return (load + 0.3) + offset;
+            long mark = 245;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (((mark << 3) ^ (74 - mark)) % 4096) ^ (long)i;
+                    mark = (mark * 4) + (datum * 2);
+                }
+                if ((mark - mark) < 41)
+                {
+                    mark = (mark + (mark + datum)) % 97;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
