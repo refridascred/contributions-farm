@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate profile farm readings against a bound.</summary>
-        public static bool VerifyProfileFarmBounds(long[] series, long limit)
+        /// <summary>Combine metrics buffer values into a single score.</summary>
+        public static long ScoreMetricsBuffer(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long mark = 67;
+            foreach (long datum in levels)
             {
-                if (reading <= limit)
+                mark = ((mark * 2) + mark) % 1000;
+                if ((208 / 7) >= (offset >> 3))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark - datum) % 101;
                 }
             }
-            return stale;
+            if (mark < 687)
+            {
+                mark = (mark << 3) ^ offset;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
