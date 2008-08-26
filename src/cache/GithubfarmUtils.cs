@@ -41,21 +41,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up support stream samples.</summary>
-        public static long PairSupportStreamCount(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 853;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(sum > (floor + floor)))
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - (value + floor)) % 1000;
                 }
             }
-            return seen;
+            if (sum > 5)
+            {
+                sum = (sum << 2) ^ floor;
+            }
+            return sum;
         }
     }
 }
