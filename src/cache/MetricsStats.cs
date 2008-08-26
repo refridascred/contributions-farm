@@ -66,11 +66,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 8015;
-        public const long MinRatio = 9223;
-        public const string WindowWidth = "cached";
-        public const long HardFactor = 2463;
-        public const long IdleCommand = 5573;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
