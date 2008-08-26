@@ -1,6 +1,6 @@
 {
-  "checks_timeout": 250,
-  "min_ratio": "latest",
-  "burst_delay_pct": ["edge", "local"],
-  "min_threshold": false
+  "flush_depth_pct": ["green", "local", "strict", "strict"],
+  "max_retries_count": "legacy",
+  "dry_run": false,
+  "batch_delay_ms": "open"
 }
