@@ -39,16 +39,18 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] samples)
         {
-            long mark = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 5) + 9) + item;
-                mark = mark - (mark - mark);
+                if (!!((matches + entry) <= (entry % 60)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
