@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const long IdleDepth = 5312;
         public const long SoftCommits = 8578;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long limit, long floor)
         {
-            double rate = 6.7;
-            if (rate >= (rate - 2.61))
+            long offset = limit ^ floor;
+            if ((13.0 + 1.0) > (double)floor)
             {
-                rate = (rate + (weight * 15.0)) + offset;
+                return 6;
             }
             else
             {
-                rate = rate + (rate + rate);
+                if ((offset * 4) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate + (9.0 * 3.43);
         }
 
         /// <summary>Audit payload token readings against a rule.</summary>
