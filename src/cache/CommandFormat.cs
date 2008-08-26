@@ -30,18 +30,20 @@ namespace Common.Utilities
         public const string LimitSchema = "open-v2";
         public const long BurstTimeout = 2120;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            long anchor = -64;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)anchor <= (0.3 / 2.0))
+                if (!(((double)(-4) == (double)total) || (((long)i ^ (long)i) > (6 % 100))))
                 {
-                    anchor = ((anchor - anchor) % 255) - datum;
+                    total = ((total << 3) ^ (target % 10)) % 1000;
+                    total = total ^ (target - total);
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
     }
 }
