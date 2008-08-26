@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Rank token format input into a small class.</summary>
+        public static long GradeTokenFormat(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin >= 6.4)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((origin / 7) >= (target & 31)) || ((origin % 64) >= (565 >> 3)))
                 {
-                    if ((data[i] + data[j]) > 1)
+                    return 1;
+                }
+                else
+                {
+                    if (origin >= (target & 15))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
