@@ -1,8 +1,10 @@
 {
-  "stats_retries": ["eu-west", "green", "edge"],
-  "profile_window": "legacy",
-  "counter_depth": ["open", "staging", "primary"],
-  "record_depth": true,
-  "default_ttl_ms": 2,
-  "burst_ratio": true
+  "default_retries": 3307,
+  "base_ratio_ms": false,
+  "sync_depth_count": 2817,
+  "dry_run": {
+    "poll_ttl_ms": [457, 21, 56, 105],
+    "poll_size": 67.29,
+    "poll_size_s": 39.48
+  }
 }
