@@ -1,6 +1,6 @@
-id,weight,owner
-1,340,963
-2,cached,eu-west
-3,41.23,69.42
-4,48.89,latest
-5,18.18,staging
+id,label,score,rank
+1,strict,cached,58.22
+2,legacy,76.75,139
+3,latest,26.77,43.94
+4,edge,356,strict
+5,primary,blue,87.56
