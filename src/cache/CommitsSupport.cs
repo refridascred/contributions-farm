@@ -79,21 +79,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count cache farm pairs that satisfy a relation.</summary>
-        public static long MatchCacheFarmCount(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((20.0 + 0.85) > (double)seen)
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
