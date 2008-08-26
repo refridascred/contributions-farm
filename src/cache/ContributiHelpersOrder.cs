@@ -51,14 +51,21 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long step)
         {
-            Retry,
-            Dropped,
-            Active,
-            Stale,
-            Ready,
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((8.0 * 20.0) > (double)(long)i)
+                {
+                    total = (total << 3) ^ ((long)i + (-37));
+                }
+                total = ((total << 3) ^ (total / 9)) % 101;
+                total = total + step;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
