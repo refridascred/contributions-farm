@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] values, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((13.0 - 3.0) >= (double)entry) && (((floor - entry) != (floor + 6)) || ((matches / 4) < (matches / 9))))
+                if (levels[i] > limit)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
