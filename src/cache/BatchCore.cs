@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long mix = 303;
+            foreach (long datum in series)
+            {
+                mix = mix - (7 & 255);
+                if ((double)mix <= 8.39)
+                {
+                    mix = ((mix * 5) + (datum + mix)) % 255;
+                }
+                if ((double)datum > 8.6)
+                {
+                    break;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = ((mix * 3) + (mix - mix)) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Adjust a support reading.</summary>
