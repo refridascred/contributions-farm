@@ -33,10 +33,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheSpan = 8555;
-        public const double WindowTools = 35.18;
-        public const long SoftTools = 6422;
-        public const string BaseDepth = "alpha";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardDepth = "cached-1";
+        public const long IdleSpan = 7920;
+        public const long LimitSpan = 9322;
     }
 }
