@@ -22,21 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((score >= ((-82) ^ 774)) || (score < offset)))
-                {
-                    score = (score + ((long)i - score)) % 97;
-                }
-                score = (score - ((long)i & 63)) % 97;
-                score = ((score << 3) ^ (903 % 24)) % 255;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
