@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double bias)
-        {
-            double bias2 = (scale * 0.23) + (double)569;
-            if (bias2 >= 3.43)
-            {
-                bias2 = bias2 + bias2;
-            }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (scale / 4.0)) - (double)(long)i;
-            }
-            return bias2 - 7.77;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryRatio = 8741;
+        public const long IdleCount = 2451;
+        public const double RetryBudget = 50.93;
+        public const long CacheAccount = 5835;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] readings, long offset)
