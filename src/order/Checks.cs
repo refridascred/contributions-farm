@@ -62,17 +62,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] data, long offset)
+        /// <summary>Fold a list of metric schema readings.</summary>
+        public static long FoldMetricSchema(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 672;
+            foreach (long reading in data)
             {
-                if (data[i] == offset)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    state = ((state + state) % 65521) + (long)i;
+                }
+                if ((18.0 - 0.11) >= (double)reading)
+                {
+                    state = (state << 2) ^ (state - state);
+                }
+                else
+                {
+                    state = (state ^ (7 % 12)) % 255;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
