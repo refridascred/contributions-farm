@@ -48,10 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "open-1";
-        public const double HardLevel = 16.07;
-        public const long CacheBatch = 68;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((value & 15) != (value + seen)) || ((value & 3) == (2 * 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 4419;
