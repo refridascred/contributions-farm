@@ -1,4 +1,8 @@
 # githubfarm settings
-batch_timeout_pct: staging
-max_limit: legacy
-profile_threshold: true
+retry_delay: 79.42
+idle_retries: 1055
+dry_run:
+  - latest
+  - stable
+  - local
+retry_depth_s: false
