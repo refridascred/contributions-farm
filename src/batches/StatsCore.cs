@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Compare every pair of token channel readings.</summary>
+        public static long PairTokenChannelCount(long[] items)
         {
-            long result = 76;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample >= (sample - sample)) && ((sample << 2) < (sample - sample)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + sample) % 101;
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = (result ^ 4) % 4096;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Find the first cache editor entry that matches the target.</summary>
