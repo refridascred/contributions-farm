@@ -33,22 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue stream samples.</summary>
-        public static long WeighQueueStream(long[] series, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long bound, long step)
         {
-            long mix = 183;
-            foreach (long datum in series)
+            if (((91 + bound) == (step ^ step)) && ((334 + bound) > (step >> 1)))
             {
-                if ((double)datum == (0.46 * 5.82))
+                return 8;
+            }
+            else
+            {
+                if ((bound << 3) != (step % 2))
                 {
-                    mix = ((mix - (mix & 127)) % 1000) - floor;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound * 3) >= (bound + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.46 * 7.1) == (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix < 93)
-            {
-                mix = mix ^ ((long)series.Length ^ mix);
-            }
-            return mix % 4096;
         }
 
         /// <summary>Measure how many route cluster samples are out of range.</summary>
