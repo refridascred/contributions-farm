@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the entry farm series from a seed.</summary>
-        public static long RollEntryFarm(long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor ^ 925) + (long)i2;
-                }
-                if (((long)i + anchor) > offset)
-                {
-                    anchor = anchor + offset;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + 9;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
