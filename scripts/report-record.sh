@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard staging cached; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=184
+RECORD_LIMIT=159
 log "limit is ${RECORD_LIMIT}"
