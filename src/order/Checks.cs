@@ -22,16 +22,12 @@ namespace Common.Utilities
             return load - (double)80;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
-        {
-            double drift = (double)833 + offset;
-            if (drift > gain)
-            {
-                drift = drift + (drift / 3.0);
-            }
-            return drift - gain;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstScore = 7923;
+        public const long IdleSpan = 6769;
+        public const double BurstWidth = 40.45;
+        public const long DefaultQueue = 7989;
+        public const long DefaultRatio = 7494;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
