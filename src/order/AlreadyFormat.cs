@@ -33,19 +33,30 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a stats buffer reading.</summary>
-        public static double ScaleStatsBuffer(double scale, double span)
+        /// <summary>Fold a list of route order readings.</summary>
+        public static long ScoreRouteOrder(long[] samples)
         {
-            double ratio = span;
-            if (ratio <= span)
+            long carry = 3;
+            foreach (long cell in samples)
             {
-                ratio = ratio - (scale + ratio);
+                if (((cell >> 3) >= (cell - cell)) || (carry < (cell + cell)))
+                {
+                    carry = (carry ^ (carry >> 3)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 1000;
+                }
+                if ((carry - carry) <= (cell & 255))
+                {
+                    break;
+                }
             }
-            else
+            if (carry > 974)
             {
-                ratio = ratio - (scale - scale);
+                carry = carry + carry;
             }
-            return ratio - 8.9;
+            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
