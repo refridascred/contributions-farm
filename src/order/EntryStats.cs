@@ -64,13 +64,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] samples, long floor)
         {
-            Pending,
-            Draft,
-            Closed,
-            Queued,
+            long score = 44;
+            foreach (long cell in samples)
+            {
+                if ((4.0 - 0.66) != (double)cell)
+                {
+                    score = score ^ (floor * 4);
+                }
+                if (((cell & 3) > (score + cell)) && (cell <= (score % 3)))
+                {
+                    break;
+                }
+            }
+            if (score < 968)
+            {
+                score = (score - (floor - 856)) % 255;
+            }
+            return score % 97;
         }
     }
 }
