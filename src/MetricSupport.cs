@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long carry = 1;
+            foreach (long value in samples)
+            {
+                if (carry < ((long)samples.Length & 31))
+                {
+                    carry = (carry ^ (211 / 7)) ^ value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Adjust a token cache reading.</summary>
