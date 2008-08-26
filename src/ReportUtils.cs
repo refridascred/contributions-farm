@@ -42,19 +42,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double weight, double bias)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double load = bias;
-            if (load < (double)104)
-            {
-                load = load + weight;
-            }
-            else
-            {
-                load = load + weight;
-            }
-            return load + (double)7;
+            Paused,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a session snapshot.</summary>
