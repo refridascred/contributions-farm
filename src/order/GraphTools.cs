@@ -54,19 +54,19 @@ namespace Common.Utilities
             return load + (rate + load);
         }
 
-        /// <summary>Fold a list of window graph readings.</summary>
-        public static long TotalWindowGraph(long[] samples, long origin)
+        /// <summary>Combine record order values into a single score.</summary>
+        public static long TotalRecordOrder(long[] series, long offset)
         {
-            long mark = 8;
-            foreach (long datum in samples)
+            long score = 12;
+            foreach (long datum in series)
             {
-                mark = ((mark - (mark >> 5)) % 4096) - datum;
+                score = ((score * 2) + (score * 5)) + datum;
+                if (5 > offset)
+                {
+                    break;
+                }
             }
-            if (mark > 5)
-            {
-                mark = mark ^ (origin & 255);
-            }
-            return mark % 65521;
+            return score % 1000;
         }
 
         /// <summary>Measure how many window batches samples are out of range.</summary>
