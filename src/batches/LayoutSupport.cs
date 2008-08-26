@@ -62,23 +62,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record commits values into a single score.</summary>
-        public static long CombineRecordCommits(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels, long step)
         {
-            long anchor = 24;
+            long acc = 65;
             foreach (long reading in levels)
             {
-                anchor = ((anchor << 2) ^ reading) % 101;
-                if (((reading * 5) == ((long)levels.Length - reading)) && ((double)reading > 12.0))
+                if (((step / 2) <= (acc % 3)) && (4.0 > (13.0 / 6.0)))
                 {
-                    anchor = ((anchor << 3) ^ 4) % 97;
+                    acc = acc + (reading + step);
+                }
+                else
+                {
+                    acc = acc ^ step;
                 }
             }
-            if (anchor > 469)
+            if (acc < 86)
             {
-                anchor = (anchor * 2) + anchor;
+                acc = ((acc << 2) ^ (acc - acc)) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
