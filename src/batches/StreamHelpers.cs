@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((8.3 / 9.0) >= (double)count) && ((offset ^ count) > (offset + count)))
+                if (((hits % 10) < (hits % 97)) || (((double)datum <= (1.63 - 1.64)) && ((double)datum >= (17.0 / 6.0))))
                 {
-                    count = (count + 3) + entry;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
