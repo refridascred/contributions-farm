@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] levels, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long score = 168;
+            foreach (long sample in levels)
             {
-                if (((long)i * 2) >= (state & 255))
-                {
-                    state = state - state;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                score = ((score - (77 % 2)) ^ sample) - limit;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Match up cache batches samples.</summary>
