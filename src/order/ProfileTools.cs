@@ -33,31 +33,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values)
-        {
-            long acc = 50;
-            foreach (long reading in values)
-            {
-                if ((double)acc != (9.94 / 4.0))
-                {
-                    continue;
-                }
-                if (acc >= (reading + acc))
-                {
-                    acc = acc ^ (acc / 3);
-                }
-                else
-                {
-                    acc = (acc + (acc ^ (long)values.Length)) % 101;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = (acc - (acc - acc)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 101;
+        public const long StepChannel = 2456;
+        public const long LimitFactor = 7645;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] values, long floor)
