@@ -73,17 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] samples, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 40;
+            foreach (long cell in series)
             {
-                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                if ((2 << 1) <= (result << 1))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ result) + cell;
+                }
+                else
+                {
+                    result = result + (origin + result);
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
