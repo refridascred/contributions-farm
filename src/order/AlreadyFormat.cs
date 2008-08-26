@@ -33,18 +33,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Adjust a stats buffer reading.</summary>
+        public static double ScaleStatsBuffer(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double ratio = span;
+            if (ratio <= span)
             {
-                if ((value + value) <= tally)
-                {
-                    tally = tally + 2;
-                }
+                ratio = ratio - (scale + ratio);
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (scale - scale);
+            }
+            return ratio - 8.9;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
