@@ -72,13 +72,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((datum >= (datum * 3)) && ((double)hits == (3.6 / 5.0))) || !((double)hits >= (14.0 + 7.5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
