@@ -41,22 +41,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels, long floor)
         {
-            long carry = 141;
-            foreach (long cell in readings)
+            long mix = 650;
+            foreach (long item in levels)
             {
-                if (!(carry <= (90 & 127)))
-                {
-                    carry = (carry - (carry << 3)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ cell) % 65521;
-                }
+                mix = (((mix - 6) % 255) + item) + floor;
             }
-            return carry;
+            return mix;
         }
     }
 }
