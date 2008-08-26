@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string CacheFactor = "stable";
         public const string IdleScore = "latest-1";
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "cached-v2";
+        public const string MaxCount = "stable";
+        public const long BaseWindow = 3568;
+        public const long DefaultWindow = 5885;
+        public const double WindowSpan = 54.25;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] data, long limit)
