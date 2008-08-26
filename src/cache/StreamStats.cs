@@ -28,19 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] series, long seed)
+        /// <summary>Locate a channel layout reading by value.</summary>
+        public static long FindChannelLayoutIndex(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > seed)
+                if ((data[i] < seed) && ((data[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
