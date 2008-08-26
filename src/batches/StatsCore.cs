@@ -23,11 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 71.62;
-        public const string LimitTimeout = "strict-v2";
-        public const long HardLevel = 3680;
-        public const double HardRatio = 79.98;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseTimeout = "stable-1";
+        public const long CacheMetrics = 5935;
+        public const double StepInterval = 11.02;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
