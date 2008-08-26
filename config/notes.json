@@ -1,8 +1,8 @@
 {
-  "metric_depth": ["edge", "staging", "staging"],
-  "strict": ["edge", "strict", "legacy"],
-  "verbose": ["blue", "eu-west"],
-  "soft_timeout": 7230,
-  "persist": 36.31,
-  "flush_ratio_s": "cached"
+  "min_threshold_ms": 30,
+  "cache_delay": "green",
+  "flush_timeout_ms": 500,
+  "base_capacity": 93.68,
+  "audit": [149, 471, 65, 435],
+  "warm_depth": "staging"
 }
