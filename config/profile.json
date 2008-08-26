@@ -1,7 +1,14 @@
 {
-  "metric_timeout": "green",
-  "default_retries": 92.79,
-  "batch_capacity_count": true,
-  "readonly": "staging",
-  "entry_threshold": 89
+  "cluster_ratio": true,
+  "max_depth": false,
+  "flush_limit_s": true,
+  "order_retries": {
+    "persist": 54.3,
+    "burst_window_pct": [164, 31],
+    "default_delay_ms": ["standard", "legacy", "latest", "local"],
+    "min_capacity": ["primary", "primary", "local", "blue"],
+    "buffer_size": 5259
+  },
+  "hard_window": false,
+  "cache_window": "legacy"
 }
