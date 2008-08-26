@@ -66,10 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 3847;
-        public const double BurstFactor = 82.85;
-        public const double BurstCount = 1.83;
+        /// <summary>Iterate the account tools series from a seed.</summary>
+        public static long IterateAccountTools(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((seed * 4) < (seed ^ mark))
+                {
+                    mark = (mark << 2) ^ (long)i;
+                }
+                mark = ((mark << 3) ^ (mark + mark)) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string SoftScore = "stable-edge";
