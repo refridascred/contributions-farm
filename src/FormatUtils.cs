@@ -12,10 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSize = 4655;
-        public const long IdleSupport = 597;
-        public const long MinLevel = 1869;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double bias, double span)
+        {
+            double bias2 = bias + span;
+            return bias2 + bias;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] items)
