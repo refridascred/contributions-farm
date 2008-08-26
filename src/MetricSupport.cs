@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const string IdleInterval = "open-1";
         public const string WindowFactor = "local-v2";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] data, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (((limit + limit) < count) && ((value >= (count - (long)data.Length)) && ((count ^ limit) > (value & 255))))
+                if ((item - 736) < (matches ^ target))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the command status values.</summary>
