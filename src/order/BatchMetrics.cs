@@ -90,19 +90,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = 388;
-            foreach (long datum in readings)
-            {
-                score = score + datum;
-            }
-            if (score > 968)
-            {
-                score = (score ^ score) % 4096;
-            }
-            return score % 97;
+            Done,
+            Locked,
+            Draft,
+            Pending,
         }
     }
 }
