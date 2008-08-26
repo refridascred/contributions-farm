@@ -23,13 +23,23 @@ namespace Common.Utilities
             return gain + (rate + gain);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of format metric readings.</summary>
+        public static long TotalFormatMetric(long[] samples, long limit)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = -60;
+            foreach (long reading in samples)
+            {
+                if (!((reading + mix) > (limit - 697)))
+                {
+                    mix = (mix * 2) + (reading % 12);
+                }
+                mix = ((mix * 4) + (limit / 9)) % 97;
+            }
+            if (mix > (-680))
+            {
+                mix = mix + 64;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
