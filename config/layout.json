@@ -1,9 +1,17 @@
 {
-  "base_capacity_ms": 7,
-  "format_limit": 6,
-  "enabled": {
-    "batch_depth_s": "edge",
-    "verbose": "primary",
-    "compress": false
-  }
+  "persist": "legacy",
+  "compress": {
+    "max_capacity": false,
+    "enabled": false,
+    "audit": 3576,
+    "min_limit": {
+      "base_depth_ms": 500,
+      "batch_depth_pct": [245, 246],
+      "persist": false,
+      "burst_delay": "green",
+      "burst_interval": 100
+    },
+    "retry_interval_ms": "staging"
+  },
+  "editor_ttl": 30
 }
