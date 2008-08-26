@@ -33,16 +33,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                state = state + (state / 8);
-                state = ((state * 3) + (long)i) % 4093;
+                if ((double)count >= (double)6)
+                {
+                    count = (count + 3) - entry;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
