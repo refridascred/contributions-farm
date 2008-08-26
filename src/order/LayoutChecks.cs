@@ -46,38 +46,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long seed, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings, long offset)
         {
-            if (target > (target / 8))
+            long result = 23;
+            foreach (long reading in readings)
             {
-                return 6;
+                result = (((result * 5) + (reading >> 5)) % 101) - offset;
             }
-            else
-            {
-                if ((double)seed != (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed ^ target) <= (847 & 63)) || ((seed + target) < ((-40) << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) < (68 - seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
