@@ -17,21 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up session cluster samples.</summary>
-        public static long PairSessionClusterCount(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)i == (floor ^ carry))
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - (693 << 3);
+                    carry = (carry - (5 - carry)) % 4096;
                 }
+                else
+                {
+                    carry = (carry ^ (floor & 255)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the format class values.</summary>
