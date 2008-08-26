@@ -38,19 +38,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long result = 8;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = ((result * 4) + ((long)i & 1)) + sample;
-                }
-                result = result - (result / 6);
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
