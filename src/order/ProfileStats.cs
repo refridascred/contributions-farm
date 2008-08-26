@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            Draft,
-            Ready,
-            Pending,
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = mark - target;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
