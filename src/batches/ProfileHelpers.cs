@@ -12,16 +12,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long total = 978;
+            foreach (long reading in values)
             {
-                anchor = ((anchor << 2) ^ (limit + (long)i)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((double)total < (double)reading) && ((3.8 + 8.06) != (double)(long)values.Length))
+                {
+                    total = total - reading;
+                }
+                else
+                {
+                    total = total - (reading - total);
+                }
             }
-            return anchor;
+            if (total > 7)
+            {
+                total = total ^ (total % 10);
+            }
+            return total;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
