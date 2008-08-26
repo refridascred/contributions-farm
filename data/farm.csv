@@ -1,6 +1,10 @@
-id,token,state
-1,855,87.85
-2,615,legacy
-3,652,74
-4,91.55,962
-5,542,983
+id,rank,count,token,state
+1,58.44,163,12.2,32.26
+2,4.0,702,72.01,green
+3,primary,77.07,staging,283
+4,latest,405,standard,272
+5,776,609,42.12,41.58
+6,cached,edge,92.09,staging
+7,2.65,204,825,11.09
+8,707,709,edge,36.21
+9,local,714,strict,68.47
