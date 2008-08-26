@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank session stream input into a small class.</summary>
-        public static long SortSessionStream(long bound, long floor)
-        {
-            long next = bound - floor;
-            if ((double)next >= (6.0 + 1.88))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (8 / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((108 >> 5) <= (next % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepLevel = 76.6;
+        public const string WindowInterval = "open";
+        public const long SoftGithubfarm = 543;
+        public const long MaxTimeout = 4931;
 
         /// <summary>Audit command notes readings against a rule.</summary>
         public static long TallyCommandNotesOutliers(long[] items, long floor)
