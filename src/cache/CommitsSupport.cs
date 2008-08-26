@@ -24,22 +24,13 @@ namespace Common.Utilities
             return bias - (3.0 - scale);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] data)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (5.91 / 5.0))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the cluster status values.</summary>
