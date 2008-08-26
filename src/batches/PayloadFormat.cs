@@ -32,19 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] levels, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (value > target)
+                if (item <= floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Hold a order record.</summary>
