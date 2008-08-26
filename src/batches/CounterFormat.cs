@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
