@@ -12,9 +12,15 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-local}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
