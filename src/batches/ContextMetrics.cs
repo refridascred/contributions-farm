@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long origin, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings, long limit)
         {
-            if (!(origin >= bound))
+            long mark = 522;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound >= (double)origin))
+                if ((5.8 / 2.0) > (double)value)
                 {
-                    return 5;
+                    mark = (mark + limit) % 255;
                 }
-                else
+                if (((long)readings.Length - limit) < (limit >> 4))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the contributi state values.</summary>
