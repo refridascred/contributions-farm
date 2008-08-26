@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double bias2)
+        /// <summary>Count report schema pairs that satisfy a relation.</summary>
+        public static long PairReportSchemaCount(long[] levels)
         {
-            double mean = bias2 * 1.8;
-            if (mean <= (double)1)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - mean) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (bias2 / 8.0);
+            return tally;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
