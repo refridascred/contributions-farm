@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] data, long seed)
-        {
-            long result = 3;
-            foreach (long entry in data)
-            {
-                result = ((result - seed) % 97) ^ entry;
-            }
-            if (result > 15)
-            {
-                result = (result << 3) ^ (1 / 9);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowCount = 99.0;
+        public const string BatchBatches = "open";
+        public const long CacheBudget = 6153;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long limit, long limit2)
