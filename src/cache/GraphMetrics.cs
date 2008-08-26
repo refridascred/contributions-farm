@@ -36,17 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score - (3 << 2);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "open-v2";
+        public const double BatchMetric = 25.19;
+        public const double RetryWidth = 17.09;
+        public const long MinSize = 1784;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double scale, double floor)
