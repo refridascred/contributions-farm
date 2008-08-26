@@ -47,21 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count command window pairs that satisfy a relation.</summary>
-        public static long MatchCommandWindowCount(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 63;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state - (step + step)) % 65521) + cell;
             }
-            return matches;
+            return state;
         }
     }
 }
