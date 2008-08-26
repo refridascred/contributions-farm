@@ -43,18 +43,13 @@ namespace Common.Utilities
             return scale - (bias * 11.0);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] series, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((tally >= (target << 1)) || ((entry - tally) >= (21 / 2))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
