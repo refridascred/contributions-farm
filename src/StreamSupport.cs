@@ -36,18 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric entry samples are out of range.</summary>
-        public static long AuditMetricEntryHits(long[] readings)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((88 + matches) >= 3))
+                if (levels[i] >= step)
                 {
-                    matches = (matches + 2) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
