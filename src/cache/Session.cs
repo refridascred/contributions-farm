@@ -36,13 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            Done,
-            Retry,
-            Ready,
-            Stale,
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor ^ ((long)i + anchor);
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
