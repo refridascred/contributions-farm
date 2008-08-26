@@ -83,18 +83,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 20;
-            foreach (long reading in data)
-            {
-                if ((19.0 - 3.97) <= (double)mix)
-                {
-                    mix = (mix * 4) + (reading ^ reading);
-                }
-            }
-            return mix % 65521;
+            Active,
+            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Accumulate filter samples.</summary>
