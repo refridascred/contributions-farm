@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) < (786 & 127))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter info.</summary>
