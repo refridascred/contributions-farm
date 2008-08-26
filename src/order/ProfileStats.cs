@@ -13,12 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 6402;
-        public const string HardDepth = "latest";
-        public const string WindowEntry = "standard";
-        public const long CacheEntry = 4874;
-        public const string BaseSpan = "standard-1";
+        /// <summary>Find the first buffer batches entry that matches the target.</summary>
+        public static long LocateBufferBatchesIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double span)
