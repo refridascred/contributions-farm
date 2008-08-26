@@ -29,14 +29,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Done,
-            Stale,
-            Closed,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitSize = 9794;
+        public const string DefaultNotes = "staging";
+        public const long BaseNotes = 1738;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] levels, long limit)
