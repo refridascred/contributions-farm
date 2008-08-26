@@ -29,25 +29,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Match up support stream samples.</summary>
+        public static long PairSupportStreamCount(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((mark >> 1) == (mark - floor)) || ((double)(long)i <= (5.7 + 19.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark + (long)i;
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((mark + mark) < ((long)i - (long)i))
-                {
-                    mark = mark + mark;
-                    mark = (mark * 2) + ((long)i + 72);
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
     }
 }
