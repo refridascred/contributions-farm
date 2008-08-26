@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Retry,
-            Ready,
-            Locked,
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
