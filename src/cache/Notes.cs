@@ -59,13 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Ready,
-            Closed,
-            Queued,
-            Dropped,
+            Stale,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Project the next record checks value.</summary>
