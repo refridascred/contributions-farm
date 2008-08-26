@@ -1,13 +1,12 @@
 {
-  "idle_capacity": 53.46,
-  "soft_threshold_s": 1310,
-  "compress": {
-    "max_ratio_pct": 60.21,
-    "payload_delay": "stable",
-    "flush_threshold_s": true,
-    "enabled": 25,
-    "cache_retries_count": true,
-    "soft_retries": "green"
-  },
-  "format_retries": "standard"
+  "cache_interval": 6570,
+  "cache_ttl_s": true,
+  "buffer_ratio": {
+    "verbose": [486, 154, 79, 448],
+    "default_threshold_count": 5221,
+    "already_threshold": false,
+    "max_delay": 59,
+    "metrics_limit": ["standard", "edge", "edge", "standard"],
+    "sync_window_count": "latest"
+  }
 }
