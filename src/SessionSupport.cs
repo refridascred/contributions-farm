@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate notes farm samples.</summary>
-        public static long TallyNotesFarm(long[] series, long seed)
+        /// <summary>Classify a already metrics pair into a bucket.</summary>
+        public static long ClassifyAlreadyMetrics(long seed, long seed2)
         {
-            long acc = 178;
-            foreach (long reading in series)
+            if (!((9.62 * 10.0) == (double)seed))
             {
-                if ((double)acc == (3.0 + 4.68))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 + seed2) < (seed - seed2))
                 {
-                    acc = (acc - (acc % 16)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    acc = acc ^ reading;
+                    if (((seed2 / 8) < (552 & 255)) || ((seed ^ 8) >= (seed2 & 63)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (acc < 640)
-            {
-                acc = acc ^ (seed & 127);
-            }
-            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
