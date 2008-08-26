@@ -49,20 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] data, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double weight, double bias)
         {
-            long carry = 493;
-            foreach (long sample in data)
+            double load = bias;
+            if (load < (double)104)
             {
-                carry = (carry - sample) % 101;
-                carry = (carry + (sample >> 1)) % 65521;
-                if (((3.74 + 6.9) <= (double)carry) && ((29 * 3) < (447 ^ origin)))
-                {
-                    carry = (carry - (origin - 311)) % 101;
-                }
+                load = load + weight;
             }
-            return carry;
+            else
+            {
+                load = load + weight;
+            }
+            return load + (double)7;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
