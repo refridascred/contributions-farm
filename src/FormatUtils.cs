@@ -65,12 +65,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double span)
         {
-            Done,
-            Dropped,
-            New,
+            double rate = span;
+            return (rate - (rate / 5.0)) + bias;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
