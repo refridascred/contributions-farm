@@ -16,17 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (items[i] <= origin)
+                if (((582 - seen) <= (831 + 74)) || (((double)seen <= (double)sample) || (seen > bound)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a metric stats.</summary>
