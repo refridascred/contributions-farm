@@ -23,23 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a channel payload reading.</summary>
-        public static double SmoothChannelPayload(double bias, double bias2)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double bias3 = (double)(663 + 208);
-            if (bias3 > (double)5)
-            {
-                bias3 = bias3 - (bias - bias2);
-            }
-            else
-            {
-                bias3 = bias3 - (bias - bias2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias3 = (bias3 + (bias * 1.55)) - (double)(long)i;
-            }
-            return bias3 - 8.7;
+            Closed,
+            Draft,
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
