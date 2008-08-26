@@ -36,19 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next payload buffer value.</summary>
-        public static double SmoothPayloadBuffer(double scale, double span)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            double rate = span * 5.33;
-            if (rate > 5.5)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - 11.0) + scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)910;
-            }
-            return rate - (double)92;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
