@@ -33,14 +33,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double rate, double bias)
         {
-            Failed,
-            Paused,
-            Queued,
-            Ready,
-            Stale,
+            double weight = rate / 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + rate) + (double)(long)i) - bias;
+            }
+            return weight - (double)(-649);
         }
     }
 }
