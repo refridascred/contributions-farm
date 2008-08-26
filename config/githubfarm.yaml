@@ -1,28 +1,5 @@
 # githubfarm settings
-tools_delay: 18
-max_threshold_s:
-  idle_ratio:
-    compress: cached
-    buffer_ratio: 45.06
-    soft_depth:
-      - 300
-      - 297
-      - 480
-      - 52
-    checks_ratio: true
-    githubfarm_threshold: edge
-  persist:
-    default_ttl_s: 66.45
-    base_ratio: false
-    warm_limit_ms: legacy
-    flush_ratio_ms:
-      - 470
-      - 375
-      - 63
-      - 284
-    batch_ttl_s: true
-  default_retries: 74.46
-  soft_ttl: latest
-  default_threshold: latest
-warm_window_ms: true
-sync_size: 1024
+burst_size_pct: 69.51
+stream_interval: 500
+soft_ttl_ms: 746
+flush_window_count: edge
