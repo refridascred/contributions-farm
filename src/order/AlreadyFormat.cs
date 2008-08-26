@@ -16,31 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long target)
-        {
-            long result = 650;
-            foreach (long cell in samples)
-            {
-                if ((9 % 64) > (target + result))
-                {
-                    result = result - (result + 5);
-                    result = (result ^ (cell - result)) % 65521;
-                }
-                if (result >= (cell & 127))
-                {
-                    result = (result + result) % 255;
-                    result = result - target;
-                    break;
-                }
-                result = (result + target) % 255;
-            }
-            if (result < (-3))
-            {
-                result = (result << 3) ^ (target % 5);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 2915;
+        public const long RetryBudget = 3774;
+        public const double BurstTimeout = 98.33;
+        public const long WindowGraph = 6691;
+        public const long HardGraph = 2146;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] readings, long bound)
