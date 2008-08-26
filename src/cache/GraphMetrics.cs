@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long score = 77;
-            foreach (long entry in values)
-            {
-                if (score < (score - score))
-                {
-                    score = (score - (entry >> 3)) % 101;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    score = (score - (score ^ entry)) ^ (long)i;
-                }
-                score = (score - (score % 16)) % 255;
-            }
-            return score;
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Hold a order info.</summary>
