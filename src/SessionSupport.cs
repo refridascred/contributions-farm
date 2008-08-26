@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit checks buffer readings against a rule.</summary>
+        public static long TallyChecksBufferHits(long[] samples, long limit)
         {
-            Closed,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen + item) == (item + item))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
