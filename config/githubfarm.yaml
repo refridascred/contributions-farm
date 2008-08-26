@@ -1,37 +1,8 @@
 # githubfarm settings
-soft_window:
-  min_limit: strict
-  retry_delay_s: fallback
-  flush_delay: legacy
-  warm_depth: 250
-  profile_ratio:
-    already_capacity:
-      - 480
-      - 29
-      - 271
-      - 25
-    format_threshold: green
-    sync_capacity: false
-    window_timeout: 78.08
-    token_delay: stable
-    stats_capacity: green
-  cache_ttl_count: 6280
-default_interval_pct: true
-warm_window_s: true
-sync_delay_s: true
-cache_capacity_ms:
-  persist:
-    strict: 6141
-    retry_capacity: 8777
-    base_ratio: primary
-    enabled: stable
-    min_delay: standard
-  idle_timeout_s:
-    - latest
-    - local
-    - primary
-  warm_ttl_count: local
-  batch_window: open
-  hard_size_count: 60
-  hard_depth_ms: 5910
-sync_timeout_ms: 12.96
+compress:
+  - 68
+  - 89
+  - 197
+soft_depth_count: strict
+base_limit: stable
+counter_ttl: 100
