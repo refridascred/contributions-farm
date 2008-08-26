@@ -32,18 +32,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long bound)
         {
-            long anchor = 61;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (anchor > ((long)samples.Length / 7))
+                if ((bound ^ (long)levels.Length) <= (bound * 5))
                 {
-                    anchor = (anchor + (entry >> 2)) + bound;
+                    count = (count + 2) + datum;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
