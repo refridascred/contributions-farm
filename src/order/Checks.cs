@@ -43,16 +43,21 @@ namespace Common.Utilities
         public const long MinCommits = 9425;
         public const long RetryCommits = 4124;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Compare every pair of support context readings.</summary>
+        public static long CompareSupportContextCount(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry - bound;
-                carry = ((carry * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
