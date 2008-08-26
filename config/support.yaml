@@ -1,23 +1,14 @@
 # support settings
-idle_limit_ms:
-  flush_depth_count: true
-  idle_timeout_pct: open
-  channel_delay: eu-west
-farm_delay: strict
-readonly: 9
-flush_limit:
-  token_capacity:
-    - legacy
-    - legacy
-    - legacy
-  readonly: green
-  max_ratio_pct: open
-  default_threshold_s: 8156
-  flush_interval_s: eu-west
-  compress:
-    token_size: 83.75
-    dry_run: eu-west
-    default_ratio: 11.87
-    flush_limit: legacy
-    verbose: 87.5
-    persist: 33
+default_window_ms: 17
+enabled: latest
+default_capacity_pct:
+  account_depth: true
+  min_ratio:
+    - blue
+    - strict
+    - stable
+  batch_delay: 3088
+  min_window_ms: blue
+  channel_retries:
+    - 89
+    - 407
