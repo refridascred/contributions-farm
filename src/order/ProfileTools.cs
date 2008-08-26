@@ -50,32 +50,11 @@ namespace Common.Utilities
             return bias + (weight - weight);
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long seed, long target)
-        {
-            if (((double)target >= (2.58 - 15.0)) && ((seed & 15) == (target << 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed >> 1) < (seed + 683))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((((-96) + target) < seed) && ((target - seed) <= (target ^ 214)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepScore = 6549;
+        public const long IdleContributi = 3206;
+        public const string LimitTimeout = "fallback-v2";
+        public const string CacheWidth = "standard-1";
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] series, long origin)
