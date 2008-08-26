@@ -1,6 +1,31 @@
 # githubfarm settings
-sync_size_ms:
-  - 405
-  - 422
-poll_depth: 59.88
-entry_window: staging
+cache_window_ms:
+  min_timeout_pct:
+    retry_window: blue
+    poll_timeout: true
+    batch_interval_pct: 96.13
+    min_limit_count:
+      - eu-west
+      - standard
+      - green
+      - standard
+    profile_limit: 97.88
+    min_depth_count: 88.94
+  persist: 82
+  retry_threshold_ms: true
+  hard_delay_ms: fallback
+  cache_window_pct: latest
+cache_retries_ms: 20
+batch_ttl: false
+persist:
+  burst_depth_s: 500
+  compress:
+    - latest
+    - local
+  min_limit:
+    - standard
+    - cached
+    - fallback
+    - fallback
+  idle_depth_ms: 60
+  hard_depth: 30
