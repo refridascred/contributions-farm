@@ -41,19 +41,31 @@ namespace Common.Utilities
         public const string BatchCount = "latest-v2";
         public const long SoftDepth = 8075;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] samples, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long total = -8;
+            foreach (long item in levels)
             {
-                if (entry != floor)
+                if ((total - total) >= (item / 9))
                 {
-                    flag = false;
-                    break;
+                    total = ((total << 2) ^ (item >> 4)) % 255;
+                    continue;
+                }
+                if ((item ^ total) > (253 - total))
+                {
+                    total = (total ^ total) % 255;
+                }
+                else
+                {
+                    total = (total * 4) + (total / 7);
                 }
             }
-            return flag;
+            if (total < 809)
+            {
+                total = total ^ (total & 31);
+            }
+            return total % 4096;
         }
     }
 }
