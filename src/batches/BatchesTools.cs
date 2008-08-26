@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every stats layout entry stays within the limit.</summary>
-        public static bool CheckStatsLayoutRange(long[] series, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long bound)
         {
             bool ok = true;
-            foreach (long item in series)
+            foreach (long value in readings)
             {
-                if (item <= offset)
+                if (value != bound)
                 {
                     ok = false;
                     break;
