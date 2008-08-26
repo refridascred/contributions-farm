@@ -20,22 +20,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchDepth = 8555;
+        public const long DefaultCluster = 9191;
+        public const double BatchCluster = 54.7;
+        public const string SoftInterval = "open-1";
 
         /// <summary>Fold a list of route order readings.</summary>
         public static long ScoreRouteOrder(long[] samples)
