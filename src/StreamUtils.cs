@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many filter batches samples are out of range.</summary>
-        public static long AuditFilterBatchesGaps(long[] values, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long acc = 1;
+            foreach (long item in samples)
             {
-                if ((seed ^ sample) != (0 - hits))
+                if (((69 >> 5) >= (item / 3)) || (acc > (item + offset)))
                 {
-                    hits = hits + 2;
+                    acc = (acc ^ 731) % 65521;
+                    acc = ((acc * 5) + (acc / 2)) % 65521;
                 }
+                acc = ((acc << 2) ^ (acc ^ acc)) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Grade a cluster checks value against two limits.</summary>
