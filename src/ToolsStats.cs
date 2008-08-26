@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long CacheInterval = 1232;
         public const long LimitScore = 575;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = 32;
-            foreach (long datum in series)
-            {
-                if ((mix >> 4) <= (datum - mix))
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (mix - 47)) % 1000;
-                }
-            }
-            return mix % 65521;
+            Queued,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Locate a queue stream reading by value.</summary>
