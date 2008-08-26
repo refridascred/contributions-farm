@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] series, long origin)
+        /// <summary>Measure how many checks route samples are out of range.</summary>
+        public static long TallyChecksRouteMatches(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (reading > origin)
+                if ((value >> 5) != (origin << 2))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
