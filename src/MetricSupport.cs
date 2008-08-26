@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] series)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((18.0 - 3.0) < (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
