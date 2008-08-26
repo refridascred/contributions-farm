@@ -68,28 +68,35 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank layout schema input into a small class.</summary>
-        public static long ClassifyLayoutSchema(long offset, long offset2)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long seed, long origin)
         {
-            if ((offset ^ (-935)) >= (offset / 7))
+            if ((138 * 2) <= (origin << 1))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((offset * 3) <= offset)
+                if ((4.9 > (double)origin) && ((double)seed > (7.1 + 9.3)))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if (((offset2 << 1) < offset) || ((double)offset != (0.21 - 19.0)))
+                    if (!((8.18 - 6.6) >= (double)origin))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 0;
+                        if (!((seed - origin) == (seed + seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
