@@ -50,15 +50,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long score = 937;
+            foreach (long sample in items)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((score - 66) > 223)
+                {
+                    score = (score ^ (floor << 1)) ^ sample;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
