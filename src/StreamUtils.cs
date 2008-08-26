@@ -48,22 +48,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 4.95;
+        public const long BurstWidth = 7589;
+        public const string IdleStream = "alpha-v2";
+        public const long MinStream = 313;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
