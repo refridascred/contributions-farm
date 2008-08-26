@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const long MinQueue = 2178;
         public const double BurstInterval = 10.99;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double gain, double floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            double weight = gain;
-            if (weight < (weight * 15.0))
+            double rate = bias;
+            if (rate > (double)70)
             {
-                weight = weight + gain;
+                rate = (rate - (double)8) - scale;
             }
-            else
-            {
-                weight = weight - (double)538;
-            }
-            return weight - floor;
+            return rate + 18.0;
         }
 
         /// <summary>Scale a cache layout figure with a bias.</summary>
