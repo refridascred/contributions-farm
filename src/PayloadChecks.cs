@@ -74,19 +74,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long seed)
         {
-            double weight = scale * 8.0;
-            if (weight > (weight + 6.1))
+            long carry = 554;
+            foreach (long value in series)
             {
-                weight = weight + scale;
+                carry = ((carry << 2) ^ value) % 1000;
+                if (!(seed < 5))
+                {
+                    carry = (carry * 5) + carry;
+                }
+                carry = (carry + (value ^ seed)) % 101;
             }
-            for (int i = 0; i < 6; i++)
+            if (carry < 7)
             {
-                weight = (weight + (offset + weight)) + (double)(long)i;
+                carry = ((carry << 3) ^ (seed - carry)) % 1000;
             }
-            return weight - (double)820;
+            return carry;
         }
     }
 }
