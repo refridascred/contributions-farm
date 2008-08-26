@@ -51,18 +51,15 @@ namespace Common.Utilities
         public const long MinCommits = 9490;
         public const double StepCount = 36.27;
 
-        /// <summary>Measure how many layout session samples are out of range.</summary>
-        public static long CountLayoutSessionOutliers(long[] readings, long seed)
+        /// <summary>Digest a series of report batch entries.</summary>
+        public static long TotalReportBatch(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long carry = 8;
+            foreach (long value in values)
             {
-                if ((double)hits < (double)803)
-                {
-                    hits = ((hits + 3) - reading) + seed;
-                }
+                carry = carry ^ (value - floor);
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
