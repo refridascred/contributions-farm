@@ -21,19 +21,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] readings)
         {
-            bool flag = true;
+            long tally = 0;
             foreach (long value in readings)
             {
-                if (value < step)
+                if (((5.4 / 9.0) < (double)value) || ((tally + value) > 108))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
