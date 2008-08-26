@@ -14,18 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many stream batch samples are out of range.</summary>
-        public static long MeasureStreamBatchHits(long[] levels)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= (hits + datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
