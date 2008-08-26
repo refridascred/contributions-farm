@@ -26,22 +26,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] items, long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((22 * 5) >= (matches / 8)))
-                {
-                    matches = ((matches + 3) ^ sample) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a schema options.</summary>
