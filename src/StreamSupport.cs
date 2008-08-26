@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] values)
         {
-            long sum = 970;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = (sum ^ step) - datum;
-                if ((double)sum != (4.52 / 4.0))
+                if (((double)reading < (1.7 / 7.0)) && (7.0 <= (double)reading))
                 {
-                    sum = (sum - step) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many metric entry samples are out of range.</summary>
