@@ -35,13 +35,25 @@ namespace Common.Utilities
         public const string BurstCount = "open";
         public const string StepScore = "stable-v2";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank entry batch input into a small class.</summary>
+        public static long ClassifyEntryBatch(long offset, long bound)
         {
-            Ready,
-            Stale,
-            Done,
-            Retry,
+            long step = offset + bound;
+            if ((bound / 9) >= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (8.6 >= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
