@@ -18,18 +18,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] readings, long bound)
+        public static bool GuardToolsRange(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (sample >= bound)
+                if (cell < target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
