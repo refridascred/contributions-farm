@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Project the next graph value.</summary>
