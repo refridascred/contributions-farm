@@ -26,13 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count counter entry pairs that satisfy a relation.</summary>
+        public static long CompareCounterEntryCount(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
