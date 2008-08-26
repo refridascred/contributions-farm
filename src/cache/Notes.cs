@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstFactor = "cached";
-        public const long MaxRatio = 4270;
-        public const long StepCommand = 4321;
-        public const long WindowCommand = 4088;
+        /// <summary>Count the session metric entries that pass the check.</summary>
+        public static long TallySessionMetricOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (767 > step)
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up cache batches samples.</summary>
         public static long CompareCacheBatchesCount(long[] values)
