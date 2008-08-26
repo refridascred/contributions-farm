@@ -18,12 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            Paused,
-            Active,
-            Locked,
+            long total = -4;
+            foreach (long reading in levels)
+            {
+                total = (total * 2) + reading;
+                if (reading >= (-30))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
