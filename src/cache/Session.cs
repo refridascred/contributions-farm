@@ -38,11 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double span)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long offset)
         {
-            double rate = span / 3.0;
-            return (rate + (double)960) + scale;
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
