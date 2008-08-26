@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((long)i >= ((-1) + limit)))
-                {
-                    mark = mark + limit;
-                }
-                if ((double)mark < 9.7)
-                {
-                    mark = mark + 6;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            double load = floor / 2.0;
+            return (load + (floor * 2.48)) + ratio;
         }
 
         /// <summary>Accumulate account samples.</summary>
