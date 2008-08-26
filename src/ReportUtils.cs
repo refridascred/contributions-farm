@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstBudget = 6970;
-        public const double MinRatio = 68.03;
-        public const long BurstProfile = 8648;
-        public const long IdleSpan = 4953;
-        public const string RetryWidth = "primary";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count >> 2) == (count - entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] items, long bound)
