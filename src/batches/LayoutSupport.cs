@@ -41,11 +41,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 2889;
-        public const long RetryStream = 3178;
-        public const string DefaultRatio = "legacy";
-        public const long BaseStream = 1927;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] levels, long step)
