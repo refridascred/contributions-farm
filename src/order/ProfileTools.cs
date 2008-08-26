@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((57 - entry) < (entry / 8))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 8459;
+        public const long RetryBudget = 9250;
+        public const double BurstBudget = 91.51;
+        public const long StepGraph = 2119;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] readings, long offset)
