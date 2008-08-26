@@ -20,10 +20,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "legacy";
-        public const long BaseCount = 4793;
-        public const long MinBudget = 8436;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] readings, long origin)
