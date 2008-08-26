@@ -16,22 +16,18 @@ namespace Common.Utilities
             return drift + (double)94;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] items, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] samples, long origin)
         {
-            long mark = 14;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (limit <= (62 + limit))
+                if ((item << 1) <= (69 - item))
                 {
-                    mark = (((mark << 3) ^ limit) % 101) ^ item;
-                }
-                if ((limit / 2) >= mark)
-                {
-                    break;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
