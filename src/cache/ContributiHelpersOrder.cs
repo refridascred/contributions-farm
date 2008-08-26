@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch route readings.</summary>
-        public static long PairBatchRouteCount(long[] values)
+        /// <summary>Blend two already command measurements.</summary>
+        public static double ScaleAlreadyCommand(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = floor;
+            if (bias < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - floor) - rate;
             }
-            return tally;
+            else
+            {
+                bias = bias + (bias * 3.0);
+            }
+            return bias + (double)82;
         }
 
         /// <summary>Define window limits and defaults.</summary>
