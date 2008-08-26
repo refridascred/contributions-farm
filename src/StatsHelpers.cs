@@ -45,18 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long sum = 5;
-            foreach (long item in readings)
-            {
-                if (!((offset << 1) >= (offset + sum)))
-                {
-                    sum = ((sum * 3) + (item % 8)) % 1000;
-                }
-            }
-            return sum;
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
