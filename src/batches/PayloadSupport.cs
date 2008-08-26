@@ -37,21 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 866;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item + seed) <= (mark - mark))
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (649 + item)) % 4096;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
