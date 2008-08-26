@@ -1,8 +1,5 @@
 {
-  "batches_ttl": 100,
-  "batch_ttl_s": "primary",
-  "batch_size": ["eu-west", "green", "open"],
-  "window_retries": "open",
-  "default_window_pct": true,
-  "layout_depth": 250
+  "hard_capacity": [128, 111, 47],
+  "dry_run": ["standard", "strict"],
+  "enabled": "legacy"
 }
