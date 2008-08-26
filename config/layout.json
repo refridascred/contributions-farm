@@ -1,6 +1,8 @@
 {
-  "batch_delay": 8,
-  "command_size": "blue",
-  "max_delay_count": 60.1,
-  "cluster_limit": ["stable", "stable", "local", "green"]
+  "checks_window": "fallback",
+  "base_threshold_pct": "open",
+  "hard_interval_pct": false,
+  "default_retries": [331, 473, 98, 123],
+  "warm_ratio_s": 1024,
+  "soft_size_count": 95.73
 }
