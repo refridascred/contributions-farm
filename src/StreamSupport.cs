@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "local-v2";
-        public const long MaxSpan = 9874;
-        public const string IdleSize = "strict-v2";
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double SmoothNotes(double rate, double bias)
