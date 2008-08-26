@@ -44,10 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchInterval = "staging-v2";
-        public const long BaseContributi = 8633;
-        public const string CacheContributi = "cached-1";
-        public const long BatchSize = 6405;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+        }
     }
 }
