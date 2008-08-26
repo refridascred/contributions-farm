@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "cached";
-        public const long BurstLevel = 4927;
-        public const long IdleCommits = 3695;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
+        {
+            long mix = 6;
+            foreach (long value in levels)
+            {
+                mix = (mix - mix) ^ value;
+            }
+            return mix;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesOutliers(long[] data, long target)
