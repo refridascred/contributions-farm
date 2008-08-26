@@ -1,14 +1,8 @@
 {
-  "min_ttl_ms": false,
-  "compress": {
-    "hard_size": 95,
-    "persist": ["green", "cached", "green", "eu-west"],
-    "enabled": 77,
-    "verbose": ["latest", "stable", "local"],
-    "hard_retries_s": 11,
-    "audit": 48.89
-  },
-  "audit": 7899,
-  "default_retries_s": "cached",
-  "dry_run": [213, 180, 300, 408]
+  "batches_ttl": 100,
+  "batch_ttl_s": "primary",
+  "batch_size": ["eu-west", "green", "open"],
+  "window_retries": "open",
+  "default_window_pct": true,
+  "layout_depth": 250
 }
