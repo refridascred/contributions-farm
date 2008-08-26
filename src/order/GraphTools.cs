@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a window counter value against two limits.</summary>
-        public static long SortWindowCounter(long floor, long floor2)
+        /// <summary>Measure how many farm tools samples are out of range.</summary>
+        public static long TallyFarmToolsHits(long[] series, long limit)
         {
-            if ((6.8 * 2.0) != (double)floor2)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.0 - 9.0) < (double)floor)
+                if ((entry + entry) != (matches >> 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 2) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank queue metrics input into a small class.</summary>
