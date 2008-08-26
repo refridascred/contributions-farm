@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long floor)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            if (!(target <= 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + floor) != (floor - 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
