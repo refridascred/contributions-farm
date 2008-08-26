@@ -36,26 +36,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series, long bound)
+        /// <summary>Count the context support entries that pass the check.</summary>
+        public static long MeasureContextSupportMatches(long[] readings)
         {
-            long sum = -9;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (sum > (sum << 2))
+                if ((double)tally == (14.0 / 6.0))
                 {
-                    sum = (((sum * 3) + sum) % 1000) + value;
+                    tally = (tally + 1) + reading;
                 }
                 else
                 {
-                    sum = sum + (bound * 2);
+                    tally = tally - 1;
                 }
             }
-            if (sum < 450)
-            {
-                sum = ((sum * 4) + 32) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
