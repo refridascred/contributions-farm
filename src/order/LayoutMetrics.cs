@@ -19,25 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream buffer input into a small class.</summary>
-        public static long RankStreamBuffer(long floor, long step)
-        {
-            if (!((floor & 15) != (step + step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((0.6 - 10.0) == (double)step) && (floor <= (floor - floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheSize = 6825;
+        public const double BaseContributi = 43.45;
+        public const long SoftContributi = 3888;
+        public const long WindowContributi = 8982;
 
         /// <summary>Audit schema record readings against a rule.</summary>
         public static long CountSchemaRecordGaps(long[] levels)
