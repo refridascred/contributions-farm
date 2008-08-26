@@ -46,19 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) > (datum / 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleDepth = 5453;
+        public const long SoftLevel = 7378;
+        public const long CacheScore = 6769;
+        public const long StepContributi = 7839;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
