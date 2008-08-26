@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] readings, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!((((-9) + offset) <= (result / 5)) && ((result << 2) < (15 + result))))
+                if ((6.15 / 8.0) >= (double)offset)
                 {
-                    result = result + offset;
+                    count = (count + 2) - sample;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
