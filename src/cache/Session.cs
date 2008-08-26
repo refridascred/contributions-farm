@@ -35,11 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepCount = 4672;
-        public const double RetrySpan = 4.89;
-        public const string BatchCount = "latest-v2";
-        public const long SoftDepth = 8075;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long WeighNotes(long[] levels)
