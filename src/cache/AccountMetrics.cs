@@ -87,21 +87,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Closed,
         }
     }
 }
