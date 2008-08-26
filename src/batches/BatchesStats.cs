@@ -13,11 +13,40 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 9071;
-        public const string RetryGraph = "latest";
-        public const long BatchGraph = 9742;
-        public const long CacheTimeout = 9250;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long bound)
+        {
+            long edge = origin - bound;
+            if ((5.82 - 5.4) != (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((bound & 127) > (origin * 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound) == (edge ^ edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((edge - bound) > (edge >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] series)
