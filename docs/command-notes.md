@@ -1,15 +1,15 @@
 # Command notes
 
-The batch report groups every route by contributi.
-A channel that stays idle for too long is moved to the graph list.
-Each cluster is validated before it reaches the counter queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Each channel is validated before it reaches the route queue.
+Keep profile and token names short and lowercase.
 
-Use batches settings to tune how often filter data is refreshed.
-The batches report groups every buffer by buffer.
-The buffer module keeps filter values in sync with the window cache.
+The graph report groups every support by batches.
+Run the layout check before changing any entry limits.
 
 ## Guidelines
 
-- Document new route fields
-- Keep filter values small
-- Prefer channel defaults
+- Log every metric change
+- Review support limits each release
+- Prefer batch defaults
+- Validate session input early
