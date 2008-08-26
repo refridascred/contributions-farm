@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of notes channel readings.</summary>
-        public static long WeighNotesChannel(long[] readings, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long state = 746;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                state = (state << 3) ^ entry;
+                if ((8 - seen) <= (entry + entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (state < 5)
-            {
-                state = (state - offset) % 255;
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
