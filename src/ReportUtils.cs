@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Failed,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstBudget = 6970;
+        public const double MinRatio = 68.03;
+        public const long BurstProfile = 8648;
+        public const long IdleSpan = 4953;
+        public const string RetryWidth = "primary";
 
         /// <summary>Measure how many stats graph samples are out of range.</summary>
         public static long MeasureStatsGraphOutliers(long[] readings)
