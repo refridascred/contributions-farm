@@ -23,15 +23,11 @@ namespace Common.Utilities
         public const long BatchFactor = 3052;
         public const long RetryCommits = 6951;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double span)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double scale = 18.0;
-            if (scale <= (double)697)
-            {
-                scale = scale + (span + gain);
-            }
-            return scale + scale;
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of command entries.</summary>
