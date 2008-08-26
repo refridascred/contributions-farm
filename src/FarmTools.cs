@@ -36,31 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics already pair into a bucket.</summary>
-        public static long BucketMetricsAlready(long offset, long step)
-        {
-            if (231 >= (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + offset) > 7)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset >= 9.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 0.93;
+        public const double SoftProfile = 31.87;
+        public const long RetryRatio = 9346;
+        public const string HardProfile = "alpha-v2";
     }
 }
