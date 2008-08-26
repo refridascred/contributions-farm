@@ -50,18 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] data, long offset)
+        /// <summary>Measure how many route cluster samples are out of range.</summary>
+        public static long TallyRouteClusterHits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((offset >> 5) >= (seen - offset))
+                if ((count + count) > (count / 5))
                 {
-                    seen = (seen + 2) ^ datum;
+                    count = ((count + 3) + reading) + step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine record commits values into a single score.</summary>
