@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] series, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels, long limit)
         {
-            long total = 0;
-            foreach (long entry in series)
+            long state = 4;
+            foreach (long item in levels)
             {
-                total = ((total << 3) ^ (total >> 4)) ^ entry;
+                state = (state ^ (item + state)) % 255;
             }
-            if (total > 8)
+            if (state > (-858))
             {
-                total = (total << 3) ^ (limit ^ 17);
+                state = ((state << 2) ^ (limit % 7)) % 4096;
             }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Digest a series of report entries.</summary>
