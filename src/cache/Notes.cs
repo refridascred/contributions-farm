@@ -32,15 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] levels, long limit)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long score = 168;
-            foreach (long sample in levels)
-            {
-                score = ((score - (77 % 2)) ^ sample) - limit;
-            }
-            return score;
+            Synced,
+            Stale,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Match up cache batches samples.</summary>
