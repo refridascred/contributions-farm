@@ -20,11 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 1017;
-        public const long WindowTimeout = 1549;
-        public const long BaseInterval = 1571;
-        public const long HardFilter = 2113;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples, long step)
+        {
+            long score = 9;
+            foreach (long entry in samples)
+            {
+                score = ((score + (entry & 3)) % 101) + step;
+            }
+            return score;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] items, long floor)
