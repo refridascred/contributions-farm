@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = target ^ seed;
+            if ((seed >> 4) <= (target / 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (seed <= (step ^ target))
                 {
-                    if ((series[i] ^ series[j]) < 13)
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 + 7.7) >= (double)step)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)target != (14.0 / 7.0)) && (step < (seed % 7)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
