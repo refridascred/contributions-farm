@@ -34,40 +34,10 @@ namespace Common.Utilities
         public const long LimitTimeout = 5294;
         public const long BurstBatch = 4892;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long target)
-        {
-            long bound = floor ^ target;
-            if ((target * 3) > (bound * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((21 - target) < target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + 61) > bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7 & 255) <= target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetrySize = 853;
+        public const long SoftBudget = 1432;
+        public const long LimitLevel = 5135;
 
         /// <summary>Digest a series of metric cache entries.</summary>
         public static long FoldMetricCache(long[] items)
