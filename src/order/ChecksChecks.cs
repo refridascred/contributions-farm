@@ -25,26 +25,18 @@ namespace Common.Utilities
         public const double CacheCount = 42.31;
         public const long WindowToken = 4320;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] items)
         {
-            long mix = -832;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((offset % 2) > mix) || ((14.0 + 3.8) >= (double)offset))
+                if ((4.5 - 16.0) > (double)entry)
                 {
-                    mix = (mix ^ (mix << 1)) - item;
-                }
-                else
-                {
-                    mix = (mix - (offset / 9)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (mix > 13)
-            {
-                mix = mix + (mix - offset);
-            }
-            return mix;
+            return hits;
         }
     }
 }
