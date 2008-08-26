@@ -51,11 +51,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double gain, double bias)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double ratio = (4.96 / 8.0) / 9.0;
-            return (ratio - (ratio - bias)) + gain;
+            New,
+            Pending,
+            Dropped,
+            Queued,
+            Paused,
         }
     }
 }
