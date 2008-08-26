@@ -20,13 +20,24 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Classify a window batches pair into a bucket.</summary>
+        public static long RankWindowBatches(long bound, long origin)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            if (((27 >> 2) >= origin) && (origin <= (origin + bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin - origin) <= 96)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next layout value.</summary>
