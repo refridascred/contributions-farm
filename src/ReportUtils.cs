@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples, long target)
         {
-            Synced,
-            Retry,
-            Locked,
-            Pending,
+            long mark = 0;
+            foreach (long item in samples)
+            {
+                mark = ((mark << 2) ^ item) - target;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
