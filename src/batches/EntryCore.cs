@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long LimitEntry = 7387;
         public const long BaseWidth = 8398;
 
-        /// <summary>Measure how many graph checks samples are out of range.</summary>
-        public static long TallyGraphChecksHits(long[] values)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double bias = 6.0 * 7.8;
+            for (int i = 0; i < 8; i++)
             {
-                if ((3.8 / 2.0) >= (double)sample)
-                {
-                    matches = matches + 2;
-                }
+                bias = ((bias - floor) + (double)(long)i) - weight;
             }
-            return matches;
+            return bias + (double)7;
         }
 
         /// <summary>Scale a session notes figure with a bias.</summary>
