@@ -1,9 +1,25 @@
 # entry settings
-audit: 76.77
-entry_retries:
-  - blue
-  - fallback
-  - eu-west
-order_window:
-  - legacy
-  - primary
+soft_delay_s: 60
+cache_ratio_ms:
+  min_depth_ms:
+    base_size_s:
+      - eu-west
+      - cached
+    sync_limit_pct: 30
+    audit: 12.61
+    max_timeout_count: green
+  max_depth_count:
+    token_timeout: staging
+    profile_timeout: 500
+    dry_run: 60.93
+    layout_retries: true
+  commits_limit: true
+  warm_retries_count:
+    compress: open
+    max_window_count: green
+    sync_retries: 47.67
+    retry_ratio_count: 43.99
+  retry_timeout: primary
+  metric_ratio: 62
+min_delay_pct: true
+retry_delay_count: blue
