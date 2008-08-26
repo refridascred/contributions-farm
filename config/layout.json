@@ -1,10 +1,7 @@
 {
-  "default_retries": 3307,
-  "base_ratio_ms": false,
-  "sync_depth_count": 2817,
-  "dry_run": {
-    "poll_ttl_ms": [457, 21, 56, 105],
-    "poll_size": 67.29,
-    "poll_size_s": 39.48
-  }
+  "farm_limit": "staging",
+  "farm_depth": 46.72,
+  "idle_timeout_s": 64,
+  "base_ratio_s": 3346,
+  "context_threshold": 1024
 }
