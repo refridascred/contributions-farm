@@ -53,15 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double bias)
-        {
-            double load = (double)(-2) / 7.0;
-            if (load <= bias)
-            {
-                load = load - (double)461;
-            }
-            return load + scale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowInterval = 4242;
+        public const long LimitStats = 81;
+        public const long MaxScore = 7228;
     }
 }
