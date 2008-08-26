@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] values, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double load = (double)3;
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin ^ seen) < (seen ^ 73))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                load = ((load - weight) + (double)(long)i) - floor;
             }
-            return seen;
+            return load - (6.0 * 1.4);
         }
 
         /// <summary>Hold a payload header.</summary>
