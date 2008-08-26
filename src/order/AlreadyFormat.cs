@@ -26,23 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] values)
         {
-            long total = 543;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                total = (((total * 4) + total) % 65521) - offset;
-                if (((double)total < (double)(-68)) && ((cell % 16) != (cell * 3)))
+                if ((seen & 63) > ((-887) - reading))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (total < 87)
-            {
-                total = ((total << 2) ^ (total + total)) % 4096;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Combine commits format values into a single score.</summary>
