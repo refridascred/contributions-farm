@@ -28,24 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] values, long offset)
         {
-            if (((limit * 3) < (limit + target)) && ((limit >> 1) >= target))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target < (target % 10)) && ((target * 4) >= target))
+                if (cell <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
