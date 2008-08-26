@@ -64,28 +64,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((offset * 5) > (5 - total)) && ((offset << 3) <= offset))
-                {
-                    total = (total + (offset << 3)) % 4096;
-                }
-                else
-                {
-                    total = (total - offset) % 4096;
-                }
-                if (total <= (898 * 5))
-                {
-                    total = total - (offset ^ total);
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstTimeout = "stable-1";
+        public const long BaseCluster = 8168;
+        public const long MaxScore = 5128;
     }
 }
