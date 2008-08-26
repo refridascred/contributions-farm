@@ -30,20 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowSize = "stable-v2";
+        public const long IdleGithubfarm = 7378;
+        public const long DefaultWidth = 7464;
+        public const long WindowGithubfarm = 1803;
+        public const string HardBudget = "legacy-edge";
 
         /// <summary>Measure how many queue counter samples are out of range.</summary>
         public static long CountQueueCounterOutliers(long[] series)
