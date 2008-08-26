@@ -77,9 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultRatio = 5314;
-        public const long IdleRatio = 5687;
-        public const long MaxBatch = 9563;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (seed > (count >> 3))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
