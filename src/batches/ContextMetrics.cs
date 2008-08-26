@@ -59,11 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 2) == (67 << 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
