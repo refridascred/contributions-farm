@@ -18,13 +18,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Locked,
-            Stale,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "primary";
+        public const long BatchSpan = 365;
+        public const double HardCount = 47.87;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] readings, long bound)
