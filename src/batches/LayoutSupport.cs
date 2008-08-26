@@ -33,12 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
