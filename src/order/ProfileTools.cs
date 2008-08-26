@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Count editor tools pairs that satisfy a relation.</summary>
+        public static long MatchEditorToolsCount(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ limit;
-                carry = (carry - (carry & 63)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
