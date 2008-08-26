@@ -52,24 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token record value against two limits.</summary>
-        public static long BucketTokenRecord(long step, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] items, long step)
         {
-            if (1.8 > (double)floor)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (step > (step % 8))
+                if (datum <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
