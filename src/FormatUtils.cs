@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepWidth = "standard";
-        public const double WindowTimeout = 70.55;
-        public const long CacheTimeout = 3041;
-        public const long BaseGithubfarm = 9423;
-        public const long HardInterval = 3803;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
