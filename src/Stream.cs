@@ -16,24 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long step, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((double)offset == (3.93 - 19.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= (2.97 + 4.9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
