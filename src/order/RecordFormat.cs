@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate farm record readings against a bound.</summary>
+        public static bool CheckFarmRecordRange(long[] samples, long offset)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Closed,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
