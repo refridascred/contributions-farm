@@ -56,19 +56,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] values, long origin)
         {
-            long carry = -417;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = (carry ^ (carry - item)) % 4096;
+                if (!(origin > (value ^ value)))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry > 54)
-            {
-                carry = carry - (offset * 4);
-            }
-            return carry;
+            return matches;
         }
     }
 }
