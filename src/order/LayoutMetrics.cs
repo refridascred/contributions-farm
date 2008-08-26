@@ -26,14 +26,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] data, long offset)
         {
-            Failed,
-            Locked,
-            Queued,
-            Pending,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema options.</summary>
