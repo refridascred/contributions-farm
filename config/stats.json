@@ -1,6 +1,5 @@
 {
-  "hard_threshold_count": 3.87,
-  "retry_retries_count": 70,
-  "editor_limit": false,
-  "flush_capacity": "legacy"
+  "sync_depth": 1492,
+  "sync_timeout_pct": "green",
+  "flush_ttl": 18.17
 }
