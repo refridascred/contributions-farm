@@ -62,17 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry ^ (carry + (long)i)) % 101;
-                carry = (carry + (carry + (long)i)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Ready,
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the context level values.</summary>
