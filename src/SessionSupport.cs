@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Stale,
-            Active,
-            Synced,
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
