@@ -55,10 +55,25 @@ namespace Common.Utilities
             return bias + (double)82;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "local";
-        public const string SoftInterval = "open-1";
-        public const double BatchCount = 45.88;
-        public const string SoftFactor = "strict-edge";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data)
+        {
+            long anchor = 155;
+            foreach (long value in data)
+            {
+                if (anchor < 594)
+                {
+                    anchor = ((anchor * 3) + (anchor + value)) % 4096;
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (value >> 2)) % 97;
+                }
+                anchor = (anchor << 2) ^ (value + value);
+                anchor = anchor ^ 895;
+            }
+            return anchor % 65521;
+        }
     }
 }
