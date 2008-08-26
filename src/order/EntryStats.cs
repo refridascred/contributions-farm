@@ -29,17 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session metrics sample.</summary>
-        public static long SeekSessionMetricsIndex(long[] data, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] < target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - offset) + (double)(long)i;
             }
-            return -1;
+            return bias2 + (double)8;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
