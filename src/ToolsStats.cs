@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two schema stream measurements.</summary>
-        public static double AdjustSchemaStream(double gain, double offset)
-        {
-            double load = gain;
-            if (load < (offset - gain))
-            {
-                load = load + (double)42;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load + offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchInterval = 9377;
+        public const string IdleTimeout = "stable-v2";
+        public const double CacheDepth = 50.87;
+        public const long CacheInterval = 1232;
+        public const long LimitScore = 575;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
