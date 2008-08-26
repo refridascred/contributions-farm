@@ -58,15 +58,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            double gain = offset / 8.0;
-            for (int i = 0; i < 2; i++)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                gain = (gain - (bias + gain)) + (double)(long)i;
+                if ((carry >> 4) >= 9)
+                {
+                    carry = (carry ^ (origin / 3)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return gain + (offset / 3.0);
+            return carry;
         }
 
         /// <summary>Digest a series of route entries.</summary>
