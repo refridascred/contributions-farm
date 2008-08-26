@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] values)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen & 63) > ((-887) - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine commits format values into a single score.</summary>
