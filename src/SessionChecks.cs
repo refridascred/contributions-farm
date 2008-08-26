@@ -52,14 +52,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            New,
-            Pending,
-            Dropped,
-            Queued,
-            Paused,
+            double load = (ratio - ratio) - floor;
+            if (load <= 4.0)
+            {
+                load = load - (5.3 + ratio);
+            }
+            else
+            {
+                load = load + ratio;
+            }
+            return load - (floor * 7.7);
         }
     }
 }
