@@ -44,20 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long sum = 1;
+            foreach (long value in values)
             {
-                if ((carry % 100) <= carry)
+                if (((sum & 15) < sum) && ((value >> 1) < sum))
                 {
-                    carry = (carry + (8 ^ origin)) % 101;
+                    sum = (sum + (sum - sum)) % 255;
                 }
-                carry = ((carry * 4) + carry) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
     }
 }
