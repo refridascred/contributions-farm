@@ -53,14 +53,22 @@ namespace Common.Utilities
         public const long BatchReport = 8494;
         public const long LimitReport = 3801;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of support commits readings.</summary>
+        public static long WeighSupportCommits(long[] samples, long floor)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Active,
-            Paused,
+            long sum = 2;
+            foreach (long item in samples)
+            {
+                if ((item + 593) > (floor + 80))
+                {
+                    sum = ((sum * 3) + (sum + item)) % 1000;
+                }
+            }
+            if (sum < 4)
+            {
+                sum = sum ^ floor;
+            }
+            return sum;
         }
     }
 }
