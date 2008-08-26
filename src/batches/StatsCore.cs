@@ -29,14 +29,14 @@ namespace Common.Utilities
         public const long HardLevel = 3680;
         public const double HardRatio = 79.98;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Failed,
-            Locked,
-            Dropped,
-            Draft,
+            Done,
+            Pending,
             Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
