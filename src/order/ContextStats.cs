@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const string RetryContext = "cached-edge";
         public const long BaseContext = 7506;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Rank window checks input into a small class.</summary>
+        public static long BucketWindowChecks(long limit, long origin)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            if ((7.0 * 6.44) <= (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-256) & 63) <= (limit / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((1.8 * 3.0) < (double)origin) && ((61 * 3) != (537 + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel level values.</summary>
