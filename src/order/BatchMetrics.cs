@@ -37,19 +37,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] series, long seed)
+        /// <summary>Look up the position of a counter format sample.</summary>
+        public static long FindCounterFormatIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < seed)
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
