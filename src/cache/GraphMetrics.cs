@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "open-v2";
-        public const double BatchMetric = 25.19;
-        public const double RetryWidth = 17.09;
-        public const long MinSize = 1784;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((-358) + 7) < (count + count))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
