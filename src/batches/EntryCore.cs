@@ -49,14 +49,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 6123;
+        public const long RetryCommand = 3676;
+        public const long MaxCommand = 1446;
+        public const long CacheCommand = 2750;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
