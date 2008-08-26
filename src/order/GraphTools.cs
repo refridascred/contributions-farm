@@ -22,21 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
