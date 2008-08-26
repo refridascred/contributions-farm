@@ -18,19 +18,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] series, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
