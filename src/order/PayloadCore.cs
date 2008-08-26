@@ -50,11 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Derive the next window stats value from a seed.</summary>
+        public static long RollWindowStats(long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((9.74 * 7.75) == (double)(long)i)
+                {
+                    mark = (mark + mark) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
