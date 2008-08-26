@@ -38,15 +38,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] readings, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((seen + cell) < seen)
+                {
+                    seen = (seen + 1) + floor;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Classify a channel profile pair into a bucket.</summary>
