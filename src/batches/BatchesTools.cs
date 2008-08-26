@@ -34,13 +34,17 @@ namespace Common.Utilities
             return load - (6.0 * 1.4);
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long bound)
         {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
