@@ -58,10 +58,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowTimeout = 46.21;
-        public const long DefaultSize = 994;
-        public const string RetryStream = "stable-edge";
-        public const double MinLevel = 13.01;
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long TallySessionWindow(long[] data, long offset)
+        {
+            long score = 489;
+            foreach (long item in data)
+            {
+                score = (score + (offset + item)) % 97;
+            }
+            return score % 97;
+        }
     }
 }
