@@ -13,21 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Measure how many stats graph samples are out of range.</summary>
+        public static long MeasureStatsGraphOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample - sample) > (sample - 2)) && (6.6 > (double)seen))
                 {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first token layout entry that matches the target.</summary>
