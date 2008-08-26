@@ -21,12 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            Locked,
-            Stale,
-            Failed,
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate batches metric samples.</summary>
