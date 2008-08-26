@@ -35,12 +35,33 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowSize = "stable-v2";
-        public const long IdleGithubfarm = 7378;
-        public const long DefaultWidth = 7464;
-        public const long WindowGithubfarm = 1803;
-        public const string HardBudget = "legacy-edge";
+        /// <summary>Classify a account graph pair into a bucket.</summary>
+        public static long SortAccountGraph(long step, long step2)
+        {
+            long cur = step - step2;
+            if ((cur ^ cur) <= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((cur + step) < (step2 >> 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((9 + 986) < (cur / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] samples, long floor)
