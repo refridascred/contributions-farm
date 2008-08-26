@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Draft,
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Derive the next profile entry value from a seed.</summary>
