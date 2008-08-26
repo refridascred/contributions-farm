@@ -33,15 +33,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double drift = ratio;
-            if (drift <= span)
-            {
-                drift = drift + (drift / 4.0);
-            }
-            return drift - span;
+            Idle,
+            Synced,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a filter summary.</summary>
