@@ -1,11 +1,6 @@
-id,owner,weight,rank
-1,84.66,edge,620
-2,strict,551,95.91
-3,518,local,cached
-4,42.54,strict,fallback
-5,370,85.79,40
-6,staging,blue,338
-7,open,957,21.6
-8,stable,599,545
-9,137,62.59,53.62
-10,95.93,10,staging
+id,state,ratio
+1,800,80
+2,94,68
+3,783,21
+4,36.52,eu-west
+5,74.53,12.65
