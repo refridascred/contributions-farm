@@ -17,15 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double bias, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data)
         {
-            double gain = (double)64;
-            for (int i = 0; i < 8; i++)
+            long acc = 807;
+            foreach (long datum in data)
             {
-                gain = ((gain - offset) - (double)(long)i) + bias;
+                acc = acc ^ (datum << 3);
             }
-            return gain + gain;
+            return acc % 65521;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
