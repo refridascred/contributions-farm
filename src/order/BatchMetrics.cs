@@ -34,21 +34,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 9;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total - entry;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Adjust a tools reading.</summary>
