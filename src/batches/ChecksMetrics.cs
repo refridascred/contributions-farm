@@ -58,16 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum ^ (38 & 31)) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Active,
+            Ready,
+            Pending,
+            Queued,
         }
     }
 }
