@@ -48,31 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            if ((bound + 493) != (step + step))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step - step) != (bound & 127)) || ((16.0 / 7.0) < (0.4 / 7.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(4 > (bound + bound)))
+                    if ((levels[i] - levels[j]) < 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
