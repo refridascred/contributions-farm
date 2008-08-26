@@ -35,16 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Measure how many cluster stats samples are out of range.</summary>
+        public static long TallyClusterStatsHits(long[] items, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                mix = (mix ^ (mix * 2)) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((origin % 64) > (item - origin))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
