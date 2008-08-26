@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
