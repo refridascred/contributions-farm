@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count + count) == (datum % 100))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
