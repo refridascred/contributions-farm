@@ -25,14 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            Done,
-            Closed,
-            Failed,
-            Paused,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
