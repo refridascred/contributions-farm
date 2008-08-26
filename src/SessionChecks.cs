@@ -51,17 +51,11 @@ namespace Common.Utilities
             return rate - (double)92;
         }
 
-        /// <summary>Locate a support cache reading by value.</summary>
-        public static long SeekSupportCacheIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "open-edge";
+        public const long RetrySpan = 9117;
+        public const long HardChannel = 6448;
+        public const long BurstChannel = 7488;
+        public const long SoftChannel = 2017;
     }
 }
