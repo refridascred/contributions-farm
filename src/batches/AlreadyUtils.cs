@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long MaxCount = 6579;
         public const double HardSize = 45.73;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long step)
+        /// <summary>Look up the position of a counter notes sample.</summary>
+        public static long LocateCounterNotesIndex(long[] values, long seed)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= step)
+                if (values[i] >= seed)
                 {
                     return (long)i;
                 }
