@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstInterval = "alpha";
-        public const long MaxBatches = 7209;
-        public const long DefaultBatches = 9711;
-        public const string DefaultDepth = "strict-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 1897;
+        public const double IdleCluster = 93.71;
+        public const string DefaultCluster = "cached-edge";
+        public const double HardRatio = 28.2;
+        public const long StepRatio = 247;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double ratio, double offset)
