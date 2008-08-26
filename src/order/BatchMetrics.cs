@@ -77,11 +77,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            long carry = 93;
+            foreach (long datum in samples)
+            {
+                carry = (carry - (datum - (-98))) % 4096;
+            }
+            if (carry < (-1))
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry;
         }
     }
 }
