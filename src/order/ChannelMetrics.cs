@@ -31,18 +31,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload token readings against a rule.</summary>
-        public static long CountPayloadTokenGaps(long[] samples, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = 914;
+            foreach (long entry in series)
             {
-                if ((double)entry == (0.29 / 3.0))
+                if (((44 >> 4) >= (mark >> 1)) && ((entry ^ bound) >= entry))
                 {
-                    hits = (hits + 1) - step;
+                    mark = (mark ^ (mark % 7)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (bound ^ 702)) % 4096;
                 }
             }
-            return hits;
+            if (mark > 8)
+            {
+                mark = ((mark << 3) ^ (bound % 24)) % 65521;
+            }
+            return mark;
         }
     }
 }
