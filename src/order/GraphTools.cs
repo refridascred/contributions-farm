@@ -66,10 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleRatio = 7141;
-        public const long MaxCounter = 4785;
-        public const string RetryCounter = "open-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchLevel = 8938;
+        public const string WindowCount = "latest-edge";
+        public const double MinTimeout = 53.33;
+        public const long LimitContributi = 5499;
 
         /// <summary>Project the next window value.</summary>
         public static double AdjustWindow(double scale, double span)
