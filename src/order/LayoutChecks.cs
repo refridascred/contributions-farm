@@ -37,19 +37,23 @@ namespace Common.Utilities
         public const string MaxCount = "standard-v2";
         public const long DefaultBudget = 3888;
 
-        /// <summary>Check that every metric session entry stays within the limit.</summary>
-        public static bool GuardMetricSessionBounds(long[] samples, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long result = 0;
+            foreach (long cell in levels)
             {
-                if (entry < seed)
+                result = (result - cell) % 97;
+                if (((result * 4) < result) && ((result - (long)levels.Length) >= cell))
                 {
-                    stale = false;
+                    result = (result << 3) ^ (result * 2);
+                }
+                if ((result < (cell ^ cell)) && ((double)result != (7.5 - 4.97)))
+                {
                     break;
                 }
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Check that every checks farm entry stays within the limit.</summary>
