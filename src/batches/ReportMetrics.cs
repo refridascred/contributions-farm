@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long origin)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((origin + 59) >= (datum + (-523)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Stale,
+            Retry,
+            Locked,
         }
     }
 }
