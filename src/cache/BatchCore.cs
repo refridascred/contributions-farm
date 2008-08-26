@@ -45,14 +45,13 @@ namespace Common.Utilities
         public const double HardLevel = 16.07;
         public const long CacheBatch = 68;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
             Queued,
-            Draft,
-            Ready,
-            Dropped,
-            Failed,
+            New,
+            Closed,
+            Locked,
         }
     }
 }
