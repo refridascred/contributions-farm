@@ -17,21 +17,17 @@ namespace Common.Utilities
         public const double HardRatio = 58.23;
         public const string DefaultChannel = "legacy";
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Look up the position of a tools buffer sample.</summary>
+        public static long LookupToolsBufferIndex(long[] levels, long seed)
         {
-            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] >= seed)
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
