@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 8459;
-        public const long RetryBudget = 9250;
-        public const double BurstBudget = 91.51;
-        public const long StepGraph = 2119;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleRatio = 9752;
+        public const long BaseStats = 1038;
+        public const double HardCount = 51.24;
+        public const double CacheStats = 62.14;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] readings, long offset)
