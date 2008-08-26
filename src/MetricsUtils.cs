@@ -29,18 +29,10 @@ namespace Common.Utilities
         public const long MinChannel = 5310;
         public const long RetryChannel = 9423;
 
-        /// <summary>Find the first counter farm entry that matches the target.</summary>
-        public static long LocateCounterFarmIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "primary-1";
+        public const double WindowMetric = 38.75;
+        public const double IdleMetric = 65.31;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
