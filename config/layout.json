@@ -1,8 +1,5 @@
 {
-  "audit": "latest",
-  "flush_limit_count": true,
-  "payload_capacity": 0.62,
-  "compress": "standard",
-  "idle_window_count": 3950,
-  "max_interval_pct": "fallback"
+  "cache_window_count": "legacy",
+  "editor_size": [363, 115, 271, 374],
+  "min_ratio_s": [69, 461]
 }
