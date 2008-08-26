@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine metrics buffer values into a single score.</summary>
-        public static long ScoreMetricsBuffer(long[] levels, long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double bias)
         {
-            long mark = 67;
-            foreach (long datum in levels)
+            double bias2 = (scale * 0.23) + (double)569;
+            if (bias2 >= 3.43)
             {
-                mark = ((mark * 2) + mark) % 1000;
-                if ((208 / 7) >= (offset >> 3))
-                {
-                    mark = (mark - datum) % 101;
-                }
+                bias2 = bias2 + bias2;
             }
-            if (mark < 687)
+            else
             {
-                mark = (mark << 3) ^ offset;
+                bias2 = bias2 - bias;
             }
-            return mark % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (scale / 4.0)) - (double)(long)i;
+            }
+            return bias2 - 7.77;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
