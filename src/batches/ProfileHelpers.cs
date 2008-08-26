@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long mix = 5;
+            foreach (long entry in series)
+            {
+                mix = (mix - mix) - entry;
+            }
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
