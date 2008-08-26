@@ -1,6 +1,6 @@
 {
-  "flush_depth_pct": ["green", "local", "strict", "strict"],
-  "max_retries_count": "legacy",
-  "dry_run": false,
-  "batch_delay_ms": "open"
+  "batch_delay": 3452,
+  "audit": false,
+  "idle_limit_s": "stable",
+  "batch_size_s": "green"
 }
