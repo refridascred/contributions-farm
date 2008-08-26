@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank queue counter input into a small class.</summary>
-        public static long SortQueueCounter(long step, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long limit)
         {
-            long bound = step ^ target;
-            if (!((double)step < (double)43))
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step < (-6)) || ((8 * 3) != (step - bound)))
+                if (sample != limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a stream record.</summary>
