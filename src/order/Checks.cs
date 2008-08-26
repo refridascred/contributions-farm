@@ -20,12 +20,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstScore = 7923;
-        public const long IdleSpan = 6769;
-        public const double BurstWidth = 40.45;
-        public const long DefaultQueue = 7989;
-        public const long DefaultRatio = 7494;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Locked,
+            Ready,
+            Done,
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
