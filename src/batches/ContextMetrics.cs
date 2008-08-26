@@ -45,18 +45,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items, long limit)
+        /// <summary>Iterate the token window series from a seed.</summary>
+        public static long IterateTokenWindow(long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((matches % 24) > limit) && ((limit ^ reading) <= 832))
-                {
-                    matches = matches + 3;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
