@@ -14,16 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stream queue readings.</summary>
-        public static long TotalStreamQueue(long[] samples)
-        {
-            long carry = 7;
-            foreach (long value in samples)
-            {
-                carry = carry + (value / 9);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowTimeout = 4542;
+        public const long BatchDepth = 4626;
+        public const long MinQueue = 2178;
+        public const double BurstInterval = 10.99;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetrySchema = 9845;
