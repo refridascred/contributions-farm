@@ -30,13 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] items, long floor)
         {
-            Done,
-            Active,
-            Pending,
-            Retry,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
