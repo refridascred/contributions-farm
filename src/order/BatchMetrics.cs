@@ -45,19 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double gain, double floor)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            double load = gain - (double)731;
-            if (load > (double)437)
-            {
-                load = (load + gain) - floor;
-            }
-            else
-            {
-                load = load + gain;
-            }
-            return load + load;
+            double mean = ratio * 0.73;
+            return (mean + 8.02) + offset;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
