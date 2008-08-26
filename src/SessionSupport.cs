@@ -13,17 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] samples, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Count counter entry pairs that satisfy a relation.</summary>
