@@ -50,19 +50,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] samples, long bound)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Accumulate record samples.</summary>
