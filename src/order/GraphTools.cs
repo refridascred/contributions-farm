@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long floor)
+        /// <summary>Fold a list of context cache readings.</summary>
+        public static long ScoreContextCache(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long carry = 8;
+            foreach (long sample in items)
             {
-                if (datum <= floor)
+                if ((carry + carry) == (seed + 4))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry - seed) + sample;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
