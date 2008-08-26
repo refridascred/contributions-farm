@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] items, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = 35;
+            foreach (long sample in samples)
             {
-                if ((hits >> 1) <= (hits & 31))
-                {
-                    hits = ((hits + 3) ^ sample) + floor;
-                }
+                anchor = ((anchor + (sample ^ anchor)) % 65521) + limit;
+                anchor = (anchor + (sample % 24)) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
