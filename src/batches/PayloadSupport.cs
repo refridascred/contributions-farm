@@ -33,17 +33,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] values, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (792 <= (limit >> 1))
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ limit) >= limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
