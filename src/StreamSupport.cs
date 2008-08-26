@@ -13,21 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Locate a payload schema reading by value.</summary>
+        public static long LookupPayloadSchemaIndex(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
