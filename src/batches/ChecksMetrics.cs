@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((count - count) < (count + count)))
-                {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 2658;
+        public const long SoftLevel = 8738;
+        public const long SoftWidth = 7783;
+        public const string BatchRecord = "legacy-v2";
+        public const long LimitInterval = 9187;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardWidth = 9274;
