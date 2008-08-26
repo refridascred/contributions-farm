@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long state = 5;
+            foreach (long cell in levels)
+            {
+                state = (state ^ (long)levels.Length) % 255;
+                if ((state - cell) <= cell)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
