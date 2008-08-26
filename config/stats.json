@@ -1,6 +1,7 @@
 {
-  "retry_timeout_pct": "eu-west",
-  "max_threshold": "latest",
-  "sync_limit_pct": 30,
-  "soft_ttl": 60
+  "hard_depth_ms": "primary",
+  "audit": [361, 349, 127],
+  "cluster_limit": [29, 381, 177],
+  "batches_ratio": 5,
+  "sync_delay_count": true
 }
