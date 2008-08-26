@@ -1,10 +1,5 @@
 # entry settings
-layout_ratio: edge
-readonly: false
-retry_timeout_ms:
-  channel_capacity: true
-  queue_ratio: green
-  profile_ttl: legacy
-min_ttl: fallback
-batch_size_pct: stable
-max_size_count: 100
+strict: standard
+cache_window: 77.88
+default_ttl_count: staging
+account_window: true
