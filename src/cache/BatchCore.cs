@@ -23,14 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series)
         {
-            Closed,
-            Draft,
-            Stale,
-            Idle,
-            Dropped,
+            long mix = 19;
+            foreach (long sample in series)
+            {
+                if ((sample - sample) <= (sample & 15))
+                {
+                    mix = (mix << 2) ^ (sample & 7);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (sample + mix)) % 65521;
+                }
+            }
+            if (mix > 23)
+            {
+                mix = mix - (2 ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
