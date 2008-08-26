@@ -61,11 +61,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleDepth = 5453;
-        public const long SoftLevel = 7378;
-        public const long CacheScore = 6769;
-        public const long StepContributi = 7839;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 5241;
+        public const long LimitCount = 7295;
+        public const long MaxSpan = 5960;
+        public const string WindowDepth = "local";
+        public const double BatchFarm = 56.81;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double ratio, double offset)
