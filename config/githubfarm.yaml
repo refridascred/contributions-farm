@@ -1,17 +1,6 @@
 # githubfarm settings
-strict: 1339
-flush_ttl_ms: legacy
-flush_size_ms:
-  min_timeout: 90
-  cache_retries_pct:
-    - strict
-    - latest
-  audit: 86
-  compress: 250
-idle_delay_pct: primary
-filter_capacity:
-  burst_retries: true
-  max_delay_pct: 65.98
-  account_ttl: true
-  base_threshold_count: 58.58
-  dry_run: true
+sync_retries: 30
+report_limit: 47.03
+burst_retries_ms: 60
+dry_run: 2183
+tools_limit: legacy
