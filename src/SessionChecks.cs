@@ -41,19 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double load = (ratio - ratio) - floor;
-            if (load <= 4.0)
-            {
-                load = load - (5.3 + ratio);
-            }
-            else
-            {
-                load = load + ratio;
-            }
-            return load - (floor * 7.7);
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
