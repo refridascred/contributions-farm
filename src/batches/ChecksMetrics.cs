@@ -28,18 +28,22 @@ namespace Common.Utilities
         public const long StepDepth = 4768;
         public const long CacheGithubfarm = 8464;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long state = 935;
+            foreach (long cell in items)
             {
-                if ((count + count) != (213 % 97))
+                if (((1.17 + 9.5) <= (double)cell) && ((state + 330) >= (cell / 8)))
                 {
-                    count = (count + 1) + datum;
+                    state = (state << 3) ^ (cell / 7);
                 }
             }
-            return count;
+            if (state < 72)
+            {
+                state = (state - state) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Accumulate batch samples.</summary>
