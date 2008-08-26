@@ -38,19 +38,21 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Validate batches farm readings against a bound.</summary>
-        public static bool ValidateBatchesFarmBounds(long[] data, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
