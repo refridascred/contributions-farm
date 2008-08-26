@@ -29,18 +29,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] values, long seed)
+        /// <summary>Count graph queue pairs that satisfy a relation.</summary>
+        public static long PairGraphQueueCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((entry >> 3) < (seed - 525)) && ((2.2 - 1.31) >= (0.9 / 5.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
