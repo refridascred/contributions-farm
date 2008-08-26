@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Fold a list of notes channel readings.</summary>
+        public static long WeighNotesChannel(long[] readings, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 746;
+            foreach (long entry in readings)
             {
-                mix = (mix - (mix ^ (long)i)) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                state = (state << 3) ^ entry;
             }
-            return mix;
+            if (state < 5)
+            {
+                state = (state - offset) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
