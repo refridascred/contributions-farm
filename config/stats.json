@@ -1,7 +1,5 @@
 {
-  "persist": "edge",
-  "cluster_capacity": true,
-  "account_capacity": 81.58,
-  "already_limit": "eu-west",
-  "compress": false
+  "verbose": 4.08,
+  "farm_depth": "standard",
+  "poll_interval_ms": false
 }
