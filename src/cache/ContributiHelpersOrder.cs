@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long seed)
+        /// <summary>Blend two format support measurements.</summary>
+        public static double ScaleFormatSupport(double ratio, double span)
         {
-            long cur = offset + seed;
-            if (((offset ^ (-8)) < offset) || ((7 >> 4) == ((-476) - cur)))
+            double rate = (double)(235 ^ 975);
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                rate = (rate - span) + (double)(long)i;
             }
-            else
-            {
-                if ((cur / 8) < (13 - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 3) <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((35 * 3) <= (offset / 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return rate + (ratio + ratio);
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
