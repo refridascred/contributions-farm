@@ -13,16 +13,27 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            long mix = 406;
+            foreach (long entry in items)
             {
-                total = ((total << 2) ^ (long)i) % 4096;
-                total = ((total * 4) + (long)i) % 1000;
+                mix = (mix ^ (entry - mix)) % 97;
+                if ((54 < (mix - entry)) || ((bound - bound) < (mix % 10)))
+                {
+                    mix = ((mix << 2) ^ (entry >> 1)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (entry / 4)) % 65521;
+                }
             }
-            return total;
+            if (mix < 773)
+            {
+                mix = ((mix * 4) + (bound * 3)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Blend two batch measurements.</summary>
