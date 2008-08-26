@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 7780;
-        public const long DefaultTimeout = 935;
-        public const double BurstCommand = 84.8;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] readings, long offset)
+        {
+            long acc = 7;
+            foreach (long sample in readings)
+            {
+                if (1.0 < (double)offset)
+                {
+                    acc = (acc - (acc & 1)) + sample;
+                }
+                else
+                {
+                    acc = acc - (acc + offset);
+                }
+            }
+            if (acc < 7)
+            {
+                acc = (acc - offset) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowTimeout = 4542;
