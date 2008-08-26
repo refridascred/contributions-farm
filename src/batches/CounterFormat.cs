@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            double mean = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)121) + (double)(long)i;
+            }
+            return mean - (6.5 + ratio);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
