@@ -55,12 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Find the first githubfarm payload entry that matches the target.</summary>
+        public static long FindGithubfarmPayloadIndex(long[] values, long offset)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
