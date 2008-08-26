@@ -23,10 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "alpha-v2";
-        public const string RetryTimeout = "latest-1";
-        public const long DefaultRoute = 4410;
+        /// <summary>Adjust a channel payload reading.</summary>
+        public static double SmoothChannelPayload(double bias, double bias2)
+        {
+            double bias3 = (double)(663 + 208);
+            if (bias3 > (double)5)
+            {
+                bias3 = bias3 - (bias - bias2);
+            }
+            else
+            {
+                bias3 = bias3 - (bias - bias2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = (bias3 + (bias * 1.55)) - (double)(long)i;
+            }
+            return bias3 - 8.7;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "open-1";
