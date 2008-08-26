@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Dropped,
             Failed,
-            Closed,
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
