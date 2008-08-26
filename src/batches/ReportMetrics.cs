@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate metrics filter readings against a bound.</summary>
+        public static bool CheckMetricsFilterBounds(long[] values, long step)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
