@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi account readings against a rule.</summary>
-        public static long MeasureContributiAccountGaps(long[] samples)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample << 1) <= (sample - sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a layout githubfarm value against two limits.</summary>
