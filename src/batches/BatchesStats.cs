@@ -23,14 +23,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
+            Stale,
+            Synced,
+            New,
             Failed,
-            Closed,
-            Pending,
-            Paused,
-            Dropped,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
