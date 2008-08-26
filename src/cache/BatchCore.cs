@@ -20,19 +20,15 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double offset)
         {
-            long state = 64;
-            foreach (long sample in values)
+            double bias = 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((((state * 5) + 739) % 4096) ^ sample) + step;
+                bias = ((bias + (weight / 4.0)) + (double)(long)i) + offset;
             }
-            if (state > 215)
-            {
-                state = (state + 490) % 4096;
-            }
-            return state;
+            return bias - (bias * 6.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
