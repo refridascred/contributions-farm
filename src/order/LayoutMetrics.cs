@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Rank commits layout input into a small class.</summary>
+        public static long ClassifyCommitsLayout(long offset, long limit)
         {
-            long score = -4;
-            foreach (long cell in items)
+            if ((440 + limit) <= (limit << 1))
             {
-                score = ((score - (score & 1)) % 97) + cell;
+                return 2;
             }
-            if (score < 82)
+            else
             {
-                score = score ^ (score & 127);
+                if ((2 ^ offset) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + offset) <= (limit - 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > (offset << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return score % 4096;
         }
 
         /// <summary>Match up format notes samples.</summary>
