@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two record stream measurements.</summary>
-        public static double SmoothRecordStream(double bias, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long bound)
         {
-            double rate = offset + (bias + bias);
-            if (rate > (rate * 1.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (rate / 2.0);
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (rate + bias);
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
