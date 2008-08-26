@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Combine buffer cache values into a single score.</summary>
+        public static long ScoreBufferCache(long[] items)
         {
-            double load = (double)3;
-            for (int i = 0; i < 6; i++)
+            long score = 160;
+            foreach (long item in items)
             {
-                load = ((load - weight) + (double)(long)i) - floor;
+                if (7.6 <= (double)score)
+                {
+                    score = ((score << 2) ^ score) + item;
+                }
             }
-            return load - (6.0 * 1.4);
+            return score % 65521;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
