@@ -19,15 +19,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Pending,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the stream kind values.</summary>
