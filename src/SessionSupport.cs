@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] readings)
         {
-            Dropped,
-            Ready,
-            Synced,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (value < (value % 97))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count counter entry pairs that satisfy a relation.</summary>
