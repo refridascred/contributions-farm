@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard primary fallback; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 4))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    edge)
         log "fast path"
         ;;
     *)
