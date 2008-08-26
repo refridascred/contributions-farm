@@ -1,6 +1,15 @@
 {
-  "soft_size_ms": 20.27,
-  "readonly": "local",
-  "verbose": "latest",
-  "soft_ratio": "legacy"
+  "poll_delay_pct": "fallback",
+  "flush_retries_s": [53, 414, 63, 365],
+  "batch_retries": {
+    "idle_timeout_pct": [499, 488, 165, 88],
+    "hard_depth_s": true,
+    "default_depth": {
+      "max_limit_count": [36, 487, 266, 352],
+      "batch_ttl_ms": 56.12,
+      "soft_capacity_count": true,
+      "hard_retries_count": "standard",
+      "soft_delay_s": "edge"
+    }
+  }
 }
