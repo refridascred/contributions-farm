@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] items, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(48 >> 1);
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                ratio = (((ratio + (7.1 * 6.0)) + (double)(long)i) + scale) - bias;
             }
-            return -1;
+            return ratio - (double)9;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
