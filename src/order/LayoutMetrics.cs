@@ -28,18 +28,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] values, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((double)seed <= 1.76)
             {
-                if ((double)reading != (9.52 - 20.0))
+                return 7;
+            }
+            else
+            {
+                if (((seed % 8) >= (seed2 + seed2)) && (seed2 < (seed - seed2)))
                 {
-                    hits = (hits + 1) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed2 << 3) != (seed2 - seed2)) || ((double)seed > (1.77 * 0.49)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7.3 < (double)seed) || (2 >= (seed2 / 6)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
