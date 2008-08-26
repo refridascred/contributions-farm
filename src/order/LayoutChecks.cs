@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] values, long seed)
+        /// <summary>Compare every pair of route payload readings.</summary>
+        public static long PairRoutePayloadCount(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
