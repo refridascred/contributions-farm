@@ -46,15 +46,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double weight, double offset)
-        {
-            double drift = (double)(12 & 3);
-            if (drift < offset)
-            {
-                drift = (drift - (drift / 5.0)) - weight;
-            }
-            return drift + (double)11;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSize = 50.23;
+        public const long BatchSupport = 1863;
+        public const long LimitDepth = 5103;
+        public const double LimitScore = 5.57;
     }
 }
