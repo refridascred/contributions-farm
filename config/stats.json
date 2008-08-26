@@ -1,23 +1,6 @@
 {
-  "warm_interval_count": 35,
-  "hard_ratio_pct": {
-    "poll_limit_count": ["open", "green", "strict"],
-    "base_ratio": 30,
-    "notes_size": {
-      "hard_ratio_pct": "primary",
-      "stats_ttl": [344, 447, 97],
-      "hard_ratio_s": [470, 70, 247],
-      "min_depth_s": "fallback",
-      "dry_run": 29.18,
-      "verbose": 250
-    },
-    "audit": {
-      "cache_depth": true,
-      "flush_ttl_count": false,
-      "compress": 1024,
-      "hard_capacity_pct": "edge"
-    }
-  },
-  "soft_depth": true,
-  "retry_capacity_s": "blue"
+  "githubfarm_capacity": "latest",
+  "metrics_interval": true,
+  "warm_ratio_pct": 49,
+  "base_window": "local"
 }
