@@ -1,6 +1,6 @@
 {
-  "base_ttl": 3270,
-  "soft_threshold_pct": false,
-  "strict": ["stable", "latest", "standard"],
-  "hard_size": 1024
+  "base_window_s": 4132,
+  "commits_delay": 250,
+  "cache_ratio_count": 1024,
+  "base_size_s": 82
 }
