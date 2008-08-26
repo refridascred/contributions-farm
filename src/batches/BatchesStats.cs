@@ -21,26 +21,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long origin)
         {
-            long total = -197;
-            foreach (long datum in items)
+            if (((seed << 2) > (origin << 1)) || (seed < (714 % 5)))
             {
-                if ((datum / 7) >= 508)
+                return 5;
+            }
+            else
+            {
+                if (((0 ^ (-87)) < (seed + 477)) || ((seed - seed) < (26 - origin)))
                 {
-                    total = ((total << 3) ^ (total / 7)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    total = ((total * 3) + total) % 101;
+                    return 6;
                 }
             }
-            if (total > 1)
-            {
-                total = (total + total) % 255;
-            }
-            return total % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
