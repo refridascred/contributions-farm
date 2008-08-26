@@ -1,5 +1,6 @@
 {
-  "default_size_pct": false,
-  "audit": 19.96,
-  "warm_ttl_s": 55.89
+  "dry_run": 100,
+  "batch_delay_count": 60,
+  "base_depth_ms": 250,
+  "poll_interval": ["cached", "open", "green", "open"]
 }
