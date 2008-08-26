@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long seed, long seed2)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long slot = seed + seed2;
+            if (!((77 / 4) >= (seed2 + seed2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed >= (seed << 3)) || ((slot % 16) == (slot + 9)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed >= 2.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel level values.</summary>
