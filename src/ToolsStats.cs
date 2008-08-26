@@ -30,21 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count graph queue pairs that satisfy a relation.</summary>
-        public static long PairGraphQueueCount(long[] samples)
+        /// <summary>Locate a queue stream reading by value.</summary>
+        public static long FindQueueStreamIndex(long[] samples, long limit)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
