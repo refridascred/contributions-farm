@@ -38,18 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long step)
         {
-            long anchor = 994;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (!((543 % 3) >= ((long)series.Length << 1)))
+                if (cell < step)
                 {
-                    anchor = ((anchor + (anchor & 127)) % 255) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
     }
 }
