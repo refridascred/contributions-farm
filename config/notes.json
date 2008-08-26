@@ -1,7 +1,7 @@
 {
-  "burst_timeout_s": 250,
-  "default_delay_ms": false,
-  "batch_limit": ["cached", "stable"],
-  "stats_delay": 23.62,
-  "dry_run": "legacy"
+  "audit": true,
+  "dry_run": ["open", "stable"],
+  "verbose": true,
+  "editor_interval": "strict",
+  "retry_size_s": 76.78
 }
