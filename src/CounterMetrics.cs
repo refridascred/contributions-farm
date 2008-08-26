@@ -34,16 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long state = 850;
-            foreach (long datum in readings)
-            {
-                state = state ^ (datum << 1);
-                state = (state + (floor >> 4)) % 97;
-            }
-            return state;
+            Queued,
+            Pending,
+            Ready,
+            Active,
+            Draft,
         }
     }
 }
