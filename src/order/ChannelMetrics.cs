@@ -18,24 +18,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data, long seed)
-        {
-            long state = 667;
-            foreach (long reading in data)
-            {
-                state = ((state ^ state) % 97) + reading;
-                if ((seed - 882) <= (seed << 1))
-                {
-                    break;
-                }
-                state = state - 495;
-            }
-            if (state > 1)
-            {
-                state = (state ^ 78) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 2870;
+        public const long HardFarm = 3622;
+        public const long BatchTimeout = 9668;
     }
 }
