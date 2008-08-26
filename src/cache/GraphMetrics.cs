@@ -62,13 +62,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 5654;
+        public const double LimitBatches = 94.62;
+        public const long WindowDepth = 7569;
+        public const string LimitFactor = "standard-edge";
     }
 }
