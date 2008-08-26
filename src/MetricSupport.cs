@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] values, long target)
         {
-            long carry = 1;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (carry < ((long)samples.Length & 31))
+                if ((8.0 + 1.6) >= (double)entry)
                 {
-                    carry = (carry ^ (211 / 7)) ^ value;
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Adjust a token cache reading.</summary>
