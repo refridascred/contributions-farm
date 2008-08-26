@@ -13,19 +13,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            double rate = floor;
-            if (rate > (gain * 3.91))
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                rate = rate + (gain + gain);
+                total = ((total << 2) ^ (long)i) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + (double)73;
+            return total;
         }
 
         /// <summary>Describe the record phase values.</summary>
