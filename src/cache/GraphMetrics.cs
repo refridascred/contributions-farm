@@ -33,15 +33,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            double mean = weight;
-            if (mean <= weight)
+            long total = -14;
+            foreach (long cell in values)
             {
-                mean = (mean + mean) - span;
+                total = (total << 3) ^ (cell - (long)values.Length);
             }
-            return mean - (weight / 2.0);
+            return total;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
