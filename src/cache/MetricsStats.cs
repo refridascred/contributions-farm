@@ -29,17 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] series, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] < step)
+                if ((reading - reading) >= 0)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
