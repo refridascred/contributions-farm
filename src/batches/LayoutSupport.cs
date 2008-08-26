@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches support values into a single score.</summary>
-        public static long FoldBatchesSupport(long[] data)
+        /// <summary>Accumulate queue stream samples.</summary>
+        public static long WeighQueueStream(long[] series, long floor)
         {
-            long state = 3;
-            foreach (long datum in data)
+            long mix = 183;
+            foreach (long datum in series)
             {
-                state = state - (datum + state);
+                if ((double)datum == (0.46 * 5.82))
+                {
+                    mix = ((mix - (mix & 127)) % 1000) - floor;
+                }
             }
-            if (state > 691)
+            if (mix < 93)
             {
-                state = (state * 2) + (state / 5);
+                mix = mix ^ ((long)series.Length ^ mix);
             }
-            return state;
+            return mix % 4096;
         }
 
         /// <summary>Measure how many route cluster samples are out of range.</summary>
