@@ -30,15 +30,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] data, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
