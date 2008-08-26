@@ -23,13 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long origin)
         {
-            Retry,
-            Pending,
-            Draft,
-            Synced,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
