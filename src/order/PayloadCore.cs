@@ -13,29 +13,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels, long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long sum = 82;
-            foreach (long sample in levels)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((bound << 3) >= (sum + (long)levels.Length))
-                {
-                    long edge = sample;
-                    sum = (sum << 3) ^ (bound + edge);
-                    continue;
-                }
-                sum = sum + (sum - bound);
-                if ((0.8 + 5.5) < (double)sum)
-                {
-                    sum = ((sum << 2) ^ ((-38) << 1)) % 101;
-                }
+                mark = ((mark * 2) + (mark * 5)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (sum > 3)
-            {
-                sum = (sum << 2) ^ (bound * 4);
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a layout entry.</summary>
