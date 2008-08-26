@@ -51,23 +51,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric notes entries.</summary>
-        public static long WeighMetricNotes(long[] readings, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long step)
         {
-            long total = 670;
-            foreach (long cell in readings)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total * 4) + (5 * 2)) % 97;
-                if ((double)cell <= (4.46 / 8.0))
-                {
-                    total = (total * 5) + (step - total);
-                }
-                else
-                {
-                    total = (total - (step % 97)) % 1000;
-                }
+                mix = (mix ^ (mix * 2)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
