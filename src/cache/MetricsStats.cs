@@ -49,19 +49,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next githubfarm layout value.</summary>
-        public static double AdjustGithubfarmLayout(double ratio, double span)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double rate = (double)(7 & 7);
-            if (rate >= (rate + ratio))
-            {
-                rate = rate - (rate - span);
-            }
-            else
-            {
-                rate = rate - (span + ratio);
-            }
-            return rate - (span + rate);
+            New,
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a farm record.</summary>
