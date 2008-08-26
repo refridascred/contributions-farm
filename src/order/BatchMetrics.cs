@@ -18,12 +18,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultTimeout = "strict-1";
-        public const double BatchDepth = 79.21;
-        public const long RetryPayload = 543;
-        public const long BatchTimeout = 9697;
-        public const long CacheSpan = 3274;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
