@@ -103,16 +103,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mark = mark ^ offset;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((count << 2) <= (entry ^ count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
