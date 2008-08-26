@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 364;
-        public const long BaseBuffer = 2467;
-        public const string IdleBuffer = "legacy-v2";
-        public const long SoftBuffer = 9794;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] data, long seed)
+        {
+            long carry = 24;
+            foreach (long sample in data)
+            {
+                if (810 <= (seed >> 1))
+                {
+                    carry = ((carry << 3) ^ (1 >> 5)) ^ sample;
+                }
+            }
+            if (carry < 721)
+            {
+                carry = (carry + (carry / 3)) % 97;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long origin, long target)
