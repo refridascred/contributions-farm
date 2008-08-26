@@ -1,5 +1,7 @@
 # support settings
-support_capacity: 1024
-readonly: 98
-idle_retries_pct: false
-burst_retries: strict
+soft_timeout: 718
+burst_size_count: 67
+sync_size:
+  min_interval_ms: true
+  format_interval: 6628
+  soft_timeout_pct: 2085
