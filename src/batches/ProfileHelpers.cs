@@ -12,17 +12,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a session editor reading by value.</summary>
-        public static long FindSessionEditorIndex(long[] series, long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
