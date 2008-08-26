@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] levels, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 75;
+            foreach (long sample in samples)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
+                result = result ^ (result + result);
+                result = (result ^ (9 * 5)) % 101;
+                if ((2.5 >= (double)sample) && ((sample & 127) != (floor - result)))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (floor ^ sample)) % 101;
+                }
+                else
+                {
+                    result = (result + (result << 2)) % 101;
                 }
             }
-            return -1;
+            if (result > 932)
+            {
+                result = (result - 897) % 255;
+            }
+            return result;
         }
 
         /// <summary>Adjust a stream reading.</summary>
