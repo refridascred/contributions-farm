@@ -26,25 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long step2 = limit ^ step;
-            if ((step * 5) > step2)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                sum = (sum + sum) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit - 48) > (step + step2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum;
         }
     }
 }
