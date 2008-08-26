@@ -5,35 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] items, long target)
         {
-            long total = -891;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((entry + entry) > (total - total))
+                if (value > target)
                 {
-                    continue;
-                }
-                else
-                {
-                    total = total ^ (entry - total);
-                    total = total - (entry / 6);
-                }
-                if ((total % 7) < (entry - entry))
-                {
-                    total = ((total << 3) ^ total) % 97;
-                }
-                else
-                {
-                    total = (total - (entry + total)) % 101;
-                }
-                if (((6.0 - 7.17) > (double)total) || ((total >> 5) > (12 - (long)items.Length)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Roll a session counter forward.</summary>
