@@ -23,10 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseTimeout = "stable-1";
-        public const long CacheMetrics = 5935;
-        public const double StepInterval = 11.02;
+        /// <summary>Find the first cache editor entry that matches the target.</summary>
+        public static long SeekCacheEditorIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
