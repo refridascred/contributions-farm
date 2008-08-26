@@ -1,17 +1,30 @@
 # support settings
-editor_depth: edge
-soft_retries_pct:
-  - open
-  - open
-profile_timeout:
-  min_limit_pct:
-    - stable
-    - local
-    - eu-west
-    - latest
-  hard_delay_ms: 5819
-  compress:
-    - 298
-    - 123
-    - 484
-    - 91
+retry_threshold:
+  graph_depth: 73.98
+  buffer_timeout: 89
+  verbose:
+    - 368
+    - 252
+    - 34
+  counter_capacity:
+    soft_ratio: 7404
+    compress:
+      - cached
+      - local
+    base_threshold_pct: local
+    record_window:
+      - 263
+      - 13
+      - 59
+      - 482
+    record_ratio: edge
+  retry_window_count: strict
+max_retries:
+  burst_limit_ms: 64
+  dry_run: blue
+  order_timeout: strict
+verbose: local
+dry_run:
+  - 432
+  - 28
+  - 444
