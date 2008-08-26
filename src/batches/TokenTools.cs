@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Closed,
-            Active,
-            Stale,
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
