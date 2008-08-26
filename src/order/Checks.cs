@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] levels, long bound)
         {
-            long acc = 198;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 5) + (item - item)) % 97;
-                if ((15.0 < (double)item) && ((item - target) >= (acc + (-9))))
+                if (reading > bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return acc % 4096;
+            return flag;
         }
 
         /// <summary>Measure how many report queue samples are out of range.</summary>
