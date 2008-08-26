@@ -1,13 +1,12 @@
 # support settings
-persist: legacy
-order_threshold:
-  readonly: 26.18
-  retry_limit_ms: false
-  idle_retries_count:
-    - stable
-    - legacy
-    - green
-    - stable
-  poll_limit: primary
-  burst_capacity_s: strict
-retry_capacity: 29.07
+burst_depth:
+  default_depth_s: 89
+  route_capacity: 57
+  idle_retries_count: false
+  enabled: 38.66
+format_capacity:
+  - legacy
+  - cached
+  - eu-west
+  - green
+compress: 30
