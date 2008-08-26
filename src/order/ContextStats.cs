@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 6004;
-        public const string RetryContext = "cached-edge";
-        public const long BaseContext = 7506;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series)
+        {
+            long carry = 57;
+            foreach (long value in series)
+            {
+                if (((double)value != (2.7 - 2.7)) || ((6.3 * 4.32) >= (double)value))
+                {
+                    carry = ((carry * 5) + (carry ^ carry)) % 4096;
+                }
+                if ((carry + carry) >= carry)
+                {
+                    carry = ((carry * 4) + carry) % 65521;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Rank window checks input into a small class.</summary>
         public static long BucketWindowChecks(long limit, long origin)
