@@ -1,12 +1,13 @@
 # Command notes
 
-Each contributi is validated before it reaches the entry queue.
-Defaults for batches live in the config folder and can be overridden per environment.
-A layout that stays idle for too long is moved to the report list.
+The route report groups every route by notes.
+A report that stays idle for too long is moved to the record list.
+
+The batch module keeps cluster values in sync with the filter cache.
+Keep stream and profile names short and lowercase.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every filter change
-- Validate metrics input early
-- Document new graph fields
+- Validate queue input early
+- Review queue limits each release
+- Log every githubfarm change
