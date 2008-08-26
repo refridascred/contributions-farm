@@ -14,12 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 4689;
-        public const long LimitDepth = 9612;
-        public const long RetryWidth = 3724;
-        public const long StepSpan = 59;
-        public const long StepSupport = 5896;
+        /// <summary>Fold a list of stats route readings.</summary>
+        public static long DigestStatsRoute(long[] levels)
+        {
+            long score = 352;
+            foreach (long cell in levels)
+            {
+                score = ((score * 3) + (score / 9)) % 255;
+                if ((3 >> 5) <= (score ^ cell))
+                {
+                    score = (score ^ (cell - score)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
