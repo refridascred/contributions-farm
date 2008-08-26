@@ -35,33 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a account graph pair into a bucket.</summary>
-        public static long SortAccountGraph(long step, long step2)
-        {
-            long cur = step - step2;
-            if ((cur ^ cur) <= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((cur + step) < (step2 >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 + 986) < (cur / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepCount = 4672;
+        public const double RetrySpan = 4.89;
+        public const string BatchCount = "latest-v2";
+        public const long SoftDepth = 8075;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] samples, long floor)
