@@ -1,11 +1,6 @@
 {
-  "soft_limit": false,
-  "verbose": {
-    "strict": true,
-    "burst_timeout_s": ["stable", "fallback", "primary"],
-    "poll_window_s": 9657,
-    "cluster_size": false
-  },
-  "stats_ratio": 6881,
-  "persist": 47.63
+  "soft_size_ms": 20.27,
+  "readonly": "local",
+  "verbose": "latest",
+  "soft_ratio": "legacy"
 }
