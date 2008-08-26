@@ -36,18 +36,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long ScoreAccountReport(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long step, long offset)
         {
-            long sum = 99;
-            foreach (long item in samples)
+            if ((double)step >= (11.0 - 0.22))
             {
-                if ((sum - sum) != (sum - (-366)))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (9.35 + 7.0))
                 {
-                    sum = sum ^ (item ^ item);
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) > (step ^ 53))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Digest a series of session entries.</summary>
