@@ -49,11 +49,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4419;
-        public const long IdleCount = 9744;
-        public const long BatchCache = 45;
-        public const long BurstWidth = 5415;
-        public const long HardTimeout = 9441;
+        /// <summary>Count cache record pairs that satisfy a relation.</summary>
+        public static long PairCacheRecordCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
