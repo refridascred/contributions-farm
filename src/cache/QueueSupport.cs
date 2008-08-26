@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((carry + carry) < seed)
+                {
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stats header.</summary>
