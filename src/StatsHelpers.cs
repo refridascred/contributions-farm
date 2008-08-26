@@ -60,15 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command already figure with a bias.</summary>
-        public static double ProjectCommandAlready(double weight, double floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double scale = (floor * 6.2) / 6.0;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + weight) - (double)(long)i;
-            }
-            return scale + (weight / 5.0);
+            Draft,
+            Failed,
+            Queued,
         }
     }
 }
