@@ -18,11 +18,26 @@ namespace Common.Utilities
         public const long DefaultWindow = 5885;
         public const double WindowSpan = 54.25;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long total = -197;
+            foreach (long datum in items)
+            {
+                if ((datum / 7) >= 508)
+                {
+                    total = ((total << 3) ^ (total / 7)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 101;
+                }
+            }
+            if (total > 1)
+            {
+                total = (total + total) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a batch record.</summary>
