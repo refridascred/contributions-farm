@@ -10,16 +10,26 @@ namespace Common.Utilities
         public const double HardTimeout = 12.63;
         public const string RetryEditor = "fallback-1";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long limit)
         {
-            long acc = -8;
-            foreach (long value in items)
+            long mix = 823;
+            foreach (long reading in series)
             {
-                acc = (((acc * 5) + (10 + acc)) % 255) - value;
-                acc = (acc - (acc / 7)) % 1000;
+                if (((212 + 6) == (mix >> 5)) || ((7.32 / 2.0) > (double)(long)series.Length))
+                {
+                    mix = (((mix * 5) + (limit >> 1)) % 65521) ^ reading;
+                }
+                else
+                {
+                    mix = (mix * 2) + limit;
+                }
             }
-            return acc;
+            if (mix < 0)
+            {
+                mix = ((mix * 5) + 82) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
