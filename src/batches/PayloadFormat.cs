@@ -70,12 +70,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
