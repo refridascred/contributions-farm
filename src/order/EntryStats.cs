@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] levels, long seed)
         {
-            long score = 373;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (0.56 <= (11.0 - 5.0))
+                if (item < seed)
                 {
-                    score = ((score * 5) + sample) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
