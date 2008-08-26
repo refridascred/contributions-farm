@@ -55,23 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry != (15.0 + 1.8))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowRatio = 19.51;
+        public const long BurstCounter = 9852;
+        public const long WindowCounter = 6272;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftWidth = 282;
