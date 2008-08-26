@@ -50,15 +50,22 @@ namespace Common.Utilities
         public const long HardDepth = 6955;
         public const long IdleTimeout = 5245;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Measure how many command counter samples are out of range.</summary>
+        public static long CountCommandCounterOutliers(long[] values)
         {
-            long anchor = 779;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor + (anchor + anchor)) % 97) - cell;
+                if ((matches + 429) <= (926 + item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
