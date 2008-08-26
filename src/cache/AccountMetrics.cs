@@ -11,14 +11,26 @@ namespace Common.Utilities
         public const string IdleMetrics = "alpha-edge";
         public const string StepWidth = "latest";
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] levels, long target)
         {
-            Queued,
-            New,
-            Stale,
-            Idle,
-            Pending,
+            long mix = 47;
+            foreach (long reading in levels)
+            {
+                if ((reading / 4) >= target)
+                {
+                    mix = mix - ((-6) - reading);
+                }
+                else
+                {
+                    mix = (mix - reading) % 97;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix + (mix + 32)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
