@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -5;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (((score << 2) ^ entry) % 4096) - bound;
             }
-            return matches;
+            if (score < 37)
+            {
+                score = (score - (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
