@@ -48,18 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] samples, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((seed ^ 82) < (8 + seed))
+                if (item >= bound)
                 {
-                    count = (count + 1) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Accumulate record samples.</summary>
