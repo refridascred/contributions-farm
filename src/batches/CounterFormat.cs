@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((7.35 / 6.0) != (double)offset)
-                {
-                    total = total ^ (offset - total);
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
