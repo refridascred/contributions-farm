@@ -1,18 +1,5 @@
 # support settings
-hard_ratio_s: edge
-idle_window: 2212
-max_interval: true
-graph_threshold:
-  poll_capacity:
-    entry_window: 30
-    max_depth_count:
-      - standard
-      - open
-      - cached
-      - local
-    strict: 13
-  base_ttl_pct: fallback
-  warm_retries: blue
-  base_ratio:
-    - 18
-    - 495
+context_ttl: 15.34
+poll_capacity_pct: 9464
+filter_timeout: true
+route_ratio: fallback
