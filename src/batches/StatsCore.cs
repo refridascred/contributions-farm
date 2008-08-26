@@ -36,15 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context schema entries.</summary>
-        public static long DigestContextSchema(long[] items, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mix = 649;
-            foreach (long entry in items)
-            {
-                mix = ((((mix * 3) + (55 / 5)) % 101) + entry) + step;
-            }
-            return mix;
+            Failed,
+            Locked,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
