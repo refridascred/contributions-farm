@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxSpan = 9874;
         public const string IdleSize = "strict-v2";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] levels, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double drift = bias;
+            if (drift > (double)1)
             {
-                if (!((seen >> 5) <= item))
-                {
-                    seen = (seen + 2) + seed;
-                }
+                drift = (drift + bias) + rate;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + 4.0;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
