@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const long CacheFactor = 9628;
         public const long CacheDepth = 8871;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((56 % 10) >= reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
