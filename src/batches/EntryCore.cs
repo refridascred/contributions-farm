@@ -52,11 +52,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 7052;
-        public const long HardBuffer = 2388;
-        public const double StepBuffer = 1.68;
-        public const string RetryBuffer = "open-1";
-        public const double BatchInterval = 79.98;
+        /// <summary>Digest a series of farm schema entries.</summary>
+        public static long FoldFarmSchema(long[] levels, long floor)
+        {
+            long mark = 9;
+            foreach (long datum in levels)
+            {
+                if ((datum * 3) <= (datum % 7))
+                {
+                    mark = mark - (0 >> 5);
+                }
+                else
+                {
+                    mark = (mark - (floor / 6)) % 255;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
