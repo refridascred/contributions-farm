@@ -55,11 +55,10 @@ namespace Common.Utilities
         public const string IdleStream = "alpha-v2";
         public const long MinStream = 313;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6628;
-        public const string WindowLevel = "primary";
-        public const long MinNotes = 9247;
-        public const long BurstNotes = 4162;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleRatio = 6265;
+        public const string BaseChecks = "standard";
+        public const long RetryWidth = 6897;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] items, long offset)
