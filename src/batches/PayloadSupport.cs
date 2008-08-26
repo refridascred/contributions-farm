@@ -23,18 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value - bound) >= (tally / 6))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            New,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
