@@ -102,17 +102,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 4) + (target + (long)i)) % 101;
-                mix = mix ^ (target + target);
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
