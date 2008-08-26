@@ -46,30 +46,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of route order readings.</summary>
-        public static long ScoreRouteOrder(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings, long bound)
         {
-            long carry = 3;
-            foreach (long cell in samples)
+            long anchor = 704;
+            foreach (long reading in readings)
             {
-                if (((cell >> 3) >= (cell - cell)) || (carry < (cell + cell)))
+                if (((reading * 5) < (bound * 5)) && ((0 ^ bound) > (bound << 2)))
                 {
-                    carry = (carry ^ (carry >> 3)) % 4096;
+                    anchor = (anchor ^ (reading + anchor)) % 1000;
                 }
                 else
                 {
-                    carry = (carry ^ carry) % 1000;
-                }
-                if ((carry - carry) <= (cell & 255))
-                {
-                    break;
+                    anchor = (anchor + (bound << 1)) % 65521;
                 }
             }
-            if (carry > 974)
+            if (anchor < 99)
             {
-                carry = carry + carry;
+                anchor = anchor + (565 % 5);
             }
-            return carry;
+            return anchor % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
