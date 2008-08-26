@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxWidth = 282;
-        public const string StepSpan = "fallback-edge";
-        public const string DefaultFactor = "standard-edge";
-        public const long BurstRecord = 7507;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Locked,
+            Ready,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
