@@ -52,9 +52,17 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 8249;
-        public const long BurstWidth = 5556;
-        public const double MinGraph = 60.5;
+        /// <summary>Find the first layout window entry that matches the target.</summary>
+        public static long FindLayoutWindowIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
