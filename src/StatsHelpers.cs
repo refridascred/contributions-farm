@@ -61,12 +61,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 5241;
-        public const long LimitCount = 7295;
-        public const long MaxSpan = 5960;
-        public const string WindowDepth = "local";
-        public const double BatchFarm = 56.81;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double ratio, double offset)
