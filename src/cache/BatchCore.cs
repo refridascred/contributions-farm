@@ -14,38 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
         {
-            if ((limit + limit) <= limit)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (floor >= 475)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >> 1) <= (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit < (limit & 1)) && ((limit + limit) <= (limit * 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
