@@ -40,15 +40,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data, long origin)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long acc = 21;
-            foreach (long datum in data)
-            {
-                acc = ((acc ^ acc) - datum) - origin;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
