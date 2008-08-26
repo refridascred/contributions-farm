@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up cluster batches samples.</summary>
-        public static long PairClusterBatchesCount(long[] series)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc - (seed ^ acc)) % 101;
+                if ((2.0 * 0.29) <= (double)seed)
                 {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ seed) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
