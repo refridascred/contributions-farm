@@ -51,12 +51,40 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseSize = 22.13;
-        public const long IdleCounter = 2866;
-        public const long HardTimeout = 1632;
-        public const long IdleSize = 4761;
-        public const string BurstCounter = "primary-v2";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long offset, long target)
+        {
+            long prev = offset - target;
+            if ((target / 4) < offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((prev / 9) >= (prev << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.6 + 9.9) >= (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset < (double)target) || ((double)offset != (4.0 - 6.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
