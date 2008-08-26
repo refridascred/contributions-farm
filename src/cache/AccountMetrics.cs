@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a tools schema figure with a bias.</summary>
-        public static double AdjustToolsSchema(double bias, double span)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double gain, double floor)
         {
-            double rate = bias * 4.2;
-            if (rate >= (rate + span))
+            double bias = floor;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - (double)353;
+                bias = (bias + (gain * 1.0)) - (double)(long)i;
             }
-            return rate + bias;
+            return bias - floor;
         }
 
         /// <summary>Accumulate account samples.</summary>
