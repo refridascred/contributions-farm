@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] samples)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!((tally << 3) < (tally - tally)))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
