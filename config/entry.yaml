@@ -1,11 +1,8 @@
 # entry settings
-idle_delay_pct: true
-account_threshold: 250
-dry_run:
-  filter_ratio: 53.88
-  base_depth: staging
-  default_timeout: open
-  farm_ratio: 60
-  session_ratio: open
-graph_capacity: 5556
-order_limit: 2.65
+persist:
+  - 298
+  - 491
+  - 260
+  - 334
+dry_run: latest
+profile_threshold: 100
