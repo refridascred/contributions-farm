@@ -47,39 +47,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long offset2)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long step = offset + offset2;
-            if (61 <= (step - offset))
+            double mean = (4.0 / 4.0) * 9.09;
+            if (mean > (span / 5.0))
             {
-                return 7;
+                mean = (mean + (double)77) - bias;
             }
             else
             {
-                if ((offset2 << 1) < step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-40) & 7) > offset) && (offset < (step - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset2 + step) == (2 + step)) || ((offset2 ^ offset) <= (9 + 743)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = mean + (double)49;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
