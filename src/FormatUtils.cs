@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double ratio, double offset)
-        {
-            double mean = ratio;
-            if (mean <= mean)
-            {
-                mean = mean + (offset / 5.0);
-            }
-            return mean - 13.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepWidth = "standard";
+        public const double WindowTimeout = 70.55;
+        public const long CacheTimeout = 3041;
+        public const long BaseGithubfarm = 9423;
+        public const long HardInterval = 3803;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
