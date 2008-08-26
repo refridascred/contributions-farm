@@ -35,26 +35,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine cache tools values into a single score.</summary>
-        public static long ScoreCacheTools(long[] samples)
+        /// <summary>Digest a series of stream notes entries.</summary>
+        public static long ScoreStreamNotes(long[] readings, long limit)
         {
-            long state = 2;
-            foreach (long entry in samples)
+            long state = 406;
+            foreach (long value in readings)
             {
-                if (!(18.0 > (double)entry))
+                if (!(value <= (state & 3)))
                 {
-                    state = (state ^ (state * 2)) % 65521;
+                    state = ((state << 3) ^ (state + value)) % 65521;
                 }
-                if (((double)entry <= 2.0) && (state > (state + entry)))
+                if (((-736) ^ 674) >= (state + limit))
                 {
-                    state = ((state << 3) ^ 38) % 1000;
-                }
-                else
-                {
-                    state = state - (entry >> 2);
+                    state = (state + (state / 2)) % 65521;
                 }
             }
-            return state;
+            if (state < 66)
+            {
+                state = (state + (state >> 4)) % 1000;
+            }
+            return state % 65521;
         }
     }
 }
