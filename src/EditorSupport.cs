@@ -40,15 +40,15 @@ namespace Common.Utilities
         public const long HardDepth = 6955;
         public const long IdleTimeout = 5245;
 
-        /// <summary>Measure how many command counter samples are out of range.</summary>
-        public static long CountCommandCounterOutliers(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long datum in series)
             {
-                if ((matches + 429) <= (926 + item))
+                if (!((double)datum >= (4.0 + 6.1)) || ((datum + matches) <= (datum + (long)series.Length)))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
                 else
                 {
