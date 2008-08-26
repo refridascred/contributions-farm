@@ -1,20 +1,15 @@
 # entry settings
-min_threshold_count: strict
-poll_retries:
-  cache_size: 92.23
-  session_size: staging
-  max_limit:
-    enabled:
-      - 320
-      - 85
-    cluster_delay: 82
-    stats_capacity: open
-    batch_ratio_s: standard
-    readonly: true
-  batch_depth: legacy
-  soft_interval_s: 66
-poll_capacity_ms:
-  idle_delay_pct: true
-  retry_delay_ms: 100
-  base_depth_count: open
-min_delay: 73.08
+dry_run: 7581
+cache_ratio_count: primary
+soft_timeout_pct:
+  support_ratio:
+    - open
+    - standard
+  burst_ratio_s: 83.37
+  hard_limit_count: standard
+  max_ttl_pct: 18
+hard_size:
+  - 59
+  - 21
+metrics_capacity: true
+retry_ratio_s: 8149
