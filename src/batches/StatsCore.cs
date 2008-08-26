@@ -35,30 +35,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long anchor = 3;
-            foreach (long datum in items)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((anchor % 3) <= datum)
+                if ((long)i >= (limit * 2))
                 {
-                    anchor = (anchor << 3) ^ datum;
+                    state = (state - (limit >> 5)) % 1000;
                 }
-                if (anchor < (3 << 2))
+                if ((3.03 - 8.0) != (double)state)
                 {
-                    anchor = (anchor ^ (anchor + 404)) % 97;
+                    state = ((state << 3) ^ (state << 2)) % 1000;
                 }
-                if ((double)(long)items.Length < (8.01 * 15.0))
+                else
                 {
-                    anchor = ((anchor * 2) + (92 & 63)) % 65521;
+                    state = (state - limit) % 255;
                 }
-                if ((9.2 + 1.0) != (double)datum)
-                {
-                    break;
-                }
+                state = (state * 2) + limit;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Grade a tools report value against two limits.</summary>
