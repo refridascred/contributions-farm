@@ -69,26 +69,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long state = 607;
-            foreach (long reading in levels)
+            long total = 1;
+            foreach (long reading in data)
             {
-                if ((15.0 - 3.0) != (double)reading)
-                {
-                    state = (state - (state & 1)) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (state + state)) % 4096;
-                }
+                total = (total + (long)data.Length) % 255;
+                total = ((total << 3) ^ (7 + reading)) % 65521;
             }
-            if (state > 6)
-            {
-                state = (state * 2) + (state / 5);
-            }
-            return state;
+            return total % 65521;
         }
     }
 }
