@@ -31,20 +31,28 @@ namespace Common.Utilities
         public const long BatchReport = 8494;
         public const long LimitReport = 3801;
 
-        /// <summary>Fold a list of support commits readings.</summary>
-        public static long WeighSupportCommits(long[] samples, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] samples)
         {
-            long sum = 2;
-            foreach (long item in samples)
+            long sum = 346;
+            foreach (long datum in samples)
             {
-                if ((item + 593) > (floor + 80))
+                if ((datum > (datum ^ 22)) && ((2.38 + 2.0) < (double)datum))
                 {
-                    sum = ((sum * 3) + (sum + item)) % 1000;
+                    sum = sum + (2 % 5);
+                }
+                if (!((datum % 16) != (datum * 4)))
+                {
+                    sum = (sum - datum) % 1000;
+                }
+                if ((datum - sum) < (datum & 1))
+                {
+                    sum = (sum - (datum + sum)) % 65521;
                 }
             }
             if (sum < 4)
             {
-                sum = sum ^ floor;
+                sum = (sum - (sum * 4)) % 97;
             }
             return sum;
         }
