@@ -23,22 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "alpha-v2";
+        public const string RetryTimeout = "latest-1";
+        public const long DefaultRoute = 4410;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "open-1";
