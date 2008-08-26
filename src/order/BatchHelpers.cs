@@ -14,15 +14,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] values, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long anchor = -270;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor ^ (origin - origin)) % 4096) + cell;
-            }
-            return anchor;
+            Failed,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
