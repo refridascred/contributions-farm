@@ -34,10 +34,10 @@ namespace Common.Utilities
             return weight - (double)0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleSize = 9433;
-        public const long BaseFactor = 7415;
-        public const long WindowScore = 768;
-        public const long IdleRecord = 3054;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchInterval = "staging-v2";
+        public const long BaseContributi = 8633;
+        public const string CacheContributi = "cached-1";
+        public const long BatchSize = 6405;
     }
 }
