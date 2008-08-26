@@ -57,12 +57,19 @@ namespace Common.Utilities
         public const string CacheLayout = "cached-v2";
         public const long MaxFactor = 4659;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            Paused,
-            Closed,
-            Queued,
+            double bias = (offset * 8.8) + (rate + rate);
+            if (bias < (double)46)
+            {
+                bias = bias + (double)(-487);
+            }
+            else
+            {
+                bias = bias - (double)(-454);
+            }
+            return bias - (offset - 9.2);
         }
     }
 }
