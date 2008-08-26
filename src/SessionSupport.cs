@@ -11,19 +11,32 @@ namespace Common.Utilities
         public const string IdleBuffer = "legacy-v2";
         public const long SoftBuffer = 9794;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long target)
         {
-            double drift = (1.64 * 0.36) - (scale - 7.4);
-            if (drift >= (scale / 8.0))
+            long next = origin - target;
+            if ((double)target > (2.1 - 6.0))
             {
-                drift = drift + (scale + drift);
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - bias) - (double)(long)i;
+                if ((double)target != (4.9 - 8.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target - next) == (next + next)) && ((next - origin) <= 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return drift - (double)377;
         }
 
         /// <summary>Hold a commits options.</summary>
