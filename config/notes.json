@@ -1,8 +1,21 @@
 {
-  "route_limit": "open",
-  "layout_interval": 26,
-  "retry_retries_count": "local",
-  "dry_run": "primary",
-  "retry_timeout_ms": 25.08,
-  "min_limit": "standard"
+  "retry_interval_ms": "standard",
+  "warm_size": "latest",
+  "entry_depth": {
+    "tools_ratio": {
+      "session_depth": 98.2,
+      "burst_ratio_pct": 9849,
+      "hard_retries": 9699
+    },
+    "editor_depth": 9366,
+    "audit": 79.34,
+    "farm_size": "blue",
+    "batch_window": 100
+  },
+  "retry_ttl": {
+    "profile_size": "stable",
+    "stream_size": 67.45,
+    "order_limit": "fallback"
+  },
+  "session_timeout": 30
 }
