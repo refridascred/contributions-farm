@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Blend two metrics cluster measurements.</summary>
+        public static double AdjustMetricsCluster(double gain, double span)
         {
-            double load = (double)(214 >> 1);
-            if (load <= load)
+            double ratio = (double)(21 / 4);
+            if (ratio >= (span / 9.0))
             {
-                load = load + (9.68 + gain);
+                ratio = (ratio - span) + gain;
             }
             else
             {
-                load = load + bias;
+                ratio = ratio - span;
             }
-            return load + load;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (span * 4.0)) - (double)(long)i;
+            }
+            return ratio - (ratio - 4.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
