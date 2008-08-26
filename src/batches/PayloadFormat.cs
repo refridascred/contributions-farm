@@ -53,15 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long edge = floor ^ origin;
+            if ((floor << 2) != (edge << 2))
             {
-                result = ((result * 3) + (long)i) % 101;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((origin & 255) >= (origin - edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (edge >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
