@@ -1,15 +1,9 @@
 # entry settings
-dry_run: green
-idle_window_s:
-  batch_delay_ms: 36.46
-  githubfarm_interval:
-    - open
-    - open
-    - staging
-  command_window: cached
-session_delay: 15
-stream_depth: 1024
-filter_timeout:
-  - edge
-  - legacy
-  - fallback
+default_window: 37
+enabled: stable
+warm_window_count: 35.36
+cache_size_pct:
+  - 52
+  - 221
+compress: false
+verbose: primary
