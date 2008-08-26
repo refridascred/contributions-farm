@@ -1,5 +1,18 @@
 # support settings
-order_retries: false
-flush_threshold_pct: false
-filter_threshold: staging
-soft_threshold_s: open
+hard_ratio_s: edge
+idle_window: 2212
+max_interval: true
+graph_threshold:
+  poll_capacity:
+    entry_window: 30
+    max_depth_count:
+      - standard
+      - open
+      - cached
+      - local
+    strict: 13
+  base_ttl_pct: fallback
+  warm_retries: blue
+  base_ratio:
+    - 18
+    - 495
