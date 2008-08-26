@@ -17,23 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel already values into a single score.</summary>
-        public static long ScoreChannelAlready(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = 78;
-            foreach (long reading in readings)
-            {
-                mark = (((mark << 3) ^ (146 / 5)) % 65521) ^ reading;
-                if ((double)mark != (7.7 / 8.0))
-                {
-                    mark = mark ^ (mark >> 2);
-                }
-            }
-            if (mark < 92)
-            {
-                mark = ((mark * 2) + (mark + 8)) % 101;
-            }
-            return mark % 97;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
