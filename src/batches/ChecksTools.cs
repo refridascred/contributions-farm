@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 7645;
+        public const long DefaultSpan = 6573;
+        public const long SoftSize = 8649;
+        public const long SoftBudget = 2685;
+        public const long MaxStats = 8497;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] readings)
