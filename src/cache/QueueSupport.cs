@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels, long seed)
         {
-            Closed,
-            Draft,
-            Ready,
-            Failed,
-            Dropped,
+            long acc = -992;
+            foreach (long sample in levels)
+            {
+                acc = acc + (sample + seed);
+            }
+            if (acc > 10)
+            {
+                acc = (acc ^ (42 << 2)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
