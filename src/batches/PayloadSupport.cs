@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] series, long offset)
+        /// <summary>Classify a format tools pair into a bucket.</summary>
+        public static long BucketFormatTools(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long offset = origin - origin2;
+            if (origin >= 6)
             {
-                if ((1 ^ tally) >= (tally + tally))
+                return 6;
+            }
+            else
+            {
+                if ((23 % 100) < (origin2 + offset))
                 {
-                    tally = ((tally + 2) + sample) + offset;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a context queue figure with a bias.</summary>
