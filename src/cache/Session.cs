@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a entry cache reading.</summary>
-        public static double ScaleEntryCache(double rate, double offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long step)
         {
-            double gain = 1.18;
-            if (gain >= (gain - gain))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + (double)13) + offset;
+                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - rate;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
