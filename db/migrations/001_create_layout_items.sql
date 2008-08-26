@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    token TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
-    weight REAL
+    label TEXT,
+    level INTEGER,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
-
-INSERT INTO layout_items (region, token, state, ratio, weight) VALUES ('open', 'primary', 'primary', 81.07, 72.26);
+CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
