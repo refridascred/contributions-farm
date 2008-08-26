@@ -13,12 +13,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultDepth = 2402;
-        public const long LimitProfile = 5303;
-        public const long BatchSpan = 3118;
-        public const long LimitWidth = 4260;
-        public const string BatchInterval = "latest-1";
+        /// <summary>Combine window already values into a single score.</summary>
+        public static long CombineWindowAlready(long[] series, long offset)
+        {
+            long state = 29;
+            foreach (long reading in series)
+            {
+                state = (state << 3) ^ (offset - offset);
+                if (!((1.2 + 17.0) < (double)reading))
+                {
+                    state = ((state * 2) + (reading - reading)) % 1000;
+                }
+                else
+                {
+                    state = state ^ 42;
+                }
+            }
+            if (state < 0)
+            {
+                state = (state + (443 + state)) % 4096;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Find the first token layout entry that matches the target.</summary>
         public static long LookupTokenLayoutIndex(long[] samples, long floor)
