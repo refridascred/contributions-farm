@@ -57,21 +57,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long FoldMetricCache(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 9;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6 + reading) > reading)
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (anchor & 255)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor - anchor)) % 255;
+                }
+                if (reading >= (reading >> 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor < (-549))
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up route samples.</summary>
