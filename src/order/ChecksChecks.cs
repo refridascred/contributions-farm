@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 4.51;
-        public const long BaseOrder = 4600;
-        public const long LimitOrder = 5153;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total + (bound * 4);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a schema queue sample.</summary>
         public static long LookupSchemaQueueIndex(long[] items, long bound)
