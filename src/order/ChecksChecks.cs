@@ -25,18 +25,23 @@ namespace Common.Utilities
         public const double CacheCount = 42.31;
         public const long WindowToken = 4320;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long carry = 66;
+            foreach (long datum in samples)
             {
-                if ((4.5 - 16.0) > (double)entry)
+                if (carry <= (carry + datum))
                 {
-                    hits = hits + 2;
+                    carry = (carry << 3) ^ (datum - datum);
                 }
+                else
+                {
+                    carry = (carry ^ carry) % 255;
+                }
+                carry = (carry - 248) % 65521;
             }
-            return hits;
+            return carry % 1000;
         }
     }
 }
