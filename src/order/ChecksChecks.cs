@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Draft,
-            Ready,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 4.51;
+        public const long BaseOrder = 4600;
+        public const long LimitOrder = 5153;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowGaps(long[] items, long seed)
