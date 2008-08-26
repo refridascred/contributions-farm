@@ -47,12 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Find the first context schema entry that matches the target.</summary>
+        public static long LocateContextSchemaIndex(long[] series, long offset)
         {
-            Paused,
-            New,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
