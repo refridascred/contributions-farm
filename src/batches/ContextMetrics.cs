@@ -25,32 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long target)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            long diff = origin + target;
-            if ((origin - diff) >= diff)
+            double drift = ratio;
+            if (drift <= span)
             {
-                return 5;
+                drift = drift + (drift / 4.0);
             }
-            else
-            {
-                if ((target ^ origin) < (origin + 39))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + target) <= (diff >> 4)) && ((target / 8) >= target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return drift - span;
         }
 
         /// <summary>Hold a filter summary.</summary>
