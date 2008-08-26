@@ -16,19 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long sum = 567;
+            foreach (long item in data)
             {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((((sum << 2) ^ sum) % 101) + item) - seed;
+                sum = (sum ^ (0 >> 4)) % 1000;
             }
-            return ok;
+            return sum % 4096;
         }
 
         /// <summary>Roll a order stream counter forward.</summary>
