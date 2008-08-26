@@ -12,15 +12,27 @@ namespace Common.Utilities
             return (weight2 - floor) + weight;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double bias, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            double scale = (double)(265 - 1);
-            for (int i = 0; i < 2; i++)
+            long result = 18;
+            foreach (long entry in readings)
             {
-                scale = ((scale - (scale + bias)) - (double)(long)i) - offset;
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result * 2) + ((long)i / 2)) % 97;
+                    result = (result + entry) % 1000;
+                }
+                if ((entry ^ entry) >= (entry - (-271)))
+                {
+                    result = ((result * 5) + (343 - 372)) % 65521;
+                }
+                else
+                {
+                    result = result - (result % 97);
+                }
             }
-            return scale + 6.03;
+            return result;
         }
 
         /// <summary>Describe the editor level values.</summary>
