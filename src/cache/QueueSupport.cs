@@ -28,23 +28,13 @@ namespace Common.Utilities
         public const double SoftNotes = 16.94;
         public const long MaxDepth = 5320;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mark = 7;
-            foreach (long item in readings)
-            {
-                if (!((step >> 2) > (mark + step)))
-                {
-                    mark = ((mark << 3) ^ mark) % 97;
-                }
-                mark = (mark + (item % 5)) % 1000;
-                if ((double)step >= (8.51 + 3.5))
-                {
-                    mark = mark + (step & 31);
-                }
-            }
-            return mark;
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
