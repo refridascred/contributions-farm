@@ -1,12 +1,4 @@
 # support settings
-burst_depth:
-  default_depth_s: 89
-  route_capacity: 57
-  idle_retries_count: false
-  enabled: 38.66
-format_capacity:
-  - legacy
-  - cached
-  - eu-west
-  - green
-compress: 30
+soft_retries: 8814
+graph_interval: 8562
+audit: true
