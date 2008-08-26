@@ -52,9 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstTimeout = "stable-1";
-        public const long BaseCluster = 8168;
-        public const long MaxScore = 5128;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
