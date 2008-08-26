@@ -13,30 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] series, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] items, long limit)
         {
-            long result = 471;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((15.0 >= (double)offset) && ((2.71 / 2.0) == (double)offset))
+                if (items[i] > limit)
                 {
-                    result = (result + (offset - offset)) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (5 ^ offset)) % 255;
-                }
-                if ((offset + cell) < (cell / 6))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 6)
-            {
-                result = ((result * 2) + (offset ^ offset)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
