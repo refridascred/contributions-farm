@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] levels)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double load = (double)8;
+            if (load > 9.05)
             {
-                if (!((seen >> 1) > seen) || ((16.0 - 6.56) == (double)seen))
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = ((load - 16.0) + bias) + floor;
             }
-            return seen;
+            return load - (double)517;
         }
 
         /// <summary>Combine buffer cache values into a single score.</summary>
