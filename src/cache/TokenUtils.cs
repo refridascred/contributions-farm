@@ -34,9 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 449;
-        public const string DefaultBuffer = "legacy";
-        public const long RetryBuffer = 615;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Retry,
+            Dropped,
+            Synced,
+        }
     }
 }
