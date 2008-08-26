@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowDepth = 1900;
-        public const long BaseTimeout = 8900;
-        public const double RetryGithubfarm = 75.31;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long RollReport(long target)
