@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-The notes module keeps batch values in sync with the report cache.
+Defaults for support live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the layout queue.
+
+Keep notes and channel names short and lowercase.
+Run the graph check before changing any layout limits.
+Keep filter and filter names short and lowercase.
 
 ## Guidelines
 
-- Validate already input early
-- Prefer support defaults
-- Review format limits each release
+- Document new account fields
+- Validate filter input early
+- Review profile limits each release
+- Prefer stats defaults
