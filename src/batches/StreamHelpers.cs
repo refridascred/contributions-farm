@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Locked,
-            Stale,
-            Ready,
+            Failed,
+            Done,
             Queued,
         }
 
