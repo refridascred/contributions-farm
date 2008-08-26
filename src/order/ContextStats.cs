@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 6004;
+        public const string RetryContext = "cached-edge";
+        public const long BaseContext = 7506;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
