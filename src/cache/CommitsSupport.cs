@@ -70,18 +70,21 @@ namespace Common.Utilities
         public const double LimitWidth = 92.24;
         public const long RetrySession = 5237;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] readings, long target)
+        /// <summary>Count cache farm pairs that satisfy a relation.</summary>
+        public static long MatchCacheFarmCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits > (double)807)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 3) ^ value) + target;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
