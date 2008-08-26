@@ -22,22 +22,18 @@ namespace Common.Utilities
         public const double BatchFarm = 8.47;
         public const double DefaultFarm = 47.63;
 
-        /// <summary>Count the session command entries that pass the check.</summary>
-        public static long AuditSessionCommandGaps(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long total = 50;
+            foreach (long datum in series)
             {
-                if ((double)matches >= (double)entry)
+                if ((82 & 255) < datum)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((total << 3) ^ (78 + 2)) + offset;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
