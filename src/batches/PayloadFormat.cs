@@ -47,19 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format notes readings against a bound.</summary>
-        public static bool CheckFormatNotesRange(long[] series, long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Draft,
+            Done,
+            Pending,
         }
     }
 }
