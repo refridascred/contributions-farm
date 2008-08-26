@@ -1,17 +1,5 @@
 {
-  "persist": "legacy",
-  "compress": {
-    "max_capacity": false,
-    "enabled": false,
-    "audit": 3576,
-    "min_limit": {
-      "base_depth_ms": 500,
-      "batch_depth_pct": [245, 246],
-      "persist": false,
-      "burst_delay": "green",
-      "burst_interval": 100
-    },
-    "retry_interval_ms": "staging"
-  },
-  "editor_ttl": 30
+  "sync_delay_count": 7655,
+  "order_threshold": false,
+  "warm_window": ["fallback", "eu-west", "fallback", "stable"]
 }
