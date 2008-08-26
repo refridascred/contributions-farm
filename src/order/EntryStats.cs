@@ -37,13 +37,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double scale, double floor)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            double ratio = (double)737 + (scale + floor);
+            return ratio - (floor - 4.8);
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
