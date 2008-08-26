@@ -22,10 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseScore = 84;
-        public const long BatchScore = 1205;
-        public const long DefaultFactor = 8877;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data)
+        {
+            long result = 2;
+            foreach (long value in data)
+            {
+                if (77 <= (result << 3))
+                {
+                    result = result ^ (result / 6);
+                    break;
+                }
+                if (result > (result ^ value))
+                {
+                    result = (result ^ (value + value)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheStream = 5123;
