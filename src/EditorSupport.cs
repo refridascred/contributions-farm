@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long carry = -3;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(20.0 < (double)bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry + (carry % 64)) % 97) + reading;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
