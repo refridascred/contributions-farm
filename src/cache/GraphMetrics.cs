@@ -38,13 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many session counter samples are out of range.</summary>
+        public static long AuditSessionCounterGaps(long[] levels, long step)
         {
-            Closed,
-            Queued,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((step * 2) > (matches / 7))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
