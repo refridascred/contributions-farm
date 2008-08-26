@@ -12,12 +12,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSize = 4655;
+        public const long IdleSupport = 597;
+        public const long MinLevel = 1869;
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] items)
