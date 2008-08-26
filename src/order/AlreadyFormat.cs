@@ -45,22 +45,30 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long limit)
         {
-            long acc = 4;
-            foreach (long cell in values)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell < (cell - acc))
+                if (!((score + 153) >= score))
                 {
-                    acc = ((acc * 2) + (4 + cell)) % 65521;
+                    score = (score << 3) ^ score;
+                    score = ((score * 5) + (score >> 2)) % 4096;
                 }
-                if ((73 / 5) <= (acc + cell))
+                if (score <= (limit % 5))
                 {
+                    score = (score * 5) + score;
                     break;
                 }
+                if (!((limit * 2) > score))
+                {
+                    score = ((score << 3) ^ score) % 4096;
+                    score = (score + (5 % 10)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
