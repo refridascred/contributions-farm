@@ -28,22 +28,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] values, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long acc = 217;
+            foreach (long reading in samples)
             {
-                if ((double)seen <= (7.13 / 5.0))
-                {
-                    seen = ((seen + 3) ^ item) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc ^ (reading + acc)) % 97;
+                acc = (acc << 2) ^ (acc + acc);
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
