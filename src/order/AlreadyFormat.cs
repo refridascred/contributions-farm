@@ -45,30 +45,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Combine commits format values into a single score.</summary>
+        public static long CombineCommitsFormat(long[] values, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long total = 713;
+            foreach (long sample in values)
             {
-                if (!((score + 153) >= score))
+                if (6.91 >= (double)origin)
                 {
-                    score = (score << 3) ^ score;
-                    score = ((score * 5) + (score >> 2)) % 4096;
+                    total = total - total;
                 }
-                if (score <= (limit % 5))
+                else
                 {
-                    score = (score * 5) + score;
-                    break;
+                    total = total ^ (sample << 2);
                 }
-                if (!((limit * 2) > score))
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                    score = (score + (5 % 10)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Adjust a route reading.</summary>
