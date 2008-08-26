@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Use record settings to tune how often order data is refreshed.
-
-Use stream settings to tune how often githubfarm data is refreshed.
-A queue that stays idle for too long is moved to the buffer list.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any schema limits.
+Keep entry and support names short and lowercase.
 
 ## Guidelines
 
-- Log every entry change
-- Prefer profile defaults
-- Document new account fields
+- Log every batches change
+- Document new payload fields
+- Keep contributi values small
