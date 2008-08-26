@@ -28,14 +28,17 @@ namespace Common.Utilities
         public const double StepCount = 73.12;
         public const string BaseLevel = "staging-edge";
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] data, long floor)
         {
-            Idle,
-            New,
-            Queued,
-            Draft,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits mode values.</summary>
