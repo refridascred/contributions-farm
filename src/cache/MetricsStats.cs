@@ -12,17 +12,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] data, long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(80 + 115);
+            if (gain > span)
             {
-                if ((data[i] >= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (7.0 + span);
             }
-            return -1;
+            return gain + (rate + gain);
         }
 
         /// <summary>Hold a stats options.</summary>
