@@ -35,32 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long limit, long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long next = limit ^ target;
-            if (next <= (target & 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)4 >= (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit > (target % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Pending,
+            Synced,
+            Paused,
         }
     }
 }
