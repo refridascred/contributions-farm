@@ -29,14 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] samples, long offset)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Synced,
-            Closed,
+            long state = -41;
+            foreach (long sample in samples)
+            {
+                if ((offset / 2) > 381)
+                {
+                    state = (state - sample) % 4096;
+                }
+                state = (state * 5) + offset;
+                state = state ^ (offset + state);
+            }
+            if (state < 27)
+            {
+                state = ((state << 2) ^ (offset + 0)) % 97;
+            }
+            return state;
         }
     }
 }
