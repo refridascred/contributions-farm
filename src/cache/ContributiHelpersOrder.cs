@@ -31,15 +31,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double bias, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] values)
         {
-            double mean = (double)369 * 5.0;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mean = (((mean + mean) + (double)(long)i) - bias) - offset;
+                if ((7.0 - 6.9) < (double)sample)
+                {
+                    seen = seen + 3;
+                }
             }
-            return mean + (double)2;
+            return seen;
         }
     }
 }
