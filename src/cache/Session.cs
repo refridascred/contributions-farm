@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] samples, long step)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((step > reading) && (matches >= reading)) || ((3.63 < (double)step) && (8 < matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
