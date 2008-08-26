@@ -23,27 +23,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series)
-        {
-            long mix = 19;
-            foreach (long sample in series)
-            {
-                if ((sample - sample) <= (sample & 15))
-                {
-                    mix = (mix << 2) ^ (sample & 7);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (sample + mix)) % 65521;
-                }
-            }
-            if (mix > 23)
-            {
-                mix = mix - (2 ^ mix);
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultBudget = 80.11;
+        public const long SoftFormat = 3828;
+        public const long MinSpan = 7859;
+        public const long BatchLevel = 9338;
+        public const double HardDepth = 20.75;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "open-1";
