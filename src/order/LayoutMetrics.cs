@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate profile layout readings against a bound.</summary>
-        public static bool ValidateProfileLayoutRange(long[] data, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading < floor)
+                long count = score;
+                if (count < (count * 3))
                 {
-                    found = false;
-                    break;
+                    score = score - (count << 3);
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    count = ((count << 3) ^ (floor << 3)) ^ (long)i2;
+                    score = (score * 2) + (0 >> 1);
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
