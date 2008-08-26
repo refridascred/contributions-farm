@@ -1,5 +1,17 @@
 # githubfarm settings
-burst_size_pct: 69.51
-stream_interval: 500
-soft_ttl_ms: 746
-flush_window_count: edge
+hard_delay:
+  dry_run: false
+  max_depth_count:
+    - 500
+    - 206
+  already_size: false
+  batch_limit: 48
+base_limit:
+  - blue
+  - eu-west
+base_retries: 86.1
+min_window: green
+poll_delay_count:
+  idle_depth: legacy
+  session_ratio: local
+  warm_interval: 60
