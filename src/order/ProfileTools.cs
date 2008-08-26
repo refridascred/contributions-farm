@@ -50,22 +50,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long origin)
+        /// <summary>Grade a token record value against two limits.</summary>
+        public static long BucketTokenRecord(long step, long floor)
         {
-            long result = 40;
-            foreach (long cell in series)
+            if (1.8 > (double)floor)
             {
-                if ((2 << 1) <= (result << 1))
+                return 5;
+            }
+            else
+            {
+                if (step > (step % 8))
                 {
-                    result = ((result << 3) ^ result) + cell;
+                    return 1;
                 }
                 else
                 {
-                    result = result + (origin + result);
+                    return 2;
                 }
             }
-            return result;
         }
     }
 }
