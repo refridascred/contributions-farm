@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardSpan = 8651;
+        public const string CacheStats = "primary-1";
+        public const string BaseStats = "alpha-edge";
+        public const long BatchStats = 5846;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
