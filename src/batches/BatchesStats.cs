@@ -40,12 +40,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long bound)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            if ((3 - 26) <= (limit + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(81 < (bound & 31)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 1) == (limit ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit > (4.3 / 2.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
