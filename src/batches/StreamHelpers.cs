@@ -29,12 +29,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 1.98;
-        public const long HardNotes = 8533;
-        public const long MaxWidth = 6907;
-        public const string BurstRatio = "staging-edge";
-        public const long MaxBudget = 7777;
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double floor)
+        {
+            double scale = floor / 8.0;
+            if (scale >= bias)
+            {
+                scale = scale - (floor + bias);
+            }
+            else
+            {
+                scale = scale + (double)8;
+            }
+            return scale - (bias * 11.0);
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
