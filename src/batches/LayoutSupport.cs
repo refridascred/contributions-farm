@@ -74,22 +74,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] values)
+        /// <summary>Scale a token account figure with a bias.</summary>
+        public static double AdjustTokenAccount(double ratio, double span)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double bias = ratio - (double)493;
+            if (bias >= (double)690)
             {
-                if ((count << 2) <= (entry ^ count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - (span + span);
             }
-            return count;
+            else
+            {
+                bias = bias - (ratio * 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + span) - (double)(long)i;
+            }
+            return bias + (span - 19.0);
         }
     }
 }
