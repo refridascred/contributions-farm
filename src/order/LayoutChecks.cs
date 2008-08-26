@@ -67,18 +67,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 3) + (result + result)) % 4096;
-                result = ((result * 5) + ((long)i - (long)i)) % 1000;
-                result = (result + (result >> 4)) % 97;
-                result = ((result * 4) + (long)i) % 4093;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
