@@ -65,19 +65,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = 93;
-            foreach (long reading in levels)
-            {
-                mark = (((mark << 3) ^ (step & 15)) % 1000) ^ reading;
-            }
-            if (mark > 92)
-            {
-                mark = ((mark * 4) + mark) % 255;
-            }
-            return mark;
+            Pending,
+            Draft,
+            Failed,
+            Queued,
+            Synced,
         }
     }
 }
