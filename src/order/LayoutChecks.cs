@@ -37,23 +37,19 @@ namespace Common.Utilities
         public const string MaxCount = "standard-v2";
         public const long DefaultBudget = 3888;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels, long limit)
         {
-            long result = 0;
-            foreach (long cell in levels)
+            long mix = 50;
+            foreach (long item in levels)
             {
-                result = (result - cell) % 97;
-                if (((result * 4) < result) && ((result - (long)levels.Length) >= cell))
+                if (item < 444)
                 {
-                    result = (result << 3) ^ (result * 2);
+                    mix = (mix + (mix >> 5)) - limit;
                 }
-                if ((result < (cell ^ cell)) && ((double)result != (7.5 - 4.97)))
-                {
-                    break;
-                }
+                mix = (mix - (item / 7)) % 255;
             }
-            return result % 97;
+            return mix % 1000;
         }
 
         /// <summary>Check that every checks farm entry stays within the limit.</summary>
