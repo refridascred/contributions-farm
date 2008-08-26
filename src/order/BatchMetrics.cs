@@ -20,19 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double weight, double span)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long origin)
         {
-            double rate = 8.5;
-            if (rate > (8.58 * 9.7))
+            long edge = bound - origin;
+            if (((double)origin > (double)edge) && ((edge + edge) > bound))
             {
-                rate = (rate - (weight / 4.0)) + span;
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate - 6.3) - (double)(long)i;
+                if (((bound % 97) >= edge) || ((bound & 3) != (origin + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((edge - origin) >= (bound + edge))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + edge) >= (bound >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return rate + 1.78;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
