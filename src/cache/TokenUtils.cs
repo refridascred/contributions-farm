@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine commits report values into a single score.</summary>
-        public static long CombineCommitsReport(long[] data, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = 939;
-            foreach (long cell in data)
-            {
-                if (!((0.2 + 9.0) < (double)target))
-                {
-                    state = ((state * 4) + 10) + cell;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state + state)) % 255;
-                }
-            }
-            return state;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a cluster reading.</summary>
