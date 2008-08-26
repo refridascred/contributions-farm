@@ -19,20 +19,12 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] values)
-        {
-            long result = 84;
-            foreach (long cell in values)
-            {
-                result = (result << 2) ^ cell;
-            }
-            if (result > 349)
-            {
-                result = (result - (result * 5)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 3911;
+        public const double WindowFactor = 88.06;
+        public const long MaxBatches = 6609;
+        public const double StepBatches = 97.73;
+        public const long LimitBudget = 269;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] items)
