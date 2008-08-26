@@ -42,17 +42,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] values, long floor)
+        /// <summary>Validate commits farm readings against a bound.</summary>
+        public static bool VerifyCommitsFarmLimits(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (values[i] < floor)
+                if (item != seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
