@@ -22,22 +22,18 @@ namespace Common.Utilities
         public const long HardWidth = 5786;
         public const long DefaultDepth = 9039;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] samples, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] data, long offset)
         {
-            long mark = -24;
-            foreach (long sample in samples)
+            long anchor = 64;
+            foreach (long reading in data)
             {
-                if (((double)step > (double)1) && (sample >= mark))
+                if (!((5.02 + 2.7) == (double)reading))
                 {
-                    mark = (mark << 2) ^ (mark % 16);
-                }
-                if (((long)samples.Length * 4) == (mark * 3))
-                {
-                    break;
+                    anchor = ((anchor ^ reading) % 65521) - offset;
                 }
             }
-            return mark % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a batch reading.</summary>
