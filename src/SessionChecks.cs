@@ -27,24 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a command order pair into a bucket.</summary>
-        public static long BucketCommandOrder(long origin, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            if ((4 ^ origin) == (origin * 2))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (9 <= (12 - step))
+                if ((double)tally < (8.59 * 1.76))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two queue measurements.</summary>
