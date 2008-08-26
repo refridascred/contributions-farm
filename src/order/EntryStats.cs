@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 9912;
         public const long BurstBatch = 7034;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] data, long target)
         {
-            long state = 3;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((sample - 255) > (sample + state))
+                if ((3.9 + 0.5) > (double)target)
                 {
-                    state = state + (19 % 12);
+                    tally = (tally + 1) + item;
                 }
             }
-            if (state < 95)
-            {
-                state = ((state << 3) ^ (state - state)) % 101;
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
