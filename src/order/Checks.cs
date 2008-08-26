@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)725 / 2.0;
+            if (load > bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + load;
             }
-            return seen;
+            return load - (scale - bias);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
