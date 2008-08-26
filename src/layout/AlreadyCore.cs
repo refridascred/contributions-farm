@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long seed2)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if (!(seed > (11 * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 2) < (9 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2 - seed) <= (seed % 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
