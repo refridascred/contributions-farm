@@ -23,18 +23,24 @@ namespace Common.Utilities
         public const string LimitLevel = "primary-v2";
         public const long BaseCommand = 4486;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] items, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long step, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if ((double)step == (double)origin)
             {
-                if (offset >= (seen & 1))
+                return 5;
+            }
+            else
+            {
+                if ((6.0 / 5.0) < (double)origin)
                 {
-                    seen = (seen + 3) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
