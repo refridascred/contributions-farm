@@ -30,19 +30,14 @@ namespace Common.Utilities
         public const long CacheRatio = 662;
         public const long WindowGraph = 6764;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long total = 245;
-            foreach (long datum in values)
-            {
-                total = ((total << 3) ^ (total ^ total)) ^ datum;
-            }
-            if (total > (-69))
-            {
-                total = ((total << 3) ^ (321 >> 5)) % 65521;
-            }
-            return total % 1000;
+            Failed,
+            Paused,
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
