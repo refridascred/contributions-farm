@@ -1,11 +1,15 @@
 # Command notes
 
-Each support is validated before it reaches the githubfarm queue.
-The editor module keeps editor values in sync with the format cache.
-Keep token and graph names short and lowercase.
+When a queue fails, the buffer handler retries a few times before giving up.
+When a stats fails, the channel handler retries a few times before giving up.
+Run the route check before changing any graph limits.
+
+The payload report groups every githubfarm by window.
+Use commits settings to tune how often commits data is refreshed.
+Keep checks and filter names short and lowercase.
 
 ## Guidelines
 
-- Validate cluster input early
-- Log every buffer change
-- Prefer buffer defaults
+- Keep stream values small
+- Review channel limits each release
+- Log every token change
