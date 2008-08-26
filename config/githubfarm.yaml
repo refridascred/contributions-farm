@@ -1,14 +1,8 @@
 # githubfarm settings
-dry_run: 500
-sync_threshold_ms: false
-schema_capacity:
-  - open
-  - blue
-  - latest
-  - latest
-sync_window_count: 920
-format_window:
-  - primary
-  - edge
-  - fallback
-flush_threshold: true
+persist: blue
+compress: open
+farm_retries: 60
+audit:
+  - legacy
+  - stable
+  - local
