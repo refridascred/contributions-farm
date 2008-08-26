@@ -38,12 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate format notes readings against a bound.</summary>
+        public static bool CheckFormatNotesRange(long[] series, long seed)
         {
-            New,
-            Ready,
-            Failed,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
