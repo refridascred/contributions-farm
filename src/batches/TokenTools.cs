@@ -27,17 +27,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a payload layout reading by value.</summary>
-        public static long LocatePayloadLayoutIndex(long[] samples, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 9;
+            foreach (long item in items)
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
+                carry = ((carry << 2) ^ carry) ^ item;
+                if ((carry ^ carry) == (seed - carry))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (seed << 2)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
