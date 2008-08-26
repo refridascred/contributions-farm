@@ -21,12 +21,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long step)
         {
-            Retry,
-            Synced,
-            Queued,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
