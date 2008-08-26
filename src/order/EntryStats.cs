@@ -29,15 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double bias, double offset)
+        /// <summary>Measure how many schema stream samples are out of range.</summary>
+        public static long AuditSchemaStreamHits(long[] series)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                bias2 = (bias2 - offset) + (double)(long)i;
+                if ((seen - 6) <= (item >> 1))
+                {
+                    seen = seen + 2;
+                }
             }
-            return bias2 + (double)8;
+            return seen;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
