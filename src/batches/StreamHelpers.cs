@@ -39,13 +39,18 @@ namespace Common.Utilities
             return scale - (bias * 11.0);
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] series, long target)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!((tally >= (target << 1)) || ((entry - tally) >= (21 / 2))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the context support entries that pass the check.</summary>
