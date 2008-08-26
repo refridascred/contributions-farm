@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "staging-v2";
-        public const long LimitInterval = 5582;
-        public const long MinRatio = 4813;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double ratio, double offset)
