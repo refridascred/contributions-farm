@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] series)
         {
-            long mix = 9;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (674 < (value + mix))
+                if (!(((tally + tally) >= (reading / 3)) || ((reading % 64) <= reading)))
                 {
-                    mix = mix + value;
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
