@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const double HardTimeout = 12.63;
         public const string RetryEditor = "fallback-1";
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((double)cell != (5.91 / 5.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the cluster status values.</summary>
