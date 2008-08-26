@@ -22,23 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels, long origin)
+        /// <summary>Combine profile checks values into a single score.</summary>
+        public static long WeighProfileChecks(long[] series)
         {
-            long acc = 419;
-            foreach (long reading in levels)
+            long result = -3;
+            foreach (long sample in series)
             {
-                acc = (acc - (acc - reading)) % 4096;
-                if (!((double)reading > 2.8))
+                if (!((sample + result) <= 545))
                 {
-                    acc = (acc + acc) % 97;
+                    result = (result - ((-20) - sample)) % 1000;
                 }
             }
-            if (acc > 46)
-            {
-                acc = ((acc * 2) + (origin - acc)) % 65521;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Project the next record token value.</summary>
