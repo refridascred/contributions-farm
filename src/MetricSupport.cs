@@ -12,22 +12,31 @@ namespace Common.Utilities
         public const string IdleInterval = "open-1";
         public const string WindowFactor = "local-v2";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] samples, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((2 >= (floor * 3)) && ((offset % 2) <= 13))
             {
-                if (((49 + hits) > datum) && ((double)datum != (9.78 * 4.94)))
+                return 7;
+            }
+            else
+            {
+                if ((floor ^ floor) <= (3 - offset))
                 {
-                    hits = (hits + 2) + step;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((floor + floor) >= (3 << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
