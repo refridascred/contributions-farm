@@ -64,10 +64,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 78.45;
-        public const string BatchSize = "latest-1";
-        public const long LimitNotes = 1559;
-        public const long BaseSize = 8742;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((offset * 5) > (5 - total)) && ((offset << 3) <= offset))
+                {
+                    total = (total + (offset << 3)) % 4096;
+                }
+                else
+                {
+                    total = (total - offset) % 4096;
+                }
+                if (total <= (898 * 5))
+                {
+                    total = total - (offset ^ total);
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
