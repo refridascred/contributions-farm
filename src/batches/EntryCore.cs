@@ -24,10 +24,20 @@ namespace Common.Utilities
             return ratio - (ratio - 4.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseFactor = 5558;
-        public const string CacheChecks = "local-1";
-        public const long IdleChecks = 2203;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
+        {
+            long carry = 8;
+            foreach (long sample in readings)
+            {
+                carry = (((carry << 3) ^ carry) % 97) ^ sample;
+            }
+            if (carry > 74)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Scale a session notes figure with a bias.</summary>
         public static double SmoothSessionNotes(double weight, double floor)
