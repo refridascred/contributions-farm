@@ -20,31 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if (bound < 97)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit >= 10.0) || (bound > (limit >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > (2 >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the counter state values.</summary>
