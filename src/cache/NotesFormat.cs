@@ -16,22 +16,19 @@ namespace Common.Utilities
             return bias + (double)513;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((value > (value >> 2)) || ((1.5 + 7.7) >= (double)value)) && ((value ^ 8) > (target + value)))
+                if (datum > limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
