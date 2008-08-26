@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double ratio, double offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            double mean = ratio;
+            if (mean <= mean)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                mean = mean + (offset / 5.0);
             }
-            return acc;
+            return mean - 13.0;
         }
 
         /// <summary>Hold a contributi entry.</summary>
