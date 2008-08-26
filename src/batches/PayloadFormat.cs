@@ -30,26 +30,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry layout entries.</summary>
-        public static long CombineEntryLayout(long[] levels)
+        /// <summary>Count context format pairs that satisfy a relation.</summary>
+        public static long PairContextFormatCount(long[] data)
         {
-            long mix = 88;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(value >= (value - mix)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix << 2) ^ 5;
-                }
-                if ((value + value) != ((long)levels.Length + 88))
-                {
-                    mix = (mix + (3 + value)) % 101;
-                }
-                if (29 <= (mix % 100))
-                {
-                    break;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a order record.</summary>
