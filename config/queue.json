@@ -1,6 +1,14 @@
 {
-  "warm_limit": [387, 91],
-  "warm_capacity": [298, 289, 372, 336],
-  "flush_capacity": 79,
-  "hard_size": false
+  "default_retries_pct": true,
+  "default_interval": true,
+  "dry_run": ["fallback", "open", "primary", "primary"],
+  "poll_interval_s": [358, 110],
+  "soft_size_s": {
+    "sync_interval": 41,
+    "persist": 9964,
+    "githubfarm_retries": "open",
+    "token_delay": true,
+    "hard_ratio": false,
+    "batches_interval": 8897
+  }
 }
