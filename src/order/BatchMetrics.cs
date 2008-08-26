@@ -18,16 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
-        {
-            long total = 9;
-            foreach (long entry in values)
-            {
-                total = total - entry;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultTimeout = "strict-1";
+        public const double BatchDepth = 79.21;
+        public const long RetryPayload = 543;
+        public const long BatchTimeout = 9697;
+        public const long CacheSpan = 3274;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
