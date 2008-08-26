@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const long MinQueue = 2178;
         public const double BurstInterval = 10.99;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double rate = bias;
-            if (rate > (double)70)
-            {
-                rate = (rate - (double)8) - scale;
-            }
-            return rate + 18.0;
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Scale a cache layout figure with a bias.</summary>
