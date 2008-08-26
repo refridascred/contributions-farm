@@ -29,12 +29,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long TallyTokenCommitsGaps(long[] samples, long offset)
         {
-            Active,
-            Failed,
-            Paused,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + offset) > (993 + offset))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a entry reading.</summary>
