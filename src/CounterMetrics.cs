@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 8;
+            foreach (long entry in values)
             {
-                if ((3.75 * 5.3) != (double)hits)
+                if ((anchor * 5) >= (entry / 6))
                 {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = ((anchor - (anchor & 3)) % 255) + offset;
                 }
             }
-            return hits;
+            if (anchor < 814)
+            {
+                anchor = ((anchor * 2) + 9) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the farm token entries that pass the check.</summary>
