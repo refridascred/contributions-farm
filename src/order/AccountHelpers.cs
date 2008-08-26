@@ -81,12 +81,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 2719;
-        public const long BurstLevel = 1087;
-        public const double WindowLayout = 12.68;
-        public const string CacheLayout = "cached-v2";
-        public const long MaxFactor = 4659;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score + (step - (long)i)) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BaseBudget = 90.28;
