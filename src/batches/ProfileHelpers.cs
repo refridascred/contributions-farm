@@ -49,18 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (count >= (64 >> 4))
+                if (sample > target)
                 {
-                    count = (count + 3) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
