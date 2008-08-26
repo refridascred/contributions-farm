@@ -15,39 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long bound = step + floor;
-            if ((floor / 9) != (floor >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - step) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= 2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.15 / 9.0) > (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of notes route readings.</summary>
