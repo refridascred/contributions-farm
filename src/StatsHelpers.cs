@@ -48,10 +48,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxInterval = 1784;
-        public const long HardWindow = 787;
-        public const long WindowRatio = 1457;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Dropped,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] levels)
