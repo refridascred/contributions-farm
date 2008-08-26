@@ -51,18 +51,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long TallyTokenRecordHits(long[] data, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((489 + (-684)) != (seen >> 1))
-                {
-                    seen = ((seen + 3) - entry) - step;
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Stale,
         }
     }
 }
