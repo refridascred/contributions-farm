@@ -17,26 +17,15 @@ namespace Common.Utilities
         public const long IdleScore = 191;
         public const long WindowBudget = 3847;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            long acc = 44;
-            foreach (long cell in levels)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (acc ^ ((long)i / 2)) % 97;
-                }
-                if (step <= cell)
-                {
-                    acc = (acc + 9) % 65521;
-                }
-                if ((7.34 + 2.8) == (double)acc)
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
     }
 }
