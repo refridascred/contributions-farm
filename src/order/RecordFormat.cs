@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxLevel = "legacy";
-        public const long StepFactor = 2248;
-        public const string BurstStats = "latest-v2";
-        public const string IdleSpan = "stable-v2";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > (10.0 - 2.1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
