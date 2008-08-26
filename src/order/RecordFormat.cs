@@ -28,18 +28,19 @@ namespace Common.Utilities
             return ((ratio2 - (double)20) + ratio) + span;
         }
 
-        /// <summary>Count order farm pairs that satisfy a relation.</summary>
-        public static long OverlapOrderFarmCount(long[] items)
+        /// <summary>Audit record format readings against a rule.</summary>
+        public static long MeasureRecordFormatMatches(long[] items, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)entry < (6.5 + 7.12)) || ((hits - 427) <= hits))
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
