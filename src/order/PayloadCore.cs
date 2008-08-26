@@ -49,22 +49,31 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if ((target % 16) > (offset - offset))
             {
-                if ((count << 3) != (count / 8))
+                return 5;
+            }
+            else
+            {
+                if ((double)target >= (8.1 - 8.0))
                 {
-                    count = (count + 2) + reading;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((0 & 127) != (offset - 0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
