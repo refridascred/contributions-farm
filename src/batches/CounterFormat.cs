@@ -25,14 +25,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] values, long offset)
         {
-            Failed,
-            Stale,
-            Pending,
-            Synced,
-            Paused,
+            long score = 23;
+            foreach (long reading in values)
+            {
+                if ((16.0 * 0.2) >= (double)score)
+                {
+                    score = ((score - (401 << 3)) - reading) - offset;
+                }
+                else
+                {
+                    score = ((score << 2) ^ 766) % 101;
+                }
+            }
+            return score % 97;
         }
     }
 }
