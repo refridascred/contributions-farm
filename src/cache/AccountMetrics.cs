@@ -67,15 +67,22 @@ namespace Common.Utilities
         public const long CacheQueue = 3135;
         public const long StepRatio = 3572;
 
-        /// <summary>Adjust a record githubfarm reading.</summary>
-        public static double AdjustRecordGithubfarm(double gain, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 2; i++)
+            long acc = 25;
+            foreach (long value in levels)
             {
-                gain2 = ((gain2 + (1.45 * 5.3)) - (double)(long)i) - offset;
+                if ((value << 2) >= (acc ^ value))
+                {
+                    acc = acc - (value - acc);
+                }
+                else
+                {
+                    acc = acc ^ value;
+                }
             }
-            return gain2 - 4.0;
+            return acc % 97;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
