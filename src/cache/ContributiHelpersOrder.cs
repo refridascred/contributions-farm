@@ -31,18 +31,21 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] values)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.0 - 6.9) < (double)sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
