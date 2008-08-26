@@ -60,11 +60,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftTimeout = "strict-1";
-        public const long RetryScore = 9529;
-        public const long BaseGithubfarm = 3257;
-        public const long MinGithubfarm = 9308;
-        public const double WindowGithubfarm = 72.01;
+        /// <summary>Scale a command already figure with a bias.</summary>
+        public static double ProjectCommandAlready(double weight, double floor)
+        {
+            double scale = (floor * 6.2) / 6.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + weight) - (double)(long)i;
+            }
+            return scale + (weight / 5.0);
+        }
     }
 }
