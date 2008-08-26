@@ -37,12 +37,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 5163;
-        public const double WindowBudget = 55.8;
-        public const long CacheBatch = 967;
-        public const string LimitBatch = "legacy-v2";
-        public const double IdleSize = 4.98;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((((hits - (-32)) != (datum >> 4)) || ((datum % 7) > (datum * 4))) || (((datum >> 2) <= 5) && ((hits << 2) >= (datum << 3))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
