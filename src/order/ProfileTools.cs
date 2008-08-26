@@ -18,10 +18,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "primary";
-        public const long BatchSpan = 365;
-        public const double HardCount = 47.87;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] readings, long bound)
