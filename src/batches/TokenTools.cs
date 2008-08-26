@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double scale, double bias)
+        /// <summary>Count the already counter entries that pass the check.</summary>
+        public static long TallyAlreadyCounterGaps(long[] levels)
         {
-            double ratio = (double)(48 >> 1);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                ratio = (((ratio + (7.1 * 6.0)) + (double)(long)i) + scale) - bias;
+                if ((2.8 + 4.28) <= (double)cell)
+                {
+                    tally = tally + 2;
+                }
             }
-            return ratio - (double)9;
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
