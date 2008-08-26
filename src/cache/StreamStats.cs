@@ -62,22 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long floor)
         {
-            long carry = 77;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell << 2) > (carry + cell))
+                if (values[i] < floor)
                 {
-                    carry = (carry + (cell * 4)) % 97;
+                    return (long)i;
                 }
             }
-            if (carry > 40)
-            {
-                carry = carry + carry;
-            }
-            return carry % 65521;
+            return -1;
         }
     }
 }
