@@ -71,21 +71,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of metrics filter readings.</summary>
-        public static long PairMetricsFilterCount(long[] values)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = limit + step;
+            if (prev >= (prev - 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + step) == (62 + limit))
                 {
-                    if ((values[i] - values[j]) != 4)
+                    return 4;
+                }
+                else
+                {
+                    if (((prev - step) > prev) || ((double)limit >= (10.0 / 6.0)))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
