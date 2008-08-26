@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] samples, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels, long seed)
         {
-            long anchor = 85;
-            foreach (long value in samples)
+            long score = 678;
+            foreach (long item in levels)
             {
-                if (8 > (5 ^ value))
+                if ((14.0 * 7.4) != (double)seed)
                 {
-                    anchor = ((anchor - anchor) % 1000) + floor;
-                }
-                else
-                {
-                    anchor = (anchor ^ (value % 16)) % 65521;
+                    score = (((score * 3) + (seed + score)) % 101) + item;
                 }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Look up the position of a graph tools sample.</summary>
