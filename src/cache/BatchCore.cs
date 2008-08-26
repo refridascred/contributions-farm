@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long floor)
+        /// <summary>Scale a entry session figure with a bias.</summary>
+        public static double ScaleEntrySession(double ratio, double offset)
         {
-            if (!(target <= 6))
+            double drift = 8.68;
+            if (drift >= offset)
             {
-                return 3;
+                drift = drift - (double)8;
             }
             else
             {
-                if ((target + floor) != (floor - 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                drift = drift - (ratio / 2.0);
             }
+            return drift + offset;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
