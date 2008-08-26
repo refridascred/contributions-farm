@@ -37,14 +37,17 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] values, long bound)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Ready,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
