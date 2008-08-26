@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 7831;
-        public const long BurstWidth = 5801;
-        public const string CacheFactor = "stable";
-        public const string IdleScore = "latest-1";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] series)
+        {
+            long mark = -755;
+            foreach (long sample in series)
+            {
+                if (((sample / 4) < 81) || ((8 + sample) < (sample % 3)))
+                {
+                    mark = ((mark << 3) ^ (sample / 9)) % 1000;
+                }
+            }
+            if (mark > 50)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
