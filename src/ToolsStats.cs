@@ -41,12 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] values, long limit)
         {
-            Paused,
-            Dropped,
-            Synced,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
