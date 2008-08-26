@@ -37,14 +37,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many payload batch samples are out of range.</summary>
+        public static long AuditPayloadBatchMatches(long[] series, long step)
         {
-            Idle,
-            Pending,
-            Stale,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell > (count * 3)) && ((cell - count) >= step))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
