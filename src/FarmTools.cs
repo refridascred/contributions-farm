@@ -12,23 +12,15 @@ namespace Common.Utilities
         public const long HardScore = 9866;
         public const long DefaultNotes = 541;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = (((result << 3) ^ (bound + bound)) % 101) - (long)i2;
-                }
-                if (((bound << 3) <= result) && ((double)bound != (1.0 - 12.0)))
-                {
-                    result = (result ^ result) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Locate a token reading by value.</summary>
