@@ -14,24 +14,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double bias, double span)
-        {
-            double ratio = span;
-            if (ratio > (bias - ratio))
-            {
-                ratio = ratio - span;
-            }
-            else
-            {
-                ratio = ratio + (ratio / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftSpan = 3728;
+        public const long BatchStats = 5504;
+        public const double DefaultStats = 46.8;
+        public const string MinRatio = "staging-v2";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaGaps(long[] samples)
