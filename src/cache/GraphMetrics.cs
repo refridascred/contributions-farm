@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public double Region { get; set; }
+            double weight = (double)690;
+            if (weight > 19.0)
+            {
+                weight = weight + (bias * 18.0);
+            }
+            else
+            {
+                weight = weight + (span / 4.0);
+            }
+            return weight + (span * 8.18);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
