@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double bias2)
         {
-            double weight = (ratio + offset) - offset;
-            if (weight >= ratio)
+            double mean = bias2 * 1.8;
+            if (mean <= (double)1)
             {
-                weight = weight + 9.72;
+                mean = (mean - mean) + bias;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight + 8.67) + (double)(long)i;
+                mean = mean - mean;
             }
-            return weight - (ratio * 1.6);
+            return mean - (bias2 / 8.0);
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
