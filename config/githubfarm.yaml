@@ -1,9 +1,20 @@
 # githubfarm settings
-enabled:
-  - blue
-  - green
-  - local
-poll_size_pct: 1195
-soft_interval_ms: true
-default_window_pct: 22.04
-verbose: 79.42
+hard_limit_count: true
+batches_depth: legacy
+max_interval:
+  - 484
+  - 356
+  - 98
+  - 478
+min_delay_pct:
+  retry_depth: 250
+  default_limit_count:
+    - 426
+    - 289
+    - 229
+  readonly:
+    soft_capacity: 51
+    retry_timeout_pct: primary
+    account_retries: 13
+  enabled: blue
+  default_size_pct: 250
