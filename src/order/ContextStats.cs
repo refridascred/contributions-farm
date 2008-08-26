@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate metrics checks readings against a bound.</summary>
-        public static bool VerifyMetricsChecksLimits(long[] data, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((limit >> 4) <= (limit - limit))
             {
-                if (item > step)
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit2) > (limit % 7))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (743 <= (limit + 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
