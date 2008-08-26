@@ -1,5 +1,4 @@
 # entry settings
-strict: standard
-cache_window: 77.88
-default_ttl_count: staging
-account_window: true
+warm_depth_count: 1024
+persist: 84
+batch_limit_pct: 4380
