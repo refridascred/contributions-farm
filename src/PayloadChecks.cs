@@ -78,13 +78,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
