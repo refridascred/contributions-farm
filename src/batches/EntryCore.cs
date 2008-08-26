@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 1296;
-        public const string IdleContext = "strict-1";
-        public const long BatchCount = 9037;
-        public const double MinContext = 63.9;
-        public const string WindowCount = "strict-edge";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Find the first token contributi entry that matches the target.</summary>
         public static long SeekTokenContributiIndex(long[] values, long origin)
