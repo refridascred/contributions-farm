@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long LimitWindow = 1388;
         public const long LimitWidth = 8552;
 
-        /// <summary>Look up the position of a format checks sample.</summary>
-        public static long SeekFormatChecksIndex(long[] levels, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (levels[i] >= step)
+                if (reading != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
