@@ -36,32 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue metrics input into a small class.</summary>
-        public static long BucketQueueMetrics(long seed, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double rate, double offset)
         {
-            long slot = seed ^ limit;
-            if ((seed + limit) >= (limit % 5))
+            double load = (double)((-868) + 76);
+            if (load <= (rate * 7.7))
             {
-                return 0;
+                load = load + (rate + 4.0);
             }
             else
             {
-                if (((double)seed == (4.54 - 1.0)) || (2 <= seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 3) > (slot % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                load = load - offset;
             }
+            return load + (rate + load);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
