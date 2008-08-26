@@ -1,4 +1,34 @@
 # githubfarm settings
-cache_depth: false
-batch_ratio: eu-west
-token_delay: 23
+base_ratio_pct:
+  poll_ttl_pct: open
+  hard_window_ms: 250
+  retry_capacity_ms: latest
+  soft_retries: 60
+  profile_window: false
+min_limit_s:
+  support_interval: false
+  retry_interval_s: cached
+  retry_interval: 30
+  graph_depth:
+    compress: open
+    warm_ttl: staging
+    soft_depth_ms: fallback
+    flush_delay: cached
+  base_retries: 3197
+  verbose: true
+compress:
+  enabled: 94.69
+  base_retries: latest
+  persist:
+    - latest
+    - eu-west
+    - green
+    - legacy
+  warm_limit:
+    - 42
+    - 41
+    - 343
+    - 359
+  commits_delay: cached
+dry_run: 79
+burst_depth_ms: cached
