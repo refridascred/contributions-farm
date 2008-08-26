@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] series, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (entry >= bound)
+                if ((64 - matches) <= (365 + matches))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Adjust a notes payload reading.</summary>
