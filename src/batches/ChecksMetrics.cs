@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up commits channel samples.</summary>
-        public static long CompareCommitsChannelCount(long[] samples)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((((-9) + offset) <= (result / 5)) && ((result << 2) < (15 + result))))
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    result = result + offset;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
