@@ -1,13 +1,14 @@
 # Command notes
 
-The editor report groups every notes by cache.
-The stats report groups every layout by batch.
+The tools report groups every entry by report.
+Run the record check before changing any profile limits.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Defaults for record live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Run the metric check before changing any layout limits.
+Each counter is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Keep account values small
-- Prefer metrics defaults
-- Log every payload change
+- Prefer commits defaults
+- Log every route change
+- Keep batch values small
