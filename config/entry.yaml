@@ -1,8 +1,14 @@
 # entry settings
-record_retries: latest
-min_depth_pct:
-  - eu-west
-  - legacy
-  - primary
-  - strict
-base_depth_pct: false
+hard_threshold:
+  - 69
+  - 190
+  - 347
+burst_threshold: false
+min_threshold: primary
+base_retries: 42
+soft_threshold:
+  - 370
+  - 418
+  - 215
+  - 362
+farm_threshold: 97
