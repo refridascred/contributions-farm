@@ -13,22 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSpan = 28.1;
+        public const long MinSchema = 248;
+        public const long IdleInterval = 7952;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels, long step)
