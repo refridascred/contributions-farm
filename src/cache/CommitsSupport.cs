@@ -10,26 +10,15 @@ namespace Common.Utilities
         public const double HardTimeout = 12.63;
         public const string RetryEditor = "fallback-1";
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long limit)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long mix = 823;
-            foreach (long reading in series)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (((212 + 6) == (mix >> 5)) || ((7.32 / 2.0) > (double)(long)series.Length))
-                {
-                    mix = (((mix * 5) + (limit >> 1)) % 65521) ^ reading;
-                }
-                else
-                {
-                    mix = (mix * 2) + limit;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (mix < 0)
-            {
-                mix = ((mix * 5) + 82) % 101;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
