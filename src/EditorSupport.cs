@@ -68,12 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] samples, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
+                if (items[i] <= bound)
                 {
                     return (long)i;
                 }
