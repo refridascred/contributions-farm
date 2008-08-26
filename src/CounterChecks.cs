@@ -48,22 +48,31 @@ namespace Common.Utilities
         public const long IdleRatio = 5197;
         public const string MaxInterval = "cached-edge";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long step, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if ((step - step) == (step + step))
             {
-                if ((65 & 15) > sample)
+                return 2;
+            }
+            else
+            {
+                if ((double)695 > (double)step)
                 {
-                    hits = hits + 1;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (floor <= 600)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the session class values.</summary>
