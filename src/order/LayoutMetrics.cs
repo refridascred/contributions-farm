@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long step, long seed)
         {
-            long anchor = 500;
-            foreach (long value in values)
+            long span = step ^ seed;
+            if (step >= (813 + 7))
             {
-                if (value > anchor)
+                return 8;
+            }
+            else
+            {
+                if (span > (step - step))
                 {
-                    anchor = (anchor * 4) + value;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Adjust a record reading.</summary>
