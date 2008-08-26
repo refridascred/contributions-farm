@@ -1,17 +1,16 @@
 # githubfarm settings
-hard_delay:
-  dry_run: false
-  max_depth_count:
-    - 500
-    - 206
-  already_size: false
-  batch_limit: 48
-base_limit:
-  - blue
-  - eu-west
-base_retries: 86.1
-min_window: green
-poll_delay_count:
-  idle_depth: legacy
-  session_ratio: local
-  warm_interval: 60
+audit: 492
+idle_retries: 70
+cache_capacity: false
+flush_capacity_count:
+  max_interval_ms:
+    - local
+    - green
+  max_timeout_ms:
+    - eu-west
+    - local
+    - stable
+    - fallback
+  base_threshold_s: 29.23
+  cache_delay: 88.98
+  compress: 100
