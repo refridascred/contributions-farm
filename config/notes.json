@@ -1,6 +1,8 @@
 {
-  "record_ttl": true,
-  "retry_ratio_ms": true,
-  "githubfarm_limit": 765,
-  "batch_ttl_count": "edge"
+  "max_size_pct": "blue",
+  "batch_capacity": ["open", "primary", "fallback"],
+  "batch_window": true,
+  "readonly": true,
+  "route_limit": "strict",
+  "audit": "staging"
 }
