@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) <= (cell + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 89.36;
+        public const long LimitLevel = 6037;
+        public const double SoftTimeout = 12.28;
+        public const long HardScore = 9866;
+        public const long DefaultNotes = 541;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long bound)
