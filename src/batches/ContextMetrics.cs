@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseInterval = 27.33;
-        public const double DefaultReport = 23.84;
-        public const long SoftSpan = 7740;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 5) + (549 >> 3)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Match up session cluster samples.</summary>
         public static long PairSessionClusterCount(long[] readings)
