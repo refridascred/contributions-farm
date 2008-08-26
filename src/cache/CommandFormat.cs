@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double scale = (double)(9 + 1);
-            if (scale <= weight)
-            {
-                scale = (scale - scale) - floor;
-            }
-            else
-            {
-                scale = scale + (5.2 - 18.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale + (double)308;
+            Paused,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Fold a list of stream queue readings.</summary>
