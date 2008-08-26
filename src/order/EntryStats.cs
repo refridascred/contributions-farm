@@ -37,27 +37,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series)
-        {
-            long mix = 378;
-            foreach (long sample in series)
-            {
-                if ((455 - sample) == (mix >> 3))
-                {
-                    mix = mix - (229 << 3);
-                }
-                else
-                {
-                    mix = (mix + (sample / 6)) % 101;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = mix ^ (mix << 2);
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleFactor = 7082;
+        public const long BatchTimeout = 9912;
+        public const long BurstBatch = 7034;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] readings)
