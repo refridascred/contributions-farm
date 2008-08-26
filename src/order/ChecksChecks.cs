@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many schema entry samples are out of range.</summary>
-        public static long TallySchemaEntryGaps(long[] items, long offset)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits > (offset - 5))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
