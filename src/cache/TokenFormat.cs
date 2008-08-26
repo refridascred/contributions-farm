@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const string MinScore = "standard-edge";
         public const long SoftSize = 7647;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((target % 12) == ((-292) + target))
-                {
-                    state = (state ^ (target * 3)) % 101;
-                }
-                state = state - (target + target);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepDepth = "cached-1";
+        public const long MaxEditor = 4673;
+        public const long DefaultBudget = 8123;
+        public const long LimitScore = 6180;
+        public const string BatchSpan = "alpha-edge";
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long floor)
