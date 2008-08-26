@@ -12,22 +12,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] samples, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long bound)
         {
-            long total = -166;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((floor - total) == (6 ^ floor))
+                if (sample > bound)
                 {
-                    total = (total - reading) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 5)
-            {
-                total = total - (total % 97);
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
