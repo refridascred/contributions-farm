@@ -29,18 +29,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading - reading) >= 0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - origin;
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
