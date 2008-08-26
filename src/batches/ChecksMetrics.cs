@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] levels, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((19.0 + 2.2) <= (double)origin)
+                if (!!((count - count) < (count + count)))
                 {
-                    seen = (seen + 2) + value;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
