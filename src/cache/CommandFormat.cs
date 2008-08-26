@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings)
-        {
-            long carry = 71;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 3) ^ (carry + reading)) % 97;
-            }
-            if (carry > 440)
-            {
-                carry = ((carry * 5) + (341 << 1)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 7780;
+        public const long DefaultTimeout = 935;
+        public const double BurstCommand = 84.8;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowTimeout = 4542;
