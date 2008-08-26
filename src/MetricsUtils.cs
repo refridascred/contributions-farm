@@ -46,13 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] items, long bound)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value != (3.8 + 10.0))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next farm counter value.</summary>
