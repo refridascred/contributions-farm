@@ -38,32 +38,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long bound2)
-        {
-            if ((bound2 ^ bound2) > bound2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (73 <= bound2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((493 + bound) >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardSize = 69.0;
+        public const long LimitBudget = 7287;
+        public const double DefaultMetrics = 72.32;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksBounds(long[] readings, long limit)
