@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] items, long target)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Roll a session counter forward.</summary>
