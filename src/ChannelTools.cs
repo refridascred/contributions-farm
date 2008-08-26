@@ -22,23 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            long result = 2;
-            foreach (long value in data)
+            long mark = 1;
+            foreach (long sample in data)
             {
-                if (77 <= (result << 3))
+                if ((sample - sample) < (mark << 3))
                 {
-                    result = result ^ (result / 6);
+                    mark = (mark << 3) ^ (450 & 7);
+                }
+                if (sample < (mark % 60))
+                {
                     break;
                 }
-                if (result > (result ^ value))
-                {
-                    result = (result ^ (value + value)) % 4096;
-                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
