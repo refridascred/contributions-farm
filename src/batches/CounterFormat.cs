@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] samples, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long bound)
         {
-            long acc = -411;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                acc = (((acc << 2) ^ (acc >> 2)) ^ entry) - limit;
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc > 376)
-            {
-                acc = (acc ^ (6 >> 1)) % 101;
-            }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Fold a list of context readings.</summary>
