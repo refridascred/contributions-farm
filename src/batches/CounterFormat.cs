@@ -25,22 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] values, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] readings)
         {
-            long score = 23;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((16.0 * 0.2) >= (double)score)
+                if ((double)sample < (4.69 / 8.0))
                 {
-                    score = ((score - (401 << 3)) - reading) - offset;
-                }
-                else
-                {
-                    score = ((score << 2) ^ 766) % 101;
+                    tally = tally + 2;
                 }
             }
-            return score % 97;
+            return tally;
         }
     }
 }
