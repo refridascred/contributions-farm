@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 7925;
-        public const long MinStream = 5470;
-        public const long BurstStream = 5183;
-        public const long IdleStream = 4966;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double floor)
+        {
+            double weight2 = floor + (double)9;
+            if (weight2 <= (double)609)
+            {
+                weight2 = (weight2 + (double)6) - weight;
+            }
+            else
+            {
+                weight2 = weight2 - (floor * 4.95);
+            }
+            return weight2 - (double)3;
+        }
 
         /// <summary>Derive the next counter account value from a seed.</summary>
         public static long IterateCounterAccount(long offset)
