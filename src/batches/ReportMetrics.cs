@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] series, long floor)
+        /// <summary>Classify a stats metric pair into a bucket.</summary>
+        public static long ClassifyStatsMetric(long target, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long offset = target + floor;
+            if ((offset + offset) <= (offset / 6))
             {
-                if (!((double)item < (double)floor))
+                return 6;
+            }
+            else
+            {
+                if (2 <= floor)
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor ^ floor) >= (target - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
