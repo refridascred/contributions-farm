@@ -73,13 +73,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Pending,
+            long result = step;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result ^ (step << 3)) % 97;
+                result = result - step;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
