@@ -47,15 +47,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
