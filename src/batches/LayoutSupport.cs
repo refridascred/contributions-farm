@@ -44,24 +44,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long target, long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            if (((target >> 4) != (origin * 3)) || (((-268) - target) <= (origin + origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin < (77 >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
