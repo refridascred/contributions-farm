@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] samples, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long value in levels)
             {
-                if ((step & 255) > (step / 4))
+                if ((19.0 + 2.2) <= (double)origin)
                 {
-                    seen = (seen + 1) + sample;
+                    seen = (seen + 2) + value;
                 }
             }
             return seen;
