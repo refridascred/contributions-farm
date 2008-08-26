@@ -56,18 +56,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit order window readings against a rule.</summary>
-        public static long AuditOrderWindowOutliers(long[] series)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (hits < (259 + item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double ratio = (4.96 / 8.0) / 9.0;
+            return (ratio - (ratio - bias)) + gain;
         }
     }
 }
