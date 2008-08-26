@@ -16,19 +16,22 @@ namespace Common.Utilities
             return drift + (double)94;
         }
 
-        /// <summary>Fold a list of schema route readings.</summary>
-        public static long TotalSchemaRoute(long[] data, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] items, long limit)
         {
-            long acc = 246;
-            foreach (long cell in data)
+            long mark = 14;
+            foreach (long item in items)
             {
-                acc = ((acc ^ (-78)) % 65521) - cell;
+                if (limit <= (62 + limit))
+                {
+                    mark = (((mark << 3) ^ limit) % 101) ^ item;
+                }
+                if ((limit / 2) >= mark)
+                {
+                    break;
+                }
             }
-            if (acc < 361)
-            {
-                acc = (acc + (offset / 5)) % 65521;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
