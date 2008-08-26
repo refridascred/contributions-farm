@@ -42,14 +42,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Failed,
-            Paused,
-            Done,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 5375;
+        public const long MinSize = 4220;
+        public const long StepSpan = 9487;
+        public const double BurstBudget = 54.13;
+        public const string StepFarm = "fallback";
     }
 }
