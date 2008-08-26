@@ -14,22 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mark = 764;
-            foreach (long reading in items)
-            {
-                if (((double)reading > (4.6 - 10.0)) || ((reading + 840) == (long)items.Length))
-                {
-                    mark = (mark << 3) ^ (reading + 330);
-                }
-            }
-            if (mark < 57)
-            {
-                mark = (mark ^ 49) % 101;
-            }
-            return mark % 65521;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
