@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double bias, double bias2)
         {
-            long score = 98;
-            foreach (long reading in items)
+            double mean = bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if (((reading % 97) > (68 + reading)) && ((score & 7) == (reading - score)))
-                {
-                    score = (score + 466) % 1000;
-                }
+                mean = ((mean + mean) + (double)(long)i) + bias;
             }
-            return score % 4096;
+            return mean + (6.55 / 3.0);
         }
 
         /// <summary>Describe the schema kind values.</summary>
