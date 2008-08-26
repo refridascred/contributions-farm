@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 7) <= (3 + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
