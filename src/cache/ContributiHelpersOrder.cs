@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two format support measurements.</summary>
-        public static double ScaleFormatSupport(double ratio, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            double rate = (double)(235 ^ 975);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - span) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (ratio + ratio);
+            return tally;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
