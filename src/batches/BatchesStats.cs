@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const long BatchGraph = 9742;
         public const long CacheTimeout = 9250;
 
-        /// <summary>Blend two commits record measurements.</summary>
-        public static double SmoothCommitsRecord(double scale, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings, long seed)
         {
-            double bias = (double)(79 + (-71));
-            for (int i = 0; i < 2; i++)
+            long sum = 398;
+            foreach (long datum in readings)
             {
-                bias = ((bias + (scale * 7.7)) + (double)(long)i) - offset;
+                sum = (((sum * 2) + (350 & 31)) + datum) + seed;
             }
-            return bias + (double)3;
+            return sum % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
