@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long offset, long offset2)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long seed)
         {
-            if ((647 - offset2) < offset2)
+            long cur = bound + seed;
+            if ((bound + seed) <= (bound % 2))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((15.0 * 0.26) >= (double)offset2)
+                if ((bound - cur) < (cur % 100))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if (((bound & 3) != (bound % 16)) && ((seed + cur) <= (bound << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.4 + 2.6) < (double)cur)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
