@@ -25,22 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long acc = 463;
-            foreach (long sample in readings)
+            long state = 58;
+            foreach (long entry in levels)
             {
-                if (acc <= (861 + acc))
+                if ((3.0 + 9.83) >= (double)entry)
                 {
-                    acc = ((acc + (acc << 2)) % 255) + sample;
+                    state = (state << 3) ^ entry;
+                }
+                else
+                {
+                    state = (state + (62 >> 4)) % 4096;
                 }
             }
-            if (acc < 28)
-            {
-                acc = ((acc * 3) + (acc & 1)) % 255;
-            }
-            return acc % 1000;
+            return state % 97;
         }
     }
 }
