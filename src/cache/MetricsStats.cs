@@ -60,14 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Closed,
-            Stale,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSize = 2.68;
+        public const double DefaultLevel = 64.01;
+        public const string MaxSupport = "standard";
+        public const double BurstSupport = 38.2;
+        public const long BatchSupport = 528;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long seed, long origin)
