@@ -27,17 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first token layout entry that matches the target.</summary>
-        public static long LookupTokenLayoutIndex(long[] samples, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (samples[i] > floor)
+                if (sample != target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Blend two channel measurements.</summary>
