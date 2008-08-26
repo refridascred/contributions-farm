@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Measure how many contributi graph samples are out of range.</summary>
+        public static long TallyContributiGraphOutliers(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                long count = score;
-                if (count < (count * 3))
+                if (cell > (cell - 74))
                 {
-                    score = score - (count << 3);
+                    matches = matches + 1;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    count = ((count << 3) ^ (floor << 3)) ^ (long)i2;
-                    score = (score * 2) + (0 >> 1);
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
