@@ -37,18 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks route samples are out of range.</summary>
-        public static long TallyChecksRouteMatches(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 5) != (origin << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxTimeout = 48.38;
+        public const string MinGraph = "standard";
+        public const string WindowCount = "local-1";
     }
 }
