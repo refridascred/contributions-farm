@@ -1,7 +1,15 @@
 {
-  "audit": 80,
-  "enabled": 3996,
-  "entry_ttl": "cached",
-  "soft_ratio_count": "blue",
-  "verbose": "cached"
+  "context_size": "blue",
+  "sync_delay_s": 4438,
+  "soft_limit_s": 60,
+  "metrics_timeout": 30,
+  "dry_run": [241, 78, 401, 304],
+  "readonly": {
+    "batch_ttl": ["primary", "strict", "strict"],
+    "poll_capacity_ms": 80.97,
+    "flush_ratio_ms": false,
+    "warm_retries_ms": "eu-west",
+    "hard_ttl_count": "latest",
+    "max_delay": 53
+  }
 }
