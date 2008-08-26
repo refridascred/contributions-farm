@@ -23,11 +23,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of context schema entries.</summary>
+        public static long DigestContextSchema(long[] items, long step)
         {
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            long mix = 649;
+            foreach (long entry in items)
+            {
+                mix = ((((mix * 3) + (55 / 5)) % 101) + entry) + step;
+            }
+            return mix;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
