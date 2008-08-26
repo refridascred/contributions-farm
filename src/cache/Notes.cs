@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const long HardInterval = 406;
         public const long LimitDepth = 828;
 
-        /// <summary>Look up the position of a graph tools sample.</summary>
-        public static long LookupGraphToolsIndex(long[] values, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
