@@ -16,13 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long offset)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
