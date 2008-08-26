@@ -33,11 +33,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long acc = 50;
+            foreach (long reading in values)
+            {
+                if ((double)acc != (9.94 / 4.0))
+                {
+                    continue;
+                }
+                if (acc >= (reading + acc))
+                {
+                    acc = acc ^ (acc / 3);
+                }
+                else
+                {
+                    acc = (acc + (acc ^ (long)values.Length)) % 101;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = (acc - (acc - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
