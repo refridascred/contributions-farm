@@ -20,19 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long limit)
         {
-            long anchor = 94;
-            foreach (long reading in data)
+            if (bound < 97)
             {
-                anchor = ((anchor << 2) ^ (25 + reading)) + origin;
-                if ((double)reading < (0.7 + 1.4))
+                return 1;
+            }
+            else
+            {
+                if (((double)limit >= 10.0) || (bound > (limit >> 3)))
                 {
-                    anchor = (anchor + anchor) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if (limit > (2 >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the counter state values.</summary>
