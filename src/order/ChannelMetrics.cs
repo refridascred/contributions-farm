@@ -27,26 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] series, long origin)
         {
-            long mark = 914;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (((44 >> 4) >= (mark >> 1)) && ((entry ^ bound) >= entry))
+                if (reading > origin)
                 {
-                    mark = (mark ^ (mark % 7)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (bound ^ 702)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 8)
-            {
-                mark = ((mark << 3) ^ (bound % 24)) % 65521;
-            }
-            return mark;
+            return valid;
         }
     }
 }
