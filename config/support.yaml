@@ -1,17 +1,10 @@
 # support settings
-min_delay_pct:
-  - primary
-  - local
-  - legacy
-  - blue
-warm_retries_s:
-  cache_window: 20.36
-  order_threshold: green
-  compress: true
-  poll_interval_pct: 257
-poll_limit: 53
-soft_threshold_count:
-  - 102
-  - 326
-  - 69
-  - 45
+enabled:
+  - open
+  - open
+flush_size_s: true
+schema_limit: 8.65
+flush_ttl_ms:
+  - 463
+  - 495
+max_capacity_pct: fallback
