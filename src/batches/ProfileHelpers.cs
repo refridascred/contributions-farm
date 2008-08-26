@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Iterate the window support series from a seed.</summary>
+        public static long RollWindowSupport(long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = ((mix ^ 7) % 65521) - (long)i2;
-                    mix = (mix ^ (limit ^ mix)) % 4096;
+                    mix = mix - (9 - (long)i);
+                    mix = mix + ((long)i2 / 9);
                 }
-                mix = (mix ^ (541 & 1)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
             return mix;
         }
