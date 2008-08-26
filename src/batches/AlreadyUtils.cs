@@ -30,17 +30,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a counter notes sample.</summary>
-        public static long LocateCounterNotesIndex(long[] values, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a buffer summary.</summary>
