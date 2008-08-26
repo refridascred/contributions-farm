@@ -1,6 +1,11 @@
-id,score,state
-1,41.38,fallback
-2,796,531
-3,primary,staging
-4,12.47,edge
-5,233,19.15
+id,weight,state
+1,991,stable
+2,241,807
+3,41.75,edge
+4,strict,standard
+5,93.78,588
+6,881,76
+7,866,42.3
+8,57.82,47.43
+9,310,85.25
+10,400,stable
