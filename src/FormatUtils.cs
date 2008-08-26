@@ -19,23 +19,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long seed)
         {
-            long mark = 71;
-            foreach (long item in readings)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark << 3) ^ 3) % 255;
-                if ((item / 4) < item)
-                {
-                    break;
-                }
-                if (item < mark)
-                {
-                    mark = mark ^ item;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Describe the stream kind values.</summary>
