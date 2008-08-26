@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long bound)
+        /// <summary>Project the next format route value.</summary>
+        public static double BlendFormatRoute(double scale, double floor)
         {
-            long diff = limit ^ bound;
-            if (!((556 + bound) >= 2))
+            double bias = (double)(0 - 369);
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                bias = (((bias + 16.0) + (double)(long)i) + scale) - floor;
             }
-            else
-            {
-                if (diff < (22 + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(bound <= (limit + 94)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((diff + bound) < (bound + limit)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return bias + (double)513;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
