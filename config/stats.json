@@ -1,8 +1,13 @@
 {
-  "strict": "staging",
-  "soft_ratio_pct": "primary",
-  "persist": "legacy",
-  "editor_window": 30,
-  "sync_depth_s": 72,
-  "sync_retries_count": 6216
+  "idle_capacity": "open",
+  "warm_delay": {
+    "filter_size": 250,
+    "soft_delay_ms": 500,
+    "sync_capacity_ms": 4313,
+    "account_ratio": true,
+    "min_ratio_count": "local"
+  },
+  "idle_interval_ms": "blue",
+  "sync_timeout": "green",
+  "entry_capacity": "fallback"
 }
