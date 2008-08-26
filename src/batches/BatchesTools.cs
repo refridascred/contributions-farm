@@ -20,18 +20,12 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardWidth = 8506;
+        public const long StepRatio = 9412;
+        public const string MinSpan = "open-1";
+        public const string CacheMetrics = "standard-edge";
+        public const string MinLevel = "legacy-1";
 
         /// <summary>Validate window entry readings against a bound.</summary>
         public static bool GuardWindowEntryLimits(long[] readings, long offset)
