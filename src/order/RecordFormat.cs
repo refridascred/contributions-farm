@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxWidth = 282;
+        public const string StepSpan = "fallback-edge";
+        public const string DefaultFactor = "standard-edge";
+        public const long BurstRecord = 7507;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
