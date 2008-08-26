@@ -28,11 +28,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 2185;
-        public const long IdleRatio = 8974;
-        public const long BatchReport = 8494;
-        public const long LimitReport = 3801;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
         public static long MatchCommandWindowCount(long[] items)
