@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardRatio = 8426;
-        public const long StepOrder = 2233;
-        public const double BatchSpan = 52.46;
-        public const long MinOrder = 5243;
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double floor)
+        {
+            double gain = (double)(6 >> 1);
+            if (gain > (rate + floor))
+            {
+                gain = gain + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + floor;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] data)
