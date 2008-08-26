@@ -45,15 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items, long limit)
         {
-            double drift = 5.05;
-            if (drift > drift)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                drift = (drift + 5.3) - offset;
+                if (((matches % 24) > limit) && ((limit ^ reading) <= 832))
+                {
+                    matches = matches + 3;
+                }
             }
-            return drift - scale;
+            return matches;
         }
 
         /// <summary>Hold a filter summary.</summary>
