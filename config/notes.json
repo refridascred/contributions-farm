@@ -1,10 +1,7 @@
 {
-  "audit": [323, 220, 127],
-  "sync_interval_pct": {
-    "retry_timeout_ms": ["legacy", "edge"],
-    "hard_size_pct": "cached",
-    "retry_threshold_s": 39.94,
-    "strict": "latest"
-  },
-  "idle_size": 9.91
+  "readonly": 92.0,
+  "verbose": 70,
+  "flush_threshold": [198, 16],
+  "poll_size_count": [439, 55, 194],
+  "default_timeout_s": "blue"
 }
