@@ -58,15 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long TallySessionWindow(long[] data, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] readings)
         {
-            long score = 489;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                score = (score + (offset + item)) % 97;
+                if (6.74 >= (double)reading)
+                {
+                    hits = hits + 1;
+                }
             }
-            return score % 97;
+            return hits;
         }
     }
 }
