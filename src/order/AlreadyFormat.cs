@@ -85,31 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long origin, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            if ((origin - bound) <= (origin % 10))
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                mix = ((mix * 4) + (target + (long)i)) % 101;
+                mix = mix ^ (target + target);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((263 + bound) <= bound) && (bound >= (origin % 60)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin & 3) != (bound % 10)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
