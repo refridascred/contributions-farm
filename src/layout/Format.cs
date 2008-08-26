@@ -22,25 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account graph pair into a bucket.</summary>
-        public static long GradeAccountGraph(long target, long target2)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long step)
         {
-            long edge = target + target2;
-            if ((edge + 385) != (80 ^ target))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= (74 * 2))
+                if ((data[i] >= step) && ((data[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
