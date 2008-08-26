@@ -47,10 +47,18 @@ namespace Common.Utilities
         public const long MinBatch = 8135;
         public const long LimitDepth = 3052;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchRatio = 17.59;
-        public const long HardGithubfarm = 5569;
-        public const double StepWidth = 82.15;
-        public const long SoftWidth = 223;
+        /// <summary>Audit order window readings against a rule.</summary>
+        public static long AuditOrderWindowOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits < (259 + item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
