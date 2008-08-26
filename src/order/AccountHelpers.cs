@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long floor, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if ((step + 9) < (step - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)floor != (7.79 * 7.75)) && ((double)step != (5.0 + 11.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor < 3.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((67 - floor) > (floor * 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
