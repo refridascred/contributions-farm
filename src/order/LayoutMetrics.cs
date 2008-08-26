@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit schema record readings against a rule.</summary>
+        public static long CountSchemaRecordGaps(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((count / 2) != (count * 4)) || !((9.0 / 7.0) <= (double)item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
