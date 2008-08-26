@@ -30,10 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 5138;
-        public const long CacheRatio = 662;
-        public const long WindowGraph = 6764;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Pending,
+            Dropped,
+            Paused,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
