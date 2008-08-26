@@ -15,19 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next payload context value from a seed.</summary>
-        public static long IteratePayloadContext(long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)anchor <= (9.02 / 6.0))
+                carry = (carry << 2) ^ target;
+                carry = carry ^ (long)i;
+                if ((carry << 2) <= (target - target))
                 {
-                    anchor = (anchor * 3) + (617 - 541);
+                    carry = (carry - ((long)i - carry)) % 255;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Count context format pairs that satisfy a relation.</summary>
