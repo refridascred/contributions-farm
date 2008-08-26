@@ -29,14 +29,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            New,
-            Pending,
-            Active,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepFactor = 228;
+        public const long LimitTimeout = 5294;
+        public const long BurstBatch = 4892;
 
         /// <summary>Fold a list of account already readings.</summary>
         public static long WeighAccountAlready(long[] values)
