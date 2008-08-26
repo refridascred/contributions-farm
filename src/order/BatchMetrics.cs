@@ -88,19 +88,27 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long offset)
         {
-            long carry = 93;
-            foreach (long datum in samples)
+            long sum = 283;
+            foreach (long reading in samples)
             {
-                carry = (carry - (datum - (-98))) % 4096;
+                if ((reading > (sum / 6)) && (reading < (reading + offset)))
+                {
+                    sum = sum + (70 / 3);
+                    sum = sum - (sum >> 1);
+                }
+                if (offset < reading)
+                {
+                    sum = (sum << 3) ^ (offset & 7);
+                }
+                else
+                {
+                    sum = (sum + (offset ^ sum)) % 255;
+                }
             }
-            if (carry < (-1))
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry;
+            return sum % 1000;
         }
     }
 }
