@@ -1,23 +1,9 @@
 # entry settings
-retry_depth_count: 11.7
-base_retries_count:
-  - 236
-  - 228
-hard_ttl_ms: 22
-hard_threshold_count: strict
-session_capacity:
-  contributi_limit:
-    verbose: edge
-    compress: 79
-    warm_depth: eu-west
-    audit:
-      - local
-      - strict
-      - strict
-      - edge
-    layout_retries:
-      - 338
-      - 46
-      - 190
-  stream_size: 56
-  soft_threshold: true
+queue_timeout: 9.93
+readonly: 4042
+sync_depth_ms:
+  poll_threshold_ms: local
+  verbose:
+    - 244
+    - 241
+  max_delay_s: 79.78
