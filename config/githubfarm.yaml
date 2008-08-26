@@ -1,5 +1,19 @@
 # githubfarm settings
-retry_window_ms: 500
-retry_threshold: latest
-idle_size_ms: true
-hard_timeout_s: 8426
+audit: true
+token_size:
+  editor_ratio: true
+  commits_delay: 26
+  burst_threshold_s: local
+  hard_size_ms: 65.0
+  dry_run:
+    - 407
+    - 124
+    - 20
+    - 414
+  flush_limit: false
+record_limit: 43.54
+command_depth: 91
+idle_interval_s:
+  - local
+  - primary
+  - edge
