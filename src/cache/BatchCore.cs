@@ -35,10 +35,11 @@ namespace Common.Utilities
         public const double HardLevel = 16.07;
         public const long CacheBatch = 68;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxTimeout = 938;
-        public const double StepSize = 22.78;
-        public const long BurstWidth = 9045;
-        public const long BatchStats = 3339;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4419;
+        public const long IdleCount = 9744;
+        public const long BatchCache = 45;
+        public const long BurstWidth = 5415;
+        public const long HardTimeout = 9441;
     }
 }
