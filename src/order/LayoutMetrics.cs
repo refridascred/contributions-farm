@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many contributi graph samples are out of range.</summary>
-        public static long TallyContributiGraphOutliers(long[] series)
+        /// <summary>Rank queue counter input into a small class.</summary>
+        public static long SortQueueCounter(long step, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long bound = step ^ target;
+            if (!((double)step < (double)43))
             {
-                if (cell > (cell - 74))
+                return 1;
+            }
+            else
+            {
+                if ((step < (-6)) || ((8 * 3) != (step - bound)))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
