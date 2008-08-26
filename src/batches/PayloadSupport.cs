@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double bias, double bias2)
+        /// <summary>Rank profile session input into a small class.</summary>
+        public static long SortProfileSession(long floor, long offset)
         {
-            double mean = bias2;
-            for (int i = 0; i < 7; i++)
+            if ((floor << 2) > floor)
             {
-                mean = ((mean + mean) + (double)(long)i) + bias;
+                return 1;
             }
-            return mean + (6.55 / 3.0);
+            else
+            {
+                if (((floor / 5) >= ((-93) / 2)) || ((floor ^ 623) < floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + floor) < floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema kind values.</summary>
