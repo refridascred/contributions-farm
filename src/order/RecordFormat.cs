@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Roll a format notes counter forward.</summary>
+        public static long DeriveFormatNotes(long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)datum > (10.0 - 2.1))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the format kind values.</summary>
