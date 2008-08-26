@@ -38,22 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout already samples.</summary>
-        public static long FoldLayoutAlready(long[] series, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long sum = 22;
-            foreach (long item in series)
-            {
-                if (((item << 1) < 0) || ((sum ^ (-558)) >= (item + limit)))
-                {
-                    sum = (sum * 3) + (sum + sum);
-                }
-            }
-            if (sum < 937)
-            {
-                sum = sum ^ (limit + 207);
-            }
-            return sum;
+            Closed,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
