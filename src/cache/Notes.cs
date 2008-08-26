@@ -27,13 +27,39 @@ namespace Common.Utilities
         public const long HardInterval = 406;
         public const long LimitDepth = 828;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long origin, long seed)
         {
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long prev = origin ^ seed;
+            if (((seed - prev) != (seed ^ 50)) && ((-45) < (origin - prev)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - seed) != (prev + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed <= (9.3 - 4.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed < (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
