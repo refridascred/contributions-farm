@@ -66,9 +66,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowSize = 21.08;
-        public const string MinRatio = "standard-1";
-        public const double MinWidth = 65.08;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total << 2) ^ total;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
