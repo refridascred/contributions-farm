@@ -11,27 +11,12 @@ namespace Common.Utilities
         public const double HardCount = 51.24;
         public const double CacheStats = 62.14;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings, long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = 319;
-            foreach (long item in readings)
-            {
-                mark = mark ^ ((long)readings.Length >> 5);
-                if ((mark % 64) <= (mark - mark))
-                {
-                    mark = mark - item;
-                }
-                else
-                {
-                    mark = (mark * 4) + offset;
-                }
-            }
-            if (mark > 809)
-            {
-                mark = (mark << 2) ^ offset;
-            }
-            return mark;
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Fold a list of format readings.</summary>
