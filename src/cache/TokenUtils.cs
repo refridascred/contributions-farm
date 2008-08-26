@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit profile checks readings against a rule.</summary>
-        public static long CountProfileChecksHits(long[] readings, long origin)
+        /// <summary>Match up stats stream samples.</summary>
+        public static long CompareStatsStreamCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= (759 >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + origin;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up channel window samples.</summary>
