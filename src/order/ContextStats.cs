@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const double BatchWidth = 56.58;
         public const string CacheBudget = "strict-v2";
 
-        /// <summary>Audit format profile readings against a rule.</summary>
-        public static long CountFormatProfileHits(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count >= (count >> 2)) && ((entry << 2) != (entry & 15)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 1017;
+        public const long WindowTimeout = 1549;
+        public const long BaseInterval = 1571;
+        public const long HardFilter = 2113;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] items, long floor)
