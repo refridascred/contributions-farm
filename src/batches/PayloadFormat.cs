@@ -47,13 +47,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            Failed,
+            Ready,
+            New,
         }
     }
 }
