@@ -37,19 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] items, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark / 7) <= (mark >> 5))
+                if (items[i] <= origin)
                 {
-                    mark = (mark ^ (mark / 7)) % 97;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two route measurements.</summary>
