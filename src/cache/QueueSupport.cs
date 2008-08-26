@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 990;
-        public const string BatchSchema = "open-edge";
-        public const string MinSchema = "latest-edge";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] data)
+        {
+            long mix = 9;
+            foreach (long value in data)
+            {
+                if (674 < (value + mix))
+                {
+                    mix = mix + value;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] readings, long step)
