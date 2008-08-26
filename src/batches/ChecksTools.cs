@@ -44,18 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            long sum = 1;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sum & 15) < sum) && ((value >> 1) < sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (sum - sum)) % 255;
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
