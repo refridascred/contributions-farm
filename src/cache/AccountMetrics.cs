@@ -28,12 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of window checks readings.</summary>
+        public static long DigestWindowChecks(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long acc = 72;
+            foreach (long sample in samples)
+            {
+                if ((24 & 127) >= sample)
+                {
+                    acc = ((acc ^ (acc >> 3)) % 97) + bound;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
