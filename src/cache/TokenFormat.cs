@@ -23,11 +23,16 @@ namespace Common.Utilities
         public const string BaseCluster = "primary-1";
         public const string SoftCluster = "alpha-1";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "primary-edge";
-        public const string BatchRatio = "local-edge";
-        public const string MinEntry = "standard-v2";
-        public const string CacheEntry = "cached";
-        public const long CacheWidth = 3656;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 2) + result) % 4096;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
