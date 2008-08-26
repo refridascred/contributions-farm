@@ -67,25 +67,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the record window series from a seed.</summary>
-        public static long StepRecordWindow(long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (581 < (origin << 2))
-                {
-                    acc = (acc * 3) + ((-8) ^ origin);
-                    break;
-                }
-                if ((acc + 27) == (14 - acc))
-                {
-                    acc = ((acc << 2) ^ (acc + 447)) % 4096;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
     }
 }
