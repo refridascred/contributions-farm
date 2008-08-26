@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first token contributi entry that matches the target.</summary>
-        public static long SeekTokenContributiIndex(long[] values, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 554;
+            foreach (long item in data)
             {
-                if (values[i] > origin)
+                if (!((mark + 6) == (57 + mark)))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (item << 1)) % 4096;
                 }
             }
-            return -1;
+            if (mark < (-22))
+            {
+                mark = ((mark * 4) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Scale a session notes figure with a bias.</summary>
