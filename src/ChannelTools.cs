@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 742;
-        public const long LimitWidth = 1635;
-        public const double DefaultRecord = 92.19;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesGaps(long[] series, long origin)
