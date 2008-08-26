@@ -1,23 +1,7 @@
 {
-  "warm_threshold_s": true,
-  "idle_depth": {
-    "entry_capacity": 2527,
-    "schema_capacity": {
-      "burst_timeout_ms": "stable",
-      "buffer_window": false,
-      "enabled": 51,
-      "support_ratio": 2035,
-      "verbose": "strict"
-    },
-    "batch_threshold_ms": true
-  },
-  "batch_interval": true,
-  "poll_threshold": {
-    "flush_delay": 72.96,
-    "idle_size_pct": 500,
-    "batches_retries": "open",
-    "compress": 30,
-    "token_retries": 58
-  },
-  "window_depth": 1024
+  "flush_interval": 47,
+  "batch_capacity_count": 56.3,
+  "min_delay_count": "fallback",
+  "editor_limit": 31,
+  "already_depth": 9471
 }
