@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up schema entry samples.</summary>
-        public static long PairSchemaEntryCount(long[] levels)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (result - (220 / 2)) % 255;
+                if ((result + bound) > result)
                 {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 2) + ((long)i << 2)) % 1000;
+                    result = (result + ((long)i + 41)) % 97;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a session options.</summary>
