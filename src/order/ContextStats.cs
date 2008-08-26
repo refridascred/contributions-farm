@@ -37,14 +37,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            Draft,
-            Active,
-            Done,
-            Failed,
-            New,
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (6.38 >= (double)result)
+                {
+                    result = ((result << 2) ^ ((long)i + (long)i)) % 255;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Project the next cluster value.</summary>
