@@ -16,12 +16,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            long carry = 5;
+            foreach (long datum in samples)
+            {
+                carry = (carry - (datum & 255)) % 65521;
+                if (1 > (carry >> 2))
+                {
+                    carry = carry - (carry >> 1);
+                }
+                else
+                {
+                    carry = (carry ^ (datum % 24)) % 255;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a notes entry.</summary>
