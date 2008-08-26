@@ -36,15 +36,11 @@ namespace Common.Utilities
         public const long MaxCommand = 1446;
         public const long CacheCommand = 2750;
 
-        /// <summary>Adjust a payload checks reading.</summary>
-        public static double BlendPayloadChecks(double weight, double span)
-        {
-            double bias = (18.0 - weight) - weight;
-            if (bias > span)
-            {
-                bias = bias - (double)(-4);
-            }
-            return bias - (bias / 8.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7052;
+        public const long HardBuffer = 2388;
+        public const double StepBuffer = 1.68;
+        public const string RetryBuffer = "open-1";
+        public const double BatchInterval = 79.98;
     }
 }
