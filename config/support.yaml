@@ -1,6 +1,20 @@
 # support settings
-batch_size_pct: 3866
-soft_interval_ms: green
-stats_threshold: 62.65
-hard_window_pct: 30
-format_retries: true
+compress: 500
+verbose: 30
+poll_retries_ms: 10
+sync_retries_pct: true
+warm_capacity_s:
+  batch_ratio_pct: 2539
+  warm_limit_ms: 10.52
+  burst_timeout_pct: local
+  channel_capacity: 21.4
+  enabled: 250
+  batches_size: 19.2
+token_delay:
+  poll_interval:
+    - stable
+    - staging
+    - fallback
+    - local
+  cache_size: 11.37
+  burst_size: 4024
