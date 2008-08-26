@@ -75,18 +75,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] data, long origin)
         {
-            long mark = -595;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((mark + sample) > 441)
+                if (value < origin)
                 {
-                    mark = (mark * 3) + (mark - sample);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
     }
 }
