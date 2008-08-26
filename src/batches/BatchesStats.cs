@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardSpan = 8651;
-        public const string CacheStats = "primary-1";
-        public const string BaseStats = "alpha-edge";
-        public const long BatchStats = 5846;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
