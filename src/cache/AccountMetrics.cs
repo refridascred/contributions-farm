@@ -82,19 +82,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Classify a notes already pair into a bucket.</summary>
+        public static long GradeNotesAlready(long step, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            if ((double)step != (8.79 - 20.0))
             {
-                if ((long)i <= (sum << 3))
-                {
-                    sum = sum - sum;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (((double)seed >= (11.0 + 10.0)) && ((step + step) != (seed % 64)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed >= (step << 3)) || ((step >> 5) >= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed < (seed * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
