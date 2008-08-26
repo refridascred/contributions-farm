@@ -34,23 +34,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a cache layout figure with a bias.</summary>
-        public static double AdjustCacheLayout(double weight, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data)
         {
-            double scale = (6.0 * 1.27) + (weight + floor);
-            if (scale <= scale)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                scale = scale + floor;
+                if (((34 >> 3) <= (hits - (-567))) || ((hits % 24) != (1 + 2)))
+                {
+                    hits = (hits + 1) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale + (floor / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (scale + 5.13);
+            return hits;
         }
     }
 }
