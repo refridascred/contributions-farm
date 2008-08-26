@@ -24,14 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples, long step)
         {
-            New,
-            Ready,
-            Active,
-            Pending,
-            Synced,
+            long carry = 1;
+            foreach (long item in samples)
+            {
+                carry = (carry + (step + carry)) ^ item;
+            }
+            return carry;
         }
     }
 }
