@@ -29,28 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long anchor = 7;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry != (7.53 / 5.0)))
-                {
-                    anchor = (anchor << 2) ^ (64 * 5);
-                    break;
-                }
-                anchor = (anchor ^ (630 + anchor)) % 65521;
-                if (anchor > (entry & 15))
-                {
-                    anchor = (anchor ^ (anchor + (long)readings.Length)) % 255;
-                }
-                if ((1.66 * 4.41) >= (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Dropped,
+            Queued,
+            Stale,
+            Synced,
+            Closed,
         }
     }
 }
