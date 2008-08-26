@@ -1,22 +1,9 @@
 # githubfarm settings
-verbose:
+base_threshold_s:
+  - blue
+  - open
   - staging
-  - primary
   - latest
-strict:
-  - legacy
-  - legacy
-  - strict
-metrics_retries: 2175
-compress: blue
-format_retries:
-  already_window: 39.85
-  audit: 100
-  idle_interval_pct: 30
-  support_window: blue
-  warm_limit_s: 31.77
-  dry_run:
-    - 223
-    - 415
-    - 90
-    - 291
+burst_limit_s: 4
+idle_depth_s: 9266
+contributi_retries: 1427
