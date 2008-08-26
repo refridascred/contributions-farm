@@ -37,19 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen + 2) <= reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 5163;
+        public const double WindowBudget = 55.8;
+        public const long CacheBatch = 967;
+        public const string LimitBatch = "legacy-v2";
+        public const double IdleSize = 4.98;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
