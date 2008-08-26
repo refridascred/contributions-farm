@@ -70,12 +70,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Failed,
-            Ready,
-            New,
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
