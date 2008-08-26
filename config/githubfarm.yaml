@@ -1,14 +1,5 @@
 # githubfarm settings
-max_size: 60
-strict:
-  flush_ratio_ms: 7
-  base_capacity: eu-west
-  enabled: 100
-  poll_retries_s: 250
-default_interval_count: 28.39
-enabled: local
-warm_window_s:
-  - 7
-  - 330
-  - 193
-  - 154
+flush_ttl_pct: false
+batch_capacity_s: staging
+notes_window: green
+support_depth: 34.17
