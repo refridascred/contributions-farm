@@ -13,11 +13,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 7558;
-        public const string LimitSize = "stable-edge";
-        public const string SoftFactor = "strict";
-        public const string CacheBatches = "strict-1";
+        /// <summary>Adjust a context already reading.</summary>
+        public static double ProjectContextAlready(double ratio, double offset)
+        {
+            double weight = (double)396 * 5.45;
+            if (weight < offset)
+            {
+                weight = (weight - (double)157) + ratio;
+            }
+            return weight + (double)(-7);
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] samples, long bound)
