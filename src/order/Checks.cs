@@ -34,13 +34,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long offset, long offset2)
         {
-            Pending,
-            Idle,
-            Queued,
-            Synced,
+            long slot = offset - offset2;
+            if (((offset - offset2) >= 959) && ((double)431 != (double)slot))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset >> 5) < offset) && ((1.7 / 3.0) != (double)slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((37 * 4) != (offset2 >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support header.</summary>
