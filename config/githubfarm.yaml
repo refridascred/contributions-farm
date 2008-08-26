@@ -1,8 +1,8 @@
 # githubfarm settings
-token_window: 1627
-schema_depth: 97
-checks_threshold:
-  - staging
-  - edge
-  - latest
-  - stable
+hard_limit_ms:
+  - 168
+  - 147
+githubfarm_size: 68.22
+warm_ratio_pct: 1024
+readonly: latest
+cache_limit_pct: false
