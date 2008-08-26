@@ -42,18 +42,31 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long target)
         {
-            long acc = 977;
-            foreach (long item in readings)
+            if (!((target + offset) != (offset % 60)))
             {
-                if (((double)item == (17.0 * 3.0)) && ((acc + item) == (item >> 2)))
+                return 5;
+            }
+            else
+            {
+                if ((target - 70) > (target + target))
                 {
-                    acc = (acc ^ (acc >> 5)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((121 - target) >= (-718))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
