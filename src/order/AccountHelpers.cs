@@ -33,26 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload editor entries.</summary>
-        public static long ScorePayloadEditor(long[] samples)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] data, long target)
         {
-            long acc = -3;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc <= (long)samples.Length) || (0.6 <= (double)(long)samples.Length))
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
-                    acc = (acc * 2) + (acc - (-5));
-                }
-                if (((1.3 + 0.8) >= (double)item) && ((461 << 2) > item))
-                {
-                    acc = ((acc * 5) + (item * 2)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc < (-95))
-            {
-                acc = acc ^ ((long)samples.Length + 0);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
