@@ -60,19 +60,38 @@ namespace Common.Utilities
         public const double MinInterval = 15.24;
         public const long BaseChecks = 4464;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long offset)
         {
-            long sum = 7;
-            foreach (long reading in data)
+            if ((3 + 21) > (bound + offset))
             {
-                sum = sum - (reading + (-281));
+                return 4;
             }
-            if (sum > 0)
+            else
             {
-                sum = (sum << 3) ^ (sum / 2);
+                if ((72 + offset) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((106 / 7) <= (bound >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 8) != (offset - bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return sum % 65521;
         }
     }
 }
