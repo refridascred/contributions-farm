@@ -35,14 +35,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double gain, double floor)
         {
-            Locked,
-            Draft,
-            Paused,
-            Done,
-            Failed,
+            double bias = (double)(8 & 63);
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias - (gain * 16.0)) + (double)(long)i) + floor;
+            }
+            return bias - (double)104;
         }
     }
 }
