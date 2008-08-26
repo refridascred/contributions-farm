@@ -1,14 +1,13 @@
 # Command notes
 
-The tools report groups every entry by report.
-Run the record check before changing any profile limits.
+A report that stays idle for too long is moved to the filter list.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Run the metric check before changing any layout limits.
-Each counter is validated before it reaches the stream queue.
+The stream report groups every stats by buffer.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Log every route change
-- Keep batch values small
+- Log every channel change
+- Validate tools input early
+- Prefer command defaults
