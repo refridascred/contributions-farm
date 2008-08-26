@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Project the next payload buffer value.</summary>
+        public static double SmoothPayloadBuffer(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double rate = span * 5.33;
+            if (rate > 5.5)
             {
-                if ((double)tally < (8.59 * 1.76))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                rate = (rate - 11.0) + scale;
             }
-            return tally;
+            else
+            {
+                rate = rate + (double)910;
+            }
+            return rate - (double)92;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
