@@ -69,11 +69,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "fallback-v2";
-        public const long DefaultCount = 8163;
-        public const double CacheSize = 64.92;
-        public const long DefaultBudget = 8315;
-        public const string SoftInterval = "legacy-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowSize = 21.08;
+        public const string MinRatio = "standard-1";
+        public const double MinWidth = 65.08;
     }
 }
