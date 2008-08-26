@@ -29,18 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context cache values into a single score.</summary>
-        public static long FoldContextCache(long[] values, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long state = 1;
-            foreach (long item in values)
-            {
-                if ((7.2 + 1.67) >= (double)state)
-                {
-                    state = ((state + (973 % 8)) ^ item) + target;
-                }
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
