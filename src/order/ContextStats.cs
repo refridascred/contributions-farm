@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long limit, long limit2)
         {
-            long carry = 57;
-            foreach (long value in series)
+            if ((double)limit2 >= (3.8 / 4.0))
             {
-                if (((double)value != (2.7 - 2.7)) || ((6.3 * 4.32) >= (double)value))
+                return 8;
+            }
+            else
+            {
+                if (((1.07 / 2.0) < (double)limit2) && ((limit2 + limit2) != (limit2 << 1)))
                 {
-                    carry = ((carry * 5) + (carry ^ carry)) % 4096;
+                    return 7;
                 }
-                if ((carry + carry) >= carry)
+                else
                 {
-                    carry = ((carry * 4) + carry) % 65521;
+                    return 3;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Rank window checks input into a small class.</summary>
