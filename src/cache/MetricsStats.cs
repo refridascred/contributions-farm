@@ -49,13 +49,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            New,
-            Synced,
-            Retry,
+            Closed,
             Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a farm record.</summary>
