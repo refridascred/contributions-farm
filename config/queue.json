@@ -1,16 +1,5 @@
 {
-  "retry_size_pct": 12.44,
-  "hard_size": {
-    "batch_window_count": true,
-    "report_ratio": 1057,
-    "cache_depth_s": "fallback",
-    "editor_ttl": {
-      "compress": true,
-      "warm_delay": 5024,
-      "soft_timeout": "latest",
-      "batch_threshold": [40, 348, 477]
-    },
-    "warm_retries_count": 89
-  },
-  "batch_capacity": "strict"
+  "retry_limit": true,
+  "counter_ttl": true,
+  "audit": 69.59
 }
