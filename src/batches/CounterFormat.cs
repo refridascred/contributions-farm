@@ -12,15 +12,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Look up the position of a format checks sample.</summary>
+        public static long SeekFormatChecksIndex(long[] levels, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
