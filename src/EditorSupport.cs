@@ -58,18 +58,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] series, long bound)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)count > (7.4 * 1.04))
                 {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 3) + sample) - bound;
                 }
             }
             return count;
