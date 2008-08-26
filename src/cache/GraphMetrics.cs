@@ -25,15 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long total = -14;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total << 3) ^ (cell - (long)values.Length);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
