@@ -67,13 +67,9 @@ namespace Common.Utilities
             return drift - (bias + 9.1);
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Active,
-            Ready,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRatio = "primary-1";
+        public const double RetryWidth = 53.91;
+        public const long StepSize = 9451;
     }
 }
