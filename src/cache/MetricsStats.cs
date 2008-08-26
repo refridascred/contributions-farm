@@ -29,15 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double rate, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long step)
         {
-            double gain = (double)(80 + 115);
-            if (gain > span)
+            long result = 192;
+            foreach (long cell in readings)
             {
-                gain = gain + (7.0 + span);
+                if ((cell >> 5) != (result % 7))
+                {
+                    result = (result + (cell / 3)) - step;
+                }
             }
-            return gain + (rate + gain);
+            return result;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
