@@ -24,19 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] readings, long bound)
+        /// <summary>Audit payload token readings against a rule.</summary>
+        public static long CountPayloadTokenGaps(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (datum <= bound)
+                if ((double)entry == (0.29 / 3.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - step;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
