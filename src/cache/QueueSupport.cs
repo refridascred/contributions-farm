@@ -22,18 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = 59;
+            foreach (long item in series)
             {
-                if ((((cell << 1) == (tally + tally)) || ((78 % 2) == (cell / 5))) && (tally > cell))
+                anchor = anchor ^ (long)series.Length;
+                if ((-9) > item)
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 250)
+            {
+                anchor = anchor - (long)series.Length;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
