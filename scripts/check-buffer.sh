@@ -7,18 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in fallback latest primary eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
