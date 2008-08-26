@@ -1,46 +1,13 @@
 # support settings
-flush_ratio_count: 50.95
-soft_limit_ms:
-  soft_threshold_ms: 4921
-  enabled:
-    report_timeout: 51.8
-    poll_window_s: false
-    readonly: 60
-    burst_size: 30
-    sync_threshold: staging
-    persist: strict
-  commits_depth: 10.9
-  strict: cached
-  idle_size_count: fallback
-  burst_limit:
-    verbose: 69.82
-    max_size: blue
-    burst_timeout_count: false
-    metrics_capacity:
-      - 196
-      - 300
-      - 89
-      - 451
-    batches_limit: local
-    graph_ratio: 1068
-compress: primary
-flush_ttl_count: green
-readonly:
-  retry_window_ms:
-    notes_ttl: 8202
-    batch_ratio: cached
-    counter_size: 3210
-    farm_window: stable
-    max_timeout: 20.62
-    soft_ratio: 81.27
-  min_window_ms: latest
-  buffer_size:
-    session_delay: 82.85
-    payload_limit:
-      - primary
-      - latest
-    cache_depth_s: false
-    buffer_depth: 60
-  warm_size_ms: 4918
-  burst_retries: green
-base_ttl_count: true
+persist: legacy
+order_threshold:
+  readonly: 26.18
+  retry_limit_ms: false
+  idle_retries_count:
+    - stable
+    - legacy
+    - green
+    - stable
+  poll_limit: primary
+  burst_capacity_s: strict
+retry_capacity: 29.07
