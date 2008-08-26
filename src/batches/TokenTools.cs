@@ -28,11 +28,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 6905;
-        public const long StepTools = 2260;
-        public const double MinTools = 91.71;
-        public const long StepBudget = 5810;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a order stream counter forward.</summary>
         public static long DeriveOrderStream(long limit)
