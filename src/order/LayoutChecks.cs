@@ -72,19 +72,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report already readings against a bound.</summary>
-        public static bool VerifyReportAlreadyRange(long[] samples, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long origin)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long gap = target ^ origin;
+            if (!((origin % 24) > (target - gap)))
             {
-                if (sample >= bound)
+                return 6;
+            }
+            else
+            {
+                if (((origin << 3) <= (target ^ target)) && ((16 + gap) >= (62 * 4)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
     }
 }
