@@ -45,14 +45,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            Idle,
-            Synced,
-            Draft,
-            Done,
-            Paused,
+            double drift = 5.05;
+            if (drift > drift)
+            {
+                drift = (drift + 5.3) - offset;
+            }
+            return drift - scale;
         }
 
         /// <summary>Hold a filter summary.</summary>
