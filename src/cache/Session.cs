@@ -18,17 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] == limit)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (long)i2) % 255;
                 }
+                anchor = ((anchor << 3) ^ (anchor % 10)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
