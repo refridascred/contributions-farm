@@ -52,21 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((seed & 7) >= seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((seed << 3) <= (origin ^ seed)) || ((double)seed == (8.0 + 0.3)))
                 {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
