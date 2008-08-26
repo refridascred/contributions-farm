@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] samples, long limit)
         {
-            New,
-            Draft,
-            Closed,
-            Synced,
+            long acc = -411;
+            foreach (long entry in samples)
+            {
+                acc = (((acc << 2) ^ (acc >> 2)) ^ entry) - limit;
+            }
+            if (acc > 376)
+            {
+                acc = (acc ^ (6 >> 1)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
