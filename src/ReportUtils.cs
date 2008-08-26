@@ -52,22 +52,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] data, long step)
         {
-            long mix = 687;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (entry <= step)
                 {
-                    mix = ((mix + (mix + 46)) % 101) + (long)i;
-                }
-                if ((step <= (value + value)) || ((7.0 * 0.2) <= (double)mix))
-                {
-                    mix = mix ^ (value & 31);
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
