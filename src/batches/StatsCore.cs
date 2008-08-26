@@ -61,14 +61,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long bound)
         {
-            Locked,
-            Synced,
-            Stale,
-            Active,
-            Pending,
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
