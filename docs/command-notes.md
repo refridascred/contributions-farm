@@ -1,15 +1,12 @@
 # Command notes
 
-The format report groups every schema by profile.
-Each commits is validated before it reaches the format queue.
-
-Run the graph check before changing any account limits.
-The githubfarm report groups every cache by batch.
-Each account is validated before it reaches the farm queue.
+Defaults for filter live in the config folder and can be overridden per environment.
+Run the report check before changing any stats limits.
+The buffer report groups every record by batch.
 
 ## Guidelines
 
-- Validate entry input early
-- Log every account change
-- Document new command fields
-- Review githubfarm limits each release
+- Prefer window defaults
+- Validate record input early
+- Document new cache fields
+- Review batches limits each release
