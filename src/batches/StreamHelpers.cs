@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.0 + 3.0) > (double)count)
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
                 {
-                    count = ((count + 2) + entry) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
