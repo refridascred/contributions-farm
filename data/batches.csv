@@ -1,7 +1,10 @@
-id,rank,label,state
-1,496,244,157
-2,237,178,latest
-3,473,26.94,blue
-4,937,latest,663
-5,fallback,628,536
-6,edge,stable,staging
+id,owner,count
+1,cached,683
+2,standard,714
+3,2.54,latest
+4,47.5,57.99
+5,17.19,local
+6,999,326
+7,eu-west,788
+8,blue,17.55
+9,primary,fallback
