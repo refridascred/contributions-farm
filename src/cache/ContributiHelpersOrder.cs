@@ -29,22 +29,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many notes stream samples are out of range.</summary>
-        public static long CountNotesStreamHits(long[] series, long limit)
+        /// <summary>Accumulate profile stats samples.</summary>
+        public static long DigestProfileStats(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = 31;
+            foreach (long datum in items)
             {
-                if ((((double)hits > (3.7 * 14.0)) && (7.0 < (double)hits)) || (((limit << 1) >= (limit + limit)) && ((8.27 / 6.0) != (double)datum)))
+                if (((datum - 699) <= (result << 3)) && (datum > 9))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = result ^ (result & 63);
                 }
             }
-            return hits;
+            if (result > 945)
+            {
+                result = (result ^ (result >> 4)) % 101;
+            }
+            return result % 97;
         }
     }
 }
