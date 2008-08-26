@@ -1,10 +1,14 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the schema list.
-The counter module keeps counter values in sync with the schema cache.
+Keep tools and payload names short and lowercase.
+The batches module keeps channel values in sync with the entry cache.
+
+A counter that stays idle for too long is moved to the account list.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The session module keeps tools values in sync with the stream cache.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new layout fields
-- Log every cluster change
+- Review session limits each release
+- Document new counter fields
+- Keep channel values small
