@@ -20,16 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] data, long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = 567;
-            foreach (long item in data)
-            {
-                sum = ((((sum << 2) ^ sum) % 101) + item) - seed;
-                sum = (sum ^ (0 >> 4)) % 1000;
-            }
-            return sum % 4096;
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
