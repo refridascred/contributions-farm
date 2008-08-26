@@ -23,39 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order payload input into a small class.</summary>
-        public static long ClassifyOrderPayload(long offset, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long next = offset - origin;
-            if ((origin >> 5) >= (origin - next))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(next < (next + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset & 15) > next)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((14 + next) > (origin * 5)) || ((7.7 + 9.8) > (double)offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
