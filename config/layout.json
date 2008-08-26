@@ -1,7 +1,17 @@
 {
-  "readonly": true,
-  "account_retries": "staging",
-  "batch_interval": 9771,
-  "graph_size": ["staging", "edge", "green"],
-  "audit": 2
+  "commits_capacity": false,
+  "compress": {
+    "idle_limit_s": [110, 116, 150],
+    "commits_ttl": "standard",
+    "enabled": [481, 272],
+    "compress": false
+  },
+  "retry_capacity": 66.47,
+  "cache_size_ms": 20,
+  "soft_size_count": {
+    "route_timeout": ["blue", "cached"],
+    "stats_threshold": "stable",
+    "hard_threshold": 93.38,
+    "filter_limit": 52.93
+  }
 }
