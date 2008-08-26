@@ -13,14 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
+        public static long CompareSchemaBatchesCount(long[] data)
         {
-            Idle,
-            Ready,
-            Failed,
-            Paused,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
