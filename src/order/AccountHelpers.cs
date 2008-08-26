@@ -60,11 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowRatio = 3998;
-        public const string MinCount = "local-v2";
-        public const long BaseCommits = 1759;
-        public const long WindowCommits = 1482;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state - (state << 1);
+                if ((seed & 1) > seed)
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorMatches(long[] samples, long seed)
