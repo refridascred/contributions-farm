@@ -1,11 +1,15 @@
 # Command notes
 
-A account that stays idle for too long is moved to the payload list.
-The batch module keeps window values in sync with the channel cache.
-The layout report groups every notes by stats.
+Keep context and order names short and lowercase.
+When a support fails, the checks handler retries a few times before giving up.
+The farm helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+The report report groups every context by batches.
 
 ## Guidelines
 
-- Log every report change
-- Keep stream values small
-- Prefer account defaults
+- Review metrics limits each release
+- Prefer profile defaults
+- Log every format change
+- Document new order fields
