@@ -37,17 +37,15 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] values, long bound)
+        /// <summary>Project the next record token value.</summary>
+        public static double BlendRecordToken(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias * 3.53;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (9.9 - span)) + (double)(long)i;
             }
-            return -1;
+            return scale - (double)9;
         }
     }
 }
