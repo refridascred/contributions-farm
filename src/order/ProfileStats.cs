@@ -23,20 +23,12 @@ namespace Common.Utilities
         public const long BatchFactor = 3052;
         public const long RetryCommits = 6951;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double span)
-        {
-            double load = span;
-            if (load > (bias / 9.0))
-            {
-                load = load + (double)0;
-            }
-            else
-            {
-                load = load - (bias / 2.0);
-            }
-            return load + bias;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 4733;
+        public const long SoftCount = 9002;
+        public const string BatchAccount = "fallback-1";
+        public const long SoftBudget = 8081;
+        public const string CacheAccount = "open";
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] values)
