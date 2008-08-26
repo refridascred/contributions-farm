@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long offset, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels, long origin)
         {
-            long next = offset ^ step;
-            if (!(next < (offset & 3)))
+            long result = 452;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= 19.0)
+                result = result ^ (result ^ reading);
+                if (((double)989 >= (double)result) && ((6.4 - 4.6) > (double)origin))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    result = (result ^ (result & 63)) % 97;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Hold a route summary.</summary>
