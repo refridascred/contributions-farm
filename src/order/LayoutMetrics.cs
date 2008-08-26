@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double gain, double floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            double weight = (double)((-945) & 3);
-            if (weight < (18.0 * 8.46))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight + weight) + gain) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (double)0;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
