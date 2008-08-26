@@ -22,12 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 8950;
+        public const double HardRatio = 58.23;
+        public const string DefaultChannel = "legacy";
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] levels)
