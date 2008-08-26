@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double gain, double span)
-        {
-            double weight = gain;
-            if (weight > (1.0 - 6.3))
-            {
-                weight = weight + (8.0 + span);
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight - (weight * 9.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstCount = 75.72;
+        public const double HardTimeout = 12.63;
+        public const string RetryEditor = "fallback-1";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long FoldGithubfarm(long[] items)
