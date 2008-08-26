@@ -20,11 +20,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] samples, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (207 <= (bound + (-15)))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
