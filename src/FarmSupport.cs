@@ -64,11 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a batch info.</summary>
