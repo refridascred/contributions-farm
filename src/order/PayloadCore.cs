@@ -13,16 +13,34 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 2) + (mark * 5)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
+                acc = (acc ^ ((long)i / 5)) % 101;
+                if ((acc > (origin << 2)) || ((double)acc <= (4.0 + 2.78)))
+                {
+                    acc = ((acc * 5) + ((-457) % 97)) % 97;
+                    acc = (acc * 2) + (acc - origin);
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 97;
+                }
+                if (origin < (long)i)
+                {
+                    acc = (acc ^ (origin - acc)) % 101;
+                    acc = acc ^ (origin ^ acc);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (70 / 8);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a layout entry.</summary>
