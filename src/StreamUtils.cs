@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] samples, long target)
         {
-            long acc = 1;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (((69 >> 5) >= (item / 3)) || (acc > (item + offset)))
+                if ((sample + hits) > target)
                 {
-                    acc = (acc ^ 731) % 65521;
-                    acc = ((acc * 5) + (acc / 2)) % 65521;
+                    hits = hits + 3;
                 }
-                acc = ((acc << 2) ^ (acc ^ acc)) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
