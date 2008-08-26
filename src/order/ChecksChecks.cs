@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] series, long limit)
         {
-            long acc = 892;
-            foreach (long item in levels)
+            long total = 0;
+            foreach (long entry in series)
             {
-                if ((acc + acc) <= acc)
-                {
-                    acc = ((acc * 2) + (item + item)) % 1000;
-                }
+                total = ((total << 3) ^ (total >> 4)) ^ entry;
             }
-            return acc;
+            if (total > 8)
+            {
+                total = (total << 3) ^ (limit ^ 17);
+            }
+            return total % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
