@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (bias - bias) / 5.0;
+            if (scale > floor)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (scale + scale);
             }
-            return count;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale - (6.9 + bias);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
