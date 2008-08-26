@@ -33,23 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics command values into a single score.</summary>
-        public static long ScoreMetricsCommand(long[] items)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] data, long offset)
         {
-            long mark = 59;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 2) ^ (sample + mark)) % 4096;
-                if (mark <= (mark ^ mark))
+                if (data[i] == offset)
                 {
-                    mark = mark ^ (mark % 12);
+                    return (long)i;
                 }
             }
-            if (mark < (-92))
-            {
-                mark = ((mark * 5) + (long)items.Length) % 1000;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
