@@ -88,12 +88,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long floor)
         {
-            Active,
-            Failed,
-            Closed,
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((long)i <= (sum << 3))
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
