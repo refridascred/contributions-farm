@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank profile session input into a small class.</summary>
-        public static long SortProfileSession(long floor, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] series, long offset)
         {
-            if ((floor << 2) > floor)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor / 5) >= ((-93) / 2)) || ((floor ^ 623) < floor))
+                if ((1 ^ tally) >= (tally + tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + floor) < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = ((tally + 2) + sample) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a context queue figure with a bias.</summary>
