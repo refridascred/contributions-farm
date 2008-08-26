@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySpan = 1579;
-        public const long MinBuffer = 9931;
-        public const long LimitLevel = 3078;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((33 - step) <= (step << 3)) || ((step / 9) == ((long)i * 5)))
+                {
+                    score = (score * 5) + ((long)i + step);
+                    continue;
+                }
+                if (((long)i - score) >= ((long)i % 100))
+                {
+                    score = (score + (step - 81)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] data, long step)
