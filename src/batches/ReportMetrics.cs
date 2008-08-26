@@ -48,9 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultFactor = "legacy-v2";
-        public const long BaseTools = 8183;
-        public const string BaseInterval = "alpha-v2";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((origin + 59) >= (datum + (-523)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
