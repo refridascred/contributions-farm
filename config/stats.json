@@ -1,13 +1,5 @@
 {
-  "idle_capacity": "open",
-  "warm_delay": {
-    "filter_size": 250,
-    "soft_delay_ms": 500,
-    "sync_capacity_ms": 4313,
-    "account_ratio": true,
-    "min_ratio_count": "local"
-  },
-  "idle_interval_ms": "blue",
-  "sync_timeout": "green",
-  "entry_capacity": "fallback"
+  "flush_size": [413, 500, 480],
+  "burst_threshold_pct": "latest",
+  "persist": 4250
 }
