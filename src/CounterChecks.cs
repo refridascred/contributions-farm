@@ -62,11 +62,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 5875;
-        public const string BaseCount = "fallback";
-        public const long IdleRatio = 5197;
-        public const string MaxInterval = "cached-edge";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] readings)
+        {
+            long sum = -710;
+            foreach (long entry in readings)
+            {
+                sum = (((sum << 3) ^ (sum << 3)) % 4096) - entry;
+            }
+            if (sum > 22)
+            {
+                sum = (sum - (sum + (long)readings.Length)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long SortCommits(long step, long floor)
