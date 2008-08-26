@@ -86,13 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long floor)
         {
-            New,
-            Ready,
-            Retry,
-            Idle,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
