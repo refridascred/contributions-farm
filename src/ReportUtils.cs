@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 0;
-            foreach (long item in samples)
-            {
-                mark = ((mark << 2) ^ item) - target;
-            }
-            return mark % 4096;
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
