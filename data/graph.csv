@@ -1,11 +1,6 @@
-id,label,owner,weight
-1,728,46.88,local
-2,edge,primary,35.83
-3,blue,89.17,open
-4,1.7,86.18,standard
-5,23.89,528,edge
-6,54.95,77.48,65.14
-7,77.95,primary,862
-8,909,74.43,178
-9,50,strict,753
-10,eu-west,45.18,primary
+id,owner,token
+1,36.89,344
+2,latest,85.31
+3,64.93,89.44
+4,staging,912
+5,stable,55.56
