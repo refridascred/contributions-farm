@@ -1,15 +1,12 @@
 # Command notes
 
-Each contributi is validated before it reaches the commits queue.
-Each stream is validated before it reaches the route queue.
-Run the order check before changing any cluster limits.
-
-The editor helpers are pure functions, so they are safe to call from any thread.
-Run the profile check before changing any report limits.
+Each contributi is validated before it reaches the entry queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+A layout that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new record fields
-- Keep batch values small
-- Log every entry change
+- Prefer payload defaults
+- Log every filter change
+- Validate metrics input early
+- Document new graph fields
