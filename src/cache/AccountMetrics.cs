@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the window graph entries that pass the check.</summary>
-        public static long AuditWindowGraphGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((matches & 1) != (matches / 2)) && (((matches - (-9)) <= 89) || ((reading * 4) >= (reading / 5))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 6285;
+        public const long BurstRatio = 2843;
+        public const long BurstScore = 6396;
+        public const long MinLevel = 5515;
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] levels, long target)
