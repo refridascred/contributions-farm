@@ -77,38 +77,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a notes already pair into a bucket.</summary>
-        public static long GradeNotesAlready(long step, long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long limit)
         {
-            if ((double)step != (8.79 - 20.0))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed >= (11.0 + 10.0)) && ((step + step) != (seed % 64)))
+                if (item < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed >= (step << 3)) || ((step >> 5) >= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed < (seed * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
