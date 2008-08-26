@@ -39,16 +39,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Look up the position of a counter tools sample.</summary>
+        public static long LocateCounterToolsIndex(long[] items, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 2) + result) % 4096;
-                result = ((result * 5) + (long)i) % 65521;
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
