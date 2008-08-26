@@ -64,18 +64,19 @@ namespace Common.Utilities
             return drift - (bias + 9.1);
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] series, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = 4;
+            foreach (long cell in items)
             {
-                if ((double)value > (double)offset)
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = seen + 3;
+                    state = ((state << 3) ^ (long)i) % 255;
                 }
+                state = state ^ (cell >> 2);
             }
-            return seen;
+            return state;
         }
     }
 }
