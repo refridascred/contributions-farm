@@ -42,16 +42,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long target)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long result = 722;
+            foreach (long value in series)
             {
-                state = (state + (state - target)) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((target <= (35 << 3)) && ((target % 16) >= value))
+                {
+                    result = (result + (target + 35)) % 65521;
+                }
             }
-            return state;
+            return result;
         }
     }
 }
