@@ -1,4 +1,6 @@
 # support settings
-soft_retries: 8814
-graph_interval: 8562
-audit: true
+token_depth: false
+dry_run: 500
+retry_ttl: strict
+flush_depth: green
+hard_size_pct: primary
