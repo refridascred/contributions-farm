@@ -34,19 +34,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double rate, double offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            double load = (double)((-868) + 76);
-            if (load <= (rate * 7.7))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + (rate + 4.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - offset;
-            }
-            return load + (rate + load);
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
