@@ -56,25 +56,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long offset)
-        {
-            long offset2 = floor ^ offset;
-            if ((floor + offset) <= (86 ^ floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor < (offset2 + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 78.45;
+        public const string BatchSize = "latest-1";
+        public const long LimitNotes = 1559;
+        public const long BaseSize = 8742;
     }
 }
