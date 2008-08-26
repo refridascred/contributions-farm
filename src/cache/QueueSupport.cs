@@ -22,23 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long anchor = 59;
-            foreach (long item in series)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = anchor ^ (long)series.Length;
-                if ((-9) > item)
+                if (!((score >= ((-82) ^ 774)) || (score < offset)))
                 {
-                    break;
+                    score = (score + ((long)i - score)) % 97;
                 }
+                score = (score - ((long)i & 63)) % 97;
+                score = ((score << 3) ^ (903 % 24)) % 255;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (anchor > 250)
-            {
-                anchor = anchor - (long)series.Length;
-            }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
