@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long offset, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long next = offset ^ step;
+            if (!(next < (offset & 3)))
             {
-                if ((double)cell < (9.0 / 5.0))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= 19.0)
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the checks mode values.</summary>
