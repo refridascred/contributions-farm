@@ -21,22 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] readings, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((matches > (origin - 647)) || !((matches ^ value) != (origin & 15)))
+                if (item < seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a commits options.</summary>
