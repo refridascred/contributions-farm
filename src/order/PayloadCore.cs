@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] values)
+        /// <summary>Look up the position of a report batches sample.</summary>
+        public static long LookupReportBatchesIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((824 / 6) < datum)
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
