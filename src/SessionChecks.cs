@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 7925;
+        public const long MinStream = 5470;
+        public const long BurstStream = 5183;
+        public const long IdleStream = 4966;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsMatches(long[] items)
