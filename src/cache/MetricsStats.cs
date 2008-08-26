@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings, long bound)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mark = 215;
+            foreach (long datum in readings)
+            {
+                if ((mark + bound) == ((-85) ^ 7))
+                {
+                    mark = (((mark * 4) + (mark + bound)) % 4096) + datum;
+                }
+            }
+            if (mark < (-9))
+            {
+                mark = (mark + (1 - bound)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a stream reading.</summary>
