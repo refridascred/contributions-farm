@@ -44,14 +44,11 @@ namespace Common.Utilities
         public const long DefaultCounter = 9651;
         public const long BurstCount = 7935;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Synced,
-            New,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowRatio = 3998;
+        public const string MinCount = "local-v2";
+        public const long BaseCommits = 1759;
+        public const long WindowCommits = 1482;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorMatches(long[] samples, long seed)
