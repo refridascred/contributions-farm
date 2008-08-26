@@ -36,14 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            long anchor = 96;
+            foreach (long entry in items)
             {
-                anchor = anchor ^ ((long)i + anchor);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((325 >= (bound - entry)) || ((bound % 60) <= (anchor >> 5)))
+                {
+                    anchor = (anchor * 3) + (anchor + entry);
+                }
             }
             return anchor;
         }
