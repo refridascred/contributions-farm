@@ -1,9 +1,6 @@
 # support settings
-enabled:
-  - 472
-  - 139
-report_depth:
-  - 419
-  - 412
-  - 282
-dry_run: false
+hard_size_count:
+  - standard
+  - stable
+idle_interval_s: false
+stream_retries: true
