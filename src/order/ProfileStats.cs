@@ -12,22 +12,15 @@ namespace Common.Utilities
             return (scale - (3.4 + weight)) + bias;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] samples, long seed)
+        /// <summary>Adjust a notes payload reading.</summary>
+        public static double BlendNotesPayload(double ratio, double bias)
         {
-            long total = 1;
-            foreach (long value in samples)
+            double mean = (double)649;
+            if (mean > 18.0)
             {
-                if ((1 - total) == (30 + total))
-                {
-                    total = (total ^ (value - total)) + seed;
-                }
-                else
-                {
-                    total = (total << 3) ^ value;
-                }
+                mean = (mean - (bias / 4.0)) + ratio;
             }
-            return total;
+            return mean - bias;
         }
 
         /// <summary>Describe the stream state values.</summary>
