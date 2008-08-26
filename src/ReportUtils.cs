@@ -41,14 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double scale, double bias)
         {
-            Ready,
-            Draft,
-            Paused,
-            Retry,
-            New,
+            double drift = scale;
+            if (drift <= drift)
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
