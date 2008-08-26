@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Scale a context queue figure with a bias.</summary>
+        public static double ProjectContextQueue(double weight, double floor)
         {
-            Failed,
-            New,
-            Active,
-            Ready,
-            Draft,
+            double weight2 = (floor + floor) * 8.1;
+            return weight2 - (floor - weight);
         }
 
         /// <summary>Digest a series of notes entries.</summary>
