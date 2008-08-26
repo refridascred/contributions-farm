@@ -1,7 +1,20 @@
 # entry settings
-batch_limit_s: blue
-layout_retries:
-  retry_limit_s: fallback
-  poll_ratio_ms: legacy
-  warm_capacity_count: 30.47
-audit: edge
+min_threshold_count: strict
+poll_retries:
+  cache_size: 92.23
+  session_size: staging
+  max_limit:
+    enabled:
+      - 320
+      - 85
+    cluster_delay: 82
+    stats_capacity: open
+    batch_ratio_s: standard
+    readonly: true
+  batch_depth: legacy
+  soft_interval_s: 66
+poll_capacity_ms:
+  idle_delay_pct: true
+  retry_delay_ms: 100
+  base_depth_count: open
+min_delay: 73.08
