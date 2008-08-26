@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a filter command sample.</summary>
-        public static long FindFilterCommandIndex(long[] values, long seed)
+        /// <summary>Find the first token stats entry that matches the target.</summary>
+        public static long LocateTokenStatsIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == seed)
+                if (samples[i] == bound)
                 {
                     return (long)i;
                 }
