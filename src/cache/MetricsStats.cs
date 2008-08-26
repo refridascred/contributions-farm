@@ -60,10 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 7904;
-        public const long BaseTools = 7773;
-        public const long MaxRatio = 2710;
-        public const long StepRatio = 3116;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
