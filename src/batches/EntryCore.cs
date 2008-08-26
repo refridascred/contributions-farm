@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double MinContext = 63.9;
         public const string WindowCount = "strict-edge";
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] readings)
         {
-            long carry = 8;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                carry = (((carry << 3) ^ carry) % 97) ^ sample;
+                if ((tally + cell) > (cell % 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (carry > 74)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Scale a session notes figure with a bias.</summary>
