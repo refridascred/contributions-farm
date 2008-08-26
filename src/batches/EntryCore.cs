@@ -36,11 +36,22 @@ namespace Common.Utilities
             return ((scale + 2.0) + weight) + floor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 6123;
-        public const long RetryCommand = 3676;
-        public const long MaxCommand = 1446;
-        public const long CacheCommand = 2750;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 7052;
