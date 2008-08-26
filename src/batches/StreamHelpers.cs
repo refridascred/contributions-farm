@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
+                if (((8.3 / 9.0) >= (double)count) && ((offset ^ count) > (offset + count)))
                 {
-                    return (long)i;
+                    count = (count + 3) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
