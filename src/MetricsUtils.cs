@@ -29,15 +29,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 18)
+                    if ((values[i] ^ values[j]) < 3)
                     {
                         hits = hits + 1;
                     }
