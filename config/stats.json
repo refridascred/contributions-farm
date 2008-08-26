@@ -1,6 +1,5 @@
 {
-  "base_window_s": 4132,
-  "commits_delay": 250,
-  "cache_ratio_count": 1024,
-  "base_size_s": 82
+  "max_interval_s": 14,
+  "warm_timeout_s": "edge",
+  "default_timeout": 27.82
 }
