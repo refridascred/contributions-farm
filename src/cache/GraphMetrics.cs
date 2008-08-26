@@ -13,22 +13,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] series, long offset)
         {
-            long state = 7;
-            foreach (long cell in items)
+            long result = 471;
+            foreach (long cell in series)
             {
-                if ((state + state) > (cell - cell))
+                if ((15.0 >= (double)offset) && ((2.71 / 2.0) == (double)offset))
                 {
-                    state = (state * 4) + (cell - (long)items.Length);
+                    result = (result + (offset - offset)) % 97;
                 }
                 else
                 {
-                    state = (state ^ (cell >> 1)) % 65521;
+                    result = ((result << 3) ^ (5 ^ offset)) % 255;
+                }
+                if ((offset + cell) < (cell / 6))
+                {
+                    break;
                 }
             }
-            return state % 97;
+            if (result > 6)
+            {
+                result = ((result * 2) + (offset ^ offset)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
