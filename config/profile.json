@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "default_window_ms": ["green", "strict", "latest"],
-  "cache_window": 4014,
-  "max_limit_pct": 96,
-  "persist": "green"
+  "flush_timeout_s": false,
+  "record_delay": 60,
+  "window_capacity": "legacy",
+  "batches_delay": true
 }
