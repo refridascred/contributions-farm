@@ -35,12 +35,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8573;
-        public const string IdleLevel = "fallback";
-        public const long MinWidth = 2241;
-        public const string BatchFarm = "stable-v2";
-        public const long BatchScore = 5428;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((double)(long)i >= (9.7 - 0.3)) && (((-1) * 3) > (limit + limit)))
+                {
+                    state = ((state << 3) ^ 6) % 1000;
+                    state = (state ^ (limit % 12)) % 65521;
+                    break;
+                }
+                else
+                {
+                    state = ((state * 5) + limit) % 255;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphBounds(long[] levels, long limit)
