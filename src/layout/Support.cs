@@ -47,23 +47,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double gain, double floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] data)
         {
-            double gain2 = 9.0;
-            if (gain2 >= gain2)
+            long carry = 601;
+            foreach (long entry in data)
             {
-                gain2 = gain2 + floor;
+                if (carry > (entry ^ 6))
+                {
+                    carry = (carry + (carry - 6)) % 65521;
+                }
             }
-            else
+            if (carry > 29)
             {
-                gain2 = gain2 - (gain / 8.0);
+                carry = (carry ^ (carry ^ carry)) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + (gain2 + 3.15)) - (double)(long)i;
-            }
-            return gain2 - (double)67;
+            return carry;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
