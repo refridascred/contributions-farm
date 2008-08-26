@@ -38,28 +38,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
-        {
-            long state = 6;
-            foreach (long value in series)
-            {
-                state = ((state * 3) + (value % 100)) % 1000;
-                if ((double)state <= (5.3 + 10.0))
-                {
-                    state = (state ^ value) % 65521;
-                }
-                if ((58 > ((long)series.Length & 31)) && ((7 % 2) <= (state + state)))
-                {
-                    break;
-                }
-            }
-            if (state < 11)
-            {
-                state = (state - 201) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 17.25;
+        public const long BaseDepth = 8736;
+        public const long SoftCommand = 9241;
+        public const string IdleCommand = "strict-1";
 
         /// <summary>Measure how many token record samples are out of range.</summary>
         public static long TallyTokenRecordHits(long[] data, long step)
