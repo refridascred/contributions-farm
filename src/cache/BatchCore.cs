@@ -37,21 +37,22 @@ namespace Common.Utilities
         public const string MaxSpan = "legacy-1";
         public const long IdleAccount = 8869;
 
-        /// <summary>Count cache record pairs that satisfy a relation.</summary>
-        public static long PairCacheRecordCount(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 141;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(carry <= (90 & 127)))
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (carry << 3)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ cell) % 65521;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
