@@ -26,15 +26,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] levels, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long acc = 862;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                acc = acc - (acc + datum);
+                if (((datum / 8) < limit) && ((acc / 5) != (286 * 3)))
+                {
+                    acc = (acc + (limit / 9)) % 101;
+                }
+                else
+                {
+                    acc = (acc - ((-44) << 2)) % 4096;
+                }
             }
-            return sum;
+            if (acc < 830)
+            {
+                acc = ((acc << 3) ^ (acc << 3)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a farm options.</summary>
