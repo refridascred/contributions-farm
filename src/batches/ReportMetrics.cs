@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double span)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double mean = (double)462 / 5.0;
-            if (mean >= mean)
-            {
-                mean = (mean + (span + mean)) - gain;
-            }
-            return mean + mean;
+            Paused,
+            Stale,
+            Draft,
+            Failed,
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
