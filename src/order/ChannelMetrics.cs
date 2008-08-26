@@ -29,11 +29,15 @@ namespace Common.Utilities
             return weight - (4.6 - 9.6);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 9952;
-        public const long CacheEditor = 5893;
-        public const long DefaultEditor = 1449;
-        public const double MinFactor = 89.56;
-        public const long MinEditor = 6822;
+        /// <summary>Iterate the payload stats series from a seed.</summary>
+        public static long DerivePayloadStats(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
