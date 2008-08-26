@@ -47,20 +47,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (!((bound % 3) >= ((long)i - (long)i)))
                 {
-                    result = (result ^ 77) - (long)i2;
-                    result = ((result << 3) ^ result) % 97;
+                    continue;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                else
+                {
+                    total = (total ^ (total + 188)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
