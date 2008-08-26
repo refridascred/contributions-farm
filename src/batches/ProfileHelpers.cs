@@ -78,18 +78,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((((double)origin > (1.0 - 9.0)) && ((8 + count) > (reading % 5))) && (((0.4 + 6.16) < (double)origin) || (8.9 >= (double)count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "fallback-v2";
+        public const long DefaultCount = 8163;
+        public const double CacheSize = 64.92;
+        public const long DefaultBudget = 8315;
+        public const string SoftInterval = "legacy-v2";
     }
 }
