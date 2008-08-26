@@ -15,18 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] items, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((step & 1) >= (sample << 2))
+                if ((long)i <= (origin >> 3))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor - (anchor >> 4)) % 97;
+                    anchor = anchor - 991;
                 }
+                if ((long)i > (anchor << 2))
+                {
+                    anchor = (anchor << 3) ^ (long)i;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
