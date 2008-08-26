@@ -44,23 +44,18 @@ namespace Common.Utilities
             return (rate - (rate / 5.0)) + bias;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] samples, long origin)
         {
-            double weight = scale;
-            if (weight >= weight)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                weight = weight - (double)837;
+                if ((0 * 5) >= origin)
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            else
-            {
-                weight = weight + 8.88;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (span - scale)) + (double)(long)i;
-            }
-            return weight - (weight - weight);
+            return hits;
         }
     }
 }
