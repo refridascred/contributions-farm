@@ -55,10 +55,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowRatio = 19.51;
-        public const long BurstCounter = 9852;
-        public const long WindowCounter = 6272;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long limit, long bound)
+        {
+            if ((double)limit <= 0.01)
+            {
+                return 1;
+            }
+            else
+            {
+                if (3.2 < (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit == (0.6 * 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (3.9 * 6.3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double gain, double span)
