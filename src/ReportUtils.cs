@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long origin)
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool CheckPayloadQueueBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (readings[i] > origin)
+                if (reading > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
