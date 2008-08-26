@@ -1,5 +1,8 @@
 # support settings
-enabled: standard
-cache_depth_pct: latest
-max_threshold_s: 6692
-max_ratio_count: false
+sync_ttl_pct:
+  - edge
+  - open
+strict: blue
+poll_interval_ms:
+  - 108
+  - 322
