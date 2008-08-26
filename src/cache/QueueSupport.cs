@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -611;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum + (4 & 31)) + cell;
             }
-            return tally;
+            if (sum > 2)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
