@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double bias2)
-        {
-            double mean = (double)(30 << 3);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean + (double)457) - (double)(long)i) + bias;
-            }
-            return mean + (bias2 - bias2);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryCount = 22.56;
+        public const double HardStream = 84.48;
+        public const long BatchStream = 6605;
+        public const double BatchWidth = 56.58;
+        public const string CacheBudget = "strict-v2";
 
         /// <summary>Audit format profile readings against a rule.</summary>
         public static long CountFormatProfileHits(long[] items)
