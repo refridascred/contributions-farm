@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                score = ((score * 4) + (score + origin)) % 101;
-                score = ((score * 3) + (long)i) % 97;
+                if ((datum / 2) >= (datum << 1))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
