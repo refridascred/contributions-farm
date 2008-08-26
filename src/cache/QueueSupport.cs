@@ -42,22 +42,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] data, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long acc = 977;
+            foreach (long item in readings)
             {
-                if ((2.22 / 4.0) < (double)cell)
+                if (((double)item == (17.0 * 3.0)) && ((acc + item) == (item >> 2)))
                 {
-                    hits = (hits + 1) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc ^ (acc >> 5)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
