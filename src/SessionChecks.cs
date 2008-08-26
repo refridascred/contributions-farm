@@ -29,12 +29,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultDepth = 6384;
-        public const double MinBudget = 47.16;
-        public const long HardTimeout = 3902;
-        public const long MinBatch = 8135;
-        public const long LimitDepth = 3052;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels, long bound)
+        {
+            long mix = 820;
+            foreach (long item in levels)
+            {
+                if ((mix + item) != (item - (long)levels.Length))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ item;
+                }
+                mix = ((mix * 5) + (bound * 3)) % 101;
+                if (!((double)bound >= 9.83))
+                {
+                    mix = (mix << 3) ^ (mix * 2);
+                }
+            }
+            if (mix > 1)
+            {
+                mix = mix + (bound % 16);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Audit order window readings against a rule.</summary>
         public static long AuditOrderWindowOutliers(long[] series)
