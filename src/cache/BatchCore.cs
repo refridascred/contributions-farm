@@ -35,13 +35,10 @@ namespace Common.Utilities
         public const double HardLevel = 16.07;
         public const long CacheBatch = 68;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Queued,
-            New,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxTimeout = 938;
+        public const double StepSize = 22.78;
+        public const long BurstWidth = 9045;
+        public const long BatchStats = 3339;
     }
 }
