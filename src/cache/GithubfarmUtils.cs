@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            New,
-            Pending,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 66.56;
+        public const double WindowQueue = 84.84;
+        public const long BurstQueue = 3933;
+        public const string BaseQueue = "staging-1";
+        public const long MaxSpan = 5149;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
