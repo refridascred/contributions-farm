@@ -34,27 +34,39 @@ namespace Common.Utilities
         public const long LimitTimeout = 5294;
         public const long BurstBatch = 4892;
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long WeighAccountAlready(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long target)
         {
-            long sum = 515;
-            foreach (long item in values)
+            long bound = floor ^ target;
+            if ((target * 3) > (bound * 5))
             {
-                if ((double)item > (double)sum)
+                return 7;
+            }
+            else
+            {
+                if ((21 - target) < target)
                 {
-                    sum = (sum ^ (sum + item)) % 65521;
-                    sum = sum ^ (sum - sum);
+                    return 4;
                 }
-                if (sum > item)
+                else
                 {
-                    sum = (sum - (item / 7)) % 65521;
+                    if ((floor + 61) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7 & 255) <= target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (sum > 9)
-            {
-                sum = ((sum << 3) ^ 0) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Digest a series of metric cache entries.</summary>
