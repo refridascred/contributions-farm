@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batches metric samples.</summary>
-        public static long WeighBatchesMetric(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long seed)
         {
-            long sum = 68;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((152 >> 2) < item))
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    sum = ((sum * 3) + (3 * 5)) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
