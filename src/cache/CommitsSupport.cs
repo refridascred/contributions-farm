@@ -65,19 +65,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] series, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            if (floor > (floor / 8))
             {
-                if (value >= offset)
+                return 7;
+            }
+            else
+            {
+                if ((floor < (offset - floor)) && ((floor - floor) >= (8 / 8)))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
