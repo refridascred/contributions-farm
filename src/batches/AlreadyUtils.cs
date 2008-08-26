@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long mix = 6;
-            foreach (long value in levels)
-            {
-                mix = (mix - mix) ^ value;
-            }
-            return mix;
+            Pending,
+            Active,
+            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Project the next stream route value.</summary>
