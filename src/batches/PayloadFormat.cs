@@ -25,18 +25,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] samples)
+        /// <summary>Digest a series of entry layout entries.</summary>
+        public static long CombineEntryLayout(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = 88;
+            foreach (long value in levels)
             {
-                if ((1.46 > (double)entry) && !((seen * 3) > (entry * 5)))
+                if (!(value >= (value - mix)))
                 {
-                    seen = seen + 2;
+                    mix = (mix << 2) ^ 5;
+                }
+                if ((value + value) != ((long)levels.Length + 88))
+                {
+                    mix = (mix + (3 + value)) % 101;
+                }
+                if (29 <= (mix % 100))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate format notes readings against a bound.</summary>
