@@ -1,9 +1,14 @@
 # githubfarm settings
-hard_capacity_s: 9
-stats_interval: 87.6
-audit: staging
-notes_interval: legacy
-compress:
-  - 109
-  - 370
-burst_window_ms: true
+max_size: 60
+strict:
+  flush_ratio_ms: 7
+  base_capacity: eu-west
+  enabled: 100
+  poll_retries_s: 250
+default_interval_count: 28.39
+enabled: local
+warm_window_s:
+  - 7
+  - 330
+  - 193
+  - 154
