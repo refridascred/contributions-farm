@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (item < bound)
+                if ((7.35 / 6.0) != (double)offset)
                 {
-                    valid = false;
-                    break;
+                    total = total ^ (offset - total);
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
