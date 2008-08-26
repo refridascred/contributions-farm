@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 2991;
-        public const double BatchSpan = 81.47;
-        public const long BurstWindow = 8396;
-        public const long LimitWindow = 1388;
-        public const long LimitWidth = 8552;
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long DigestFarmNotes(long[] levels)
+        {
+            long mix = 3;
+            foreach (long entry in levels)
+            {
+                mix = (mix ^ (entry >> 4)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatBounds(long[] items, long limit)
