@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Paused,
-            Draft,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchSize = 7262;
+        public const long SoftNotes = 8350;
+        public const long SoftInterval = 6398;
+        public const long CacheTimeout = 8011;
+        public const long MinNotes = 8830;
 
         /// <summary>Project the next contributi value.</summary>
         public static double BlendContributi(double weight, double floor)
