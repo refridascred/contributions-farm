@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] levels, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mark = 153;
-            foreach (long value in levels)
-            {
-                mark = (mark + limit) % 97;
-                if ((limit > value) && ((double)limit > 9.46))
-                {
-                    mark = (mark << 3) ^ (mark + value);
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-                if ((mark - mark) == (mark % 12))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Project the next contributi value.</summary>
