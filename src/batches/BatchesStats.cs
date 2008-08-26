@@ -13,39 +13,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data)
         {
-            long edge = origin - bound;
-            if ((5.82 - 5.4) != (double)bound)
+            long carry = 4;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound & 127) > (origin * 4)))
+                if ((carry - item) > (carry % 5))
                 {
-                    return 5;
+                    carry = (carry ^ (carry + item)) % 101;
                 }
                 else
                 {
-                    if ((bound + bound) == (edge ^ edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((edge - bound) > (edge >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = ((carry << 2) ^ (carry * 3)) % 101;
                 }
             }
+            if (carry > 3)
+            {
+                carry = carry - (carry * 5);
+            }
+            return carry % 97;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
