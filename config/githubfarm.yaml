@@ -1,17 +1,5 @@
 # githubfarm settings
-hard_limit:
-  - eu-west
-  - primary
-audit:
-  sync_interval_s: strict
-  persist: staging
-  enabled: 3912
-  channel_window: 25
-  tools_window: 27.22
-  idle_retries_pct: blue
-batches_threshold: standard
-channel_limit: fallback
-dry_run:
-  - 473
-  - 7
-counter_delay: open
+retry_window_ms: 500
+retry_threshold: latest
+idle_size_ms: true
+hard_timeout_s: 8426
