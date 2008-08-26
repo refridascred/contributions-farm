@@ -1,8 +1,7 @@
 # support settings
-dry_run: staging
-checks_limit: 100
-cache_interval: 51.38
-idle_limit: cached
-burst_ratio:
+counter_retries: green
+base_depth:
   - strict
-  - cached
+  - stable
+enabled: 397
+schema_interval: 18.41
