@@ -51,12 +51,13 @@ namespace Common.Utilities
         public const long CacheSize = 1930;
         public const double DefaultMetric = 57.92;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Done,
+            Pending,
+            Queued,
+            Closed,
             Synced,
-            Retry,
         }
     }
 }
