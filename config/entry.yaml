@@ -1,7 +1,10 @@
 # entry settings
-editor_timeout: cached
-retry_capacity_s: 8302
-filter_capacity: 3906
-verbose: true
-readonly: green
-sync_size_pct: 500
+burst_ratio_s:
+  - 273
+  - 496
+default_interval:
+  cache_timeout_count: 33.51
+  batch_capacity: 32
+  sync_interval: true
+entry_limit: 56
+persist: 5789
