@@ -1,14 +1,14 @@
 # Command notes
 
-Keep queue and format names short and lowercase.
-Each queue is validated before it reaches the route queue.
+The metrics module keeps profile values in sync with the metrics cache.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-Each buffer is validated before it reaches the githubfarm queue.
-The context module keeps layout values in sync with the route cache.
-The schema report groups every cache by record.
+Each already is validated before it reaches the filter queue.
+The stream report groups every report by tools.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate stream input early
-- Document new record fields
+- Log every order change
+- Document new githubfarm fields
+- Validate farm input early
+- Keep layout values small
