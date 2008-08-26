@@ -68,17 +68,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] items, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)limit2 <= (1.54 + 6.01))
             {
-                if (items[i] <= bound)
+                return 0;
+            }
+            else
+            {
+                if ((0.6 + 8.2) < (double)limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
