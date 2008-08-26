@@ -33,22 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] samples)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen - datum) < datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
