@@ -28,22 +28,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings)
         {
-            long sum = 853;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (!(sum > (floor + floor)))
+                if ((reading - matches) != ((long)readings.Length & 7))
                 {
-                    sum = (sum - (value + floor)) % 1000;
+                    matches = matches + 1;
                 }
             }
-            if (sum > 5)
-            {
-                sum = (sum << 2) ^ floor;
-            }
-            return sum;
+            return matches;
         }
     }
 }
