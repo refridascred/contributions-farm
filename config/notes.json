@@ -1,17 +1,8 @@
 {
-  "hard_ttl_pct": {
-    "cache_interval": 97,
-    "base_size_ms": 2283,
-    "session_window": "local",
-    "poll_size_count": 9003,
-    "hard_ratio_pct": "primary",
-    "sync_capacity": 30
-  },
-  "min_ratio": {
-    "entry_timeout": 4465,
-    "retry_threshold": ["stable", "legacy", "latest", "staging"],
-    "session_threshold": false
-  },
-  "dry_run": "eu-west",
-  "batch_retries": 88
+  "metric_depth": ["edge", "staging", "staging"],
+  "strict": ["edge", "strict", "legacy"],
+  "verbose": ["blue", "eu-west"],
+  "soft_timeout": 7230,
+  "persist": 36.31,
+  "flush_ratio_s": "cached"
 }
