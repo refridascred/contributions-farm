@@ -75,19 +75,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] data, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Done,
+            Idle,
         }
     }
 }
