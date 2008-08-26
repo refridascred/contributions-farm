@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const string BaseStats = "alpha-edge";
         public const long BatchStats = 5846;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Stale,
-            Synced,
-            New,
             Failed,
+            Synced,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
