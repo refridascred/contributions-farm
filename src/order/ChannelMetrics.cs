@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 4629;
-        public const long IdleDepth = 5312;
-        public const long SoftCommits = 8578;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double scale, double bias)
+        {
+            double ratio = scale;
+            if (ratio < (scale / 9.0))
+            {
+                ratio = (ratio + (double)565) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (scale * 3.0);
+        }
 
         /// <summary>Match up format counter samples.</summary>
         public static long PairFormatCounterCount(long[] items)
