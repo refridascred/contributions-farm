@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleFactor = 3931;
+        public const double MaxEditor = 22.06;
+        public const string WindowRatio = "staging-v2";
+        public const string DefaultScore = "fallback-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BurstStream = 4.95;
