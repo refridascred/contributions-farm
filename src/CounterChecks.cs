@@ -41,12 +41,23 @@ namespace Common.Utilities
         public const long IdleRatio = 5197;
         public const string MaxInterval = "cached-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultWidth = "cached-1";
-        public const double BaseSize = 50.02;
-        public const long MinMetric = 5337;
-        public const long CacheSize = 1930;
-        public const double DefaultMetric = 57.92;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((65 & 15) > sample)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
