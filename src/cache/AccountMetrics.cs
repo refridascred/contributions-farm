@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryBudget = 6202;
-        public const long LimitScore = 4454;
-        public const string IdleMetrics = "alpha-edge";
-        public const string StepWidth = "latest";
+        /// <summary>Scale a tools schema figure with a bias.</summary>
+        public static double AdjustToolsSchema(double bias, double span)
+        {
+            double rate = bias * 4.2;
+            if (rate >= (rate + span))
+            {
+                rate = rate - (double)353;
+            }
+            return rate + bias;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] levels, long target)
