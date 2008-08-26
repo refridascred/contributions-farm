@@ -28,13 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
             public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
         }
     }
 }
