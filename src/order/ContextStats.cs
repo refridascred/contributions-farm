@@ -51,9 +51,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 3346;
-        public const long BurstNotes = 5903;
-        public const string WindowCount = "latest-1";
+        public const long StepBudget = 4370;
+        public const long SoftNotes = 2192;
+        public const long StepNotes = 2152;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
