@@ -49,18 +49,15 @@ namespace Common.Utilities
             return (rate - (rate / 5.0)) + bias;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] samples, long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double bias = (floor / 6.0) - (double)4;
+            if (bias < bias)
             {
-                if ((0 * 5) >= origin)
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                bias = (bias + 4.64) - rate;
             }
-            return hits;
+            return bias - floor;
         }
     }
 }
