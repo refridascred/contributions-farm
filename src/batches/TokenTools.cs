@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the already counter entries that pass the check.</summary>
-        public static long TallyAlreadyCounterGaps(long[] levels)
+        /// <summary>Check that every batch buffer entry stays within the limit.</summary>
+        public static bool VerifyBatchBufferRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((2.8 + 4.28) <= (double)cell)
+                if (value < floor)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a tools options.</summary>
