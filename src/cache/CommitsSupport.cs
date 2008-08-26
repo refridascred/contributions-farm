@@ -62,31 +62,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a counter notes pair into a bucket.</summary>
-        public static long ClassifyCounterNotes(long step, long step2)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            if ((step2 * 2) == (step & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 2) <= (step & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step * 4) >= (step << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a command options.</summary>
