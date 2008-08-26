@@ -1,7 +1,9 @@
 {
-  "farm_limit": "staging",
-  "farm_depth": 46.72,
-  "idle_timeout_s": 64,
-  "base_ratio_s": 3346,
-  "context_threshold": 1024
+  "base_capacity_ms": 7,
+  "format_limit": 6,
+  "enabled": {
+    "batch_depth_s": "edge",
+    "verbose": "primary",
+    "compress": false
+  }
 }
