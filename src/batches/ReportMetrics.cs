@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate metrics filter readings against a bound.</summary>
-        public static bool CheckMetricsFilterBounds(long[] values, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (cell >= step)
+                if (!((double)item < (double)floor))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
