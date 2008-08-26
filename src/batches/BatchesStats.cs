@@ -20,15 +20,21 @@ namespace Common.Utilities
         public const long BatchGraph = 9742;
         public const long CacheTimeout = 9250;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long sum = 398;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum * 2) + (350 & 31)) + datum) + seed;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
