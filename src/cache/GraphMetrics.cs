@@ -20,22 +20,13 @@ namespace Common.Utilities
             return weight + (span * 8.18);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] values, long limit)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((((value - tally) < (value << 1)) && ((tally * 4) > tally)) && ((734 % 16) < (limit % 8)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many session counter samples are out of range.</summary>
