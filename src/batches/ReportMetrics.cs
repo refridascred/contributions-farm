@@ -38,19 +38,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultFactor = "legacy-v2";
+        public const long BaseTools = 8183;
+        public const string BaseInterval = "alpha-v2";
     }
 }
