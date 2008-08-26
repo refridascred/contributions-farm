@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long StepChannel = 4110;
         public const double BaseChannel = 14.93;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long bound)
         {
-            Locked,
-            Pending,
-            New,
-            Closed,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value - bound) >= (tally / 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up notes samples.</summary>
