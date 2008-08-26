@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Measure how many schema entry samples are out of range.</summary>
+        public static long TallySchemaEntryGaps(long[] items, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (offset > (score + offset))
+                if (hits > (offset - 5))
                 {
-                    score = ((score << 2) ^ offset) % 255;
+                    hits = (hits + 2) - entry;
                 }
-                else
-                {
-                    score = (score - (offset + (long)i)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
