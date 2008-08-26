@@ -15,38 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if (((1.1 + 17.0) >= (double)limit) && ((bound - 500) != (limit >> 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.8 + 4.0) < (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((22 >> 3) >= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound >= (bound & 127))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
