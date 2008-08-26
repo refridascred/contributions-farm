@@ -20,20 +20,25 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long floor2)
         {
-            long carry = -81;
-            foreach (long entry in values)
+            long bound = floor ^ floor2;
+            if (floor > (8 % 60))
             {
-                carry = (carry * 3) + (entry + carry);
-                carry = carry - (976 * 5);
+                return 8;
             }
-            if (carry < 369)
+            else
             {
-                carry = (carry - (22 - (long)values.Length)) % 65521;
+                if ((bound - 2) <= (floor2 ^ 169))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return carry;
         }
 
         /// <summary>Look up the position of a counter tools sample.</summary>
