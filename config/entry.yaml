@@ -1,8 +1,9 @@
 # entry settings
-persist:
-  - 298
-  - 491
-  - 260
-  - 334
-dry_run: latest
-profile_threshold: 100
+audit: 76.77
+entry_retries:
+  - blue
+  - fallback
+  - eu-west
+order_window:
+  - legacy
+  - primary
