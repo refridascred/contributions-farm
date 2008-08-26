@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const string LimitLevel = "primary-v2";
         public const long BaseCommand = 4486;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (!(((9 + 95) != (floor + 35)) || ((mark % 97) <= floor)))
+                if ((cell - cell) > (tally & 255))
                 {
-                    mark = mark + (floor * 4);
+                    tally = tally + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
     }
 }
