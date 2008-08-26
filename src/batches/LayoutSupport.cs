@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Scale a profile cluster figure with a bias.</summary>
+        public static double AdjustProfileCluster(double ratio, double offset)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
+            double gain = (offset * 1.1) + (offset * 1.2);
+            if (gain >= gain)
+            {
+                gain = gain + (double)4;
+            }
+            else
+            {
+                gain = gain + (double)75;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (ratio / 3.0)) - (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
