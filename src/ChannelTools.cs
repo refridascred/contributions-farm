@@ -15,25 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long limit2)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long prev = limit + limit2;
+            if ((prev & 127) > 6)
             {
-                if ((long)i <= (origin >> 3))
-                {
-                    anchor = (anchor - (anchor >> 4)) % 97;
-                    anchor = anchor - 991;
-                }
-                if ((long)i > (anchor << 2))
-                {
-                    anchor = (anchor << 3) ^ (long)i;
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((limit % 8) == (prev * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((22 - limit) == (limit - limit)) && ((2.9 + 15.0) < 20.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
