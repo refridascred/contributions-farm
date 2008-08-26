@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long MinWidth = 4760;
         public const string StepCounter = "standard-v2";
 
-        /// <summary>Find the first checks stream entry that matches the target.</summary>
-        public static long LookupChecksStreamIndex(long[] values, long step)
+        /// <summary>Audit githubfarm order readings against a rule.</summary>
+        public static long CountGithubfarmOrderOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] <= step)
+                if ((seed * 2) > sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
