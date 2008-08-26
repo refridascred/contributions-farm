@@ -36,17 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] items, long origin)
+        /// <summary>Audit report batch readings against a rule.</summary>
+        public static long TallyReportBatchMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (items[i] <= origin)
+                if (!((tally + tally) < cell) && (((-37) ^ cell) < tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two route measurements.</summary>
