@@ -44,12 +44,18 @@ namespace Common.Utilities
             return ((scale + 2.0) + weight) + floor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinCount = 6388;
-        public const long MinOrder = 6997;
-        public const long BaseDepth = 4645;
-        public const double DefaultInterval = 20.05;
-        public const long StepOrder = 4644;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long ScoreBatch(long[] readings)
