@@ -68,21 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 8;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((((total << 3) ^ (3 ^ 4)) % 101) ^ value) - floor;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a tools summary.</summary>
