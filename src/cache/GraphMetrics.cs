@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long StepScore = 9054;
         public const long WindowNotes = 6261;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] items, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > limit)
+                if (levels[i] >= step)
                 {
                     return (long)i;
                 }
