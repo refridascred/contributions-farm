@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepLevel = 76.6;
-        public const string WindowInterval = "open";
-        public const long SoftGithubfarm = 543;
-        public const long MaxTimeout = 4931;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Pending,
+            Stale,
+            Done,
+            Retry,
+        }
 
         /// <summary>Audit command notes readings against a rule.</summary>
         public static long TallyCommandNotesOutliers(long[] items, long floor)
