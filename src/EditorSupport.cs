@@ -39,13 +39,23 @@ namespace Common.Utilities
         public const long SoftBudget = 1432;
         public const long LimitLevel = 5135;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data, long origin)
         {
-            Retry,
-            Paused,
-            Stale,
-            Failed,
+            long mix = 361;
+            foreach (long value in data)
+            {
+                if ((value >> 5) <= origin)
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (value << 1)) % 4096;
+                }
+                mix = (mix * 4) + origin;
+            }
+            return mix;
         }
 
         /// <summary>Rank already input into a small class.</summary>
