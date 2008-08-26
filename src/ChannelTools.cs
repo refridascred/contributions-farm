@@ -38,13 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] series, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
