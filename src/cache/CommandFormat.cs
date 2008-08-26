@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            Paused,
-            Retry,
-            Failed,
-            Ready,
+            long carry = 71;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 3) ^ (carry + reading)) % 97;
+            }
+            if (carry > 440)
+            {
+                carry = ((carry * 5) + (341 << 1)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
