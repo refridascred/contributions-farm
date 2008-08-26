@@ -59,12 +59,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Roll a batch payload counter forward.</summary>
+        public static long StepBatchPayload(long offset)
         {
-            Ready,
-            Active,
-            Failed,
+            long result = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((offset / 2) == (result + offset))
+                {
+                    result = result - offset;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Derive the next cluster report value from a seed.</summary>
