@@ -40,12 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultDepth = 6384;
+        public const double MinBudget = 47.16;
+        public const long HardTimeout = 3902;
+        public const long MinBatch = 8135;
+        public const long LimitDepth = 3052;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] values, long limit)
