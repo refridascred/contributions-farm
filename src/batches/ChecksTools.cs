@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry - (limit + carry)) % 101;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((carry % 100) <= carry)
                 {
-                    carry = (carry * 4) + ((long)i2 << 1);
+                    carry = (carry + (8 ^ origin)) % 101;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
+                carry = ((carry * 4) + carry) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
             return carry;
         }
