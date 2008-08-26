@@ -20,11 +20,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchDepth = 8555;
-        public const long DefaultCluster = 9191;
-        public const double BatchCluster = 54.7;
-        public const string SoftInterval = "open-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 50.37;
+        public const long StepScore = 9688;
+        public const long BatchCount = 1764;
 
         /// <summary>Fold a list of route order readings.</summary>
         public static long ScoreRouteOrder(long[] samples)
