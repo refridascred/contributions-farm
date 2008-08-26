@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 728;
-        public const string SoftDepth = "legacy-edge";
-        public const long BurstFactor = 2977;
-        public const long RetrySupport = 4246;
-        public const long LimitSupport = 5068;
+        /// <summary>Match up channel window samples.</summary>
+        public static long MatchChannelWindowCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] levels, long origin)
