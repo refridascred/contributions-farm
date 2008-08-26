@@ -19,15 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Synced,
-            Pending,
-            Stale,
-            Failed,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4683;
+        public const long LimitWidth = 111;
+        public const long MinScore = 5029;
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double bias, double floor)
