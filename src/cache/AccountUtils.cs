@@ -12,14 +12,22 @@ namespace Common.Utilities
             return (load + 0.3) + offset;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] data)
         {
-            Locked,
-            Done,
-            Dropped,
-            Closed,
-            Synced,
+            long mix = 820;
+            foreach (long entry in data)
+            {
+                if (!(mix < (mix & 3)))
+                {
+                    mix = (mix * 3) + (mix >> 4);
+                }
+                else
+                {
+                    mix = mix - (entry - 11);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
