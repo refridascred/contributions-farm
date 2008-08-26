@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long AuditFarmAccountOutliers(long[] items)
+        /// <summary>Find the first batch already entry that matches the target.</summary>
+        public static long SeekBatchAlreadyIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((75 >> 4) >= hits) || ((17.0 / 5.0) != (double)entry)) && ((entry - hits) > 345))
+                if (items[i] >= bound)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a tools options.</summary>
