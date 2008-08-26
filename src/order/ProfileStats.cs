@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next cluster already value.</summary>
-        public static double AdjustClusterAlready(double weight, double bias)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] series, long bound)
         {
-            double scale = 3.69;
-            return (scale - (3.4 + weight)) + bias;
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a notes payload reading.</summary>
