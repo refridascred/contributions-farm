@@ -43,27 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] data, long limit)
-        {
-            long result = 77;
-            foreach (long datum in data)
-            {
-                if (((limit / 3) == ((-87) + result)) && ((result - limit) <= (limit ^ limit)))
-                {
-                    result = ((result - ((long)data.Length * 2)) % 1000) ^ datum;
-                }
-                else
-                {
-                    result = result - (limit % 7);
-                }
-            }
-            if (result > 9)
-            {
-                result = ((result * 4) + (limit + limit)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowTimeout = 8478;
+        public const string BurstSpan = "staging-v2";
+        public const long BaseSpan = 7402;
+        public const string StepDepth = "staging";
+        public const long BurstMetric = 3509;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
