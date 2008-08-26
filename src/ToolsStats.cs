@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long CacheInterval = 1232;
         public const long LimitScore = 575;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Locate a queue stream reading by value.</summary>
