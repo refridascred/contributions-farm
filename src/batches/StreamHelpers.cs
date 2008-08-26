@@ -43,18 +43,15 @@ namespace Common.Utilities
             return scale - (bias * 11.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] data)
+        /// <summary>Accumulate cache schema samples.</summary>
+        public static long DigestCacheSchema(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long carry = 5;
+            foreach (long reading in levels)
             {
-                if ((2.9 + 14.0) <= (8.0 * 8.23))
-                {
-                    seen = (seen + 1) - sample;
-                }
+                carry = (((carry << 2) ^ carry) % 101) ^ reading;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
