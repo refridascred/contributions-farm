@@ -57,15 +57,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double gain, double floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long step)
         {
-            double bias = (double)(8 & 63);
-            for (int i = 0; i < 6; i++)
+            long mark = 93;
+            foreach (long reading in levels)
             {
-                bias = ((bias - (gain * 16.0)) + (double)(long)i) + floor;
+                mark = (((mark << 3) ^ (step & 15)) % 1000) ^ reading;
             }
-            return bias - (double)104;
+            if (mark > 92)
+            {
+                mark = ((mark * 4) + mark) % 255;
+            }
+            return mark;
         }
     }
 }
