@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BaseOrder = 4600;
         public const long LimitOrder = 5153;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] items, long seed)
+        /// <summary>Look up the position of a schema queue sample.</summary>
+        public static long LookupSchemaQueueIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed * 4) != (seed + tally))
+                if (items[i] == bound)
                 {
-                    tally = (tally + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
