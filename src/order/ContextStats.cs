@@ -22,31 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank window checks input into a small class.</summary>
-        public static long BucketWindowChecks(long limit, long origin)
+        /// <summary>Audit format profile readings against a rule.</summary>
+        public static long CountFormatProfileHits(long[] items)
         {
-            if ((7.0 * 6.44) <= (double)origin)
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-256) & 63) <= (limit / 5))
+                if ((count >= (count >> 2)) && ((entry << 2) != (entry & 15)))
                 {
-                    return 2;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (((1.8 * 3.0) < (double)origin) && ((61 * 3) != (537 + origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
