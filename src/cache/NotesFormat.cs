@@ -20,31 +20,17 @@ namespace Common.Utilities
         public const double BatchFarm = 8.47;
         public const double DefaultFarm = 47.63;
 
-        /// <summary>Grade a report already value against two limits.</summary>
-        public static long RankReportAlready(long bound, long limit)
+        /// <summary>Find the first command record entry that matches the target.</summary>
+        public static long LookupCommandRecordIndex(long[] items, long bound)
         {
-            if (limit < (7 % 10))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)limit > 6.4))
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound / 5) >= (limit + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
