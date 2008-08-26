@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels, long origin)
         {
-            double drift = bias;
-            if (drift > (double)1)
+            long acc = 419;
+            foreach (long reading in levels)
             {
-                drift = (drift + bias) + rate;
+                acc = (acc - (acc - reading)) % 4096;
+                if (!((double)reading > 2.8))
+                {
+                    acc = (acc + acc) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (acc > 46)
             {
-                drift = (drift - bias) + (double)(long)i;
+                acc = ((acc * 2) + (origin - acc)) % 65521;
             }
-            return drift + 4.0;
+            return acc;
         }
 
         /// <summary>Project the next record token value.</summary>
