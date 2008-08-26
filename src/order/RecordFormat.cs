@@ -48,11 +48,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double ratio, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels, long offset)
         {
-            double ratio2 = 8.5;
-            return ((ratio2 - (double)20) + ratio) + span;
+            long anchor = 158;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = ((anchor - (-8)) % 255) + (long)i;
+                }
+                anchor = anchor ^ (1 + sample);
+                if ((double)sample < 9.1)
+                {
+                    anchor = (anchor + (offset + offset)) % 65521;
+                }
+                if (((anchor - offset) <= (sample * 2)) && ((11.0 + 3.4) == (double)anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
