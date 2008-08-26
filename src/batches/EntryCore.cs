@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const double MinContext = 63.9;
         public const string WindowCount = "strict-edge";
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Find the first token contributi entry that matches the target.</summary>
+        public static long SeekTokenContributiIndex(long[] values, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total + (total * 2)) % 4096;
-                total = ((total * 5) + (long)i) % 4093;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a session notes figure with a bias.</summary>
