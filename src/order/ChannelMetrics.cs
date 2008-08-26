@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double scale, double bias)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long offset)
         {
-            double ratio = scale;
-            if (ratio < (scale / 9.0))
+            long prev = floor ^ offset;
+            if ((prev + 8) <= (prev % 97))
             {
-                ratio = (ratio + (double)565) - bias;
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                if (!((double)prev != (3.2 - 5.3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((89 / 6) < (floor % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return ratio + (scale * 3.0);
         }
 
         /// <summary>Match up format counter samples.</summary>
