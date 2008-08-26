@@ -16,19 +16,19 @@ namespace Common.Utilities
             return bias + (double)513;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long limit)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double scale = offset;
+            if (scale > bias)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + bias;
             }
-            return flag;
+            else
+            {
+                scale = scale - (bias - offset);
+            }
+            return scale - scale;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
