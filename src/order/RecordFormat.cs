@@ -44,32 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metrics checks pair into a bucket.</summary>
-        public static long GradeMetricsChecks(long floor, long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long offset = floor - limit;
-            if (offset < (6 - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (60 - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.2 / 2.0) != (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
