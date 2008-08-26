@@ -33,17 +33,26 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Look up the position of a githubfarm metrics sample.</summary>
-        public static long LookupGithubfarmMetricsIndex(long[] values, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 813;
+            foreach (long cell in items)
             {
-                if (values[i] == seed)
+                if (cell <= result)
                 {
-                    return (long)i;
+                    result = (result ^ (2 + cell)) % 4096;
+                }
+                if ((double)result >= (1.0 / 8.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > 876)
+            {
+                result = (result - (result << 1)) % 4096;
+            }
+            return result;
         }
     }
 }
