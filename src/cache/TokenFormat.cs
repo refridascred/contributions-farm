@@ -16,12 +16,12 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepDepth = "cached-1";
-        public const long MaxEditor = 4673;
-        public const long DefaultBudget = 8123;
-        public const long LimitScore = 6180;
-        public const string BatchSpan = "alpha-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 3862;
+        public const long HardInterval = 9338;
+        public const long BaseCount = 6374;
+        public const string LimitLevel = "primary-v2";
+        public const long BaseCommand = 4486;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long floor)
