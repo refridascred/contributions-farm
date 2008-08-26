@@ -1,7 +1,7 @@
-id,rank,owner
-1,0.33,latest
-2,64.21,82.71
-3,stable,stable
-4,214,302
-5,344,9.39
-6,blue,950
+id,ratio,active,score,token
+1,cached,stable,945,local
+2,25.11,primary,stable,32.06
+3,314,39.07,1.47,open
+4,12,77.03,596,39.52
+5,legacy,strict,green,primary
+6,325,standard,legacy,549
