@@ -60,17 +60,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] samples, long origin)
+        /// <summary>Validate report already readings against a bound.</summary>
+        public static bool VerifyReportAlreadyRange(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (samples[i] == origin)
+                if (sample >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
