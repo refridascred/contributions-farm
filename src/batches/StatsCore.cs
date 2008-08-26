@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of token channel readings.</summary>
-        public static long PairTokenChannelCount(long[] items)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = 2.5;
+            return (weight - offset) + ratio;
         }
 
         /// <summary>Digest a series of context entries.</summary>
