@@ -30,19 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (((state * 2) + (seed % 16)) % 65521) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
