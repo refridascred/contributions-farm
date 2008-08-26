@@ -25,17 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = limit - offset;
+            if (!((625 + 969) > (limit * 2)))
             {
-                if ((readings[i] < step) && ((readings[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((bound <= (365 & 255)) && ((787 + offset) > limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((8.6 - 8.36) < (double)limit) || ((offset >> 5) <= (offset >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
