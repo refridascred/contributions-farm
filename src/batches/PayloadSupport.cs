@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "cached-edge";
-        public const long StepChannel = 4110;
-        public const double BaseChannel = 14.93;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((seed ^ seed) != ((-9) + seed))
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long bound)
