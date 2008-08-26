@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseInterval = 27.33;
+        public const double DefaultReport = 23.84;
+        public const long SoftSpan = 7740;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] items, long bound)
