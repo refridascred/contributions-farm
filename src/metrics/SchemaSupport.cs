@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 69.39;
-        public const long BatchLayout = 8446;
-        public const long CacheLayout = 377;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Retry,
+            Ready,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Fold a list of contributi channel readings.</summary>
         public static long TotalContributiChannel(long[] readings, long bound)
