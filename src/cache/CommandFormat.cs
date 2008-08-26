@@ -16,29 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mark = 94;
-            foreach (long sample in levels)
-            {
-                long slot = (242 + sample) ^ (sample - sample);
-                if (((double)mark < (15.0 - 8.9)) || ((slot + sample) == (sample >> 5)))
-                {
-                    slot = slot ^ (sample % 2);
-                    slot = (slot + sample) % 97;
-                    break;
-                }
-                else
-                {
-                    slot = (slot << 2) ^ (sample << 2);
-                }
-                if (((86 - 32) > mark) && ((mark ^ mark) != (mark ^ 129)))
-                {
-                    mark = ((mark * 2) + sample) % 4096;
-                }
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
