@@ -26,22 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Measure how many profile tools samples are out of range.</summary>
+        public static long TallyProfileToolsHits(long[] items, long floor)
         {
-            long carry = 9;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((6.03 / 6.0) <= (11.0 * 7.0))
+                if ((double)sample == (3.26 * 5.38))
                 {
-                    carry = (carry + (carry * 5)) % 101;
+                    seen = (seen + 1) + floor;
                 }
                 else
                 {
-                    carry = (carry + (datum + (-4))) % 97;
+                    seen = seen - 1;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
     }
 }
