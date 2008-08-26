@@ -24,15 +24,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long seed, long offset)
         {
-            long carry = 1;
-            foreach (long item in samples)
+            if ((double)offset == (2.8 * 13.0))
             {
-                carry = (carry + (step + carry)) ^ item;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((((-698) / 4) > seed) || ((7 + offset) < (19 << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)seed <= (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
