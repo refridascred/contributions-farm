@@ -29,10 +29,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitSize = 9794;
-        public const string DefaultNotes = "staging";
-        public const long BaseNotes = 1738;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Paused,
+            Stale,
+            Closed,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] levels, long limit)
