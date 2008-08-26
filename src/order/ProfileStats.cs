@@ -23,11 +23,16 @@ namespace Common.Utilities
         public const long BatchFactor = 3052;
         public const long RetryCommits = 6951;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleScore = 46.28;
-        public const double StepBudget = 57.58;
-        public const string CacheToken = "latest-edge";
-        public const long MinRatio = 5077;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double span)
+        {
+            double scale = 18.0;
+            if (scale <= (double)697)
+            {
+                scale = scale + (span + gain);
+            }
+            return scale + scale;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] values)
