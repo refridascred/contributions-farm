@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] samples)
         {
-            double drift = (weight / 5.0) - span;
-            if (drift > 9.0)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                drift = drift + (drift - drift);
+                if ((cell / 8) >= tally)
+                {
+                    tally = tally + 2;
+                }
             }
-            return drift - weight;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
