@@ -42,11 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 40.66;
-        public const long MaxMetrics = 1222;
-        public const double WindowSize = 50.47;
-        public const string SoftMetrics = "staging";
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] data, long offset)
+        {
+            long score = 14;
+            foreach (long item in data)
+            {
+                score = (score - (item & 1)) - offset;
+                if ((item >> 1) <= ((long)data.Length * 5))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double weight, double bias)
