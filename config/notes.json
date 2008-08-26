@@ -1,8 +1,5 @@
 {
-  "contributi_interval": true,
-  "base_ratio_count": 686,
-  "verbose": 60,
-  "batch_window_ms": "fallback",
-  "max_depth_pct": "legacy",
-  "idle_ratio": ["standard", "legacy", "green", "fallback"]
+  "dry_run": "staging",
+  "min_ratio": 60,
+  "soft_interval": 9.6
 }
