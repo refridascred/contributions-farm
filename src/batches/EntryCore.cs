@@ -55,12 +55,15 @@ namespace Common.Utilities
         public const long MaxCommand = 1446;
         public const long CacheCommand = 2750;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Adjust a payload checks reading.</summary>
+        public static double BlendPayloadChecks(double weight, double span)
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            double bias = (18.0 - weight) - weight;
+            if (bias > span)
+            {
+                bias = bias - (double)(-4);
+            }
+            return bias - (bias / 8.0);
         }
     }
 }
