@@ -21,39 +21,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long target, long offset)
-        {
-            long slot = target ^ offset;
-            if ((871 % 5) < (target & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(slot >= (target - 877)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((6.0 * 3.7) > (double)target) && ((offset / 5) <= (offset + 960)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 74.14;
+        public const double StepOrder = 85.98;
+        public const string SoftInterval = "cached-1";
     }
 }
