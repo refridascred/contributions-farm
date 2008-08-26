@@ -1,11 +1,14 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any schema limits.
-Keep entry and support names short and lowercase.
+Use queue settings to tune how often entry data is refreshed.
+A route that stays idle for too long is moved to the tools list.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Log every batches change
-- Document new payload fields
-- Keep contributi values small
+- Keep window values small
+- Document new stats fields
+- Prefer tools defaults
+- Log every metrics change
