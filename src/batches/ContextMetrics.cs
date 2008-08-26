@@ -30,17 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = carry + ((long)i + bound);
-                carry = (carry ^ bound) % 4096;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Retry,
+            Closed,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Accumulate account samples.</summary>
