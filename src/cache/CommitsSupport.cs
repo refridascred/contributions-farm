@@ -59,10 +59,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSize = 4262;
-        public const double BurstLevel = 41.66;
-        public const long DefaultWidth = 6614;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] data)
