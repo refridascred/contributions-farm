@@ -1,21 +1,8 @@
 {
-  "dry_run": "legacy",
-  "default_capacity_ms": 13.69,
-  "strict": {
-    "warm_limit_count": 86.67,
-    "batch_interval_s": {
-      "poll_window_ms": 250,
-      "verbose": "edge",
-      "idle_ttl": "local"
-    },
-    "compress": {
-      "burst_ttl_pct": 100,
-      "dry_run": 28,
-      "min_retries_s": [379, 137, 129, 227],
-      "entry_depth": "blue",
-      "persist": "edge"
-    },
-    "command_capacity": 35.96,
-    "persist": 3
-  }
+  "strict": "staging",
+  "soft_ratio_pct": "primary",
+  "persist": "legacy",
+  "editor_window": 30,
+  "sync_depth_s": 72,
+  "sync_retries_count": 6216
 }
