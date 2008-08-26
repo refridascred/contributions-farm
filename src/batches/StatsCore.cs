@@ -41,12 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] data, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 3) != 0))
+                if (items[i] >= origin)
                 {
                     return (long)i;
                 }
