@@ -1,7 +1,13 @@
 # entry settings
-idle_delay: 6176
-flush_depth_count: 250
-payload_ratio: eu-west
-flush_ratio: 46.62
-strict: 30
-readonly: 30
+retry_capacity:
+  flush_ttl: 78
+  min_threshold_ms: 6351
+  queue_ratio: 98.86
+commits_size: false
+cache_depth_pct: 85
+sync_retries_pct: fallback
+session_ttl:
+  - staging
+  - local
+  - green
+  - eu-west
