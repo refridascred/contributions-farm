@@ -66,19 +66,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] values, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long prev = floor ^ limit;
+            if (floor >= (prev * 4))
             {
-                if (entry > step)
+                return 0;
+            }
+            else
+            {
+                if (((prev - prev) > (limit - 0)) || ((double)prev <= 0.2))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - limit) <= (floor / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7.7 + 0.68) < (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
