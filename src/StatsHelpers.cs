@@ -47,12 +47,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] series)
         {
-            Dropped,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) > (datum / 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
