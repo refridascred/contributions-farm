@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "local-1";
-        public const long LimitRatio = 7591;
-        public const long MaxSize = 5016;
-        public const long StepScore = 9054;
-        public const long WindowNotes = 6261;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long offset, long bound)
+        {
+            if ((double)77 < (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound % 8) >= (bound * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((12 + offset) <= (0 + 228))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound % 5) <= (offset / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] levels, long step)
