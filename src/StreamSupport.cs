@@ -23,17 +23,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] levels, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = floor;
+            if (rate >= (double)7)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - 17.0) - scale;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
