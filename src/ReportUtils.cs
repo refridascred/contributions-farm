@@ -26,19 +26,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] items, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long result = 176;
+            foreach (long entry in readings)
             {
-                if (sample != target)
+                if ((target << 2) <= (entry & 255))
                 {
-                    flag = false;
-                    break;
+                    result = result + (target % 60);
+                }
+                result = (result * 5) + (entry - entry);
+                if (((result * 3) > (target - result)) && ((result * 4) < target))
+                {
+                    result = (result * 2) + (entry / 3);
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Describe the stats phase values.</summary>
