@@ -1,6 +1,6 @@
-id,rank,state,owner
-1,70.36,634,61.88
-2,1.09,71.74,80.0
-3,legacy,465,92
-4,584,741,blue
-5,legacy,460,173
+id,count,active,weight,ratio
+1,legacy,293,stable,14.45
+2,213,24.32,stable,635
+3,fallback,fallback,281,75.32
+4,local,fallback,primary,30.02
+5,green,blue,641,879
