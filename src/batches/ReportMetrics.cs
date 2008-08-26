@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long origin, long origin2)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long floor)
         {
-            if (1.0 < (double)origin2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin2 << 2) != (origin + (-23)))
+                if (readings[i] > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin2 - origin2) != (origin & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
