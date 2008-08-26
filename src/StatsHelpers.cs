@@ -39,12 +39,18 @@ namespace Common.Utilities
         public const long WindowStream = 3593;
         public const double LimitScore = 35.11;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings, long offset)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long sum = 5;
+            foreach (long item in readings)
+            {
+                if (!((offset << 1) >= (offset + sum)))
+                {
+                    sum = ((sum * 3) + (item % 8)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
