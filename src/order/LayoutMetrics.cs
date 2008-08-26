@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultInterval = 39.01;
-        public const long IdleEditor = 1017;
-        public const string SoftSpan = "fallback-1";
-        public const long LimitEditor = 1169;
-        public const string MaxSize = "alpha-1";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values)
+        {
+            long anchor = 500;
+            foreach (long value in values)
+            {
+                if (value > anchor)
+                {
+                    anchor = (anchor * 4) + value;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double gain, double floor)
