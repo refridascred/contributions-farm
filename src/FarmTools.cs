@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const double BatchBudget = 48.4;
         public const long RetryDepth = 5193;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 895;
+            foreach (long datum in levels)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if (datum < (561 / 3))
                 {
-                    return (long)i;
+                    anchor = anchor + (datum % 60);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (2 + anchor);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
