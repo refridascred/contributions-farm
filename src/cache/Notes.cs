@@ -47,39 +47,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long origin, long seed)
+        /// <summary>Match up cache batches samples.</summary>
+        public static long CompareCacheBatchesCount(long[] values)
         {
-            long prev = origin ^ seed;
-            if (((seed - prev) != (seed ^ 50)) && ((-45) < (origin - prev)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - seed) != (prev + seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed <= (9.3 - 4.6))
+                    if ((values[i] - values[j]) != 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed < (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
