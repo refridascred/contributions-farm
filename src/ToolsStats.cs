@@ -43,22 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (cell <= (matches * 4))
+                if ((sample + seen) <= (seen - sample))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
