@@ -20,12 +20,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long step, long step2)
         {
-            Draft,
-            Stale,
-            Active,
+            long diff = step ^ step2;
+            if (!((diff ^ diff) <= (step + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step2 > 58) && (step > (diff << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 * 4) >= 9)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
