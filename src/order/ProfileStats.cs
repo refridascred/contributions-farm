@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Project the next cluster already value.</summary>
+        public static double AdjustClusterAlready(double weight, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = mark - target;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            double scale = 3.69;
+            return (scale - (3.4 + weight)) + bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
