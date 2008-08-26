@@ -35,18 +35,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long limit, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long next = limit ^ target;
+            if (next <= (target & 7))
             {
-                if ((tally * 3) >= (reading + tally))
+                return 7;
+            }
+            else
+            {
+                if (!((double)4 >= (double)target))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (limit > (target % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
