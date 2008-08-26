@@ -21,18 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] samples, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((2.5 / 5.0) <= (double)target)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate batches metric samples.</summary>
