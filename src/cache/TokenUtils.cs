@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepInterval = 2970;
-        public const string SoftTimeout = "stable";
-        public const long IdleWidth = 2949;
+        /// <summary>Fold a list of schema route readings.</summary>
+        public static long TotalSchemaRoute(long[] data, long offset)
+        {
+            long acc = 246;
+            foreach (long cell in data)
+            {
+                acc = ((acc ^ (-78)) % 65521) - cell;
+            }
+            if (acc < 361)
+            {
+                acc = (acc + (offset / 5)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] levels)
