@@ -1,5 +1,6 @@
 {
-  "readonly": 5.97,
-  "default_limit_count": 78.96,
-  "batch_capacity": 81
+  "audit": 86.97,
+  "hard_ttl_pct": 30,
+  "dry_run": false,
+  "hard_threshold_s": 96.67
 }
