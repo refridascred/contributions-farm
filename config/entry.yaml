@@ -1,9 +1,5 @@
 # entry settings
-default_window: 37
-enabled: stable
-warm_window_count: 35.36
-cache_size_pct:
-  - 52
-  - 221
-compress: false
-verbose: primary
+readonly: 31
+hard_retries: 95.18
+dry_run: 4323
+metrics_retries: 10
