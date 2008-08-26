@@ -64,18 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches - matches) > (entry + entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Closed,
+            Queued,
         }
     }
 }
