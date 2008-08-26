@@ -1,18 +1,5 @@
 {
-  "editor_timeout": 76.76,
-  "flush_timeout": "local",
-  "retry_timeout_count": {
-    "audit": {
-      "sync_capacity": 2839,
-      "route_ttl": 62.07,
-      "flush_depth": 35,
-      "warm_window": 55.98,
-      "min_depth_count": "primary"
-    },
-    "warm_size_pct": 24,
-    "stream_ttl": 30
-  },
-  "hard_timeout": true,
-  "schema_limit": "eu-west",
-  "hard_threshold_s": false
+  "batches_threshold": [197, 185],
+  "default_ttl_pct": 86,
+  "max_ratio_s": 100
 }
