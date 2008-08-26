@@ -29,11 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryScore = 506;
-        public const string MaxBatch = "stable-edge";
-        public const double WindowSize = 34.1;
-        public const double RetryBatch = 24.11;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Active,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleFactor = 7082;
