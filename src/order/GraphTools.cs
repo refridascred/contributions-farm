@@ -66,11 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchLevel = 8938;
-        public const string WindowCount = "latest-edge";
-        public const double MinTimeout = 53.33;
-        public const long LimitContributi = 5499;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 3847;
+        public const double BurstFactor = 82.85;
+        public const double BurstCount = 1.83;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string SoftScore = "stable-edge";
