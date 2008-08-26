@@ -1,8 +1,8 @@
 {
-  "warm_capacity": [226, 37],
-  "poll_delay_s": "latest",
-  "cache_depth_ms": 500,
-  "strict": 3593,
-  "poll_interval_count": [150, 233, 73],
-  "flush_window_pct": 3725
+  "route_limit": "open",
+  "layout_interval": 26,
+  "retry_retries_count": "local",
+  "dry_run": "primary",
+  "retry_timeout_ms": 25.08,
+  "min_limit": "standard"
 }
