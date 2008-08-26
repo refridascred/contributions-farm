@@ -12,30 +12,22 @@ namespace Common.Utilities
         public const double HardRatio = 28.2;
         public const long StepRatio = 247;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items, long seed)
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long FoldSessionEditor(long[] readings)
         {
-            long total = 482;
-            foreach (long cell in items)
+            long score = 8;
+            foreach (long reading in readings)
             {
-                if ((813 - seed) <= cell)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    total = ((total * 5) + seed) % 101;
+                    score = ((score + ((long)i2 << 2)) % 4096) - reading;
                 }
-                if ((0.59 / 7.0) <= (double)cell)
+                if ((double)score <= (2.95 * 0.96))
                 {
-                    total = (total * 5) + ((long)items.Length % 3);
-                }
-                else
-                {
-                    total = (total ^ (cell ^ total)) % 4096;
+                    score = ((score << 2) ^ (892 * 2)) % 4096;
                 }
             }
-            if (total < 940)
-            {
-                total = total ^ (seed - total);
-            }
-            return total;
+            return score % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
