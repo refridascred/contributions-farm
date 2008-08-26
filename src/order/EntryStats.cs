@@ -29,18 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema stream samples are out of range.</summary>
-        public static long AuditSchemaStreamHits(long[] series)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long score = 373;
+            foreach (long sample in readings)
             {
-                if ((seen - 6) <= (item >> 1))
+                if (0.56 <= (11.0 - 5.0))
                 {
-                    seen = seen + 2;
+                    score = ((score * 5) + sample) + seed;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
