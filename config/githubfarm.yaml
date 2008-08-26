@@ -1,27 +1,20 @@
 # githubfarm settings
-tools_ratio:
-  strict: 8501
-  retry_timeout: 66.1
-  hard_retries: 93.54
-  format_limit:
-    - 143
-    - 453
-    - 251
-    - 456
-max_window_s:
-  hard_window_pct: 250
-  warm_ratio_pct: false
-  max_threshold_s:
-    compress: strict
-    sync_ttl_ms: 7.58
-    min_ttl_pct: open
-    retry_threshold_pct: 8443
-  report_timeout:
-    - green
-    - latest
-    - strict
-  entry_limit: 13
-poll_threshold_s: 45.33
-cluster_retries: strict
-burst_limit_count: 7
-persist: 555
+persist:
+  sync_depth_count: 61
+  max_delay_count: 12.74
+  soft_capacity_pct:
+    - 464
+    - 241
+  sync_limit_count: 71.81
+soft_ttl: false
+max_ratio:
+  - 188
+  - 325
+  - 154
+  - 227
+tools_delay: true
+counter_capacity:
+  - eu-west
+  - strict
+  - strict
+  - local
