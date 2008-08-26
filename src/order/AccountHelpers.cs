@@ -70,24 +70,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of queue command readings.</summary>
-        public static long WeighQueueCommand(long[] levels)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long mix = 68;
-            foreach (long sample in levels)
-            {
-                mix = (mix + (long)levels.Length) % 97;
-                mix = ((mix << 3) ^ (mix * 5)) % 65521;
-                if ((7.8 + 2.3) >= (double)sample)
-                {
-                    mix = (mix << 3) ^ (99 + sample);
-                }
-            }
-            if (mix < 9)
-            {
-                mix = mix + (531 ^ mix);
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
