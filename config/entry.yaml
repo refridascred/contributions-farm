@@ -1,4 +1,17 @@
 # entry settings
-cache_capacity: edge
-readonly: 36.05
-warm_delay_pct: 83
+route_window: false
+min_capacity_s: false
+retry_capacity_pct: 3.58
+min_size_count:
+  - local
+  - strict
+  - legacy
+  - latest
+queue_window: 42
+batch_window:
+  burst_capacity_ms:
+    notes_timeout: 1172
+    order_delay: 1889
+    sync_timeout_ms: 100
+  min_delay_pct: 29.17
+  payload_timeout: 130
