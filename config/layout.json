@@ -1,23 +1,5 @@
 {
-  "readonly": {
-    "soft_threshold_s": {
-      "stats_depth": "cached",
-      "min_ttl": 30,
-      "report_limit": false,
-      "token_retries": 93.77
-    },
-    "idle_retries": "latest",
-    "flush_threshold_s": false,
-    "warm_delay": ["standard", "primary", "legacy"],
-    "idle_timeout_s": 76.28
-  },
-  "base_capacity_pct": {
-    "stream_ttl": 4724,
-    "retry_ratio": "strict",
-    "idle_ratio": 48,
-    "sync_interval_count": "fallback",
-    "retry_delay_s": ["local", "fallback", "legacy"],
-    "channel_ttl": 15.48
-  },
-  "cache_depth": 250
+  "batch_window_s": 55,
+  "default_capacity_pct": "blue",
+  "record_limit": "green"
 }
