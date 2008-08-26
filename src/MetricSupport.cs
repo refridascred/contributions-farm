@@ -27,14 +27,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
             Draft,
             Failed,
-            Locked,
-            Queued,
             Paused,
+            Synced,
         }
     }
 }
