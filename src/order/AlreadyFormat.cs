@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels, long origin)
+        /// <summary>Roll a githubfarm buffer counter forward.</summary>
+        public static long RollGithubfarmBuffer(long step)
         {
-            long result = 452;
-            foreach (long reading in levels)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                result = result ^ (result ^ reading);
-                if (((double)989 >= (double)result) && ((6.4 - 4.6) > (double)origin))
-                {
-                    result = (result ^ (result & 63)) % 97;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Accumulate queue samples.</summary>
