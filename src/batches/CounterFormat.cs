@@ -35,17 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a tools buffer sample.</summary>
-        public static long LookupToolsBufferIndex(long[] levels, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] >= seed)
+                if ((tally * 3) >= (reading + tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
