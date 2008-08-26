@@ -56,38 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long seed, long seed2)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((double)seed <= 1.76)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed % 8) >= (seed2 + seed2)) && (seed2 < (seed - seed2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed2 << 3) != (seed2 - seed2)) || ((double)seed > (1.77 * 0.49)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7.3 < (double)seed) || (2 >= (seed2 / 6)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
     }
 }
