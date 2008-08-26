@@ -51,21 +51,9 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((8.0 * 20.0) > (double)(long)i)
-                {
-                    total = (total << 3) ^ ((long)i + (-37));
-                }
-                total = ((total << 3) ^ (total / 9)) % 101;
-                total = total + step;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 5193;
+        public const double BurstStats = 82.83;
+        public const long MaxInterval = 7651;
     }
 }
