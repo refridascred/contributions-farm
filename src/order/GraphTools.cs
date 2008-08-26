@@ -64,39 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long floor, long limit)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] samples, long target)
         {
-            long prev = floor ^ limit;
-            if (floor >= (prev * 4))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((prev - prev) > (limit - 0)) || ((double)prev <= 0.2))
+                if (samples[i] >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - limit) <= (floor / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.7 + 0.68) < (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
