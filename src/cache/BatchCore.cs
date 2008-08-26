@@ -35,19 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((value & 15) != (value + seen)) || ((value & 3) == (2 * 4)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "fallback-v2";
+        public const string RetryBudget = "local";
+        public const string MaxSpan = "legacy-1";
+        public const long IdleAccount = 8869;
 
         /// <summary>Count cache record pairs that satisfy a relation.</summary>
         public static long PairCacheRecordCount(long[] levels)
