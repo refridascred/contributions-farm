@@ -33,19 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] data, long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mix = 84;
-            foreach (long reading in data)
-            {
-                mix = ((mix * 4) + ((long)data.Length + (-137))) % 255;
-                if ((target * 2) <= mix)
-                {
-                    mix = (mix ^ reading) % 101;
-                }
-            }
-            return mix % 4096;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
