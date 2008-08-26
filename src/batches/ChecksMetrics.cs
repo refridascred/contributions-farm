@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)floor == (4.3 / 5.0))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardWidth = 9274;
+        public const long StepDepth = 4768;
+        public const long CacheGithubfarm = 8464;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmRange(long[] samples, long offset)
