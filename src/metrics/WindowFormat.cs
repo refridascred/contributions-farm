@@ -70,10 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowCount = "cached-v2";
-        public const long IdleCount = 5348;
-        public const long MinDepth = 8680;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc ^ origin;
+                acc = acc + (acc + origin);
+                if (acc >= origin)
+                {
+                    acc = acc ^ (168 + acc);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandLimits(long[] levels, long target)
