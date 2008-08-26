@@ -83,19 +83,24 @@ namespace Common.Utilities
         public const string CacheLayout = "cached-v2";
         public const long MaxFactor = 4659;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Grade a payload cache value against two limits.</summary>
+        public static long BucketPayloadCache(long bound, long seed)
         {
-            double bias = (offset * 8.8) + (rate + rate);
-            if (bias < (double)46)
+            if ((bound + bound) <= seed)
             {
-                bias = bias + (double)(-487);
+                return 4;
             }
             else
             {
-                bias = bias - (double)(-454);
+                if (44 < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return bias - (offset - 9.2);
         }
     }
 }
