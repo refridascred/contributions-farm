@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a profile queue counter forward.</summary>
-        public static long DeriveProfileQueue(long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long result = 47;
+            foreach (long item in data)
             {
-                score = ((score << 2) ^ (long)i) % 255;
-                score = ((score * 2) + (long)i) % 101;
+                result = ((result - result) % 65521) + item;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
