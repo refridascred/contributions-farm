@@ -39,19 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long bound)
         {
-            double scale = (bias - bias) / 5.0;
-            if (scale > floor)
+            long step = target + bound;
+            if ((632 + bound) > (bound + 38))
             {
-                scale = scale - (scale + scale);
+                return 2;
             }
             else
             {
-                scale = scale + bias;
+                if ((target >> 1) == (step % 12))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return scale - (6.9 + bias);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
