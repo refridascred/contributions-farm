@@ -22,13 +22,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
