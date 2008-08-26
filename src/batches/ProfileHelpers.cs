@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the window support series from a seed.</summary>
-        public static long RollWindowSupport(long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = mix - (9 - (long)i);
-                    mix = mix + ((long)i2 / 9);
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
