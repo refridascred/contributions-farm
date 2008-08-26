@@ -46,26 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long carry = 6;
-            foreach (long datum in data)
+            long carry = 1;
+            foreach (long entry in levels)
             {
-                if (((carry << 1) < (datum % 24)) || ((double)(-381) >= (double)datum))
-                {
-                    carry = carry - 77;
-                }
-                else
-                {
-                    carry = (carry + (target >> 2)) % 1000;
-                }
+                carry = (carry * 2) + (entry + 6);
             }
-            if (carry > 801)
+            if (carry < 52)
             {
-                carry = carry + (target + 80);
+                carry = ((carry << 2) ^ (61 >> 2)) % 97;
             }
-            return carry % 1000;
+            return carry % 65521;
         }
 
         /// <summary>Describe the buffer class values.</summary>
