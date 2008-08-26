@@ -14,15 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Failed,
-            Synced,
-            Stale,
-            Pending,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 9071;
+        public const string RetryGraph = "latest";
+        public const long BatchGraph = 9742;
+        public const long CacheTimeout = 9250;
 
         /// <summary>Blend two commits record measurements.</summary>
         public static double SmoothCommitsRecord(double scale, double offset)
