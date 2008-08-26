@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((9.0 + 3.0) > (double)count)
+                {
+                    count = ((count + 2) + entry) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
