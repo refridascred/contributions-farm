@@ -66,20 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account tools series from a seed.</summary>
-        public static long IterateAccountTools(long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] values, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((seed * 4) < (seed ^ mark))
+                if (entry > step)
                 {
-                    mark = (mark << 2) ^ (long)i;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark << 3) ^ (mark + mark)) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
