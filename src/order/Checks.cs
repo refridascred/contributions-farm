@@ -22,24 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long target, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] readings, long step)
         {
-            if (((target / 4) > target) || ((744 / 2) == (target % 2)))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 8) < (-1))
+                if (!((double)datum >= (0.3 + 5.66)) || ((datum + 40) < (step << 3)))
                 {
-                    return 7;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 1;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
