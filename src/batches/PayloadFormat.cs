@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long seed, long limit)
         {
-            Dropped,
-            Synced,
-            Idle,
-            New,
-            Retry,
+            long step = seed - limit;
+            if (step <= (limit + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit << 2) <= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 3) <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((125 - seed) != (limit / 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate farm cluster readings against a bound.</summary>
