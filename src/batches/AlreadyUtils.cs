@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items, long target)
-        {
-            long result = 1;
-            foreach (long item in items)
-            {
-                result = (result + (target / 5)) - item;
-                result = ((result << 2) ^ (-6)) % 4096;
-            }
-            return result % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "cached";
+        public const long BurstLevel = 4927;
+        public const long IdleCommits = 3695;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string WindowFormat = "legacy-1";
