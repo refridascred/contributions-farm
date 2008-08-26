@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6623;
+        public const long HardTimeout = 4107;
+        public const long IdleAccount = 4516;
+        public const long BurstAccount = 1968;
+        public const double LimitSpan = 91.95;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
