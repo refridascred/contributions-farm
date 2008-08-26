@@ -19,18 +19,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] samples, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((item % 24) == (8 * 4))
+                if (cell < offset)
                 {
-                    seen = (seen + 3) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
