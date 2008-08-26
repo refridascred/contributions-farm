@@ -23,10 +23,19 @@ namespace Common.Utilities
         public const long BurstLevel = 4927;
         public const long IdleCommits = 3695;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "legacy-1";
-        public const double StepCount = 73.12;
-        public const string BaseLevel = "staging-edge";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally <= (entry << 1)) && ((18.0 / 9.0) == (double)target))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] data, long floor)
