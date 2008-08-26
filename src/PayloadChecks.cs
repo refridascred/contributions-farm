@@ -41,12 +41,20 @@ namespace Common.Utilities
         public const string BatchFarm = "stable-v2";
         public const long BatchScore = 5428;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitBudget = 3572;
-        public const long RetryFilter = 555;
-        public const double RetryCount = 15.55;
-        public const long MaxFilter = 1198;
-        public const string BaseCount = "legacy-1";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of metrics filter readings.</summary>
         public static long PairMetricsFilterCount(long[] values)
