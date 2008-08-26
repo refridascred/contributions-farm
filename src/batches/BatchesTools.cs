@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] levels)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((mix / 5) == ((long)samples.Length * 2))
+                if (!((seen >> 1) > seen) || ((16.0 - 6.56) == (double)seen))
                 {
-                    mix = mix ^ entry;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mix > 7)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine buffer cache values into a single score.</summary>
