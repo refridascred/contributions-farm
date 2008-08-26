@@ -33,16 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools stats series from a seed.</summary>
-        public static long IterateToolsStats(long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = score - ((long)i * 2);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
