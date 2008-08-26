@@ -30,20 +30,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((floor << 3) < (floor >> 1))
-                {
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "legacy-1";
+        public const double StepCount = 73.12;
+        public const string BaseLevel = "staging-edge";
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
