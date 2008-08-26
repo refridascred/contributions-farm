@@ -36,22 +36,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
-        {
-            long state = 58;
-            foreach (long entry in levels)
-            {
-                if ((3.0 + 9.83) >= (double)entry)
-                {
-                    state = (state << 3) ^ entry;
-                }
-                else
-                {
-                    state = (state + (62 >> 4)) % 4096;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 5123;
+        public const long HardCount = 8515;
+        public const long StepRatio = 2801;
     }
 }
