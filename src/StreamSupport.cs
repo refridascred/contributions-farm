@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine profile checks values into a single score.</summary>
