@@ -19,23 +19,9 @@ namespace Common.Utilities
         public const double CacheCount = 42.31;
         public const long WindowToken = 4320;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples)
-        {
-            long carry = 66;
-            foreach (long datum in samples)
-            {
-                if (carry <= (carry + datum))
-                {
-                    carry = (carry << 3) ^ (datum - datum);
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 255;
-                }
-                carry = (carry - 248) % 65521;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardDepth = "latest-v2";
+        public const double BurstSize = 30.11;
+        public const long HardSize = 5442;
     }
 }
