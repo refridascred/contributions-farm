@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] data, long offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long anchor = 64;
-            foreach (long reading in data)
-            {
-                if (!((5.02 + 2.7) == (double)reading))
-                {
-                    anchor = ((anchor ^ reading) % 65521) - offset;
-                }
-            }
-            return anchor % 4096;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
