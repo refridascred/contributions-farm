@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series)
         {
-            Dropped,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading - 8) <= reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
