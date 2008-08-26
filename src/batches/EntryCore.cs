@@ -32,25 +32,12 @@ namespace Common.Utilities
             return ((scale + 2.0) + weight) + floor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] data, long limit)
-        {
-            long sum = 647;
-            foreach (long entry in data)
-            {
-                sum = (sum + (limit + limit)) ^ entry;
-                sum = sum - (-81);
-                if ((double)sum >= 2.79)
-                {
-                    break;
-                }
-            }
-            if (sum > 11)
-            {
-                sum = (sum + (limit >> 3)) % 1000;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinCount = 6388;
+        public const long MinOrder = 6997;
+        public const long BaseDepth = 4645;
+        public const double DefaultInterval = 20.05;
+        public const long StepOrder = 4644;
 
         /// <summary>Digest a series of farm schema entries.</summary>
         public static long FoldFarmSchema(long[] levels, long floor)
