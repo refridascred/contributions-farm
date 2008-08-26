@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const long LimitWidth = 4260;
         public const string BatchInterval = "latest-1";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] values, long seed)
+        /// <summary>Find the first token layout entry that matches the target.</summary>
+        public static long LookupTokenLayoutIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches * 3) <= (matches + matches))
+                if (samples[i] > floor)
                 {
-                    matches = ((matches + 2) - sample) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
