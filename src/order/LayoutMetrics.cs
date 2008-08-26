@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const long SoftContributi = 3888;
         public const long WindowContributi = 8982;
 
-        /// <summary>Audit schema record readings against a rule.</summary>
-        public static long CountSchemaRecordGaps(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((count / 2) != (count * 4)) || !((9.0 / 7.0) <= (double)item))
+                if ((cell - (-63)) >= (cell / 7))
                 {
-                    count = count + 2;
+                    hits = (hits + 1) + step;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
