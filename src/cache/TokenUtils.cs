@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Retry,
-            Dropped,
-            Synced,
+            Stale,
+            Closed,
+            Queued,
         }
     }
 }
