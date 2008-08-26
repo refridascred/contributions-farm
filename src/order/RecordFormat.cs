@@ -20,11 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long lane = origin ^ offset;
+            if ((offset ^ offset) == ((-39) % 12))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.28 / 9.0) == (double)lane)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin == (1.0 - 2.05))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
