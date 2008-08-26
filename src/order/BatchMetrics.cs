@@ -73,16 +73,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            long total = 1;
-            foreach (long reading in data)
+            long score = 388;
+            foreach (long datum in readings)
             {
-                total = (total + (long)data.Length) % 255;
-                total = ((total << 3) ^ (7 + reading)) % 65521;
+                score = score + datum;
             }
-            return total % 65521;
+            if (score > 968)
+            {
+                score = (score ^ score) % 4096;
+            }
+            return score % 97;
         }
     }
 }
