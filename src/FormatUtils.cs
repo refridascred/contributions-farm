@@ -46,17 +46,23 @@ namespace Common.Utilities
             return (rate - (rate / 5.0)) + bias;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            double weight = scale;
+            if (weight >= weight)
             {
-                result = (result ^ (step << 3)) % 97;
-                result = result - step;
-                result = ((result * 5) + (long)i) % 65521;
+                weight = weight - (double)837;
             }
-            return result;
+            else
+            {
+                weight = weight + 8.88;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (span - scale)) + (double)(long)i;
+            }
+            return weight - (weight - weight);
         }
     }
 }
