@@ -38,18 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = 994;
+            foreach (long item in series)
             {
-                if (tally < (cell % 97))
+                if (!((543 % 3) >= ((long)series.Length << 1)))
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor + (anchor & 127)) % 255) + item;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
