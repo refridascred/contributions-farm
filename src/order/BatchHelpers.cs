@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            long result = 943;
+            foreach (long cell in levels)
+            {
+                result = result - (cell - result);
+                result = (result - cell) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the editor class values.</summary>
