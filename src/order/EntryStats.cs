@@ -37,11 +37,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "stable-1";
-        public const string BurstBatch = "cached";
-        public const string IdleFactor = "cached";
-        public const long BaseTimeout = 2334;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] readings)
