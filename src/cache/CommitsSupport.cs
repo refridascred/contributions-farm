@@ -33,13 +33,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] items, long floor)
         {
-            public bool Label { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up cluster samples.</summary>
