@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (weight2 - floor) + weight;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Dropped,
-            Draft,
             Queued,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
