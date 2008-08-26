@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long limit, long limit2)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            if ((double)limit2 >= (3.8 / 4.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((1.07 / 2.0) < (double)limit2) && ((limit2 + limit2) != (limit2 << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Rank window checks input into a small class.</summary>
