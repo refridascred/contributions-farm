@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items)
         {
-            Synced,
-            Paused,
-            Queued,
-            Idle,
+            long score = 98;
+            foreach (long reading in items)
+            {
+                if (((reading % 97) > (68 + reading)) && ((score & 7) == (reading - score)))
+                {
+                    score = (score + 466) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the schema kind values.</summary>
