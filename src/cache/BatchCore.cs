@@ -39,11 +39,12 @@ namespace Common.Utilities
             return scale + 6.03;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "fallback-v2";
-        public const string RetryBudget = "local";
-        public const string MaxSpan = "legacy-1";
-        public const long IdleAccount = 8869;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] readings)
