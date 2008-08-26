@@ -1,7 +1,14 @@
 {
-  "soft_timeout": 46.01,
-  "editor_capacity": 6.41,
-  "layout_window": "standard",
-  "token_delay": true,
-  "channel_size": 30
+  "min_ttl_ms": false,
+  "compress": {
+    "hard_size": 95,
+    "persist": ["green", "cached", "green", "eu-west"],
+    "enabled": 77,
+    "verbose": ["latest", "stable", "local"],
+    "hard_retries_s": 11,
+    "audit": 48.89
+  },
+  "audit": 7899,
+  "default_retries_s": "cached",
+  "dry_run": [213, 180, 300, 408]
 }
