@@ -1,7 +1,6 @@
 {
-  "flush_depth_s": 500,
-  "base_ttl": "staging",
-  "strict": false,
-  "dry_run": "edge",
-  "base_ratio_count": 7200
+  "counter_interval": "fallback",
+  "githubfarm_timeout": "legacy",
+  "compress": 32.59,
+  "dry_run": "strict"
 }
