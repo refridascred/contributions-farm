@@ -1,25 +1,4 @@
 # support settings
-flush_delay_ms: fallback
-poll_threshold_count:
-  tools_threshold: primary
-  record_ratio:
-    - 312
-    - 343
-  flush_size_count: true
-  enabled:
-    - 378
-    - 385
-default_limit_count: 42.1
-compress: 30
-cache_retries_ms:
-  graph_retries: local
-  cache_window: 33.38
-  max_size:
-    poll_interval_count: 1024
-    default_window: legacy
-    retry_size: 6014
-    warm_ratio: 13
-  idle_timeout_s: fallback
-  hard_threshold_s:
-    - fallback
-    - latest
+persist: 2484
+strict: 98.72
+min_limit_ms: 89.18
