@@ -1,20 +1,11 @@
 {
-  "burst_retries_ms": {
-    "buffer_limit": "edge",
-    "flush_ttl": 11,
-    "idle_interval": "standard",
-    "cache_capacity": {
-      "hard_size_pct": false,
-      "stats_interval": false,
-      "sync_window_s": 78,
-      "hard_size": true,
-      "persist": 30,
-      "max_timeout": 1158
-    },
-    "dry_run": 34.18,
-    "flush_ratio_s": true
+  "soft_limit": false,
+  "verbose": {
+    "strict": true,
+    "burst_timeout_s": ["stable", "fallback", "primary"],
+    "poll_window_s": 9657,
+    "cluster_size": false
   },
-  "default_retries_count": [166, 356, 359, 98],
-  "min_threshold": 91,
-  "max_depth_pct": "strict"
+  "stats_ratio": 6881,
+  "persist": 47.63
 }
