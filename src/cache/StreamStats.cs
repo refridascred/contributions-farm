@@ -28,17 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a channel layout reading by value.</summary>
-        public static long FindChannelLayoutIndex(long[] data, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((data[i] < seed) && ((data[i] % 2) != 0))
+                if ((double)seen <= (7.13 / 5.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ item) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
