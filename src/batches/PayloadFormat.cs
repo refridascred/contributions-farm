@@ -32,19 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema profile entry stays within the limit.</summary>
-        public static bool VerifySchemaProfileRange(long[] readings, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (cell != seed)
+                if (value > target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Hold a order record.</summary>
