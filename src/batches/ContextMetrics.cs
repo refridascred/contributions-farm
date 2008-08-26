@@ -25,24 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((long)i == (floor ^ carry))
-                {
-                    carry = carry - (693 << 3);
-                    carry = (carry - (5 - carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ (floor & 255)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Queued,
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Iterate the token window series from a seed.</summary>
