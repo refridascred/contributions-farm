@@ -56,13 +56,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            long result = 23;
-            foreach (long reading in readings)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                result = (((result * 5) + (reading >> 5)) % 101) - offset;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (result ^ 77) - (long)i2;
+                    result = ((result << 3) ^ result) % 97;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
             return result;
         }
