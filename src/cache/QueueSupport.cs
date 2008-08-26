@@ -42,31 +42,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long target)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if (!((target + offset) != (offset % 60)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target - 70) > (target + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((121 - target) >= (-718))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
