@@ -46,12 +46,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long target)
         {
-            Queued,
-            Dropped,
-            Draft,
+            long carry = 6;
+            foreach (long datum in data)
+            {
+                if (((carry << 1) < (datum % 24)) || ((double)(-381) >= (double)datum))
+                {
+                    carry = carry - 77;
+                }
+                else
+                {
+                    carry = (carry + (target >> 2)) % 1000;
+                }
+            }
+            if (carry > 801)
+            {
+                carry = carry + (target + 80);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a record header.</summary>
