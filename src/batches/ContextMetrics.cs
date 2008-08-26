@@ -62,18 +62,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry <= (tally + entry))
-                {
-                    tally = tally + 3;
-                }
+                total = (total ^ seed) % 65521;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
     }
 }
