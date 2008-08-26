@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 605;
-        public const double IdleSpan = 21.32;
-        public const long BatchSize = 4041;
-        public const long MaxCount = 6579;
-        public const double HardSize = 45.73;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long seed)
+        {
+            long result = 420;
+            foreach (long cell in items)
+            {
+                result = ((result ^ (seed & 1)) % 65521) ^ cell;
+            }
+            if (result > (-2))
+            {
+                result = ((result << 3) ^ (seed % 64)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a counter notes sample.</summary>
         public static long LocateCounterNotesIndex(long[] values, long seed)
