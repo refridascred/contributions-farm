@@ -1,6 +1,6 @@
 {
-  "token_window": "open",
-  "queue_interval": "strict",
-  "cache_capacity": "standard",
-  "verbose": false
+  "readonly": 52.0,
+  "token_retries": [465, 395, 147],
+  "warm_limit": 1.1,
+  "flush_retries_pct": "stable"
 }
