@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long carry = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((carry & 63) >= (long)i)
+                {
+                    carry = ((carry << 2) ^ (carry ^ carry)) % 255;
+                }
+                carry = (carry * 2) + (carry + (long)i);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
