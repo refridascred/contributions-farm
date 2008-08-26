@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a already metrics pair into a bucket.</summary>
-        public static long ClassifyAlreadyMetrics(long seed, long seed2)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            if (!((9.62 * 10.0) == (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 + seed2) < (seed - seed2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed2 / 8) < (552 & 255)) || ((seed ^ 8) >= (seed2 & 63)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
