@@ -1,13 +1,7 @@
 {
-  "retry_delay": "blue",
-  "batch_retries": true,
-  "compress": 6.56,
-  "metrics_size": 25,
-  "schema_limit": 1024,
-  "flush_size": {
-    "poll_retries": 1024,
-    "persist": 50.24,
-    "soft_window_ms": 1024,
-    "cache_timeout": "stable"
-  }
+  "enabled": "edge",
+  "graph_size": "strict",
+  "filter_retries": 100,
+  "min_size": 32.51,
+  "max_timeout": ["legacy", "blue", "legacy"]
 }
