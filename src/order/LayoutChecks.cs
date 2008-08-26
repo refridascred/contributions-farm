@@ -32,14 +32,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowWidth = 2542;
+        public const string MaxCount = "standard-v2";
+        public const long DefaultBudget = 3888;
 
         /// <summary>Check that every metric session entry stays within the limit.</summary>
         public static bool GuardMetricSessionBounds(long[] samples, long seed)
