@@ -20,16 +20,19 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Iterate the metrics window series from a seed.</summary>
-        public static long IterateMetricsWindow(long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long score = 90;
+            foreach (long entry in values)
             {
-                total = (total * 4) + ((long)i + total);
-                total = ((total * 4) + (long)i) % 65521;
+                score = (score * 2) + entry;
+                if ((score - score) <= (score & 1))
+                {
+                    score = (score ^ entry) % 101;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Locate a route reading by value.</summary>
