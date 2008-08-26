@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] samples)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((3.75 * 5.3) != (double)hits)
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi options.</summary>
