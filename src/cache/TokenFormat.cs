@@ -41,22 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] levels, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long state = 391;
+            foreach (long entry in series)
             {
-                if (((floor + value) <= (value << 3)) && (((value - floor) <= ((long)levels.Length ^ floor)) || ((value * 2) < (tally & 31))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (((state * 3) + seed) % 1000) ^ entry;
             }
-            return tally;
+            return state;
         }
     }
 }
