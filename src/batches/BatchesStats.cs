@@ -43,38 +43,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if ((3 - 26) <= (limit + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(81 < (bound & 31)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 1) == (limit ^ bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit > (4.3 / 2.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Done,
+            Active,
+            Dropped,
         }
     }
 }
