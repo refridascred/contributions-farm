@@ -67,11 +67,18 @@ namespace Common.Utilities
             return drift - (bias + 9.1);
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] series, long offset)
         {
-            double rate = span;
-            return (rate - (5.9 / 9.0)) + ratio;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)value > (double)offset)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
