@@ -24,22 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile tools samples are out of range.</summary>
-        public static long TallyProfileToolsHits(long[] items, long floor)
+        /// <summary>Locate a already command reading by value.</summary>
+        public static long LocateAlreadyCommandIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample == (3.26 * 5.38))
+                if (data[i] >= limit)
                 {
-                    seen = (seen + 1) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
