@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items, long offset)
         {
-            Ready,
-            Retry,
-            Active,
+            long total = 543;
+            foreach (long cell in items)
+            {
+                total = (((total * 4) + total) % 65521) - offset;
+                if (((double)total < (double)(-68)) && ((cell % 16) != (cell * 3)))
+                {
+                    break;
+                }
+            }
+            if (total < 87)
+            {
+                total = ((total << 2) ^ (total + total)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a context stats.</summary>
