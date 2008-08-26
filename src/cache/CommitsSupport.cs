@@ -52,13 +52,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
