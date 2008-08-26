@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long RetrySupport = 4246;
         public const long LimitSupport = 5068;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] data, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((5.1 * 0.2) == (double)item)
+                if (entry != origin)
                 {
-                    count = (count + 2) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
