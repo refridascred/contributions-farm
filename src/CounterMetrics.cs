@@ -29,17 +29,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] readings, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (readings[i] > offset)
+                mark = (mark << 2) ^ (mark >> 3);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark ^ (48 << 1)) % 1000) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
