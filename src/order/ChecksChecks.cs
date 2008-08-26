@@ -42,9 +42,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardDepth = "latest-v2";
-        public const double BurstSize = 30.11;
-        public const long HardSize = 5442;
+        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
+        public static long CountFormatGithubfarmHits(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!((40 / 8) <= step))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
