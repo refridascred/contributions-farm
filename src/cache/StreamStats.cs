@@ -46,15 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = 63;
-            foreach (long cell in data)
-            {
-                state = ((state - (step + step)) % 65521) + cell;
-            }
-            return state;
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
