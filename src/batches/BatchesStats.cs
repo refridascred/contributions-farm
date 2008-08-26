@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            long mark = -755;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample / 4) < 81) || ((8 + sample) < (sample % 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (sample / 9)) % 1000;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 50)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
