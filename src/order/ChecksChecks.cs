@@ -20,26 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Adjust a route record reading.</summary>
+        public static double BlendRouteRecord(double ratio, double floor)
         {
-            long state = 90;
-            foreach (long cell in items)
+            double bias = floor;
+            if (bias >= (bias + bias))
             {
-                if (!(2.5 >= (double)state))
-                {
-                    state = ((state * 2) + (state << 1)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ state) % 65521;
-                }
-                if ((double)cell >= 9.38)
-                {
-                    break;
-                }
+                bias = (bias + (bias - floor)) + ratio;
             }
-            return state % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - (double)4;
         }
 
         /// <summary>Accumulate profile samples.</summary>
