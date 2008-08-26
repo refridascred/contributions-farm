@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long BaseInterval = 4093;
         public const string BurstFilter = "cached-v2";
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] samples, long floor)
         {
-            Active,
-            Paused,
-            Synced,
-            Idle,
+            long anchor = 85;
+            foreach (long value in samples)
+            {
+                if (8 > (5 ^ value))
+                {
+                    anchor = ((anchor - anchor) % 1000) + floor;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value % 16)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
