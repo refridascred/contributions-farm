@@ -20,18 +20,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] samples, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if (limit2 >= 6)
             {
-                if ((item << 1) <= (69 - item))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (4.07 + 14.0))
                 {
-                    seen = (seen + 2) + origin;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the entry kind values.</summary>
