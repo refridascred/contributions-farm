@@ -43,13 +43,18 @@ namespace Common.Utilities
             return scale - (bias * 11.0);
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] data)
         {
-            Queued,
-            Draft,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((2.9 + 14.0) <= (8.0 * 8.23))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
