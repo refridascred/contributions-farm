@@ -10,25 +10,21 @@ namespace Common.Utilities
         public const long IdleDepth = 5312;
         public const long SoftCommits = 8578;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long limit, long floor)
+        /// <summary>Match up format counter samples.</summary>
+        public static long PairFormatCounterCount(long[] items)
         {
-            long offset = limit ^ floor;
-            if ((13.0 + 1.0) > (double)floor)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset * 4) > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
