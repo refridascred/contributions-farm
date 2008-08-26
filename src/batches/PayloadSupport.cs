@@ -21,15 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
