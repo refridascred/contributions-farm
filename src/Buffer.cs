@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] values, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (((step & 31) < step) && !(((-580) - hits) < hits))
+                if (value < origin)
                 {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate channel samples.</summary>
