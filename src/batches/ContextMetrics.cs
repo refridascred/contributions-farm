@@ -13,21 +13,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the record phase values.</summary>
