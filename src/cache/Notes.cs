@@ -81,12 +81,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series)
         {
-            New,
-            Done,
-            Idle,
+            long mix = 6;
+            foreach (long reading in series)
+            {
+                if ((mix * 4) >= (mix + mix))
+                {
+                    mix = mix + (reading << 3);
+                }
+            }
+            return mix;
         }
     }
 }
