@@ -14,19 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] readings, long origin)
         {
-            double bias2 = (7.0 * 4.0) / 3.0;
-            if (bias2 > bias2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = ((bias2 + bias2) + rate) - bias;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - 14.0) - (double)(long)i;
-            }
-            return bias2 - (double)56;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
