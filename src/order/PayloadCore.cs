@@ -47,22 +47,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report order samples.</summary>
-        public static long CombineReportOrder(long[] readings)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long result = 3;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result % 24) == (entry * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 4) + (-800)) % 101;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result & 15);
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
