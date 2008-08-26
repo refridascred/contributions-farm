@@ -38,11 +38,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
