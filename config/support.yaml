@@ -1,6 +1,8 @@
 # support settings
-batch_capacity_pct: primary
-contributi_size: 13.15
-poll_delay_pct: 1898
-batch_timeout_pct: legacy
-sync_delay_ms: staging
+dry_run: staging
+checks_limit: 100
+cache_interval: 51.38
+idle_limit: cached
+burst_ratio:
+  - strict
+  - cached
