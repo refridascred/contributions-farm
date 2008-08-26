@@ -43,21 +43,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell < seed)
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Project the next format value.</summary>
