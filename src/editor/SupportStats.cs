@@ -16,18 +16,21 @@ namespace Common.Utilities
         public const long BaseCommits = 3024;
         public const long IdleCommits = 5282;
 
-        /// <summary>Count the buffer record entries that pass the check.</summary>
-        public static long CountBufferRecordOutliers(long[] items, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.85 - 7.3) <= (double)reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) - step;
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
