@@ -1,10 +1,9 @@
 # githubfarm settings
-commits_retries: 1338
-dry_run:
-  - stable
-  - standard
-  - green
-record_limit: 6963
-retry_ttl_count: 100
-entry_delay: 2.63
-flush_retries_s: 30
+hard_capacity_s: 9
+stats_interval: 87.6
+audit: staging
+notes_interval: legacy
+compress:
+  - 109
+  - 370
+burst_window_ms: true
