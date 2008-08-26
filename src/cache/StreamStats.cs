@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Measure how many stream batch samples are out of range.</summary>
+        public static long MeasureStreamBatchHits(long[] levels)
         {
-            double rate = bias;
-            if (rate > rate)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                rate = (rate - (double)3) - offset;
+                if (datum <= (hits + datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
