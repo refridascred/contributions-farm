@@ -1,5 +1,8 @@
 {
-  "verbose": 4.08,
-  "farm_depth": "standard",
-  "poll_interval_ms": false
+  "order_depth": 58.75,
+  "min_ttl_ms": 1024,
+  "enabled": false,
+  "flush_ttl": "eu-west",
+  "cluster_threshold": "standard",
+  "audit": 94
 }
