@@ -46,18 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] items, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value != (3.8 + 10.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) - bound;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
