@@ -44,24 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a report route value against two limits.</summary>
-        public static long ClassifyReportRoute(long origin, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if (offset < (76 << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.76 + 6.9) > (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Locked,
+            Queued,
+            Active,
         }
     }
 }
