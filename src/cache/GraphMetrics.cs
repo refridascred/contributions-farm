@@ -47,23 +47,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            double mean = (4.0 / 4.0) * 9.09;
-            if (mean > (span / 5.0))
+            long mark = 3;
+            foreach (long entry in levels)
             {
-                mean = (mean + (double)77) - bias;
+                if ((double)entry < 9.26)
+                {
+                    mark = (mark * 4) + (entry + mark);
+                }
+                else
+                {
+                    mark = mark + (38 + entry);
+                }
             }
-            else
-            {
-                mean = mean + (double)49;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - mean;
+            return mark % 97;
         }
     }
 }
