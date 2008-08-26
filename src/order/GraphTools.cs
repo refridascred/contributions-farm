@@ -54,20 +54,12 @@ namespace Common.Utilities
             return load + (rate + load);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "latest-1";
+        public const long RetryRatio = 9219;
+        public const long RetryCount = 4051;
+        public const long SoftCommand = 6370;
+        public const string BatchCommand = "stable-1";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextMatches(long[] items, long seed)
