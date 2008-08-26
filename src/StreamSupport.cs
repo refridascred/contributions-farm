@@ -13,21 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
-        public static long CompareSchemaBatchesCount(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 19)
+                    if ((series[i] - series[j]) < 11)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
