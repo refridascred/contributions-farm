@@ -1,6 +1,7 @@
 {
-  "compress": 9095,
-  "default_delay": 8580,
-  "retry_timeout_count": 2172,
-  "warm_depth_s": true
+  "sync_depth": "eu-west",
+  "max_delay": 67,
+  "persist": 27.97,
+  "idle_threshold": [463, 449, 330],
+  "base_timeout": "eu-west"
 }
