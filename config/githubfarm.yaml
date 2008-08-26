@@ -1,16 +1,22 @@
 # githubfarm settings
-audit: 492
-idle_retries: 70
-cache_capacity: false
-flush_capacity_count:
-  max_interval_ms:
-    - local
-    - green
-  max_timeout_ms:
-    - eu-west
-    - local
-    - stable
-    - fallback
-  base_threshold_s: 29.23
-  cache_delay: 88.98
-  compress: 100
+verbose:
+  - staging
+  - primary
+  - latest
+strict:
+  - legacy
+  - legacy
+  - strict
+metrics_retries: 2175
+compress: blue
+format_retries:
+  already_window: 39.85
+  audit: 100
+  idle_interval_pct: 30
+  support_window: blue
+  warm_limit_s: 31.77
+  dry_run:
+    - 223
+    - 415
+    - 90
+    - 291
