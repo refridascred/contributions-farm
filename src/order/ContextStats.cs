@@ -43,19 +43,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((8.69 * 4.6) != (double)datum)
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 3346;
+        public const long BurstNotes = 5903;
+        public const string WindowCount = "latest-1";
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
