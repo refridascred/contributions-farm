@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long diff = origin - offset;
+            if (((origin << 2) <= (diff / 9)) && ((origin + diff) <= origin))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor - (bound - (long)i2)) % 101;
-                }
-                anchor = (anchor << 3) ^ (41 - anchor);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((offset + diff) >= (diff >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 3) <= 939)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
