@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                total = total + (total + total);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
