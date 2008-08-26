@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            long prev = floor ^ offset;
-            if ((prev + 8) <= (prev % 97))
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                mix = mix ^ (seed - mix);
+                mix = (mix ^ (81 + 3)) % 255;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)prev != (3.2 - 5.3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((89 / 6) < (floor % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Blend two commits measurements.</summary>
