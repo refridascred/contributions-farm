@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 8384;
+        public const long BatchSession = 7250;
+        public const double IdleLevel = 93.49;
+        public const long RetrySession = 8256;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BaseScore = "primary";
