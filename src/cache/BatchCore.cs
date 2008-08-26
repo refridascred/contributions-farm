@@ -21,32 +21,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long step, long step2)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long diff = step ^ step2;
-            if (!((diff ^ diff) <= (step + step)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step2 > 58) && (step > (diff << 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step2 * 4) >= 9)
+                    if ((readings[i] + readings[j]) == 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit record tools readings against a rule.</summary>
