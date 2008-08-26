@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
-        {
-            long mark = 245;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = (((mark << 3) ^ (74 - mark)) % 4096) ^ (long)i;
-                    mark = (mark * 4) + (datum * 2);
-                }
-                if ((mark - mark) < 41)
-                {
-                    mark = (mark + (mark + datum)) % 97;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryFactor = 6249;
+        public const string WindowPayload = "strict-edge";
+        public const long HardRatio = 1980;
+        public const long DefaultPayload = 8390;
+        public const double LimitSpan = 19.3;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 4404;
