@@ -36,10 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 0.93;
-        public const double SoftProfile = 31.87;
-        public const long RetryRatio = 9346;
-        public const string HardProfile = "alpha-v2";
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
