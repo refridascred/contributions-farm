@@ -1,5 +1,27 @@
 # support settings
-verbose: 81.85
-retry_timeout: true
-min_ttl: latest
-persist: open
+compress:
+  - 381
+  - 126
+  - 452
+  - 121
+idle_capacity_pct: 39.82
+audit:
+  verbose:
+    batch_size: 7341
+    burst_capacity_count: edge
+    idle_size_count: 1103
+  editor_retries: 1024
+  burst_threshold_ms: 98.48
+  poll_depth_count: open
+  flush_size_count:
+    min_interval: 244
+    persist: 98
+    entry_interval: 37.65
+    flush_window_s:
+      - 449
+      - 257
+    batch_ttl_count:
+      - 260
+      - 50
+notes_timeout: 48
+enabled: 73.43
