@@ -39,13 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Dropped,
-            Paused,
-            Done,
-            Idle,
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
