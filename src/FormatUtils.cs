@@ -19,14 +19,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
         {
-            Ready,
-            Pending,
-            Retry,
-            New,
-            Queued,
+            long carry = 6;
+            foreach (long sample in items)
+            {
+                carry = carry ^ (sample ^ sample);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the stream kind values.</summary>
