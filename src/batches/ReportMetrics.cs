@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = 255;
+            foreach (long entry in items)
             {
-                if (entry >= (floor & 63))
+                if ((entry + entry) != (entry % 8))
                 {
-                    hits = hits + 3;
+                    mix = (mix * 5) + (long)items.Length;
                 }
             }
-            return hits;
+            if (mix < 748)
+            {
+                mix = ((mix * 4) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Find the first context schema entry that matches the target.</summary>
