@@ -62,18 +62,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] readings, long floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)entry == (0.89 / 3.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + floor;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
