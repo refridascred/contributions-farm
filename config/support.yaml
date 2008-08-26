@@ -1,11 +1,5 @@
 # support settings
-persist: false
-hard_limit_pct: 21.32
-verbose: 86.52
-hard_ttl:
-  githubfarm_interval: staging
-  base_size_ms: 250
-  cache_threshold_count: true
-  cluster_delay: false
-  sync_capacity_pct: fallback
-min_threshold: 60
+order_retries: false
+flush_threshold_pct: false
+filter_threshold: staging
+soft_threshold_s: open
