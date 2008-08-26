@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Ready,
-            Stale,
-            Dropped,
-            New,
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
