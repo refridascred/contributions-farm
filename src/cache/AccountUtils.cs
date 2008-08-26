@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryFactor = 6249;
-        public const string WindowPayload = "strict-edge";
-        public const long HardRatio = 1980;
-        public const long DefaultPayload = 8390;
-        public const double LimitSpan = 19.3;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Dropped,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Derive the next stream cache value from a seed.</summary>
         public static long RollStreamCache(long target)
