@@ -30,19 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] levels, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = carry + ((long)i + bound);
+                carry = (carry ^ bound) % 4096;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Accumulate account samples.</summary>
