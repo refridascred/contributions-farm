@@ -50,19 +50,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long anchor = -64;
+            foreach (long datum in data)
             {
-                if (item > limit)
+                if ((double)anchor <= (0.3 / 2.0))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor - anchor) % 255) - datum;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
