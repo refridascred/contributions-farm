@@ -33,21 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format counter samples.</summary>
-        public static long PairFormatCounterCount(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
