@@ -14,15 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Done,
-            Ready,
-            Active,
-            New,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitDepth = "cached-edge";
+        public const long IdleOrder = 4999;
+        public const double BurstOrder = 32.77;
+        public const double CacheRatio = 77.17;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
