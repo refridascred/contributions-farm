@@ -47,19 +47,10 @@ namespace Common.Utilities
         public const long MinBatch = 8135;
         public const long LimitDepth = 3052;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchRatio = 17.59;
+        public const long HardGithubfarm = 5569;
+        public const double StepWidth = 82.15;
+        public const long SoftWidth = 223;
     }
 }
