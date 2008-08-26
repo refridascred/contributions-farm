@@ -28,38 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long floor, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            if ((floor > (bound + bound)) && ((double)bound < (3.2 / 7.0)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - bound) != (463 >> 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((18 / 7) < (floor - bound)) || ((20.0 * 3.1) != (double)floor))
+                    if ((items[i] ^ items[j]) < 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound + bound) >= (67 - bound)) || (bound > (852 & 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
