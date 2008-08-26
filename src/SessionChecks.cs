@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long BurstStream = 5183;
         public const long IdleStream = 4966;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 34;
+            foreach (long value in items)
             {
-                if (readings[i] < target)
+                if (!((floor * 4) > (sum - floor)))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ sum) ^ value;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine token values into a single score.</summary>
