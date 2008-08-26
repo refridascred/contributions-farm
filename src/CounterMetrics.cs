@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metric state values.</summary>
