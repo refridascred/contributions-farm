@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepDepth = 4596;
-        public const long BurstOrder = 7646;
-        public const long RetrySpan = 1775;
-        public const long MinOrder = 4140;
-        public const string LimitOrder = "legacy-edge";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (offset > (score + offset))
+                {
+                    score = ((score << 2) ^ offset) % 255;
+                }
+                else
+                {
+                    score = (score - (offset + (long)i)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
