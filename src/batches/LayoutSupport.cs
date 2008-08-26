@@ -21,12 +21,33 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheWidth = 561;
-        public const double MaxProfile = 15.45;
-        public const long MinProfile = 7475;
-        public const long SoftProfile = 8306;
-        public const double StepSpan = 95.24;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long target2)
+        {
+            long span = target + target2;
+            if ((double)target2 != (0.94 / 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target2 / 2) < (-460))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3.6 + 3.22) >= (double)span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine metrics format values into a single score.</summary>
         public static long TallyMetricsFormat(long[] readings)
