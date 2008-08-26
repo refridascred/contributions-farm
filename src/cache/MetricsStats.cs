@@ -51,16 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Project the next githubfarm layout value.</summary>
+        public static double AdjustGithubfarmLayout(double ratio, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            double rate = (double)(7 & 7);
+            if (rate >= (rate + ratio))
             {
-                mix = (mix - (limit + limit)) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
+                rate = rate - (rate - span);
             }
-            return mix;
+            else
+            {
+                rate = rate - (span + ratio);
+            }
+            return rate - (span + rate);
         }
 
         /// <summary>Hold a farm record.</summary>
