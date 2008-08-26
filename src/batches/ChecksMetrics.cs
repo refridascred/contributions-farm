@@ -42,10 +42,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 992;
-        public const long CacheFactor = 9628;
-        public const long CacheDepth = 8871;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long limit)
+        {
+            long sum = 5;
+            foreach (long reading in items)
+            {
+                sum = (((sum * 4) + (limit % 10)) % 65521) ^ reading;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double weight, double bias)
