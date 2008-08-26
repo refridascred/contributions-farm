@@ -22,18 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel metric samples are out of range.</summary>
-        public static long TallyChannelMetricOutliers(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if (!(bound < (limit * 5)))
             {
-                if ((matches - (-94)) < (matches - 442))
+                return 8;
+            }
+            else
+            {
+                if ((4.0 + 3.0) < (double)limit)
                 {
-                    matches = (matches + 3) - cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 7) >= (64 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit ^ bound) < limit) && ((6.01 * 5.67) > (double)bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
