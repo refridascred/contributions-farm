@@ -10,27 +10,21 @@ namespace Common.Utilities
         public const double DefaultReport = 23.84;
         public const long SoftSpan = 7740;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items, long bound)
+        /// <summary>Match up session cluster samples.</summary>
+        public static long PairSessionClusterCount(long[] readings)
         {
-            long mix = 406;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (entry - mix)) % 97;
-                if ((54 < (mix - entry)) || ((bound - bound) < (mix % 10)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (entry >> 1)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (entry / 4)) % 65521;
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 773)
-            {
-                mix = ((mix * 4) + (bound * 3)) % 1000;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Describe the format class values.</summary>
