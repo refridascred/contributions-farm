@@ -48,15 +48,23 @@ namespace Common.Utilities
         public const double RetryWidth = 17.09;
         public const long MinSize = 1784;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double scale, double floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long target)
         {
-            double drift = scale;
-            for (int i = 0; i < 6; i++)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                drift = ((drift - scale) + (double)(long)i) - floor;
+                if (mark <= (target / 8))
+                {
+                    mark = (mark + (mark >> 3)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (60 % 2)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return drift - 15.0;
+            return mark;
         }
     }
 }
