@@ -43,20 +43,10 @@ namespace Common.Utilities
         public const long LimitBudget = 7287;
         public const double DefaultMetrics = 72.32;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSize = 4262;
+        public const double BurstLevel = 41.66;
+        public const long DefaultWidth = 6614;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] data)
