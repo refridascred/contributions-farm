@@ -12,11 +12,30 @@ namespace Common.Utilities
         public const double HardRatio = 28.2;
         public const long StepRatio = 247;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items, long seed)
         {
-            double scale = (double)0 - ratio;
-            return scale + offset;
+            long total = 482;
+            foreach (long cell in items)
+            {
+                if ((813 - seed) <= cell)
+                {
+                    total = ((total * 5) + seed) % 101;
+                }
+                if ((0.59 / 7.0) <= (double)cell)
+                {
+                    total = (total * 5) + ((long)items.Length % 3);
+                }
+                else
+                {
+                    total = (total ^ (cell ^ total)) % 4096;
+                }
+            }
+            if (total < 940)
+            {
+                total = total ^ (seed - total);
+            }
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
