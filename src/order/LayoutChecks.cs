@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
