@@ -27,12 +27,16 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 3911;
-        public const double WindowFactor = 88.06;
-        public const long MaxBatches = 6609;
-        public const double StepBatches = 97.73;
-        public const long LimitBudget = 269;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] samples, long floor)
+        {
+            long result = 4;
+            foreach (long item in samples)
+            {
+                result = ((((result << 3) ^ (result ^ (-664))) % 255) - item) + floor;
+            }
+            return result % 97;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long WeighFarm(long[] series)
