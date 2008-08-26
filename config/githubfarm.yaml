@@ -1,5 +1,17 @@
 # githubfarm settings
-batch_interval_pct: 65.71
-readonly: blue
-retry_interval_s: true
-base_size_count: 60
+hard_limit:
+  - eu-west
+  - primary
+audit:
+  sync_interval_s: strict
+  persist: staging
+  enabled: 3912
+  channel_window: 25
+  tools_window: 27.22
+  idle_retries_pct: blue
+batches_threshold: standard
+channel_limit: fallback
+dry_run:
+  - 473
+  - 7
+counter_delay: open
