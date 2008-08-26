@@ -1,8 +1,10 @@
 # githubfarm settings
-compress:
-  - 68
-  - 89
-  - 197
-soft_depth_count: strict
-base_limit: stable
-counter_ttl: 100
+commits_retries: 1338
+dry_run:
+  - stable
+  - standard
+  - green
+record_limit: 6963
+retry_ttl_count: 100
+entry_delay: 2.63
+flush_retries_s: 30
