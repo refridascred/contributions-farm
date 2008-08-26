@@ -57,20 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseSize = 8695;
+        public const string MinQueue = "legacy";
+        public const long CacheQueue = 3135;
+        public const long StepRatio = 3572;
 
         /// <summary>Adjust a record githubfarm reading.</summary>
         public static double AdjustRecordGithubfarm(double gain, double offset)
