@@ -51,15 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a batch queue reading.</summary>
-        public static double BlendBatchQueue(double gain, double span)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double offset)
         {
-            double mean = span + span;
-            if (mean < (double)328)
-            {
-                mean = mean + gain;
-            }
-            return mean + 7.2;
+            double scale = ratio;
+            return (scale + scale) + offset;
         }
     }
 }
