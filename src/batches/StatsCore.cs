@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cache editor entry that matches the target.</summary>
-        public static long SeekCacheEditorIndex(long[] levels, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 342;
+            foreach (long value in data)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) != 0))
+                if ((value >> 5) < (floor << 3))
                 {
-                    return (long)i;
+                    acc = (acc + (value + acc)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
