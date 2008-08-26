@@ -1,6 +1,7 @@
 {
-  "default_capacity_count": 19.04,
-  "profile_ratio": "edge",
-  "warm_ttl_ms": true,
-  "channel_threshold": true
+  "compress": true,
+  "default_window_ms": ["green", "strict", "latest"],
+  "cache_window": 4014,
+  "max_limit_pct": 96,
+  "persist": "green"
 }
