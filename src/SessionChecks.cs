@@ -15,12 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long step)
         {
-            Pending,
-            Active,
-            Synced,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of notes route readings.</summary>
