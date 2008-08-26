@@ -29,22 +29,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate profile stats samples.</summary>
-        public static long DigestProfileStats(long[] items)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double ratio, double floor)
         {
-            long result = 31;
-            foreach (long datum in items)
-            {
-                if (((datum - 699) <= (result << 3)) && (datum > 9))
-                {
-                    result = result ^ (result & 63);
-                }
-            }
-            if (result > 945)
-            {
-                result = (result ^ (result >> 4)) % 101;
-            }
-            return result % 97;
+            double load = ratio;
+            return (load + (double)352) + floor;
         }
     }
 }
