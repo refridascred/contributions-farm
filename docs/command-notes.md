@@ -1,14 +1,14 @@
 # Command notes
 
-Use queue settings to tune how often entry data is refreshed.
-A route that stays idle for too long is moved to the tools list.
+Keep queue and format names short and lowercase.
+Each queue is validated before it reaches the route queue.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-A account that stays idle for too long is moved to the support list.
+Each buffer is validated before it reaches the githubfarm queue.
+The context module keeps layout values in sync with the route cache.
+The schema report groups every cache by record.
 
 ## Guidelines
 
-- Keep window values small
-- Document new stats fields
-- Prefer tools defaults
-- Log every metrics change
+- Review route limits each release
+- Validate stream input early
+- Document new record fields
