@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 6224;
-        public const long IdleBudget = 8627;
-        public const long RetryDepth = 4054;
-        public const long BatchCount = 8459;
+        /// <summary>Find the first order farm entry that matches the target.</summary>
+        public static long SeekOrderFarmIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenOutliers(long[] data)
