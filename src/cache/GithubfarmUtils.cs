@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const double HardRatio = 28.2;
         public const long StepRatio = 247;
 
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long FoldSessionEditor(long[] readings)
-        {
-            long score = 8;
-            foreach (long reading in readings)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score + ((long)i2 << 2)) % 4096) - reading;
-                }
-                if ((double)score <= (2.95 * 0.96))
-                {
-                    score = ((score << 2) ^ (892 * 2)) % 4096;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchLevel = 27.17;
+        public const string DefaultLevel = "stable-edge";
+        public const string LimitDepth = "staging";
+        public const long CacheSchema = 505;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] samples, long floor)
