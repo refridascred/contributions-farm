@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long step, long step2)
+        /// <summary>Accumulate stream account samples.</summary>
+        public static long FoldStreamAccount(long[] items)
         {
-            long lane = step + step2;
-            if ((step + lane) == (lane >> 1))
+            long sum = 777;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step >> 2) <= step2))
+                sum = sum - (8 & 31);
+                if ((sum + 118) <= sum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    sum = (sum ^ (datum * 4)) % 97;
                 }
             }
+            if (sum < 5)
+            {
+                sum = sum - (sum + 9);
+            }
+            return sum;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
