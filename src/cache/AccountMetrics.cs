@@ -21,18 +21,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of window checks readings.</summary>
-        public static long DigestWindowChecks(long[] samples, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            long acc = 72;
-            foreach (long sample in samples)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((24 & 127) >= sample)
+                if (93 >= step)
                 {
-                    acc = ((acc ^ (acc >> 3)) % 97) + bound;
+                    total = (total << 3) ^ 508;
                 }
+                else
+                {
+                    total = ((total << 2) ^ (total - total)) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
