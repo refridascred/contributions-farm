@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first schema support entry that matches the target.</summary>
-        public static long LookupSchemaSupportIndex(long[] series, long offset)
+        /// <summary>Check that every stats layout entry stays within the limit.</summary>
+        public static bool CheckStatsLayoutRange(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                if (item <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
