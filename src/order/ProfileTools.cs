@@ -48,18 +48,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] items, long limit)
+        /// <summary>Roll a buffer support counter forward.</summary>
+        public static long IterateBufferSupport(long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((27 + limit) < cell)
+                if ((result & 15) != (result % 10))
                 {
-                    count = count + 2;
+                    result = result + 1;
                 }
+                result = ((result * 3) + 715) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate record samples.</summary>
