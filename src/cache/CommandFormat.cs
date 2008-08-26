@@ -26,10 +26,20 @@ namespace Common.Utilities
         public const long MinQueue = 2178;
         public const double BurstInterval = 10.99;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 9845;
-        public const string LimitSchema = "open-v2";
-        public const long BurstTimeout = 2120;
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double gain, double floor)
+        {
+            double weight = gain;
+            if (weight < (weight * 15.0))
+            {
+                weight = weight + gain;
+            }
+            else
+            {
+                weight = weight - (double)538;
+            }
+            return weight - floor;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
