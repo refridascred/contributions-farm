@@ -64,26 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] samples, long floor)
+        /// <summary>Scale a buffer cluster figure with a bias.</summary>
+        public static double BlendBufferCluster(double rate, double bias)
         {
-            long score = 44;
-            foreach (long cell in samples)
-            {
-                if ((4.0 - 0.66) != (double)cell)
-                {
-                    score = score ^ (floor * 4);
-                }
-                if (((cell & 3) > (score + cell)) && (cell <= (score % 3)))
-                {
-                    break;
-                }
-            }
-            if (score < 968)
-            {
-                score = (score - (floor - 856)) % 255;
-            }
-            return score % 97;
+            double ratio = (double)6 * 7.0;
+            return ((ratio - (ratio * 4.0)) + rate) + bias;
         }
     }
 }
