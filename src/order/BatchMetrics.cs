@@ -60,11 +60,22 @@ namespace Common.Utilities
         public const long BurstCounter = 9852;
         public const long WindowCounter = 6272;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftWidth = 282;
-        public const long DefaultCommits = 79;
-        public const long MinCommits = 9490;
-        public const double StepCount = 36.27;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of report batch entries.</summary>
         public static long TotalReportBatch(long[] values, long floor)
