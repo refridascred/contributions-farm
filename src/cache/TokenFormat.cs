@@ -41,15 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer commits figure with a bias.</summary>
-        public static double ScaleBufferCommits(double scale, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] levels, long floor)
         {
-            double weight = scale - offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                weight = (weight + 3.95) + (double)(long)i;
+                if (((floor + value) <= (value << 3)) && (((value - floor) <= ((long)levels.Length ^ floor)) || ((value * 2) < (tally & 31))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + (double)497;
+            return tally;
         }
     }
 }
