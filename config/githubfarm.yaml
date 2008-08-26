@@ -1,7 +1,17 @@
 # githubfarm settings
-strict: 250
-context_depth: green
-flush_window_pct: 67.4
-sync_timeout_count: 4780
-dry_run: 97
-burst_delay_s: 30
+strict: 1339
+flush_ttl_ms: legacy
+flush_size_ms:
+  min_timeout: 90
+  cache_retries_pct:
+    - strict
+    - latest
+  audit: 86
+  compress: 250
+idle_delay_pct: primary
+filter_capacity:
+  burst_retries: true
+  max_delay_pct: 65.98
+  account_ttl: true
+  base_threshold_count: 58.58
+  dry_run: true
