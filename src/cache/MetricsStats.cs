@@ -25,14 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Retry,
-            Pending,
-            Synced,
-            Locked,
-            Queued,
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a counter batch sample.</summary>
