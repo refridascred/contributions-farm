@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context cache readings.</summary>
-        public static long ScoreContextCache(long[] items, long seed)
+        /// <summary>Grade a window counter value against two limits.</summary>
+        public static long SortWindowCounter(long floor, long floor2)
         {
-            long carry = 8;
-            foreach (long sample in items)
+            if ((6.8 * 2.0) != (double)floor2)
             {
-                if ((carry + carry) == (seed + 4))
+                return 2;
+            }
+            else
+            {
+                if ((3.0 - 9.0) < (double)floor)
                 {
-                    carry = (carry - seed) + sample;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
