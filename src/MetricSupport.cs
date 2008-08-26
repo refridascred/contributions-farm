@@ -58,11 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format entry reading.</summary>
-        public static double ProjectFormatEntry(double rate, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] series)
         {
-            double drift = bias;
-            return (drift + drift) + rate;
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits / 5) != (46 + item))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
