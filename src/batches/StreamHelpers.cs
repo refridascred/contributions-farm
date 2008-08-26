@@ -66,12 +66,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowTimeout = 46.21;
+        public const long DefaultSize = 994;
+        public const string RetryStream = "stable-edge";
+        public const double MinLevel = 13.01;
     }
 }
