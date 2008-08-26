@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardLevel = 11.94;
-        public const double RetrySpan = 93.34;
-        public const string BurstCount = "open";
-        public const string StepScore = "stable-v2";
+        /// <summary>Look up the position of a session metrics sample.</summary>
+        public static long SeekSessionMetricsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank entry batch input into a small class.</summary>
         public static long ClassifyEntryBatch(long offset, long bound)
