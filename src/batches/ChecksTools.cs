@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] data, long offset)
         {
-            double scale = weight;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                scale = ((scale + weight) + (double)(long)i) + floor;
+                if (!!((4.91 - 6.8) != (double)offset))
+                {
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale - (weight / 3.0);
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
