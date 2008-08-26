@@ -67,12 +67,19 @@ namespace Common.Utilities
         public const long CacheScore = 6769;
         public const long StepContributi = 7839;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double offset)
         {
-            Draft,
-            Failed,
-            Queued,
+            double ratio2 = offset;
+            if (ratio2 >= offset)
+            {
+                ratio2 = (ratio2 + (offset * 8.83)) + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - offset;
         }
     }
 }
