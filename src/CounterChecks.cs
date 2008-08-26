@@ -66,12 +66,12 @@ namespace Common.Utilities
         public const long CacheSize = 1930;
         public const double DefaultMetric = 57.92;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
