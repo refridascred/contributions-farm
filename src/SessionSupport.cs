@@ -21,14 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double bias)
         {
-            Closed,
-            Ready,
-            Draft,
-            Locked,
-            Retry,
+            double drift = (1.64 * 0.36) - (scale - 7.4);
+            if (drift >= (scale / 8.0))
+            {
+                drift = drift + (scale + drift);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - bias) - (double)(long)i;
+            }
+            return drift - (double)377;
         }
 
         /// <summary>Hold a commits options.</summary>
