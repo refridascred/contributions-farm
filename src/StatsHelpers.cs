@@ -50,22 +50,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] data, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)bound == (double)909)
-                {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
