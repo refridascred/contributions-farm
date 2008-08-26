@@ -13,13 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long state = 7;
+            foreach (long cell in items)
+            {
+                if ((state + state) > (cell - cell))
+                {
+                    state = (state * 4) + (cell - (long)items.Length);
+                }
+                else
+                {
+                    state = (state ^ (cell >> 1)) % 65521;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
