@@ -16,12 +16,21 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 8168;
-        public const long MaxCluster = 2103;
-        public const long SoftSpan = 5793;
-        public const string BaseCluster = "primary-1";
-        public const string SoftCluster = "alpha-1";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values)
+        {
+            long carry = -81;
+            foreach (long entry in values)
+            {
+                carry = (carry * 3) + (entry + carry);
+                carry = carry - (976 * 5);
+            }
+            if (carry < 369)
+            {
+                carry = (carry - (22 - (long)values.Length)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long SeriesCache(long offset)
