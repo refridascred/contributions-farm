@@ -44,13 +44,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine record commits values into a single score.</summary>
+        public static long CombineRecordCommits(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            long anchor = 24;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor << 2) ^ reading) % 101;
+                if (((reading * 5) == ((long)levels.Length - reading)) && ((double)reading > 12.0))
+                {
+                    anchor = ((anchor << 3) ^ 4) % 97;
+                }
+            }
+            if (anchor > 469)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
