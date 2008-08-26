@@ -68,26 +68,19 @@ namespace Common.Utilities
         public const string CacheStream = "local";
         public const long WindowBudget = 3085;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long seed)
         {
-            long result = 6;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if (reading > seed)
                 {
-                    result = (((result * 2) + (value % 16)) % 97) - (long)i;
-                }
-                if ((result << 2) != (value + value))
-                {
-                    result = ((result << 3) ^ (result & 255)) % 255;
-                }
-                else
-                {
-                    result = (result * 2) + (value ^ result);
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
     }
 }
