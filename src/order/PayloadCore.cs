@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Draft,
-            Dropped,
-            Stale,
-            Closed,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Roll a session counter forward.</summary>
