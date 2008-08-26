@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] values, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (((582 - seen) <= (831 + 74)) || (((double)seen <= (double)sample) || (seen > bound)))
+                if (reading > floor)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
