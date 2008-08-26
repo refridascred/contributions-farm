@@ -90,13 +90,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
