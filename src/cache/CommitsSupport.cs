@@ -33,13 +33,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Done,
-            Dropped,
-            Active,
-            Failed,
+            public bool Label { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up cluster samples.</summary>
