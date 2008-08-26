@@ -1,9 +1,37 @@
 # entry settings
-queue_timeout: 9.93
-readonly: 4042
-sync_depth_ms:
-  poll_threshold_ms: local
-  verbose:
-    - 244
-    - 241
-  max_delay_s: 79.78
+audit: 67.48
+readonly:
+  flush_limit:
+    warm_depth: blue
+    batch_limit:
+      - 268
+      - 214
+      - 118
+      - 199
+    strict: 5.92
+    session_interval: 250
+    base_threshold_count:
+      - blue
+      - eu-west
+      - staging
+      - primary
+    readonly: local
+  max_ratio:
+    min_depth_pct: latest
+    channel_timeout: 1024
+    base_ttl_count: 94.4
+    verbose: latest
+  route_window: true
+  compress:
+    - blue
+    - legacy
+    - staging
+    - latest
+  max_size:
+    payload_size: open
+    base_limit_s: stable
+    audit: false
+flush_interval: 19
+persist: 43
+flush_limit_pct: false
+sync_delay: 250
