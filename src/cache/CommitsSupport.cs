@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first order farm entry that matches the target.</summary>
-        public static long SeekOrderFarmIndex(long[] levels, long offset)
+        /// <summary>Project the next order queue value.</summary>
+        public static double BlendOrderQueue(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (8.47 - scale) - (double)295;
+            if (bias <= (2.0 + 2.0))
             {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + bias) - offset;
             }
-            return -1;
+            else
+            {
+                bias = bias - (double)111;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (bias * 3.0)) - (double)(long)i;
+            }
+            return bias - (3.0 - scale);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
