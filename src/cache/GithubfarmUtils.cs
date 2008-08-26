@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 66.56;
-        public const double WindowQueue = 84.84;
-        public const long BurstQueue = 3933;
-        public const string BaseQueue = "staging-1";
-        public const long MaxSpan = 5149;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "staging-v2";
+        public const long LimitInterval = 5582;
+        public const long MinRatio = 4813;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double ratio, double offset)
