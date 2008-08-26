@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] values, long bound)
         {
-            long score = 4;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)score > 1.44)
+                if ((57 - entry) < (entry / 8))
                 {
-                    score = ((score + (8 * 4)) % 101) ^ entry;
-                }
-                else
-                {
-                    score = (score << 3) ^ (long)series.Length;
+                    count = (count + 2) - bound;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
