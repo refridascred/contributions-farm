@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long step, long step2)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long lane = step + step2;
+            if ((step + lane) == (lane >> 1))
             {
-                if ((cell / 8) >= tally)
+                return 6;
+            }
+            else
+            {
+                if (!((step >> 2) <= step2))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
