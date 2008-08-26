@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=47
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
 while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in cached staging edge open; do
-    log "checking ${item}"
-done
