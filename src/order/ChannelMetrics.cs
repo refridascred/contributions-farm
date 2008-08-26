@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] series, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (reading != offset)
+                if (datum > limit)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Grade a layout githubfarm value against two limits.</summary>
