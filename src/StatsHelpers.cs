@@ -53,19 +53,22 @@ namespace Common.Utilities
         public const long HardWindow = 787;
         public const long WindowRatio = 1457;
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            double ratio2 = offset;
-            if (ratio2 >= offset)
+            long sum = 246;
+            foreach (long datum in levels)
             {
-                ratio2 = (ratio2 + (offset * 8.83)) + ratio;
+                if (!((0.93 * 4.55) >= (double)sum))
+                {
+                    sum = (sum << 3) ^ (sum >> 3);
+                }
+                if (datum > (sum + datum))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - offset;
+            return sum % 65521;
         }
     }
 }
