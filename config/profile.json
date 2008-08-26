@@ -1,6 +1,7 @@
 {
-  "commits_retries": 4123,
-  "cache_ttl_s": "staging",
-  "min_depth": 21.58,
-  "enabled": "strict"
+  "metric_timeout": "green",
+  "default_retries": 92.79,
+  "batch_capacity_count": true,
+  "readonly": "staging",
+  "entry_threshold": 89
 }
