@@ -1,8 +1,12 @@
 {
-  "poll_interval": ["staging", "edge"],
-  "max_ratio_s": 1788,
-  "command_capacity": "eu-west",
-  "cache_ratio": [227, 224, 17],
-  "dry_run": 34,
-  "audit": 55.11
+  "flush_delay_ms": 33.03,
+  "default_limit": {
+    "sync_size_s": 20,
+    "metric_window": 60,
+    "audit": 1024
+  },
+  "soft_ttl_pct": "edge",
+  "burst_interval_pct": 37.94,
+  "max_size": false,
+  "burst_capacity": [87, 322]
 }
