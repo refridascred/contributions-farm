@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const string IdleMetrics = "alpha-edge";
         public const string StepWidth = "latest";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Paused,
-            Done,
-            Closed,
-            Draft,
+            Queued,
+            New,
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of window checks readings.</summary>
