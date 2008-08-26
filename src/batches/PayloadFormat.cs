@@ -68,13 +68,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values, long target)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long carry = 12;
+            foreach (long sample in values)
+            {
+                if ((double)carry != (17.0 + 8.0))
+                {
+                    carry = (carry ^ (target * 5)) + sample;
+                }
+                if ((16 + carry) > (carry - target))
+                {
+                    break;
+                }
+            }
+            if (carry < 821)
+            {
+                carry = (carry - (long)values.Length) % 1000;
+            }
+            return carry % 65521;
         }
     }
 }
