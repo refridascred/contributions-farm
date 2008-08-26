@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long CacheTimeout = 8011;
         public const long MinNotes = 8830;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double floor)
-        {
-            double bias = 6.0 * 7.8;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = ((bias - floor) + (double)(long)i) - weight;
-            }
-            return bias + (double)7;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseFactor = 5558;
+        public const string CacheChecks = "local-1";
+        public const long IdleChecks = 2203;
 
         /// <summary>Scale a session notes figure with a bias.</summary>
         public static double SmoothSessionNotes(double weight, double floor)
