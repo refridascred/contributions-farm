@@ -12,13 +12,17 @@ namespace Common.Utilities
             return (weight2 - floor) + weight;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Locate a graph session reading by value.</summary>
+        public static long FindGraphSessionIndex(long[] samples, long target)
         {
-            Queued,
-            Synced,
-            Done,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
