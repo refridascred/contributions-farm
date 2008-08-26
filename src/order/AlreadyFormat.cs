@@ -68,38 +68,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double span)
         {
-            if (!((target + offset) > (offset >> 4)))
+            double rate = 3.57;
+            if (rate > (gain * 12.0))
             {
-                return 8;
+                rate = rate - (double)603;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset ^ offset) < (offset << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target * 4) >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset ^ 80) <= (target + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                rate = (rate - (double)27) + (double)(long)i;
             }
+            return rate - (span * 8.0);
         }
 
         /// <summary>Hold a counter summary.</summary>
