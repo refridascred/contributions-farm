@@ -60,20 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] levels, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                state = state - (state << 1);
-                if ((seed & 1) > seed)
+                if (value != bound)
                 {
+                    valid = false;
                     break;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Fold a list of queue command readings.</summary>
