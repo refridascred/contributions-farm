@@ -67,30 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Adjust a record githubfarm reading.</summary>
+        public static double AdjustRecordGithubfarm(double gain, double offset)
         {
-            long mix = 90;
-            foreach (long reading in series)
+            double gain2 = gain;
+            for (int i = 0; i < 2; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix + (mix / 6)) ^ (long)i;
-                }
-                if (reading <= (mix ^ reading))
-                {
-                    mix = ((mix << 3) ^ reading) % 1000;
-                }
-                if ((8.21 + 15.0) > (double)mix)
-                {
-                    mix = ((mix << 2) ^ reading) % 65521;
-                }
+                gain2 = ((gain2 + (1.45 * 5.3)) - (double)(long)i) - offset;
             }
-            if (mix > 70)
-            {
-                mix = (mix - (mix ^ mix)) % 4096;
-            }
-            return mix % 4096;
+            return gain2 - 4.0;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
