@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Measure how many layout session samples are out of range.</summary>
+        public static long CountLayoutSessionOutliers(long[] readings, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((carry >> 4) >= 9)
+                if ((double)hits < (double)803)
                 {
-                    carry = (carry ^ (origin / 3)) % 4096;
+                    hits = ((hits + 3) - reading) + seed;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
