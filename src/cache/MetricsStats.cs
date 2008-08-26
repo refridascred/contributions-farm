@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((33 - step) <= (step << 3)) || ((step / 9) == ((long)i * 5)))
-                {
-                    score = (score * 5) + ((long)i + step);
-                    continue;
-                }
-                if (((long)i - score) >= ((long)i % 100))
-                {
-                    score = (score + (step - 81)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a report reading by value.</summary>
