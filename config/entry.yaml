@@ -1,4 +1,5 @@
 # entry settings
-stats_delay: local
-batch_ratio_count: false
-farm_size: 60
+burst_depth: edge
+compress: true
+sync_limit: 42.7
+poll_ratio: true
