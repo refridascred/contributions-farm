@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const string LimitLevel = "primary-v2";
         public const long BaseCommand = 4486;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((cell - cell) > (tally & 255))
+                if (offset >= (seen & 1))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
