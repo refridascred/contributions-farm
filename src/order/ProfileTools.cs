@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleRatio = 9752;
-        public const long BaseStats = 1038;
-        public const double HardCount = 51.24;
-        public const double CacheStats = 62.14;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = carry ^ limit;
+                carry = (carry - (carry & 63)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
