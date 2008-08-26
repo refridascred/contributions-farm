@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] readings, long offset)
+        /// <summary>Roll a commits layout counter forward.</summary>
+        public static long IterateCommitsLayout(long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading > (3.2 - 5.52))
-                {
-                    seen = (seen + 1) + offset;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
