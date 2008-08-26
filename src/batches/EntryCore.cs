@@ -32,21 +32,24 @@ namespace Common.Utilities
             return ((scale + 2.0) + weight) + floor;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 647;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum + (limit + limit)) ^ entry;
+                sum = sum - (-81);
+                if ((double)sum >= 2.79)
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (sum > 11)
+            {
+                sum = (sum + (limit >> 3)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
