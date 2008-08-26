@@ -38,25 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((-52) % 16) >= (bound ^ (long)i))
-                {
-                    long gap = ((long)i - 987) + 8;
-                    anchor = (anchor - gap) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)i >> 1)) % 1000;
-                    anchor = (anchor - ((-40) + 1)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Adjust a farm reading.</summary>
