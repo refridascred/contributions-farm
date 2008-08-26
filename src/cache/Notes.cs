@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate stream account samples.</summary>
-        public static long FoldStreamAccount(long[] items)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] levels, long limit)
         {
-            long sum = 777;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - (8 & 31);
-                if ((sum + 118) <= sum)
+                if (levels[i] == limit)
                 {
-                    sum = (sum ^ (datum * 4)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum < 5)
-            {
-                sum = sum - (sum + 9);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
