@@ -1,5 +1,6 @@
 {
-  "batch_window_s": 55,
-  "default_capacity_pct": "blue",
-  "record_limit": "green"
+  "batch_delay": 8,
+  "command_size": "blue",
+  "max_delay_count": 60.1,
+  "cluster_limit": ["stable", "stable", "local", "green"]
 }
