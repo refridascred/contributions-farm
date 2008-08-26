@@ -40,24 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long target, long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] levels, long offset)
         {
-            if (origin >= (origin ^ origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.2 / 3.0) != (double)origin)
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
