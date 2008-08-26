@@ -1,30 +1,8 @@
 # githubfarm settings
-account_ratio: eu-west
-warm_size:
-  poll_retries_count:
-    max_capacity: 93
-    account_threshold: 5
-    dry_run: standard
-    token_ttl: 500
-    buffer_delay: fallback
-    readonly: false
-  session_delay: 100
-  verbose: stable
-  compress:
-    cache_capacity_s: staging
-    batch_ratio_s: 5.16
-    idle_limit_pct: 37.4
-base_size:
-  queue_interval: true
-  batch_retries_count: 3943
-  default_size: 2469
-  flush_delay_ms: 30
-retry_threshold:
-  hard_ratio_count: 100
-  default_size: 1024
-  min_size_count: latest
-token_depth:
-  hard_capacity: 6896
-  hard_window_s: false
-  cache_retries: 6729
-  idle_capacity_s: 2.31
+token_window: 1627
+schema_depth: 97
+checks_threshold:
+  - staging
+  - edge
+  - latest
+  - stable
