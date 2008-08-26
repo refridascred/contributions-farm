@@ -55,19 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] levels, long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a record header.</summary>
