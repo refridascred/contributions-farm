@@ -73,11 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] samples, long offset)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen >> 1) >= (item >> 5))
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
