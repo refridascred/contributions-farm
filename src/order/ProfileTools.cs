@@ -24,19 +24,27 @@ namespace Common.Utilities
             return bias2 - 7.77;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long mark = 319;
+            foreach (long item in readings)
             {
-                if (entry < seed)
+                mark = mark ^ ((long)readings.Length >> 5);
+                if ((mark % 64) <= (mark - mark))
                 {
-                    flag = false;
-                    break;
+                    mark = mark - item;
+                }
+                else
+                {
+                    mark = (mark * 4) + offset;
                 }
             }
-            return flag;
+            if (mark > 809)
+            {
+                mark = (mark << 2) ^ offset;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a session payload reading.</summary>
