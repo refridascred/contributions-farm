@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload batch samples are out of range.</summary>
-        public static long AuditPayloadBatchMatches(long[] series, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell > (count * 3)) && ((cell - count) >= step))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Idle,
         }
     }
 }
