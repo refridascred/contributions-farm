@@ -31,18 +31,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long MeasureFarmMetricsGaps(long[] samples)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally + (long)samples.Length) >= (36 ^ 25))
-                {
-                    tally = (tally + 3) - value;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
