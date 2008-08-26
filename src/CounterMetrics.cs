@@ -34,14 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] data)
         {
-            Queued,
-            Pending,
-            Ready,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally + tally) >= (tally ^ tally))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
