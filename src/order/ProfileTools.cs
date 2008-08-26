@@ -52,12 +52,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            New,
-            Closed,
-            Draft,
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a token record value against two limits.</summary>
