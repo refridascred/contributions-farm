@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleTimeout = 22.83;
-        public const long DefaultWidth = 4850;
-        public const long MinCommand = 313;
-        public const long MinDepth = 9988;
-        public const long SoftDepth = 9863;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "local-v2";
+        public const long MaxSpan = 9874;
+        public const string IdleSize = "strict-v2";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] levels, long seed)
