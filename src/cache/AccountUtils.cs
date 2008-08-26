@@ -24,17 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already command reading by value.</summary>
-        public static long LocateAlreadyCommandIndex(long[] data, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Active,
+            Pending,
+            Synced,
         }
     }
 }
