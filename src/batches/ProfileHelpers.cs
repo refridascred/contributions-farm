@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading / 7) <= (3 + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "local";
+        public const long SoftRecord = 278;
+        public const double WindowRecord = 34.98;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] samples, long bound)
