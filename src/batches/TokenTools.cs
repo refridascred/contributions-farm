@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Active,
-            Failed,
-            Stale,
-            Ready,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
