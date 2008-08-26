@@ -47,15 +47,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a session payload reading.</summary>
-        public static double BlendSessionPayload(double weight, double offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double bias = (double)(308 / 7);
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias + 4.74) - (double)(long)i) + offset;
-            }
-            return bias + (weight - weight);
+            Queued,
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
