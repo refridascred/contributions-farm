@@ -33,23 +33,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a order stream counter forward.</summary>
-        public static long DeriveOrderStream(long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((long)i + result) >= (6 - 43)) && (785 <= (limit & 127)))
-                {
-                    result = ((result * 5) + ((long)i - limit)) % 1000;
-                }
-                if (!((result ^ result) < (603 / 3)))
-                {
-                    result = (result - limit) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                state = state + (state / 8);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
     }
 }
