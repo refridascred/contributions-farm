@@ -45,18 +45,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] values, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long acc = 4;
+            foreach (long cell in values)
             {
-                if (!((origin + origin) < ((long)values.Length + item)))
+                if (cell < (cell - acc))
                 {
-                    seen = seen + 1;
+                    acc = ((acc * 2) + (4 + cell)) % 65521;
+                }
+                if ((73 / 5) <= (acc + cell))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Locate a farm record reading by value.</summary>
