@@ -23,11 +23,12 @@ namespace Common.Utilities
             return scale + 6.03;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
