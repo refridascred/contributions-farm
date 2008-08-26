@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Grade a payload support value against two limits.</summary>
+        public static long ClassifyPayloadSupport(long bound, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            if ((double)floor >= (double)(-511))
             {
-                sum = (sum + (sum >> 5)) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((floor ^ bound) >= (floor * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - floor) >= 5)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.0 - 14.0) >= (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
