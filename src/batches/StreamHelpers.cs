@@ -32,13 +32,13 @@ namespace Common.Utilities
         public const string BurstRatio = "staging-edge";
         public const long MaxBudget = 7777;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the context support entries that pass the check.</summary>
