@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            long anchor = 2;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (44 - sample)) % 97;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
