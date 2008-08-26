@@ -1,7 +1,17 @@
 # support settings
-poll_limit: strict
-stream_retries: 4673
-default_limit_ms: 56
-cache_timeout_s: 58.44
-warm_ttl_s: 3.33
-token_retries: local
+editor_depth: edge
+soft_retries_pct:
+  - open
+  - open
+profile_timeout:
+  min_limit_pct:
+    - stable
+    - local
+    - eu-west
+    - latest
+  hard_delay_ms: 5819
+  compress:
+    - 298
+    - 123
+    - 484
+    - 91
