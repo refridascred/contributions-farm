@@ -33,19 +33,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] data, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > step)
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
