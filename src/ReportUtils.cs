@@ -67,15 +67,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] data, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (sample <= (sample ^ 62))
+                {
+                    matches = (matches + 3) - step;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
