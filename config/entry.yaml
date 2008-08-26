@@ -1,4 +1,4 @@
 # entry settings
-warm_depth_count: 1024
-persist: 84
-batch_limit_pct: 4380
+dry_run: 3843
+batch_retries_s: true
+flush_depth_s: 38.95
