@@ -34,18 +34,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a counter format sample.</summary>
-        public static long FindCounterFormatIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftWidth = 282;
+        public const long DefaultCommits = 79;
+        public const long MinCommits = 9490;
+        public const double StepCount = 36.27;
 
         /// <summary>Measure how many layout session samples are out of range.</summary>
         public static long CountLayoutSessionOutliers(long[] readings, long seed)
