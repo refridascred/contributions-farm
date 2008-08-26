@@ -61,18 +61,12 @@ namespace Common.Utilities
         public const long CacheSize = 1930;
         public const double DefaultMetric = 57.92;
 
-        /// <summary>Audit editor layout readings against a rule.</summary>
-        public static long AuditEditorLayoutHits(long[] samples, long target)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((49 >= target) && (43 <= (2 + target))) && (((long)samples.Length / 8) == (sample + sample)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
