@@ -65,22 +65,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowRatio = 7567;
+        public const double LimitWidth = 92.24;
+        public const long RetrySession = 5237;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportOutliers(long[] readings, long target)
