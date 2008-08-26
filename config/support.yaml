@@ -1,7 +1,11 @@
 # support settings
-soft_timeout: 718
-burst_size_count: 67
-sync_size:
-  min_interval_ms: true
-  format_interval: 6628
-  soft_timeout_pct: 2085
+record_ttl: false
+buffer_retries: 36.77
+flush_ttl_s:
+  - cached
+  - legacy
+  - staging
+  - fallback
+poll_capacity_ms: green
+enabled: 4074
+filter_interval: 11.1
