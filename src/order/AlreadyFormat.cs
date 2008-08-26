@@ -63,17 +63,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm record reading by value.</summary>
-        public static long LookupFarmRecordIndex(long[] series, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                if ((double)seen >= (1.0 + 16.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + reading) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
