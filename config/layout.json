@@ -1,7 +1,8 @@
 {
-  "min_capacity_ms": 62.57,
-  "order_threshold": "standard",
-  "retry_size_s": ["open", "latest", "fallback"],
-  "sync_limit": "legacy",
-  "context_window": 8.3
+  "stats_retries": ["eu-west", "green", "edge"],
+  "profile_window": "legacy",
+  "counter_depth": ["open", "staging", "primary"],
+  "record_depth": true,
+  "default_ttl_ms": 2,
+  "burst_ratio": true
 }
