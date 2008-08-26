@@ -1,7 +1,7 @@
-id,active,region,ratio,token
-1,437,staging,536,379
-2,377,19.25,761,80
-3,710,571,staging,16.09
-4,eu-west,640,18.3,11.63
-5,edge,2.72,136,fallback
-6,strict,418,571,358
+id,ratio,weight
+1,87.09,14.25
+2,blue,79.18
+3,627,108
+4,latest,fallback
+5,290,535
+6,372,818
