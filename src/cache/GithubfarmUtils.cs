@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 1897;
-        public const double IdleCluster = 93.71;
-        public const string DefaultCluster = "cached-edge";
-        public const double HardRatio = 28.2;
-        public const long StepRatio = 247;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSpan = 2850;
+        public const long BaseLevel = 4790;
+        public const double RetryOrder = 43.0;
+        public const string BaseOrder = "strict";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BatchLevel = 27.17;
