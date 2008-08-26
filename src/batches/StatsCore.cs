@@ -23,18 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 71.62;
+        public const string LimitTimeout = "strict-v2";
+        public const long HardLevel = 3680;
+        public const double HardRatio = 79.98;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
