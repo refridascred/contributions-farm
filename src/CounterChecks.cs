@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics context samples are out of range.</summary>
-        public static long TallyMetricsContextGaps(long[] samples, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if ((3.3 <= (double)origin) && (origin <= (origin - origin)))
             {
-                if ((((limit % 100) > (tally - tally)) && ((tally - tally) <= (reading - limit))) && ((double)reading >= (7.07 * 0.3)))
+                return 1;
+            }
+            else
+            {
+                if ((offset + origin) <= offset)
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (!((0.32 * 8.46) == (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin < (origin & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a filter header.</summary>
