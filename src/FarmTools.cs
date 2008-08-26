@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] levels, long offset)
-        {
-            long result = 61;
-            foreach (long datum in levels)
-            {
-                result = ((result ^ datum) % 101) + offset;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "local-edge";
+        public const double BatchBudget = 48.4;
+        public const long RetryDepth = 5193;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] items, long offset)
