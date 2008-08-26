@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long seed)
+        /// <summary>Validate profile layout readings against a bound.</summary>
+        public static bool ValidateProfileLayoutRange(long[] data, long floor)
         {
-            long span = step ^ seed;
-            if (step >= (813 + 7))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (span > (step - step))
+                if (reading < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a record reading.</summary>
