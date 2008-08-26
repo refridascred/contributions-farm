@@ -62,11 +62,19 @@ namespace Common.Utilities
         public const double MinInterval = 15.24;
         public const long BaseChecks = 4464;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data)
         {
-            double drift = 6.0;
-            return (drift + (bias / 6.0)) + weight;
+            long sum = 7;
+            foreach (long reading in data)
+            {
+                sum = sum - (reading + (-281));
+            }
+            if (sum > 0)
+            {
+                sum = (sum << 3) ^ (sum / 2);
+            }
+            return sum % 65521;
         }
     }
 }
