@@ -23,13 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Queued,
             Retry,
-            Closed,
-            Stale,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
