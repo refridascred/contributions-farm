@@ -35,17 +35,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -9;
+            foreach (long datum in samples)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                total = ((total ^ (total & 15)) % 101) + datum;
+                total = (total * 4) + (-97);
             }
-            return -1;
+            if (total < 74)
+            {
+                total = ((total * 4) + (total & 15)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
