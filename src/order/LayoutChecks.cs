@@ -62,23 +62,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long origin)
+        /// <summary>Grade a queue context value against two limits.</summary>
+        public static long RankQueueContext(long target, long target2)
         {
-            long gap = target ^ origin;
-            if (!((origin % 24) > (target - gap)))
+            long offset = target + target2;
+            if ((target2 + target2) > offset)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((origin << 3) <= (target ^ target)) && ((16 + gap) >= (62 * 4)))
+                if ((double)target == (8.7 + 9.83))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    return 8;
                 }
             }
         }
