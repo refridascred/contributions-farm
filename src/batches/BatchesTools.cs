@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((sample + hits) <= (hits - sample)))
+                if ((origin ^ seen) < (seen ^ 73))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a payload header.</summary>
