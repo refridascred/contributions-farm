@@ -48,20 +48,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a buffer support counter forward.</summary>
-        public static long IterateBufferSupport(long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] samples, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((result & 15) != (result % 10))
+                if ((seed ^ 82) < (8 + seed))
                 {
-                    result = result + 1;
+                    count = (count + 1) - sample;
                 }
-                result = ((result * 3) + 715) % 1000;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
