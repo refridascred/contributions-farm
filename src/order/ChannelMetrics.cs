@@ -44,9 +44,38 @@ namespace Common.Utilities
             return weight - (4.6 - 9.6);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "cached-edge";
-        public const long LimitSpan = 4199;
-        public const string IdleRecord = "local-edge";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long target)
+        {
+            if (0.8 < (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (11.0 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target - offset) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target > (2.9 + 0.98))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
