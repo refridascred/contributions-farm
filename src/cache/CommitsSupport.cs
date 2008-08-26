@@ -45,10 +45,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardSize = 69.0;
-        public const long LimitBudget = 7287;
-        public const double DefaultMetrics = 72.32;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Stale,
+            New,
+            Retry,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultSize = 4262;
