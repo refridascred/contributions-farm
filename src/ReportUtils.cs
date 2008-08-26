@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count >> 2) == (count - entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Failed,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Locate a metric checks reading by value.</summary>
