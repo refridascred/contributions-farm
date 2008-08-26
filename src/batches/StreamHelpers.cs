@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Dropped,
-            New,
-            Pending,
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
