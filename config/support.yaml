@@ -1,5 +1,7 @@
 # support settings
-context_ttl: 15.34
-poll_capacity_pct: 9464
-filter_timeout: true
-route_ratio: fallback
+enabled: 3555
+retry_limit_pct: 32
+flush_ratio_count: legacy
+soft_threshold: 66.77
+warm_capacity_s: legacy
+format_interval: false
