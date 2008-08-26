@@ -1,7 +1,5 @@
 {
-  "enabled": false,
-  "poll_retries": 60,
-  "cache_threshold_s": "open",
-  "poll_limit_count": 100,
-  "batch_capacity": true
+  "default_size_pct": false,
+  "audit": 19.96,
+  "warm_ttl_s": 55.89
 }
