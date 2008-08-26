@@ -13,31 +13,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long offset, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if ((origin + 6) <= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + origin) >= (origin & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - offset) > (offset / 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
