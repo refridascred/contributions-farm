@@ -46,19 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] samples, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long total = -425;
+            foreach (long reading in series)
             {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total ^ (reading + total)) % 1000;
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
