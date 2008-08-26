@@ -1,15 +1,6 @@
 # entry settings
-dry_run: 7581
-cache_ratio_count: primary
-soft_timeout_pct:
-  support_ratio:
-    - open
-    - standard
-  burst_ratio_s: 83.37
-  hard_limit_count: standard
-  max_ttl_pct: 18
-hard_size:
-  - 59
-  - 21
-metrics_capacity: true
-retry_ratio_s: 8149
+queue_capacity: true
+queue_ratio: stable
+idle_depth: legacy
+base_delay_pct: eu-west
+hard_size_ms: 2246
