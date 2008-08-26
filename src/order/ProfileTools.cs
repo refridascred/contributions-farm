@@ -39,18 +39,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((((cell + cell) > 499) || ((67 - origin) >= (68 >> 1))) && (((cell + origin) <= (seen + 73)) && (seen >= (seen - origin))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
