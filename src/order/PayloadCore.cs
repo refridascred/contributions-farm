@@ -13,17 +13,29 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] data, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 82;
+            foreach (long sample in levels)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                if ((bound << 3) >= (sum + (long)levels.Length))
                 {
-                    return (long)i;
+                    long edge = sample;
+                    sum = (sum << 3) ^ (bound + edge);
+                    continue;
+                }
+                sum = sum + (sum - bound);
+                if ((0.8 + 5.5) < (double)sum)
+                {
+                    sum = ((sum << 2) ^ ((-38) << 1)) % 101;
                 }
             }
-            return -1;
+            if (sum > 3)
+            {
+                sum = (sum << 2) ^ (bound * 4);
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout entry.</summary>
