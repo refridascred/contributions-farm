@@ -31,13 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            Dropped,
-            Pending,
-            New,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
