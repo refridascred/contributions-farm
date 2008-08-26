@@ -35,15 +35,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long result = 11;
-            foreach (long datum in readings)
+            long total = 245;
+            foreach (long datum in values)
             {
-                result = (((result << 2) ^ (344 + 8)) % 101) - datum;
+                total = ((total << 3) ^ (total ^ total)) ^ datum;
             }
-            return result % 4096;
+            if (total > (-69))
+            {
+                total = ((total << 3) ^ (321 >> 5)) % 65521;
+            }
+            return total % 1000;
         }
     }
 }
