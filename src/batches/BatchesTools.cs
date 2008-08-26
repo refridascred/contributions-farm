@@ -34,9 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7208;
-        public const long MinEntry = 2270;
-        public const string MaxEntry = "primary-v2";
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state + ((long)i & 127)) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = (((state * 4) + seed) % 1000) - (long)i2;
+                    state = (state - (state + seed)) % 255;
+                }
+                state = (state + (39 ^ 126)) % 4096;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
