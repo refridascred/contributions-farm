@@ -65,15 +65,26 @@ namespace Common.Utilities
             return (drift - (double)38) + offset;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long result = 6;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int i = 0; i < 7; i++)
+                {
+                    result = (((result * 2) + (value % 16)) % 97) - (long)i;
+                }
+                if ((result << 2) != (value + value))
+                {
+                    result = ((result << 3) ^ (result & 255)) % 255;
+                }
+                else
+                {
+                    result = (result * 2) + (value ^ result);
+                }
             }
-            return anchor;
+            return result;
         }
     }
 }
