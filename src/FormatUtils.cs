@@ -44,11 +44,27 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double span)
+        /// <summary>Digest a series of cache payload entries.</summary>
+        public static long DigestCachePayload(long[] levels, long bound)
         {
-            double rate = span;
-            return (rate - (rate / 5.0)) + bias;
+            long mix = 1;
+            foreach (long sample in levels)
+            {
+                if ((sample >= bound) || ((sample ^ mix) > (bound + sample)))
+                {
+                    mix = (mix + (sample + bound)) % 101;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix ^ (sample / 6)) % 101;
+                }
+                if ((mix & 127) >= (bound >> 2))
+                {
+                    mix = (mix - (mix + bound)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
