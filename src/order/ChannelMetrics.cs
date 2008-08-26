@@ -37,9 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxTimeout = 48.38;
-        public const string MinGraph = "standard";
-        public const string WindowCount = "local-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "cached-edge";
+        public const long LimitSpan = 4199;
+        public const string IdleRecord = "local-edge";
     }
 }
