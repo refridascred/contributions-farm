@@ -6,10 +6,6 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard legacy staging; do
-    log "checking ${item}"
-done
-
 mode="${1:-local}"
 case "${mode}" in
     primary)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in staging fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
