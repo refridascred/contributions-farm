@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long DigestFarmNotes(long[] levels)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long mix = 3;
-            foreach (long entry in levels)
-            {
-                mix = (mix ^ (entry >> 4)) % 101;
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
