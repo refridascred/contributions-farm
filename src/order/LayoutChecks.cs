@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of route payload readings.</summary>
-        public static long PairRoutePayloadCount(long[] values)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
