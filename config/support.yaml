@@ -1,23 +1,17 @@
 # support settings
-base_window_s: 1024
-retry_interval_s:
-  - legacy
-  - standard
-sync_depth_ms: staging
-max_delay_pct:
-  filter_ratio: fallback
-  stats_ratio: 62.62
-  token_delay: 500
-  hard_ttl_s: 5.03
-  verbose: fallback
-max_limit_count: fallback
-buffer_interval:
-  hard_delay_pct: true
-  verbose:
-    - local
-    - latest
-    - eu-west
-    - fallback
-  cache_limit_count: open
-  farm_ttl: 26.29
-  warm_threshold_pct: stable
+min_limit_count: 9658
+githubfarm_limit: 84.47
+flush_ratio_count: false
+hard_threshold_pct:
+  verbose: 64
+  compress:
+    cache_interval_pct:
+      - legacy
+      - stable
+    cache_ratio_pct: 9910
+    persist: legacy
+    stream_ratio: 26
+    layout_delay: 1024
+    warm_capacity_s: false
+  context_capacity: stable
+warm_window_count: 500
