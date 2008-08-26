@@ -55,22 +55,15 @@ namespace Common.Utilities
             return ((ratio2 - (double)20) + ratio) + span;
         }
 
-        /// <summary>Audit record format readings against a rule.</summary>
-        public static long MeasureRecordFormatMatches(long[] items, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)entry < (6.5 + 7.12)) || ((hits - 427) <= hits))
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
