@@ -44,26 +44,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of metric schema readings.</summary>
-        public static long FoldMetricSchema(long[] data)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            long state = 672;
-            foreach (long reading in data)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state + state) % 65521) + (long)i;
-                }
-                if ((18.0 - 0.11) >= (double)reading)
-                {
-                    state = (state << 2) ^ (state - state);
-                }
-                else
-                {
-                    state = (state ^ (7 % 12)) % 255;
-                }
+                carry = carry - bound;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
     }
 }
