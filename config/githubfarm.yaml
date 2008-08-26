@@ -1,21 +1,4 @@
 # githubfarm settings
-token_interval: 6
-dry_run: false
-idle_ratio_ms:
-  min_ttl_ms:
-    soft_window_s: 75.15
-    warm_interval_count: legacy
-    window_interval:
-      - open
-      - strict
-      - local
-      - stable
-    base_capacity: 89.64
-  dry_run: local
-  report_size: standard
-readonly:
-  - 380
-  - 271
-  - 302
-hard_size_pct: 44.02
-profile_depth: 100
+soft_size_count: 9033
+flush_ratio_s: true
+sync_depth_count: 3505
