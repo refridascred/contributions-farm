@@ -80,39 +80,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long cur = seed + origin;
-            if ((seed & 127) <= (seed - 515))
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                mark = mark ^ offset;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin & 63) < (684 + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((5.36 / 3.0) >= (double)cur) && ((1.18 + 8.0) > (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((529 % 12) <= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
