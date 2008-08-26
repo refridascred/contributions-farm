@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] data, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Active,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Grade a layout githubfarm value against two limits.</summary>
