@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Match up stream samples.</summary>
