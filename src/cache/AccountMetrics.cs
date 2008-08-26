@@ -67,22 +67,19 @@ namespace Common.Utilities
         public const long CacheQueue = 3135;
         public const long StepRatio = 3572;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] data, long offset)
         {
-            long acc = 25;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((value << 2) >= (acc ^ value))
+                if (value > offset)
                 {
-                    acc = acc - (value - acc);
-                }
-                else
-                {
-                    acc = acc ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
