@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Audit buffer githubfarm readings against a rule.</summary>
+        public static long TallyBufferGithubfarmOutliers(long[] series)
         {
-            Paused,
-            Failed,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen % 97) < (seen + seen))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
