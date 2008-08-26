@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                total = total + (bound * 4);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepDepth = 4596;
+        public const long BurstOrder = 7646;
+        public const long RetrySpan = 1775;
+        public const long MinOrder = 4140;
+        public const string LimitOrder = "legacy-edge";
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
