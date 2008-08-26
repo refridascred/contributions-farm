@@ -39,18 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] items, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)offset != (14.0 * 9.36))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Locked,
+            Draft,
+            New,
         }
     }
 }
