@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 4) + (score + origin)) % 101;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the command mode values.</summary>
