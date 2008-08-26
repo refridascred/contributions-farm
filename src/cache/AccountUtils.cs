@@ -17,15 +17,25 @@ namespace Common.Utilities
         public const long IdleScore = 191;
         public const long WindowBudget = 3847;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long step2 = limit ^ step;
+            if ((step * 5) > step2)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((limit - 48) > (step + step2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
