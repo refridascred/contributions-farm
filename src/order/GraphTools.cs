@@ -72,11 +72,10 @@ namespace Common.Utilities
         public const double MinTimeout = 53.33;
         public const long LimitContributi = 5499;
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double span)
-        {
-            double weight = 8.3;
-            return ((weight + (weight / 3.0)) + scale) + span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftScore = "stable-edge";
+        public const long BatchFactor = 4525;
+        public const long MaxGithubfarm = 9168;
+        public const double BurstGithubfarm = 51.33;
     }
 }
