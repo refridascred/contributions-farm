@@ -30,12 +30,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Stale,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 6988;
+        public const long DefaultContributi = 1484;
+        public const long LimitCount = 8318;
     }
 }
