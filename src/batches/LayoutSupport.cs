@@ -33,38 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long bound, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] items, long step)
         {
-            if (((91 + bound) == (step ^ step)) && ((334 + bound) > (step >> 1)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 3) != (step % 2))
+                if (!((9 << 3) == (entry + step)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound * 3) >= (bound + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.46 * 7.1) == (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many route cluster samples are out of range.</summary>
