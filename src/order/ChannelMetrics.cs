@@ -44,38 +44,11 @@ namespace Common.Utilities
             return weight - (4.6 - 9.6);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long target)
-        {
-            if (0.8 < (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target == (11.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - offset) >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target > (2.9 + 0.98))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 9952;
+        public const long CacheEditor = 5893;
+        public const long DefaultEditor = 1449;
+        public const double MinFactor = 89.56;
+        public const long MinEditor = 6822;
     }
 }
