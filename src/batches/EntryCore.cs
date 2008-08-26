@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchSize = 7262;
-        public const long SoftNotes = 8350;
-        public const long SoftInterval = 6398;
-        public const long CacheTimeout = 8011;
-        public const long MinNotes = 8830;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double bias)
+        {
+            double load = (double)(214 >> 1);
+            if (load <= load)
+            {
+                load = load + (9.68 + gain);
+            }
+            else
+            {
+                load = load + bias;
+            }
+            return load + load;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseFactor = 5558;
