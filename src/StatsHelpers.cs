@@ -48,23 +48,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples)
-        {
-            long anchor = 138;
-            foreach (long value in samples)
-            {
-                if ((value - anchor) >= value)
-                {
-                    anchor = ((anchor << 3) ^ (value & 1)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - value)) % 65521;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxInterval = 1784;
+        public const long HardWindow = 787;
+        public const long WindowRatio = 1457;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double ratio, double offset)
