@@ -1,8 +1,18 @@
 {
-  "checks_window": "fallback",
-  "base_threshold_pct": "open",
-  "hard_interval_pct": false,
-  "default_retries": [331, 473, 98, 123],
-  "warm_ratio_s": 1024,
-  "soft_size_count": 95.73
+  "schema_window": 60,
+  "min_ratio_ms": 56.27,
+  "warm_threshold": {
+    "min_limit_s": "local",
+    "poll_size": true,
+    "base_timeout_s": [220, 362],
+    "persist": true,
+    "flush_interval": 30,
+    "default_ttl_ms": {
+      "already_timeout": 91,
+      "verbose": 5379,
+      "account_depth": 2255,
+      "layout_capacity": "stable"
+    }
+  },
+  "flush_ttl": false
 }
