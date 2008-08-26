@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] data, long floor)
         {
-            double gain = (double)(6 >> 1);
-            if (gain > (rate + floor))
+            long acc = 70;
+            foreach (long entry in data)
             {
-                gain = gain + rate;
+                acc = ((acc * 5) + entry) % 4096;
             }
-            for (int i = 0; i < 6; i++)
+            if (acc < 44)
             {
-                gain = gain - (double)(long)i;
+                acc = (acc * 2) + floor;
             }
-            return gain + floor;
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
