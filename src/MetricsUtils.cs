@@ -23,14 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 8442;
+        public const string BurstChannel = "primary-edge";
+        public const long MinChannel = 5310;
+        public const long RetryChannel = 9423;
 
         /// <summary>Find the first counter farm entry that matches the target.</summary>
         public static long LocateCounterFarmIndex(long[] levels, long step)
