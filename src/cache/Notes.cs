@@ -49,17 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first layout window entry that matches the target.</summary>
-        public static long FindLayoutWindowIndex(long[] data, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -595;
+            foreach (long sample in levels)
             {
-                if (data[i] >= bound)
+                if ((mark + sample) > 441)
                 {
-                    return (long)i;
+                    mark = (mark * 3) + (mark - sample);
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
