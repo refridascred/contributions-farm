@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double ratio, double floor)
+        /// <summary>Combine metrics route values into a single score.</summary>
+        public static long TallyMetricsRoute(long[] values, long target)
         {
-            double load = ratio;
-            return (load + (double)352) + floor;
+            long sum = 624;
+            foreach (long value in values)
+            {
+                if ((value + value) > (value - sum))
+                {
+                    sum = (sum << 3) ^ (sum - target);
+                }
+            }
+            return sum;
         }
     }
 }
