@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const double MinCache = 88.66;
         public const long CacheTimeout = 8235;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 19)
+                    if ((items[i] + items[j]) < 18)
                     {
                         count = count + 1;
                     }
