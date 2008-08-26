@@ -35,12 +35,14 @@ namespace Common.Utilities
         public const double StepCount = 73.12;
         public const string BaseLevel = "staging-edge";
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            Idle,
+            New,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the commits mode values.</summary>
