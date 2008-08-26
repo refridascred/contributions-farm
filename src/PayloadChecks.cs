@@ -78,17 +78,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first stats channel entry that matches the target.</summary>
-        public static long FindStatsChannelIndex(long[] items, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
