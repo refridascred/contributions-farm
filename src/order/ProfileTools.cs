@@ -19,22 +19,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long bound)
         {
-            long acc = 2;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell < (cell + 238)) && (acc >= (cell << 1)))
+                if (readings[i] == bound)
                 {
-                    acc = (acc - cell) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc < (-38))
-            {
-                acc = acc ^ 4;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
