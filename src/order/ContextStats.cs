@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long limit, long limit2)
+        /// <summary>Locate a payload notes reading by value.</summary>
+        public static long FindPayloadNotesIndex(long[] items, long offset)
         {
-            if ((limit >> 4) <= (limit - limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit2) > (limit % 7))
+                if (items[i] == offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (743 <= (limit + 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
