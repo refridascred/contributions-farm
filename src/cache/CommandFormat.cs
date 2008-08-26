@@ -27,11 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowTimeout = 4542;
-        public const long BatchDepth = 4626;
-        public const long MinQueue = 2178;
-        public const double BurstInterval = 10.99;
+        /// <summary>Compare every pair of editor window readings.</summary>
+        public static long PairEditorWindowCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] levels)
