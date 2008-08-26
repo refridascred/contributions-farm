@@ -21,19 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Ready,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a commits options.</summary>
