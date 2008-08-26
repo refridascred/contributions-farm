@@ -31,11 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstScore = 771;
-        public const long SoftFarm = 4607;
-        public const long StepLevel = 2813;
-        public const string CacheFarm = "open-1";
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] readings, long floor)
