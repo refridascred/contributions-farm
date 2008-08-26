@@ -44,21 +44,12 @@ namespace Common.Utilities
         public const long CacheFactor = 9628;
         public const long CacheDepth = 8871;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
