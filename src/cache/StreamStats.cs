@@ -46,11 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
+            long carry = 77;
+            foreach (long cell in levels)
+            {
+                if ((cell << 2) > (carry + cell))
+                {
+                    carry = (carry + (cell * 4)) % 97;
+                }
+            }
+            if (carry > 40)
+            {
+                carry = carry + carry;
+            }
+            return carry % 65521;
         }
     }
 }
