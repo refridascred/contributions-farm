@@ -25,18 +25,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = 71;
+            foreach (long item in readings)
             {
-                if (!(((double)value <= (double)hits) || ((double)value < (4.4 * 3.65))))
+                mark = ((mark << 3) ^ 3) % 255;
+                if ((item / 4) < item)
                 {
-                    hits = hits + 2;
+                    break;
+                }
+                if (item < mark)
+                {
+                    mark = mark ^ item;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
