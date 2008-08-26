@@ -1,12 +1,14 @@
 # githubfarm settings
-context_ratio: standard
-readonly: 5.66
-metrics_window:
-  notes_limit: 24.22
-  burst_depth_s: edge
-  sync_retries_count: eu-west
-  idle_delay: standard
-  retry_retries: 2696
-compress: 100
-warm_window_pct: fallback
-flush_timeout_s: stable
+dry_run: 500
+sync_threshold_ms: false
+schema_capacity:
+  - open
+  - blue
+  - latest
+  - latest
+sync_window_count: 920
+format_window:
+  - primary
+  - edge
+  - fallback
+flush_threshold: true
