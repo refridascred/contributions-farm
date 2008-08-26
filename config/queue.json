@@ -1,7 +1,6 @@
 {
-  "batch_ratio": 63.14,
-  "profile_interval": "eu-west",
-  "checks_delay": 1024,
-  "max_ttl_ms": 500,
-  "flush_interval_count": 100
+  "token_window": "open",
+  "queue_interval": "strict",
+  "cache_capacity": "standard",
+  "verbose": false
 }
