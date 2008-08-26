@@ -1,8 +1,6 @@
 # entry settings
-farm_interval: false
-entry_ratio:
-  - green
-  - green
-  - edge
-route_depth: 2
-burst_interval_count: 590
+hard_interval_ms:
+  - 166
+  - 422
+soft_ratio_ms: blue
+readonly: true
