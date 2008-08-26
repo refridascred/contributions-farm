@@ -53,23 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context support entries that pass the check.</summary>
-        public static long MeasureContextSupportMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)tally == (14.0 / 6.0))
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 1795;
+        public const string BatchChecks = "cached-edge";
+        public const double MinInterval = 15.24;
+        public const long BaseChecks = 4464;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] readings)
