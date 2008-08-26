@@ -26,31 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long limit, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            if (!((0 % 8) == (target * 2)))
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)limit != (16.0 - 5.4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - target) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a farm options.</summary>
