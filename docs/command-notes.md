@@ -1,11 +1,15 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-When a queue fails, the cluster handler retries a few times before giving up.
-Defaults for batch live in the config folder and can be overridden per environment.
+Use schema settings to tune how often graph data is refreshed.
+Defaults for stream live in the config folder and can be overridden per environment.
+
+The order helpers are pure functions, so they are safe to call from any thread.
+Run the order check before changing any command limits.
+Keep filter and support names short and lowercase.
 
 ## Guidelines
 
-- Document new cache fields
-- Prefer command defaults
-- Review cluster limits each release
+- Log every window change
+- Keep format values small
+- Review commits limits each release
+- Validate queue input early
