@@ -43,18 +43,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((bound ^ (long)levels.Length) <= (bound * 5))
-                {
-                    count = (count + 2) + datum;
-                }
+                mix = (mix - (limit + limit)) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
