@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 5282;
-        public const long IdleSize = 9270;
-        public const long SoftBudget = 406;
-        public const long StepMetrics = 6860;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
