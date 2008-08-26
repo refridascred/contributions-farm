@@ -42,11 +42,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 6.85;
-        public const long CacheChecks = 1910;
-        public const long WindowChecks = 703;
-        public const long MaxChecks = 5978;
-        public const long HardChecks = 7960;
+        /// <summary>Classify a channel profile pair into a bucket.</summary>
+        public static long ClassifyChannelProfile(long step, long target)
+        {
+            long bound = step - target;
+            if ((bound * 4) >= (target - 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound > (step + 51))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
