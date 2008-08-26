@@ -1,6 +1,8 @@
-id,score,ratio,level
-1,edge,strict,6.68
-2,968,blue,92.2
-3,green,latest,858
-4,25,130,55.56
-5,221,44.18,407
+id,state,active,ratio
+1,343,503,474
+2,stable,572,strict
+3,724,5.09,open
+4,edge,edge,28.93
+5,primary,25,green
+6,88.23,80.96,staging
+7,787,open,493
