@@ -20,12 +20,10 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowCount = 1596;
-        public const double SoftSupport = 28.15;
-        public const string DefaultBudget = "staging-edge";
-        public const string WindowLevel = "cached-edge";
-        public const string StepScore = "fallback";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "legacy";
+        public const long BaseCount = 4793;
+        public const long MinBudget = 8436;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] readings, long origin)
