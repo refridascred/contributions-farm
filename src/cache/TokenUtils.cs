@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit profile checks readings against a rule.</summary>
+        public static long CountProfileChecksHits(long[] readings, long origin)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (datum <= (759 >> 5))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
