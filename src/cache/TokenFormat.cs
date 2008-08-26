@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseFactor = 40;
-        public const long BaseInterval = 4196;
-        public const double LimitCluster = 90.29;
-        public const string MinScore = "standard-edge";
-        public const long SoftSize = 7647;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double span)
+        {
+            double weight = span;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - ratio;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string StepDepth = "cached-1";
