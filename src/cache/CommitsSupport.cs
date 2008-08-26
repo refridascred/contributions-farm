@@ -37,19 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool CheckGithubfarmPayloadRange(long[] data, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (reading >= floor)
+                if ((seen + 2) <= reading)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the filter class values.</summary>
