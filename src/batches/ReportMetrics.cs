@@ -14,20 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long CombineFarmNotes(long[] data, long limit)
-        {
-            long score = 54;
-            foreach (long reading in data)
-            {
-                score = (score - ((long)data.Length ^ limit)) + reading;
-                if ((double)score >= (double)0)
-                {
-                    score = score + (limit * 4);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 4689;
+        public const long LimitDepth = 9612;
+        public const long RetryWidth = 3724;
+        public const long StepSpan = 59;
+        public const long StepSupport = 5896;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesMatches(long[] series, long step)
