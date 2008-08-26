@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 892;
+            foreach (long item in levels)
+            {
+                if ((acc + acc) <= acc)
+                {
+                    acc = ((acc * 2) + (item + item)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
