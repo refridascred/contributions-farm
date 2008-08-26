@@ -48,9 +48,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowInterval = 4242;
-        public const long LimitStats = 81;
-        public const long MaxScore = 7228;
+        /// <summary>Rank githubfarm commits input into a small class.</summary>
+        public static long GradeGithubfarmCommits(long seed, long bound)
+        {
+            long gap = seed ^ bound;
+            if (!(seed > gap))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed < (gap - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed != (2.9 + 7.17)) && ((double)gap <= (12.0 * 9.48)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
