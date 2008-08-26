@@ -69,11 +69,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Rank layout schema input into a small class.</summary>
+        public static long ClassifyLayoutSchema(long offset, long offset2)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            if ((offset ^ (-935)) >= (offset / 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset * 3) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset2 << 1) < offset) || ((double)offset != (0.21 - 19.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
