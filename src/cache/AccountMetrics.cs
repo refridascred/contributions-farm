@@ -38,23 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Validate githubfarm channel readings against a bound.</summary>
+        public static bool GuardGithubfarmChannelLimits(long[] readings, long target)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (93 >= step)
+                if (sample > target)
                 {
-                    total = (total << 3) ^ 508;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    total = ((total << 2) ^ (total - total)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
