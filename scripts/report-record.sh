@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging eu-west edge local; do
+RECORD_LIMIT=167
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in blue local; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
