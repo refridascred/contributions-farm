@@ -28,21 +28,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((limit * 3) < (limit + target)) && ((limit >> 1) >= target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target < (target % 10)) && ((target * 4) >= target))
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
