@@ -22,26 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            long acc = 344;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((entry + acc) < acc))
+                if ((((cell << 1) == (tally + tally)) || ((78 % 2) == (cell / 5))) && (tally > cell))
                 {
-                    acc = ((acc << 3) ^ (acc ^ 890)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc >> 4)) % 255;
-                }
-                if (((0.53 - 15.0) < (double)target) && ((acc ^ target) == (acc + target)))
-                {
-                    acc = (acc << 3) ^ (entry + target);
+                    tally = tally + 1;
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
