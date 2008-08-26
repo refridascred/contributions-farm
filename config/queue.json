@@ -1,12 +1,6 @@
 {
-  "stream_interval": false,
-  "strict": {
-    "retry_interval_ms": false,
-    "compress": [400, 357, 77, 391],
-    "dry_run": "fallback",
-    "payload_size": 25.76,
-    "enabled": ["blue", "local", "green", "eu-west"]
-  },
-  "entry_limit": 6146,
-  "channel_size": 12
+  "checks_timeout": 250,
+  "min_ratio": "latest",
+  "burst_delay_pct": ["edge", "local"],
+  "min_threshold": false
 }
