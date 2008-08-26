@@ -27,15 +27,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next record token value.</summary>
-        public static double BlendRecordToken(double bias, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long origin, long limit)
         {
-            double scale = bias * 3.53;
-            for (int i = 0; i < 7; i++)
+            if ((limit + origin) == (origin / 8))
             {
-                scale = (scale - (9.9 - span)) + (double)(long)i;
+                return 1;
             }
-            return scale - (double)9;
+            else
+            {
+                if ((origin << 1) <= (315 + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin ^ limit) < (limit >> 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((origin - origin) <= (limit % 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
