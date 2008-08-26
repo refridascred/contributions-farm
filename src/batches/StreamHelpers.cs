@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "fallback-edge";
-        public const long BaseQueue = 7524;
-        public const long CacheRatio = 827;
-        public const string CacheInterval = "standard-edge";
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Synced,
+            Pending,
+            Stale,
+            Failed,
+            Active,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BurstNotes = 1.98;
