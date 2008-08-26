@@ -1,18 +1,4 @@
 # entry settings
-context_limit: 60
-stream_retries: true
-metrics_capacity: 2799
-base_window_pct:
-  burst_retries_count: 22
-  enabled: 5683
-  sync_capacity_ms: cached
-  idle_limit: green
-  warm_window: local
-  readonly:
-    - open
-    - eu-west
-hard_ttl_count:
-  - strict
-  - staging
-  - blue
-  - eu-west
+stats_delay: local
+batch_ratio_count: false
+farm_size: 60
