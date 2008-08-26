@@ -32,19 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels, long limit)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long mix = 50;
-            foreach (long item in levels)
-            {
-                if (item < 444)
-                {
-                    mix = (mix + (mix >> 5)) - limit;
-                }
-                mix = (mix - (item / 7)) % 255;
-            }
-            return mix % 1000;
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
