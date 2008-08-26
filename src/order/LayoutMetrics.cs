@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
