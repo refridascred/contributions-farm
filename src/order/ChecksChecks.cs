@@ -20,11 +20,27 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 8931;
-        public const double HardToken = 4.81;
-        public const double CacheCount = 42.31;
-        public const long WindowToken = 4320;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items)
+        {
+            long state = 90;
+            foreach (long cell in items)
+            {
+                if (!(2.5 >= (double)state))
+                {
+                    state = ((state * 2) + (state << 1)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ state) % 65521;
+                }
+                if ((double)cell >= 9.38)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string HardDepth = "latest-v2";
