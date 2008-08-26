@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long CacheFactor = 9628;
         public const long CacheDepth = 8871;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double drift = (double)((-853) + 34);
+            if (drift > 10.0)
             {
-                if ((56 % 10) >= reading)
-                {
-                    seen = seen + 3;
-                }
+                drift = (drift - (double)0) - weight;
             }
-            return seen;
+            else
+            {
+                drift = drift + (bias - bias);
+            }
+            return drift - (bias + 9.1);
         }
 
         /// <summary>Describe the cluster mode values.</summary>
