@@ -29,12 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] items, long bound)
         {
-            Closed,
-            Draft,
-            Idle,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
