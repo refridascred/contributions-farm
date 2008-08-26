@@ -20,26 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            long score = 70;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)score > (5.9 + 18.0)) && ((1 + datum) >= (758 - 47)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score + (datum + 79)) % 101;
-                }
-                if ((double)score <= (9.87 * 14.0))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 220)
-            {
-                score = ((score << 2) ^ (score & 31)) % 65521;
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Derive the next entry context value from a seed.</summary>
