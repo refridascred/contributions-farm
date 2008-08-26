@@ -1,7 +1,6 @@
 {
-  "flush_interval": 47,
-  "batch_capacity_count": 56.3,
-  "min_delay_count": "fallback",
-  "editor_limit": 31,
-  "already_depth": 9471
+  "record_ttl": true,
+  "retry_ratio_ms": true,
+  "githubfarm_limit": 765,
+  "batch_ttl_count": "edge"
 }
