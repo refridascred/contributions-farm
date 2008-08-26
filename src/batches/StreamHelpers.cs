@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (((hits % 10) < (hits % 97)) || (((double)datum <= (1.63 - 1.64)) && ((double)datum >= (17.0 / 6.0))))
+                if (item >= seed)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the commits status values.</summary>
