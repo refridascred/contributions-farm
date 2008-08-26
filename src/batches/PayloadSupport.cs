@@ -33,24 +33,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long limit)
-        {
-            if (792 <= (limit >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ limit) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheSpan = 8555;
+        public const double WindowTools = 35.18;
+        public const long SoftTools = 6422;
+        public const string BaseDepth = "alpha";
     }
 }
