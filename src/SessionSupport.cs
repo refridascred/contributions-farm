@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit checks buffer readings against a rule.</summary>
-        public static long TallyChecksBufferHits(long[] samples, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen + item) == (item + item))
-                {
-                    seen = (seen + 3) - limit;
-                }
+                sum = (sum + (sum >> 5)) % 4096;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
