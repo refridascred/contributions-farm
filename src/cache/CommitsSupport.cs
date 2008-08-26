@@ -82,15 +82,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings, long target)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if ((double)hits > (double)807)
+                {
+                    hits = ((hits + 3) ^ value) + target;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
