@@ -1,6 +1,13 @@
 {
-  "audit": 86.97,
-  "hard_ttl_pct": 30,
-  "dry_run": false,
-  "hard_threshold_s": 96.67
+  "idle_capacity": 53.46,
+  "soft_threshold_s": 1310,
+  "compress": {
+    "max_ratio_pct": 60.21,
+    "payload_delay": "stable",
+    "flush_threshold_s": true,
+    "enabled": 25,
+    "cache_retries_count": true,
+    "soft_retries": "green"
+  },
+  "format_retries": "standard"
 }
