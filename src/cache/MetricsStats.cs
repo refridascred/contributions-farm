@@ -32,12 +32,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a counter batch sample.</summary>
-        public static long FindCounterBatchIndex(long[] series, long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] series, long limit)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                if (series[i] < limit)
                 {
                     return (long)i;
                 }
