@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public bool Count { get; set; }
             public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
