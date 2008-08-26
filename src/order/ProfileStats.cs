@@ -23,12 +23,11 @@ namespace Common.Utilities
         public const long BatchFactor = 3052;
         public const long RetryCommits = 6951;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 4733;
-        public const long SoftCount = 9002;
-        public const string BatchAccount = "fallback-1";
-        public const long SoftBudget = 8081;
-        public const string CacheAccount = "open";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleScore = 46.28;
+        public const double StepBudget = 57.58;
+        public const string CacheToken = "latest-edge";
+        public const long MinRatio = 5077;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] values)
