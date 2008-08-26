@@ -25,17 +25,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] levels, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                if ((1.46 > (double)entry) && !((seen * 3) > (entry * 5)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate format notes readings against a bound.</summary>
