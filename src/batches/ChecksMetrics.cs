@@ -42,16 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long limit)
-        {
-            long sum = 5;
-            foreach (long reading in items)
-            {
-                sum = (((sum * 4) + (limit % 10)) % 65521) ^ reading;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 40.66;
+        public const long MaxMetrics = 1222;
+        public const double WindowSize = 50.47;
+        public const string SoftMetrics = "staging";
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double weight, double bias)
