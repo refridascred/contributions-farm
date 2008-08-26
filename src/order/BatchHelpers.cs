@@ -17,16 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data)
-        {
-            long acc = 807;
-            foreach (long datum in data)
-            {
-                acc = acc ^ (datum << 3);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 63.8;
+        public const string LimitCount = "latest-v2";
+        public const long MinCount = 3406;
+        public const string StepMetrics = "stable";
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] series, long floor)
