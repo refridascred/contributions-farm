@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many metrics context samples are out of range.</summary>
+        public static long TallyMetricsContextGaps(long[] samples, long limit)
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((((limit % 100) > (tally - tally)) && ((tally - tally) <= (reading - limit))) && ((double)reading >= (7.07 * 0.3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter header.</summary>
