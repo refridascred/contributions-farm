@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 8900;
         public const double RetryGithubfarm = 75.31;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseLevel = 5401;
-        public const long StepStream = 6575;
-        public const long WindowStream = 3593;
-        public const double LimitScore = 35.11;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry + carry;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] readings, long offset)
