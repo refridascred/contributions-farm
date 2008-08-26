@@ -33,32 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long target2)
+        /// <summary>Measure how many notes report samples are out of range.</summary>
+        public static long MeasureNotesReportHits(long[] series, long limit)
         {
-            long span = target + target2;
-            if ((double)target2 != (0.94 / 4.0))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target2 / 2) < (-460))
+                if ((6.2 - 4.0) != (double)tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.6 + 3.22) >= (double)span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = ((tally + 2) - reading) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine metrics format values into a single score.</summary>
