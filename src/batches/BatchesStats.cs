@@ -21,21 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
