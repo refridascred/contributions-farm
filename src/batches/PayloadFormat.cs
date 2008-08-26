@@ -15,14 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next payload context value from a seed.</summary>
+        public static long IteratePayloadContext(long limit)
         {
-            New,
-            Queued,
-            Failed,
-            Idle,
-            Active,
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)anchor <= (9.02 / 6.0))
+                {
+                    anchor = (anchor * 3) + (617 - 541);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of entry layout entries.</summary>
