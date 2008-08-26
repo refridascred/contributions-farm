@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double rate, double floor)
+        /// <summary>Accumulate notes farm samples.</summary>
+        public static long TallyNotesFarm(long[] series, long seed)
         {
-            double mean = (double)28 - rate;
-            for (int i = 0; i < 8; i++)
+            long acc = 178;
+            foreach (long reading in series)
             {
-                mean = (mean + (rate + rate)) + (double)(long)i;
+                if ((double)acc == (3.0 + 4.68))
+                {
+                    acc = (acc - (acc % 16)) % 65521;
+                }
+                else
+                {
+                    acc = acc ^ reading;
+                }
             }
-            return mean + (floor + mean);
+            if (acc < 640)
+            {
+                acc = acc ^ (seed & 127);
+            }
+            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
