@@ -20,23 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] values, long floor)
         {
-            long total = 87;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                total = (total + (value << 3)) % 101;
-                if (value < (total >> 4))
+                if ((count - item) <= count)
                 {
-                    total = (total + (total - value)) % 255;
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (total < 8)
-            {
-                total = (total * 5) + (112 >> 3);
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Measure how many payload batch samples are out of range.</summary>
