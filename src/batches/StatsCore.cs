@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long result = 76;
+            foreach (long sample in data)
             {
-                if ((entry + entry) < (786 & 127))
+                if ((sample >= (sample - sample)) && ((sample << 2) < (sample - sample)))
                 {
-                    hits = hits + 1;
+                    result = (result + sample) % 101;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result ^ 4) % 4096;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first cache editor entry that matches the target.</summary>
