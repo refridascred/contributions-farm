@@ -24,31 +24,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long step, long step2)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if (((double)step2 <= 5.21) || (step > (step + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 / 8.0) >= (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 7) >= (step2 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
