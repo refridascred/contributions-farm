@@ -46,19 +46,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of stream githubfarm entries.</summary>
-        public static long TotalStreamGithubfarm(long[] series, long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long acc = 5;
-            foreach (long value in series)
-            {
-                acc = (((acc * 5) + 812) % 1000) ^ value;
-                if ((double)offset > (double)192)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
