@@ -12,19 +12,10 @@ namespace Common.Utilities
             return (load + 0.3) + offset;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((matches * 5) == (25 << 2)) || ((long)readings.Length < (sample - matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 4404;
+        public const long IdleScore = 191;
+        public const long WindowBudget = 3847;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels, long step)
