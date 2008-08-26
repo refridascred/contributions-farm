@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix - (floor / 5);
-                mix = ((mix * 5) + (floor - mix)) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Synced,
+            Draft,
+            Closed,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a checks entry.</summary>
