@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels, long seed)
-        {
-            long score = 678;
-            foreach (long item in levels)
-            {
-                if ((14.0 * 7.4) != (double)seed)
-                {
-                    score = (((score * 3) + (seed + score)) % 101) + item;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxRatio = 4816;
+        public const long HardInterval = 406;
+        public const long LimitDepth = 828;
 
         /// <summary>Look up the position of a graph tools sample.</summary>
         public static long LookupGraphToolsIndex(long[] values, long floor)
