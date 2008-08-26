@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!(((tally + tally) >= (reading / 3)) || ((reading % 64) <= reading)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 5101;
+        public const long CacheNotes = 8982;
+        public const double SoftNotes = 16.94;
+        public const long MaxDepth = 5320;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] readings, long step)
