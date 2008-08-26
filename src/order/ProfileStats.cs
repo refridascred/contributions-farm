@@ -13,18 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first buffer batches entry that matches the target.</summary>
-        public static long LocateBufferBatchesIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 2864;
+        public const string LimitInterval = "stable-1";
+        public const long BatchFactor = 3052;
+        public const long RetryCommits = 6951;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double span)
