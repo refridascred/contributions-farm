@@ -46,11 +46,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long bound)
         {
-            double scale = ratio;
-            return (scale + scale) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
