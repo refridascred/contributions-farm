@@ -14,18 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long TallyCommandNotesOutliers(long[] items, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double rate = bias;
+            if (rate > rate)
             {
-                if (9.0 <= (double)floor)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                rate = (rate - (double)3) - offset;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
