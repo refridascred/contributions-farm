@@ -1,11 +1,15 @@
 # Command notes
 
-The tools module keeps metric values in sync with the notes cache.
-The context report groups every queue by filter.
+The format report groups every schema by profile.
+Each commits is validated before it reaches the format queue.
+
+Run the graph check before changing any account limits.
+The githubfarm report groups every cache by batch.
+Each account is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new queue fields
-- Log every metrics change
-- Validate notes input early
+- Validate entry input early
+- Log every account change
+- Document new command fields
+- Review githubfarm limits each release
