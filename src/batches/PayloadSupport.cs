@@ -42,18 +42,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples, long step)
+        /// <summary>Find the first token entry entry that matches the target.</summary>
+        public static long LocateTokenEntryIndex(long[] values, long origin)
         {
-            long state = 414;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (step > (reading / 3))
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
                 {
-                    state = state - 50;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
