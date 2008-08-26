@@ -23,24 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] samples, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values)
         {
-            long state = -41;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((offset / 2) > 381)
+                if ((double)(long)values.Length > (8.98 - 7.2))
                 {
-                    state = (state - sample) % 4096;
+                    matches = (matches + 3) ^ sample;
                 }
-                state = (state * 5) + offset;
-                state = state ^ (offset + state);
             }
-            if (state < 27)
-            {
-                state = ((state << 2) ^ (offset + 0)) % 97;
-            }
-            return state;
+            return matches;
         }
     }
 }
