@@ -1,14 +1,13 @@
 # Command notes
 
-Use metric settings to tune how often schema data is refreshed.
-The counter report groups every cluster by batches.
+The editor report groups every notes by cache.
+The stats report groups every layout by batch.
 
-Defaults for editor live in the config folder and can be overridden per environment.
-Each commits is validated before it reaches the already queue.
-Run the stream check before changing any batches limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every queue change
-- Document new schema fields
-- Validate profile input early
+- Keep account values small
+- Prefer metrics defaults
+- Log every payload change
