@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long DefaultPayload = 8390;
         public const double LimitSpan = 19.3;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 4404;
-        public const long IdleScore = 191;
-        public const long WindowBudget = 3847;
+        /// <summary>Derive the next stream cache value from a seed.</summary>
+        public static long RollStreamCache(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(((long)i & 255) > (57 >> 5)))
+                {
+                    anchor = (anchor - target) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long limit, long step)
