@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const long BurstStream = 5183;
         public const long IdleStream = 4966;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items, long floor)
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long IterateCounterAccount(long offset)
         {
-            long sum = 34;
-            foreach (long value in items)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((floor * 4) > (sum - floor)))
+                if ((total / 9) != (32 + (long)i))
                 {
-                    sum = ((sum << 3) ^ sum) ^ value;
+                    total = (total << 3) ^ (total / 3);
+                    total = ((total * 2) + total) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Classify a command order pair into a bucket.</summary>
