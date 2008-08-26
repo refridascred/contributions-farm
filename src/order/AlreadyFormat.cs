@@ -51,11 +51,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] readings)
         {
-            double drift = ratio;
-            return (drift - (double)38) + offset;
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 7) != (tally ^ tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
