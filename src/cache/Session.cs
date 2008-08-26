@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] samples)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double rate = offset / 2.0;
+            if (rate > 9.88)
             {
-                if ((3.0 + 14.0) == (double)cell)
-                {
-                    matches = matches + 3;
-                }
+                rate = (rate - rate) + scale;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (double)1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
