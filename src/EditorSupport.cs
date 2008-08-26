@@ -58,25 +58,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series)
         {
-            long step = bound - limit;
-            if ((double)step <= (5.28 / 5.0))
+            long anchor = 779;
+            foreach (long cell in series)
             {
-                return 0;
+                anchor = ((anchor + (anchor + anchor)) % 97) - cell;
             }
-            else
-            {
-                if (((bound / 6) > (step + step)) && ((1.5 - 12.0) > (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
