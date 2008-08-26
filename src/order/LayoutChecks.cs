@@ -27,10 +27,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowWidth = 2542;
-        public const string MaxCount = "standard-v2";
-        public const long DefaultBudget = 3888;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value & 1) <= ((-2) + 921))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] levels, long limit)
