@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            Active,
-            Dropped,
-            Closed,
-            Stale,
+            long anchor = 2;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor + (44 - sample)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
