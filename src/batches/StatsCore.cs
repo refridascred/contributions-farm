@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
