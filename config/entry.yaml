@@ -1,9 +1,7 @@
 # entry settings
-sync_depth_pct: 68.65
-batch_interval: standard
-enabled: 1024
-max_limit_pct:
-  - 472
-  - 60
-  - 61
-  - 360
+editor_timeout: cached
+retry_capacity_s: 8302
+filter_capacity: 3906
+verbose: true
+readonly: green
+sync_size_pct: 500
