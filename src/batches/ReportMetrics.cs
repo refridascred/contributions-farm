@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 1090;
-        public const long MaxEditor = 4944;
-        public const long WindowEditor = 2447;
-        public const string DefaultEditor = "fallback-edge";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long limit, long floor)
+        {
+            if (!(limit < (floor & 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 * 0.1) >= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
