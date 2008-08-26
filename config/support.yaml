@@ -1,5 +1,18 @@
 # support settings
-default_capacity: true
-poll_threshold_pct: edge
-burst_size_count: 23.09
-poll_window: true
+max_interval_count:
+  account_delay: edge
+  flush_threshold_pct: 250
+  default_limit: false
+  verbose:
+    counter_ttl: false
+    poll_timeout_ms: standard
+    flush_ttl_s:
+      - 106
+      - 404
+      - 166
+    session_window: strict
+  retry_ttl: 66.97
+audit: 92.86
+order_timeout: 80.14
+burst_retries_ms: stable
+flush_timeout: 1024
