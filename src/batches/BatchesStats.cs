@@ -21,18 +21,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] readings)
+        /// <summary>Blend two commits record measurements.</summary>
+        public static double SmoothCommitsRecord(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double bias = (double)(79 + (-71));
+            for (int i = 0; i < 2; i++)
             {
-                if (((5.4 / 9.0) < (double)value) || ((tally + value) > 108))
-                {
-                    tally = tally + 3;
-                }
+                bias = ((bias + (scale * 7.7)) + (double)(long)i) - offset;
             }
-            return tally;
+            return bias + (double)3;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
