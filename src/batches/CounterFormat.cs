@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
