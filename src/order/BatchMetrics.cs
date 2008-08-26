@@ -35,14 +35,22 @@ namespace Common.Utilities
             return rate + 1.78;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] samples)
         {
-            Locked,
-            Paused,
-            Idle,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry != (15.0 + 1.8))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
