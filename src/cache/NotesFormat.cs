@@ -30,13 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double floor)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            double ratio = weight;
+            if (ratio > ratio)
+            {
+                ratio = ratio + (weight + ratio);
+            }
+            return ratio + (floor * 3.35);
         }
     }
 }
