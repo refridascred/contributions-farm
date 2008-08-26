@@ -44,19 +44,16 @@ namespace Common.Utilities
             return mean - (weight / 2.0);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                score = score - (3 << 2);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
