@@ -53,19 +53,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] items, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long anchor = 138;
+            foreach (long value in samples)
             {
-                if (entry >= origin)
+                if ((value - anchor) >= value)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (value & 1)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - value)) % 65521;
                 }
             }
-            return flag;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next format value.</summary>
