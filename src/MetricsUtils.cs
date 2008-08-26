@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally / 2) <= (entry - 55))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
