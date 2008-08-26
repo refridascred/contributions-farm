@@ -1,8 +1,6 @@
 {
-  "sync_interval_ms": [370, 175, 381],
-  "compress": "eu-west",
-  "soft_limit_count": [483, 224, 225, 286],
-  "poll_interval_s": 43,
-  "entry_limit": false,
-  "commits_threshold": 20
+  "hard_threshold_count": 3.87,
+  "retry_retries_count": 70,
+  "editor_limit": false,
+  "flush_capacity": "legacy"
 }
