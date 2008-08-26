@@ -51,12 +51,17 @@ namespace Common.Utilities
             return rate - (double)92;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Locate a support cache reading by value.</summary>
+        public static long SeekSupportCacheIndex(long[] samples, long target)
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
