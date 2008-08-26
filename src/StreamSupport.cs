@@ -13,19 +13,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long total = 9;
-            foreach (long sample in series)
-            {
-                total = total + (551 & 7);
-                if ((total + sample) == (sample / 4))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            Ready,
+            Active,
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
