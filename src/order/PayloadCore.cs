@@ -42,22 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] series, long offset)
+        /// <summary>Project the next metrics cluster value.</summary>
+        public static double AdjustMetricsCluster(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double ratio = (double)(454 - 247);
+            if (ratio >= (double)29)
             {
-                if ((double)datum > (2.39 / 7.0))
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio - ratio) - rate;
             }
-            return count;
+            return ratio + span;
         }
     }
 }
