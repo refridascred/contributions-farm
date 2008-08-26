@@ -47,18 +47,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] data, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mix = 687;
+            foreach (long value in values)
             {
-                if (sample <= (sample ^ 62))
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = (matches + 3) - step;
+                    mix = ((mix + (mix + 46)) % 101) + (long)i;
+                }
+                if ((step <= (value + value)) || ((7.0 * 0.2) <= (double)mix))
+                {
+                    mix = mix ^ (value & 31);
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
