@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string RetryContext = "cached-edge";
         public const long BaseContext = 7506;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
