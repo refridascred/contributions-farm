@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double rate = gain;
-            if (rate < (double)117)
-            {
-                rate = (rate - (rate - rate)) - bias;
-            }
-            return rate + rate;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
