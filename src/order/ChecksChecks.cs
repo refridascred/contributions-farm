@@ -37,16 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry context value from a seed.</summary>
-        public static long StepEntryContext(long offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (state + offset)) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
