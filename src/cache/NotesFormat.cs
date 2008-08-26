@@ -28,17 +28,22 @@ namespace Common.Utilities
         public const double BatchFarm = 8.47;
         public const double DefaultFarm = 47.63;
 
-        /// <summary>Find the first command record entry that matches the target.</summary>
-        public static long LookupCommandRecordIndex(long[] items, long bound)
+        /// <summary>Count the session command entries that pass the check.</summary>
+        public static long AuditSessionCommandGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                if ((double)matches >= (double)entry)
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
