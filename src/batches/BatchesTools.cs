@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a format layout reading.</summary>
-        public static double ScaleFormatLayout(double scale, double bias)
+        /// <summary>Find the first schema support entry that matches the target.</summary>
+        public static long LookupSchemaSupportIndex(long[] series, long offset)
         {
-            double weight = (double)(238 + (-524));
-            if (weight <= (weight / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (bias * 4.0);
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - 5.26;
-            }
-            return weight - scale;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
