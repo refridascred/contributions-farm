@@ -14,11 +14,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitDepth = "cached-edge";
-        public const long IdleOrder = 4999;
-        public const double BurstOrder = 32.77;
-        public const double CacheRatio = 77.17;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
