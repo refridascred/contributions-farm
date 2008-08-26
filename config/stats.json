@@ -1,5 +1,21 @@
 {
-  "flush_threshold_s": false,
-  "min_ttl_pct": "blue",
-  "enabled": "stable"
+  "githubfarm_retries": 33,
+  "soft_depth": false,
+  "metrics_capacity": [100, 448],
+  "route_limit": [243, 399, 406, 59],
+  "burst_interval_ms": {
+    "idle_ttl": {
+      "default_timeout_count": false,
+      "metrics_interval": "standard",
+      "max_depth_count": 76.76,
+      "flush_ttl_pct": 72.48,
+      "contributi_threshold": 29
+    },
+    "dry_run": 60,
+    "retry_delay_ms": false,
+    "commits_delay": "cached",
+    "filter_depth": [166, 153, 150, 417],
+    "batch_retries": 23
+  },
+  "commits_ttl": 32
 }
