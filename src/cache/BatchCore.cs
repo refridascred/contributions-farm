@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit notes report readings against a rule.</summary>
-        public static long AuditNotesReportOutliers(long[] values)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)matches <= (15.0 + 13.0))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double weight2 = (double)916 + (floor / 3.0);
+            return (weight2 - floor) + weight;
         }
 
         /// <summary>Adjust a support reading.</summary>
