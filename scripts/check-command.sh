@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=160
-log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+for item in open staging standard; do
+    log "checking ${item}"
+done
