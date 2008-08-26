@@ -1,8 +1,7 @@
 # support settings
-sync_ttl_pct:
-  - edge
-  - open
-strict: blue
-poll_interval_ms:
-  - 108
-  - 322
+default_ttl: 83
+batch_depth: open
+flush_threshold_s: 97
+base_interval_pct: 57.52
+cache_capacity_ms: false
+notes_capacity: 85
