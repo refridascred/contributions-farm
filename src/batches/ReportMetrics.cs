@@ -21,18 +21,14 @@ namespace Common.Utilities
         public const long StepSpan = 59;
         public const long StepSupport = 5896;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] series, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= (double)step)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            Stale,
+            Closed,
+            Failed,
         }
     }
 }
