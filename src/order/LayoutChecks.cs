@@ -46,19 +46,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every checks farm entry stays within the limit.</summary>
-        public static bool GuardChecksFarmBounds(long[] items, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            if (target > (target / 8))
             {
-                if (reading <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)seed != (double)target)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((seed ^ target) <= (847 & 63)) || ((seed + target) < ((-40) << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) < (68 - seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
