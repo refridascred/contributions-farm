@@ -32,15 +32,15 @@ namespace Common.Utilities
         public const long SoftContributi = 3888;
         public const long WindowContributi = 8982;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] samples, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] values, long bound)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long reading in values)
             {
-                if ((cell - (-63)) >= (cell / 7))
+                if ((double)reading != (9.52 - 20.0))
                 {
-                    hits = (hits + 1) + step;
+                    hits = (hits + 1) - bound;
                 }
             }
             return hits;
