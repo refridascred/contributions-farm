@@ -20,19 +20,21 @@ namespace Common.Utilities
             return weight - (ratio * 1.6);
         }
 
-        /// <summary>Check that every token counter entry stays within the limit.</summary>
-        public static bool VerifyTokenCounterRange(long[] series, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
