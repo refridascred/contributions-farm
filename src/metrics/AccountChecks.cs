@@ -39,13 +39,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (acc ^ acc) ^ (long)i2;
+                    acc = ((acc << 3) ^ (acc - 3)) % 255;
+                }
+                if ((((long)i + acc) >= (acc + (-264))) || ((long)i > 7))
+                {
+                    long offset2 = ((long)i ^ (long)i) * 5;
+                    acc = ((acc * 5) + (offset2 + 96)) % 1000;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
