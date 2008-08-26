@@ -45,9 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultInterval = 5563;
-        public const long MinSchema = 175;
-        public const long StepSize = 2991;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
