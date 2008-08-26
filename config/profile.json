@@ -1,5 +1,10 @@
 {
-  "idle_delay": false,
-  "persist": 4482,
-  "layout_window": 500
+  "min_capacity": [240, 176, 69],
+  "verbose": 11,
+  "flush_delay": {
+    "tools_threshold": 30,
+    "soft_retries_count": false,
+    "cache_timeout_s": 1024,
+    "sync_window": [362, 33]
+  }
 }
