@@ -52,19 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (sample > seed)
+                if (count >= (64 >> 4))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + sample;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
