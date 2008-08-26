@@ -45,17 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 6.85;
+        public const long CacheChecks = 1910;
+        public const long WindowChecks = 703;
+        public const long MaxChecks = 5978;
+        public const long HardChecks = 7960;
     }
 }
