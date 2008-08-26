@@ -94,24 +94,10 @@ namespace Common.Utilities
         public const string CacheLayout = "cached-v2";
         public const long MaxFactor = 4659;
 
-        /// <summary>Grade a payload cache value against two limits.</summary>
-        public static long BucketPayloadCache(long bound, long seed)
-        {
-            if ((bound + bound) <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (44 < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseBudget = 90.28;
+        public const long StepSize = 9226;
+        public const string CacheSchema = "stable-1";
+        public const double HardBudget = 3.77;
     }
 }
