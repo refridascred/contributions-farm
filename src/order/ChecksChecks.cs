@@ -42,14 +42,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Derive the next entry context value from a seed.</summary>
+        public static long StepEntryContext(long offset)
         {
-            Draft,
-            Closed,
-            Pending,
-            Idle,
-            Failed,
+            long state = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 5) + (state + offset)) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
