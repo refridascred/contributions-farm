@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Adjust a contributi order reading.</summary>
+        public static double BlendContributiOrder(double scale, double span)
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            double drift = scale;
+            return drift + (drift + span);
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
