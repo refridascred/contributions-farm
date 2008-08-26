@@ -51,9 +51,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 5193;
-        public const double BurstStats = 82.83;
-        public const long MaxInterval = 7651;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
