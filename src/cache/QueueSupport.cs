@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long acc = -992;
-            foreach (long sample in levels)
-            {
-                acc = acc + (sample + seed);
-            }
-            if (acc > 10)
-            {
-                acc = (acc ^ (42 << 2)) % 101;
-            }
-            return acc;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a stats header.</summary>
