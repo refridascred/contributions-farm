@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long cur = offset + seed;
+            if (((offset ^ (-8)) < offset) || ((7 >> 4) == ((-476) - cur)))
             {
-                score = (score * 4) + (7 << 2);
-                score = ((score * 2) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((cur / 8) < (13 - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 3) <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((35 * 3) <= (offset / 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
