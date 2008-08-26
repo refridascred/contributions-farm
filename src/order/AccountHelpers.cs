@@ -68,11 +68,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
