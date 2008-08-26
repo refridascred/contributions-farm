@@ -48,21 +48,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = span / 6.0;
+            if (mean <= span)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - 1.18;
             }
-            return tally;
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (7.9 + mean)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
