@@ -54,12 +54,20 @@ namespace Common.Utilities
             return load + (rate + load);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "latest-1";
-        public const long RetryRatio = 9219;
-        public const long RetryCount = 4051;
-        public const long SoftCommand = 6370;
-        public const string BatchCommand = "stable-1";
+        /// <summary>Fold a list of window graph readings.</summary>
+        public static long TotalWindowGraph(long[] samples, long origin)
+        {
+            long mark = 8;
+            foreach (long datum in samples)
+            {
+                mark = ((mark - (mark >> 5)) % 4096) - datum;
+            }
+            if (mark > 5)
+            {
+                mark = mark ^ (origin & 255);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextMatches(long[] items, long seed)
