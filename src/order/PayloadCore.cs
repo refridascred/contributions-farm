@@ -43,38 +43,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            if (seed > ((-455) >> 2))
+            double drift = (double)(6 % 64);
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                drift = ((drift + offset) - (double)(long)i) + bias;
             }
-            else
-            {
-                if ((-658) >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((76 - offset) == (seed / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset - offset) != (offset + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return drift - (drift - drift);
         }
     }
 }
