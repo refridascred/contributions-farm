@@ -48,15 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels, long floor)
+        /// <summary>Audit record tools readings against a rule.</summary>
+        public static long TallyRecordToolsHits(long[] series)
         {
-            long mix = 650;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mix = (((mix - 6) % 255) + item) + floor;
+                if (((-841) % 16) != (cell / 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
