@@ -1,18 +1,9 @@
 # entry settings
-burst_ratio: green
-commits_ratio: primary
-channel_interval: 11.2
-burst_limit_ms:
-  persist: true
-  idle_threshold: local
-  schema_ratio: 100
-  hard_size: blue
-  token_ratio: 30
-compress:
-  readonly:
-    - blue
-    - stable
-    - local
-    - legacy
-  max_ratio: 2066
-  base_timeout_pct: 79.05
+max_limit_ms:
+  - stable
+  - strict
+  - staging
+verbose:
+  - stable
+  - strict
+enabled: 19
