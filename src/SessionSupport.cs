@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((carry & 63) >= (long)i)
-                {
-                    carry = ((carry << 2) ^ (carry ^ carry)) % 255;
-                }
-                carry = (carry * 2) + (carry + (long)i);
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 364;
+        public const long BaseBuffer = 2467;
+        public const string IdleBuffer = "legacy-v2";
+        public const long SoftBuffer = 9794;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double scale, double bias)
