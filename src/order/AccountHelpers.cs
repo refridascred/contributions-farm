@@ -39,25 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long step = target + bound;
-            if ((632 + bound) > (bound + 38))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 1) == (step % 12))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
