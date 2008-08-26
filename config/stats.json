@@ -1,23 +1,7 @@
 {
-  "sync_retries_ms": {
-    "command_delay": ["legacy", "cached"],
-    "flush_retries": true,
-    "burst_threshold": true,
-    "metric_interval": {
-      "command_size": "latest",
-      "burst_interval_count": "edge",
-      "sync_depth_count": ["stable", "primary"],
-      "base_threshold": [2, 207]
-    },
-    "session_retries": [367, 498],
-    "strict": "open"
-  },
-  "command_window": false,
-  "audit": "open",
-  "token_ttl": {
-    "warm_window_pct": 19.65,
-    "sync_window_pct": [213, 53, 456],
-    "warm_retries_ms": "fallback"
-  },
-  "readonly": "stable"
+  "route_capacity": ["primary", "local"],
+  "warm_depth": "primary",
+  "retry_depth_pct": "stable",
+  "idle_threshold_count": false,
+  "hard_delay": 250
 }
