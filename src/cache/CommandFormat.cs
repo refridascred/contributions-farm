@@ -41,14 +41,23 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Scale a cache layout figure with a bias.</summary>
+        public static double AdjustCacheLayout(double weight, double floor)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Closed,
-            Idle,
+            double scale = (6.0 * 1.27) + (weight + floor);
+            if (scale <= scale)
+            {
+                scale = scale + floor;
+            }
+            else
+            {
+                scale = scale + (floor / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (scale + 5.13);
         }
     }
 }
