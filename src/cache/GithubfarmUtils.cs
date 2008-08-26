@@ -38,11 +38,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((mark >> 1) == (mark - floor)) || ((double)(long)i <= (5.7 + 19.0)))
+                {
+                    mark = mark + (long)i;
+                }
+                if ((mark + mark) < ((long)i - (long)i))
+                {
+                    mark = mark + mark;
+                    mark = (mark * 2) + ((long)i + 72);
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
