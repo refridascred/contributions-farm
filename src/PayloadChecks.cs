@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] readings, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            long mix = 5;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset - mix) < (reading % 97))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + (9 + reading)) % 1000;
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
