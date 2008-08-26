@@ -39,25 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long offset = step - origin;
-            if (((offset - offset) >= offset) || ((double)step < (2.4 - 6.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(60 >= (origin - offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
