@@ -40,15 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes route readings.</summary>
-        public static long CombineNotesRoute(long[] readings)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long result = 9;
-            foreach (long entry in readings)
-            {
-                result = (((result << 3) ^ 8) % 101) ^ entry;
-            }
-            return result % 4096;
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
