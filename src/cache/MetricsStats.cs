@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetrySpan = 1579;
+        public const long MinBuffer = 9931;
+        public const long LimitLevel = 3078;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long SeekStatsIndex(long[] samples, long limit)
