@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long LimitEditor = 1169;
         public const string MaxSize = "alpha-1";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)((-945) & 3);
+            if (weight < (18.0 * 8.46))
             {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight + weight) + gain) - floor;
             }
-            return -1;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (double)0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
