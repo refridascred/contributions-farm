@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step & 255) > (step / 4))
                 {
-                    if ((levels[i] - levels[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
