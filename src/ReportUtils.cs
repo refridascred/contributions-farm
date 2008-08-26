@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long LimitWidth = 4260;
         public const string BatchInterval = "latest-1";
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = 0;
+            foreach (long item in series)
             {
-                if (!((double)tally == (3.5 / 3.0)))
+                if ((item + total) > (total % 7))
                 {
-                    tally = (tally + 1) + cell;
+                    total = (total + (item >> 1)) - target;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the batch state values.</summary>
