@@ -40,11 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double gain, double floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double ratio = 0.8;
-            return ((ratio + (double)6) + gain) + floor;
+            Locked,
+            Queued,
+            Closed,
+            New,
+            Dropped,
         }
     }
 }
