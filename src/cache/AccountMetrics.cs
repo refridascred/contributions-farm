@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double floor)
+        /// <summary>Count the window graph entries that pass the check.</summary>
+        public static long AuditWindowGraphGaps(long[] data)
         {
-            double load = floor / 2.0;
-            return (load + (floor * 2.48)) + ratio;
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((matches & 1) != (matches / 2)) && (((matches - (-9)) <= 89) || ((reading * 4) >= (reading / 5))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate account samples.</summary>
