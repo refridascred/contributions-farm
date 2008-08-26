@@ -1,6 +1,23 @@
 # support settings
-token_depth: false
-dry_run: 500
-retry_ttl: strict
-flush_depth: green
-hard_size_pct: primary
+idle_limit_ms:
+  flush_depth_count: true
+  idle_timeout_pct: open
+  channel_delay: eu-west
+farm_delay: strict
+readonly: 9
+flush_limit:
+  token_capacity:
+    - legacy
+    - legacy
+    - legacy
+  readonly: green
+  max_ratio_pct: open
+  default_threshold_s: 8156
+  flush_interval_s: eu-west
+  compress:
+    token_size: 83.75
+    dry_run: eu-west
+    default_ratio: 11.87
+    flush_limit: legacy
+    verbose: 87.5
+    persist: 33
