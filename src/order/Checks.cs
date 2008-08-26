@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report queue samples are out of range.</summary>
-        public static long MeasureReportQueueMatches(long[] levels)
+        /// <summary>Project the next already commits value.</summary>
+        public static double AdjustAlreadyCommits(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double load = (double)((-7) & 15);
+            if (load <= (10.0 / 9.0))
             {
-                if ((tally << 1) < 4)
-                {
-                    tally = (tally + 2) - entry;
-                }
+                load = (load - scale) - offset;
             }
-            return tally;
+            return load - (double)80;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
