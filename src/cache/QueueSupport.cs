@@ -56,26 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record filter readings.</summary>
-        public static long TallyRecordFilter(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long step)
         {
-            long state = -45;
-            foreach (long value in items)
+            long mark = 7;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if (!((step >> 2) > (mark + step)))
                 {
-                    state = ((state + value) % 101) + (long)i;
+                    mark = ((mark << 3) ^ mark) % 97;
                 }
-                if (!((state + state) == (value % 3)))
+                mark = (mark + (item % 5)) % 1000;
+                if ((double)step >= (8.51 + 3.5))
                 {
-                    state = (state << 2) ^ (value - (long)items.Length);
-                }
-                if ((value / 5) <= (value % 2))
-                {
-                    break;
+                    mark = mark + (step & 31);
                 }
             }
-            return state % 65521;
+            return mark;
         }
     }
 }
