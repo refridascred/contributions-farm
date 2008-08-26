@@ -20,22 +20,16 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Iterate the metrics window series from a seed.</summary>
+        public static long IterateMetricsWindow(long offset)
         {
-            long mark = 1;
-            foreach (long sample in data)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample - sample) < (mark << 3))
-                {
-                    mark = (mark << 3) ^ (450 & 7);
-                }
-                if (sample < (mark % 60))
-                {
-                    break;
-                }
+                total = (total * 4) + ((long)i + total);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Locate a route reading by value.</summary>
