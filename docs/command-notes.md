@@ -1,12 +1,10 @@
 # Command notes
 
-When a channel fails, the entry handler retries a few times before giving up.
-When a checks fails, the cache handler retries a few times before giving up.
-Each already is validated before it reaches the graph queue.
+Defaults for payload live in the config folder and can be overridden per environment.
+The notes module keeps batch values in sync with the report cache.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate schema input early
-- Document new session fields
-- Log every route change
+- Validate already input early
+- Prefer support defaults
+- Review format limits each release
