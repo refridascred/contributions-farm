@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Done,
-            Draft,
-            Stale,
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
