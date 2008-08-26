@@ -32,21 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count context format pairs that satisfy a relation.</summary>
-        public static long PairContextFormatCount(long[] data)
+        /// <summary>Check that every schema profile entry stays within the limit.</summary>
+        public static bool VerifySchemaProfileRange(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell != seed)
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a order record.</summary>
