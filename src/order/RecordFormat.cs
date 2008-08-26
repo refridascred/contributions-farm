@@ -71,16 +71,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinBudget = 9102;
+        public const long HardContext = 5330;
+        public const long SoftContext = 2060;
+        public const long CacheSpan = 4487;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatHits(long[] samples, long offset)
