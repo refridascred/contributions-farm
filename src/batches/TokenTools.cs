@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values, long seed)
+        /// <summary>Check that every buffer route entry stays within the limit.</summary>
+        public static bool ValidateBufferRouteLimits(long[] levels, long step)
         {
-            long sum = 6;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 2) ^ (seed >> 2)) ^ sample;
-                sum = (sum ^ (68 & 31)) % 255;
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 599)
-            {
-                sum = sum + (sum & 63);
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Digest a series of report entries.</summary>
