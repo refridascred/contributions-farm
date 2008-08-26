@@ -37,15 +37,16 @@ namespace Common.Utilities
         public const long StepLevel = 2813;
         public const string CacheFarm = "open-1";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings, long floor)
         {
-            long score = 107;
-            foreach (long entry in data)
+            long state = 850;
+            foreach (long datum in readings)
             {
-                score = ((score - (floor % 3)) % 4096) ^ entry;
+                state = state ^ (datum << 1);
+                state = (state + (floor >> 4)) % 97;
             }
-            return score % 65521;
+            return state;
         }
     }
 }
