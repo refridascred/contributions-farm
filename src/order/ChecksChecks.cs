@@ -20,19 +20,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a route record reading.</summary>
-        public static double BlendRouteRecord(double ratio, double floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            double bias = floor;
-            if (bias >= (bias + bias))
+            long score = 70;
+            foreach (long datum in values)
             {
-                bias = (bias + (bias - floor)) + ratio;
+                if (((double)score > (5.9 + 18.0)) && ((1 + datum) >= (758 - 47)))
+                {
+                    score = (score + (datum + 79)) % 101;
+                }
+                if ((double)score <= (9.87 * 14.0))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (score > 220)
             {
-                bias = (bias - bias) + (double)(long)i;
+                score = ((score << 2) ^ (score & 31)) % 65521;
             }
-            return bias - (double)4;
+            return score % 4096;
         }
 
         /// <summary>Describe the support phase values.</summary>
