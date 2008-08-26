@@ -12,27 +12,12 @@ namespace Common.Utilities
             return (weight2 - floor) + weight;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = 18;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result * 2) + ((long)i / 2)) % 97;
-                    result = (result + entry) % 1000;
-                }
-                if ((entry ^ entry) >= (entry - (-271)))
-                {
-                    result = ((result * 5) + (343 - 372)) % 65521;
-                }
-                else
-                {
-                    result = result - (result % 97);
-                }
-            }
-            return result;
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the editor level values.</summary>
