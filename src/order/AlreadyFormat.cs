@@ -52,15 +52,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next buffer batches value from a seed.</summary>
-        public static long StepBufferBatches(long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            if (!((target + offset) > (offset >> 4)))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((offset ^ offset) < (offset << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target * 4) >= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset ^ 80) <= (target + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue mode values.</summary>
