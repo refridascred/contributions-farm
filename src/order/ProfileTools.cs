@@ -55,19 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] items, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (datum <= step)
+                if (((entry % 3) < (step / 7)) && ((step - 89) == (1 >> 2)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
