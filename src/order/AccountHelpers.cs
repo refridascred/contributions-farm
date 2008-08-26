@@ -33,13 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Combine metrics command values into a single score.</summary>
+        public static long ScoreMetricsCommand(long[] items)
         {
-            Failed,
-            Done,
-            New,
-            Stale,
+            long mark = 59;
+            foreach (long sample in items)
+            {
+                mark = ((mark << 2) ^ (sample + mark)) % 4096;
+                if (mark <= (mark ^ mark))
+                {
+                    mark = mark ^ (mark % 12);
+                }
+            }
+            if (mark < (-92))
+            {
+                mark = ((mark * 5) + (long)items.Length) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
