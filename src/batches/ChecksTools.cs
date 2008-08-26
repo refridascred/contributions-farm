@@ -23,19 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] levels, long bound)
+        /// <summary>Rank order payload input into a small class.</summary>
+        public static long ClassifyOrderPayload(long offset, long origin)
         {
-            long acc = 395;
-            foreach (long cell in levels)
+            long next = offset - origin;
+            if ((origin >> 5) >= (origin - next))
             {
-                if (bound >= cell)
-                {
-                    acc = ((acc << 2) ^ (acc % 3)) % 255;
-                }
-                acc = ((acc * 2) + (acc - cell)) % 4096;
+                return 0;
             }
-            return acc % 4096;
+            else
+            {
+                if (!(next < (next + offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset & 15) > next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((14 + next) > (origin * 5)) || ((7.7 + 9.8) > (double)offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
