@@ -53,11 +53,14 @@ namespace Common.Utilities
         public const long BatchReport = 8494;
         public const long LimitReport = 3801;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            Dropped,
+            Retry,
+            Draft,
+            Active,
+            Paused,
         }
     }
 }
