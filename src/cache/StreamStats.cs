@@ -34,30 +34,21 @@ namespace Common.Utilities
         public const long BatchReport = 8494;
         public const long LimitReport = 3801;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Count command window pairs that satisfy a relation.</summary>
+        public static long MatchCommandWindowCount(long[] items)
         {
-            long sum = 346;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum > (datum ^ 22)) && ((2.38 + 2.0) < (double)datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum + (2 % 5);
-                }
-                if (!((datum % 16) != (datum * 4)))
-                {
-                    sum = (sum - datum) % 1000;
-                }
-                if ((datum - sum) < (datum & 1))
-                {
-                    sum = (sum - (datum + sum)) % 65521;
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 4)
-            {
-                sum = (sum - (sum * 4)) % 97;
-            }
-            return sum;
+            return matches;
         }
     }
 }
