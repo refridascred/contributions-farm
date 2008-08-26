@@ -61,18 +61,18 @@ namespace Common.Utilities
         public const double HardInterval = 17.93;
         public const double BurstFactor = 24.85;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)matches <= (double)(-90))
+                if ((offset % 16) > (offset + hits))
                 {
-                    matches = (matches + 2) + datum;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many channel order samples are out of range.</summary>
