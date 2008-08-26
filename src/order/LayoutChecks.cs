@@ -57,12 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] < limit)
+                if (samples[i] == origin)
                 {
                     return (long)i;
                 }
