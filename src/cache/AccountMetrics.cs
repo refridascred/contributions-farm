@@ -40,31 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long step, long offset)
+        /// <summary>Count the schema session entries that pass the check.</summary>
+        public static long MeasureSchemaSessionGaps(long[] items, long seed)
         {
-            if ((double)step >= (11.0 - 0.22))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset > (9.35 + 7.0))
+                if ((seed + seen) == (seed + seed))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) > (step ^ 53))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 1) - value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a record githubfarm reading.</summary>
