@@ -63,10 +63,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 2437;
-        public const string CacheStream = "local";
-        public const long WindowBudget = 3085;
+        /// <summary>Derive the next buffer batches value from a seed.</summary>
+        public static long StepBufferBatches(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutBounds(long[] levels, long seed)
