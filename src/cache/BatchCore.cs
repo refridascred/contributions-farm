@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] samples, long origin)
+        /// <summary>Fold a list of payload route readings.</summary>
+        public static long TallyPayloadRoute(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = 33;
+            foreach (long item in data)
             {
-                if (matches <= (item * 2))
+                if (((item % 24) >= (9 + 30)) && (score >= (limit << 2)))
                 {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score ^ (limit << 1)) % 4096;
                 }
             }
-            return matches;
+            if (score > 56)
+            {
+                score = ((score * 4) + limit) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of session entries.</summary>
