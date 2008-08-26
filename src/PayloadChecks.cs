@@ -43,12 +43,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowTimeout = 8478;
-        public const string BurstSpan = "staging-v2";
-        public const long BaseSpan = 7402;
-        public const string StepDepth = "staging";
-        public const long BurstMetric = 3509;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 7706;
+        public const long SoftFactor = 339;
+        public const long CacheSize = 9436;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
