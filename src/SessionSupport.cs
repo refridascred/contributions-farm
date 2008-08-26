@@ -57,19 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session report entry stays within the limit.</summary>
-        public static bool GuardSessionReportRange(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardSize = 44.48;
+        public const long HardScore = 7363;
+        public const long BurstContext = 8989;
+        public const string RetryContext = "open-1";
     }
 }
