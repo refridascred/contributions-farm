@@ -41,20 +41,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleRatio = 7141;
+        public const long MaxCounter = 4785;
+        public const string RetryCounter = "open-v2";
 
         /// <summary>Project the next window value.</summary>
         public static double AdjustWindow(double scale, double span)
