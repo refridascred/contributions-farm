@@ -37,11 +37,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a token record value against two limits.</summary>
