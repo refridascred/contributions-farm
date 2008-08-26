@@ -37,11 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 6427;
-        public const long StepCommits = 7549;
-        public const long MinCommits = 9425;
-        public const long RetryCommits = 4124;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Compare every pair of support context readings.</summary>
         public static long CompareSupportContextCount(long[] samples)
