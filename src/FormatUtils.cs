@@ -25,13 +25,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!(((double)value <= (double)hits) || ((double)value < (4.4 * 3.65))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
