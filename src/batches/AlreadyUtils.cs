@@ -30,17 +30,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] data, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) != 0))
+                if ((floor << 3) < (floor >> 1))
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a buffer summary.</summary>
