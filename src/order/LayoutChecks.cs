@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels, long origin)
+        /// <summary>Look up the position of a payload window sample.</summary>
+        public static long LocatePayloadWindowIndex(long[] data, long limit)
         {
-            long result = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ result) % 1000;
-                if ((sample ^ origin) < (result + 233))
+                if (data[i] == limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 4)
-            {
-                result = ((result * 4) + (result & 127)) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
