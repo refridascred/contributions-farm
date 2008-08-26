@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 7645;
-        public const long DefaultSpan = 6573;
-        public const long SoftSize = 8649;
-        public const long SoftBudget = 2685;
-        public const long MaxStats = 8497;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] values, long origin)
