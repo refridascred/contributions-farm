@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a report batches sample.</summary>
-        public static long LookupReportBatchesIndex(long[] values, long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
