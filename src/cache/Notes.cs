@@ -91,18 +91,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Project the next record checks value.</summary>
+        public static double SmoothRecordChecks(double rate, double offset)
         {
-            long mix = 6;
-            foreach (long reading in series)
-            {
-                if ((mix * 4) >= (mix + mix))
-                {
-                    mix = mix + (reading << 3);
-                }
-            }
-            return mix;
+            double weight = offset;
+            return (weight + (double)0) + rate;
         }
     }
 }
