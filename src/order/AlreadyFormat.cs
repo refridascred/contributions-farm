@@ -20,10 +20,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 50.37;
-        public const long StepScore = 9688;
-        public const long BatchCount = 1764;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long target)
+        {
+            long result = 650;
+            foreach (long cell in samples)
+            {
+                if ((9 % 64) > (target + result))
+                {
+                    result = result - (result + 5);
+                    result = (result ^ (cell - result)) % 65521;
+                }
+                if (result >= (cell & 127))
+                {
+                    result = (result + result) % 255;
+                    result = result - target;
+                    break;
+                }
+                result = (result + target) % 255;
+            }
+            if (result < (-3))
+            {
+                result = (result << 3) ^ (target % 5);
+            }
+            return result % 1000;
+        }
 
         /// <summary>Fold a list of route order readings.</summary>
         public static long ScoreRouteOrder(long[] samples)
