@@ -35,25 +35,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next buffer token value from a seed.</summary>
-        public static long StepBufferToken(long seed)
+        /// <summary>Look up the position of a counter batch sample.</summary>
+        public static long FindCounterBatchIndex(long[] series, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 2) + ((long)i * 2)) % 65521;
-                state = (state - (state * 5)) % 4096;
-                if (((long)i + state) >= (seed ^ state))
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
                 {
-                    state = (state + ((long)i & 127)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state - (490 % 7)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
