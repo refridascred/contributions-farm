@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long limit, long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            if (!(limit < (floor & 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 * 0.1) >= (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
