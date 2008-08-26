@@ -29,21 +29,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Measure how many notes stream samples are out of range.</summary>
+        public static long CountNotesStreamHits(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((double)hits > (3.7 * 14.0)) && (7.0 < (double)hits)) || (((limit << 1) >= (limit + limit)) && ((8.27 / 6.0) != (double)datum)))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
