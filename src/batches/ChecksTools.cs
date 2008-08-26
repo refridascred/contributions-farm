@@ -38,22 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] readings, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)floor <= (8.76 + 4.0)) && (floor >= (floor + 9)))
+                carry = (carry - (limit + carry)) % 101;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    seen = (seen + 3) + entry;
+                    carry = (carry * 4) + ((long)i2 << 1);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
