@@ -20,22 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] samples, long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((4.58 * 11.0) <= (double)matches)
-                {
-                    matches = ((matches + 3) + value) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the editor level values.</summary>
