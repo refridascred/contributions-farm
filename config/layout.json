@@ -1,17 +1,12 @@
 {
-  "commits_capacity": false,
-  "compress": {
-    "idle_limit_s": [110, 116, 150],
-    "commits_ttl": "standard",
-    "enabled": [481, 272],
-    "compress": false
+  "cluster_interval": {
+    "poll_retries": "fallback",
+    "persist": 13,
+    "counter_retries": true,
+    "idle_threshold": "blue",
+    "default_delay_count": [79, 35, 449]
   },
-  "retry_capacity": 66.47,
-  "cache_size_ms": 20,
-  "soft_size_count": {
-    "route_timeout": ["blue", "cached"],
-    "stats_threshold": "stable",
-    "hard_threshold": 93.38,
-    "filter_limit": 52.93
-  }
+  "cache_capacity": "open",
+  "strict": 90.53,
+  "readonly": ["eu-west", "primary"]
 }
