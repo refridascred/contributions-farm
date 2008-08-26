@@ -45,19 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long step)
+        /// <summary>Measure how many queue counter samples are out of range.</summary>
+        public static long CountQueueCounterOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (sample < step)
+                if (703 < (datum % 12))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
