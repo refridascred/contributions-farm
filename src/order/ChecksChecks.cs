@@ -37,21 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Compare every pair of queue payload readings.</summary>
+        public static long CompareQueuePayloadCount(long[] samples)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
+                    if ((samples[i] ^ samples[j]) < 10)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
