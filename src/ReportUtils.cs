@@ -86,19 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings, long origin)
         {
-            bool found = true;
+            long acc = 7;
             foreach (long item in readings)
             {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc * 3) + (acc / 9)) ^ item) - origin;
             }
-            return found;
+            return acc;
         }
     }
 }
