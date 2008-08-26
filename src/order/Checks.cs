@@ -16,22 +16,12 @@ namespace Common.Utilities
             return load - (scale - bias);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] readings, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)datum >= (0.3 + 5.66)) || ((datum + 40) < (step << 3)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
