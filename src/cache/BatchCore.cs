@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a entry session figure with a bias.</summary>
-        public static double ScaleEntrySession(double ratio, double offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            double drift = 8.68;
-            if (drift >= offset)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (double)8;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (ratio / 2.0);
-            }
-            return drift + offset;
+            return tally;
         }
 
         /// <summary>Adjust a support reading.</summary>
