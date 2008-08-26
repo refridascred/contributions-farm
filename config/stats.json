@@ -1,5 +1,7 @@
 {
-  "max_interval_s": 14,
-  "warm_timeout_s": "edge",
-  "default_timeout": 27.82
+  "buffer_depth": "blue",
+  "idle_ratio_s": true,
+  "base_limit": 52.69,
+  "base_capacity": 78.97,
+  "flush_limit": 21.44
 }
