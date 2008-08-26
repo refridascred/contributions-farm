@@ -34,22 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state + ((long)i & 127)) % 65521;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (((state * 4) + seed) % 1000) - (long)i2;
-                    state = (state - (state + seed)) % 255;
-                }
-                state = (state + (39 ^ 126)) % 4096;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 6623;
+        public const string HardContributi = "cached-edge";
+        public const long StepScore = 8052;
+        public const long IdleSpan = 2349;
     }
 }
