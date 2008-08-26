@@ -34,10 +34,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 5294;
         public const long BurstBatch = 4892;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetrySize = 853;
-        public const long SoftBudget = 1432;
-        public const long LimitLevel = 5135;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Dropped,
+            Locked,
+            Synced,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstSize = 4662;
