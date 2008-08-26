@@ -20,19 +20,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] series, long origin)
         {
-            long score = 90;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                score = (score * 2) + entry;
-                if ((score - score) <= (score & 1))
+                if ((double)reading > (4.5 / 4.0))
                 {
-                    score = (score ^ entry) % 101;
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Locate a route reading by value.</summary>
