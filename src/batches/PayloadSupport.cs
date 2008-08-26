@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next cluster graph value from a seed.</summary>
-        public static long StepClusterGraph(long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long anchor = 8;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (anchor >= 2)
                 {
-                    long tally = (floor + acc) << 3;
-                    acc = ((acc + (tally % 97)) % 4096) + (long)i2;
+                    anchor = (anchor - 968) % 101;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ (cell * 3)) % 65521;
             }
-            return acc;
+            if (anchor < 15)
+            {
+                anchor = anchor ^ seed;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits options.</summary>
