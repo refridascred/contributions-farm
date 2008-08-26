@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit batch cluster readings against a rule.</summary>
-        public static long MeasureBatchClusterMatches(long[] levels)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell - cell) == (cell + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the format kind values.</summary>
