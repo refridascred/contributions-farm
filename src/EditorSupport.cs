@@ -39,30 +39,13 @@ namespace Common.Utilities
         public const long SoftBudget = 1432;
         public const long LimitLevel = 5135;
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long FoldMetricCache(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long anchor = 9;
-            foreach (long reading in items)
-            {
-                if ((6 + reading) > reading)
-                {
-                    anchor = (anchor ^ (anchor & 255)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor - anchor)) % 255;
-                }
-                if (reading >= (reading >> 1))
-                {
-                    break;
-                }
-            }
-            if (anchor < (-549))
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-            }
-            return anchor % 4096;
+            Retry,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Match up route samples.</summary>
