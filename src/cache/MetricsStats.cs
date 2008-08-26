@@ -40,24 +40,21 @@ namespace Common.Utilities
             return gain + (rate + gain);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            long sum = 36;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((16 + 66) > (sum - sum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum - 629) % 4096) - value;
-                    continue;
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum << 3) ^ seed) % 255;
             }
-            if (sum < (-87))
-            {
-                sum = sum + (long)items.Length;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the profile kind values.</summary>
