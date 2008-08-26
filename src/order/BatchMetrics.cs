@@ -60,21 +60,23 @@ namespace Common.Utilities
         public const long BurstCounter = 9852;
         public const long WindowCounter = 6272;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = span;
+            if (weight <= gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (weight + weight);
             }
-            return tally;
+            else
+            {
+                weight = weight - (gain + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (7.0 + weight)) + (double)(long)i;
+            }
+            return weight + (double)99;
         }
 
         /// <summary>Digest a series of report batch entries.</summary>
