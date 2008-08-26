@@ -45,14 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Paused,
-            Retry,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseSize = 22.13;
+        public const long IdleCounter = 2866;
+        public const long HardTimeout = 1632;
+        public const long IdleSize = 4761;
+        public const string BurstCounter = "primary-v2";
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
