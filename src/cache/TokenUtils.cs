@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowCount = 99.0;
-        public const string BatchBatches = "open";
-        public const long CacheBudget = 6153;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long limit, long limit2)
