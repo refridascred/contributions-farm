@@ -54,18 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes contributi entries that pass the check.</summary>
-        public static long TallyNotesContributiOutliers(long[] samples, long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (31 < (origin & 7))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
