@@ -34,18 +34,21 @@ namespace Common.Utilities
             return ((ratio2 - (double)20) + ratio) + span;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Count order farm pairs that satisfy a relation.</summary>
+        public static long OverlapOrderFarmCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor + (long)i)) % 97;
-                anchor = (anchor ^ anchor) % 97;
-                anchor = (anchor << 2) ^ ((long)i + floor);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
