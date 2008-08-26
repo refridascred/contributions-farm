@@ -1,12 +1,5 @@
 # githubfarm settings
-idle_window_count: false
-record_ttl: 73
-account_retries:
-  batch_timeout: true
-  enabled: green
-  retry_timeout:
-    - primary
-    - fallback
-    - open
-    - cached
-dry_run: true
+batch_interval_pct: 65.71
+readonly: blue
+retry_interval_s: true
+base_size_count: 60
