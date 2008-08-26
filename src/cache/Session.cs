@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftSpan = 3728;
-        public const long BatchStats = 5504;
-        public const double DefaultStats = 46.8;
-        public const string MinRatio = "staging-v2";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BurstSize = "stable-edge";
