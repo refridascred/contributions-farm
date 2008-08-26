@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] values, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long origin, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long span = origin ^ target;
+            if ((origin - target) == (7 << 2))
             {
-                if (datum <= seed)
+                return 0;
+            }
+            else
+            {
+                if (!((95 >> 5) < (origin - span)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
