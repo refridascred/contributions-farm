@@ -45,22 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((tally + tally) >= (tally ^ tally))
+                if ((matches - matches) == (entry + entry))
                 {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
