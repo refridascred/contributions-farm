@@ -68,18 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((-358) + 7) < (count + count))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
