@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long offset, long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            if ((double)77 < (double)bound)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 8) >= (bound * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((12 + offset) <= (0 + 228))
+                    if ((values[i] - values[j]) < 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound % 5) <= (offset / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
