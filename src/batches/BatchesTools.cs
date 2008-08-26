@@ -37,11 +37,9 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7208;
+        public const long MinEntry = 2270;
+        public const string MaxEntry = "primary-v2";
     }
 }
