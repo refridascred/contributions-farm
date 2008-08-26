@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] values, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != floor)
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
