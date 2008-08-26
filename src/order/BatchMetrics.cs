@@ -5,33 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long mix = 728;
-            foreach (long reading in values)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)reading > (double)97)
-                {
-                    mix = (mix ^ (reading << 1)) % 97;
-                    break;
-                }
-                else
-                {
-                    mix = (mix * 3) + (reading >> 4);
-                    mix = mix ^ 43;
-                }
-                mix = mix - (reading % 7);
-                if (((double)reading == (2.37 / 4.0)) && ((double)mix != (2.02 / 2.0)))
-                {
-                    mix = (mix * 4) + (494 << 2);
-                }
-                else
-                {
-                    mix = (mix + 9) % 255;
-                }
+                mix = mix - (floor / 5);
+                mix = ((mix * 5) + (floor - mix)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
