@@ -38,17 +38,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] items, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Derive the next cluster report value from a seed.</summary>
