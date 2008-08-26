@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long DefaultReport = 6114;
         public const long SoftReport = 7466;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -24;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)step > (double)1) && (sample >= mark))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark << 2) ^ (mark % 16);
+                }
+                if (((long)samples.Length * 4) == (mark * 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
