@@ -1,15 +1,6 @@
 {
-  "warm_timeout_pct": {
-    "audit": {
-      "readonly": 28,
-      "flush_delay": "staging",
-      "compress": 8.81
-    },
-    "token_window": [356, 368, 35],
-    "retry_capacity_s": 5.15,
-    "burst_size_pct": 1088,
-    "sync_timeout_ms": 30
-  },
-  "session_depth": "stable",
-  "max_ratio_count": "stable"
+  "flush_retries_ms": "fallback",
+  "strict": [312, 484, 449],
+  "cache_ttl": 26,
+  "verbose": 24
 }
