@@ -23,13 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the farm token entries that pass the check.</summary>
+        public static long AuditFarmTokenOutliers(long[] samples, long offset)
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally - offset) < offset)
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a contributi stats.</summary>
