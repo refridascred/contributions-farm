@@ -90,16 +90,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Validate metrics schema readings against a bound.</summary>
+        public static bool ValidateMetricsSchemaLimits(long[] values, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                score = (score + (step - (long)i)) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
