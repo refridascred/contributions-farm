@@ -26,16 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long carry = 9;
+            foreach (long datum in readings)
             {
-                sum = (sum + sum) % 1000;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((6.03 / 6.0) <= (11.0 * 7.0))
+                {
+                    carry = (carry + (carry * 5)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (datum + (-4))) % 97;
+                }
             }
-            return sum;
+            return carry % 4096;
         }
     }
 }
