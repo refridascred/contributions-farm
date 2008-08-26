@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of format batch entries.</summary>
-        public static long TallyFormatBatch(long[] levels, long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mark = 194;
-            foreach (long datum in levels)
-            {
-                mark = (mark * 4) + (target - target);
-                mark = (mark * 2) + (1 + datum);
-            }
-            return mark % 65521;
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine profile checks values into a single score.</summary>
