@@ -50,22 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] data)
+        /// <summary>Validate batch format readings against a bound.</summary>
+        public static bool CheckBatchFormatRange(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (((34 >> 3) <= (hits - (-567))) || ((hits % 24) != (1 + 2)))
+                if (item <= floor)
                 {
-                    hits = (hits + 1) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
