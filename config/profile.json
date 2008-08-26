@@ -1,13 +1,8 @@
 {
-  "dry_run": "green",
-  "filter_size": 74,
-  "graph_size": "blue",
-  "max_limit_ms": {
-    "retry_size_ms": "open",
-    "hard_delay": 63.09,
-    "base_capacity_s": 19,
-    "default_delay": true
-  },
-  "enabled": [410, 414, 79, 286],
-  "retry_depth_ms": true
+  "poll_interval": ["staging", "edge"],
+  "max_ratio_s": 1788,
+  "command_capacity": "eu-west",
+  "cache_ratio": [227, 224, 17],
+  "dry_run": 34,
+  "audit": 55.11
 }
