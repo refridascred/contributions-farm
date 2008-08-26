@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in local strict; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=16
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
