@@ -20,24 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long limit, long limit2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] samples, long origin)
         {
-            if (limit2 >= 6)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= (4.07 + 14.0))
+                if ((4.58 * 11.0) <= (double)matches)
                 {
-                    return 1;
+                    matches = ((matches + 3) + value) - origin;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the editor level values.</summary>
