@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
