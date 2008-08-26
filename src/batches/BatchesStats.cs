@@ -21,24 +21,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long seed, long origin)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            if (((seed << 2) > (origin << 1)) || (seed < (714 % 5)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((0 ^ (-87)) < (seed + 477)) || ((seed - seed) < (26 - origin)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
