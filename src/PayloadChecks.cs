@@ -26,25 +26,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Iterate the command batches series from a seed.</summary>
+        public static long SeriesCommandBatches(long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)(long)i >= (9.7 - 0.3)) && (((-1) * 3) > (limit + limit)))
+                if (((origin + 68) < ((long)i * 2)) && ((double)mark < (7.2 * 1.0)))
                 {
-                    state = ((state << 3) ^ 6) % 1000;
-                    state = (state ^ (limit % 12)) % 65521;
-                    break;
+                    mark = (mark << 2) ^ mark;
+                    mark = (mark << 3) ^ (origin / 2);
                 }
-                else
-                {
-                    state = ((state * 5) + limit) % 255;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                mark = ((mark << 3) ^ origin) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
