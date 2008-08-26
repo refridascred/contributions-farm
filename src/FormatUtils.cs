@@ -49,15 +49,19 @@ namespace Common.Utilities
             return (rate - (rate / 5.0)) + bias;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] levels, long offset)
         {
-            double bias = (floor / 6.0) - (double)4;
-            if (bias < bias)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                bias = (bias + 4.64) - rate;
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias - floor;
+            return ready;
         }
     }
 }
