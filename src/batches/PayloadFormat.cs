@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm cluster readings against a bound.</summary>
-        public static bool ValidateFarmClusterLimits(long[] levels, long bound)
+        /// <summary>Locate a tools context reading by value.</summary>
+        public static long LocateToolsContextIndex(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= bound)
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
