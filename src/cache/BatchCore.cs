@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools stream readings against a bound.</summary>
-        public static bool ValidateToolsStreamRange(long[] samples, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long state = 64;
+            foreach (long sample in values)
             {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((((state * 5) + 739) % 4096) ^ sample) + step;
             }
-            return ready;
+            if (state > 215)
+            {
+                state = (state + 490) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
