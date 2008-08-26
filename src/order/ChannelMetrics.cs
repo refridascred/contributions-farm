@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long IdleDepth = 5312;
         public const long SoftCommits = 8578;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxScore = 68.43;
-        public const long IdleTimeout = 9276;
-        public const double MaxStats = 96.66;
-        public const double MinCount = 11.41;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits - reading) < (hits / 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsLimits(long[] readings, long bound)
