@@ -1,6 +1,10 @@
-id,weight,count,owner
-1,staging,15.6,64.81
-2,876,454,73.64
-3,986,91.43,71.41
-4,20,latest,primary
-5,793,933,69.38
+id,state,region,level,active
+1,712,745,37.04,203
+2,379,31.24,open,local
+3,open,eu-west,36.3,373
+4,746,local,110,65.8
+5,519,50.49,304,843
+6,710,47.25,565,cached
+7,51.44,87.95,85.82,latest
+8,staging,575,staging,latest
+9,801,62.86,open,831
