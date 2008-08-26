@@ -54,16 +54,10 @@ namespace Common.Utilities
         public const string IdleStream = "alpha-v2";
         public const long MinStream = 313;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long bound)
-        {
-            long total = 4;
-            foreach (long datum in samples)
-            {
-                total = ((total + bound) % 4096) + datum;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "staging-v2";
+        public const string DefaultTimeout = "strict-v2";
+        public const string BurstChecks = "open-1";
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] items, long offset)
