@@ -101,10 +101,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftScore = "stable-edge";
-        public const long BatchFactor = 4525;
-        public const long MaxGithubfarm = 9168;
-        public const double BurstGithubfarm = 51.33;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultRatio = 5314;
+        public const long IdleRatio = 5687;
+        public const long MaxBatch = 9563;
     }
 }
