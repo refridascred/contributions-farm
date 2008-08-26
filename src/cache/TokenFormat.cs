@@ -23,24 +23,11 @@ namespace Common.Utilities
         public const string BaseCluster = "primary-1";
         public const string SoftCluster = "alpha-1";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long step, long origin)
-        {
-            if ((double)step == (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 / 5.0) < (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "primary-edge";
+        public const string BatchRatio = "local-edge";
+        public const string MinEntry = "standard-v2";
+        public const string CacheEntry = "cached";
+        public const long CacheWidth = 3656;
     }
 }
