@@ -23,13 +23,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            Draft,
+            Active,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Project the next cluster value.</summary>
