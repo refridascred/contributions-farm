@@ -64,14 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] readings, long limit)
         {
-            Queued,
-            Done,
-            Locked,
-            Synced,
-            Ready,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count cache farm pairs that satisfy a relation.</summary>
