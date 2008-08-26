@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const long BurstScore = 6396;
         public const long MinLevel = 5515;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] levels, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings)
         {
-            long mix = 47;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((reading / 4) >= target)
+                if ((value + 628) != (tally + 87))
                 {
-                    mix = mix - ((-6) - reading);
-                }
-                else
-                {
-                    mix = (mix - reading) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix + (mix + 32)) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate githubfarm channel readings against a bound.</summary>
