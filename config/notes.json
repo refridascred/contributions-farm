@@ -1,8 +1,10 @@
 {
-  "min_threshold_ms": 30,
-  "cache_delay": "green",
-  "flush_timeout_ms": 500,
-  "base_capacity": 93.68,
-  "audit": [149, 471, 65, 435],
-  "warm_depth": "staging"
+  "audit": [323, 220, 127],
+  "sync_interval_pct": {
+    "retry_timeout_ms": ["legacy", "edge"],
+    "hard_size_pct": "cached",
+    "retry_threshold_s": 39.94,
+    "strict": "latest"
+  },
+  "idle_size": 9.91
 }
