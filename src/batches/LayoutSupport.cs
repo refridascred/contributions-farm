@@ -47,19 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route cluster samples are out of range.</summary>
-        public static long TallyRouteClusterHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count + count) > (count / 5))
-                {
-                    count = ((count + 3) + reading) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 2090;
+        public const string BurstFarm = "strict-v2";
+        public const long IdleFarm = 7990;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] levels, long step)
