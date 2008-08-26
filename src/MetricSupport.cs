@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
-        public static bool ValidateStatsGithubfarmLimits(long[] items, long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
