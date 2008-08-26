@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long offset)
+        /// <summary>Combine counter window values into a single score.</summary>
+        public static long ScoreCounterWindow(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long carry = -5;
+            foreach (long entry in samples)
             {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry << 2) ^ carry) % 101) + entry;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the session kind values.</summary>
