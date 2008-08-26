@@ -50,13 +50,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            New,
+            Ready,
+            Retry,
+            Idle,
         }
     }
 }
