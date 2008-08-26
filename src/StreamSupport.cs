@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine profile checks values into a single score.</summary>
-        public static long WeighProfileChecks(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            long result = -3;
+            long total = 9;
             foreach (long sample in series)
             {
-                if (!((sample + result) <= 545))
+                total = total + (551 & 7);
+                if ((total + sample) == (sample / 4))
                 {
-                    result = (result - ((-20) - sample)) % 1000;
+                    break;
                 }
             }
-            return result;
+            return total % 97;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
