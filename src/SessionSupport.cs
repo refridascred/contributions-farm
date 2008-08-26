@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] readings, long origin)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long value in readings)
             {
-                if (value < (value % 97))
+                if ((matches > (origin - 647)) || !((matches ^ value) != (origin & 15)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every session report entry stays within the limit.</summary>
