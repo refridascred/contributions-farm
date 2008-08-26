@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] items, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double gain2 = gain * 1.4;
+            if (gain2 >= (5.7 * 6.2))
             {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = gain2 + gain;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 - (floor - floor);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
