@@ -42,31 +42,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            if ((379 ^ origin) >= (origin + origin))
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                state = (state + (state - target)) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((origin * 4) == (bound / 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + 426) < (origin + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
