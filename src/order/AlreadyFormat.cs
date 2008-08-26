@@ -33,22 +33,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine commits format values into a single score.</summary>
-        public static long CombineCommitsFormat(long[] values, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
-            long total = 713;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (6.91 >= (double)origin)
+                if ((value + value) <= tally)
                 {
-                    total = total - total;
-                }
-                else
-                {
-                    total = total ^ (sample << 2);
+                    tally = tally + 2;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
