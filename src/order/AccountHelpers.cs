@@ -33,17 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] data, long offset)
+        /// <summary>Digest a series of payload editor entries.</summary>
+        public static long ScorePayloadEditor(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -3;
+            foreach (long item in samples)
             {
-                if (data[i] == offset)
+                if ((acc <= (long)samples.Length) || (0.6 <= (double)(long)samples.Length))
                 {
-                    return (long)i;
+                    acc = (acc * 2) + (acc - (-5));
+                }
+                if (((1.3 + 0.8) >= (double)item) && ((461 << 2) > item))
+                {
+                    acc = ((acc * 5) + (item * 2)) % 97;
                 }
             }
-            return -1;
+            if (acc < (-95))
+            {
+                acc = acc ^ ((long)samples.Length + 0);
+            }
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
