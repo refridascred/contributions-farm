@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 8384;
-        public const long BatchSession = 7250;
-        public const double IdleLevel = 93.49;
-        public const long RetrySession = 8256;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long bound)
+        {
+            long diff = limit ^ bound;
+            if (!((556 + bound) >= 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (diff < (22 + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(bound <= (limit + 94)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((diff + bound) < (bound + limit)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BaseScore = "primary";
