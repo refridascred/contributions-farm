@@ -33,22 +33,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long mix = 64;
-            foreach (long entry in series)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < origin)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    mix = mix - origin;
+                    state = (((state * 2) + (seed % 16)) % 65521) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (mix > 1)
-            {
-                mix = mix ^ (origin & 3);
-            }
-            return mix % 97;
+            return state;
         }
     }
 }
