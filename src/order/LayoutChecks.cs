@@ -45,12 +45,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Check that every metric session entry stays within the limit.</summary>
+        public static bool GuardMetricSessionBounds(long[] samples, long seed)
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every checks farm entry stays within the limit.</summary>
