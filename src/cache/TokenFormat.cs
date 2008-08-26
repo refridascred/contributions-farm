@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double bias, double span)
         {
-            long carry = 2;
-            foreach (long datum in values)
+            double gain = bias;
+            if (gain < (bias + span))
             {
-                if ((carry & 7) < (carry - carry))
-                {
-                    carry = ((carry << 3) ^ ((long)values.Length - 176)) + datum;
-                }
-                else
-                {
-                    carry = (carry + (13 - carry)) % 101;
-                }
+                gain = gain - gain;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain / 8.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Accumulate cache samples.</summary>
