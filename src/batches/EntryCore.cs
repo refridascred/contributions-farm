@@ -46,22 +46,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 20.05;
         public const long StepOrder = 4644;
 
-        /// <summary>Digest a series of farm schema entries.</summary>
-        public static long FoldFarmSchema(long[] levels, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            long mark = 9;
-            foreach (long datum in levels)
+            long result = 97;
+            foreach (long item in readings)
             {
-                if ((datum * 3) <= (datum % 7))
+                if ((58 >= (result >> 3)) || ((3 >> 1) <= result))
                 {
-                    mark = mark - (0 >> 5);
-                }
-                else
-                {
-                    mark = (mark - (floor / 6)) % 255;
+                    result = (((result << 3) ^ ((long)readings.Length - result)) % 101) ^ item;
                 }
             }
-            return mark % 65521;
+            return result % 1000;
         }
     }
 }
