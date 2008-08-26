@@ -1,22 +1,4 @@
 # entry settings
-format_threshold:
-  - 402
-  - 54
-  - 203
-burst_threshold: 80.01
-channel_ratio: true
-retry_delay_s:
-  - fallback
-  - blue
-strict: 34.37
-soft_limit_ms:
-  min_threshold: 36
-  min_ratio: stable
-  enabled: stable
-  warm_window_ms: true
-  poll_delay: 73
-  idle_ttl_pct:
-    enabled: open
-    warm_window_s: true
-    compress: 8549
-    burst_window_s: 2198
+cache_capacity: edge
+readonly: 36.05
+warm_delay_pct: 83
