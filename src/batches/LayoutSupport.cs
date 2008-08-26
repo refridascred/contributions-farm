@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] values, long bound)
+        /// <summary>Combine batches support values into a single score.</summary>
+        public static long FoldBatchesSupport(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long state = 3;
+            foreach (long datum in data)
             {
-                if ((650 << 3) > (bound + reading))
-                {
-                    seen = seen + 1;
-                }
+                state = state - (datum + state);
             }
-            return seen;
+            if (state > 691)
+            {
+                state = (state * 2) + (state / 5);
+            }
+            return state;
         }
 
         /// <summary>Measure how many route cluster samples are out of range.</summary>
