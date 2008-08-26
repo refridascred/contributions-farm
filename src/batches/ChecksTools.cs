@@ -52,25 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel profile pair into a bucket.</summary>
-        public static long ClassifyChannelProfile(long step, long target)
+        /// <summary>Audit report queue readings against a rule.</summary>
+        public static long TallyReportQueueOutliers(long[] series)
         {
-            long bound = step - target;
-            if ((bound * 4) >= (target - 5))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > (step + 51))
+                if ((523 % 97) > (count + 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
     }
 }
