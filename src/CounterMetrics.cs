@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] levels, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long anchor = 82;
+            foreach (long item in data)
             {
-                if (datum < target)
+                if ((origin & 3) <= origin)
                 {
-                    stale = false;
+                    anchor = (anchor + item) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                if ((-15) < ((long)data.Length - anchor))
+                {
                     break;
                 }
             }
-            return stale;
+            if (anchor < 83)
+            {
+                anchor = ((anchor * 4) + (origin ^ origin)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metric state values.</summary>
