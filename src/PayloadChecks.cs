@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings, long bound)
+        /// <summary>Look up the position of a commits record sample.</summary>
+        public static long SeekCommitsRecordIndex(long[] data, long target)
         {
-            long score = -5;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score << 2) ^ entry) % 4096) - bound;
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 37)
-            {
-                score = (score - (score + score)) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
