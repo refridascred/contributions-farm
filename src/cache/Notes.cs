@@ -34,12 +34,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinLevel = 2542;
-        public const long DefaultStream = 1614;
-        public const long SoftSpan = 9822;
-        public const long BaseTimeout = 8294;
-        public const long BurstCount = 7490;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((mark / 7) <= (mark >> 5))
+                {
+                    mark = (mark ^ (mark / 7)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double ScaleRoute(double rate, double offset)
