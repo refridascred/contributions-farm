@@ -20,16 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long offset, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            if ((origin + 6) <= origin)
             {
-                carry = carry + carry;
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((offset + origin) >= (origin & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - offset) > (offset / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
