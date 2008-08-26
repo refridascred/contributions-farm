@@ -32,26 +32,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of stream notes entries.</summary>
-        public static long ScoreStreamNotes(long[] readings, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long limit)
         {
-            long state = 406;
-            foreach (long value in readings)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(value <= (state & 3)))
-                {
-                    state = ((state << 3) ^ (state + value)) % 65521;
-                }
-                if (((-736) ^ 674) >= (state + limit))
-                {
-                    state = (state + (state / 2)) % 65521;
-                }
+                acc = (acc ^ ((long)i / 2)) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (state < 66)
-            {
-                state = (state + (state >> 4)) % 1000;
-            }
-            return state % 65521;
+            return acc;
         }
     }
 }
