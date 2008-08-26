@@ -1,8 +1,18 @@
 {
-  "token_threshold": true,
-  "min_capacity_s": 500,
-  "poll_ttl_pct": "stable",
-  "verbose": 51,
-  "min_limit_count": 15,
-  "min_ratio": "green"
+  "warm_threshold_ms": {
+    "notes_depth": {
+      "queue_interval": 46.39,
+      "route_interval": false,
+      "min_retries": [210, 160],
+      "sync_capacity": ["latest", "latest", "edge", "strict"]
+    },
+    "window_size": ["latest", "open"],
+    "warm_threshold_pct": 49.24,
+    "cache_depth": 100
+  },
+  "enabled": 5105,
+  "schema_limit": "open",
+  "base_interval": "strict",
+  "filter_depth": "cached",
+  "persist": 77.9
 }
