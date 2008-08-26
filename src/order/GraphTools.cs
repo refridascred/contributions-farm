@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm tools samples are out of range.</summary>
-        public static long TallyFarmToolsHits(long[] series, long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + entry) != (matches >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) - limit;
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
