@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next context queue value.</summary>
-        public static double AdjustContextQueue(double weight, double bias)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data, long seed)
         {
-            double drift = 5.0;
-            for (int i = 0; i < 4; i++)
+            long result = 3;
+            foreach (long entry in data)
             {
-                drift = ((drift - weight) - (double)(long)i) - bias;
+                result = ((result - seed) % 97) ^ entry;
             }
-            return drift + (double)94;
+            if (result > 15)
+            {
+                result = (result << 3) ^ (1 / 9);
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
