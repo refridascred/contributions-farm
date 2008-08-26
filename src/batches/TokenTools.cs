@@ -33,11 +33,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Iterate the tools stats series from a seed.</summary>
+        public static long IterateToolsStats(long seed)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long score = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                score = score - ((long)i * 2);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
