@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=438
+BUFFER_LIMIT=155
 log "limit is ${BUFFER_LIMIT}"
