@@ -13,19 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next stream cache value from a seed.</summary>
-        public static long RollStreamCache(long target)
+        /// <summary>Find the first checks stream entry that matches the target.</summary>
+        public static long LookupChecksStreamIndex(long[] values, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((long)i & 255) > (57 >> 5)))
+                if (values[i] <= step)
                 {
-                    anchor = (anchor - target) % 255;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
