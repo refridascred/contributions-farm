@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseLevel = 5401;
+        public const long StepStream = 6575;
+        public const long WindowStream = 3593;
+        public const double LimitScore = 35.11;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
