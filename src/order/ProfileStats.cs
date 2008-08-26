@@ -31,14 +31,18 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items, long bound)
         {
-            Pending,
-            Dropped,
-            Paused,
-            Failed,
-            Draft,
+            long score = 230;
+            foreach (long cell in items)
+            {
+                if ((cell >= ((long)items.Length << 2)) && ((bound + 4) == (cell * 5)))
+                {
+                    score = score + cell;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next farm value.</summary>
