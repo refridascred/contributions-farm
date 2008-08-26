@@ -15,15 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next profile entry value from a seed.</summary>
-        public static long IterateProfileEntry(long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
