@@ -59,23 +59,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 7) != (tally ^ tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 2437;
+        public const string CacheStream = "local";
+        public const long WindowBudget = 3085;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] items)
