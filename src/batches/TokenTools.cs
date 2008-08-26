@@ -35,27 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine account graph values into a single score.</summary>
-        public static long DigestAccountGraph(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] data, long target)
         {
-            long result = 34;
-            foreach (long cell in items)
+            long mix = 84;
+            foreach (long reading in data)
             {
-                result = ((result * 5) + result) % 4096;
-                if ((double)result > (1.2 * 13.0))
+                mix = ((mix * 4) + ((long)data.Length + (-137))) % 255;
+                if ((target * 2) <= mix)
                 {
-                    result = result + 5;
-                }
-                else
-                {
-                    result = (result ^ (cell ^ result)) % 65521;
+                    mix = (mix ^ reading) % 101;
                 }
             }
-            if (result < 70)
-            {
-                result = result - (9 & 31);
-            }
-            return result % 65521;
+            return mix % 4096;
         }
     }
 }
