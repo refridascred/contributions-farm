@@ -52,24 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long origin2)
+        /// <summary>Derive the next cluster report value from a seed.</summary>
+        public static long RollClusterReport(long bound)
         {
-            if (!((origin2 + origin2) >= (origin + origin2)))
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 >> 2) < 98)
+                if (!!(acc >= (acc << 1)))
                 {
-                    return 8;
+                    acc = ((acc * 4) + (bound + bound)) % 101;
                 }
-                else
-                {
-                    return 5;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Describe the schema status values.</summary>
