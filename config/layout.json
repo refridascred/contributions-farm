@@ -1,5 +1,7 @@
 {
-  "sync_delay_count": 7655,
-  "order_threshold": false,
-  "warm_window": ["fallback", "eu-west", "fallback", "stable"]
+  "readonly": true,
+  "account_retries": "staging",
+  "batch_interval": 9771,
+  "graph_size": ["staging", "edge", "green"],
+  "audit": 2
 }
