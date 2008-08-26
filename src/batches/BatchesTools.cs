@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstInterval = 5766;
+        public const string HardDepth = "alpha";
+        public const string RetryLevel = "strict-edge";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferOutliers(long[] values)
