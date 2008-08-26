@@ -16,11 +16,23 @@ namespace Common.Utilities
             return bias + (double)513;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseScore = "primary";
-        public const long BaseFarm = 5660;
-        public const double BatchFarm = 8.47;
-        public const double DefaultFarm = 47.63;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((value > (value >> 2)) || ((1.5 + 7.7) >= (double)value)) && ((value ^ 8) > (target + value)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] series, long offset)
