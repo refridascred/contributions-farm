@@ -13,18 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] values)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((double)reading < (1.7 / 7.0)) && (7.0 <= (double)reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
