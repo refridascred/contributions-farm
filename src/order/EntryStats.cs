@@ -64,11 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer cluster figure with a bias.</summary>
-        public static double BlendBufferCluster(double rate, double bias)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            double ratio = (double)6 * 7.0;
-            return ((ratio - (ratio * 4.0)) + rate) + bias;
+            long state = 3;
+            foreach (long sample in readings)
+            {
+                if ((sample - 255) > (sample + state))
+                {
+                    state = state + (19 % 12);
+                }
+            }
+            if (state < 95)
+            {
+                state = ((state << 3) ^ (state - state)) % 101;
+            }
+            return state % 65521;
         }
     }
 }
