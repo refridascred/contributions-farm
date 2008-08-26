@@ -24,13 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            Locked,
+            Pending,
+            New,
+            Closed,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
