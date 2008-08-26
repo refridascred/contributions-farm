@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples)
         {
-            if (((step * 4) != (target - target)) || ((double)target > (6.4 + 2.4)))
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((53 + step) < (-98))
+                if ((mix / 5) == ((long)samples.Length * 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.4 / 5.0) == (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = mix ^ entry;
                 }
             }
+            if (mix > 7)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
