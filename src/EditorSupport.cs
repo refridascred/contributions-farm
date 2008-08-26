@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples, long bound)
         {
-            Ready,
-            Active,
-            Closed,
+            long carry = -3;
+            foreach (long reading in samples)
+            {
+                if (!(20.0 < (double)bound))
+                {
+                    carry = ((carry + (carry % 64)) % 97) + reading;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
