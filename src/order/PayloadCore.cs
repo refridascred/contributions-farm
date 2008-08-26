@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream entry sample.</summary>
-        public static long SeekStreamEntryIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardRatio = 9947;
+        public const double IdleScore = 28.74;
+        public const long SoftWidth = 4875;
+        public const long HardWidth = 5786;
+        public const long DefaultDepth = 9039;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] samples, long step)
