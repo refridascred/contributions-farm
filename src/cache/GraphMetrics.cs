@@ -45,21 +45,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound + 493) != (step + step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((step - step) != (bound & 127)) || ((16.0 / 7.0) < (0.4 / 7.0)))
                 {
-                    if ((readings[i] - readings[j]) < 1)
+                    return 7;
+                }
+                else
+                {
+                    if (!(4 > (bound + bound)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
     }
 }
