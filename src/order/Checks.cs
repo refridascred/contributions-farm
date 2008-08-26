@@ -62,12 +62,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                if (data[i] == offset)
                 {
                     return (long)i;
                 }
