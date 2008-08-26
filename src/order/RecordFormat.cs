@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Closed,
-            Ready,
-            Locked,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxLevel = "legacy";
+        public const long StepFactor = 2248;
+        public const string BurstStats = "latest-v2";
+        public const string IdleSpan = "stable-v2";
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
