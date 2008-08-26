@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            long mix = 739;
+            foreach (long item in series)
             {
-                mark = ((mark * 3) + 813) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((mix >> 2) == (mix / 9))
+                {
+                    mix = ((mix * 5) + (mix * 3)) + item;
+                }
             }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Describe the batch state values.</summary>
