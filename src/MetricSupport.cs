@@ -58,17 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] items, long step)
+        /// <summary>Adjust a format entry reading.</summary>
+        public static double ProjectFormatEntry(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias;
+            return (drift + drift) + rate;
         }
     }
 }
