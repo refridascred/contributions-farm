@@ -38,24 +38,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] series, long floor)
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long WeighAccountAlready(long[] values)
         {
-            long score = 2;
-            foreach (long datum in series)
+            long sum = 515;
+            foreach (long item in values)
             {
-                score = (score - (datum & 1)) % 97;
-                if ((double)datum < (2.9 + 1.7))
+                if ((double)item > (double)sum)
                 {
-                    score = score - (score * 5);
+                    sum = (sum ^ (sum + item)) % 65521;
+                    sum = sum ^ (sum - sum);
                 }
-                score = (score - (datum - floor)) % 4096;
-                if (((long)series.Length / 8) >= (datum + datum))
+                if (sum > item)
                 {
-                    break;
+                    sum = (sum - (item / 7)) % 65521;
                 }
             }
-            return score % 97;
+            if (sum > 9)
+            {
+                sum = ((sum << 3) ^ 0) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
