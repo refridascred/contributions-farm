@@ -52,18 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the schema session entries that pass the check.</summary>
-        public static long MeasureSchemaSessionGaps(long[] items, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((seed + seen) == (seed + seed))
+                if (item != target)
                 {
-                    seen = (seen + 1) - value;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a record githubfarm reading.</summary>
