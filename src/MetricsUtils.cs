@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first token stats entry that matches the target.</summary>
-        public static long LocateTokenStatsIndex(long[] samples, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (samples[i] == bound)
+                if ((double)count == (double)922)
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ datum) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
