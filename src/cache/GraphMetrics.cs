@@ -47,22 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long mark = 3;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry < 9.26)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark * 4) + (entry + mark);
-                }
-                else
-                {
-                    mark = mark + (38 + entry);
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return tally;
         }
     }
 }
