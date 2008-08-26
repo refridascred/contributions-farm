@@ -63,19 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
