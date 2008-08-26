@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (reading > step)
+                if (((seen + seen) != (seen * 3)) || ((sample + seen) <= seen))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of notes route readings.</summary>
