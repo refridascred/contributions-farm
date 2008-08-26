@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Active,
-            Done,
-            Locked,
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
