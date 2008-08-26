@@ -46,19 +46,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultInterval = 5563;
+        public const long MinSchema = 175;
+        public const long StepSize = 2991;
     }
 }
