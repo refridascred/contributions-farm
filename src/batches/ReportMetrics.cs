@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long WindowEditor = 2447;
         public const string DefaultEditor = "fallback-edge";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long mix = 255;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) != (entry % 8))
-                {
-                    mix = (mix * 5) + (long)items.Length;
-                }
-            }
-            if (mix < 748)
-            {
-                mix = ((mix * 4) + mix) % 1000;
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first context schema entry that matches the target.</summary>
