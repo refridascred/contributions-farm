@@ -30,10 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardSize = 44.48;
-        public const long HardScore = 7363;
-        public const long BurstContext = 8989;
-        public const string RetryContext = "open-1";
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Dropped,
+            Paused,
+            Done,
+            Idle,
+        }
     }
 }
