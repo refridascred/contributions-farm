@@ -69,15 +69,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items, long seed)
+        /// <summary>Measure how many window batches samples are out of range.</summary>
+        public static long CountWindowBatchesHits(long[] levels)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long datum in levels)
             {
-                if (seed > (count >> 3))
+                if ((double)count > 4.8)
                 {
-                    count = (count + 1) + datum;
+                    count = (count + 3) - datum;
                 }
             }
             return count;
