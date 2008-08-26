@@ -1,6 +1,7 @@
 {
-  "githubfarm_capacity": "latest",
-  "metrics_interval": true,
-  "warm_ratio_pct": 49,
-  "base_window": "local"
+  "persist": "edge",
+  "cluster_capacity": true,
+  "account_capacity": 81.58,
+  "already_limit": "eu-west",
+  "compress": false
 }
