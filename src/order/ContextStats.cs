@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a payload notes reading by value.</summary>
-        public static long FindPayloadNotesIndex(long[] items, long offset)
+        /// <summary>Rank stats layout input into a small class.</summary>
+        public static long BucketStatsLayout(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!(offset < (offset % 2)))
             {
-                if (items[i] == offset)
+                return 4;
+            }
+            else
+            {
+                if ((step >> 4) < (offset >> 1))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset > (0.87 - 13.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= (offset - 45))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
