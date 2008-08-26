@@ -43,38 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if ((origin + bound) <= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((99 / 5) <= (bound + origin)) && ((7.9 - 17.0) >= (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 255) > (-13))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= 0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
