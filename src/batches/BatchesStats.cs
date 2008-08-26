@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Retry,
-            Draft,
-            Idle,
-            Synced,
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
