@@ -25,10 +25,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSize = 50.23;
-        public const long BatchSupport = 1863;
-        public const long LimitDepth = 5103;
-        public const double LimitScore = 5.57;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
     }
 }
