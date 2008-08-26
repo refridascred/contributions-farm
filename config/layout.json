@@ -1,6 +1,13 @@
 {
-  "max_delay_pct": 30,
-  "persist": "fallback",
-  "audit": 250,
-  "retry_retries": false
+  "batch_ttl_ms": "stable",
+  "max_retries_count": 45,
+  "flush_retries": true,
+  "hard_limit_s": {
+    "buffer_ratio": 2.95,
+    "cache_interval_pct": "latest",
+    "soft_depth_pct": [113, 122, 63],
+    "batch_capacity_ms": 4226,
+    "base_retries_pct": "strict",
+    "cluster_ratio": [371, 373, 348, 296]
+  }
 }
