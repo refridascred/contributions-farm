@@ -33,17 +33,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first context schema entry that matches the target.</summary>
-        public static long LocateContextSchemaIndex(long[] series, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (series[i] <= offset)
+                if (tally < (cell % 97))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
