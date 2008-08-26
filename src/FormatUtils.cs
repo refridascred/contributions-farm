@@ -35,12 +35,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 68.36;
-        public const long CacheWidth = 1859;
-        public const long SoftAlready = 9346;
-        public const long IdleSpan = 4628;
-        public const string HardAlready = "primary-edge";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double bias, double span)
