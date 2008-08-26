@@ -26,22 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] data, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)bound < 3.0)
+                if ((cell < (count + count)) || ((bound ^ bound) < (count + 562)))
                 {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
