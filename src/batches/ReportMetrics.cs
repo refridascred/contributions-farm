@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats route readings.</summary>
-        public static long DigestStatsRoute(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            long score = 352;
-            foreach (long cell in levels)
+            long total = 87;
+            foreach (long value in values)
             {
-                score = ((score * 3) + (score / 9)) % 255;
-                if ((3 >> 5) <= (score ^ cell))
+                total = (total + (value << 3)) % 101;
+                if (value < (total >> 4))
                 {
-                    score = (score ^ (cell - score)) % 1000;
+                    total = (total + (total - value)) % 255;
                 }
             }
-            return score;
+            if (total < 8)
+            {
+                total = (total * 5) + (112 >> 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
