@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double rate, double floor)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            double mean = (double)28 - rate;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (rate + rate)) + (double)(long)i;
+            }
+            return mean + (floor + mean);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
