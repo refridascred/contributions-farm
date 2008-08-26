@@ -17,13 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double bias, double offset)
         {
-            Failed,
-            Closed,
-            Locked,
-            Ready,
+            double gain = (double)64;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain - offset) - (double)(long)i) + bias;
+            }
+            return gain + gain;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
