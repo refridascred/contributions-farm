@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long target, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long bound = target + offset;
-            if (9.0 < (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 1) > (bound ^ bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
