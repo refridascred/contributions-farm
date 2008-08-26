@@ -76,18 +76,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] samples, long seed)
+        /// <summary>Fold a list of queue command readings.</summary>
+        public static long WeighQueueCommand(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = 68;
+            foreach (long sample in levels)
             {
-                if ((((seen + seen) > (seed / 7)) && (seen < (entry / 8))) && (7.99 <= (double)seed))
+                mix = (mix + (long)levels.Length) % 97;
+                mix = ((mix << 3) ^ (mix * 5)) % 65521;
+                if ((7.8 + 2.3) >= (double)sample)
                 {
-                    seen = seen + 3;
+                    mix = (mix << 3) ^ (99 + sample);
                 }
             }
-            return seen;
+            if (mix < 9)
+            {
+                mix = mix + (531 ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
