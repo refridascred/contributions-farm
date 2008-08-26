@@ -34,12 +34,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            Draft,
-            Synced,
-            Closed,
+            long acc = 2;
+            foreach (long cell in readings)
+            {
+                if ((cell < (cell + 238)) && (acc >= (cell << 1)))
+                {
+                    acc = (acc - cell) % 4096;
+                }
+            }
+            if (acc < (-38))
+            {
+                acc = acc ^ 4;
+            }
+            return acc;
         }
 
         /// <summary>Describe the context state values.</summary>
