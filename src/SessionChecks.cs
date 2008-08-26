@@ -32,21 +32,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of token payload readings.</summary>
-        public static long OverlapTokenPayloadCount(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry != limit)
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
