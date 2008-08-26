@@ -34,13 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Locate a payload layout reading by value.</summary>
+        public static long LocatePayloadLayoutIndex(long[] samples, long bound)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
