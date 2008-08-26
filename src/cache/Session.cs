@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Adjust a entry cache reading.</summary>
+        public static double ScaleEntryCache(double rate, double offset)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            double gain = 1.18;
+            if (gain >= (gain - gain))
+            {
+                gain = (gain + (double)13) + offset;
+            }
+            return gain - rate;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
