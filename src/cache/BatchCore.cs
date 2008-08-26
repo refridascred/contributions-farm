@@ -14,12 +14,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultBudget = 80.11;
-        public const long SoftFormat = 3828;
-        public const long MinSpan = 7859;
-        public const long BatchLevel = 9338;
-        public const double HardDepth = 20.75;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long floor)
+        {
+            if ((limit + limit) <= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= 475)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 1) <= (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit < (limit & 1)) && ((limit + limit) <= (limit * 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "open-1";
