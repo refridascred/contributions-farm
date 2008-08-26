@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats farm readings against a bound.</summary>
-        public static bool GuardStatsFarmRange(long[] levels, long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a context stats.</summary>
