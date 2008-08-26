@@ -19,22 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings, long floor)
+        /// <summary>Count the account already entries that pass the check.</summary>
+        public static long TallyAccountAlreadyHits(long[] values, long bound)
         {
-            long mark = 5;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((sample / 4) < (55 & 31)) && ((7 ^ 54) <= (6 - mark)))
+                if ((bound >= (86 >> 2)) || ((bound < (tally >> 3)) || ((tally % 60) == (553 << 3))))
                 {
-                    mark = (mark + floor) % 4096;
+                    tally = (tally + 2) + sample;
                 }
             }
-            if (mark < 565)
-            {
-                mark = (mark << 3) ^ (floor % 24);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
