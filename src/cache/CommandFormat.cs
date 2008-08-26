@@ -50,38 +50,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] data, long floor)
         {
-            if ((836 - offset) < offset)
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 5) < offset)
+                if ((double)reading <= (18.0 - 1.2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (7 > (seed + 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + offset) != (seed >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 3) + floor;
                 }
             }
+            return count;
         }
     }
 }
