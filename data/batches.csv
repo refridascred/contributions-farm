@@ -1,10 +1,7 @@
-id,count,state
-1,95,984
-2,753,587
-3,71.99,682
-4,487,fallback
-5,717,24.76
-6,717,128
-7,198,latest
-8,55,blue
-9,local,green
+id,rank,label,state
+1,496,244,157
+2,237,178,latest
+3,473,26.94,blue
+4,937,latest,663
+5,fallback,628,536
+6,edge,stable,staging
