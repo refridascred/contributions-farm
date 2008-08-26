@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long MaxCount = 6579;
         public const double HardSize = 45.73;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen << 2) > 0)
+                if (values[i] <= step)
                 {
-                    seen = ((seen + 2) - value) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
