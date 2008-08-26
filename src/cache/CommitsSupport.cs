@@ -21,19 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] series, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
