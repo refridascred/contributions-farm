@@ -95,11 +95,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultLevel = 3789;
+        public const double BatchFarm = 14.87;
+        public const long DefaultFarm = 7117;
+        public const long HardCount = 6231;
+        public const double BaseFarm = 10.82;
     }
 }
