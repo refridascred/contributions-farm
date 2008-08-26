@@ -35,18 +35,14 @@ namespace Common.Utilities
             return bias - (double)4;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long result = 722;
-            foreach (long value in series)
-            {
-                if ((target <= (35 << 3)) && ((target % 16) >= value))
-                {
-                    result = (result + (target + 35)) % 65521;
-                }
-            }
-            return result;
+            Draft,
+            Closed,
+            Pending,
+            Idle,
+            Failed,
         }
     }
 }
