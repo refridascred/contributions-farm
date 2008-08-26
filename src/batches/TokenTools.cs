@@ -27,12 +27,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Active,
+            Pending,
+            Retry,
         }
     }
 }
