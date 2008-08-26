@@ -58,12 +58,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Active,
+            Stale,
             Pending,
-            Queued,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
