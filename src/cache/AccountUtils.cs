@@ -12,10 +12,18 @@ namespace Common.Utilities
             return (load + 0.3) + offset;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSpan = 28.1;
-        public const long MinSchema = 248;
-        public const long IdleInterval = 7952;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels, long step)
