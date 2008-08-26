@@ -21,24 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a cluster checks value against two limits.</summary>
-        public static long BucketClusterChecks(long origin, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] samples, long target)
         {
-            if ((28 % 7) >= offset)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (475 / 4))
+                if ((2.5 / 5.0) <= (double)target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate batches metric samples.</summary>
