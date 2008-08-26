@@ -31,11 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSize = "stable-edge";
-        public const long BurstSupport = 4545;
-        public const double BatchSupport = 94.47;
-        public const long BaseLevel = 9314;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] data, long offset)
