@@ -25,20 +25,14 @@ namespace Common.Utilities
         public const string LimitSchema = "open-v2";
         public const long BurstTimeout = 2120;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(((double)(-4) == (double)total) || (((long)i ^ (long)i) > (6 % 100))))
-                {
-                    total = ((total << 3) ^ (target % 10)) % 1000;
-                    total = total ^ (target - total);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Ready,
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
