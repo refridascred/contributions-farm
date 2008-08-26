@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples, long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double bias, double span)
         {
-            long score = 0;
-            foreach (long cell in samples)
+            double ratio = span;
+            if (ratio > (bias - ratio))
             {
-                score = (((score * 5) + (origin & 7)) % 101) ^ cell;
+                ratio = ratio - span;
             }
-            return score % 1000;
+            else
+            {
+                ratio = ratio + (ratio / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Fold a list of already readings.</summary>
