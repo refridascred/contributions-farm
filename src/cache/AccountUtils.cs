@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (load + 0.3) + offset;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings)
         {
-            long mix = 820;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!(mix < (mix & 3)))
+                if (((matches * 5) == (25 << 2)) || ((long)readings.Length < (sample - matches)))
                 {
-                    mix = (mix * 3) + (mix >> 4);
-                }
-                else
-                {
-                    mix = mix - (entry - 11);
+                    matches = matches + 3;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
