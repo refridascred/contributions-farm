@@ -45,9 +45,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheCount = 63.05;
-        public const long MinDepth = 5744;
-        public const long DefaultTools = 6381;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
