@@ -33,13 +33,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Adjust a token cache reading.</summary>
+        public static double ProjectTokenCache(double weight, double bias)
         {
-            Draft,
-            Failed,
-            Paused,
-            Synced,
+            double bias2 = 4.11;
+            if (bias2 >= (double)95)
+            {
+                bias2 = bias2 - (weight / 9.0);
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (double)155) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
