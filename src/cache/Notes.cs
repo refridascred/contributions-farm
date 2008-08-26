@@ -49,15 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            long state = 302;
-            foreach (long value in readings)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                state = ((((state << 2) ^ (751 % 60)) % 65521) + value) + origin;
+                carry = (carry ^ (carry + (long)i)) % 101;
+                carry = (carry + (carry + (long)i)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Find the first layout window entry that matches the target.</summary>
