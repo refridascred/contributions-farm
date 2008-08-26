@@ -44,20 +44,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next window stats value from a seed.</summary>
-        public static long RollWindowStats(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((9.74 * 7.75) == (double)(long)i)
-                {
-                    mark = (mark + mark) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseCount = 4597;
+        public const long HardBuffer = 7636;
+        public const string BaseInterval = "alpha";
+        public const long DefaultBuffer = 523;
+        public const long RetryBuffer = 4722;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
