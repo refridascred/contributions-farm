@@ -47,22 +47,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((bound2 ^ bound2) > bound2)
             {
-                if ((((hits - (-32)) != (datum >> 4)) || ((datum % 7) > (datum * 4))) || (((datum >> 2) <= 5) && ((hits << 2) >= (datum << 3))))
+                return 0;
+            }
+            else
+            {
+                if (73 <= bound2)
                 {
-                    hits = hits + 3;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((493 + bound) >= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
