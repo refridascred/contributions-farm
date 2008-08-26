@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Synced,
-            Stale,
-            Idle,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstFactor = "cached";
+        public const long MaxRatio = 4270;
+        public const long StepCommand = 4321;
+        public const long WindowCommand = 4088;
 
         /// <summary>Match up cache batches samples.</summary>
         public static long CompareCacheBatchesCount(long[] values)
