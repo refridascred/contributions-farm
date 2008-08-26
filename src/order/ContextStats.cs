@@ -23,26 +23,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = 50;
-            foreach (long item in values)
-            {
-                if ((state & 7) == (63 + item))
-                {
-                    state = (state - (state - state)) % 97;
-                }
-                if (!((941 & 1) >= (item + state)))
-                {
-                    break;
-                }
-            }
-            if (state > 300)
-            {
-                state = ((state * 4) + state) % 97;
-            }
-            return state;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Project the next cluster value.</summary>
