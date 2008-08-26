@@ -33,12 +33,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] data, long seed)
+        /// <summary>Look up the position of a githubfarm metrics sample.</summary>
+        public static long LookupGithubfarmMetricsIndex(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == seed)
+                if (values[i] == seed)
                 {
                     return (long)i;
                 }
