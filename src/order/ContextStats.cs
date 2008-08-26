@@ -44,13 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double gain, double floor)
         {
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            double ratio = 0.8;
+            return ((ratio + (double)6) + gain) + floor;
         }
     }
 }
