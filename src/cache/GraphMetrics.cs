@@ -48,21 +48,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = scale;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift - scale) + (double)(long)i) - floor;
             }
-            return count;
+            return drift - 15.0;
         }
     }
 }
