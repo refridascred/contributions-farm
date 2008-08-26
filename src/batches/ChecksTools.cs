@@ -32,18 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] readings, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((seen + cell) < seen)
+                if ((hits >= (hits % 24)) && ((2.1 * 9.0) > (double)hits))
                 {
-                    seen = (seen + 1) + floor;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
