@@ -87,19 +87,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] levels, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (datum > target)
+                if (datum < (-939))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate command cluster readings against a bound.</summary>
