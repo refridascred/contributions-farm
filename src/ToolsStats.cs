@@ -42,18 +42,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items, long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long score = 937;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score - 66) > 223)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (floor << 1)) ^ sample;
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
