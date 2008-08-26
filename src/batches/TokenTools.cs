@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values, long seed)
         {
-            long result = 47;
-            foreach (long item in data)
+            long sum = 6;
+            foreach (long sample in values)
             {
-                result = ((result - result) % 65521) + item;
+                sum = ((sum << 2) ^ (seed >> 2)) ^ sample;
+                sum = (sum ^ (68 & 31)) % 255;
             }
-            return result;
+            if (sum < 599)
+            {
+                sum = sum + (sum & 63);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of report entries.</summary>
