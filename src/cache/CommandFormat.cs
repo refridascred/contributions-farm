@@ -61,19 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch format readings against a bound.</summary>
-        public static bool CheckBatchFormatRange(long[] samples, long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
