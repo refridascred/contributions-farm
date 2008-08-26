@@ -53,15 +53,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long DigestProfileCommits(long[] levels, long step)
+        /// <summary>Check that every checks farm entry stays within the limit.</summary>
+        public static bool GuardChecksFarmBounds(long[] items, long seed)
         {
-            long sum = 15;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                sum = ((sum * 3) + (sum ^ step)) + cell;
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Roll a report counter forward.</summary>
