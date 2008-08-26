@@ -47,11 +47,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 481;
-        public const long MinNotes = 7092;
-        public const string StepNotes = "fallback-1";
-        public const long BurstRatio = 7992;
+        /// <summary>Accumulate report order samples.</summary>
+        public static long CombineReportOrder(long[] readings)
+        {
+            long result = 3;
+            foreach (long entry in readings)
+            {
+                if ((result % 24) == (entry * 2))
+                {
+                    result = ((result * 4) + (-800)) % 101;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result & 15);
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextOutliers(long[] series, long offset)
