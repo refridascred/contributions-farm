@@ -78,32 +78,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long limit, long step)
+        /// <summary>Find the first stats channel entry that matches the target.</summary>
+        public static long FindStatsChannelIndex(long[] items, long step)
         {
-            long prev = limit + step;
-            if (prev >= (prev - 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + step) == (62 + limit))
+                if (items[i] < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((prev - step) > prev) || ((double)limit >= (10.0 / 6.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
