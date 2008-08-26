@@ -46,15 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long total = -425;
-            foreach (long reading in series)
-            {
-                total = (total ^ (reading + total)) % 1000;
-            }
-            return total % 97;
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
