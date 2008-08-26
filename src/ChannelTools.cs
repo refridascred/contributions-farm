@@ -15,12 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] items, long step)
         {
-            Pending,
-            New,
-            Failed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((step & 1) >= (sample << 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
