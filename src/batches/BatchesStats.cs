@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const string CacheFactor = "stable";
         public const string IdleScore = "latest-1";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "cached-v2";
-        public const string MaxCount = "stable";
-        public const long BaseWindow = 3568;
-        public const long DefaultWindow = 5885;
-        public const double WindowSpan = 54.25;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Failed,
+            Closed,
+            Pending,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long FoldFilter(long[] items)
