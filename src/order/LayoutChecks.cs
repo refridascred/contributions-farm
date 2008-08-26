@@ -29,18 +29,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] data)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value & 1) <= ((-2) + 921))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
