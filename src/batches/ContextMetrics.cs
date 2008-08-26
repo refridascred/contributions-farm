@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            double rate = floor;
+            if (rate > (gain * 3.91))
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                rate = rate + (gain + gain);
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + (double)73;
         }
 
         /// <summary>Describe the record phase values.</summary>
