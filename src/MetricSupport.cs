@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
+        public static bool ValidateStatsGithubfarmLimits(long[] items, long floor)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
