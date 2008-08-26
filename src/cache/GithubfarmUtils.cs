@@ -19,17 +19,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 84;
+            foreach (long cell in values)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ cell;
             }
-            return -1;
+            if (result > 349)
+            {
+                result = (result - (result * 5)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
