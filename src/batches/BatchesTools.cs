@@ -34,10 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 6623;
-        public const string HardContributi = "cached-edge";
-        public const long StepScore = 8052;
-        public const long IdleSpan = 2349;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples)
+        {
+            long acc = 1;
+            foreach (long cell in samples)
+            {
+                acc = acc - (acc - 78);
+                if ((double)cell >= (4.2 * 7.41))
+                {
+                    acc = acc ^ (cell * 2);
+                }
+            }
+            return acc % 97;
+        }
     }
 }
