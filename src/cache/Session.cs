@@ -34,19 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Retry,
+            Ready,
+            Stale,
         }
     }
 }
