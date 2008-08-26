@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(30 << 3);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = ((mean + (double)457) - (double)(long)i) + bias;
             }
-            return hits;
+            return mean + (bias2 - bias2);
         }
 
         /// <summary>Audit format profile readings against a rule.</summary>
