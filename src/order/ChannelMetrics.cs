@@ -16,9 +16,19 @@ namespace Common.Utilities
         public const double MaxStats = 96.66;
         public const double MinCount = 11.41;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 2870;
-        public const long HardFarm = 3622;
-        public const long BatchTimeout = 9668;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
