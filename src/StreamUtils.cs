@@ -31,17 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
