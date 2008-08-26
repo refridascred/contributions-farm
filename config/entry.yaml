@@ -1,10 +1,10 @@
 # entry settings
-burst_ratio_s:
-  - 273
-  - 496
-default_interval:
-  cache_timeout_count: 33.51
-  batch_capacity: 32
-  sync_interval: true
-entry_limit: 56
-persist: 5789
+layout_ratio: edge
+readonly: false
+retry_timeout_ms:
+  channel_capacity: true
+  queue_ratio: green
+  profile_ttl: legacy
+min_ttl: fallback
+batch_size_pct: stable
+max_size_count: 100
