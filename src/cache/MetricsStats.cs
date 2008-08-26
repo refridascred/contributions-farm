@@ -29,18 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] series, long step)
         {
-            long result = 192;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell >> 5) != (result % 7))
+                if (series[i] < step)
                 {
-                    result = (result + (cell / 3)) - step;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
