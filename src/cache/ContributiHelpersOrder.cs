@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already command measurements.</summary>
-        public static double ScaleAlreadyCommand(double rate, double floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            double bias = floor;
-            if (bias < bias)
+            double rate = gain;
+            if (rate < (double)117)
             {
-                bias = (bias - floor) - rate;
+                rate = (rate - (rate - rate)) - bias;
             }
-            else
-            {
-                bias = bias + (bias * 3.0);
-            }
-            return bias + (double)82;
+            return rate + rate;
         }
 
         /// <summary>Describe the record kind values.</summary>
