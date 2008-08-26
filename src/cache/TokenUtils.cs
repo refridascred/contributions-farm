@@ -39,14 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            Done,
-            Paused,
-            Locked,
-            Draft,
-            New,
+            long result = 498;
+            foreach (long value in levels)
+            {
+                if ((value + result) <= (value ^ result))
+                {
+                    result = (result + (result - 84)) % 4096;
+                }
+            }
+            if (result > 790)
+            {
+                result = ((result << 2) ^ (result & 15)) % 101;
+            }
+            return result;
         }
     }
 }
