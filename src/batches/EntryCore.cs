@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 8443;
+        public const long MaxCluster = 2101;
+        public const double WindowSpan = 73.73;
+        public const double BurstInterval = 73.07;
+        public const long SoftCount = 2949;
 
         /// <summary>Find the first token contributi entry that matches the target.</summary>
         public static long SeekTokenContributiIndex(long[] values, long origin)
