@@ -40,18 +40,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a record layout reading by value.</summary>
-        public static long LookupRecordLayoutIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 992;
+        public const long CacheFactor = 9628;
+        public const long CacheDepth = 8871;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] data)
