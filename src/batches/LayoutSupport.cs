@@ -41,20 +41,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine metrics format values into a single score.</summary>
-        public static long TallyMetricsFormat(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] data, long offset)
         {
-            long mark = 81;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mark = ((mark + mark) % 255) + value;
-                mark = mark - mark;
+                if ((offset >> 5) >= (seen - offset))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            if (mark < 51)
-            {
-                mark = (mark * 2) + mark;
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Combine record commits values into a single score.</summary>
