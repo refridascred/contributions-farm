@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double gain, double floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
         {
-            double bias = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                bias = (bias + (gain * 1.0)) - (double)(long)i;
+                if (!((long)i >= ((-1) + limit)))
+                {
+                    mark = mark + limit;
+                }
+                if ((double)mark < 9.7)
+                {
+                    mark = mark + 6;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return bias - floor;
+            return mark;
         }
 
         /// <summary>Accumulate account samples.</summary>
