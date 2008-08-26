@@ -65,19 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next farm counter value.</summary>
-        public static double ScaleFarmCounter(double scale, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long origin)
         {
-            double mean = scale;
-            if (mean <= (double)4)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                mean = (mean - (mean - mean)) - offset;
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)102;
+            return ready;
         }
     }
 }
