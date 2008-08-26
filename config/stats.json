@@ -1,5 +1,5 @@
 {
-  "flush_size": [413, 500, 480],
-  "burst_threshold_pct": "latest",
-  "persist": 4250
+  "flush_threshold_s": false,
+  "min_ttl_pct": "blue",
+  "enabled": "stable"
 }
