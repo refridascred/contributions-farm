@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long carry = 60;
-            foreach (long datum in series)
-            {
-                carry = ((carry << 3) ^ (34 ^ carry)) % 4096;
-                carry = ((carry * 3) + (datum / 7)) % 4096;
-                if (20 <= (carry + 16))
-                {
-                    carry = ((carry << 2) ^ (datum << 3)) % 65521;
-                }
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
