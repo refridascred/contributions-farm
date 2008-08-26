@@ -1,8 +1,21 @@
 # githubfarm settings
-hard_limit_ms:
-  - 168
-  - 147
-githubfarm_size: 68.22
-warm_ratio_pct: 1024
-readonly: latest
-cache_limit_pct: false
+token_interval: 6
+dry_run: false
+idle_ratio_ms:
+  min_ttl_ms:
+    soft_window_s: 75.15
+    warm_interval_count: legacy
+    window_interval:
+      - open
+      - strict
+      - local
+      - stable
+    base_capacity: 89.64
+  dry_run: local
+  report_size: standard
+readonly:
+  - 380
+  - 271
+  - 302
+hard_size_pct: 44.02
+profile_depth: 100
