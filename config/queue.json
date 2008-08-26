@@ -1,6 +1,5 @@
 {
-  "already_interval": 105,
-  "poll_depth_ms": 1024,
-  "poll_limit_pct": 589,
-  "default_depth_ms": 91
+  "readonly": 5.97,
+  "default_limit_count": 78.96,
+  "batch_capacity": 81
 }
