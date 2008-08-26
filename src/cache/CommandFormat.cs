@@ -35,14 +35,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 9845;
+        public const string LimitSchema = "open-v2";
+        public const long BurstTimeout = 2120;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] data)
