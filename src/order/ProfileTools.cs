@@ -39,11 +39,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Adjust a session payload reading.</summary>
+        public static double BlendSessionPayload(double weight, double offset)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            double bias = (double)(308 / 7);
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + 4.74) - (double)(long)i) + offset;
+            }
+            return bias + (weight - weight);
         }
 
         /// <summary>Rank context input into a small class.</summary>
