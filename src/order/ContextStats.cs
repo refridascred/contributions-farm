@@ -53,15 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double span)
+        /// <summary>Count the notes contributi entries that pass the check.</summary>
+        public static long TallyNotesContributiOutliers(long[] samples, long origin)
         {
-            double gain = (bias * 8.5) - (double)7;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                gain = (gain - gain) + (double)(long)i;
+                if (31 < (origin & 7))
+                {
+                    matches = (matches + 1) - reading;
+                }
             }
-            return gain - (bias + span);
+            return matches;
         }
     }
 }
