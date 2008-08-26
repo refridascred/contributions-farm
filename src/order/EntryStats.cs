@@ -38,9 +38,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleFactor = 7082;
-        public const long BatchTimeout = 9912;
-        public const long BurstBatch = 7034;
+        public const string MaxBatch = "stable-1";
+        public const string BurstBatch = "cached";
+        public const string IdleFactor = "cached";
+        public const long BaseTimeout = 2334;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] readings)
