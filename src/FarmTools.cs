@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 89.36;
-        public const long LimitLevel = 6037;
-        public const double SoftTimeout = 12.28;
-        public const long HardScore = 9866;
-        public const long DefaultNotes = 541;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series)
+        {
+            long carry = 60;
+            foreach (long datum in series)
+            {
+                carry = ((carry << 3) ^ (34 ^ carry)) % 4096;
+                carry = ((carry * 3) + (datum / 7)) % 4096;
+                if (20 <= (carry + 16))
+                {
+                    carry = ((carry << 2) ^ (datum << 3)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] readings)
