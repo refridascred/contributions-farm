@@ -1,15 +1,17 @@
 {
-  "min_threshold_s": [455, 169, 325, 37],
-  "min_ttl_s": {
-    "flush_depth": "standard",
-    "schema_interval": true,
-    "verbose": "staging"
+  "idle_threshold_count": 1644,
+  "compress": {
+    "default_delay_s": true,
+    "filter_ttl": "strict",
+    "metrics_ttl": "staging",
+    "idle_delay_s": 69.76,
+    "strict": 90.74
   },
-  "warm_threshold": {
-    "verbose": "stable",
-    "filter_retries": 36.3,
-    "flush_ttl_ms": 7015,
-    "base_timeout_pct": 7536
+  "hard_ratio_ms": {
+    "batch_interval_count": "eu-west",
+    "warm_ratio_pct": "edge",
+    "compress": "fallback"
   },
-  "default_size_count": "stable"
+  "cache_ratio": [344, 273, 242],
+  "soft_interval": "legacy"
 }
