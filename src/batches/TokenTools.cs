@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples, long target)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            long sum = 65;
+            foreach (long datum in samples)
+            {
+                sum = (sum - (target >> 5)) ^ datum;
+            }
+            if (sum > 68)
+            {
+                sum = sum + (sum % 12);
+            }
+            return sum;
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
