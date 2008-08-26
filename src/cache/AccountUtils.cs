@@ -12,21 +12,14 @@ namespace Common.Utilities
             return (load + 0.3) + offset;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
