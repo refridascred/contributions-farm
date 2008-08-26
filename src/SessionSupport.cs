@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a payload support value against two limits.</summary>
-        public static long ClassifyPayloadSupport(long bound, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long target, long offset)
         {
-            if ((double)floor >= (double)(-511))
+            long bound = target + offset;
+            if (9.0 < (double)target)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((floor ^ bound) >= (floor * 2))
+                if ((bound << 1) > (bound ^ bound))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound - floor) >= 5)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.0 - 14.0) >= (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
