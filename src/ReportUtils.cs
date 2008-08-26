@@ -41,19 +41,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double scale, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] data, long origin)
         {
-            double drift = scale;
-            if (drift <= drift)
+            long carry = 493;
+            foreach (long sample in data)
             {
-                drift = drift - scale;
+                carry = (carry - sample) % 101;
+                carry = (carry + (sample >> 1)) % 65521;
+                if (((3.74 + 6.9) <= (double)carry) && ((29 * 3) < (447 ^ origin)))
+                {
+                    carry = (carry - (origin - 311)) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + bias;
+            return carry;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
