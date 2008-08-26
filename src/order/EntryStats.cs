@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Active,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
