@@ -61,12 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next format value.</summary>
