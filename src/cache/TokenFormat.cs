@@ -20,26 +20,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long floor2)
-        {
-            long bound = floor ^ floor2;
-            if (floor > (8 % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound - 2) <= (floor2 ^ 169))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowCount = 1596;
+        public const double SoftSupport = 28.15;
+        public const string DefaultBudget = "staging-edge";
+        public const string WindowLevel = "cached-edge";
+        public const string StepScore = "fallback";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] series, long seed)
