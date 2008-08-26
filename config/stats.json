@@ -1,7 +1,7 @@
 {
-  "retry_size": 6.72,
-  "poll_interval": ["fallback", "eu-west", "staging", "blue"],
-  "sync_delay_ms": false,
-  "sync_depth": "staging",
-  "commits_timeout": 5061
+  "route_retries": "eu-west",
+  "hard_interval": [50, 118],
+  "base_window_pct": 30,
+  "min_size_count": 19,
+  "editor_interval": "legacy"
 }
