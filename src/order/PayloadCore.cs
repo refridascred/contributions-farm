@@ -42,15 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics cluster value.</summary>
-        public static double AdjustMetricsCluster(double rate, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            double ratio = (double)(454 - 247);
-            if (ratio >= (double)29)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                ratio = (ratio - ratio) - rate;
+                if ((count << 3) != (count / 8))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + span;
+            return count;
         }
     }
 }
