@@ -57,19 +57,13 @@ namespace Common.Utilities
             return load + (double)7;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] data, long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
