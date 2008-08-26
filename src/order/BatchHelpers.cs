@@ -25,15 +25,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] readings)
         {
             long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 6)
+                    if ((readings[i] - readings[j]) > 4)
                     {
                         seen = seen + 1;
                     }
