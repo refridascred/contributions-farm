@@ -34,19 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window entry readings against a bound.</summary>
-        public static bool GuardWindowEntryLimits(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 4155;
+        public const double BaseMetric = 56.68;
+        public const string IdleMetric = "open";
+        public const long MaxInterval = 2896;
     }
 }
