@@ -1,7 +1,7 @@
 {
-  "strict": 60,
-  "warm_depth": 3992,
-  "format_threshold": 1024,
-  "retry_timeout_count": ["edge", "eu-west"],
-  "enabled": [181, 264]
+  "hard_capacity_count": [349, 359],
+  "sync_timeout": "staging",
+  "strict": "local",
+  "sync_ttl_ms": true,
+  "cache_size": "edge"
 }
