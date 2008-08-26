@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool CheckPayloadQueueBounds(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultDepth = 2402;
+        public const long LimitProfile = 5303;
+        public const long BatchSpan = 3118;
+        public const long LimitWidth = 4260;
+        public const string BatchInterval = "latest-1";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileGaps(long[] series)
