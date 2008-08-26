@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 9423;
         public const long HardInterval = 3803;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
