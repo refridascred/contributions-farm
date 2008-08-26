@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] levels, long seed)
+        /// <summary>Combine context cache values into a single score.</summary>
+        public static long FoldContextCache(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long state = 1;
+            foreach (long item in values)
             {
-                if (item < seed)
+                if ((7.2 + 1.67) >= (double)state)
                 {
-                    valid = false;
-                    break;
+                    state = ((state + (973 % 8)) ^ item) + target;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Rank entry batch input into a small class.</summary>
