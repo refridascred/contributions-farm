@@ -90,13 +90,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Done,
-            Locked,
-            Draft,
-            Pending,
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
