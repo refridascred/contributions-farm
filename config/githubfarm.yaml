@@ -1,31 +1,8 @@
 # githubfarm settings
-idle_ratio_s: stable
-burst_retries:
-  warm_size_pct:
-    default_size_ms:
-      - local
-      - standard
-      - fallback
-      - local
-    readonly: legacy
-    batch_retries_count: 21.58
-    format_delay: 3.99
-    verbose: true
-    payload_depth: true
-  batch_timeout_ms:
-    hard_timeout: false
-    sync_timeout_s: 250
-    dry_run: 599
-    support_delay:
-      - 119
-      - 82
-      - 121
-    hard_retries: edge
-  persist: 15.47
 persist:
-  - 232
-  - 2
-verbose:
-  - strict
-  - primary
-soft_delay_count: false
+  - open
+  - cached
+  - legacy
+  - stable
+sync_retries_s: strict
+soft_depth_ms: 46.95
