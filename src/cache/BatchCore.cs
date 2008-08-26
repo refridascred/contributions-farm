@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Validate tools stream readings against a bound.</summary>
+        public static bool ValidateToolsStreamRange(long[] samples, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
