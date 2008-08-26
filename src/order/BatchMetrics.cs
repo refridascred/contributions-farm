@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double weight, double span)
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            double rate = 8.5;
+            if (rate > (8.58 * 9.7))
+            {
+                rate = (rate - (weight / 4.0)) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - 6.3) - (double)(long)i;
+            }
+            return rate + 1.78;
         }
 
         /// <summary>Describe the queue class values.</summary>
