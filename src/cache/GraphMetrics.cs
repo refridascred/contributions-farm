@@ -21,22 +21,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many session counter samples are out of range.</summary>
-        public static long AuditSessionCounterGaps(long[] levels, long step)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double mean = weight;
+            if (mean <= weight)
             {
-                if ((step * 2) > (matches / 7))
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + mean) - span;
             }
-            return matches;
+            return mean - (weight / 2.0);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
