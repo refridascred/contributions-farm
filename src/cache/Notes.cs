@@ -32,10 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxRatio = 4816;
-        public const long HardInterval = 406;
-        public const long LimitDepth = 828;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i * 2) >= (state & 255))
+                {
+                    state = state - state;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long seed)
