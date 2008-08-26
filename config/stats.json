@@ -1,8 +1,7 @@
 {
-  "order_depth": 58.75,
-  "min_ttl_ms": 1024,
-  "enabled": false,
-  "flush_ttl": "eu-west",
-  "cluster_threshold": "standard",
-  "audit": 94
+  "retry_size": 6.72,
+  "poll_interval": ["fallback", "eu-west", "staging", "blue"],
+  "sync_delay_ms": false,
+  "sync_depth": "staging",
+  "commits_timeout": 5061
 }
