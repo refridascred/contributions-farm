@@ -50,12 +50,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            Synced,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (entry <= (tally + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
