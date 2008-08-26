@@ -27,19 +27,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long carry = 9;
-            foreach (long item in items)
-            {
-                carry = ((carry << 2) ^ carry) ^ item;
-                if ((carry ^ carry) == (seed - carry))
-                {
-                    carry = ((carry << 2) ^ (seed << 2)) % 65521;
-                }
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
