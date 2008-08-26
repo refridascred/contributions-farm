@@ -20,15 +20,15 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double bias, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            double scale = (double)(265 - 1);
+            for (int i = 0; i < 2; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                scale = ((scale - (scale + bias)) - (double)(long)i) - offset;
             }
-            return acc;
+            return scale + 6.03;
         }
 
         /// <summary>Define account limits and defaults.</summary>
