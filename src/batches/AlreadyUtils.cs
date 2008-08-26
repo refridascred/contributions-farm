@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items, long target)
         {
-            long result = 420;
-            foreach (long cell in items)
+            long result = 1;
+            foreach (long item in items)
             {
-                result = ((result ^ (seed & 1)) % 65521) ^ cell;
+                result = (result + (target / 5)) - item;
+                result = ((result << 2) ^ (-6)) % 4096;
             }
-            if (result > (-2))
-            {
-                result = ((result << 3) ^ (seed % 64)) % 101;
-            }
-            return result;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a counter notes sample.</summary>
