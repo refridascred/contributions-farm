@@ -1,17 +1,6 @@
 {
-  "idle_threshold_count": 1644,
-  "compress": {
-    "default_delay_s": true,
-    "filter_ttl": "strict",
-    "metrics_ttl": "staging",
-    "idle_delay_s": 69.76,
-    "strict": 90.74
-  },
-  "hard_ratio_ms": {
-    "batch_interval_count": "eu-west",
-    "warm_ratio_pct": "edge",
-    "compress": "fallback"
-  },
-  "cache_ratio": [344, 273, 242],
-  "soft_interval": "legacy"
+  "default_capacity_count": 19.04,
+  "profile_ratio": "edge",
+  "warm_ttl_ms": true,
+  "channel_threshold": true
 }
