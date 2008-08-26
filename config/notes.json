@@ -1,5 +1,8 @@
 {
-  "dry_run": "staging",
-  "min_ratio": 60,
-  "soft_interval": 9.6
+  "warm_capacity": [226, 37],
+  "poll_delay_s": "latest",
+  "cache_depth_ms": 500,
+  "strict": 3593,
+  "poll_interval_count": [150, 233, 73],
+  "flush_window_pct": 3725
 }
