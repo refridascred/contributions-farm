@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!((2.9 * 7.66) > (double)seed))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
