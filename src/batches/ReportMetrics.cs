@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] values, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((count - item) <= count)
+                if (entry >= (floor & 63))
                 {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many payload batch samples are out of range.</summary>
