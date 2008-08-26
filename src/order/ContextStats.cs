@@ -37,20 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] items, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (6.38 >= (double)result)
+                if ((8.69 * 4.6) != (double)datum)
                 {
-                    result = ((result << 2) ^ ((long)i + (long)i)) % 255;
-                    continue;
+                    tally = (tally + 1) - floor;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
