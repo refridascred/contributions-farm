@@ -55,17 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm payload entry that matches the target.</summary>
-        public static long FindGithubfarmPayloadIndex(long[] values, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                if (!((double)entry == (0.89 / 3.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
