@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryScore = 3089;
+        public const long MinRatio = 6220;
+        public const string MinBatches = "strict-1";
+        public const long DefaultBatches = 4076;
 
         /// <summary>Blend two booking measurements.</summary>
         public static double BlendBooking(double weight, double bias)
