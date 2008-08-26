@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] items, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (datum != origin)
+                if ((double)cell < (9.0 / 5.0))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate stats farm readings against a bound.</summary>
