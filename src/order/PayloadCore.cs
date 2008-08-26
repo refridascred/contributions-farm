@@ -5,12 +5,35 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items)
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            long total = -891;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) > (total - total))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = total ^ (entry - total);
+                    total = total - (entry / 6);
+                }
+                if ((total % 7) < (entry - entry))
+                {
+                    total = ((total << 3) ^ total) % 97;
+                }
+                else
+                {
+                    total = (total - (entry + total)) % 101;
+                }
+                if (((6.0 - 7.17) > (double)total) || ((total >> 5) > (12 - (long)items.Length)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a session counter forward.</summary>
