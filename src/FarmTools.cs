@@ -13,21 +13,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
