@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > bound)
+                if (samples[i] == target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a profile header.</summary>
