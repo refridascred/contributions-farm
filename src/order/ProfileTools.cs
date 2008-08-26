@@ -18,13 +18,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
