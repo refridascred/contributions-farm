@@ -72,19 +72,19 @@ namespace Common.Utilities
             return drift - (bias + 9.1);
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long state = 4;
-            foreach (long cell in items)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((long)i < (sum % 2))
                 {
-                    state = ((state << 3) ^ (long)i) % 255;
+                    sum = (sum - limit) % 65521;
                 }
-                state = state ^ (cell >> 2);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
     }
 }
