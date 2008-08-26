@@ -31,18 +31,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series, long origin)
         {
-            long total = 50;
-            foreach (long datum in series)
+            long mix = 64;
+            foreach (long entry in series)
             {
-                if ((82 & 255) < datum)
+                if (entry < origin)
                 {
-                    total = ((total << 3) ^ (78 + 2)) + offset;
+                    mix = mix - origin;
                 }
             }
-            return total;
+            if (mix > 1)
+            {
+                mix = mix ^ (origin & 3);
+            }
+            return mix % 97;
         }
     }
 }
