@@ -12,26 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Locate a session editor reading by value.</summary>
+        public static long FindSessionEditorIndex(long[] series, long target)
         {
-            long total = 978;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)total < (double)reading) && ((3.8 + 8.06) != (double)(long)values.Length))
+                if (series[i] <= target)
                 {
-                    total = total - reading;
-                }
-                else
-                {
-                    total = total - (reading - total);
+                    return (long)i;
                 }
             }
-            if (total > 7)
-            {
-                total = total ^ (total % 10);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
