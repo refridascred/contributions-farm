@@ -19,15 +19,11 @@ namespace Common.Utilities
         public const double DefaultStats = 46.8;
         public const string MinRatio = "staging-v2";
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Failed,
-            Retry,
-            Ready,
-            Stale,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSize = "stable-edge";
+        public const long BurstSupport = 4545;
+        public const double BatchSupport = 94.47;
+        public const long BaseLevel = 9314;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] data, long offset)
