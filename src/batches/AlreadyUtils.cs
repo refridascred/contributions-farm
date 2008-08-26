@@ -29,18 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] data, long target)
+        /// <summary>Project the next stream route value.</summary>
+        public static double BlendStreamRoute(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double rate = bias2 + (bias2 * 15.0);
+            if (rate >= bias2)
             {
-                if ((tally <= (entry << 1)) && ((18.0 / 9.0) == (double)target))
-                {
-                    tally = tally + 1;
-                }
+                rate = rate + (bias2 * 2.0);
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (double)96) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
