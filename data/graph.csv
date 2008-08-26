@@ -1,9 +1,7 @@
-id,rank,count,label,score
-1,256,local,25.99,855
-2,legacy,415,57.34,719
-3,89.2,eu-west,705,edge
-4,7.11,995,latest,cached
-5,411,30.52,748,14
-6,9.12,fallback,343,63.88
-7,248,32.53,740,195
-8,standard,498,eu-west,355
+id,ratio,label,region
+1,234,37.11,edge
+2,local,772,47.14
+3,385,52.5,116
+4,12,162,255
+5,open,42.56,cached
+6,274,98.41,77.67
