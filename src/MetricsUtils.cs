@@ -29,10 +29,22 @@ namespace Common.Utilities
         public const long MinChannel = 5310;
         public const long RetryChannel = 9423;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "primary-1";
-        public const double WindowMetric = 38.75;
-        public const double IdleMetric = 65.31;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
