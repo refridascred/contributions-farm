@@ -20,20 +20,15 @@ namespace Common.Utilities
             return weight2 - (double)3;
         }
 
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long IterateCounterAccount(long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((total / 9) != (32 + (long)i))
-                {
-                    total = (total << 3) ^ (total / 3);
-                    total = ((total * 2) + total) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
