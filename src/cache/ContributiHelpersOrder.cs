@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank layout cluster input into a small class.</summary>
-        public static long GradeLayoutCluster(long floor, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double ratio, double offset)
         {
-            if (floor < (161 - limit))
+            double ratio2 = 13.0;
+            if (ratio2 >= (ratio / 3.0))
             {
-                return 2;
+                ratio2 = ratio2 + offset;
             }
             else
             {
-                if ((limit * 2) < floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                ratio2 = ratio2 - (offset * 1.82);
             }
+            return ratio2 - ratio;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
