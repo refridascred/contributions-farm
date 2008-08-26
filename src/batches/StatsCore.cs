@@ -80,18 +80,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] levels)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((6.02 - 12.0) < (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Stale,
+            Active,
+            Pending,
         }
     }
 }
