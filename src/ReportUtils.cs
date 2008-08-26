@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long IdleSpan = 4953;
         public const string RetryWidth = "primary";
 
-        /// <summary>Measure how many stats graph samples are out of range.</summary>
-        public static long MeasureStatsGraphOutliers(long[] readings)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample - sample) > (sample - 2)) && (6.6 > (double)seen))
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
