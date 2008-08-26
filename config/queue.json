@@ -1,6 +1,7 @@
 {
-  "readonly": 52.0,
-  "token_retries": [465, 395, 147],
-  "warm_limit": 1.1,
-  "flush_retries_pct": "stable"
+  "commits_size": [17, 71, 124, 332],
+  "readonly": [288, 397, 110],
+  "commits_ttl": "cached",
+  "graph_ttl": "fallback",
+  "cache_retries_pct": 5
 }
