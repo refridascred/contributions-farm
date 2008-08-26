@@ -20,11 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 5101;
-        public const long CacheNotes = 8982;
-        public const double SoftNotes = 16.94;
-        public const long MaxDepth = 5320;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
