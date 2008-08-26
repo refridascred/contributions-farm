@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of githubfarm stream readings.</summary>
-        public static long CompareGithubfarmStreamCount(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 71;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score - (189 + score)) % 4096) ^ sample;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
