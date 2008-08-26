@@ -39,19 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] levels, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (entry != origin)
+                if ((double)offset != (14.0 * 9.36))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + item;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
