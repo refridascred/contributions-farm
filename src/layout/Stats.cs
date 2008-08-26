@@ -13,25 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            long offset2 = offset ^ origin;
-            if ((offset2 & 63) == (offset2 % 24))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.1 > (double)offset) || (offset <= origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double weight = (double)(644 - 0);
+            return ((weight + weight) + ratio) + bias;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
