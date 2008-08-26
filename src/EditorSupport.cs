@@ -48,23 +48,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long limit)
         {
-            double mean = span / 6.0;
-            if (mean <= span)
+            long step = bound - limit;
+            if ((double)step <= (5.28 / 5.0))
             {
-                mean = mean - 1.18;
+                return 0;
             }
             else
             {
-                mean = mean - rate;
+                if (((bound / 6) > (step + step)) && ((1.5 - 12.0) > (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (7.9 + mean)) + (double)(long)i;
-            }
-            return mean + mean;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
