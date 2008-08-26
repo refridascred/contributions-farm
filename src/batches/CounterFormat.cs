@@ -27,18 +27,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] readings)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long target, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long slot = target ^ offset;
+            if ((871 % 5) < (target & 3))
             {
-                if ((double)sample < (4.69 / 8.0))
+                return 8;
+            }
+            else
+            {
+                if (!(slot >= (target - 877)))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (offset > target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((6.0 * 3.7) > (double)target) && ((offset / 5) <= (offset + 960)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
