@@ -12,17 +12,22 @@ namespace Common.Utilities
             return (scale - (3.4 + weight)) + bias;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long value in samples)
             {
-                if (data[i] < target)
+                if ((1 - total) == (30 + total))
                 {
-                    return (long)i;
+                    total = (total ^ (value - total)) + seed;
+                }
+                else
+                {
+                    total = (total << 3) ^ value;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
