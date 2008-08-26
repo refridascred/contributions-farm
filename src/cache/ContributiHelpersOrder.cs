@@ -36,26 +36,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double bias, double offset)
         {
-            long result = 813;
-            foreach (long cell in items)
+            double mean = (double)369 * 5.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell <= result)
-                {
-                    result = (result ^ (2 + cell)) % 4096;
-                }
-                if ((double)result >= (1.0 / 8.0))
-                {
-                    break;
-                }
+                mean = (((mean + mean) + (double)(long)i) - bias) - offset;
             }
-            if (result > 876)
-            {
-                result = (result - (result << 1)) % 4096;
-            }
-            return result;
+            return mean + (double)2;
         }
     }
 }
