@@ -1,8 +1,6 @@
-id,active,weight,level
-1,stable,54.06,stable
-2,1.79,72.76,70.99
-3,256,legacy,129
-4,316,225,66.42
-5,962,legacy,63
-6,27.25,133,22.23
-7,184,41.72,77.48
+id,region,label,state,owner
+1,169,140,6.92,12
+2,fallback,405,staging,latest
+3,95,437,273,270
+4,52.46,971,green,stable
+5,open,800,open,18.87
