@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double bias, double floor)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double scale, double offset)
         {
-            double load = (double)8;
-            if (load > 9.05)
+            double mean = offset;
+            if (mean >= offset)
             {
-                load = ((load - 16.0) + bias) + floor;
+                mean = (mean + (3.73 + offset)) - scale;
             }
-            return load - (double)517;
+            else
+            {
+                mean = mean - (offset + 4.3);
+            }
+            return mean + (double)99;
         }
 
         /// <summary>Combine buffer cache values into a single score.</summary>
