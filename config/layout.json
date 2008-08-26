@@ -1,15 +1,10 @@
 {
-  "dry_run": true,
-  "strict": "primary",
-  "burst_delay": 30,
-  "flush_ttl_ms": 100,
-  "compress": ["open", "edge", "standard", "staging"],
-  "base_retries_ms": {
-    "min_retries_s": false,
-    "base_threshold_ms": "primary",
-    "editor_interval": "staging",
-    "compress": ["eu-west", "local", "standard", "primary"],
-    "retry_depth_s": 1794,
-    "soft_ttl": "eu-west"
+  "max_timeout_count": "local",
+  "poll_timeout": 29.94,
+  "report_depth": {
+    "max_depth": [352, 252, 324],
+    "commits_delay": 60,
+    "hard_timeout": 30,
+    "base_retries_ms": 27.89
   }
 }
