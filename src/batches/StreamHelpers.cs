@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long CacheRatio = 827;
         public const string CacheInterval = "standard-edge";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Check that every farm cluster entry stays within the limit.</summary>
+        public static bool VerifyFarmClusterBounds(long[] values, long floor)
         {
-            Stale,
-            Failed,
-            Active,
-            Retry,
-            Queued,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batch header.</summary>
