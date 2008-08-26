@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const double StepBatches = 97.73;
         public const long LimitBudget = 269;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 4) + ((long)i & 1)) + sample;
                 }
+                result = result - (result / 6);
             }
-            return count;
+            return result;
         }
     }
 }
