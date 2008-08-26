@@ -1,7 +1,20 @@
 {
-  "readonly": 92.0,
-  "verbose": 70,
-  "flush_threshold": [198, 16],
-  "poll_size_count": [439, 55, 194],
-  "default_timeout_s": "blue"
+  "retry_interval": 57,
+  "sync_threshold": {
+    "cache_ttl_s": ["blue", "blue", "green", "standard"],
+    "cache_size": true,
+    "sync_retries": "latest",
+    "poll_depth_s": true,
+    "flush_interval_pct": ["legacy", "stable", "standard", "open"]
+  },
+  "max_capacity": 16.87,
+  "default_window": true,
+  "persist": {
+    "max_delay": 2900,
+    "metrics_ttl": 3.77,
+    "batch_interval": 8919,
+    "base_limit_count": "standard",
+    "idle_ttl_s": 8285,
+    "batches_depth": 1024
+  }
 }
