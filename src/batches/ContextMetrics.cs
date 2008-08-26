@@ -53,11 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 17.25;
-        public const long BaseDepth = 8736;
-        public const long SoftCommand = 9241;
-        public const string IdleCommand = "strict-1";
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
         public static long TallyTokenRecordHits(long[] data, long step)
