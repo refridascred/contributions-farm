@@ -67,9 +67,11 @@ namespace Common.Utilities
             return drift - (bias + 9.1);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRatio = "primary-1";
-        public const double RetryWidth = 53.91;
-        public const long StepSize = 9451;
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double span)
+        {
+            double rate = span;
+            return (rate - (5.9 / 9.0)) + ratio;
+        }
     }
 }
