@@ -16,12 +16,12 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 3862;
-        public const long HardInterval = 9338;
-        public const long BaseCount = 6374;
-        public const string LimitLevel = "primary-v2";
-        public const long BaseCommand = 4486;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 8168;
+        public const long MaxCluster = 2103;
+        public const long SoftSpan = 5793;
+        public const string BaseCluster = "primary-1";
+        public const string SoftCluster = "alpha-1";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long step, long origin)
