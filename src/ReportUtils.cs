@@ -29,11 +29,18 @@ namespace Common.Utilities
             return bias2 - (double)56;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] series)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)tally == (3.5 / 3.0)))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
