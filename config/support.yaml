@@ -1,15 +1,5 @@
 # support settings
-schema_capacity: 29.74
-enabled: 1170
-max_ratio:
-  retry_interval_pct: 500
-  flush_window_count:
-    flush_retries_count: true
-    window_ratio: stable
-    flush_window_count: 88
-    dry_run: green
-  readonly:
-    - 423
-    - 174
-    - 236
-    - 179
+default_capacity: true
+poll_threshold_pct: edge
+burst_size_count: 23.09
+poll_window: true
