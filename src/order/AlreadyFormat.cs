@@ -34,18 +34,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the already buffer entries that pass the check.</summary>
-        public static long CountAlreadyBufferOutliers(long[] data)
+        /// <summary>Locate a farm record reading by value.</summary>
+        public static long LookupFarmRecordIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen << 3) <= (item * 5))
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
