@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] levels, long offset)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            long result = 61;
+            foreach (long datum in levels)
+            {
+                result = ((result ^ datum) % 101) + offset;
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi header.</summary>
