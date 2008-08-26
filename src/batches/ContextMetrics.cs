@@ -25,14 +25,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long target)
         {
-            Retry,
-            Closed,
-            Active,
-            Done,
-            Synced,
+            long diff = origin + target;
+            if ((origin - diff) >= diff)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target ^ origin) < (origin + 39))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target + target) <= (diff >> 4)) && ((target / 8) >= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
