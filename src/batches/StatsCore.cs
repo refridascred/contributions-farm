@@ -33,12 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6623;
-        public const long HardTimeout = 4107;
-        public const long IdleAccount = 4516;
-        public const long BurstAccount = 1968;
-        public const double LimitSpan = 91.95;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] items)
+        {
+            long anchor = 3;
+            foreach (long datum in items)
+            {
+                if ((anchor % 3) <= datum)
+                {
+                    anchor = (anchor << 3) ^ datum;
+                }
+                if (anchor < (3 << 2))
+                {
+                    anchor = (anchor ^ (anchor + 404)) % 97;
+                }
+                if ((double)(long)items.Length < (8.01 * 15.0))
+                {
+                    anchor = ((anchor * 2) + (92 & 63)) % 65521;
+                }
+                if ((9.2 + 1.0) != (double)datum)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
