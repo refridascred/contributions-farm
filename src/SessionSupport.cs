@@ -27,11 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 9714;
-        public const double BurstWidth = 87.65;
-        public const string BurstScore = "stable";
-        public const long IdleChannel = 7776;
-        public const string RetryChannel = "latest-v2";
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
