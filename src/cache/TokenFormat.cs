@@ -41,11 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Scale a buffer commits figure with a bias.</summary>
+        public static double ScaleBufferCommits(double scale, double offset)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            double weight = scale - offset;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + 3.95) + (double)(long)i;
+            }
+            return weight + (double)497;
         }
     }
 }
