@@ -46,19 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] items)
         {
-            long carry = 1;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                carry = (carry * 2) + (entry + 6);
+                if (!((4.8 + 19.0) < (double)count))
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            if (carry < 52)
-            {
-                carry = ((carry << 2) ^ (61 >> 2)) % 97;
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Describe the buffer class values.</summary>
