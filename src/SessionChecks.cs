@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            Queued,
-            Retry,
-            Stale,
-            Pending,
-            New,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
