@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long BurstStream = 5183;
         public const long IdleStream = 4966;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seen + seen) != (seen * 3)) || ((sample + seen) <= seen))
+                if (readings[i] < target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
