@@ -55,11 +55,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double ratio, double floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double gain = ratio;
-            return (gain - (ratio / 9.0)) + floor;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
