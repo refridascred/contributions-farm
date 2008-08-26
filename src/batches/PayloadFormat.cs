@@ -52,13 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Ready,
-            Draft,
-            Done,
-            Pending,
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
