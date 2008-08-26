@@ -41,17 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter tools sample.</summary>
-        public static long LocateCounterToolsIndex(long[] items, long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
