@@ -22,15 +22,15 @@ namespace Common.Utilities
         public const double DefaultStats = 46.8;
         public const string MinRatio = "staging-v2";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long value in series)
             {
-                if (!!((matches + entry) <= (entry % 60)))
+                if (((double)matches >= (4.81 / 3.0)) && ((matches + 4) < (43 + 582)))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + value;
                 }
             }
             return matches;
