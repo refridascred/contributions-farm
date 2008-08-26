@@ -74,10 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowRatio = 7567;
-        public const double LimitWidth = 92.24;
-        public const long RetrySession = 5237;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Queued,
+            Done,
+            Locked,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Count cache farm pairs that satisfy a relation.</summary>
         public static long MatchCacheFarmCount(long[] levels)
