@@ -55,25 +55,14 @@ namespace Common.Utilities
             return bias + (double)82;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long anchor = 155;
-            foreach (long value in data)
-            {
-                if (anchor < 594)
-                {
-                    anchor = ((anchor * 3) + (anchor + value)) % 4096;
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (value >> 2)) % 97;
-                }
-                anchor = (anchor << 2) ^ (value + value);
-                anchor = anchor ^ 895;
-            }
-            return anchor % 65521;
+            Retry,
+            Dropped,
+            Active,
+            Stale,
+            Ready,
         }
     }
 }
