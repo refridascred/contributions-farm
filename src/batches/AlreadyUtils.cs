@@ -44,10 +44,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 2.99;
-        public const long HardEditor = 1234;
-        public const string BatchEditor = "fallback-1";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long origin)
+        {
+            long offset = step - origin;
+            if (((offset - offset) >= offset) || ((double)step < (2.4 - 6.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(60 >= (origin - offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
