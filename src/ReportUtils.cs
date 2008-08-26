@@ -67,19 +67,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long floor)
+        /// <summary>Iterate the record window series from a seed.</summary>
+        public static long StepRecordWindow(long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample != floor)
+                if (581 < (origin << 2))
                 {
-                    stale = false;
+                    acc = (acc * 3) + ((-8) ^ origin);
                     break;
                 }
+                if ((acc + 27) == (14 - acc))
+                {
+                    acc = ((acc << 2) ^ (acc + 447)) % 4096;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
     }
 }
