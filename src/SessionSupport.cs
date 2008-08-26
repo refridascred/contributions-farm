@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
+            Stale,
             Active,
-            Retry,
-            Idle,
             Synced,
-            Draft,
         }
 
         /// <summary>Combine context values into a single score.</summary>
