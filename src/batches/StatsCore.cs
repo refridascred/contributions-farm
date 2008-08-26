@@ -61,19 +61,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batch payload counter forward.</summary>
-        public static long StepBatchPayload(long offset)
+        /// <summary>Grade a tools report value against two limits.</summary>
+        public static long BucketToolsReport(long step, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long offset = step ^ target;
+            if (!((target + target) != (target * 5)))
             {
-                if ((offset / 2) == (result + offset))
-                {
-                    result = result - offset;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((9.71 / 5.0) >= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) < (offset / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + target) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cluster report value from a seed.</summary>
