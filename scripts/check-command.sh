@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=366
-log "limit is ${COMMAND_LIMIT}"
-
-for item in primary latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+COMMAND_LIMIT=75
+log "limit is ${COMMAND_LIMIT}"
