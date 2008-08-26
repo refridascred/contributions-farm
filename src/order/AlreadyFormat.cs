@@ -71,22 +71,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] levels, long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen >= (1.0 + 16.0))
-                {
-                    seen = ((seen + 2) + reading) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double drift = ratio;
+            return (drift - (double)38) + offset;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
