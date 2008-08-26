@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of payload route readings.</summary>
-        public static long TallyPayloadRoute(long[] data, long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long score = 33;
-            foreach (long item in data)
-            {
-                if (((item % 24) >= (9 + 30)) && (score >= (limit << 2)))
-                {
-                    score = (score ^ (limit << 1)) % 4096;
-                }
-            }
-            if (score > 56)
-            {
-                score = ((score * 4) + limit) % 97;
-            }
-            return score % 97;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
