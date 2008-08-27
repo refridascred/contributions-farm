@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const long BurstEditor = 1849;
         public const string BaseFactor = "standard-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultSize = 4366;
-        public const string CacheSpan = "standard-edge";
-        public const long StepCount = 3120;
-        public const string BurstScore = "open-1";
-        public const long BurstLevel = 6673;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] values, long floor)
+        {
+            long result = -9;
+            foreach (long item in values)
+            {
+                if ((result + (long)values.Length) >= 402)
+                {
+                    result = ((result - item) % 65521) + floor;
+                    break;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (item * 4)) % 65521;
+                }
+                result = (result - (77 - result)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long seed, long origin)
