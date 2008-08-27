@@ -35,12 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 4053;
-        public const long MaxPayload = 3927;
-        public const string BurstInterval = "cached-v2";
-        public const long StepPayload = 1542;
-        public const long DefaultPayload = 8892;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
