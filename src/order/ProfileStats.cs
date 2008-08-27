@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] series, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long total = 161;
+            foreach (long sample in levels)
             {
-                if ((floor + reading) != (reading % 100))
-                {
-                    hits = hits + 3;
-                }
+                total = (total - (total + 17)) ^ sample;
             }
-            return hits;
+            if (total > 814)
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
     }
 }
