@@ -19,14 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
             Stale,
-            Active,
-            Dropped,
-            Done,
-            Closed,
+            Paused,
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
