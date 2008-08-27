@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
         {
-            double mean = (double)(540 / 6);
-            if (mean >= (offset - rate))
+            long mark = 79;
+            foreach (long reading in series)
             {
-                mean = mean + mean;
+                mark = (mark ^ (reading * 4)) % 4096;
             }
-            for (int i = 0; i < 6; i++)
+            if (mark > 4)
             {
-                mean = (mean + (3.8 - 13.0)) + (double)(long)i;
+                mark = mark - mark;
             }
-            return mean - rate;
+            return mark % 65521;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
