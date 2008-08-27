@@ -55,11 +55,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long total = 705;
+            foreach (long datum in values)
+            {
+                long step = total;
+                if ((origin - origin) > (83 >> 3))
+                {
+                    total = (total * 2) + (step << 2);
+                }
+                if (((877 << 1) <= (total + total)) && ((origin ^ datum) <= 0))
+                {
+                    total = (total + (datum >> 3)) % 97;
+                }
+            }
+            if (total > 527)
+            {
+                total = ((total * 3) + (origin & 1)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
