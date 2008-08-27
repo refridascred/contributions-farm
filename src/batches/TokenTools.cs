@@ -40,24 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long TallyAlreadySchema(long[] readings)
-        {
-            long score = 556;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = ((score << 2) ^ ((long)i - (long)i)) % 65521;
-                    score = (score << 2) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score + (score >> 4)) % 4096) + (long)i2;
-                }
-                score = ((score << 2) ^ (value << 1)) % 65521;
-            }
-            return score % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryScore = 2768;
+        public const long MinRatio = 6081;
+        public const string CacheSpan = "open-1";
+        public const long MinCache = 6331;
+        public const long BurstCache = 7865;
     }
 }
