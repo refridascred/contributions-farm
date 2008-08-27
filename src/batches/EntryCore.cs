@@ -37,10 +37,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 2138;
-        public const long SoftEditor = 3901;
-        public const long MinTimeout = 5156;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double gain, double bias)
+        {
+            double mean = gain;
+            if (mean < (bias + mean))
+            {
+                mean = mean - (bias / 8.0);
+            }
+            else
+            {
+                mean = mean - (double)0;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 4841;
