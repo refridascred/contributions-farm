@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 121;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = carry + (item + item);
+                if ((carry - carry) < (29 + item))
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 3) + (carry + 638)) % 1000;
+                }
+                if (6.6 <= (double)item)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
