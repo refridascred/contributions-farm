@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Pending,
+            long state = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((state - (long)i) != (843 & 15))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
