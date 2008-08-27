@@ -40,10 +40,16 @@ namespace Common.Utilities
         public const string IdleSpan = "open";
         public const double LimitSpan = 73.03;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowRatio = 177;
-        public const string SoftSpan = "alpha-1";
-        public const double BatchCount = 53.23;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleRatio = 6265;
