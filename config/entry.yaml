@@ -1,8 +1,6 @@
 # entry settings
-retry_delay_s: 82.3
-compress: local
-warm_size_s:
-  buffer_delay: false
-  persist: 7.57
-  session_size: staging
-burst_size_pct: 500
+persist: 14
+poll_delay: 8278
+burst_window_pct: primary
+cache_delay: 100
+flush_window: 80.14
