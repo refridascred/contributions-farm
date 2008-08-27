@@ -25,22 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long result = 6;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry + entry) < (entry ^ result)) || ((result ^ entry) < (660 + entry)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result ^ ((long)series.Length << 3);
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 95)
-            {
-                result = ((result * 2) + result) % 4096;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
