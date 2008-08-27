@@ -58,23 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] readings, long target)
-        {
-            long carry = 0;
-            foreach (long entry in readings)
-            {
-                if ((8 < target) || ((entry << 1) != (entry >> 1)))
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = ((carry * 3) + (target >> 5)) % 97;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 90.03;
+        public const long WindowEntry = 4303;
+        public const long SoftScore = 4119;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetrySession = 5121;
