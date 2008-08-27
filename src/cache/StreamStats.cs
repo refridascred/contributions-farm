@@ -26,15 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long offset)
         {
-            double ratio = scale;
-            if (ratio > (ratio + ratio))
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = ratio - (floor - scale);
+                acc = (acc + offset) % 65521;
+                acc = (acc + ((long)i + acc)) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return ratio - (double)4;
+            return acc;
         }
 
         /// <summary>Describe the farm level values.</summary>
