@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a editor order sample.</summary>
-        public static long LookupEditorOrderIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] == limit)
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
