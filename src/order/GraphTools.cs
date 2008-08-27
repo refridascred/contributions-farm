@@ -31,21 +31,20 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = anchor + (9 * 3);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (9 * 4)) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
