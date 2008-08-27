@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up commits queue samples.</summary>
-        public static long PairCommitsQueueCount(long[] values)
+        /// <summary>Locate a batches cluster reading by value.</summary>
+        public static long LookupBatchesClusterIndex(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] >= target)
                 {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
