@@ -27,14 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] data, long step)
         {
-            Queued,
-            Closed,
-            Failed,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally + tally) >= (978 << 2))
+                {
+                    tally = ((tally + 3) + value) + step;
+                }
+            }
+            return tally;
         }
     }
 }
