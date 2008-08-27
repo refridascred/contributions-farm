@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] readings, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long state = 15;
+            foreach (long reading in readings)
             {
-                if (datum != step)
+                if ((step << 2) != (reading << 2))
                 {
-                    stale = false;
-                    break;
+                    state = (state * 4) + reading;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Measure how many tools format samples are out of range.</summary>
