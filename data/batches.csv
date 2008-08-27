@@ -1,10 +1,6 @@
-id,owner,ratio
-1,461,278
-2,30.57,16.21
-3,93.4,cached
-4,462,strict
-5,503,127
-6,11.6,staging
-7,288,83.74
-8,stable,92.49
-9,715,staging
+id,token,region
+1,884,12.54
+2,82.66,252
+3,582,legacy
+4,312,open
+5,160,staging
