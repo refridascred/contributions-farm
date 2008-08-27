@@ -27,19 +27,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] data, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long total = 307;
+            foreach (long datum in levels)
             {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total + (datum & 1)) % 97) - bound;
             }
-            return ready;
+            if (total < 54)
+            {
+                total = (total * 2) + (total + total);
+            }
+            return total;
         }
     }
 }
