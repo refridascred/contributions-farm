@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a batches cluster reading by value.</summary>
-        public static long LookupBatchesClusterIndex(long[] series, long target)
+        /// <summary>Count the cluster report entries that pass the check.</summary>
+        public static long CountClusterReportGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (series[i] >= target)
+                if ((sample - sample) != (sample % 100))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
