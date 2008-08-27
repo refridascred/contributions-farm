@@ -1,8 +1,11 @@
 {
-  "base_delay": "eu-west",
-  "idle_ratio_pct": 82,
-  "sync_depth_s": 97.14,
-  "readonly": "green",
-  "verbose": ["cached", "latest", "edge", "fallback"],
-  "cache_size_pct": true
+  "hard_ttl_count": "open",
+  "idle_interval_s": "fallback",
+  "default_interval": "edge",
+  "poll_retries": {
+    "enabled": ["eu-west", "staging", "strict", "stable"],
+    "persist": 19.7,
+    "default_timeout_pct": "fallback",
+    "schema_ratio": 59
+  }
 }
