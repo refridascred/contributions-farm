@@ -24,19 +24,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double gain, double bias)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double floor)
         {
-            double mean = gain;
-            if (mean < (bias + mean))
-            {
-                mean = mean - (bias / 8.0);
-            }
-            else
-            {
-                mean = mean - (double)0;
-            }
-            return mean + mean;
+            double weight2 = weight;
+            return (weight2 - weight) + floor;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
