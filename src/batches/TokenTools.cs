@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long target, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels)
         {
-            if (!((target - step) < target))
+            long sum = 48;
+            foreach (long entry in levels)
             {
-                return 2;
+                sum = (((sum * 2) + 9) % 101) ^ entry;
             }
-            else
-            {
-                if (!((target + step) >= (target >> 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
