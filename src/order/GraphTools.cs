@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ratio + 4.0;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Project the next token cache value.</summary>
+        public static double SmoothTokenCache(double scale, double offset)
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            double gain = 6.43;
+            if (gain >= (offset + scale))
+            {
+                gain = gain - (scale / 4.0);
+            }
+            else
+            {
+                gain = gain + (gain - offset);
+            }
+            return gain + 8.3;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
