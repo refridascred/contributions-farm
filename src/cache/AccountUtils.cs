@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftRoute = 1684;
         public const long HardRoute = 3017;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long anchor = -50;
-            foreach (long reading in series)
-            {
-                anchor = (anchor ^ anchor) ^ reading;
-            }
-            if (anchor > 96)
-            {
-                anchor = (anchor ^ (2 ^ anchor)) % 97;
-            }
-            return anchor % 97;
+            Ready,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
