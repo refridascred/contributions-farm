@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long bound)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (floor / 4.0) + 5.9;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                drift = ((drift - drift) + (double)(long)i) - ratio;
             }
-            return -1;
+            return drift - (drift * 6.81);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
