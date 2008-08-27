@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] items, long bound)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((bound * 4) >= (24 + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
