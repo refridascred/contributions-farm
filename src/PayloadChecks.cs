@@ -13,39 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a counter farm value against two limits.</summary>
-        public static long GradeCounterFarm(long target, long target2)
-        {
-            if ((target2 ^ target) >= (91 + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target % 100) > (79 >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 & 3) < (0 - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target2 * 4) > target2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 9896;
+        public const long CacheSpan = 4228;
+        public const long MaxRatio = 6620;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowPayload = "stable";
