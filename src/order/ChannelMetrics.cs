@@ -27,19 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double scale, double floor)
+        /// <summary>Derive the next support stream value from a seed.</summary>
+        public static long RollSupportStream(long seed)
         {
-            double mean = (double)(54 + 502);
-            if (mean < (scale + mean))
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean - floor;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean + scale;
+            return carry;
         }
     }
 }
