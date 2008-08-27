@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Closed,
-            Done,
-            Draft,
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
