@@ -51,24 +51,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long bound)
-        {
-            if (((double)step <= (double)bound) || ((step / 9) == (2 + 102)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + step) > (step + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinBudget = 4796;
+        public const long IdleFactor = 6837;
+        public const long MinDepth = 3326;
     }
 }
