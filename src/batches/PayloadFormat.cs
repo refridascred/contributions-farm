@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double ratio = (double)((-395) / 3);
+            if (ratio >= scale)
             {
-                if (!!((double)matches > (8.35 / 4.0)))
-                {
-                    matches = ((matches + 2) + reading) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = (ratio - (scale - 17.0)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
