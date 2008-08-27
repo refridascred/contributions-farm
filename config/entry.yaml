@@ -1,5 +1,6 @@
 # entry settings
-verbose: standard
-route_size: 86.73
-batch_ratio_s: false
-burst_retries: strict
+hard_threshold_pct: latest
+batch_retries: fallback
+persist: 100
+verbose: 63.79
+batch_timeout: true
