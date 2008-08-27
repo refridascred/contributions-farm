@@ -1,8 +1,11 @@
 # support settings
-idle_threshold_pct: blue
-cache_threshold_ms: 67.14
-commits_threshold: staging
-stats_capacity: 90.17
-audit:
-  - local
-  - staging
+hard_timeout: 250
+account_depth: 3387
+sync_interval_pct:
+  - 103
+  - 461
+  - 473
+  - 19
+soft_window_count: fallback
+stats_threshold: staging
+warm_delay_pct: false
