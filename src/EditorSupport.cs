@@ -43,39 +43,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a batch already pair into a bucket.</summary>
-        public static long SortBatchAlready(long origin, long limit)
+        /// <summary>Look up the position of a entry notes sample.</summary>
+        public static long LocateEntryNotesIndex(long[] data, long origin)
         {
-            long prev = origin ^ limit;
-            if ((origin >> 4) != (prev + limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((58 - prev) <= (limit >> 2))
+                if ((data[i] >= origin) && ((data[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > (prev << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev * 3) >= prev)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
