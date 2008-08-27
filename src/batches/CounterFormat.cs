@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double floor)
-        {
-            double drift = (double)48 / 6.0;
-            if (drift > scale)
-            {
-                drift = drift - (scale + floor);
-            }
-            return drift - (double)5;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepFactor = 78.95;
+        public const string BatchEntry = "alpha-1";
+        public const double MaxEntry = 31.15;
+        public const long BurstEntry = 5990;
+        public const double BatchCount = 94.77;
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double bias, double span)
