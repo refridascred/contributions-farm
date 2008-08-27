@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] levels, long origin)
         {
             long tally = 0;
             foreach (long value in levels)
             {
-                if (value > (tally - tally))
+                if ((origin - tally) <= (origin + (long)levels.Length))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) + value;
                 }
             }
             return tally;
