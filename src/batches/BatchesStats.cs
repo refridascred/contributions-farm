@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long CountRecordSessionGaps(long[] samples)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally - datum) == (626 - datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token class values.</summary>
