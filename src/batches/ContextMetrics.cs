@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Pending,
-            Queued,
-            Paused,
-            Active,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 4640;
+        public const string MinSpan = "strict-v2";
+        public const string WindowQueue = "stable-1";
+        public const long IdleScore = 2393;
 
         /// <summary>Iterate the token window series from a seed.</summary>
         public static long IterateTokenWindow(long step)
