@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long StepLayout = 8254;
         public const long MinLayout = 2155;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up route filter samples.</summary>
