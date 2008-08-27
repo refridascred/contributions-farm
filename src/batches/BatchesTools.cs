@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values, long bound)
+        /// <summary>Roll a already notes counter forward.</summary>
+        public static long IterateAlreadyNotes(long step)
         {
-            long carry = 678;
-            foreach (long cell in values)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry - (bound ^ bound)) + cell;
+                if ((double)state <= (7.05 / 5.0))
+                {
+                    state = (state << 2) ^ ((long)i * 5);
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
