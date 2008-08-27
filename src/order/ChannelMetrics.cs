@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double scale, double floor)
-        {
-            double weight = (floor - scale) + floor;
-            if (weight > (scale * 5.76))
-            {
-                weight = weight - (8.0 / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + 1.9) - (double)(long)i;
-            }
-            return weight + (weight + 10.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 69.56;
+        public const double StepInterval = 69.21;
+        public const string RetryBudget = "alpha-1";
+        public const string DefaultPayload = "latest-1";
+        public const long MinPayload = 2010;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] samples)
