@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long seed, long step)
         {
-            if ((limit - 301) == (limit - target))
+            long offset = seed - step;
+            if (!((step * 3) == (offset % 64)))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((89 + 4) == (limit - target))
+                if ((step - step) > (3 - seed))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 2;
+                    if (4.6 <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed - step) < (seed + seed)) || ((seed % 8) <= offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
