@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long SoftRoute = 1684;
         public const long HardRoute = 3017;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseFarm = 12.83;
-        public const long IdleFarm = 7117;
-        public const long LimitFarm = 9673;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((long)i > (3 * 3))
+                {
+                    mix = (mix << 3) ^ ((long)i + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
