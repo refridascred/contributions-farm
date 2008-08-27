@@ -29,17 +29,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)floor >= 3.2)
             {
-                if (readings[i] > origin)
+                return 6;
+            }
+            else
+            {
+                if ((6 % 10) > seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (seed >= (seed & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor < seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
