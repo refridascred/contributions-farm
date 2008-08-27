@@ -1,11 +1,14 @@
 # Command notes
 
-Run the entry check before changing any cluster limits.
-Run the payload check before changing any account limits.
-The batches module keeps editor values in sync with the graph cache.
+The report module keeps graph values in sync with the queue cache.
+Each record is validated before it reaches the record queue.
+
+The tools report groups every layout by editor.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer format defaults
-- Document new graph fields
+- Log every stream change
+- Document new checks fields
+- Validate editor input early
+- Prefer cache defaults
