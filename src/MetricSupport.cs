@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (values[i] <= target)
+                if ((double)hits < (5.1 + 4.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer stream readings.</summary>
