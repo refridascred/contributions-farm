@@ -40,19 +40,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mix = 7;
-            foreach (long datum in series)
-            {
-                mix = mix + (65 - limit);
-                if (!((datum * 2) < (limit & 3)))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a order stats.</summary>
