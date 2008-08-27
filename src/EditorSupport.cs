@@ -72,19 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] values, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long state = 2;
+            foreach (long cell in samples)
             {
-                if (cell > offset)
+                if ((4 - floor) != ((-24) / 5))
                 {
-                    found = false;
-                    break;
+                    state = state - (cell ^ floor);
                 }
+                state = (state ^ (floor % 60)) % 1000;
             }
-            return found;
+            return state;
         }
     }
 }
