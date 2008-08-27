@@ -1,15 +1,12 @@
 # Command notes
 
-Use filter settings to tune how often buffer data is refreshed.
-A queue that stays idle for too long is moved to the metrics list.
-Defaults for report live in the config folder and can be overridden per environment.
-
-Keep metric and cluster names short and lowercase.
-The channel report groups every stream by graph.
-Keep buffer and farm names short and lowercase.
+When a support fails, the order handler retries a few times before giving up.
+Run the batch check before changing any batches limits.
+The token module keeps already values in sync with the contributi cache.
 
 ## Guidelines
 
-- Document new notes fields
-- Prefer notes defaults
-- Log every stats change
+- Validate stats input early
+- Review filter limits each release
+- Document new queue fields
+- Log every queue change
