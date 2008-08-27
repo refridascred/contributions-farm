@@ -13,23 +13,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= (3.5 - 4.19))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultBudget = 3268;
+        public const double BatchContext = 10.62;
+        public const string WindowRatio = "local-edge";
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double BlendStats(double ratio, double floor)
