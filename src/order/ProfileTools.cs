@@ -25,21 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result ^ (limit - 8)) % 1000;
-                result = (result - (limit & 127)) % 1000;
-                if (!(limit > (result ^ result)))
-                {
-                    result = (result - (long)i) % 101;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Retry,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the schema state values.</summary>
