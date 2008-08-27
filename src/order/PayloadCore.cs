@@ -50,21 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
