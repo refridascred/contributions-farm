@@ -31,24 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics support input into a small class.</summary>
-        public static long RankMetricsSupport(long target, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long step)
         {
-            if ((bound * 4) > (target * 2))
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound & 127) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a layout info.</summary>
