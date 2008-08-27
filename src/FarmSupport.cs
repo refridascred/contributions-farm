@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "latest-1";
-        public const long CacheBatches = 1450;
-        public const double MaxInterval = 92.81;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "legacy-1";
+        public const string BaseStats = "fallback";
+        public const long CacheStats = 5607;
+        public const long SoftWidth = 6262;
+        public const long LimitStats = 4154;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long limit, long offset)
