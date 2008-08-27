@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepFactor = 78.95;
-        public const string BatchEntry = "alpha-1";
-        public const double MaxEntry = 31.15;
-        public const long BurstEntry = 5990;
-        public const double BatchCount = 94.77;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series, long offset)
+        {
+            long score = 707;
+            foreach (long entry in series)
+            {
+                score = ((score + offset) % 1000) - entry;
+                if ((offset % 16) > offset)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
