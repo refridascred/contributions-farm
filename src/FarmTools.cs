@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const double BatchBudget = 48.4;
         public const long RetryDepth = 5193;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Measure how many filter buffer samples are out of range.</summary>
+        public static long TallyFilterBufferGaps(long[] data)
         {
-            long anchor = 895;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (datum < (561 / 3))
+                if ((cell & 255) != (cell - hits))
                 {
-                    anchor = anchor + (datum % 60);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (2 + anchor);
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the token status values.</summary>
