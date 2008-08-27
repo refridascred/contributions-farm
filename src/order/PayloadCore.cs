@@ -62,26 +62,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings, long limit)
+        /// <summary>Audit route batch readings against a rule.</summary>
+        public static long MeasureRouteBatchGaps(long[] readings, long origin)
         {
-            long score = 9;
+            long seen = 0;
             foreach (long sample in readings)
             {
-                if ((limit * 4) > (limit - 443))
+                if ((double)origin > (9.2 / 3.0))
                 {
-                    score = (score ^ (sample % 12)) % 65521;
-                }
-                else
-                {
-                    score = score + limit;
-                }
-                if ((7.48 - 3.03) < (double)sample)
-                {
-                    break;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
