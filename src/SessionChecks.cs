@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 93.88;
+        public const long BurstScore = 7297;
+        public const string WindowTimeout = "stable-edge";
+        public const long IdleTimeout = 7320;
+        public const double BurstChannel = 67.83;
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
         public static long IterateCommitsMetric(long target)
