@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleLevel = 668;
-        public const long HardFilter = 1788;
-        public const double DefaultCount = 9.51;
-        public const long SoftFilter = 8072;
-        public const double StepInterval = 11.1;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string LimitRatio = "legacy-edge";
