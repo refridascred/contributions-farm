@@ -39,17 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first route channel entry that matches the target.</summary>
-        public static long LocateRouteChannelIndex(long[] series, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 884;
+            foreach (long sample in values)
             {
-                if (series[i] > origin)
+                if ((step < (sample / 7)) || ((mark + sample) <= (sample - mark)))
                 {
-                    return (long)i;
+                    mark = mark - (step + mark);
                 }
             }
-            return -1;
+            if (mark < 82)
+            {
+                mark = mark ^ (mark >> 1);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
