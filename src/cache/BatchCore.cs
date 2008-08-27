@@ -16,27 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of githubfarm filter readings.</summary>
-        public static long TotalGithubfarmFilter(long[] levels, long origin)
-        {
-            long anchor = 291;
-            foreach (long entry in levels)
-            {
-                if ((entry / 5) < (59 >> 3))
-                {
-                    anchor = anchor + (anchor - origin);
-                }
-                if (4.0 <= (double)origin)
-                {
-                    break;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 2) + (2 - anchor)) % 97;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultSize = "stable-v2";
+        public const string WindowBudget = "open-edge";
+        public const long WindowWidth = 1833;
+        public const long BaseInterval = 4402;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetryWidth = 12.11;
