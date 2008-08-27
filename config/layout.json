@@ -1,10 +1,8 @@
 {
-  "soft_interval_pct": {
-    "batches_ttl": 71,
-    "route_timeout": 9529,
-    "poll_ratio": false
-  },
-  "base_size_ms": "blue",
-  "enabled": 14.29,
-  "persist": "green"
+  "poll_window_s": 2291,
+  "profile_limit": true,
+  "idle_timeout_s": 30,
+  "readonly": "fallback",
+  "flush_capacity_s": [143, 167, 25, 448],
+  "enabled": true
 }
