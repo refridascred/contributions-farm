@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string BatchRecord = "legacy-v2";
         public const long LimitInterval = 9187;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public double Region { get; set; }
+            Stale,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Combine layout buffer values into a single score.</summary>
