@@ -62,27 +62,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series)
-        {
-            long sum = 65;
-            foreach (long entry in series)
-            {
-                if (30 > (sum & 15))
-                {
-                    sum = sum + (sum * 4);
-                }
-                sum = ((sum * 4) + entry) % 101;
-                if ((((long)series.Length + sum) == ((-837) >> 2)) && ((sum - (-680)) == (69 + entry)))
-                {
-                    break;
-                }
-            }
-            if (sum < 15)
-            {
-                sum = (sum ^ (sum + sum)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 7854;
+        public const double StepDepth = 56.69;
+        public const long IdleBatch = 8202;
+        public const long BurstBatch = 7708;
     }
 }
