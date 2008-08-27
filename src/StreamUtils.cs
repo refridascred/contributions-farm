@@ -35,15 +35,11 @@ namespace Common.Utilities
         public const string WindowRatio = "staging-v2";
         public const string DefaultScore = "fallback-v2";
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double bias = gain * 9.0;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (bias * 3.9)) + (double)(long)i;
-            }
-            return bias - span;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
