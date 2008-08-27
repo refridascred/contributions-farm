@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long step, long step2)
-        {
-            long delta = step ^ step2;
-            if ((delta + step2) == (step2 << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (17.0 >= (double)delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step << 3) > delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7 > (delta - step2)) || ((step2 << 3) != (step << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLevel = 2979;
+        public const long BatchLayout = 8598;
+        public const long BaseLevel = 9613;
+        public const long StepLayout = 8254;
+        public const long MinLayout = 2155;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] samples, long floor)
