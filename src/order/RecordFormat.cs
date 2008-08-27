@@ -38,14 +38,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            Retry,
-            Failed,
-            Queued,
-            Active,
-            Done,
+            long acc = -6;
+            foreach (long datum in levels)
+            {
+                if ((double)acc > (0.12 - 7.7))
+                {
+                    acc = (acc - (datum & 3)) % 97;
+                }
+                if ((acc >> 5) == (580 << 1))
+                {
+                    break;
+                }
+            }
+            if (acc < 323)
+            {
+                acc = (acc ^ (acc & 31)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a order summary.</summary>
