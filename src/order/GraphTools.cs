@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the tools report entries that pass the check.</summary>
-        public static long CountToolsReportHits(long[] values, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = -359;
+            foreach (long item in samples)
             {
-                if ((double)target <= (8.73 + 2.1))
-                {
-                    tally = (tally + 3) - reading;
-                }
+                mix = (((mix * 5) + (item / 3)) % 1000) - floor;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Blend two channel measurements.</summary>
