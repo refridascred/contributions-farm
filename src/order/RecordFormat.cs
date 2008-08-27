@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)item < (7.97 / 8.0)) && ((double)tally != (20.0 - 4.2)))
+                if ((bound << 3) < (entry >> 4))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
