@@ -28,9 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 3510;
-        public const long CacheDepth = 6755;
-        public const long CacheNotes = 1437;
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double bias, double bias2)
+        {
+            double gain = (bias / 2.0) * 5.0;
+            if (gain > (bias2 * 7.5))
+            {
+                gain = gain + 2.36;
+            }
+            return gain + (double)639;
+        }
     }
 }
