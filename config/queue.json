@@ -1,7 +1,5 @@
 {
-  "soft_threshold": false,
-  "dry_run": "latest",
-  "min_delay_s": ["primary", "strict", "green", "stable"],
-  "already_interval": 51.09,
-  "verbose": [218, 288, 73]
+  "cache_timeout_s": "blue",
+  "enabled": "green",
+  "base_delay": [378, 310, 153, 120]
 }
