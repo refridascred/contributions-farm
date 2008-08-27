@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftInterval = 56.48;
+        public const long LimitFilter = 718;
+        public const long HardFilter = 1940;
+        public const long StepFilter = 9587;
+        public const long SoftFactor = 3194;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MinCounter = 2161;
