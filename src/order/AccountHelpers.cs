@@ -5,24 +5,30 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a command profile pair into a bucket.</summary>
-        public static long BucketCommandProfile(long step, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples)
         {
-            if ((double)step < (1.0 * 14.0))
+            long carry = 3;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (8 < (bound + step))
+                if (item <= ((long)samples.Length >> 5))
                 {
-                    return 0;
+                    carry = ((carry * 5) + (carry ^ item)) % 101;
                 }
                 else
                 {
-                    return 8;
+                    carry = (carry << 3) ^ (3 * 4);
+                }
+                if (!((carry ^ item) >= 948))
+                {
+                    carry = carry ^ (carry << 2);
+                }
+                if ((carry - item) > (carry * 5))
+                {
+                    carry = ((carry * 3) + item) % 1000;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Match up notes samples.</summary>
