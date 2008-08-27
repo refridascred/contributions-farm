@@ -68,24 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order report value from a seed.</summary>
-        public static long DeriveOrderReport(long step)
+        /// <summary>Measure how many batches report samples are out of range.</summary>
+        public static long TallyBatchesReportHits(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((matches & 255) == (matches & 3))
                 {
-                    mix = (mix ^ (step >> 4)) ^ (long)i2;
+                    matches = (matches + 3) - value;
                 }
-                mix = mix ^ 282;
-                if ((step + mix) >= ((long)i / 9))
-                {
-                    mix = mix + (step + mix);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
     }
 }
