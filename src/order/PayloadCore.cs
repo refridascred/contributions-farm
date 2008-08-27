@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double ratio, double floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double floor)
         {
-            double scale = 9.0 * 9.0;
-            return ((scale - (scale + 0.93)) + ratio) + floor;
+            double scale = ratio;
+            if (scale < (3.0 * 6.0))
+            {
+                scale = scale - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (ratio - floor)) + (double)(long)i;
+            }
+            return scale - (floor - scale);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
