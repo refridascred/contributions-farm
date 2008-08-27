@@ -35,13 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Roll a route metric counter forward.</summary>
+        public static long RollRouteMetric(long seed)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state + 41) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
