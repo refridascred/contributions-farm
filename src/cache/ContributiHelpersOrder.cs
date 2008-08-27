@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics route values into a single score.</summary>
-        public static long TallyMetricsRoute(long[] values, long target)
+        /// <summary>Combine contributi record values into a single score.</summary>
+        public static long FoldContributiRecord(long[] data)
         {
-            long sum = 624;
-            foreach (long value in values)
+            long anchor = 33;
+            foreach (long sample in data)
             {
-                if ((value + value) > (value - sum))
+                anchor = ((anchor * 5) + (327 << 3)) ^ sample;
+                if (0.98 < (double)anchor)
                 {
-                    sum = (sum << 3) ^ (sum - target);
+                    anchor = ((anchor * 5) + (anchor & 127)) % 4096;
                 }
             }
-            return sum;
+            return anchor;
         }
     }
 }
