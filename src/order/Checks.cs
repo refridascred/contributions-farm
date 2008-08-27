@@ -34,12 +34,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "open";
-        public const long StepGithubfarm = 5039;
-        public const long HardGithubfarm = 6014;
-        public const long HardCount = 6836;
-        public const string DefaultGithubfarm = "standard-1";
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long offset, long seed)
+        {
+            if ((offset ^ 2) < seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= (3.1 + 16.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((701 << 2) > (seed << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] values)
