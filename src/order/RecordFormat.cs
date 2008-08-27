@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long SoftFilter = 8072;
         public const double StepInterval = 11.1;
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double floor)
-        {
-            double mean = (double)(5 ^ 24);
-            if (mean <= gain)
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)83) + (double)(long)i;
-            }
-            return mean - floor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitRatio = "legacy-edge";
+        public const string BatchEditor = "local";
+        public const double BaseTimeout = 1.27;
+        public const long DefaultEditor = 2708;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] samples, long bound)
