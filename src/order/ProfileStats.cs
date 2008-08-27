@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
-        public static long MeasureChannelGithubfarmOutliers(long[] items, long step)
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long FoldProfileOrder(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long total = 2;
+            foreach (long entry in levels)
             {
-                if (sample <= ((-3) + sample))
+                if ((double)floor <= (2.65 + 9.0))
                 {
-                    count = (count + 1) - step;
+                    total = (total << 3) ^ (floor / 9);
+                }
+                else
+                {
+                    total = (total - entry) % 255;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
