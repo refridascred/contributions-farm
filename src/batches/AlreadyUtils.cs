@@ -42,12 +42,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "cached-1";
-        public const string BatchDepth = "primary-1";
-        public const double HardBudget = 23.99;
-        public const long DefaultStream = 4310;
-        public const long RetryScore = 599;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((step & 3) <= (seen >> 4))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] values)
