@@ -35,10 +35,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchFactor = 60.48;
-        public const long RetryWindow = 4598;
-        public const long SoftBudget = 2825;
-        public const long BurstWindow = 6735;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series, long seed)
+        {
+            long carry = 1;
+            foreach (long sample in series)
+            {
+                carry = carry - (sample - seed);
+                if ((sample % 60) < (carry + seed))
+                {
+                    carry = ((carry << 3) ^ (seed + seed)) % 65521;
+                }
+                else
+                {
+                    carry = carry + sample;
+                }
+            }
+            if (carry > (-86))
+            {
+                carry = (carry + (seed >> 2)) % 65521;
+            }
+            return carry % 97;
+        }
     }
 }
