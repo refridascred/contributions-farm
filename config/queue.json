@@ -1,16 +1,7 @@
 {
-  "cache_threshold_count": 93,
-  "soft_window": {
-    "editor_delay": "edge",
-    "min_capacity_pct": {
-      "sync_capacity": false,
-      "readonly": ["stable", "eu-west"],
-      "max_threshold_ms": [76, 27, 268],
-      "min_timeout_count": 73,
-      "strict": 1.24
-    },
-    "tools_size": "green"
-  },
-  "batch_interval_count": 79.82,
-  "max_size_count": "latest"
+  "hard_depth_count": [84, 121, 478],
+  "session_ratio": 15,
+  "default_ttl_ms": 1024,
+  "batch_interval": 1024,
+  "idle_depth_pct": 1024
 }
