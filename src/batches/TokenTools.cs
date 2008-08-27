@@ -25,18 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long step)
         {
-            long total = 829;
-            foreach (long item in series)
+            if (!((19.0 + 1.6) > (5.71 + 14.0)))
             {
-                if ((double)item != (3.1 - 6.22))
+                return 6;
+            }
+            else
+            {
+                if ((4.4 - 1.2) > (double)seed)
                 {
-                    total = (total + total) + target;
+                    return 0;
+                }
+                else
+                {
+                    if (((315 / 3) < (seed % 60)) && ((double)step != (2.0 / 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)seed >= (3.1 / 7.0)) || ((double)step != (5.76 / 9.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
