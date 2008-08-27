@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] series)
         {
-            Ready,
-            Synced,
-            Queued,
-            Dropped,
-            New,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((count << 3) <= (count + (-548))) || ((2.0 / 3.0) >= (double)cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
