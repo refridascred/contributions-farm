@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double bias = (4.0 - floor) / 9.0;
-            if (bias > (double)986)
-            {
-                bias = (bias - floor) + weight;
-            }
-            else
-            {
-                bias = bias + (double)13;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (floor / 9.0)) + (double)(long)i;
-            }
-            return bias - floor;
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
