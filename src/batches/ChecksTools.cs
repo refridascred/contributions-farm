@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)carry >= (double)69)
-                {
-                    carry = ((carry * 2) + (82 * 2)) % 1000;
-                    carry = (carry + (3 / 9)) % 1000;
-                }
-                if (5.3 < (double)carry)
-                {
-                    carry = carry + 9;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 7613;
+        public const long CacheInterval = 5875;
+        public const long HardWidth = 8;
+        public const double WindowBudget = 31.26;
 
         /// <summary>Compare every pair of counter checks readings.</summary>
         public static long MatchCounterChecksCount(long[] data)
