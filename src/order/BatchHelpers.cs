@@ -41,18 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell < 5.0)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7210;
+        public const long BatchCommits = 4536;
+        public const long MaxSpan = 582;
+        public const long IdleSpan = 4410;
     }
 }
