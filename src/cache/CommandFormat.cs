@@ -20,10 +20,19 @@ namespace Common.Utilities
             return load + (ratio * 6.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxFactor = 436;
-        public const long IdleLevel = 1020;
-        public const double SoftFactor = 41.3;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches >= (item + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
