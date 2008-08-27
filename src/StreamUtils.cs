@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] data)
         {
-            double ratio = floor;
-            if (ratio > (gain / 2.0))
+            long score = 672;
+            foreach (long reading in data)
             {
-                ratio = ratio + 8.03;
+                score = (score + score) + reading;
             }
-            return ratio - (double)29;
+            return score;
         }
 
         /// <summary>Grade a format metrics value against two limits.</summary>
