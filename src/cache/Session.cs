@@ -23,10 +23,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardRatio = 7553;
-        public const double BurstChecks = 38.16;
-        public const long BatchSize = 360;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 6795;
+        public const double MaxEntry = 34.54;
+        public const long BurstEntry = 8983;
 
         /// <summary>Combine report profile values into a single score.</summary>
         public static long ScoreReportProfile(long[] levels)
