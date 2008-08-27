@@ -84,18 +84,22 @@ namespace Common.Utilities
         public const string BatchContext = "staging";
         public const long IdleContext = 6837;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] values)
+        /// <summary>Digest a series of support channel entries.</summary>
+        public static long FoldSupportChannel(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long total = 1;
+            foreach (long value in values)
             {
-                if ((7.49 - 8.6) <= (double)reading)
+                if ((66 << 1) == (offset / 5))
                 {
-                    hits = hits + 1;
+                    total = ((total * 4) + ((long)values.Length + offset)) - value;
                 }
             }
-            return hits;
+            if (total < 0)
+            {
+                total = (total + (offset % 10)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
