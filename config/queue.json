@@ -1,7 +1,16 @@
 {
-  "already_delay": 94,
-  "queue_interval": "green",
-  "verbose": 42.81,
-  "sync_delay_count": "edge",
-  "batches_ratio": 34
+  "cache_threshold_count": 93,
+  "soft_window": {
+    "editor_delay": "edge",
+    "min_capacity_pct": {
+      "sync_capacity": false,
+      "readonly": ["stable", "eu-west"],
+      "max_threshold_ms": [76, 27, 268],
+      "min_timeout_count": 73,
+      "strict": 1.24
+    },
+    "tools_size": "green"
+  },
+  "batch_interval_count": 79.82,
+  "max_size_count": "latest"
 }
