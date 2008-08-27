@@ -31,19 +31,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] series, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] items)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long acc = 56;
+            foreach (long item in items)
             {
-                if (item >= step)
+                if ((2.1 + 1.0) != (double)acc)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc ^ acc) % 101) + item;
                 }
             }
-            return ready;
+            if (acc > 488)
+            {
+                acc = (acc ^ (acc >> 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
