@@ -51,13 +51,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
