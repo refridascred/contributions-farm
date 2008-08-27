@@ -47,19 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi record values into a single score.</summary>
-        public static long FoldContributiRecord(long[] data)
+        /// <summary>Find the first channel graph entry that matches the target.</summary>
+        public static long LocateChannelGraphIndex(long[] readings, long limit)
         {
-            long anchor = 33;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (327 << 3)) ^ sample;
-                if (0.98 < (double)anchor)
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
                 {
-                    anchor = ((anchor * 5) + (anchor & 127)) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
