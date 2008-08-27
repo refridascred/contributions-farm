@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] items, long origin)
         {
-            Locked,
-            Synced,
-            Done,
-            Stale,
-            Idle,
+            long anchor = 95;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (((anchor ^ (815 * 2)) + (long)i) + item) + origin;
+                }
+                anchor = ((anchor * 4) + (61 % 8)) % 101;
+            }
+            if (anchor < 8)
+            {
+                anchor = (anchor + (anchor % 16)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the schema level values.</summary>
