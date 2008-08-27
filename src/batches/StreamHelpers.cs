@@ -19,32 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            long edge = origin - limit;
-            if (origin <= (limit ^ limit))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (382 + edge))
+                if ((8 ^ sample) < hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((edge % 16) != (origin ^ edge)) || ((13.0 * 3.3) >= (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
