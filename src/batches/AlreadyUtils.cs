@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long BurstEditor = 1849;
         public const string BaseFactor = "standard-v2";
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] values, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            long result = -9;
-            foreach (long item in values)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((result + (long)values.Length) >= 402)
-                {
-                    result = ((result - item) % 65521) + floor;
-                    break;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (item * 4)) % 65521;
-                }
-                result = (result - (77 - result)) % 1000;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
