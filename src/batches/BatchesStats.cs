@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowWidth = 22.24;
-        public const long LimitSchema = 8446;
-        public const long StepSchema = 5017;
-        public const string BurstSchema = "staging-v2";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long seed)
