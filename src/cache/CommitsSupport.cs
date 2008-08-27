@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the order format entries that pass the check.</summary>
-        public static long MeasureOrderFormatHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 1) < count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstLevel = 13;
+        public const string HardChannel = "latest";
+        public const double StepChannel = 58.7;
+        public const double RetrySpan = 48.33;
+        public const double StepCount = 92.1;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
