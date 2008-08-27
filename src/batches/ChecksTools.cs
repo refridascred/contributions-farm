@@ -33,18 +33,20 @@ namespace Common.Utilities
         public const long MaxScore = 9830;
         public const long BatchReport = 1981;
 
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long AuditFormatContextGaps(long[] data, long seed)
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long TotalReportCache(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = 15;
+            foreach (long datum in items)
             {
-                if (count <= (1 << 2))
+                mix = mix + (datum + mix);
+                mix = ((mix << 2) ^ (mix - mix)) % 101;
+                if ((datum & 7) < (datum ^ 19))
                 {
-                    count = ((count + 3) - reading) + seed;
+                    mix = mix - (datum + mix);
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
