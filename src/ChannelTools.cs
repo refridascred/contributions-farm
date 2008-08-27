@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = ((sum << 2) ^ (bound + (long)i)) % 1000;
+                if (!((2.9 * 5.84) < (double)sum))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ sum;
                 }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum - (bound + sum)) % 1000) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
