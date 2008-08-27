@@ -46,11 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinBudget = 9102;
-        public const long HardContext = 5330;
-        public const long SoftContext = 2060;
-        public const long CacheSpan = 4487;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Count { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatHits(long[] samples, long offset)
