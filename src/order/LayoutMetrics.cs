@@ -34,11 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] items, long step)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
