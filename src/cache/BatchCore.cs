@@ -66,18 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] readings)
+        /// <summary>Combine filter cluster values into a single score.</summary>
+        public static long TotalFilterCluster(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = -5;
+            foreach (long reading in readings)
             {
-                if (2 > seen)
+                if ((score <= offset) || ((offset - reading) > (score >> 4)))
                 {
-                    seen = (seen + 1) + item;
+                    score = score ^ (offset - score);
                 }
             }
-            return seen;
+            return score % 65521;
         }
     }
 }
