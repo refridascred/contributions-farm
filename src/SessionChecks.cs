@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] series, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
