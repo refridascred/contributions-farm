@@ -39,9 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchDepth = 6089;
-        public const long SoftReport = 8799;
-        public const string LimitTimeout = "staging-v2";
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
