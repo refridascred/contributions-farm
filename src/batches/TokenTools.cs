@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first batch already entry that matches the target.</summary>
-        public static long SeekBatchAlreadyIndex(long[] items, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] >= bound)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    acc = (acc + ((long)i2 ^ seed)) % 97;
+                }
+                if (((seed + acc) > ((-2) ^ sample)) || ((10.0 / 7.0) == (double)sample))
+                {
+                    acc = (acc << 3) ^ (880 << 1);
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
