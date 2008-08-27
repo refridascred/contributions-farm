@@ -1,17 +1,5 @@
 {
-  "enabled": "fallback",
-  "command_capacity": {
-    "sync_size_s": "green",
-    "min_retries_ms": [278, 81, 90, 188],
-    "retry_ttl_s": 5984,
-    "idle_limit_count": {
-      "enabled": "strict",
-      "hard_threshold_ms": 44.77,
-      "compress": 30
-    },
-    "stream_depth": false,
-    "burst_ttl_ms": 33
-  },
-  "verbose": 4588,
-  "warm_delay_s": "legacy"
+  "hard_timeout_ms": false,
+  "poll_threshold_s": 50,
+  "readonly": "cached"
 }
