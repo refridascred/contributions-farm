@@ -77,23 +77,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] series, long target)
+        /// <summary>Classify a metrics batch pair into a bucket.</summary>
+        public static long RankMetricsBatch(long origin, long limit)
         {
-            long anchor = 5;
-            foreach (long cell in series)
+            if ((74 + limit) != (origin << 2))
             {
-                anchor = ((anchor << 3) ^ cell) % 101;
-                if (cell >= target)
+                return 6;
+            }
+            else
+            {
+                if ((2.0 / 5.0) >= (double)origin)
                 {
-                    anchor = (anchor - anchor) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    anchor = anchor + (target + cell);
+                    return 2;
                 }
             }
-            return anchor;
         }
     }
 }
