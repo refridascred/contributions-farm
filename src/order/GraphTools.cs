@@ -62,19 +62,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            long carry = 3;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                carry = ((carry * 4) + entry) % 1000;
-                if (carry > (carry << 3))
+                if ((7.2 + 7.34) > (double)count)
                 {
-                    carry = (carry * 5) + (0 - entry);
+                    count = (count + 1) + item;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
