@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] values, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (sample > offset)
+                if (bound > ((-3) - bound))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - datum;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
