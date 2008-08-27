@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool CheckEntryChecksLimits(long[] values, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < bound)
+                if (readings[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Accumulate stream route samples.</summary>
