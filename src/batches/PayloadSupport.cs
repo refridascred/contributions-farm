@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long ScoreBatchesBatch(long[] items)
-        {
-            long result = 635;
-            foreach (long item in items)
-            {
-                if (item <= result)
-                {
-                    result = (result * 5) + (result % 7);
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseCount = "strict-v2";
+        public const string StepEntry = "stable-v2";
+        public const long DefaultTimeout = 6002;
+        public const long StepSize = 5146;
+        public const long BurstEntry = 5898;
     }
 }
