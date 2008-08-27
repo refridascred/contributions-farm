@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            if ((7 >> 1) != (limit + limit))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed ^ limit) >= (limit % 60)) && (6.83 <= (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed < (8.9 / 7.0))
+                    if ((levels[i] - levels[j]) > 13)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.0 * 3.9) >= (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next schema value.</summary>
