@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels, long limit)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
+            long result = 5;
+            foreach (long value in levels)
+            {
+                result = ((result << 2) ^ limit) ^ value;
+                if ((limit * 2) == (result & 31))
+                {
+                    break;
+                }
+            }
+            if (result > 655)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
