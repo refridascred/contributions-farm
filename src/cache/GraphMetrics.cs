@@ -46,20 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats account series from a seed.</summary>
-        public static long RollStatsAccount(long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((floor * 3) > total))
-                {
-                    total = total + (long)i;
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Paused,
+            Queued,
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
