@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
+            Stale,
             Synced,
-            Paused,
-            Ready,
-            New,
+            Dropped,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
