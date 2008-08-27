@@ -43,16 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 4) + origin) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the context level values.</summary>
