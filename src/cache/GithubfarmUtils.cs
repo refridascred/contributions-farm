@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long bound)
         {
-            long mix = 8;
-            foreach (long cell in levels)
+            if (632 >= (floor + 1))
             {
-                mix = ((mix << 3) ^ cell) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((81 >> 4) > floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)4 <= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools info.</summary>
