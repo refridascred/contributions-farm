@@ -13,19 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Match up schema cluster samples.</summary>
+        public static long PairSchemaClusterCount(long[] readings)
         {
-            long state = 8;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state ^ datum) % 97;
-                if ((8.8 / 4.0) <= (double)datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + 7) % 65521;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
