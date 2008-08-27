@@ -1,10 +1,13 @@
 # support settings
-metrics_window: 29.42
-audit: 30.73
-soft_retries: 84
-readonly: 63
-idle_size:
-  - 386
-  - 150
-  - 304
-  - 297
+base_depth:
+  warm_timeout_pct: staging
+  base_ttl: open
+  min_depth_count: true
+  enabled:
+    batch_size_pct: 60
+    default_retries_count: 3.72
+    strict: false
+    batch_threshold_pct: stable
+    channel_threshold: latest
+poll_threshold_count: 81.04
+audit: true
