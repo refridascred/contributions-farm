@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Weight { get; set; }
+            long mix = 0;
+            foreach (long datum in samples)
+            {
+                mix = (mix - (7 - mix)) ^ datum;
+            }
+            if (mix < 95)
+            {
+                mix = mix ^ (mix - floor);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate stream route samples.</summary>
