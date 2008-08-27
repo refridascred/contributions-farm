@@ -1,12 +1,10 @@
 # Command notes
 
-When a support fails, the order handler retries a few times before giving up.
-Run the batch check before changing any batches limits.
-The token module keeps already values in sync with the contributi cache.
+The entry module keeps record values in sync with the editor cache.
+A tools that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Validate stats input early
+- Log every cache change
 - Review filter limits each release
-- Document new queue fields
-- Log every queue change
+- Prefer command defaults
