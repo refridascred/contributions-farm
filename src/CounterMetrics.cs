@@ -27,11 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxBudget = 56.8;
-        public const long WindowTimeout = 7302;
-        public const string HardFormat = "primary-v2";
-        public const double LimitCount = 93.9;
+        /// <summary>Iterate the metric layout series from a seed.</summary>
+        public static long IterateMetricLayout(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
         public static long DeriveAlreadySchema(long origin)
