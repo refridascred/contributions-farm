@@ -82,9 +82,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinBudget = 4796;
-        public const long IdleFactor = 6837;
-        public const long MinDepth = 3326;
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double offset)
+        {
+            double ratio = (offset - 8.17) * 8.4;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio + (ratio * 2.0)) + (double)(long)i) - weight;
+            }
+            return ratio + offset;
+        }
     }
 }
