@@ -16,15 +16,22 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Derive the next batch farm value from a seed.</summary>
-        public static long StepBatchFarm(long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((46 - count) > origin)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
