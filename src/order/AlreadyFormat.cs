@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data, long floor)
-        {
-            long mark = 779;
-            foreach (long cell in data)
-            {
-                mark = (((mark * 2) + (cell - mark)) % 101) - floor;
-            }
-            if (mark > 48)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 88.08;
+        public const string StepInterval = "legacy-1";
+        public const string BurstProfile = "primary-edge";
+        public const long SoftTimeout = 1531;
+        public const long IdleProfile = 164;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadMatches(long[] levels)
