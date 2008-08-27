@@ -23,26 +23,19 @@ namespace Common.Utilities
         public const long WindowGraph = 6691;
         public const long HardGraph = 2146;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] data, long seed)
         {
-            long anchor = 704;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (((reading * 5) < (bound * 5)) && ((0 ^ bound) > (bound << 2)))
+                if (cell > seed)
                 {
-                    anchor = (anchor ^ (reading + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (bound << 1)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 99)
-            {
-                anchor = anchor + (565 % 5);
-            }
-            return anchor % 1000;
+            return ok;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
