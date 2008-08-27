@@ -35,17 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a channel stream sample.</summary>
-        public static long LocateChannelStreamIndex(long[] readings, long seed)
+        /// <summary>Adjust a schema support reading.</summary>
+        public static double ProjectSchemaSupport(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = ratio;
+            if (scale > (offset * 11.0))
             {
-                if ((readings[i] == seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)75;
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)484;
+            }
+            return scale + offset;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
