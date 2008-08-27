@@ -37,11 +37,12 @@ namespace Common.Utilities
         public const double StepOrder = 8.34;
         public const long WindowOrder = 534;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSize = 4662;
-        public const long SoftGithubfarm = 4978;
-        public const long HardDepth = 6955;
-        public const long IdleTimeout = 5245;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxFactor = "legacy";
+        public const double BatchBudget = 20.12;
+        public const double CacheDepth = 44.13;
+        public const long BatchEditor = 6191;
+        public const double BurstRatio = 81.29;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long floor, long step)
