@@ -1,11 +1,11 @@
 # githubfarm settings
-session_interval:
-  - 66
-  - 125
-default_retries_pct: 48.21
-flush_size_ms: 1024
-warm_size:
-  - latest
-  - standard
-  - strict
-  - staging
+base_capacity_count: false
+audit: 53
+verbose: latest
+poll_interval_s: 100
+notes_limit: green
+context_capacity:
+  - 131
+  - 106
+  - 284
+  - 247
