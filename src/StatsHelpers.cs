@@ -42,11 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 7280;
-        public const double BatchToken = 37.96;
-        public const long BaseToken = 4006;
-        public const long HardRatio = 6116;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            New,
+            Idle,
+            Ready,
+            Queued,
+            Done,
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long step)
