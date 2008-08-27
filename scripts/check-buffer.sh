@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback legacy stable; do
+mode="${1:-staging}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy blue stable primary; do
     log "checking ${item}"
 done
 
