@@ -40,11 +40,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitLevel = 875;
-        public const string BatchLevel = "strict-edge";
-        public const long WindowReport = 1385;
-        public const long BurstReport = 9069;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((3.78 + 2.0) >= (double)reading) && (((reading - hits) >= 59) && ((reading + hits) == (reading - hits))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] values)
