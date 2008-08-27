@@ -42,19 +42,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((step & 3) <= (seen >> 4))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "staging-1";
+        public const long MinCount = 838;
+        public const long IdleGithubfarm = 4750;
+        public const double WindowGithubfarm = 70.95;
+        public const double MaxRatio = 61.18;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] values)
