@@ -51,15 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels, long offset)
         {
-            double drift = 15.0 / 4.0;
-            if (drift > (bias * 1.74))
+            long result = 33;
+            foreach (long reading in levels)
             {
-                drift = drift - (bias + rate);
+                if ((5 / 6) != (result % 5))
+                {
+                    result = (result - (993 - reading)) + offset;
+                }
             }
-            return drift + (bias + rate);
+            if (result > 454)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
     }
 }
