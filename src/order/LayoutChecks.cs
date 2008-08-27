@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every already graph entry stays within the limit.</summary>
-        public static bool GuardAlreadyGraphBounds(long[] readings, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (item < step)
+                if ((seen + seen) > (bound + seen))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
