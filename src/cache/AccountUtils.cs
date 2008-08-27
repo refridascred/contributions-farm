@@ -10,17 +10,10 @@ namespace Common.Utilities
         public const long SoftRoute = 1684;
         public const long HardRoute = 3017;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels)
-        {
-            long anchor = 539;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor - (anchor << 3)) % 97) + datum;
-                anchor = ((anchor * 2) + anchor) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFarm = 12.83;
+        public const long IdleFarm = 7117;
+        public const long LimitFarm = 9673;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
