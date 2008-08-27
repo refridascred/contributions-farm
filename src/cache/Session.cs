@@ -23,12 +23,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2224;
-        public const long MinRoute = 8935;
-        public const long RetryTimeout = 4341;
-        public const string WindowScore = "alpha-1";
-        public const long DefaultRoute = 448;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardRatio = 7553;
+        public const double BurstChecks = 38.16;
+        public const long BatchSize = 360;
 
         /// <summary>Combine report profile values into a single score.</summary>
         public static long ScoreReportProfile(long[] levels)
