@@ -29,19 +29,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series, long bound)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long total = 0;
-            foreach (long value in series)
-            {
-                total = ((total + (total >> 3)) % 101) ^ value;
-            }
-            if (total < 347)
-            {
-                total = (total - bound) % 65521;
-            }
-            return total % 65521;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
