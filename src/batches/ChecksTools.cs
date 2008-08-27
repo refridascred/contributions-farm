@@ -54,24 +54,17 @@ namespace Common.Utilities
         public const double IdleBudget = 43.42;
         public const long CacheSchema = 2782;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long origin)
         {
-            long score = -4;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((score ^ entry) <= score))
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
                 {
-                    score = (score ^ (entry * 4)) % 97;
-                    score = (score * 5) + (-20);
+                    return (long)i;
                 }
-                score = ((score * 2) + (score + entry)) % 4096;
             }
-            if (score < (-7))
-            {
-                score = (score * 4) + (long)items.Length;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
