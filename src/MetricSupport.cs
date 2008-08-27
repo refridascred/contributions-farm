@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            Draft,
-            Stale,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((hits * 5) < reading) && ((440 / 4) >= hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
