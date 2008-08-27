@@ -45,10 +45,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 90.03;
-        public const long WindowEntry = 4303;
-        public const long SoftScore = 4119;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowTimeout = 8262;
+        public const long BurstBudget = 8942;
+        public const long SoftReport = 7979;
+        public const string BurstCount = "primary-edge";
+        public const long HardDepth = 4551;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
