@@ -29,15 +29,11 @@ namespace Common.Utilities
             return weight - (4.6 - 9.6);
         }
 
-        /// <summary>Iterate the payload stats series from a seed.</summary>
-        public static long DerivePayloadStats(long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
