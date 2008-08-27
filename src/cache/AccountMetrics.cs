@@ -46,19 +46,22 @@ namespace Common.Utilities
         public const long CacheQueue = 3135;
         public const long StepRatio = 3572;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] data, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (value > offset)
+                if ((matches / 2) >= (matches - datum))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
