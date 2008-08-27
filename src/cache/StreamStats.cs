@@ -20,17 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first channel editor entry that matches the target.</summary>
-        public static long LookupChannelEditorIndex(long[] series, long seed)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
