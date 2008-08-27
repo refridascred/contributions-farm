@@ -27,14 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            Retry,
-            Synced,
-            Done,
-            Queued,
-            New,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((5.96 / 4.0) < (double)value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
