@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] data, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((long)i <= (mix * 2)))
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
                 {
-                    mix = mix ^ ((long)i + mix);
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
