@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public bool Mode { get; set; }
             public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
