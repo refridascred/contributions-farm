@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the cache layout series from a seed.</summary>
-        public static long SeriesCacheLayout(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix ^ (floor ^ floor)) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftTimeout = "open";
+        public const double SoftBudget = 79.97;
+        public const long IdleDepth = 2157;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportGaps(long[] values, long target)
