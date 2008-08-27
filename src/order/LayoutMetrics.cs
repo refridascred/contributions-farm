@@ -18,17 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] == limit)
+                if (!((long)i >= (limit * 4)))
                 {
-                    return (long)i;
+                    long cur = 2 ^ limit;
+                    total = total - (cur * 4);
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a commits stats.</summary>
