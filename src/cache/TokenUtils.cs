@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of schema report readings.</summary>
-        public static long TallySchemaReport(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] levels)
         {
-            long total = 43;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                total = ((total * 2) + (sample & 15)) % 1000;
+                if ((((reading + reading) > (matches ^ 69)) || ((matches + 27) < reading)) || ((double)reading < (3.97 - 2.16)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
