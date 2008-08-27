@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 7613;
-        public const long CacheInterval = 5875;
-        public const long HardWidth = 8;
-        public const double WindowBudget = 31.26;
+        /// <summary>Rank already farm input into a small class.</summary>
+        public static long GradeAlreadyFarm(long limit, long offset)
+        {
+            if (((limit & 127) < (offset ^ offset)) && ((limit ^ limit) <= (offset * 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit <= (174 * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 5) < (limit % 97))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
