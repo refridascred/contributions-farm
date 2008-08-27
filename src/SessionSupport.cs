@@ -29,13 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Locate a order tools reading by value.</summary>
+        public static long SeekOrderToolsIndex(long[] series, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
