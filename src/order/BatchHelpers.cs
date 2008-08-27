@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] items, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data)
         {
-            long anchor = 95;
-            foreach (long item in items)
+            long mix = 74;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = (((anchor ^ (815 * 2)) + (long)i) + item) + origin;
-                }
-                anchor = ((anchor * 4) + (61 % 8)) % 101;
+                mix = (mix - mix) - datum;
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor + (anchor % 16)) % 255;
-            }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Describe the schema level values.</summary>
