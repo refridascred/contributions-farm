@@ -1,23 +1,15 @@
 # entry settings
-support_limit:
-  flush_ttl_count:
-    channel_depth: local
-    enabled: true
-    audit: 530
-    compress:
-      - legacy
-      - open
-    min_limit: 85
-  default_interval: false
-  dry_run: 16.17
-  batch_threshold_pct:
-    warm_capacity_count: 1024
-    profile_delay: 5639
-    soft_size_ms: 100
-  idle_ratio: false
-  poll_ttl_pct: blue
-persist: 32
-hard_threshold: false
-strict: 91.44
-soft_timeout_count: true
-base_ratio: strict
+persist:
+  - open
+  - green
+  - staging
+  - blue
+buffer_window: 8610
+readonly:
+  - edge
+  - strict
+poll_window_pct:
+  - 118
+  - 92
+  - 435
+  - 91
