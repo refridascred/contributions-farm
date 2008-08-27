@@ -16,15 +16,19 @@ namespace Common.Utilities
         public const string WindowQueue = "stable-1";
         public const long IdleScore = 2393;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double span)
+        /// <summary>Check that every token graph entry stays within the limit.</summary>
+        public static bool ValidateTokenGraphRange(long[] readings, long offset)
         {
-            double gain = (bias * 1.72) + span;
-            if (gain > (18.0 / 4.0))
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                gain = gain + (gain + span);
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - span;
+            return valid;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
