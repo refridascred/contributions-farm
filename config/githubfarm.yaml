@@ -1,5 +1,10 @@
 # githubfarm settings
-retry_limit_s: 22
-hard_timeout_s: 7
-dry_run: 62
-flush_timeout: primary
+hard_size: primary
+persist: primary
+base_threshold:
+  - 146
+  - 38
+  - 317
+  - 472
+verbose: cached
+farm_capacity: true
