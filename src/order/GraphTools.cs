@@ -65,18 +65,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((7.2 + 7.34) > (double)count)
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+                if (floor < (373 ^ floor))
                 {
-                    count = (count + 1) + item;
+                    anchor = (anchor - floor) % 97;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
     }
 }
