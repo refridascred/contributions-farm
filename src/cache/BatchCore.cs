@@ -16,15 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Ready,
-            Dropped,
-            Done,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinRatio = 9858;
+        public const long MaxDepth = 1094;
+        public const double BurstTimeout = 83.58;
+        public const string RetryGraph = "alpha-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetryWidth = 12.11;
