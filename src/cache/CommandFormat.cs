@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] readings, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double gain, double span)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            double scale = 5.8;
+            if (scale >= (double)306)
             {
-                if (1.0 < (double)offset)
-                {
-                    acc = (acc - (acc & 1)) + sample;
-                }
-                else
-                {
-                    acc = acc - (acc + offset);
-                }
+                scale = scale + 15.0;
             }
-            if (acc < 7)
+            for (int i = 0; i < 2; i++)
             {
-                acc = (acc - offset) % 65521;
+                scale = (scale - (8.0 - 0.4)) + (double)(long)i;
             }
-            return acc;
+            return scale - (gain + span);
         }
 
         /// <summary>Hold a notes stats.</summary>
