@@ -25,21 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 63;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum << 2) <= (value - sum))
                 {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ (target >> 5)) % 101;
+                }
+                if ((7.0 - 4.1) < (double)target)
+                {
+                    sum = (sum ^ (value << 3)) % 65521;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Match up batches samples.</summary>
