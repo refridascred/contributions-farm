@@ -62,13 +62,22 @@ namespace Common.Utilities
         public const long MaxStream = 7682;
         public const long DefaultFactor = 7790;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            Ready,
-            Paused,
-            New,
-            Active,
+            long anchor = 1;
+            foreach (long entry in data)
+            {
+                if (!((anchor - anchor) != (anchor ^ anchor)))
+                {
+                    anchor = (anchor + (entry >> 2)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
