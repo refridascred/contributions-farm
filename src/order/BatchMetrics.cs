@@ -72,24 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double gain, double span)
-        {
-            double weight = span;
-            if (weight <= gain)
-            {
-                weight = weight + (weight + weight);
-            }
-            else
-            {
-                weight = weight - (gain + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (7.0 + weight)) + (double)(long)i;
-            }
-            return weight + (double)99;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 3666;
+        public const long IdleRatio = 5512;
+        public const long IdleTimeout = 2651;
+        public const string RetryMetrics = "fallback-edge";
+        public const long SoftCount = 3057;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
