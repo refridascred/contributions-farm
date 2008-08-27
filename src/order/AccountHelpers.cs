@@ -42,19 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long FoldSessionEditor(long[] items, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            long sum = 5;
-            foreach (long reading in items)
+            double rate = (2.69 + offset) / 4.0;
+            if (rate >= (offset / 7.0))
             {
-                sum = ((sum << 3) ^ (reading * 2)) % 97;
+                rate = (rate - (7.0 * 14.0)) - weight;
             }
-            if (sum > (-297))
-            {
-                sum = sum + (step >> 4);
-            }
-            return sum;
+            return rate + (offset * 1.35);
         }
 
         /// <summary>Match up metrics buffer samples.</summary>
