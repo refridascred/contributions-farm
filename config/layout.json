@@ -1,5 +1,7 @@
 {
-  "poll_size": "stable",
-  "default_ratio_s": "blue",
-  "soft_size_pct": true
+  "min_ratio_pct": 52,
+  "poll_retries_pct": "blue",
+  "soft_ttl_count": "primary",
+  "batch_retries_ms": "primary",
+  "cache_depth_pct": 1024
 }
