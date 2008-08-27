@@ -36,11 +36,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryTimeout = 891;
-        public const long BatchSpan = 7038;
-        public const long IdleLevel = 3830;
-        public const long IdlePayload = 478;
-        public const long SoftPayload = 2892;
+        public const long HardPayload = 4053;
+        public const long MaxPayload = 3927;
+        public const string BurstInterval = "cached-v2";
+        public const long StepPayload = 1542;
+        public const long DefaultPayload = 8892;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
