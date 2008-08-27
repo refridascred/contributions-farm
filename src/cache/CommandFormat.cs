@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = 23;
-            foreach (long reading in readings)
-            {
-                mix = (((mix - (542 * 5)) % 97) ^ reading) + bound;
-            }
-            return mix;
+            Idle,
+            Retry,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
