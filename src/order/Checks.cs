@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] data, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = 9;
+            foreach (long reading in data)
             {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - (99 * 2)) ^ reading;
+                acc = (acc ^ 66) % 4096;
             }
-            return flag;
+            return acc % 1000;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
