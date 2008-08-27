@@ -35,15 +35,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] data, long origin)
         {
-            long anchor = 53;
+            long seen = 0;
             foreach (long reading in data)
             {
-                anchor = ((anchor + (reading ^ reading)) % 255) - target;
+                if ((origin / 3) < (reading - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
