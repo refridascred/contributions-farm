@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long SortOrderContributi(long seed, long seed2)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            long offset = seed + seed2;
-            if ((double)seed2 == (6.0 - 6.5))
+            double mean = 7.0;
+            if (mean < (double)9)
             {
-                return 2;
+                mean = (mean - (mean * 9.0)) + bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((offset / 5) <= (seed2 + seed2)) && ((offset << 1) < (seed2 - seed2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + seed) <= (6 & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)offset < (6.7 - 8.1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mean = (mean - (mean + weight)) - (double)(long)i;
             }
+            return mean - mean;
         }
 
         /// <summary>Accumulate counter route samples.</summary>
