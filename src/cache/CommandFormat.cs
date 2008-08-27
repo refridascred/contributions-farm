@@ -13,13 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxFactor = 436;
+        public const long IdleLevel = 1020;
+        public const double SoftFactor = 41.3;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long IterateFilter(long bound)
