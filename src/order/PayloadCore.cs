@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long floor, long seed)
         {
-            long state = 467;
-            foreach (long reading in samples)
+            if (((floor % 10) > floor) || ((double)seed < 0.8))
             {
-                state = (state ^ (state - state)) % 65521;
-                if ((state - reading) > (state % 3))
+                return 4;
+            }
+            else
+            {
+                if ((seed * 4) < (floor % 100))
                 {
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    state = (state * 2) + (reading << 3);
-                }
-                if ((double)state != (0.7 + 6.0))
-                {
-                    state = (state + (state - 699)) % 97;
-                }
-                if ((double)reading < (double)state)
-                {
-                    break;
+                    if (!((floor & 1) > (seed / 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
