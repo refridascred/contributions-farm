@@ -30,17 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] samples, long floor)
+        /// <summary>Audit context batch readings against a rule.</summary>
+        public static long TallyContextBatchOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] >= floor)
+                if ((double)seen != (1.0 - 16.0))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
