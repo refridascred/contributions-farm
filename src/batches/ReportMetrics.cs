@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long offset, long offset2)
-        {
-            if (!((offset2 - offset2) >= (offset * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 >> 5) != (offset + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= (56 + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset > (offset + offset2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "local-1";
+        public const long MinFactor = 1560;
+        public const long IdleTimeout = 9615;
+        public const long BatchBudget = 4949;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricHits(long[] series)
