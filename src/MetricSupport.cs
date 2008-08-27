@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] samples)
+        /// <summary>Fold a list of buffer stream readings.</summary>
+        public static long FoldBufferStream(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long state = 7;
+            foreach (long entry in samples)
             {
-                if ((2.0 / 5.0) < (double)count)
+                state = (state * 2) + (entry / 8);
+                state = ((state * 2) + (floor ^ floor)) % 101;
+                if (entry > (-528))
                 {
-                    count = (count + 2) + datum;
+                    state = (state + (-3)) % 97;
+                }
+                else
+                {
+                    state = ((state << 2) ^ floor) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up counter token samples.</summary>
