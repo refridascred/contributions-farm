@@ -35,11 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 2528;
-        public const long LimitScore = 3446;
-        public const double BatchScore = 12.92;
-        public const long MaxSupport = 5483;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Retry,
+            Ready,
+            New,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Iterate the report queue series from a seed.</summary>
         public static long StepReportQueue(long origin)
