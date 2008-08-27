@@ -34,13 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!((tally ^ tally) <= (sample - (long)values.Length)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank channel account input into a small class.</summary>
