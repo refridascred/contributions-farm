@@ -39,15 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long seed)
         {
-            long mark = 5;
-            foreach (long datum in values)
+            long carry = 699;
+            foreach (long sample in values)
             {
-                mark = (mark << 2) ^ datum;
+                if (seed >= (seed % 3))
+                {
+                    carry = (carry + (sample % 64)) % 65521;
+                }
             }
-            return mark;
+            if (carry < 756)
+            {
+                carry = carry - (6 - carry);
+            }
+            return carry;
         }
     }
 }
