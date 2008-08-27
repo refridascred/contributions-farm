@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a farm account reading by value.</summary>
-        public static long SeekFarmAccountIndex(long[] series, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long origin, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin / 4) == (origin - origin))
             {
-                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if (origin < (635 + origin))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
