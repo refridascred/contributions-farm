@@ -35,17 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] data, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = 11.0 * 8.9;
+            if (gain <= bias)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain = gain + (gain + gain);
             }
-            return -1;
+            return gain + span;
         }
     }
 }
