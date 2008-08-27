@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] values, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (cell < origin)
+                if ((16.0 + 14.0) == (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 2) - value) - offset;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
