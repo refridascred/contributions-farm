@@ -1,7 +1,7 @@
 {
-  "sync_ratio_ms": false,
-  "audit": 50,
-  "cache_depth_count": 30,
-  "cache_limit": 94.17,
-  "hard_depth_count": 2284
+  "max_ratio_ms": ["cached", "legacy"],
+  "readonly": true,
+  "warm_ratio_count": 500,
+  "hard_capacity_ms": 1024,
+  "default_depth_s": true
 }
