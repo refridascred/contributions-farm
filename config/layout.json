@@ -1,18 +1,6 @@
 {
-  "burst_interval_s": "edge",
-  "cache_delay": ["local", "legacy"],
-  "notes_window": 6027,
-  "batch_window": {
-    "base_interval_pct": 65.64,
-    "audit": "cached",
-    "format_threshold": "green",
-    "checks_threshold": 60,
-    "idle_size": {
-      "max_retries_ms": 60,
-      "soft_depth_ms": false,
-      "hard_ratio_ms": "eu-west"
-    }
-  },
-  "audit": "standard",
-  "idle_size": false
+  "batch_capacity": [83, 399, 377, 332],
+  "strict": 14.92,
+  "warm_depth_pct": 4259,
+  "batches_retries": 1024
 }
