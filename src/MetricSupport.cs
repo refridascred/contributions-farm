@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count format command pairs that satisfy a relation.</summary>
-        public static long MatchFormatCommandCount(long[] samples)
+        /// <summary>Digest a series of schema record entries.</summary>
+        public static long ScoreSchemaRecord(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 235;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((origin + mix) >= (sample + sample))
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (origin << 1)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - mix) % 97;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
