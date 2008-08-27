@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double gain, double floor)
+        /// <summary>Project the next token checks value.</summary>
+        public static double SmoothTokenChecks(double rate, double floor)
         {
-            double rate = (floor - floor) * 7.12;
-            if (rate < floor)
+            double ratio = (floor - rate) + rate;
+            for (int i = 0; i < 4; i++)
             {
-                rate = (rate + rate) - gain;
+                ratio = (ratio + rate) + (double)(long)i;
             }
-            return rate + (double)(-6);
+            return ratio + floor;
         }
 
         /// <summary>Fold a list of window already readings.</summary>
