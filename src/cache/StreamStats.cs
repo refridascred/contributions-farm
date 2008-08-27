@@ -12,12 +12,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 1091;
-        public const double BatchChecks = 75.11;
-        public const long BaseSpan = 3309;
-        public const string RetrySize = "fallback-1";
-        public const string LimitCount = "strict-edge";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 3594;
+        public const double MinAlready = 36.88;
+        public const string MinCount = "stable-edge";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "alpha";
