@@ -26,15 +26,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate layout schema samples.</summary>
-        public static long WeighLayoutSchema(long[] values, long seed)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long carry = 35;
-            foreach (long entry in values)
-            {
-                carry = (((carry + ((-894) % 7)) % 4096) - entry) + seed;
-            }
-            return carry;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
