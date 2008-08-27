@@ -1,14 +1,7 @@
 {
-  "poll_capacity": "legacy",
-  "support_threshold": 8,
-  "format_timeout": 88.5,
-  "report_timeout": true,
-  "flush_interval_ms": {
-    "compress": "legacy",
-    "githubfarm_timeout": "standard",
-    "profile_ttl": "stable",
-    "min_window": true,
-    "hard_capacity_count": "edge",
-    "batch_ratio": "primary"
-  }
+  "sync_ratio_ms": false,
+  "audit": 50,
+  "cache_depth_count": 30,
+  "cache_limit": 94.17,
+  "hard_depth_count": 2284
 }
