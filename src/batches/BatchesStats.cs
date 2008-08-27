@@ -52,11 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 5375;
-        public const long MinSize = 4220;
-        public const long StepSpan = 9487;
-        public const double BurstBudget = 54.13;
-        public const string StepFarm = "fallback";
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double span)
+        {
+            double ratio = (double)33 / 8.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio + (rate * 4.0)) + (double)(long)i) - span;
+            }
+            return ratio + (2.7 * 6.0);
+        }
     }
 }
