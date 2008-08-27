@@ -66,23 +66,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
-        {
-            long anchor = 8;
-            foreach (long cell in samples)
-            {
-                if (anchor <= (cell * 2))
-                {
-                    anchor = anchor - (cell - 108);
-                }
-            }
-            if (anchor < 452)
-            {
-                anchor = ((anchor * 2) + (55 % 7)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstSize = "primary-1";
+        public const long RetryFactor = 7057;
+        public const long BaseDepth = 1105;
+        public const double MaxInterval = 91.42;
+        public const long BaseInterval = 1292;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string DefaultStream = "primary-1";
