@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] readings, long offset)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
