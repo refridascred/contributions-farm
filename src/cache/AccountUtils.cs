@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((8.0 / 8.0) < (double)count))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxSpan = 32.57;
+        public const long RetryBudget = 5801;
+        public const long BaseCount = 3562;
+        public const long RetryTimeout = 8627;
+        public const string BatchCount = "alpha-1";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] series, long offset)
