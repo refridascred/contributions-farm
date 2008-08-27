@@ -37,22 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] series, long seed)
         {
-            long acc = 113;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (16.0 > (double)value)
+                if (sample <= seed)
                 {
-                    acc = ((acc * 2) + (value / 5)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 800)
-            {
-                acc = (acc * 5) + (acc & 15);
-            }
-            return acc % 4096;
+            return flag;
         }
     }
 }
