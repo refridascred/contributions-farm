@@ -19,18 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long seed)
         {
-            long mark = 134;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (mark <= (sample % 7))
+                if (reading >= seed)
                 {
-                    mark = (((mark << 2) ^ (sample % 24)) % 97) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
