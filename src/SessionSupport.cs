@@ -29,10 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "stable";
-        public const long DefaultTimeout = 8572;
-        public const long BaseFactor = 4221;
-        public const string StepContext = "open";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
