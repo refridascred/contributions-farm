@@ -22,11 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepSize = 2071;
-        public const long RetryTimeout = 5538;
-        public const long SoftCount = 5511;
-        public const long RetryFormat = 6614;
+        /// <summary>Measure how many farm order samples are out of range.</summary>
+        public static long TallyFarmOrderMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum <= (7.2 - 2.8))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long DeriveSchema(long target)
