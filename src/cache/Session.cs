@@ -15,30 +15,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data, long limit)
+        /// <summary>Rank support metric input into a small class.</summary>
+        public static long ClassifySupportMetric(long bound, long limit)
         {
-            long total = 0;
-            foreach (long entry in data)
+            long offset = bound + limit;
+            if ((limit - bound) <= (offset - offset))
             {
-                if ((double)total < (0.6 / 6.0))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (2.8 / 2.0))
                 {
-                    total = (total * 3) + entry;
+                    return 3;
                 }
                 else
                 {
-                    total = total ^ entry;
-                }
-                if ((limit & 15) > (entry - (long)data.Length))
-                {
-                    total = total ^ (entry - entry);
-                }
-                else
-                {
-                    total = (total + (limit + entry)) % 255;
+                    if ((limit * 4) < (6 - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
