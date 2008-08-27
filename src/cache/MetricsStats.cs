@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples, long floor)
         {
-            double drift = (floor / 4.0) + 5.9;
-            for (int i = 0; i < 6; i++)
+            long result = 51;
+            foreach (long value in samples)
             {
-                drift = ((drift - drift) + (double)(long)i) - ratio;
+                result = result + (floor + value);
             }
-            return drift - (drift * 6.81);
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
