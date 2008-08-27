@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long LimitBuffer = 864;
         public const double SoftBuffer = 51.4;
 
-        /// <summary>Measure how many profile buffer samples are out of range.</summary>
-        public static long TallyProfileBufferMatches(long[] samples)
+        /// <summary>Count the stream window entries that pass the check.</summary>
+        public static long TallyStreamWindowGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((((entry >> 5) < (entry - entry)) || (((long)samples.Length << 1) < ((long)samples.Length + seen))) || ((827 + entry) < (entry + seen)))
+                if (!((tally + cell) != (tally & 7)))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
