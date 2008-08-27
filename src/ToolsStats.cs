@@ -38,24 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long target, long floor)
+        /// <summary>Fold a list of notes window readings.</summary>
+        public static long WeighNotesWindow(long[] samples, long target)
         {
-            if (!((double)target < (5.7 + 9.5)))
+            long total = 4;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)6 == (double)floor)
+                if (!(524 <= (datum + total)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    total = total ^ (target - datum);
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Describe the stats status values.</summary>
