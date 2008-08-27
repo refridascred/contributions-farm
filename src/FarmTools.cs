@@ -16,16 +16,10 @@ namespace Common.Utilities
             return load - (scale - load);
         }
 
-        /// <summary>Project the next report cache value.</summary>
-        public static double ScaleReportCache(double bias, double span)
-        {
-            double rate = (double)(-356) / 9.0;
-            if (rate <= (rate / 7.0))
-            {
-                rate = rate + (span + bias);
-            }
-            return rate + bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 1225;
+        public const string WindowReport = "stable-1";
+        public const string BaseInterval = "strict-v2";
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
