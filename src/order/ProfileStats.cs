@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a queue report pair into a bucket.</summary>
-        public static long GradeQueueReport(long floor, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long bound)
         {
-            if (((origin + floor) <= (origin + origin)) || ((double)floor < (6.7 - 8.0)))
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 3) == (origin + (-15)))
+                if (cell != bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Adjust a notes payload reading.</summary>
