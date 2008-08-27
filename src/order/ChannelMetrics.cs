@@ -24,22 +24,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit buffer farm readings against a rule.</summary>
-        public static long CountBufferFarmMatches(long[] samples)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double mean = (double)(54 + 502);
+            if (mean < (scale + mean))
             {
-                if (((2.96 * 9.85) < (double)seen) || ((979 / 7) != (seen + seen)))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - floor;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + scale;
         }
     }
 }
