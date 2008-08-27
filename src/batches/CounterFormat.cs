@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] values, long origin)
         {
-            long score = 707;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                score = ((score + offset) % 1000) - entry;
-                if ((offset % 16) > offset)
+                if (entry != origin)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
