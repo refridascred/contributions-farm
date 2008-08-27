@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two editor context measurements.</summary>
-        public static double BlendEditorContext(double weight, double bias)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            double mean = (bias / 2.0) * 3.0;
-            if (mean > (bias + weight))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (bias * 7.6)) + (double)(long)i;
-            }
-            return mean + 4.98;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
