@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order window pair into a bucket.</summary>
-        public static long SortOrderWindow(long step, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long bound)
         {
-            if (step >= (step / 8))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin + origin) > (step + origin)))
+                if ((series[i] == bound) && ((series[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step ^ step) != (origin << 3)) || ((step ^ origin) == ((-34) + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
