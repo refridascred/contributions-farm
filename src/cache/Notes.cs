@@ -24,16 +24,10 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "latest";
+        public const long IdleReport = 2636;
+        public const long LimitLevel = 9154;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] readings)
