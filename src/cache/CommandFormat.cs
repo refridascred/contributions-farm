@@ -44,21 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 53;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor + (reading ^ reading)) % 255) - target;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a format snapshot.</summary>
