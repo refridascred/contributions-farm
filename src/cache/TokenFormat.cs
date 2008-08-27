@@ -25,15 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] samples, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] items)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long item in items)
             {
-                if ((tally >> 1) == (cell & 63))
+                if (((long)items.Length + item) < (tally * 3))
                 {
-                    tally = (tally + 1) + bound;
+                    tally = tally + 1;
                 }
             }
             return tally;
