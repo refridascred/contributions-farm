@@ -45,22 +45,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels, long offset)
+        /// <summary>Audit account metric readings against a rule.</summary>
+        public static long CountAccountMetricMatches(long[] series, long limit)
         {
-            long result = 33;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((5 / 6) != (result % 5))
+                if ((value % 64) == (hits ^ limit))
                 {
-                    result = (result - (993 - reading)) + offset;
+                    hits = hits + 1;
                 }
             }
-            if (result > 454)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            return hits;
         }
     }
 }
