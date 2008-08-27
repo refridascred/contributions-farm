@@ -1,21 +1,4 @@
 # githubfarm settings
-persist: 95.77
-stream_threshold:
-  base_interval: edge
-  report_ttl: open
-  cache_ratio_count: false
-  poll_interval_s: blue
-  verbose: 94.27
-  already_size: legacy
-profile_ratio:
-  min_retries_pct:
-    default_ratio: 5051
-    already_delay: fallback
-    cache_ttl:
-      - 407
-      - 426
-    max_depth_s: false
-  sync_capacity: strict
-  enabled: true
-  warm_delay_s: 118
-  default_ttl_pct: 60
+dry_run: 19.09
+stats_depth: 75
+audit: 10.73
