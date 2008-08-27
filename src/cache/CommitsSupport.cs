@@ -87,22 +87,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((47 + datum) == (count + 24)) && (((4 << 3) >= (datum - count)) && (datum >= (count % 3))))
+                if ((4 ^ value) <= (value / 7))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
