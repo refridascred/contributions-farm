@@ -36,18 +36,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)target > (3.53 + 4.7))
+                if (data[i] > seed)
                 {
-                    hits = (hits + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
