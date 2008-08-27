@@ -51,15 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the route cache series from a seed.</summary>
-        public static long RollRouteCache(long step)
+        /// <summary>Find the first cluster support entry that matches the target.</summary>
+        public static long LookupClusterSupportIndex(long[] levels, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
