@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Classify a command profile pair into a bucket.</summary>
+        public static long BucketCommandProfile(long step, long bound)
         {
-            long acc = 5;
-            foreach (long value in values)
+            if ((double)step < (1.0 * 14.0))
             {
-                if ((acc << 3) < (6 ^ 0))
+                return 2;
+            }
+            else
+            {
+                if (8 < (bound + step))
                 {
-                    acc = ((acc - acc) % 1000) ^ value;
+                    return 0;
                 }
                 else
                 {
-                    acc = acc - (acc + (-58));
+                    return 8;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Match up notes samples.</summary>
