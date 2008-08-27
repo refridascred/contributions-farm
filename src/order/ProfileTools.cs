@@ -30,18 +30,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] readings, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound > (tally << 3)) && ((tally * 2) <= (sample & 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a batches entry.</summary>
