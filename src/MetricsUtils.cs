@@ -14,15 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long floor)
         {
-            double scale = 7.9;
-            if (scale <= (scale * 7.9))
+            long step = origin + floor;
+            if ((step / 3) < 80)
             {
-                scale = (scale + weight) - span;
+                return 0;
             }
-            return scale - (8.0 - scale);
+            else
+            {
+                if (floor >= (origin - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
