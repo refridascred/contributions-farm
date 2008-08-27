@@ -1,43 +1,19 @@
 # entry settings
-min_threshold_s: 7475
-soft_delay_count:
-  already_window: 500
-  hard_retries_count: strict
-  idle_ratio_pct:
-    - 16
-    - 66
-    - 247
-    - 389
-command_threshold:
-  order_delay: 5769
-  already_threshold:
-    - 234
-    - 69
-    - 79
-  sync_timeout_pct:
-    base_ttl:
-      - 400
-      - 77
-      - 279
-    sync_ratio_pct: standard
-    enabled: strict
-  retry_timeout_count: 55.86
-route_threshold:
-  persist: 59.93
-  verbose:
-    soft_delay_ms: 54
-    strict: false
-    max_window_ms:
-      - latest
-      - eu-west
-      - local
-    max_size: 9228
-    retry_window_count: false
-  sync_interval_count:
-    - blue
+poll_interval: 84.33
+max_window_count:
+  retry_depth_pct: cached
+  dry_run: false
+  base_limit_count:
+    - open
     - stable
-    - green
-    - strict
-  strict: strict
-hard_retries_s: 38
-compress: 65
+    - fallback
+  schema_limit: 82
+  persist:
+    - local
+    - primary
+  cache_ratio: 80.31
+sync_ttl:
+  - 290
+  - 423
+  - 218
+default_threshold_ms: 65.96
