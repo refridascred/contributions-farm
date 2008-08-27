@@ -26,18 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 0;
+            foreach (long item in readings)
             {
-                if (entry > (639 - matches))
+                if (((5.19 - 8.3) < (double)anchor) && ((floor / 2) < (floor + 8)))
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor << 2) ^ (floor ^ floor)) % 1000;
                 }
+                anchor = anchor + (anchor ^ item);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Blend two token measurements.</summary>
