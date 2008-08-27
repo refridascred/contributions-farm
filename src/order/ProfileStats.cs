@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (999 <= (hits * 5))
+                if ((seed & 63) <= (matches - seed))
                 {
-                    hits = (hits + 1) + reading;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a notes payload reading.</summary>
