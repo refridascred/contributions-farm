@@ -46,19 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 757;
+        public const double RetryFactor = 55.86;
+        public const long BaseCommand = 2871;
+        public const long IdleCommand = 4674;
     }
 }
