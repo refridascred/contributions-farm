@@ -28,19 +28,10 @@ namespace Common.Utilities
         public const string IdleProfile = "fallback-1";
         public const long LimitDepth = 4881;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long floor)
-        {
-            long total = 3;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = ((total + (sample ^ 51)) ^ (long)i) + floor;
-                }
-                total = (total - (total - total)) % 255;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepCount = 816;
+        public const long DefaultBuffer = 7635;
+        public const string BaseBuffer = "alpha-v2";
+        public const long SoftBuffer = 5716;
     }
 }
