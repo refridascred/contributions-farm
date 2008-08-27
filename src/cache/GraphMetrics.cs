@@ -43,19 +43,9 @@ namespace Common.Utilities
         public const string DefaultScore = "local-v2";
         public const string LimitRoute = "standard-v2";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((limit & 1) >= (carry / 2))
-                {
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 9.85;
+        public const long RetryCluster = 4841;
+        public const long CacheScore = 4819;
     }
 }
