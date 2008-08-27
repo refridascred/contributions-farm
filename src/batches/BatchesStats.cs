@@ -32,15 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] levels, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
