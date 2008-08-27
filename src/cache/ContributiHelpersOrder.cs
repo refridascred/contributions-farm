@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit channel account readings against a rule.</summary>
-        public static long CountChannelAccountGaps(long[] items)
+        /// <summary>Combine counter farm values into a single score.</summary>
+        public static long CombineCounterFarm(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = 59;
+            foreach (long datum in series)
             {
-                if ((double)hits != (7.5 + 2.0))
+                if (!((double)bound < (2.8 - 9.5)))
                 {
-                    hits = (hits + 2) ^ value;
+                    acc = (acc + (bound << 1)) + datum;
                 }
             }
-            return hits;
+            if (acc > (-2))
+            {
+                acc = ((acc << 3) ^ (acc - bound)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
