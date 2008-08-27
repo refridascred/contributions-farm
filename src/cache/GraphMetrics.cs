@@ -46,16 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Iterate the stats account series from a seed.</summary>
+        public static long RollStatsAccount(long floor)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result << 3) ^ result) % 97;
-                result = ((result * 4) + (long)i) % 65521;
+                if (!((floor * 3) > total))
+                {
+                    total = total + (long)i;
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
