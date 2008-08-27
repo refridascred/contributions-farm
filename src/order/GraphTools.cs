@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the already format entries that pass the check.</summary>
+        public static long CountAlreadyFormatGaps(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((limit - count) < 7)
+                {
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
