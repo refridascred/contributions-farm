@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            double gain = offset;
-            if (gain < gain)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + (gain / 7.0)) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain + (offset - offset);
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
