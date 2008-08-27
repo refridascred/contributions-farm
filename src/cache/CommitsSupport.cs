@@ -37,17 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] series, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                score = (score + (score * 3)) % 4096;
-                score = (score + seed) % 97;
-                score = ((score * 2) + (long)i) % 65521;
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Digest a series of session entries.</summary>
