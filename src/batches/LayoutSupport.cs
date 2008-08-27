@@ -34,23 +34,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a token account figure with a bias.</summary>
-        public static double AdjustTokenAccount(double ratio, double span)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double bias = ratio - (double)493;
-            if (bias >= (double)690)
-            {
-                bias = bias - (span + span);
-            }
-            else
-            {
-                bias = bias - (ratio * 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + span) - (double)(long)i;
-            }
-            return bias + (span - 19.0);
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
