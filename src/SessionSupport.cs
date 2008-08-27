@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            if (!((80 & 63) <= step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (3.29 < (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
