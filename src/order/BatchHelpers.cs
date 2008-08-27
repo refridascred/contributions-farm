@@ -13,21 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up schema cluster samples.</summary>
-        public static long PairSchemaClusterCount(long[] readings)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
