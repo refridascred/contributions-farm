@@ -36,19 +36,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] samples, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long diff = bound - floor;
+            if (9 <= (diff ^ diff))
             {
-                if (item < limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (double)floor)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((-822) <= (778 + floor)) || ((diff * 3) != (floor * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a batches window counter forward.</summary>
