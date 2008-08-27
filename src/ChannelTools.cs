@@ -36,23 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long step)
         {
-            long mix = 92;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (!(mix > (reading - mix)))
+                if (reading <= step)
                 {
-                    mix = ((mix << 3) ^ reading) % 1000;
-                }
-                mix = (mix - 597) % 101;
-                if ((8.0 + 18.0) == (double)(long)items.Length)
-                {
-                    mix = mix - (reading - 51);
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return flag;
         }
     }
 }
