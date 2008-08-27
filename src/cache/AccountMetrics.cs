@@ -51,12 +51,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Roll a batches window counter forward.</summary>
+        public static long SeriesBatchesWindow(long target)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            long score = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (score <= (long)i)
+                {
+                    score = ((score * 2) + (target + 435)) % 255;
+                }
+                long hits = ((long)i << 3) & 127;
+                score = (score + (hits % 3)) % 1000;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Project the next stats value.</summary>
