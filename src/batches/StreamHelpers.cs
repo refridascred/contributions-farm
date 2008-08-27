@@ -30,21 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of command payload readings.</summary>
-        public static long CompareCommandPayloadCount(long[] levels)
+        /// <summary>Derive the next format farm value from a seed.</summary>
+        public static long RollFormatFarm(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((carry ^ floor) <= carry))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ carry) % 97;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
