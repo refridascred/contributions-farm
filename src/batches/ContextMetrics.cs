@@ -57,23 +57,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 2) == (67 << 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 1624;
+        public const long MinReport = 8131;
+        public const long BatchScore = 8293;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] series, long offset)
