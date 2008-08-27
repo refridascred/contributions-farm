@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double gain, double offset)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Failed,
+            double rate = gain;
+            if (rate >= 13.0)
+            {
+                rate = (rate - rate) - offset;
+            }
+            else
+            {
+                rate = rate - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (gain - 3.0)) - (double)(long)i;
+            }
+            return rate - (double)63;
         }
 
         /// <summary>Count the session metric entries that pass the check.</summary>
