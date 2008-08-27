@@ -36,22 +36,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long origin)
         {
-            long total = 96;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((series[i] > origin) && ((series[i] % 5) != 0))
                 {
-                    total = ((total << 2) ^ (total + total)) ^ (long)i;
-                }
-                if (!((85 + total) > entry))
-                {
-                    total = (total - (entry >> 1)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a notes record.</summary>
