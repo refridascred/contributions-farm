@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 7161;
-        public const long DefaultTimeout = 9227;
-        public const long IdleBatches = 6780;
-        public const long WindowCount = 9668;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (entry > (639 - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 3510;
