@@ -13,12 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 39.51;
+        public const long BaseStats = 5687;
+        public const double HardScore = 2.01;
+        public const long DefaultStats = 6762;
+        public const long MaxBudget = 6232;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] values)
