@@ -12,16 +12,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 42.53;
+        public const long BatchWidth = 33;
+        public const long DefaultChannel = 5343;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepRatio = 2667;
