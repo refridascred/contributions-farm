@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BurstEditor = 1849;
         public const string BaseFactor = "standard-v2";
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultSize = 4366;
+        public const string CacheSpan = "standard-edge";
+        public const long StepCount = 3120;
+        public const string BurstScore = "open-1";
+        public const long BurstLevel = 6673;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long seed, long origin)
