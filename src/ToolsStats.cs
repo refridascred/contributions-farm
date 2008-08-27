@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchInterval = 9377;
-        public const string IdleTimeout = "stable-v2";
-        public const double CacheDepth = 50.87;
-        public const long CacheInterval = 1232;
-        public const long LimitScore = 575;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
