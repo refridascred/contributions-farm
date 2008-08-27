@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context entry values into a single score.</summary>
-        public static long ScoreContextEntry(long[] samples, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
-            long total = 17;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((double)entry >= (7.32 + 0.9)) || ((entry >> 5) == (total - total)))
+                if (seen >= datum)
                 {
-                    total = ((total - (entry & 3)) % 101) - floor;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    total = ((total << 3) ^ (603 / 9)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
