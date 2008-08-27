@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
