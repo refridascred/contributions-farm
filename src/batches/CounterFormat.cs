@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((hits + sample) <= (98 + sample)) && ((sample - sample) <= (-89)))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) - target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
