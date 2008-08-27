@@ -31,12 +31,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data, long target)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)target > (3.53 + 4.7))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
