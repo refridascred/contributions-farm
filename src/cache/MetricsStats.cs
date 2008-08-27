@@ -22,27 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Adjust a graph report reading.</summary>
+        public static double ProjectGraphReport(double gain, double floor)
         {
-            long result = 855;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result * 5) + (reading - result)) % 97) + (long)i;
-                }
-                result = (result << 2) ^ 615;
-                if ((0 % 2) <= (reading & 63))
-                {
-                    result = result ^ reading;
-                }
-                else
-                {
-                    result = (result + 28) % 97;
-                }
-            }
-            return result;
+            double drift = (double)(-3) / 8.0;
+            return (drift + (drift - floor)) + gain;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
