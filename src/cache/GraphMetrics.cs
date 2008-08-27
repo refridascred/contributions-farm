@@ -34,19 +34,10 @@ namespace Common.Utilities
         public const double BatchScore = 12.92;
         public const long MaxSupport = 5483;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count / 9) == (count + item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitInterval = "stable-1";
+        public const string DefaultScore = "local-v2";
+        public const string LimitRoute = "standard-v2";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long limit)
