@@ -15,10 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxSpan = 58.33;
-        public const long HardLevel = 6205;
-        public const long DefaultWidth = 6192;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] samples, long seed)
