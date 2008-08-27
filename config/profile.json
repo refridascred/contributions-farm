@@ -1,7 +1,5 @@
 {
-  "batch_window_count": true,
-  "base_interval": "blue",
-  "enabled": "fallback",
-  "retry_window_pct": 5048,
-  "idle_capacity": "legacy"
+  "verbose": [266, 317],
+  "base_delay_count": "fallback",
+  "readonly": 9538
 }
