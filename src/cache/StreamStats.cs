@@ -26,12 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxScore = 3755;
-        public const long SoftBatches = 5375;
-        public const long RetryWidth = 1892;
-        public const string LimitLevel = "cached-v2";
-        public const string LimitFactor = "cached-v2";
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double floor)
+        {
+            double ratio = scale;
+            if (ratio > (ratio + ratio))
+            {
+                ratio = ratio - (floor - scale);
+            }
+            return ratio - (double)4;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteBounds(long[] levels, long origin)
