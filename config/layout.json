@@ -1,5 +1,5 @@
 {
-  "batch_window_count": false,
-  "readonly": "eu-west",
-  "batches_ratio": 1024
+  "batch_ratio_pct": "staging",
+  "readonly": 37.55,
+  "enabled": 71.26
 }
