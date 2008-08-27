@@ -12,12 +12,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the buffer layout series from a seed.</summary>
+        public static long SeriesBufferLayout(long floor)
         {
-            Queued,
-            Closed,
-            New,
+            long score = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score + (floor >> 1)) % 4096;
+                if ((floor + (long)i) != (score >> 1))
+                {
+                    score = ((score * 2) + (floor - score)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
