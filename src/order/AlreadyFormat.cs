@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 88.08;
-        public const string StepInterval = "legacy-1";
-        public const string BurstProfile = "primary-edge";
-        public const long SoftTimeout = 1531;
-        public const long IdleProfile = 164;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Draft,
+            Active,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadMatches(long[] levels)
