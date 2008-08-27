@@ -48,10 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 7854;
-        public const double StepDepth = 56.69;
-        public const long IdleBatch = 8202;
-        public const long BurstBatch = 7708;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 3124;
+        public const long BaseRatio = 570;
+        public const double HardEntry = 83.66;
+        public const double MaxEntry = 81.92;
     }
 }
