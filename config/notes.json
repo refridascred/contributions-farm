@@ -1,5 +1,8 @@
 {
-  "batches_window": 67,
-  "compress": "primary",
-  "min_timeout_pct": "open"
+  "cache_threshold_count": [82, 183, 351, 195],
+  "idle_interval_pct": [399, 412],
+  "idle_delay_pct": [105, 5, 417, 311],
+  "graph_interval": "staging",
+  "max_interval_ms": false,
+  "stats_timeout": 9946
 }
