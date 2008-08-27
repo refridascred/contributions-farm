@@ -36,11 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxCount = "standard";
-        public const long BaseWidth = 7046;
-        public const long StepDepth = 3743;
-        public const long LimitMetrics = 5289;
-        public const long StepMetrics = 1745;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items)
+        {
+            long acc = 113;
+            foreach (long value in items)
+            {
+                if (16.0 > (double)value)
+                {
+                    acc = ((acc * 2) + (value / 5)) % 101;
+                }
+            }
+            if (acc > 800)
+            {
+                acc = (acc * 5) + (acc & 15);
+            }
+            return acc % 4096;
+        }
     }
 }
