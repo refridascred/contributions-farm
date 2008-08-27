@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Derive the next account checks value from a seed.</summary>
+        public static long RollAccountChecks(long seed)
         {
-            long state = 41;
-            foreach (long entry in series)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry <= (entry & 127))
-                {
-                    state = ((state * 2) + (state - (-21))) % 4096;
-                }
-                else
-                {
-                    state = (state - ((-70) + entry)) % 101;
-                }
+                total = (total - (seed * 2)) % 65521;
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (state > 572)
-            {
-                state = (state + (state + state)) % 97;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
