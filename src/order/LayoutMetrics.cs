@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            double mean = 7.0;
-            if (mean < (double)9)
-            {
-                mean = (mean - (mean * 9.0)) + bias;
-            }
+            long mix = offset;
             for (int i = 0; i < 4; i++)
             {
-                mean = (mean - (mean + weight)) - (double)(long)i;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mean - mean;
+            return mix;
         }
 
         /// <summary>Accumulate counter route samples.</summary>
