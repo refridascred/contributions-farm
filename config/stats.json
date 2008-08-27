@@ -1,6 +1,11 @@
 {
-  "soft_size_ms": ["eu-west", "blue", "staging", "blue"],
-  "base_threshold": true,
-  "batch_threshold_count": false,
-  "poll_ttl_pct": 1326
+  "readonly": [9, 98, 264, 497],
+  "retry_capacity": {
+    "verbose": 9016,
+    "idle_threshold": true,
+    "hard_capacity": ["edge", "standard", "local"],
+    "compress": 71,
+    "min_size_count": 7.32
+  },
+  "verbose": [380, 157, 324]
 }
