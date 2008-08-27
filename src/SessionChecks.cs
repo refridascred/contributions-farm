@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] samples, long limit)
+        /// <summary>Derive the next commits metric value from a seed.</summary>
+        public static long IterateCommitsMetric(long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Match up record samples.</summary>
