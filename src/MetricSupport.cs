@@ -40,12 +40,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "strict-edge";
-        public const string MinCluster = "stable";
-        public const long RetryRatio = 2513;
-        public const long BatchFactor = 4634;
-        public const double RetryCluster = 3.48;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            New,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
