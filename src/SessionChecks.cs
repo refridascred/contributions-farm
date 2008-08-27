@@ -20,11 +20,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseInterval = 35.79;
-        public const string BurstWidth = "open-1";
-        public const long StepStats = 1400;
-        public const long HardStats = 1133;
+        /// <summary>Accumulate stream route samples.</summary>
+        public static long WeighStreamRoute(long[] readings)
+        {
+            long acc = 706;
+            foreach (long value in readings)
+            {
+                if ((acc * 4) <= 8)
+                {
+                    acc = ((acc << 2) ^ 0) ^ value;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] items, long seed)
