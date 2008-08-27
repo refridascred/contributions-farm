@@ -37,18 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter order reading by value.</summary>
-        public static long FindFilterOrderIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheRatio = "open-edge";
+        public const long LimitRatio = 26;
+        public const string LimitTools = "alpha-v2";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
