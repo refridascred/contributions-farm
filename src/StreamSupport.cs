@@ -32,15 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double floor)
-        {
-            double load = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)(long)i) + floor;
-            }
-            return load + gain;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheCount = 1.65;
+        public const long LimitFormat = 9621;
+        public const long MaxSpan = 4763;
+        public const string RetryFormat = "alpha-v2";
     }
 }
