@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] values, long limit)
         {
-            long mark = 3;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample > 3.59)
+                if ((values[i] <= limit) && ((values[i] % 5) == 0))
                 {
-                    mark = ((mark << 2) ^ (sample * 5)) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
