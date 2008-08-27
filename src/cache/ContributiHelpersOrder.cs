@@ -47,17 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel graph entry that matches the target.</summary>
-        public static long LocateChannelGraphIndex(long[] readings, long limit)
+        /// <summary>Count entry tools pairs that satisfy a relation.</summary>
+        public static long CompareEntryToolsCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
