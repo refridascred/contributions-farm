@@ -46,19 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] items, long offset)
         {
-            long mark = -1;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long item in items)
             {
-                mark = ((mark << 2) ^ (mark + (-5))) - cell;
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark < 4)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 97;
-            }
-            return mark % 4096;
+            return found;
         }
     }
 }
