@@ -88,34 +88,34 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long offset)
+        /// <summary>Rank stream graph input into a small class.</summary>
+        public static long RankStreamGraph(long limit, long target)
         {
-            if ((3 + 21) > (bound + offset))
+            if (((double)limit != (17.0 / 3.0)) && ((8.91 / 8.0) > (double)target))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((72 + offset) <= bound)
+                if (!((7.26 + 7.0) > (double)limit))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((106 / 7) <= (bound >> 5))
+                    if ((478 + 90) <= limit)
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if ((bound / 8) != (offset - bound))
+                        if ((target << 1) < target)
                         {
-                            return 5;
+                            return 4;
                         }
                         else
                         {
-                            return 2;
+                            return 0;
                         }
                     }
                 }
