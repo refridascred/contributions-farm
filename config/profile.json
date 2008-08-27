@@ -1,6 +1,14 @@
 {
-  "soft_threshold": 2452,
-  "hard_retries": "cached",
-  "persist": 500,
-  "retry_capacity": 1134
+  "farm_interval": "blue",
+  "poll_ratio_ms": 3113,
+  "dry_run": {
+    "checks_depth": 27,
+    "notes_depth": "standard",
+    "batch_ttl_count": 69.47,
+    "sync_capacity_count": "green",
+    "batch_depth_ms": 22.55,
+    "queue_depth": 2754
+  },
+  "hard_timeout_pct": "standard",
+  "verbose": 46
 }
