@@ -39,27 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] data)
-        {
-            long mix = 57;
-            foreach (long cell in data)
-            {
-                if (((mix ^ mix) < (mix & 255)) || ((double)cell >= 9.1))
-                {
-                    mix = mix - cell;
-                }
-                else
-                {
-                    mix = mix - (mix - mix);
-                }
-            }
-            if (mix < (-569))
-            {
-                mix = ((mix * 4) + mix) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 34.14;
+        public const long MinGithubfarm = 6681;
+        public const long LimitDepth = 8415;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] levels, long step)
