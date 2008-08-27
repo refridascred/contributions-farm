@@ -23,19 +23,32 @@ namespace Common.Utilities
         public const long WindowGraph = 6691;
         public const long HardGraph = 2146;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] data, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long cur = origin ^ offset;
+            if (cur < (cur * 2))
             {
-                if (cell > seed)
+                return 6;
+            }
+            else
+            {
+                if ((origin / 6) <= (697 * 4))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((cur >> 4) <= (offset >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
