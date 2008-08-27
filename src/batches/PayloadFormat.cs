@@ -44,26 +44,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] data, long floor)
         {
-            long carry = 12;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)carry != (17.0 + 8.0))
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
                 {
-                    carry = (carry ^ (target * 5)) + sample;
-                }
-                if ((16 + carry) > (carry - target))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 821)
-            {
-                carry = (carry - (long)values.Length) % 1000;
-            }
-            return carry % 65521;
+            return -1;
         }
     }
 }
