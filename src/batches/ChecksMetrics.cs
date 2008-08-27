@@ -53,19 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double drift = (double)((-853) + 34);
-            if (drift > 10.0)
-            {
-                drift = (drift - (double)0) - weight;
-            }
-            else
-            {
-                drift = drift + (bias - bias);
-            }
-            return drift - (bias + 9.1);
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
