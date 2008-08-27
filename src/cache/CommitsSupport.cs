@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long CombineFilterGraph(long[] levels, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long mark = 397;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit / 2) < 830)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (reading - 11)) % 4096;
-                }
-                else
-                {
-                    mark = mark - (limit ^ (long)levels.Length);
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 24)
-            {
-                mark = mark - (limit / 9);
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Describe the session class values.</summary>
