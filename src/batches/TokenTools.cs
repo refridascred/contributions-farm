@@ -25,10 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 49.52;
-        public const long BaseAlready = 4768;
-        public const long IdleSize = 5772;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowDepth = 1941;
+        public const double BurstInterval = 15.5;
+        public const long BaseWidth = 6030;
+        public const long WindowEntry = 7349;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] items)
