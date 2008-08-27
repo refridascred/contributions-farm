@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string StepSpan = "open";
         public const long BurstCount = 5466;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
