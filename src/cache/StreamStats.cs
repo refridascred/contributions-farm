@@ -16,13 +16,12 @@ namespace Common.Utilities
             return weight + (double)945;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 1091;
+        public const double BatchChecks = 75.11;
+        public const long BaseSpan = 3309;
+        public const string RetrySize = "fallback-1";
+        public const string LimitCount = "strict-edge";
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] series, long seed)
