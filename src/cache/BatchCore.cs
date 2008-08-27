@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] values, long target)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long limit, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if (!((limit - limit) > (step - step)))
             {
-                if (!(tally > (item + item)))
+                return 3;
+            }
+            else
+            {
+                if ((limit - 233) <= 68)
                 {
-                    tally = (tally + 1) + target;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((double)step != (1.0 * 18.0)) && (limit <= (limit / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a graph session reading by value.</summary>
