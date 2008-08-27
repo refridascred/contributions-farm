@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 3594;
-        public const double MinAlready = 36.88;
-        public const string MinCount = "stable-edge";
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen & 1) >= seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxScore = 3755;
