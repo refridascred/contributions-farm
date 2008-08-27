@@ -61,13 +61,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long offset)
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            long cur = step + offset;
+            if (((offset - offset) >= cur) || ((double)offset <= (0.8 + 2.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step ^ offset) != (68 / 9)) && ((offset << 2) > ((-9) & 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + step) >= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
