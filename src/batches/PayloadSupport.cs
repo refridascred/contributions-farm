@@ -41,18 +41,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels, long seed)
+        /// <summary>Rank schema stream input into a small class.</summary>
+        public static long ClassifySchemaStream(long seed, long limit)
         {
-            long mark = 866;
-            foreach (long item in levels)
+            if (seed < (limit ^ limit))
             {
-                if ((item + seed) <= (mark - mark))
+                return 7;
+            }
+            else
+            {
+                if (limit < (seed ^ limit))
                 {
-                    mark = (mark + (649 + item)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    if (limit < (limit << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
