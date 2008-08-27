@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const string HardChecks = "local";
         public const double StepScore = 97.29;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long bound)
+        /// <summary>Find the first entry record entry that matches the target.</summary>
+        public static long FindEntryRecordIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
