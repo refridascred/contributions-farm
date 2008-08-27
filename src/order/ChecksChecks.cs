@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long origin2)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            if (((double)origin2 == (3.81 + 8.8)) && ((30 << 1) <= (origin - 80)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin > (origin * 5)) || ((origin2 % 7) != (origin - origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin2 * 4) >= (origin2 >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)origin2 < (9.5 - 4.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double rate2 = 8.23;
+            return ((rate2 - (double)0) + rate) + offset;
         }
 
         /// <summary>Grade a editor format value against two limits.</summary>
