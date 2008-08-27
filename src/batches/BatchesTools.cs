@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double scale, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series)
         {
-            double mean = offset;
-            if (mean >= offset)
+            long state = 41;
+            foreach (long entry in series)
             {
-                mean = (mean + (3.73 + offset)) - scale;
+                if (entry <= (entry & 127))
+                {
+                    state = ((state * 2) + (state - (-21))) % 4096;
+                }
+                else
+                {
+                    state = (state - ((-70) + entry)) % 101;
+                }
             }
-            else
+            if (state > 572)
             {
-                mean = mean - (offset + 4.3);
+                state = (state + (state + state)) % 97;
             }
-            return mean + (double)99;
+            return state;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
