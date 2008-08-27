@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= target)
+                if ((data[i] <= step) && ((data[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
