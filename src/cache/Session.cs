@@ -23,13 +23,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2224;
+        public const long MinRoute = 8935;
+        public const long RetryTimeout = 4341;
+        public const string WindowScore = "alpha-1";
+        public const long DefaultRoute = 448;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] values, long limit)
