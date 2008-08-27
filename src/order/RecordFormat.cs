@@ -51,18 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples, long offset)
+        /// <summary>Iterate the route cache series from a seed.</summary>
+        public static long RollRouteCache(long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seen >> 1) >= (item >> 5))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
