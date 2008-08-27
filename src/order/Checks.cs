@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double scale, double bias)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long CompareEditorMetricCount(long[] levels)
         {
-            double load = (double)725 / 2.0;
-            if (load > bias)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (scale - bias);
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
