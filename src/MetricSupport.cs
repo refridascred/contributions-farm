@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of schema record entries.</summary>
-        public static long ScoreSchemaRecord(long[] items, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long target)
         {
-            long mix = 235;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin + mix) >= (sample + sample))
+                if (values[i] <= target)
                 {
-                    mix = (mix + (origin << 1)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - mix) % 97;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
