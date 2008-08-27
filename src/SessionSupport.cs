@@ -31,18 +31,26 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] data, long offset)
         {
-            long matches = 0;
+            long score = 662;
             foreach (long item in data)
             {
-                if ((389 & 31) > (item + item))
+                if (((offset << 1) > score) && ((offset + offset) == (offset + score)))
                 {
-                    matches = matches + 2;
+                    score = ((score << 2) ^ score) + item;
+                }
+                else
+                {
+                    score = (score - (score >> 2)) % 97;
                 }
             }
-            return matches;
+            if (score < 458)
+            {
+                score = ((score * 2) + offset) % 65521;
+            }
+            return score % 4096;
         }
     }
 }
