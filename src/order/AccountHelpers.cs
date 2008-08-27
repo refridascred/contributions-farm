@@ -70,19 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout order entry stays within the limit.</summary>
-        public static bool VerifyLayoutOrderBounds(long[] data, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of context stream readings.</summary>
