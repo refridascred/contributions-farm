@@ -1,5 +1,5 @@
 {
-  "burst_threshold": false,
-  "soft_limit": 1158,
-  "warm_ratio": false
+  "min_ratio_s": ["standard", "primary"],
+  "tools_ratio": 65.03,
+  "sync_retries_ms": 1024
 }
