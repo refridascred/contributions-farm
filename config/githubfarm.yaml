@@ -1,11 +1,17 @@
 # githubfarm settings
-base_capacity_count: false
-audit: 53
-verbose: latest
-poll_interval_s: 100
-notes_limit: green
-context_capacity:
-  - 131
-  - 106
-  - 284
-  - 247
+audit:
+  soft_capacity_ms:
+    - green
+    - primary
+    - strict
+  min_size_s: stable
+  route_size: false
+  flush_ttl_pct: legacy
+  schema_ratio: 2493
+  stream_retries: 17.66
+burst_retries_count:
+  - blue
+  - primary
+  - eu-west
+  - staging
+batch_limit_ms: stable
