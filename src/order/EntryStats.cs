@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Stale,
-            Paused,
-            Ready,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowLevel = 79.1;
+        public const long BaseContext = 4235;
+        public const double BatchContext = 81.68;
+        public const double BurstContext = 23.19;
+        public const string IdleContext = "staging-1";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long floor, long target)
