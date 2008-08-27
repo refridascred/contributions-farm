@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardSize = "strict";
-        public const long BaseDepth = 1304;
-        public const string BatchWidth = "legacy-1";
+        /// <summary>Count the order format entries that pass the check.</summary>
+        public static long MeasureOrderFormatHits(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 1) < count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate command batches readings against a bound.</summary>
         public static bool GuardCommandBatchesLimits(long[] samples, long step)
