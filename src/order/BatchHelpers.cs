@@ -13,22 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine stats notes values into a single score.</summary>
-        public static long ScoreStatsNotes(long[] values, long limit)
+        /// <summary>Project the next entry token value.</summary>
+        public static double BlendEntryToken(double scale, double floor)
         {
-            long sum = 364;
-            foreach (long datum in values)
+            double gain = 6.49;
+            if (gain < (11.0 / 3.0))
             {
-                if (9.78 > (double)limit)
-                {
-                    sum = ((sum << 3) ^ (sum - 206)) ^ datum;
-                }
+                gain = (gain + 5.47) - floor;
             }
-            if (sum < 8)
+            else
             {
-                sum = (sum << 3) ^ (sum * 4);
+                gain = gain - scale;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
