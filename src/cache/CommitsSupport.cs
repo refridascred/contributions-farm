@@ -37,15 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] values, long offset)
         {
-            double scale = (double)7 + rate;
-            if (scale >= (floor - 3.95))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                scale = scale - (double)1;
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - (rate / 3.0);
+            return ok;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
