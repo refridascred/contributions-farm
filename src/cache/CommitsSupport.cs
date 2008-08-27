@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            New,
-            Locked,
+            Closed,
             Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate command batches readings against a bound.</summary>
