@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long CacheInterval = 1232;
         public const long LimitScore = 575;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Queued,
-            Dropped,
-            Failed,
-            Active,
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a queue stream reading by value.</summary>
