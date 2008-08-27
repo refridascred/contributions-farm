@@ -1,5 +1,5 @@
 {
-  "session_delay": true,
-  "default_threshold": "stable",
-  "retry_interval": "fallback"
+  "batch_ttl_ms": 57.21,
+  "queue_window": false,
+  "compress": [463, 191]
 }
