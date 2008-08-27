@@ -1,7 +1,7 @@
 {
-  "retry_interval_pct": 89.6,
-  "warm_threshold": false,
-  "compress": "blue",
-  "soft_delay_pct": 250,
-  "filter_depth": 50.56
+  "batch_window_count": true,
+  "base_interval": "blue",
+  "enabled": "fallback",
+  "retry_window_pct": 5048,
+  "idle_capacity": "legacy"
 }
