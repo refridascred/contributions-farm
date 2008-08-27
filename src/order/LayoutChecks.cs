@@ -47,22 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] series, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mark = 586;
-            foreach (long item in series)
-            {
-                if ((6.0 >= (double)step) && ((80 & 127) > (step / 9)))
-                {
-                    mark = (((mark * 3) + (step * 3)) % 97) + item;
-                }
-            }
-            if (mark > 20)
-            {
-                mark = (mark * 5) + (mark << 3);
-            }
-            return mark;
+            Pending,
+            Synced,
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
