@@ -49,17 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] levels, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long sample in items)
             {
-                if (levels[i] <= target)
+                if ((sample + sum) != ((long)items.Length >> 2))
                 {
-                    return (long)i;
+                    sum = (sum - sample) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
