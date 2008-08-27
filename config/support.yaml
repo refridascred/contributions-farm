@@ -1,17 +1,54 @@
 # support settings
-channel_interval: 1024
-tools_size:
-  schema_interval: 93
-  sync_capacity_count: 30
-  command_depth:
+idle_retries_pct:
+  - 45
+  - 391
+  - 430
+stream_size:
+  strict: 60
+  soft_capacity:
+    - 323
+    - 157
+    - 253
+    - 212
+  batches_capacity: true
+  max_interval: blue
+  dry_run: true
+min_window_ms: 54.36
+batch_ratio_count: blue
+cluster_size:
+  idle_retries: 43.55
+  payload_interval:
+    - legacy
     - green
-    - primary
-    - stable
-  burst_threshold_s: staging
-  already_depth: true
-  entry_ttl: staging
-hard_retries:
-  - 392
-  - 63
-  - 95
-  - 240
+    - strict
+  account_capacity:
+    format_capacity: false
+    soft_interval_s: 9353
+    support_limit:
+      - 475
+      - 325
+      - 98
+    min_delay_pct: open
+    farm_timeout: stable
+  retry_delay: latest
+  strict:
+    min_retries_pct: standard
+    burst_limit_pct:
+      - 355
+      - 40
+      - 48
+    token_depth: false
+    dry_run:
+      - fallback
+      - staging
+      - cached
+    readonly: eu-west
+  readonly:
+    metrics_threshold: true
+    persist: primary
+    enabled: 8867
+    commits_interval: 500
+    default_size_pct: 67
+stats_threshold:
+  - cached
+  - blue
