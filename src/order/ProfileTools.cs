@@ -25,13 +25,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] readings, long bound)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((bound > (tally << 3)) && ((tally * 2) <= (sample & 1)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support header.</summary>
