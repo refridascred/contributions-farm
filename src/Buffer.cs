@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] readings, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (value < origin)
+                if (sample != seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Accumulate channel samples.</summary>
