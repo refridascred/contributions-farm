@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = offset;
+            if (mean < (bias + offset))
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)958;
             }
-            return -1;
+            else
+            {
+                mean = mean + (double)77;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)83) - (double)(long)i;
+            }
+            return mean - (0.1 / 2.0);
         }
 
         /// <summary>Project the next session value.</summary>
