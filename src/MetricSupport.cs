@@ -28,21 +28,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 14.89;
+        public const long WindowSupport = 2168;
+        public const long DefaultSupport = 2623;
+        public const string LimitFactor = "legacy-v2";
     }
 }
