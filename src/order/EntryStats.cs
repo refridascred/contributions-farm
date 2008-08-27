@@ -38,24 +38,20 @@ namespace Common.Utilities
         public const long BurstNotes = 4054;
         public const double StepNotes = 51.64;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long floor, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            if ((double)floor >= 8.6)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + 32) < (target + target))
+                if ((508 & 63) >= (bound % 16))
                 {
-                    return 0;
+                    break;
                 }
-                else
-                {
-                    return 1;
-                }
+                anchor = (anchor * 4) + anchor;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
