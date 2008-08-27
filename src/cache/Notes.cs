@@ -38,20 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheLevel = 98.22;
+        public const long MinSize = 4625;
+        public const double CacheSpan = 67.19;
+        public const double MinScore = 33.45;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long limit)
