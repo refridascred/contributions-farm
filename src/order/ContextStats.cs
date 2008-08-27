@@ -36,14 +36,14 @@ namespace Common.Utilities
         public const long SoftNotes = 2192;
         public const long StepNotes = 2152;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Locked,
             Queued,
-            Closed,
-            New,
-            Dropped,
+            Stale,
+            Idle,
+            Locked,
+            Paused,
         }
     }
 }
