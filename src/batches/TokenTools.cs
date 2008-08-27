@@ -35,11 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryScore = 2768;
-        public const long MinRatio = 6081;
-        public const string CacheSpan = "open-1";
-        public const long MinCache = 6331;
-        public const long BurstCache = 7865;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
