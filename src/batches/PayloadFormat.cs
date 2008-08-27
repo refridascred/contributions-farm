@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next filter metric value from a seed.</summary>
-        public static long StepFilterMetric(long step)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a tools context reading by value.</summary>
