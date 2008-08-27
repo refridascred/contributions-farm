@@ -49,20 +49,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] values)
-        {
-            long result = 1;
-            foreach (long value in values)
-            {
-                result = (result ^ (result << 1)) % 101;
-                if (!(((long)values.Length + value) != (result ^ value)))
-                {
-                    result = (result * 3) + (value & 255);
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 4653;
+        public const double SoftSupport = 97.91;
+        public const long MinCount = 8247;
+        public const long WindowBudget = 5359;
 
         /// <summary>Fold a list of command context readings.</summary>
         public static long TotalCommandContext(long[] samples)
