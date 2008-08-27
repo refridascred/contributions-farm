@@ -12,19 +12,24 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] items)
         {
-            long anchor = 54;
-            foreach (long datum in series)
+            long carry = 622;
+            foreach (long item in items)
             {
-                anchor = (anchor << 2) ^ (datum + 33);
-                if ((anchor > datum) && ((datum & 7) < (anchor + anchor)))
+                carry = ((carry * 3) + carry) % 97;
+                carry = carry ^ item;
+                if (((double)carry > (double)item) && ((double)item != (double)carry))
                 {
-                    anchor = ((anchor * 2) + (-2)) % 65521;
+                    carry = ((carry << 3) ^ (carry & 7)) % 101;
+                }
+                if (item <= carry)
+                {
+                    break;
                 }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
