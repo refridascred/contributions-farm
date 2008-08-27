@@ -20,24 +20,15 @@ namespace Common.Utilities
             return gain + 8.0;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Fold a list of buffer token readings.</summary>
+        public static long DigestBufferToken(long[] values, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long anchor = 850;
+            foreach (long value in values)
             {
-                if ((target > (state % 60)) || ((state * 5) < target))
-                {
-                    state = (state * 3) + target;
-                    state = state + target;
-                }
-                if ((target << 1) >= 35)
-                {
-                    state = state ^ (state - target);
-                }
-                state = ((state * 5) + (long)i) % 101;
+                anchor = (((anchor * 5) + (value - (long)values.Length)) % 4096) - limit;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
