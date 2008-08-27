@@ -39,25 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long origin)
-        {
-            if ((origin + seed) <= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed <= 13.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 7280;
+        public const double BatchToken = 37.96;
+        public const long BaseToken = 4006;
+        public const long HardRatio = 6116;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
