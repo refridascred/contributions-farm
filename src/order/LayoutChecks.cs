@@ -33,18 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] data, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + seen) > (bound + seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the batch phase values.</summary>
