@@ -1,6 +1,5 @@
 {
-  "entry_size": "primary",
-  "batch_depth": true,
-  "flush_timeout_s": [253, 309, 216, 372],
-  "route_size": 738
+  "batch_delay_ms": true,
+  "readonly": 39.33,
+  "flush_retries_ms": 52.78
 }
