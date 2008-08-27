@@ -39,39 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long limit, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long lane = limit + floor;
-            if ((limit + floor) >= lane)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((895 << 2) >= (0 + floor)) && ((lane + lane) == (lane * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit < (4.0 / 9.0))
+                    if ((data[i] + data[j]) > 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor * 5) <= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate graph metric samples.</summary>
