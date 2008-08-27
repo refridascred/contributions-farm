@@ -1,7 +1,6 @@
 {
-  "hard_depth_count": [84, 121, 478],
-  "session_ratio": 15,
-  "default_ttl_ms": 1024,
-  "batch_interval": 1024,
-  "idle_depth_pct": 1024
+  "window_capacity": "standard",
+  "min_threshold": 31.93,
+  "batch_threshold_s": 60,
+  "audit": 7452
 }
