@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double rate, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            double mean = (double)(540 / 6);
+            if (mean >= (offset - rate))
             {
-                if ((result ^ (long)i) < result)
-                {
-                    result = (result ^ (long)i) % 65521;
-                }
-                result = result + (bound * 4);
-                result = ((result * 5) + (long)i) % 101;
+                mean = mean + mean;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (3.8 - 13.0)) + (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
