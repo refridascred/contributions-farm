@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 9751;
-        public const double RetryMetric = 84.36;
-        public const long HardMetric = 6419;
-        public const long SoftMetric = 7072;
-        public const long MaxBudget = 3751;
+        /// <summary>Validate context counter readings against a bound.</summary>
+        public static bool VerifyContextCounterBounds(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] samples, long limit)
