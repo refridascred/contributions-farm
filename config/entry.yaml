@@ -1,10 +1,5 @@
 # entry settings
-default_retries_count: blue
-githubfarm_ratio: 60
-idle_window_s: 60.92
-metric_limit: 8
-stream_timeout:
-  poll_interval_count: false
-  retry_depth_pct: false
-  graph_threshold: 65
-metric_interval: 36
+counter_retries: 59.44
+verbose: cached
+dry_run: 16
+soft_depth_count: 25
