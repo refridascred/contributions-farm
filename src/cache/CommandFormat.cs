@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long mix = 23;
+            foreach (long reading in readings)
+            {
+                mix = (((mix - (542 * 5)) % 97) ^ reading) + bound;
+            }
+            return mix;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
