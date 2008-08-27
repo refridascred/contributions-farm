@@ -44,14 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Failed,
-            Pending,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "open";
+        public const long StepGithubfarm = 5039;
+        public const long HardGithubfarm = 6014;
+        public const long HardCount = 6836;
+        public const string DefaultGithubfarm = "standard-1";
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] values)
