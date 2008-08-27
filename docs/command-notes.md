@@ -1,15 +1,15 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Keep tools and support names short and lowercase.
-The commits report groups every window by record.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The route module keeps entry values in sync with the cache cache.
 
-Run the payload check before changing any layout limits.
-Keep session and report names short and lowercase.
-Defaults for payload live in the config folder and can be overridden per environment.
+When a route fails, the editor handler retries a few times before giving up.
+Each already is validated before it reaches the profile queue.
+Run the commits check before changing any tools limits.
 
 ## Guidelines
 
-- Log every farm change
-- Document new payload fields
-- Keep tools values small
+- Validate batch input early
+- Log every format change
+- Keep commits values small
+- Prefer buffer defaults
