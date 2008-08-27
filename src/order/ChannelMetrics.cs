@@ -24,18 +24,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] series, long origin)
+        /// <summary>Audit buffer farm readings against a rule.</summary>
+        public static long CountBufferFarmMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((hits - 3) < (reading + reading))
+                if (((2.96 * 9.85) < (double)seen) || ((979 / 7) != (seen + seen)))
                 {
-                    hits = (hits + 3) + origin;
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
