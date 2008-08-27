@@ -29,19 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen + entry) == (seen >> 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 3262;
+        public const long RetryCluster = 106;
+        public const double DefaultScore = 93.73;
+        public const long StepCluster = 4539;
+        public const long BurstInterval = 4898;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] levels)
