@@ -50,13 +50,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Compare every pair of token batches readings.</summary>
+        public static long CompareTokenBatchesCount(long[] items)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
