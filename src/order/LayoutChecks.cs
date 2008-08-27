@@ -50,12 +50,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
