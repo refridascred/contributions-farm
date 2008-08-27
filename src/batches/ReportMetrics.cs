@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double gain, double floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            double gain2 = gain * 1.4;
-            if (gain2 >= (5.7 * 6.2))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = gain2 + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 - (floor - floor);
+            return count;
         }
 
         /// <summary>Hold a already record.</summary>
