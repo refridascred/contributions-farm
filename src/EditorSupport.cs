@@ -42,11 +42,32 @@ namespace Common.Utilities
         public const long HardDepth = 6955;
         public const long IdleTimeout = 5245;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long floor, long step)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long next = floor ^ step;
+            if ((floor >> 5) <= (floor << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step / 2) >= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next % 64) <= (step + next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
