@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const string BatchRecord = "legacy-v2";
         public const long LimitInterval = 9187;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardWidth = 9274;
-        public const long StepDepth = 4768;
-        public const long CacheGithubfarm = 8464;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] items, long origin)
