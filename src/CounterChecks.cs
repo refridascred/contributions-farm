@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of tools already entries.</summary>
-        public static long TallyToolsAlready(long[] series)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mix = 81;
-            foreach (long value in series)
-            {
-                if ((2.0 / 2.0) <= (double)value)
-                {
-                    mix = (mix + (value << 2)) % 255;
-                }
-            }
-            if (mix > 293)
-            {
-                mix = ((mix << 3) ^ (1 + mix)) % 4096;
-            }
-            return mix % 4096;
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
