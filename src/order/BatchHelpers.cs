@@ -13,32 +13,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank commits payload input into a small class.</summary>
-        public static long RankCommitsPayload(long origin, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            long bound = origin ^ offset;
-            if ((offset ^ offset) >= (bound + bound))
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset % 3) == (origin & 15)))
+                if (((long)i / 6) > (seed * 4))
                 {
-                    return 7;
+                    state = state ^ ((long)i % 10);
                 }
-                else
+                bool valid = ((state ^ state) >= ((long)i >> 4)) && ((state * 4) > (seed * 3));
+                if (((6.9 * 2.6) < (double)seed) && valid)
                 {
-                    if ((origin + offset) == (offset / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
