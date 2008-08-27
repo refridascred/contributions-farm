@@ -37,18 +37,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] samples, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = 72;
+            foreach (long sample in data)
             {
-                if (bound > ((-3) - bound))
+                if ((double)sample < (double)result)
                 {
-                    count = (count + 2) - datum;
+                    result = ((result << 2) ^ sample) - step;
+                }
+                if ((double)result <= (double)351)
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Match up context samples.</summary>
