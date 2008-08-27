@@ -38,18 +38,13 @@ namespace Common.Utilities
             return ((ratio + ratio) + rate) + bias;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - matches) != ((long)readings.Length & 7))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Draft,
+            Pending,
+            Closed,
         }
     }
 }
