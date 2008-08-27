@@ -13,12 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 39.51;
-        public const long BaseStats = 5687;
-        public const double HardScore = 2.01;
-        public const long DefaultStats = 6762;
-        public const long MaxBudget = 6232;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long OverlapAlreadyCount(long[] series)
