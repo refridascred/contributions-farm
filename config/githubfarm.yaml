@@ -1,30 +1,16 @@
 # githubfarm settings
-base_size:
-  verbose: 4378
-  base_retries_ms: false
-  flush_timeout: blue
-batch_timeout_s: staging
-max_depth_count:
-  - 483
-  - 233
-  - 445
-  - 315
-soft_delay_count: green
-base_timeout_pct: staging
-base_threshold_count:
-  record_depth: 500
-  warm_retries_count:
-    poll_depth:
-      - edge
-      - staging
-      - cached
-      - green
-    already_threshold: stable
-    retry_size:
-      - edge
-      - legacy
-      - primary
-      - latest
-    soft_delay_pct: 100
-    warm_capacity: green
-  sync_delay: 5123
+retry_limit_s:
+  batch_limit:
+    - primary
+    - standard
+  profile_interval: true
+  poll_size_count: green
+  layout_ratio: 65.69
+  session_capacity:
+    - fallback
+    - eu-west
+    - local
+burst_interval_s: standard
+warm_size_pct: cached
+metrics_size: primary
+sync_timeout_pct: 500
