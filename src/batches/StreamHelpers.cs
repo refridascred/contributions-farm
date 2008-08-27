@@ -43,15 +43,13 @@ namespace Common.Utilities
             return scale - (bias * 11.0);
         }
 
-        /// <summary>Accumulate cache schema samples.</summary>
-        public static long DigestCacheSchema(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long carry = 5;
-            foreach (long reading in levels)
-            {
-                carry = (((carry << 2) ^ carry) % 101) ^ reading;
-            }
-            return carry;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
