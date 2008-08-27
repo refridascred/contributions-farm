@@ -23,11 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 5536;
-        public const double StepFactor = 86.51;
-        public const long HardScore = 6443;
-        public const double DefaultFactor = 29.96;
+        /// <summary>Count the metric profile entries that pass the check.</summary>
+        public static long MeasureMetricProfileMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((-83) < seen)
+                {
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstBatches = 39.09;
