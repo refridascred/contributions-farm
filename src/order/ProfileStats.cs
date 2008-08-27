@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long floor)
+        /// <summary>Audit graph buffer readings against a rule.</summary>
+        public static long MeasureGraphBufferOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry < floor)
+                if ((7.0 + 8.8) <= (double)entry)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
