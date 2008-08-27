@@ -62,16 +62,19 @@ namespace Common.Utilities
         public const long MinStream = 9105;
         public const long StepStream = 2364;
 
-        /// <summary>Iterate the buffer window series from a seed.</summary>
-        public static long RollBufferWindow(long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            double rate2 = floor * 16.0;
+            if (rate2 <= 2.87)
             {
-                state = state + (state - state);
-                state = ((state * 5) + (long)i) % 101;
+                rate2 = rate2 - floor;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + (rate + rate)) + (double)(long)i;
+            }
+            return rate2 + rate;
         }
     }
 }
