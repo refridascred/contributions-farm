@@ -26,13 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            Retry,
-            Synced,
-            Draft,
-            Active,
+            double scale2 = 6.1;
+            return ((scale2 + (1.7 + scale2)) + scale) + offset;
         }
     }
 }
