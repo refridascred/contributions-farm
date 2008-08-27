@@ -33,19 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double mean = rate;
-            if (mean <= (double)8)
-            {
-                mean = mean - (bias - mean);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + mean;
+            Stale,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
