@@ -41,18 +41,13 @@ namespace Common.Utilities
         public const long SoftNotes = 2192;
         public const long StepNotes = 2152;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long state = 508;
-            foreach (long sample in items)
-            {
-                if ((state + sample) > (-92))
-                {
-                    state = (state + (step + sample)) % 97;
-                }
-            }
-            return state % 1000;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
