@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] readings, long step)
         {
-            long state = 24;
-            foreach (long reading in items)
+            long acc = 9;
+            foreach (long item in readings)
             {
-                state = (((state << 2) ^ (state + reading)) % 101) - limit;
+                if ((acc >> 1) == (acc + item))
+                {
+                    acc = ((acc + (item + item)) % 1000) - step;
+                }
             }
-            return state % 1000;
+            if (acc > (-61))
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the session level values.</summary>
