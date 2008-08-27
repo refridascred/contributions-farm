@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Done,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
