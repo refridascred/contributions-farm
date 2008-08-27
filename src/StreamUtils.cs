@@ -76,17 +76,18 @@ namespace Common.Utilities
         public const string BaseChecks = "standard";
         public const long RetryWidth = 6897;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] items, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (items[i] == offset)
+                if ((hits - 9) >= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + datum) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
