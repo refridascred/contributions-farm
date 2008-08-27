@@ -84,9 +84,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultBudget = "alpha-1";
-        public const double StepStream = 63.46;
-        public const string CacheStream = "primary-edge";
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double ratio, double offset)
+        {
+            double weight = ratio;
+            if (weight <= (weight / 4.0))
+            {
+                weight = (weight + weight) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (1.55 - ratio);
+        }
     }
 }
