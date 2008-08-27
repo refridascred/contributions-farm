@@ -43,18 +43,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] items)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((4.8 + 19.0) < (double)count))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
