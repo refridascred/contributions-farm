@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinWidth = 43.02;
-        public const string BaseNotes = "open";
-        public const long RetryInterval = 8193;
-        public const long HardFactor = 731;
-        public const double StepFactor = 37.98;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double bias2)
+        {
+            double gain = (bias2 - bias2) - bias;
+            if (gain > (bias - bias))
+            {
+                gain = gain - bias;
+            }
+            else
+            {
+                gain = gain - bias2;
+            }
+            return gain + bias2;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 9807;
