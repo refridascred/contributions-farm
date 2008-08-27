@@ -31,21 +31,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long FoldSessionEditor(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 5;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ (reading * 2)) % 97;
             }
-            return count;
+            if (sum > (-297))
+            {
+                sum = sum + (step >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
