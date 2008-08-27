@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits < (5.1 + 4.0))
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
                 {
-                    hits = (hits + 2) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer stream readings.</summary>
