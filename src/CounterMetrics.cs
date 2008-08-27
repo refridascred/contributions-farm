@@ -52,19 +52,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] readings, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            long total = 607;
-            foreach (long item in readings)
+            long mix = 911;
+            foreach (long value in data)
             {
-                total = (((total * 3) + (item - 74)) % 4096) - target;
-                if (552 <= item)
+                for (int i = 0; i < 4; i++)
                 {
-                    break;
+                    mix = (((mix * 5) + (mix % 97)) % 4096) + (long)i;
+                }
+                if ((mix % 3) <= value)
+                {
+                    mix = mix + ((long)data.Length - value);
                 }
             }
-            return total;
+            return mix;
         }
     }
 }
