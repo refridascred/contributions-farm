@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double gain, double span)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double scale = 5.8;
-            if (scale >= (double)306)
-            {
-                scale = scale + 15.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (8.0 - 0.4)) + (double)(long)i;
-            }
-            return scale - (gain + span);
+            Retry,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a notes stats.</summary>
