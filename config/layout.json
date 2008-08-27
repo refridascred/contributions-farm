@@ -1,8 +1,7 @@
 {
-  "warm_timeout_ms": true,
-  "max_ratio": ["legacy", "stable", "staging"],
-  "persist": true,
-  "token_timeout": [209, 111],
-  "sync_limit_ms": "local",
-  "default_ttl_ms": false
+  "warm_retries_count": 250,
+  "dry_run": "blue",
+  "enabled": 250,
+  "batch_ttl_count": true,
+  "stream_retries": [171, 432, 136]
 }
