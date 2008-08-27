@@ -33,14 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data, long bound)
         {
-            Idle,
-            Retry,
-            Paused,
-            Stale,
-            Pending,
+            long sum = 147;
+            foreach (long entry in data)
+            {
+                sum = (sum + (sum + sum)) + bound;
+                sum = (sum + (entry * 5)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
