@@ -41,21 +41,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(45 + 789);
+            if (rate < (rate + floor))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + weight;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)1;
         }
     }
 }
