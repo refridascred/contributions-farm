@@ -35,12 +35,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstWidth = "cached-v2";
+        public const long WindowWidth = 8883;
+        public const long BatchSize = 2950;
     }
 }
