@@ -21,18 +21,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((5 >> 2) <= value) || (value >= (value - matches))) || ((double)value != (double)92))
-                {
-                    matches = matches + 3;
-                }
+                score = score ^ (seed + 267);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
