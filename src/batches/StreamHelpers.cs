@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
             Failed,
-            Done,
-            Queued,
+            Paused,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Project the next graph value.</summary>
