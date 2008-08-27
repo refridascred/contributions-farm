@@ -75,10 +75,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftFactor = 4562;
-        public const string SoftSupport = "latest-edge";
-        public const long BaseFactor = 5651;
+        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
+        public static bool GuardContributiToolsLimits(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheSize = 6726;
