@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in latest legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
