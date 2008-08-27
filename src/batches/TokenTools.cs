@@ -22,39 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long offset, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series, long target)
         {
-            long delta = offset + floor;
-            if (((delta + delta) != ((-58) << 1)) && (offset >= (delta + 23)))
+            long total = 829;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset > (double)delta)
+                if ((double)item != (3.1 - 6.22))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset <= 5)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset / 4) < (floor + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = (total + total) + target;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
