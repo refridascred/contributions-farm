@@ -30,21 +30,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up command cache samples.</summary>
-        public static long MatchCommandCacheCount(long[] readings)
+        /// <summary>Look up the position of a commits record sample.</summary>
+        public static long SeekCommitsRecordIndex(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] > origin)
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
