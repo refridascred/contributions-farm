@@ -20,33 +20,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a payload account pair into a bucket.</summary>
-        public static long RankPayloadAccount(long bound, long step)
-        {
-            long edge = bound + step;
-            if ((double)bound >= (double)edge)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + edge) >= (58 - edge))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)edge <= (3.69 + 7.41))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchScore = 5200;
+        public const string RetryEditor = "local-1";
+        public const double MaxEditor = 98.46;
+        public const long StepDepth = 3248;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
