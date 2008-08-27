@@ -36,21 +36,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((carry / 6) > (target - target))
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry * 3) + 471;
+                    carry = (carry + (target & 15)) % 255;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
