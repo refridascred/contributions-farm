@@ -1,16 +1,6 @@
 {
-  "batch_delay": 5340,
-  "cache_size_pct": {
-    "warm_ratio_s": "legacy",
-    "support_size": "green",
-    "githubfarm_delay": 58,
-    "verbose": [343, 67, 297, 485],
-    "enabled": "strict",
-    "tools_ratio": 30
-  },
-  "commits_size": {
-    "batch_ratio_count": 63.3,
-    "dry_run": 100,
-    "enabled": ["open", "edge"]
-  }
+  "enabled": true,
+  "persist": false,
+  "min_limit_pct": 30,
+  "cache_threshold": 71.87
 }
