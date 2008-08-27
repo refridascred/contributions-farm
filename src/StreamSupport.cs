@@ -13,17 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a payload schema reading by value.</summary>
-        public static long LookupPayloadSchemaIndex(long[] items, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = ratio / 6.0;
+            if (scale < (floor * 5.7))
             {
-                if ((items[i] >= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - 7.0;
             }
-            return -1;
+            else
+            {
+                scale = scale - (floor + scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale + (double)16;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
