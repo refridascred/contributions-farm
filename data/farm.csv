@@ -1,6 +1,6 @@
-id,owner,token,level
-1,2,legacy,18.73
-2,696,546,26
-3,strict,blue,legacy
-4,456,stable,476
-5,cached,fallback,green
+id,owner,rank,region,count
+1,89.6,858,blue,fallback
+2,edge,primary,open,972
+3,7,124,39.35,22.47
+4,867,48.71,541,301
+5,120,stable,31.45,eu-west
