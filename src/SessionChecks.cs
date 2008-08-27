@@ -38,17 +38,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long seed)
+        /// <summary>Rank session already input into a small class.</summary>
+        public static long RankSessionAlready(long seed, long seed2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = seed ^ seed2;
+            if (!(lane < (seed - lane)))
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((14.0 + 0.1) != (double)lane)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
