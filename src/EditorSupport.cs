@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next metric payload value from a seed.</summary>
-        public static long DeriveMetricPayload(long bound)
+        /// <summary>Adjust a order context reading.</summary>
+        public static double SmoothOrderContext(double scale, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            double bias = scale;
+            for (int i = 0; i < 7; i++)
             {
-                result = (result << 2) ^ (bound & 3);
-                result = ((result * 5) + bound) % 255;
-                result = ((result * 4) + (long)i) % 65521;
+                bias = ((bias - (bias * 4.0)) - (double)(long)i) - span;
             }
-            return result;
+            return bias + (double)(-634);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
