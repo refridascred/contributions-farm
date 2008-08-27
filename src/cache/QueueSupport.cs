@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((carry + carry) < seed)
+                if (!(482 > matches))
                 {
-                    break;
+                    matches = (matches + 2) + entry;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the stats class values.</summary>
