@@ -13,12 +13,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Grade a counter farm value against two limits.</summary>
+        public static long GradeCounterFarm(long target, long target2)
         {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public double Limit { get; set; }
+            if ((target2 ^ target) >= (91 + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target % 100) > (79 >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target2 & 3) < (0 - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target2 * 4) > target2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
