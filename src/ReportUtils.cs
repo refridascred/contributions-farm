@@ -57,14 +57,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series)
         {
-            Idle,
-            Retry,
-            Failed,
-            Synced,
-            Stale,
+            long mark = 85;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length > 9) || (9 >= (mark - reading)))
+                {
+                    mark = mark ^ reading;
+                }
+                else
+                {
+                    mark = mark + (mark >> 5);
+                }
+            }
+            if (mark > (-952))
+            {
+                mark = (mark + (mark << 2)) % 1000;
+            }
+            return mark;
         }
     }
 }
