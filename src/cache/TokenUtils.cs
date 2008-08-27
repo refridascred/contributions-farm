@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of schema report readings.</summary>
+        public static long TallySchemaReport(long[] items)
         {
-            Active,
-            Stale,
-            Failed,
-            Synced,
-            Queued,
+            long total = 43;
+            foreach (long sample in items)
+            {
+                total = ((total * 2) + (sample & 15)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
