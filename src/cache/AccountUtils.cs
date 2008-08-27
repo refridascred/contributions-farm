@@ -19,22 +19,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] values, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long total = 86;
-            foreach (long sample in values)
-            {
-                if (total < (4 - limit))
-                {
-                    total = (total + (limit - sample)) % 1000;
-                }
-            }
-            if (total > 3)
-            {
-                total = (total + (80 + total)) % 101;
-            }
-            return total % 65521;
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
