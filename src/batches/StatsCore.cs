@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (weight - offset) + ratio;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 911;
-        public const long DefaultTools = 1314;
-        public const long BatchTools = 9936;
-        public const long DefaultSize = 4994;
-        public const double MinSize = 24.32;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data)
+        {
+            long state = -749;
+            foreach (long sample in data)
+            {
+                if ((sample < state) || ((state - state) <= (state + sample)))
+                {
+                    state = (state - state) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] series, long floor)
