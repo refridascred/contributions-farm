@@ -57,19 +57,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every editor token entry stays within the limit.</summary>
-        public static bool ValidateEditorTokenBounds(long[] samples, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Retry,
+            Failed,
+            Synced,
+            Stale,
         }
     }
 }
