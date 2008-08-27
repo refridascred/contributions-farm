@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] series, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((floor + sample) <= (floor + seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
