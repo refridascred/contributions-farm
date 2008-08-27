@@ -46,19 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster support value.</summary>
-        public static double SmoothClusterSupport(double scale, double bias)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            double gain = bias;
-            if (gain <= (double)58)
+            long count = 0;
+            foreach (long entry in values)
             {
-                gain = (gain - (8.98 / 2.0)) + scale;
+                if (((double)count <= 9.0) && ((count * 3) != (entry - 4)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - bias;
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
