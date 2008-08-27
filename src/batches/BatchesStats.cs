@@ -31,10 +31,23 @@ namespace Common.Utilities
         public const long SoftCount = 5511;
         public const long RetryFormat = 6614;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepScore = 69.19;
-        public const long StepWidth = 1645;
-        public const long BurstChannel = 6756;
-        public const long BurstInterval = 1613;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (anchor ^ anchor) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    anchor = ((anchor * 2) + ((long)i3 + 7)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
