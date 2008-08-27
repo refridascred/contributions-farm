@@ -66,22 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Adjust a route metrics reading.</summary>
+        public static double ScaleRouteMetrics(double bias, double span)
         {
-            long anchor = 7;
-            foreach (long reading in series)
+            double load = span;
+            if (load <= bias)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = ((anchor + (reading & 31)) % 1000) ^ (long)i;
-                }
-                if (reading > anchor)
-                {
-                    anchor = (anchor - 815) % 65521;
-                }
+                load = load - (bias - load);
             }
-            return anchor % 1000;
+            return load - 8.0;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
