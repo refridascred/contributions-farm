@@ -38,18 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long limit)
         {
-            long mark = 912;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((sample + sample) < (mark + 16))
+                if (sample <= limit)
                 {
-                    mark = mark - (mark ^ 4);
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
