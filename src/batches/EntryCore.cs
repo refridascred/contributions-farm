@@ -45,18 +45,12 @@ namespace Common.Utilities
         public const long SoftEditor = 3901;
         public const long MinTimeout = 5156;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 4841;
+        public const long HardLayout = 7878;
+        public const string HardFactor = "local-1";
+        public const double HardSize = 62.49;
+        public const string RetrySize = "cached-v2";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] samples, long offset)
