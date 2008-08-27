@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long StepLayout = 8254;
         public const long MinLayout = 2155;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double rate, double floor)
         {
-            long score = -116;
-            foreach (long cell in items)
+            double weight = 2.0;
+            if (weight > floor)
             {
-                score = (score - (score ^ cell)) - floor;
-                if ((score >= cell) && ((cell ^ cell) >= (81 / 6)))
-                {
-                    break;
-                }
+                weight = weight - rate;
             }
-            return score % 65521;
+            else
+            {
+                weight = weight + (weight * 3.1);
+            }
+            return weight - rate;
         }
 
         /// <summary>Hold a report summary.</summary>
