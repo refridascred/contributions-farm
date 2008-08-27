@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const long BaseLevel = 9943;
         public const string HardNotes = "standard-1";
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)limit <= 6.3) || ((target / 5) != (limit >> 1)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (target >= limit)
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
