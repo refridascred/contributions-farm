@@ -1,7 +1,6 @@
 {
-  "githubfarm_threshold": false,
-  "audit": [212, 471, 16, 317],
-  "readonly": 55.62,
-  "hard_delay": 100,
-  "poll_capacity_s": ["stable", "edge"]
+  "hard_threshold_count": "fallback",
+  "default_window_pct": true,
+  "support_delay": [167, 209, 74],
+  "schema_threshold": 15
 }
