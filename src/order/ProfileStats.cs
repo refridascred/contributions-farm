@@ -43,22 +43,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account buffer samples are out of range.</summary>
-        public static long MeasureAccountBufferGaps(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mark = -1;
+            foreach (long reading in readings)
             {
-                if ((((2.48 / 3.0) < (double)seen) && (entry >= seen)) && (seen > (entry << 3)))
+                if ((double)mark > 9.2)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((((mark * 2) + 307) % 65521) + reading) + target;
                 }
             }
-            return seen;
+            if (mark < 312)
+            {
+                mark = (mark ^ (mark + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate payload samples.</summary>
