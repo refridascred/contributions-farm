@@ -34,19 +34,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next stream route value.</summary>
-        public static double BlendStreamRoute(double bias, double bias2)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double rate = bias2 + (bias2 * 15.0);
-            if (rate >= bias2)
-            {
-                rate = rate + (bias2 * 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (double)96) + (double)(long)i;
-            }
-            return rate + bias;
+            Retry,
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
