@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two channel support measurements.</summary>
-        public static double SmoothChannelSupport(double scale, double offset)
+        /// <summary>Look up the position of a schema counter sample.</summary>
+        public static long LookupSchemaCounterIndex(long[] series, long seed)
         {
-            double bias = (scale / 2.0) / 8.0;
-            if (bias <= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - (bias - offset);
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (double)59) - (double)(long)i;
-            }
-            return bias + (scale * 8.81);
+            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
