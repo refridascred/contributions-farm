@@ -59,13 +59,11 @@ namespace Common.Utilities
         public const string DefaultContext = "staging-edge";
         public const long MaxSize = 2586;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            double rate = (double)(149 % 16);
+            return ((rate + (double)827) + bias) + span;
         }
     }
 }
