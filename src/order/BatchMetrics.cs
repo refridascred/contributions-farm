@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi commits measurements.</summary>
-        public static double SmoothContributiCommits(double weight, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] readings)
         {
-            double bias = span;
-            return bias - weight;
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((6 > (value << 3)) && (((matches * 3) >= (matches + value)) || ((double)(long)readings.Length != (4.9 * 12.0))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
