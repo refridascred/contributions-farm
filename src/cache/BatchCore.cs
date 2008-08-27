@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!(tally > (item + item)))
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a graph session reading by value.</summary>
