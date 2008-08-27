@@ -12,17 +12,27 @@ namespace Common.Utilities
         public const long LimitBuffer = 5588;
         public const double BatchInterval = 80.69;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 934;
+            foreach (long reading in data)
             {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
+                result = (result ^ (result + floor)) % 97;
+                if ((result < (result - floor)) && (reading > (result / 2)))
                 {
-                    return (long)i;
+                    result = result - (floor ^ (-5));
+                }
+                else
+                {
+                    result = result ^ (result ^ (-8));
                 }
             }
-            return -1;
+            if (result < 401)
+            {
+                result = ((result * 2) + ((-97) / 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
