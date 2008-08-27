@@ -61,17 +61,23 @@ namespace Common.Utilities
         public const double IdleBudget = 43.42;
         public const long CacheSchema = 2782;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 5;
+            foreach (long cell in series)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                anchor = ((anchor << 3) ^ cell) % 101;
+                if (cell >= target)
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (target + cell);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
