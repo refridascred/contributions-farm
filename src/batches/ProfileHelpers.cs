@@ -68,24 +68,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long limit, long limit2)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] values)
         {
-            if (((limit2 / 5) <= (limit % 10)) || ((limit2 % 3) >= (limit2 >> 2)))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit / 4) <= 755)
+                if (!(matches < (sample / 2)) && ((sample ^ (long)values.Length) <= (985 >> 5)))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a cache options.</summary>
