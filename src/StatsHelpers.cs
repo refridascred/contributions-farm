@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a batches payload pair into a bucket.</summary>
-        public static long ClassifyBatchesPayload(long step, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] data, long seed)
         {
-            long edge = step + floor;
-            if ((17.0 / 9.0) >= (double)floor)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (1.02 > (double)edge)
+                if (!((long)data.Length <= seed))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 3) - cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
