@@ -52,14 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Paused,
-            Synced,
-            Draft,
-            Active,
-            Done,
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
