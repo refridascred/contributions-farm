@@ -51,16 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] readings, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                total = (total ^ seed) % 65521;
-                total = ((total * 4) + (long)i) % 101;
+                if (736 >= (8 ^ entry))
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
