@@ -1,8 +1,11 @@
 # githubfarm settings
-warm_retries: true
-already_size: 1605
-max_ttl: false
-commits_limit:
-  burst_ratio: 1521
-  token_timeout: 250
-  cache_limit: 60
+session_interval:
+  - 66
+  - 125
+default_retries_pct: 48.21
+flush_size_ms: 1024
+warm_size:
+  - latest
+  - standard
+  - strict
+  - staging
