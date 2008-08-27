@@ -16,21 +16,18 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 5;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.23 * 2.0) > (double)floor)
                 {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 3) ^ floor) + entry;
                 }
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
