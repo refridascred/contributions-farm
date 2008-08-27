@@ -12,19 +12,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate stream payload samples.</summary>
-        public static long TallyStreamPayload(long[] values)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mark = 998;
-            foreach (long item in values)
-            {
-                mark = (mark << 3) ^ (item - mark);
-            }
-            if (mark > 616)
-            {
-                mark = (mark - (-16)) % 97;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
