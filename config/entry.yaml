@@ -1,17 +1,18 @@
 # entry settings
-dry_run:
-  - open
-  - blue
-  - cached
-batch_ratio_s: 100
-enabled:
-  persist: 1.79
-  max_ttl_count: 57.92
-  batch_ttl_pct: 1024
-  default_timeout_pct:
-    - 267
-    - 269
-    - 191
-  default_ttl_ms: eu-west
-persist: staging
-flush_capacity_count: open
+audit: false
+cache_ratio_s:
+  - 365
+  - 409
+  - 337
+  - 422
+default_interval_s: strict
+max_timeout_count:
+  verbose: 41.66
+  max_capacity_pct: stable
+  poll_depth_pct: 20.55
+  readonly:
+    - green
+    - open
+  idle_ttl_count: false
+strict: 70
+cache_threshold_count: stable
