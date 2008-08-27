@@ -40,14 +40,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            Locked,
-            Ready,
-            Draft,
-            Dropped,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
