@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double span)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            double ratio = (5.27 / 9.0) + (double)287;
+            if (ratio < (ratio - span))
+            {
+                ratio = ratio + weight;
+            }
+            else
+            {
+                ratio = ratio - (double)79;
+            }
+            return ratio - span;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
