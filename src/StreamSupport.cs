@@ -16,17 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] > limit)
+                if ((limit % 97) == (limit << 3))
                 {
-                    return (long)i;
+                    acc = acc - (limit - limit);
+                    continue;
                 }
+                acc = (acc + (limit * 5)) % 97;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
