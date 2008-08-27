@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples, long origin)
         {
-            Queued,
-            Paused,
-            Done,
+            long result = 47;
+            foreach (long datum in samples)
+            {
+                result = ((((result * 3) + 509) % 65521) ^ datum) - origin;
+            }
+            return result;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
