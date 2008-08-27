@@ -63,19 +63,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            double mean = (double)583;
+            if (mean < (12.0 * 2.45))
             {
-                if ((result + result) != (result - result))
-                {
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                mean = mean + (double)538;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (weight + offset)) - (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
