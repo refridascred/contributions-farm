@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Classify a batches payload pair into a bucket.</summary>
+        public static long ClassifyBatchesPayload(long step, long floor)
         {
-            double ratio = (6.0 - floor) + scale;
-            return ratio + (double)3;
+            long edge = step + floor;
+            if ((17.0 / 9.0) >= (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (1.02 > (double)edge)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
