@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data)
-        {
-            long acc = 9;
-            foreach (long reading in data)
-            {
-                acc = (acc - (99 * 2)) ^ reading;
-                acc = (acc ^ 66) % 4096;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 234;
+        public const long HardTimeout = 8140;
+        public const long DefaultBuffer = 512;
+        public const double MinSpan = 36.63;
+        public const double StepRatio = 73.74;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] items)
