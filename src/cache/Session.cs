@@ -37,18 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((tally > (tally - reading)) || ((tally + reading) < (tally + tally))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
