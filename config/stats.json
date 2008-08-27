@@ -1,5 +1,7 @@
 {
-  "buffer_ratio": 3577,
-  "strict": 8275,
-  "cache_depth": "stable"
+  "flush_retries_count": 72,
+  "metric_timeout": "fallback",
+  "burst_window": 2271,
+  "warm_size_ms": 6577,
+  "strict": 22.05
 }
