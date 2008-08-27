@@ -24,18 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream route samples.</summary>
-        public static long WeighStreamRoute(long[] readings)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long acc = 706;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc * 4) <= 8)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 2) ^ 0) ^ value;
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Rank session already input into a small class.</summary>
