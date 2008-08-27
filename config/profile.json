@@ -1,6 +1,28 @@
 {
-  "hard_threshold_count": "fallback",
-  "default_window_pct": true,
-  "support_delay": [167, 209, 74],
-  "schema_threshold": 15
+  "max_limit": {
+    "max_window_s": ["eu-west", "eu-west", "strict"],
+    "profile_threshold": 75,
+    "sync_timeout": {
+      "filter_depth": 11,
+      "soft_timeout_count": 71,
+      "base_size_ms": "primary"
+    }
+  },
+  "command_depth": ["primary", "blue", "eu-west"],
+  "report_interval": {
+    "min_ratio": [309, 109, 213],
+    "window_size": true,
+    "min_depth": {
+      "dry_run": true,
+      "default_interval_ms": "latest",
+      "verbose": 3929,
+      "max_ttl_ms": false,
+      "max_delay_count": 60.68,
+      "base_ttl_count": 60
+    },
+    "compress": 3031
+  },
+  "retry_size_ms": [109, 465, 69],
+  "support_capacity": "cached",
+  "strict": true
 }
