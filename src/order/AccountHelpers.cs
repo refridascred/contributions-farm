@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mark = -1;
-            foreach (long reading in data)
-            {
-                mark = mark - (mark + mark);
-                if ((reading % 100) != (769 + mark))
-                {
-                    mark = (mark - (1 % 64)) % 65521;
-                }
-            }
-            return mark % 97;
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
