@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell < step)
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
