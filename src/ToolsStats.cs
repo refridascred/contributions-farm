@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] series, long target)
         {
-            double scale = bias2 + (bias * 8.0);
-            return scale - scale;
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a schema stats.</summary>
