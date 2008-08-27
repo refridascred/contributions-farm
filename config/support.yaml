@@ -1,11 +1,21 @@
 # support settings
-batch_ratio:
-  enabled: eu-west
-  notes_depth: 500
-  cache_depth:
-    - latest
-    - fallback
-  verbose: 16.5
-audit: legacy
-enabled: 500
-format_size: 36.61
+audit:
+  - 275
+  - 241
+stats_ttl:
+  audit:
+    - 428
+    - 108
+    - 241
+    - 446
+  readonly: 92
+  max_window: 4783
+  idle_depth_ms: stable
+  verbose: 500
+compress: 60
+stream_retries:
+  - 332
+  - 40
+  - 78
+  - 58
+sync_size_s: false
