@@ -24,14 +24,15 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            Stale,
-            Active,
-            Synced,
-            Queued,
-            Draft,
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the session kind values.</summary>
