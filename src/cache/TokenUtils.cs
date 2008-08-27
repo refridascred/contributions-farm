@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long origin2)
+        /// <summary>Check that every filter route entry stays within the limit.</summary>
+        public static bool VerifyFilterRouteBounds(long[] values, long target)
         {
-            if ((origin + 917) >= (origin >> 4))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((901 - origin) < (origin2 + origin2)) && ((origin2 << 3) > (origin ^ origin2)))
+                if (reading <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= 48)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin2 * 4) == (71 + origin2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
