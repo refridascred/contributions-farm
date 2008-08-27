@@ -46,23 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (((long)i * 4) > (origin & 255))
+                if ((count / 9) == (count + item))
                 {
-                    mark = mark - ((-21) >> 4);
+                    count = count + 3;
                 }
-                else
-                {
-                    mark = (mark * 5) + (209 % 64);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
