@@ -38,39 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long seed, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long edge = seed - offset;
-            if ((edge / 8) < ((-8) - 1))
+            long mark = 912;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (3.03 < (double)offset)
+                if ((sample + sample) < (mark + 16))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + 2) < seed) || ((edge + seed) > edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset - edge) > offset) || ((edge % 60) >= seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = mark - (mark ^ 4);
                 }
             }
+            return mark;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
