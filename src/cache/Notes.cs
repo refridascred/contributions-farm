@@ -55,16 +55,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = 610;
+            foreach (long datum in levels)
             {
-                result = result ^ (long)i;
-                result = ((result * 4) + (long)i) % 4093;
+                if (((5.0 / 2.0) != (double)datum) || ((seed - seed) > (0 + 1)))
+                {
+                    carry = (carry ^ (seed << 3)) % 255;
+                }
             }
-            return result;
+            return carry;
         }
     }
 }
