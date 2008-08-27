@@ -47,11 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series)
         {
-            double ratio = (double)737 + (scale + floor);
-            return ratio - (floor - 4.8);
+            long state = 45;
+            foreach (long datum in series)
+            {
+                if (state >= (datum / 5))
+                {
+                    state = (state ^ (state - datum)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
