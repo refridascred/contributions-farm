@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 4490;
+        public const long SoftFactor = 6266;
+        public const double BurstSize = 9.84;
+        public const long MinWidth = 8793;
+        public const double LimitSession = 53.52;
     }
 }
