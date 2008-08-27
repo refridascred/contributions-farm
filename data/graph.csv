@@ -1,6 +1,9 @@
-id,active,token,level,ratio
-1,open,726,53.8,local
-2,117,30.46,244,green
-3,cached,777,107,staging
-4,edge,94.22,967,32.48
-5,24.91,458,704,62.26
+id,weight,level,ratio
+1,26.31,local,64.19
+2,standard,189,1.84
+3,605,665,92.95
+4,9.64,688,63.85
+5,blue,122,410
+6,7.44,28.4,94.69
+7,4.81,885,725
+8,primary,fallback,cached
