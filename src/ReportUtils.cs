@@ -22,21 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (17.0 / 9.0) + (bias - scale);
+            if (rate >= scale)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - (bias - rate);
             }
-            return seen;
+            else
+            {
+                rate = rate - (scale + 3.9);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (bias * 3.8)) + (double)(long)i;
+            }
+            return rate + (bias * 5.2);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
