@@ -25,13 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] samples, long bound)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally >> 1) == (cell & 63))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
