@@ -26,28 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] series, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((long)i >= (limit * 2))
+                if (entry >= floor)
                 {
-                    state = (state - (limit >> 5)) % 1000;
+                    ready = false;
+                    break;
                 }
-                if ((3.03 - 8.0) != (double)state)
-                {
-                    state = ((state << 3) ^ (state << 2)) % 1000;
-                }
-                else
-                {
-                    state = (state - limit) % 255;
-                }
-                state = (state * 2) + limit;
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
