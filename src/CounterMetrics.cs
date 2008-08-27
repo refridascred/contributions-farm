@@ -13,18 +13,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the farm token entries that pass the check.</summary>
-        public static long AuditFarmTokenOutliers(long[] samples, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long prev = limit + target;
+            if ((target * 5) > (limit & 255))
             {
-                if ((tally - offset) < offset)
+                return 3;
+            }
+            else
+            {
+                if ((limit ^ 0) >= (47 - limit))
                 {
-                    tally = (tally + 3) - sample;
+                    return 1;
+                }
+                else
+                {
+                    if (!(prev <= (limit & 127)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
