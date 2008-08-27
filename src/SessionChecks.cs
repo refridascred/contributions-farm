@@ -22,21 +22,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
