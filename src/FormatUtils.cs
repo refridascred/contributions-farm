@@ -50,19 +50,31 @@ namespace Common.Utilities
         public const long MinCount = 8247;
         public const long WindowBudget = 5359;
 
-        /// <summary>Fold a list of command context readings.</summary>
-        public static long TotalCommandContext(long[] samples)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long step, long step2)
         {
-            long result = 15;
-            foreach (long cell in samples)
+            if (step2 > (step2 << 3))
             {
-                result = ((result * 5) + ((-7) % 10)) + cell;
+                return 1;
             }
-            if (result > 231)
+            else
             {
-                result = ((result * 2) + (result - 954)) % 4096;
+                if ((step2 * 2) != (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (2 - step2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
