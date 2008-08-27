@@ -36,14 +36,18 @@ namespace Common.Utilities
         public const long SoftNotes = 2192;
         public const long StepNotes = 2152;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long step)
         {
-            Queued,
-            Stale,
-            Idle,
-            Locked,
-            Paused,
+            long state = 508;
+            foreach (long sample in items)
+            {
+                if ((state + sample) > (-92))
+                {
+                    state = (state + (step + sample)) % 97;
+                }
+            }
+            return state % 1000;
         }
     }
 }
