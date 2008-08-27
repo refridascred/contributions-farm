@@ -26,18 +26,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long floor)
         {
-            long acc = 967;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (((entry * 2) <= (entry - acc)) && ((acc - acc) >= (entry * 4)))
+                if (sample > floor)
                 {
-                    acc = acc - (acc - 797);
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
