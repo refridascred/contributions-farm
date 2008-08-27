@@ -16,24 +16,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long target, long limit)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if (((double)limit <= 6.3) || ((target / 5) != (limit >> 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target >= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Paused,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the cache farm entries that pass the check.</summary>
