@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long IdleLevel = 1020;
         public const double SoftFactor = 41.3;
 
-        /// <summary>Find the first profile already entry that matches the target.</summary>
-        public static long FindProfileAlreadyIndex(long[] readings, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
