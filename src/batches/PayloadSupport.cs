@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a format tools pair into a bucket.</summary>
-        public static long BucketFormatTools(long origin, long origin2)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long offset = origin - origin2;
-            if (origin >= 6)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((23 % 100) < (origin2 + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
