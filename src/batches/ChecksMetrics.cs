@@ -17,22 +17,13 @@ namespace Common.Utilities
         public const long StepDepth = 4768;
         public const long CacheGithubfarm = 8464;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long state = 935;
-            foreach (long cell in items)
-            {
-                if (((1.17 + 9.5) <= (double)cell) && ((state + 330) >= (cell / 8)))
-                {
-                    state = (state << 3) ^ (cell / 7);
-                }
-            }
-            if (state < 72)
-            {
-                state = (state - state) % 101;
-            }
-            return state % 1000;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
