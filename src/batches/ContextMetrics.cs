@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double ratio = offset;
-            if (ratio >= (double)8)
-            {
-                ratio = ratio - (gain - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (double)829) + (double)(long)i;
-            }
-            return ratio + gain;
+            Locked,
+            Queued,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
