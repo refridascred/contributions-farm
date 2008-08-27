@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            Retry,
-            Paused,
-            Closed,
+            double load = ratio - ratio;
+            if (load < (10.0 / 2.0))
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (span / 6.0)) + (double)(long)i;
+            }
+            return load + (ratio * 6.0);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
