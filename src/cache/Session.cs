@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of tools session readings.</summary>
-        public static long TallyToolsSession(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long floor)
         {
-            long state = 70;
-            foreach (long sample in items)
+            long mix = 70;
+            foreach (long sample in levels)
             {
-                if ((double)state >= 0.97)
+                if (mix <= 472)
                 {
-                    state = ((state + (state << 3)) % 65521) + sample;
-                }
-                else
-                {
-                    state = ((state << 3) ^ 381) % 97;
+                    mix = ((mix * 3) + sample) % 101;
                 }
             }
-            return state % 65521;
+            if (mix < 246)
+            {
+                mix = (mix - (floor + floor)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks summary.</summary>
