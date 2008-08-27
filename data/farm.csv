@@ -1,6 +1,7 @@
-id,region,token
-1,58.83,98.41
-2,82.44,fallback
-3,899,385
-4,849,local
+id,ratio,region
+1,867,18
+2,274,12.33
+3,staging,staging
+4,20,stable
 5,fallback,green
+6,9.55,206
