@@ -1,10 +1,6 @@
-id,label,count
-1,8.35,286
-2,primary,609
-3,147,open
-4,40,local
-5,25.29,517
-6,1.92,open
-7,94.9,65.76
-8,390,363
-9,613,stable
+id,weight,rank
+1,176,307
+2,73.23,771
+3,956,393
+4,staging,primary
+5,373,38.64
