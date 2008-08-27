@@ -36,10 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 9612;
-        public const long IdleEditor = 9099;
-        public const long SoftEditor = 3191;
-        public const long MaxEditor = 571;
+        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
+        public static long CountGithubfarmClusterOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item - item) > count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
