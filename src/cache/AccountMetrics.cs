@@ -43,12 +43,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 55.58;
-        public const double IdleSize = 21.21;
-        public const double BaseBudget = 71.05;
-        public const long BurstBudget = 6200;
-        public const double MaxAlready = 47.4;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels)
+        {
+            long mix = 50;
+            foreach (long reading in levels)
+            {
+                if ((mix - mix) > (reading + mix))
+                {
+                    mix = ((mix << 3) ^ (reading ^ 657)) % 101;
+                }
+                if ((reading + reading) > (mix >> 3))
+                {
+                    mix = ((mix * 5) + ((-786) + mix)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Roll a batches window counter forward.</summary>
         public static long SeriesBatchesWindow(long target)
