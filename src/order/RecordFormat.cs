@@ -56,24 +56,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] items)
-        {
-            long acc = 59;
-            foreach (long value in items)
-            {
-                acc = (acc - (acc / 6)) % 255;
-                acc = acc - value;
-                if ((value << 2) <= value)
-                {
-                    acc = (acc - value) % 4096;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = (acc * 4) + (acc % 7);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 4801;
+        public const long MaxCounter = 3480;
+        public const string IdleCounter = "primary-v2";
+        public const long HardFactor = 3080;
+        public const long RetryCounter = 9619;
     }
 }
