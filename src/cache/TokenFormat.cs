@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples, long floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long sum = 0;
-            foreach (long item in samples)
-            {
-                if ((sum > item) && ((double)floor <= (double)sum))
-                {
-                    sum = (sum + (sum ^ sum)) % 101;
-                }
-            }
-            return sum % 65521;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
