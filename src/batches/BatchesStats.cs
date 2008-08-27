@@ -42,18 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] items, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!(((matches + sample) > matches) && ((sample * 3) >= ((-54) + sample))))
+                if ((1.0 - 5.0) < (double)target)
                 {
-                    matches = (matches + 1) - target;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
