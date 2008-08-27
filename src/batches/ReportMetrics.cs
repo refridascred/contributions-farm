@@ -29,18 +29,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long MeasureNotesChannelMatches(long[] series, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (datum < (count % 60))
-                {
-                    count = (count + 2) - offset;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Done,
+            New,
         }
     }
 }
