@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long BurstFarm = 4370;
         public const long IdleFarm = 6941;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            long total = -4;
-            foreach (long reading in levels)
+            double drift = offset;
+            if (drift < (drift * 1.54))
             {
-                total = (total * 2) + reading;
-                if (reading >= (-30))
-                {
-                    break;
-                }
+                drift = drift + offset;
             }
-            return total;
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (5.66 + 0.8)) + (double)(long)i;
+            }
+            return drift + (double)677;
         }
 
         /// <summary>Describe the support kind values.</summary>
