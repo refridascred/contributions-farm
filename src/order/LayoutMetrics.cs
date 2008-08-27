@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "stable-edge";
+        public const long SoftFormat = 4813;
+        public const long MaxFormat = 9682;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
