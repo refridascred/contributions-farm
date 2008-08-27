@@ -1,11 +1,6 @@
-id,owner,token,count
-1,667,908,blue
-2,primary,66,latest
-3,511,open,eu-west
-4,20.09,edge,62.03
-5,edge,432,90.65
-6,54.33,64.46,87.08
-7,679,green,eu-west
-8,fallback,81.29,eu-west
-9,369,staging,93.27
-10,79.8,primary,145
+id,token,region,label
+1,70.27,342,392
+2,614,green,592
+3,blue,804,53.63
+4,778,legacy,273
+5,896,33.96,57.6
