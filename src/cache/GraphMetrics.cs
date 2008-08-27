@@ -26,25 +26,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long seed)
-        {
-            if ((seed & 7) >= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed << 3) <= (origin ^ seed)) || ((double)seed == (8.0 + 0.3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 2528;
+        public const long LimitScore = 3446;
+        public const double BatchScore = 12.92;
+        public const long MaxSupport = 5483;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesHits(long[] readings)
