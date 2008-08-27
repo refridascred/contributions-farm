@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const double BurstAlready = 93.38;
         public const long BatchSpan = 7670;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data, long seed)
         {
-            if (origin > (floor - origin))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= 4.34)
+                if (!((double)item > (2.7 - 2.69)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 1) > (origin + 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 2) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
