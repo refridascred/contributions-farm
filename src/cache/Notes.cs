@@ -73,12 +73,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 3860;
-        public const long LimitTools = 4048;
-        public const long StepTools = 2949;
-        public const string DefaultRatio = "local-edge";
-        public const long BaseDepth = 5231;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
