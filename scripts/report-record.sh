@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=238
+RECORD_LIMIT=492
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
