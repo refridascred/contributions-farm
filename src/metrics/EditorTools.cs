@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data, long seed)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            long sum = 520;
-            foreach (long value in data)
+            double rate2 = floor;
+            if (rate2 > 3.7)
             {
-                if (sum < ((long)data.Length + 417))
-                {
-                    sum = (((sum - 60) % 255) + value) - seed;
-                }
+                rate2 = rate2 + (rate / 2.0);
             }
-            return sum;
+            return rate2 + (double)(-970);
         }
 
         /// <summary>Count the account already entries that pass the check.</summary>
