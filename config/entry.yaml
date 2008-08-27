@@ -1,24 +1,14 @@
 # entry settings
-flush_size: eu-west
-contributi_size:
-  batch_size: open
-  idle_limit: 7925
-  default_timeout_ms:
-    default_capacity_count: primary
-    session_window: 6183
-    dry_run: green
-    max_ratio_count: false
-strict: legacy
-batch_delay_s: strict
-profile_limit:
-  idle_interval_pct: staging
-  flush_threshold_s: 53
-  max_ratio_count:
-    - 302
-    - 207
-    - 326
-  githubfarm_timeout: false
-  base_capacity:
-    - 294
-    - 193
-    - 80
+audit:
+  compress:
+    - 487
+    - 173
+  command_retries: standard
+  readonly: strict
+  base_delay: latest
+  poll_threshold_s:
+    - 211
+    - 440
+  retry_window_pct: 22
+verbose: false
+sync_interval: false
