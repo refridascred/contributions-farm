@@ -52,23 +52,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long target)
+        /// <summary>Compare every pair of format layout readings.</summary>
+        public static long OverlapFormatLayoutCount(long[] levels)
         {
-            long sum = -83;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum - target) < 8)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum - (sample + target)) % 101;
             }
-            if (sum < (-630))
-            {
-                sum = (sum * 4) + (351 ^ sum);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
