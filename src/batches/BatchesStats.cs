@@ -43,14 +43,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Failed,
-            Ready,
-            Draft,
-            Active,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepScore = 69.19;
+        public const long StepWidth = 1645;
+        public const long BurstChannel = 6756;
+        public const long BurstInterval = 1613;
     }
 }
