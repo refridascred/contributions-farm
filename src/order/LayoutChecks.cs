@@ -49,21 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (weight + 20.0) + floor;
+            if (load > (double)9)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + (weight * 17.0);
             }
-            return count;
+            return load + load;
         }
 
         /// <summary>Describe the farm mode values.</summary>
