@@ -1,9 +1,4 @@
 # entry settings
-flush_delay: 30
-token_ttl: false
-flush_interval: 6594
-retry_delay_count: staging
-enabled:
-  burst_timeout_s: 65.24
-  sync_limit: 69.95
-  metric_window: open
+sync_retries: false
+audit: 60
+compress: 8669
