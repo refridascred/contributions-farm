@@ -1,5 +1,10 @@
 {
-  "enabled": 100,
-  "checks_capacity": 900,
-  "context_ratio": 73
+  "max_threshold": [71, 158],
+  "retry_interval_pct": {
+    "compress": "primary",
+    "dry_run": "green",
+    "idle_ttl_pct": ["staging", "standard", "standard", "staging"],
+    "session_retries": 3422
+  },
+  "idle_interval_s": 36.97
 }
