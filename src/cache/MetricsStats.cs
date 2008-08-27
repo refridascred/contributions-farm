@@ -26,19 +26,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > floor)
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next window value.</summary>
