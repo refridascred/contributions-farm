@@ -34,17 +34,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((19.0 - 2.8) == (double)target)
             {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((target - target) >= (target - 64))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
