@@ -37,14 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Active,
-            Closed,
-            Idle,
-            Draft,
-            Pending,
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
