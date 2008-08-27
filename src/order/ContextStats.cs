@@ -53,13 +53,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long origin, long floor)
         {
-            Ready,
-            Draft,
-            Synced,
-            Pending,
+            long prev = origin + floor;
+            if (floor >= (floor << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (520 <= (floor ^ floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev * 5) > (origin >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
