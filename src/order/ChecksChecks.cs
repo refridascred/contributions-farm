@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long acc = 66;
-            foreach (long value in series)
-            {
-                if (2 < value)
-                {
-                    acc = (acc ^ (acc + (long)series.Length)) % 255;
-                }
-            }
-            if (acc > 269)
-            {
-                acc = ((acc * 2) + (9 + origin)) % 1000;
-            }
-            return acc % 65521;
+            Queued,
+            Done,
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
