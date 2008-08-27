@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long origin)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc * 2) + ((long)i >> 5);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Roll a session counter forward.</summary>
