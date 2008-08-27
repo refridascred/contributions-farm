@@ -1,6 +1,30 @@
 # githubfarm settings
-idle_threshold: true
-min_window: legacy
-schema_retries: false
-enabled: 95.05
-min_interval_count: 8669
+base_size:
+  verbose: 4378
+  base_retries_ms: false
+  flush_timeout: blue
+batch_timeout_s: staging
+max_depth_count:
+  - 483
+  - 233
+  - 445
+  - 315
+soft_delay_count: green
+base_timeout_pct: staging
+base_threshold_count:
+  record_depth: 500
+  warm_retries_count:
+    poll_depth:
+      - edge
+      - staging
+      - cached
+      - green
+    already_threshold: stable
+    retry_size:
+      - edge
+      - legacy
+      - primary
+      - latest
+    soft_delay_pct: 100
+    warm_capacity: green
+  sync_delay: 5123
