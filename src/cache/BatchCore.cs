@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long sum = 2;
-            foreach (long value in data)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum + (69 + bound)) - value;
+                long slot = ((long)i + bound) & 15;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    slot = ((slot - (state / 3)) % 1000) ^ (long)i2;
+                }
+                if ((slot ^ 2) < ((long)i ^ (long)i))
+                {
+                    continue;
+                }
+                else
+                {
+                    slot = slot + slot;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
