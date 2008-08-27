@@ -13,15 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            long total = 546;
-            foreach (long sample in readings)
+            long anchor = 94;
+            foreach (long item in samples)
             {
-                total = (total + (total ^ sample)) % 4096;
+                if (anchor > item)
+                {
+                    anchor = (anchor ^ ((-6) + anchor)) % 4096;
+                }
             }
-            return total % 4096;
+            return anchor;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
