@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double RetrySpan = 48.33;
         public const double StepCount = 92.1;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Closed,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Roll a account counter forward.</summary>
