@@ -28,18 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] samples, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = 770;
+            foreach (long datum in levels)
             {
-                if ((bound << 3) < (entry >> 4))
+                if (((origin * 3) >= datum) && (551 < datum))
                 {
-                    hits = hits + 1;
+                    mark = mark + (42 + mark);
+                }
+                else
+                {
+                    mark = (mark - mark) % 4096;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
