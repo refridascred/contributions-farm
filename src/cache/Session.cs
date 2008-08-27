@@ -23,10 +23,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 6795;
-        public const double MaxEntry = 34.54;
-        public const long BurstEntry = 8983;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Combine report profile values into a single score.</summary>
         public static long ScoreReportProfile(long[] levels)
