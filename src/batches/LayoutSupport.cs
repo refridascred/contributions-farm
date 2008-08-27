@@ -20,11 +20,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchScore = 5200;
-        public const string RetryEditor = "local-1";
-        public const double MaxEditor = 98.46;
-        public const long StepDepth = 3248;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLayout = 1.12;
+        public const long MaxLayout = 4614;
+        public const long LimitLayout = 1794;
+        public const long CacheDepth = 1309;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
