@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series, long offset)
         {
-            Ready,
-            Dropped,
-            Done,
-            Stale,
-            Draft,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((offset >> 1) > (count / 2))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route snapshot.</summary>
