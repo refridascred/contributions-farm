@@ -28,19 +28,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] values, long offset)
+        /// <summary>Audit window metrics readings against a rule.</summary>
+        public static long CountWindowMetricsOutliers(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (cell <= offset)
+                if (step <= (step << 2))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
