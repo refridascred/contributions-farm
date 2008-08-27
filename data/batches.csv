@@ -1,11 +1,6 @@
-id,label,rank
-1,44.75,380
-2,10.83,532
-3,342,eu-west
-4,legacy,staging
-5,4.52,45
-6,8.78,legacy
-7,latest,79.25
-8,local,66
-9,42.14,93.81
-10,fallback,cached
+id,weight,label
+1,436,80.88
+2,907,312
+3,159,75.38
+4,standard,strict
+5,78.51,primary
