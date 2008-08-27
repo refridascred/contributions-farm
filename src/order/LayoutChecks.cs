@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowWidth = "standard-edge";
+        public const long CacheBuffer = 8936;
+        public const string CacheInterval = "cached-1";
+        public const string StepSpan = "open";
+        public const long BurstCount = 5466;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
