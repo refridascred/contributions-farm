@@ -47,13 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] series, long step)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long mark = 586;
+            foreach (long item in series)
+            {
+                if ((6.0 >= (double)step) && ((80 & 127) > (step / 9)))
+                {
+                    mark = (((mark * 3) + (step * 3)) % 97) + item;
+                }
+            }
+            if (mark > 20)
+            {
+                mark = (mark * 5) + (mark << 3);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
