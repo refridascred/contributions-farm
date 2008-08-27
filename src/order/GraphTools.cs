@@ -30,17 +30,20 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] readings, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] <= bound)
+                if (!!((offset - offset) >= score))
                 {
-                    return (long)i;
+                    score = score + offset;
+                    score = score - offset;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate buffer graph readings against a bound.</summary>
