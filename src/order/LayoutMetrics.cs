@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] data, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (2.05 + 3.6))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
