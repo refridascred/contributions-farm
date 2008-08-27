@@ -13,15 +13,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a context already reading.</summary>
-        public static double ProjectContextAlready(double ratio, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] values, long origin)
         {
-            double weight = (double)396 * 5.45;
-            if (weight < offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - (double)157) + ratio;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)(-7);
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
