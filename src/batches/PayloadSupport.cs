@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long carry = 679;
-            foreach (long value in readings)
-            {
-                if (value < (carry - value))
-                {
-                    carry = carry ^ (carry + floor);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (649 + 56)) % 255;
-                }
-            }
-            return carry % 4096;
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
