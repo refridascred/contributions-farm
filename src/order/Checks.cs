@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 234;
-        public const long HardTimeout = 8140;
-        public const long DefaultBuffer = 512;
-        public const double MinSpan = 36.63;
-        public const double StepRatio = 73.74;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinCount = 4.66;
+        public const long LimitSupport = 599;
+        public const long HardBudget = 3190;
+        public const double IdleSupport = 13.04;
+        public const double BatchSupport = 53.57;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] items)
