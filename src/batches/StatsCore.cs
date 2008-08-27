@@ -12,18 +12,23 @@ namespace Common.Utilities
             return (weight - offset) + ratio;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double load = (double)(7 ^ 26);
+            if (load <= (13.0 - 5.0))
             {
-                if (!(((value + tally) >= (value + value)) || ((double)(long)data.Length >= (6.0 * 3.81))))
-                {
-                    tally = tally + 3;
-                }
+                load = load - (load + gain);
             }
-            return tally;
+            else
+            {
+                load = load - (double)8;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + (load - offset);
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
