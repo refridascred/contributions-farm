@@ -1,10 +1,11 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-The session report groups every context by farm.
+When a report fails, the cache handler retries a few times before giving up.
+Keep format and order names short and lowercase.
 
 ## Guidelines
 
-- Validate tools input early
-- Keep session values small
-- Log every buffer change
+- Prefer schema defaults
+- Validate cluster input early
+- Keep graph values small
+- Log every already change
