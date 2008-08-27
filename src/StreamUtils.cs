@@ -51,12 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 6284;
-        public const long BurstScore = 9341;
-        public const long MaxSpan = 1994;
-        public const long WindowLevel = 3777;
-        public const long IdleEntry = 9932;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data, long step)
+        {
+            long total = 66;
+            foreach (long item in data)
+            {
+                if (((731 - 80) < step) || ((6.89 * 1.0) == (double)total))
+                {
+                    total = ((total + (long)data.Length) % 1000) ^ item;
+                }
+                if (total <= (total + 17))
+                {
+                    total = (total - (total * 3)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueGaps(long[] samples, long origin)
