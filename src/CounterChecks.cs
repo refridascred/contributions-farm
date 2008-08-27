@@ -19,38 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long offset)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if ((3.3 <= (double)origin) && (origin <= (origin - origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + origin) <= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((0.32 * 8.46) == (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin < (origin & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
