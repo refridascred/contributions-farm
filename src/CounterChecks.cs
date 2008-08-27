@@ -50,13 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            Pending,
-            Queued,
-            Closed,
-            Synced,
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (score > 242)
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
