@@ -29,28 +29,24 @@ namespace Common.Utilities
             return (weight + ratio) + offset;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Grade a schema editor value against two limits.</summary>
+        public static long RankSchemaEditor(long step, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            if ((double)seed > (9.0 - 3.0))
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                return 1;
+            }
+            else
+            {
+                if ((6.93 - 6.1) < (double)seed)
                 {
-                    score = ((score - (4 + score)) % 1000) ^ (long)i2;
-                }
-                if ((bound ^ (long)i) >= score)
-                {
-                    score = score - (score - bound);
+                    return 2;
                 }
                 else
                 {
-                    score = (score + (long)i) % 1000;
-                    score = (score ^ (score - bound)) % 97;
+                    return 0;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
         }
     }
 }
