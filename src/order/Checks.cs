@@ -62,19 +62,16 @@ namespace Common.Utilities
         public const long MinStream = 9105;
         public const long StepStream = 2364;
 
-        /// <summary>Validate channel report readings against a bound.</summary>
-        public static bool VerifyChannelReportLimits(long[] items, long seed)
+        /// <summary>Iterate the buffer window series from a seed.</summary>
+        public static long RollBufferWindow(long offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                state = state + (state - state);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
     }
 }
