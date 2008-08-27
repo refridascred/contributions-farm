@@ -20,27 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series)
         {
-            long total = 43;
-            foreach (long sample in items)
+            long result = 6;
+            foreach (long entry in series)
             {
-                if ((total % 60) >= 61)
+                if (((entry + entry) < (entry ^ result)) || ((result ^ entry) < (660 + entry)))
                 {
-                    total = (total - 57) % 255;
-                    break;
-                }
-                if (((total * 3) >= (sample & 31)) && ((total * 2) <= sample))
-                {
-                    total = total + sample;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
+                    result = result ^ ((long)series.Length << 3);
                 }
             }
-            return total;
+            if (result < 95)
+            {
+                result = ((result * 2) + result) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
