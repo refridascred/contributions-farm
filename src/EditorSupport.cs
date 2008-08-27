@@ -23,12 +23,24 @@ namespace Common.Utilities
         public const long HardContributi = 3613;
         public const long IdleContributi = 6433;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Iterate the support report series from a seed.</summary>
+        public static long DeriveSupportReport(long bound)
         {
-            Queued,
-            Closed,
-            Active,
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(bound >= (bound / 4)))
+                {
+                    score = (score ^ (score + (long)i)) % 101;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score ^ score) % 1000) + (long)i2;
+                }
+                score = (score << 2) ^ (-1);
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a batch already pair into a bucket.</summary>
