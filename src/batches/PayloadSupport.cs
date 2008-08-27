@@ -20,14 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Synced,
-            Active,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxWidth = 31.42;
+        public const double MaxBudget = 77.2;
+        public const string StepScore = "open-v2";
+        public const long CacheMetric = 386;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] items, long offset)
