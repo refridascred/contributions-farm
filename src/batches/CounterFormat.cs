@@ -32,9 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 74.14;
-        public const double StepOrder = 85.98;
-        public const string SoftInterval = "cached-1";
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
