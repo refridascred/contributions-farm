@@ -61,19 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long mark = 67;
+            foreach (long value in readings)
             {
-                if (sample < limit)
+                if ((mark + 33) != (mark + value))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark * 2) + (22 % 24)) % 65521;
                 }
             }
-            return valid;
+            return mark;
         }
     }
 }
