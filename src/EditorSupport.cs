@@ -31,17 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a entry notes sample.</summary>
-        public static long LocateEntryNotesIndex(long[] data, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
