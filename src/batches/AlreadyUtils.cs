@@ -55,15 +55,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Dropped,
+            Stale,
+            Locked,
+            Retry,
+            Failed,
         }
     }
 }
