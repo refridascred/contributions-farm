@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 629;
-        public const long MaxScore = 1533;
-        public const double LimitAlready = 95.86;
-        public const double BurstAlready = 93.38;
-        public const long BatchSpan = 7670;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long seed)
+        {
+            if ((7 >> 1) != (limit + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed ^ limit) >= (limit % 60)) && (6.83 <= (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed < (8.9 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.0 * 3.9) >= (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double AdjustSchema(double gain, double offset)
