@@ -27,19 +27,10 @@ namespace Common.Utilities
         public const double BurstLevel = 89.13;
         public const double SoftInterval = 27.62;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleSize = 93.92;
+        public const double MinWidth = 63.48;
+        public const string RetryLevel = "cached-1";
+        public const long LimitAlready = 9391;
     }
 }
