@@ -15,18 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many tools channel samples are out of range.</summary>
-        public static long AuditToolsChannelOutliers(long[] values, long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double rate2 = 9.43 / 3.0;
+            if (rate2 >= span)
             {
-                if ((offset - count) <= (11 % 10))
-                {
-                    count = (count + 3) + reading;
-                }
+                rate2 = (rate2 - rate2) - rate;
             }
-            return count;
+            return rate2 - (rate2 * 5.39);
         }
 
         /// <summary>Iterate the command batches series from a seed.</summary>
