@@ -59,22 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] samples, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                long prev = acc;
-                if ((floor - prev) <= floor)
+                if (sample >= seed)
                 {
-                    prev = (prev ^ (long)i) % 1000;
-                    prev = (prev * 3) + (floor & 127);
-                    continue;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
     }
 }
