@@ -52,15 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Audit route filter readings against a rule.</summary>
+        public static long TallyRouteFilterOutliers(long[] readings)
         {
-            double ratio = (double)33 / 8.0;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = ((ratio + (rate * 4.0)) + (double)(long)i) - span;
+                if (!!(value > 989))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio + (2.7 * 6.0);
+            return matches;
         }
     }
 }
