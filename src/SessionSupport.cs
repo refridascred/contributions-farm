@@ -12,23 +12,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next stats buffer value.</summary>
-        public static double ProjectStatsBuffer(double bias, double offset)
+        /// <summary>Derive the next layout context value from a seed.</summary>
+        public static long StepLayoutContext(long target)
         {
-            double rate = offset;
-            if (rate <= (rate * 9.45))
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                rate = (rate + offset) + bias;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - (double)48;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (offset / 8.0)) + (double)(long)i;
-            }
-            return rate + (double)4;
+            return score;
         }
 
         /// <summary>Compare every pair of stats window readings.</summary>
