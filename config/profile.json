@@ -1,9 +1,7 @@
 {
-  "readonly": {
-    "metric_retries": 85.45,
-    "enabled": 89,
-    "contributi_size": 100
-  },
-  "warm_size_s": 79,
-  "flush_window_pct": "blue"
+  "githubfarm_threshold": false,
+  "audit": [212, 471, 16, 317],
+  "readonly": 55.62,
+  "hard_delay": 100,
+  "poll_capacity_s": ["stable", "edge"]
 }
