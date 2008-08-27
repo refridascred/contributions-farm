@@ -1,6 +1,5 @@
 # githubfarm settings
-batch_size: 96.88
-readonly: staging
-metric_ratio: 45.29
-metrics_delay: 37
-poll_limit: false
+enabled: 90
+batch_ttl: stable
+default_ttl: 23
+counter_interval: staging
