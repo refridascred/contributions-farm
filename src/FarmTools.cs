@@ -27,21 +27,18 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 724;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor - 1) >= item)
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
