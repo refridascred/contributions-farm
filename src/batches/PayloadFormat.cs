@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples, long offset)
-        {
-            long anchor = -388;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor - (anchor >> 5)) + reading;
-            }
-            if (anchor < (-4))
-            {
-                anchor = (anchor + (99 + offset)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchCount = 5996;
+        public const double StepNotes = 40.25;
+        public const double LimitSpan = 53.57;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryMetrics = 77.14;
