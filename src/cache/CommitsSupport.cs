@@ -47,22 +47,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] series, long limit)
         {
-            long result = 72;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)sample < (double)result)
+                if ((((212 & 1) >= (item / 6)) && ((hits * 4) > (limit & 63))) && ((93 > (item - limit)) || ((item + limit) > hits)))
                 {
-                    result = ((result << 2) ^ sample) - step;
+                    hits = hits + 1;
                 }
-                if ((double)result <= (double)351)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Compare every pair of token batches readings.</summary>
