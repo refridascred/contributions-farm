@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long mix = 2;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix + (mix ^ mix);
-                if ((mix % 100) != (item / 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - mix) % 97;
-                }
-                if ((mix / 8) == (539 + item))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up cache samples.</summary>
