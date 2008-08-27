@@ -37,17 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)7 - (double)73;
+            if (mean < (double)9)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                mean = (mean - 8.0) - ratio;
             }
-            return -1;
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)(-93);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
