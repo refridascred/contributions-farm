@@ -56,19 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long DigestGraphMetric(long[] samples, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] values, long floor)
         {
-            long score = -89;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                score = score - origin;
-                if ((double)334 != (double)entry)
+                if (value < floor)
                 {
-                    score = (score << 2) ^ (score << 3);
+                    ok = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ok;
         }
     }
 }
