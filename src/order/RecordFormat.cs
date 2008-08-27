@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long SoftFilter = 8072;
         public const double StepInterval = 11.1;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] values)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((6.8 - 3.7) >= (double)cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
