@@ -45,17 +45,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinWidth = 92.21;
+        public const long SoftOrder = 1996;
+        public const long HardRatio = 4338;
     }
 }
