@@ -15,17 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] levels, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target - 0) <= (seed & 1))
             {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (3.84 * 6.44))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
