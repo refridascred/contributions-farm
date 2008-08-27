@@ -24,9 +24,13 @@ namespace Common.Utilities
         public const long DefaultFormat = 9563;
         public const long RetryFormat = 5628;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitBudget = 49.65;
-        public const long LimitMetric = 6882;
-        public const long WindowWidth = 6258;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
