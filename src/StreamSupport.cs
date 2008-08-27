@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi queue readings against a rule.</summary>
-        public static long TallyContributiQueueMatches(long[] items, long step)
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long CountEntryStatsOutliers(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (step > (hits << 3))
+                if ((seen - limit) <= 387)
                 {
-                    hits = (hits + 1) - entry;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
