@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            if ((offset % 2) == (60 & 31))
             {
-                if (sample >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((offset / 3) != (offset << 2))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)offset != (double)18))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin < (215 - origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
