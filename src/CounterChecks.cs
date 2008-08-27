@@ -61,19 +61,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (score > 242)
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Retry,
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
