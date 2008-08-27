@@ -25,12 +25,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Compare every pair of counter checks readings.</summary>
+        public static long MatchCounterChecksCount(long[] data)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
