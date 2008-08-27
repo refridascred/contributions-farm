@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((count << 3) <= (count + (-548))) || ((2.0 / 3.0) >= (double)cell))
+                mark = (mark * 2) + (mark + (long)i);
+                mark = ((mark * 2) + (long)i) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = count + 2;
+                    mark = ((mark - ((long)i ^ mark)) % 1000) ^ (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
