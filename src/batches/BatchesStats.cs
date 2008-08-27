@@ -52,22 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route filter readings against a rule.</summary>
-        public static long TallyRouteFilterOutliers(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long anchor = 0;
+            foreach (long item in readings)
             {
-                if (!!(value > 989))
+                if (!((double)item <= 15.0))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor << 3) ^ (item << 1);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    anchor = (anchor - anchor) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
