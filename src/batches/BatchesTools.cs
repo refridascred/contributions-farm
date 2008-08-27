@@ -22,18 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks cache samples are out of range.</summary>
-        public static long CountChecksCacheMatches(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((2 & 3) == (seen % 100))
+                if ((offset ^ item) <= (item % 10))
                 {
-                    seen = (seen + 2) - item;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
