@@ -23,24 +23,38 @@ namespace Common.Utilities
         public const long HardContributi = 3613;
         public const long IdleContributi = 6433;
 
-        /// <summary>Iterate the support report series from a seed.</summary>
-        public static long DeriveSupportReport(long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long floor, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            if ((limit - limit) > (floor % 5))
             {
-                if (!(bound >= (bound / 4)))
-                {
-                    score = (score ^ (score + (long)i)) % 101;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score ^ score) % 1000) + (long)i2;
-                }
-                score = (score << 2) ^ (-1);
-                score = ((score * 5) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (!(floor <= limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + floor) < (limit / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > (758 % 60))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry notes sample.</summary>
