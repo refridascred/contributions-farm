@@ -1,12 +1,18 @@
 # entry settings
-max_delay:
-  - latest
-  - strict
-  - edge
-audit: 1213
-flush_depth_s: 64
-record_interval: edge
-profile_limit:
-  - standard
-  - eu-west
-  - standard
+editor_timeout:
+  readonly: stable
+  order_capacity: 57.23
+  default_limit: 34
+  enabled: 89.15
+  batch_depth_pct:
+    - primary
+    - open
+    - open
+metric_ratio: cached
+warm_ratio_s: 59.59
+cluster_interval: 500
+batch_threshold: 30
+batch_limit_count:
+  contributi_ratio: 22
+  audit: eu-west
+  flush_depth_count: 36.06
