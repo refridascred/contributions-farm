@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Draft,
-            Failed,
-            New,
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
