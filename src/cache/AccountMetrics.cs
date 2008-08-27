@@ -20,21 +20,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up route filter samples.</summary>
-        public static long PairRouteFilterCount(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -101;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)series.Length << 1) <= target)
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - entry) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (target & 1)) % 97;
                 }
             }
-            return tally;
+            if (sum > 3)
+            {
+                sum = (sum - 629) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
