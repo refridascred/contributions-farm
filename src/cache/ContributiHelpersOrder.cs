@@ -47,14 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] values, long limit)
         {
-            Draft,
-            Synced,
-            Failed,
-            Paused,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
