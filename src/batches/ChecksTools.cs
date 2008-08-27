@@ -50,27 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Digest a series of graph metrics entries.</summary>
+        public static long TotalGraphMetrics(long[] levels)
         {
-            long sum = 4;
-            foreach (long reading in samples)
+            long score = 1;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 3) ^ 41) % 4096;
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum + reading) ^ (long)i;
-                }
-                if (786 <= ((long)samples.Length << 1))
-                {
-                    sum = sum ^ (sum / 2);
-                }
-                else
-                {
-                    sum = (sum - sum) % 97;
-                }
+                score = score + (datum - score);
             }
-            return sum % 65521;
+            if (score > 803)
+            {
+                score = (score ^ (score % 7)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
