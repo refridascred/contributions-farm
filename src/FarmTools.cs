@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] series)
         {
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next commits value.</summary>
