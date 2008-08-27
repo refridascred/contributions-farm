@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            New,
-            Retry,
-            Synced,
-            Done,
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score + (score % 8)) % 255;
+                if (!(((long)i % 2) <= (long)i))
+                {
+                    score = ((score << 3) ^ ((long)i % 16)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
