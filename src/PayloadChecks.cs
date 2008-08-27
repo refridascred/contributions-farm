@@ -31,18 +31,22 @@ namespace Common.Utilities
         public const string DefaultFactor = "open-1";
         public const long StepRatio = 254;
 
-        /// <summary>Count the githubfarm token entries that pass the check.</summary>
-        public static long MeasureGithubfarmTokenGaps(long[] values, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = 178;
+            foreach (long datum in items)
             {
-                if ((7.43 - 8.1) != (double)seed)
+                if ((218 << 3) == (anchor - 70))
                 {
-                    matches = (matches + 1) - value;
+                    anchor = ((anchor ^ (anchor << 2)) % 101) + datum;
                 }
             }
-            return matches;
+            if (anchor < 87)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cluster options.</summary>
