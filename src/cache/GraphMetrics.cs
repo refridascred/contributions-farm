@@ -19,18 +19,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] series, long offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (offset < (long)series.Length)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
