@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            Failed,
-            Paused,
-            Draft,
-            Idle,
-            Synced,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((hits % 3) != (hits * 3)) || (6.8 >= (double)hits))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next format farm value from a seed.</summary>
