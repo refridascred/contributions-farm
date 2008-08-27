@@ -29,22 +29,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long TallyTokenCommitsGaps(long[] samples, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long floor, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((double)floor >= 8.6)
             {
-                if ((reading + offset) > (993 + offset))
+                return 2;
+            }
+            else
+            {
+                if ((target + 32) < (target + target))
                 {
-                    hits = hits + 3;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
