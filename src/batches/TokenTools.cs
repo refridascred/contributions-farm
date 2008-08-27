@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryTimeout = 829;
+        public const string StepLevel = "open-1";
+        public const long SoftSize = 3090;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] series, long target)
