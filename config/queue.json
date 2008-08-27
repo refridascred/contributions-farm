@@ -1,7 +1,7 @@
 {
-  "base_capacity_ms": "green",
-  "cache_ttl": false,
-  "idle_timeout_count": "local",
-  "warm_ratio_pct": true,
-  "compress": true
+  "max_timeout": 46,
+  "context_depth": "standard",
+  "sync_retries_pct": false,
+  "cache_capacity": 2246,
+  "batches_ttl": [59, 178, 48, 143]
 }
