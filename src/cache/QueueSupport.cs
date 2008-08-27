@@ -28,22 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Find the first layout queue entry that matches the target.</summary>
+        public static long LocateLayoutQueueIndex(long[] levels, long limit)
         {
-            long sum = 86;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading & 63) >= reading)
+                if (levels[i] > limit)
                 {
-                    sum = (sum << 2) ^ ((long)items.Length + sum);
-                }
-                else
-                {
-                    sum = sum ^ (sum + 65);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
