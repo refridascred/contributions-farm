@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double mean = (double)821 * 9.6;
-            return ((mean + (mean - mean)) + gain) + floor;
+            Dropped,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the route level values.</summary>
