@@ -32,33 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long origin, long offset)
-        {
-            long cur = origin ^ offset;
-            if (cur < (cur * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 6) <= (697 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur >> 4) <= (offset >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 75.12;
+        public const double SoftGithubfarm = 68.83;
+        public const long StepGithubfarm = 389;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double ratio, double bias)
