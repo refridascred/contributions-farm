@@ -1,14 +1,18 @@
 # entry settings
-audit:
-  compress:
-    - 487
-    - 173
-  command_retries: standard
-  readonly: strict
-  base_delay: latest
-  poll_threshold_s:
-    - 211
-    - 440
-  retry_window_pct: 22
-verbose: false
-sync_interval: false
+queue_threshold:
+  support_threshold: 30
+  command_retries: local
+  enabled: 7066
+  persist:
+    persist: 2550
+    burst_interval_count: primary
+    soft_window_pct: false
+    metric_interval: 11.14
+    farm_size: 19
+base_threshold: primary
+farm_capacity: true
+compress: 63.85
+sync_size_pct: 100
+enabled:
+  - 154
+  - 11
