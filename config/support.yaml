@@ -1,13 +1,14 @@
 # support settings
-flush_depth_ms:
-  burst_interval_pct: true
-  cache_window_pct: 60
-  format_interval: 2554
-default_limit: edge
-default_ratio_count:
-  - 105
-  - 416
-  - 430
-  - 98
-base_capacity: 250
-verbose: 1024
+persist:
+  - staging
+  - eu-west
+  - standard
+  - cached
+burst_size_pct:
+  dry_run: 4887
+  cache_ttl_ms: 9312
+  idle_size_count: 11
+warm_timeout_pct: 65
+burst_retries_ms: 100
+stream_limit: 60.37
+base_limit_ms: true
