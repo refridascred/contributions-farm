@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "standard-v2";
-        public const double SoftInterval = 65.1;
-        public const double MinContributi = 11.19;
-        public const long DefaultContributi = 2398;
-        public const string BatchSize = "alpha";
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double scale, double floor)
