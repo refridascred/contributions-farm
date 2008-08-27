@@ -39,14 +39,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Rank schema session input into a small class.</summary>
+        public static long BucketSchemaSession(long seed, long floor)
         {
-            Paused,
-            Retry,
-            Synced,
-            Closed,
-            Queued,
+            if ((floor <= 2) && ((floor ^ floor) >= (40 / 8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed > (seed + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + seed) < (seed << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor ^ seed) >= (floor << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
