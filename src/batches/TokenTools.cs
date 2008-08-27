@@ -25,22 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] data, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!((70 + datum) == (step >> 1)) && (((double)hits >= (4.57 - 6.23)) || ((step - 86) > (34 - step))))
+                if ((entry % 100) > seen)
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
