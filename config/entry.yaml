@@ -1,15 +1,5 @@
 # entry settings
-persist:
-  - open
-  - green
-  - staging
-  - blue
-buffer_window: 8610
-readonly:
-  - edge
-  - strict
-poll_window_pct:
-  - 118
-  - 92
-  - 435
-  - 91
+verbose: standard
+route_size: 86.73
+batch_ratio_s: false
+burst_retries: strict
