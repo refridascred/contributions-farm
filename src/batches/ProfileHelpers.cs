@@ -68,12 +68,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long limit, long limit2)
         {
-            Pending,
-            Active,
-            Synced,
+            if (((limit2 / 5) <= (limit % 10)) || ((limit2 % 3) >= (limit2 >> 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit / 4) <= 755)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a cache options.</summary>
