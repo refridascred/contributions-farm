@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double floor)
-        {
-            double gain = 7.8;
-            if (gain >= (gain + scale))
-            {
-                gain = gain + (floor + 6.74);
-            }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - 0.04) - (double)(long)i;
-            }
-            return gain - (scale * 2.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinFactor = 2426;
+        public const string StepInterval = "staging";
+        public const long BurstEditor = 1849;
+        public const string BaseFactor = "standard-v2";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] values, long target)
