@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((bound % 2) <= (origin + 98)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound - 432) == (bound >> 3))
                 {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
