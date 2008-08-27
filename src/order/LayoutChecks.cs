@@ -42,14 +42,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] levels, long target)
         {
-            Pending,
-            Synced,
-            Stale,
-            Closed,
-            Locked,
+            long carry = 291;
+            foreach (long entry in levels)
+            {
+                carry = (((carry << 3) ^ (entry - entry)) % 255) + target;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of format layout readings.</summary>
