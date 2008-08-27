@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] series, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((floor + sample) <= (floor + seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
