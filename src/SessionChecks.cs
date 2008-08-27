@@ -25,12 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftInterval = 56.48;
-        public const long LimitFilter = 718;
-        public const long HardFilter = 1940;
-        public const long StepFilter = 9587;
-        public const long SoftFactor = 3194;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksLimits(long[] levels, long limit)
