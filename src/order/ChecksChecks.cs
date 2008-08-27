@@ -13,20 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine checks format values into a single score.</summary>
-        public static long TotalChecksFormat(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items)
         {
-            long mark = 655;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 11; i++)
+                if ((double)datum <= (3.5 - 4.19))
                 {
-                    mark = (((mark + (90 - 84)) % 101) ^ (long)i) + cell;
-                    mark = mark - (mark - 813);
+                    count = count + 1;
                 }
-                mark = (mark + (mark - mark)) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
