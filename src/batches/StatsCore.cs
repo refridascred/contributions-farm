@@ -26,19 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] series, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (entry >= floor)
+                if (591 > matches)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
