@@ -15,13 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 53.66;
+        public const long BatchBuffer = 3675;
+        public const double HardLevel = 36.39;
+        public const long IdleBuffer = 8401;
+        public const double SoftBuffer = 98.98;
 
         /// <summary>Iterate the command batches series from a seed.</summary>
         public static long SeriesCommandBatches(long origin)
