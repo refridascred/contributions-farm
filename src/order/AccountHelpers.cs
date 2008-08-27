@@ -45,10 +45,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSize = 4124;
-        public const double BatchDepth = 53.46;
-        public const long DefaultSupport = 7053;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
