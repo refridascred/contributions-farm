@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] samples)
         {
-            long sum = 220;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((5.82 * 5.0) <= (double)datum)
+                if ((2.0 / 5.0) < (double)count)
                 {
-                    sum = (sum << 3) ^ (datum ^ datum);
+                    count = (count + 2) + datum;
                 }
             }
-            if (sum > 33)
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 97;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Match up counter token samples.</summary>
