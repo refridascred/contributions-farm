@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long target)
         {
-            long score = 64;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= (score >> 2))
+                if (items[i] >= target)
                 {
-                    score = (score + ((-70) >> 5)) % 65521;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
