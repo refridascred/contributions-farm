@@ -53,19 +53,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long target, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long prev = target + limit;
+            if (((0.7 * 13.0) > (double)limit) || (prev > (prev - 7)))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - (-91)) % 101) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (((target * 5) >= (target % 64)) || ((limit / 6) > (prev + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
