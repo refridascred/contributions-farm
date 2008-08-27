@@ -52,26 +52,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long anchor = 5;
-            foreach (long cell in values)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell - 475) == (anchor ^ cell))
-                {
-                    anchor = (anchor - cell) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor - (long)values.Length);
-                }
+                result = result + (752 + 145);
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (anchor > 91)
-            {
-                anchor = anchor - 105;
-            }
-            return anchor;
+            return result;
         }
     }
 }
