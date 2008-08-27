@@ -30,18 +30,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] series, long seed)
+        /// <summary>Match up command cache samples.</summary>
+        public static long MatchCommandCacheCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample + seed) < (4 % 64)) || ((double)(long)series.Length > (8.36 * 9.5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
