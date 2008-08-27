@@ -31,11 +31,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two context metrics measurements.</summary>
-        public static double BlendContextMetrics(double rate, double bias)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double ratio = (double)((-285) / 2);
-            return ((ratio + ratio) + rate) + bias;
+            Active,
+            New,
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
