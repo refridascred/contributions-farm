@@ -1,9 +1,7 @@
-id,state,region
-1,594,green
-2,legacy,latest
-3,536,green
-4,latest,latest
-5,166,236
-6,primary,30.28
-7,strict,39
-8,39.3,latest
+id,token,weight
+1,77.66,62.63
+2,primary,21.75
+3,local,460
+4,79.77,726
+5,20.64,latest
+6,531,7.95
