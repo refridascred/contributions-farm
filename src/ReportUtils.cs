@@ -70,26 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] series, long origin)
         {
-            long mark = 85;
+            bool ok = true;
             foreach (long reading in series)
             {
-                if (((long)series.Length > 9) || (9 >= (mark - reading)))
+                if (reading <= origin)
                 {
-                    mark = mark ^ reading;
-                }
-                else
-                {
-                    mark = mark + (mark >> 5);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > (-952))
-            {
-                mark = (mark + (mark << 2)) % 1000;
-            }
-            return mark;
+            return ok;
         }
     }
 }
