@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next session command value.</summary>
-        public static double SmoothSessionCommand(double scale, double span)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double mean = (double)93 / 4.0;
-            if (mean > span)
-            {
-                mean = mean - (span + mean);
-            }
-            return mean - scale;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a command snapshot.</summary>
