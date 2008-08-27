@@ -66,18 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (!((((-83) % 2) != (reading + reading)) || ((tally - tally) <= ((long)series.Length + reading))))
+                if (cell != floor)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
