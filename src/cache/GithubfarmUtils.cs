@@ -41,12 +41,39 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "legacy";
-        public const long WindowDepth = 461;
-        public const string DefaultCache = "staging-v2";
-        public const long MaxLevel = 2930;
-        public const long CacheLevel = 2911;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long origin, long origin2)
+        {
+            if (10.0 <= (double)origin2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= 8.6)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 / 6) > 4)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9 + origin2) >= (origin2 - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] readings)
