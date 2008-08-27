@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score + (score % 8)) % 255;
-                if (!(((long)i % 2) <= (long)i))
-                {
-                    score = ((score << 3) ^ ((long)i % 16)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
