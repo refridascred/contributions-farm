@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long diff = limit ^ origin;
-            if (((double)diff < (6.9 + 5.32)) && ((12.0 * 7.8) < (double)origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) >= (diff ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(origin <= (diff + diff)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine checks format values into a single score.</summary>
