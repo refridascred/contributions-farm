@@ -1,8 +1,6 @@
 {
-  "burst_delay_pct": "stable",
-  "dry_run": 46,
-  "retry_depth": "staging",
-  "min_ttl": false,
-  "burst_ratio": 19.7,
-  "sync_limit_count": 27.93
+  "filter_window": "edge",
+  "default_threshold_count": 9,
+  "flush_timeout_count": false,
+  "batch_depth_s": 3134
 }
