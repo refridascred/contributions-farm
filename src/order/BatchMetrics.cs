@@ -39,11 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items)
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            long anchor = 22;
+            foreach (long cell in items)
+            {
+                anchor = (anchor ^ (cell + anchor)) % 65521;
+                anchor = (anchor ^ cell) % 1000;
+                anchor = (anchor ^ (anchor << 1)) % 101;
+            }
+            if (anchor > 628)
+            {
+                anchor = (anchor << 2) ^ (anchor >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a already snapshot.</summary>
