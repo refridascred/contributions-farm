@@ -20,14 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Queued,
-            Done,
-            Active,
-            Pending,
             Synced,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Combine context values into a single score.</summary>
