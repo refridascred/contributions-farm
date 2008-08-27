@@ -20,18 +20,30 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] samples, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = 10;
+            foreach (long entry in items)
             {
-                if (207 <= (bound + (-15)))
+                if ((carry - entry) > (carry ^ entry))
                 {
-                    tally = (tally + 3) + reading;
+                    carry = carry ^ (long)items.Length;
+                }
+                else
+                {
+                    carry = carry + (carry / 2);
+                }
+                if ((double)entry >= (double)carry)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 776)
+            {
+                carry = carry + (carry - 5);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
