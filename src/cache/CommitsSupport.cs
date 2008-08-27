@@ -68,15 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long score = 414;
-            foreach (long value in values)
-            {
-                score = (((score * 5) + (score / 4)) % 255) ^ value;
-            }
-            return score;
+            Paused,
+            Active,
+            Done,
+            Draft,
         }
     }
 }
