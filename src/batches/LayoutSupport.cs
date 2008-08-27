@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double BurstAlready = 93.38;
         public const long BatchSpan = 7670;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Pending,
-            Dropped,
+            Stale,
             Synced,
-            Queued,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
