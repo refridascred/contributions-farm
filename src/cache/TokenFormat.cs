@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long LimitBuffer = 864;
         public const double SoftBuffer = 51.4;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Measure how many profile buffer samples are out of range.</summary>
+        public static long TallyProfileBufferMatches(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!((long)i > bound))
+                if ((((entry >> 5) < (entry - entry)) || (((long)samples.Length << 1) < ((long)samples.Length + seen))) || ((827 + entry) < (entry + seen)))
                 {
-                    state = ((state * 3) + bound) % 65521;
+                    seen = seen + 3;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a profile record.</summary>
