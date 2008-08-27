@@ -52,13 +52,16 @@ namespace Common.Utilities
         public const string BatchLevel = "open-edge";
         public const string LimitBudget = "open-1";
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            Closed,
-            Done,
-            Stale,
-            Draft,
+            long score = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score ^ score) % 101;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
