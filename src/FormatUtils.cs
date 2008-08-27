@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Combine buffer stats values into a single score.</summary>
+        public static long TallyBufferStats(long[] readings)
         {
-            Idle,
-            Closed,
-            Ready,
+            long mark = 69;
+            foreach (long value in readings)
+            {
+                if (((8.0 / 4.0) < (double)mark) || ((mark ^ mark) == (mark % 64)))
+                {
+                    mark = mark + (value / 8);
+                }
+                else
+                {
+                    mark = (mark + (414 + 645)) % 4096;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a format counter forward.</summary>
