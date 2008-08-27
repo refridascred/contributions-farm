@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            New,
-            Ready,
-            Pending,
-            Synced,
-            Dropped,
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
