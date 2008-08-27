@@ -65,21 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Roll a editor commits counter forward.</summary>
+        public static long RollEditorCommits(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
