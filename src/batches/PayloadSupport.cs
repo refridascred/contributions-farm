@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxWidth = 31.42;
-        public const double MaxBudget = 77.2;
-        public const string StepScore = "open-v2";
-        public const long CacheMetric = 386;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((3 + 46) > (cell ^ hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] items, long offset)
