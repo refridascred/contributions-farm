@@ -1,7 +1,6 @@
 {
-  "enabled": "edge",
-  "graph_size": "strict",
-  "filter_retries": 100,
-  "min_size": 32.51,
-  "max_timeout": ["legacy", "blue", "legacy"]
+  "entry_size": "primary",
+  "batch_depth": true,
+  "flush_timeout_s": [253, 309, 216, 372],
+  "route_size": 738
 }
