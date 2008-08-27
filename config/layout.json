@@ -1,5 +1,5 @@
 {
-  "schema_size": true,
-  "soft_window_count": 61,
-  "strict": "open"
+  "batch_window_count": false,
+  "readonly": "eu-west",
+  "batches_ratio": 1024
 }
