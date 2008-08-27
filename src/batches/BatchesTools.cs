@@ -22,19 +22,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        public static long StepBuffer(long step)
         {
-            long score = seed;
+            long result = step;
             for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((long)i - step) <= (-652))
                 {
-                    score = ((score - (seed / 3)) % 4096) - (long)i2;
-                    score = (score + score) % 65521;
+                    result = result ^ (step - result);
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Combine cache context values into a single score.</summary>
