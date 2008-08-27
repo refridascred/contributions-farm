@@ -41,18 +41,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] levels)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double gain2 = (gain / 6.0) + span;
+            if (gain2 <= gain)
             {
-                if (((3.78 + 2.0) >= (double)reading) && (((reading - hits) >= 59) && ((reading + hits) == (reading - hits))))
-                {
-                    hits = hits + 1;
-                }
+                gain2 = gain2 + gain;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 - (span + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - span) + (double)(long)i;
+            }
+            return gain2 + (gain / 7.0);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
