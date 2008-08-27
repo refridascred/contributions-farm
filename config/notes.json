@@ -1,6 +1,24 @@
 {
-  "warm_retries_ms": "local",
-  "hard_size_s": ["legacy", "primary", "eu-west"],
-  "readonly": "staging",
-  "min_capacity_pct": 57.24
+  "persist": 40.6,
+  "commits_timeout": 74,
+  "max_ratio_pct": 72,
+  "entry_timeout": {
+    "max_ratio_pct": 492,
+    "verbose": "primary",
+    "default_limit": {
+      "commits_ttl": 38.37,
+      "entry_timeout": 73,
+      "cache_ttl_count": [103, 366, 118],
+      "compress": 5573,
+      "enabled": true
+    },
+    "persist": [148, 142, 34]
+  },
+  "min_interval_s": {
+    "hard_capacity_count": 91,
+    "max_size": 47,
+    "readonly": 31.78,
+    "dry_run": true
+  },
+  "sync_size_s": "fallback"
 }
