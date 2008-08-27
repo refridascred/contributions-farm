@@ -1,4 +1,4 @@
 # entry settings
-sync_retries: false
-audit: 60
-compress: 8669
+max_retries_ms: 6747
+cache_limit_count: stable
+account_size: strict
