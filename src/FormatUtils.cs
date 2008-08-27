@@ -56,18 +56,25 @@ namespace Common.Utilities
         public const long MaxCounter = 6097;
         public const long BurstCounter = 3231;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] data, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long limit, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long next = limit + step;
+            if (((0.78 - 10.0) < (double)limit) || (45 < (8 ^ limit)))
             {
-                if ((4.6 * 5.6) != (double)bound)
+                return 4;
+            }
+            else
+            {
+                if ((double)next < (double)step)
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the editor state values.</summary>
