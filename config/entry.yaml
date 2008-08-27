@@ -1,18 +1,8 @@
 # entry settings
-editor_timeout:
-  readonly: stable
-  order_capacity: 57.23
-  default_limit: 34
-  enabled: 89.15
-  batch_depth_pct:
-    - primary
-    - open
-    - open
-metric_ratio: cached
-warm_ratio_s: 59.59
-cluster_interval: 500
-batch_threshold: 30
-batch_limit_count:
-  contributi_ratio: 22
-  audit: eu-west
-  flush_depth_count: 36.06
+layout_depth: true
+readonly: true
+checks_ratio:
+  - latest
+  - open
+  - green
+base_ratio_pct: 8296
