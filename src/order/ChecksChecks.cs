@@ -41,24 +41,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long target, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data)
         {
-            if ((7.5 - 1.78) < (double)floor)
+            long total = 872;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target & 31) < floor) || ((6.45 * 16.0) >= (double)floor))
+                if ((item + item) <= (total / 2))
                 {
-                    return 6;
+                    total = (total ^ total) % 101;
                 }
-                else
+                if ((item / 5) != (item << 1))
                 {
-                    return 3;
+                    break;
                 }
             }
+            if (total < 61)
+            {
+                total = (total - (88 / 5)) % 97;
+            }
+            return total;
         }
     }
 }
