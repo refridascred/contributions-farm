@@ -1,8 +1,5 @@
 {
-  "cluster_ttl": 500,
-  "hard_retries_s": "standard",
-  "audit": 37.24,
-  "hard_timeout": 60,
-  "token_delay": ["local", "stable", "legacy", "latest"],
-  "cluster_limit": 1978
+  "graph_limit": 45.3,
+  "batch_size": true,
+  "cache_delay": "cached"
 }
