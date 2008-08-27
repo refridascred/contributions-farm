@@ -30,13 +30,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long seed)
         {
-            Failed,
-            Retry,
-            Done,
-            Paused,
+            long prev = origin - seed;
+            if (((-87) < origin) && ((double)origin >= 3.63))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((2 + seed) < seed) && (seed <= (origin - prev)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)prev <= (5.47 / 3.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed > (9.0 * 1.98))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support header.</summary>
