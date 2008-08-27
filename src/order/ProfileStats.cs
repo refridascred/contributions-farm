@@ -23,18 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Blend two stream graph measurements.</summary>
+        public static double BlendStreamGraph(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double gain = (double)((-900) + 8);
+            if (gain >= gain)
             {
-                if (618 >= matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
+                gain = gain - (double)(-853);
             }
-            return matches;
+            else
+            {
+                gain = gain + (rate + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (floor + 5.07)) + (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Measure how many account buffer samples are out of range.</summary>
