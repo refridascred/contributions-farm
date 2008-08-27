@@ -26,18 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] items, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((797 - (long)items.Length) > (step / 5))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
