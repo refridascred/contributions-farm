@@ -1,6 +1,6 @@
 {
-  "enabled": true,
-  "persist": false,
-  "min_limit_pct": 30,
-  "cache_threshold": 71.87
+  "warm_retries_ms": "local",
+  "hard_size_s": ["legacy", "primary", "eu-west"],
+  "readonly": "staging",
+  "min_capacity_pct": 57.24
 }
