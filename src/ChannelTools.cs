@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
