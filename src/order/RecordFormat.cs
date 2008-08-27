@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftFilter = 8072;
         public const double StepInterval = 11.1;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double floor)
         {
-            Done,
-            Closed,
-            Stale,
+            double mean = (double)(5 ^ 24);
+            if (mean <= gain)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)83) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
