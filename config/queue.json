@@ -1,6 +1,8 @@
 {
-  "hard_window": true,
-  "persist": false,
-  "audit": "blue",
-  "support_threshold": "cached"
+  "enabled": ["fallback", "staging", "eu-west", "standard"],
+  "min_depth_s": "green",
+  "flush_window_ms": false,
+  "flush_interval_s": false,
+  "readonly": "local",
+  "poll_delay_count": 6.57
 }
