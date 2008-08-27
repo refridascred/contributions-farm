@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long limit)
         {
-            long state = 891;
-            foreach (long value in data)
+            if (357 <= (limit % 2))
             {
-                if ((value & 7) > state)
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 3) <= (111 - 3))
                 {
-                    state = (state ^ value) % 97;
+                    return 8;
                 }
                 else
                 {
-                    state = state - (value - 2);
+                    if (!(origin < (origin / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin >= (origin << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Digest a series of context entries.</summary>
