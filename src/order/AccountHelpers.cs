@@ -59,18 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long TallyOrderCacheHits(long[] items)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((cell - count) <= (cell + (-85))) && (cell > (cell / 9))) && !(1.77 < (double)count))
+                if (series[i] < target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
