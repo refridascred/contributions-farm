@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long offset, long offset2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            if (!((offset2 - offset2) >= (offset * 3)))
             {
-                anchor = anchor + (anchor + 73);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((offset2 >> 5) != (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (56 + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset > (offset + offset2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context entry values into a single score.</summary>
