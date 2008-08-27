@@ -1,11 +1,7 @@
 {
-  "base_timeout_pct": [331, 207],
-  "notes_delay": false,
-  "flush_capacity_pct": false,
-  "sync_capacity_count": {
-    "batch_delay": ["fallback", "blue"],
-    "filter_ttl": 51.7,
-    "dry_run": "cached"
-  },
-  "strict": "blue"
+  "batch_ratio_ms": 52.83,
+  "record_timeout": 57.98,
+  "queue_delay": [489, 405, 189],
+  "report_delay": 100,
+  "dry_run": true
 }
