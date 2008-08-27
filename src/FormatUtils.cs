@@ -23,14 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Derive the next cache schema value from a seed.</summary>
+        public static long StepCacheSchema(long offset)
         {
             long carry = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 2) + (115 / 3)) % 1000;
-                carry = ((carry * 5) + (long)i) % 65521;
+                carry = carry - carry;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
             return carry;
         }
