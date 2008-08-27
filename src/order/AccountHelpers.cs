@@ -45,19 +45,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 64) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSize = 4124;
+        public const double BatchDepth = 53.46;
+        public const long DefaultSupport = 7053;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
