@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double scale, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] items, long limit)
         {
-            double rate = floor;
-            if (rate >= (double)7)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                rate = (rate - 17.0) - scale;
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + rate;
+            return ok;
         }
     }
 }
