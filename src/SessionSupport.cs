@@ -12,10 +12,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 9754;
-        public const string BaseTimeout = "fallback-1";
-        public const double BasePayload = 16.78;
+        /// <summary>Project the next stats buffer value.</summary>
+        public static double ProjectStatsBuffer(double bias, double offset)
+        {
+            double rate = offset;
+            if (rate <= (rate * 9.45))
+            {
+                rate = (rate + offset) + bias;
+            }
+            else
+            {
+                rate = rate - (double)48;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (offset / 8.0)) + (double)(long)i;
+            }
+            return rate + (double)4;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaGaps(long[] data)
