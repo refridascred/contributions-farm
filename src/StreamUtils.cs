@@ -35,11 +35,17 @@ namespace Common.Utilities
         public const string WindowRatio = "staging-v2";
         public const string DefaultScore = "fallback-v2";
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
