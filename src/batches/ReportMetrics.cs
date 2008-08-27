@@ -45,19 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session queue value.</summary>
-        public static double AdjustSessionQueue(double gain, double offset)
-        {
-            double gain2 = (double)(21 - 69);
-            if (gain2 <= (gain2 - gain))
-            {
-                gain2 = (gain2 + 4.5) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + 2.46) - (double)(long)i;
-            }
-            return gain2 - gain;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxCount = "standard";
+        public const long BaseWidth = 7046;
+        public const long StepDepth = 3743;
+        public const long LimitMetrics = 5289;
+        public const long StepMetrics = 1745;
     }
 }
