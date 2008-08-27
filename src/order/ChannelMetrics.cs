@@ -16,18 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long anchor = 94;
-            foreach (long item in samples)
-            {
-                if (anchor > item)
-                {
-                    anchor = (anchor ^ ((-6) + anchor)) % 4096;
-                }
-            }
-            return anchor;
+            Failed,
+            Locked,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next support stream value from a seed.</summary>
