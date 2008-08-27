@@ -1,8 +1,6 @@
 {
-  "max_timeout": ["edge", "local", "cached"],
-  "sync_interval_s": 29,
-  "window_ttl": 9538,
-  "soft_delay": 68,
-  "route_ratio": 100,
-  "default_ttl_count": "open"
+  "warm_threshold": "edge",
+  "poll_timeout_count": 91.85,
+  "max_timeout_s": 60,
+  "order_ttl": 6.11
 }
