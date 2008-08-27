@@ -1,5 +1,16 @@
 {
-  "persist": 5.93,
-  "commits_window": true,
-  "strict": 60
+  "batch_delay": 5340,
+  "cache_size_pct": {
+    "warm_ratio_s": "legacy",
+    "support_size": "green",
+    "githubfarm_delay": 58,
+    "verbose": [343, 67, 297, 485],
+    "enabled": "strict",
+    "tools_ratio": 30
+  },
+  "commits_size": {
+    "batch_ratio_count": 63.3,
+    "dry_run": 100,
+    "enabled": ["open", "edge"]
+  }
 }
