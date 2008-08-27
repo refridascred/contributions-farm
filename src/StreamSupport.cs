@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry stats entries that pass the check.</summary>
-        public static long CountEntryStatsOutliers(long[] readings, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen - limit) <= 387)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) ^ value;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
