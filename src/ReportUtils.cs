@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Count the command metric entries that pass the check.</summary>
+        public static long CountCommandMetricHits(long[] samples, long seed)
         {
-            long mix = 362;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((mix - cell) <= (mix + mix))
+                if ((seed - seed) < (tally / 6))
                 {
-                    mix = ((mix << 3) ^ cell) % 101;
+                    tally = (tally + 1) - item;
                 }
             }
-            if (mix < 573)
-            {
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
