@@ -57,10 +57,13 @@ namespace Common.Utilities
         public const long MaxStream = 7682;
         public const long DefaultFactor = 7790;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 5654;
-        public const double LimitBatches = 94.62;
-        public const long WindowDepth = 7569;
-        public const string LimitFactor = "standard-edge";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Ready,
+            Paused,
+            New,
+            Active,
+        }
     }
 }
