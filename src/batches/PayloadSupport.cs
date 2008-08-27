@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] readings)
+        /// <summary>Validate buffer entry readings against a bound.</summary>
+        public static bool ValidateBufferEntryRange(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((matches % 10) == ((long)readings.Length % 64)) || ((0 << 1) <= matches))
+                if (cell <= seed)
                 {
-                    matches = (matches + 2) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
