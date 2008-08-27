@@ -44,12 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
+            Failed,
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
