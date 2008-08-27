@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items, long offset)
         {
-            Dropped,
-            Done,
-            Ready,
-            Draft,
+            long anchor = 830;
+            foreach (long reading in items)
+            {
+                if ((double)offset < (5.0 * 6.4))
+                {
+                    anchor = ((anchor + offset) % 1000) ^ reading;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the route level values.</summary>
