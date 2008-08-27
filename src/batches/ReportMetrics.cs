@@ -20,32 +20,13 @@ namespace Common.Utilities
             return gain2 - (floor - floor);
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long bound = limit - offset;
-            if (!((625 + 969) > (limit * 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound <= (365 & 255)) && ((787 + offset) > limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((8.6 - 8.36) < (double)limit) || ((offset >> 5) <= (offset >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the schema status values.</summary>
