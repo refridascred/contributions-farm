@@ -39,15 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] series, long limit)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long sample in series)
             {
-                if (((long)items.Length + item) < (tally * 3))
+                if (((tally + sample) <= (limit * 2)) || ((sample - 2) > (limit & 15)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
