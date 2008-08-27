@@ -41,20 +41,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark << 2) ^ ((-178) + step)) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = (((mark << 3) ^ (step << 2)) % 1000) + (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryDepth = "stable-edge";
+        public const long WindowScore = 1467;
+        public const long BurstProfile = 1118;
+        public const long BurstSize = 3289;
     }
 }
