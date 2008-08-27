@@ -66,18 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally <= (entry - 23)) && (offset <= (offset + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
