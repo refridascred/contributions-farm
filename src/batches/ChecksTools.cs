@@ -82,24 +82,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a metrics batch pair into a bucket.</summary>
-        public static long RankMetricsBatch(long origin, long limit)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            if ((74 + limit) != (origin << 2))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.0 / 5.0) >= (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
