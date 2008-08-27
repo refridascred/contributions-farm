@@ -20,11 +20,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            Idle,
+            Pending,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a payload options.</summary>
