@@ -14,19 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] series, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long result = 39;
+            foreach (long cell in samples)
             {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result * 2) + (cell / 7);
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
