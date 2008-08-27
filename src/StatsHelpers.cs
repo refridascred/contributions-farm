@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheSpan = 6.87;
-        public const long SoftChecks = 1268;
-        public const long HardChecks = 1190;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= 6.4)
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] items, long bound)
