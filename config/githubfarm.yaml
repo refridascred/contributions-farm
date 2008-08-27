@@ -1,4 +1,18 @@
 # githubfarm settings
-max_limit: 1024
-dry_run: 79.13
-base_retries_count: local
+batch_timeout_s:
+  - local
+  - primary
+  - open
+graph_depth: 96.34
+tools_depth:
+  - 90
+  - 407
+  - 388
+  - 159
+readonly: false
+metrics_limit:
+  base_threshold: 66.73
+  base_interval_pct: false
+  poll_interval: strict
+  batch_capacity_ms: fallback
+  min_timeout: 8.26
