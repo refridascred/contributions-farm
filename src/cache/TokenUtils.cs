@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] levels)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((((reading + reading) > (matches ^ 69)) || ((matches + 27) < reading)) || ((double)reading < (3.97 - 2.16)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
