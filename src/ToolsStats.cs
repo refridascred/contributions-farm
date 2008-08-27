@@ -12,11 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] readings, long bound)
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
