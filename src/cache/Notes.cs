@@ -38,14 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Synced,
-            Ready,
-            Locked,
-            New,
-            Active,
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
