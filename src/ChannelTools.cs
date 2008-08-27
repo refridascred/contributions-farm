@@ -25,22 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)item == (0.93 / 8.0))
+                if (seen <= (sample / 5))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
