@@ -1,7 +1,24 @@
 {
-  "idle_ttl_ms": false,
-  "warm_capacity_s": false,
-  "batch_window": 18.43,
-  "enabled": false,
-  "strict": 1.07
+  "burst_ratio": {
+    "min_depth_pct": {
+      "context_timeout": ["stable", "edge", "staging", "cached"],
+      "enabled": [233, 349, 267],
+      "readonly": 37.19,
+      "strict": 500
+    },
+    "cache_retries": 9761,
+    "max_size_ms": {
+      "flush_retries_s": "open",
+      "poll_depth_count": 93.74,
+      "default_timeout_ms": ["blue", "edge", "local", "stable"],
+      "cache_ttl_ms": 100,
+      "cache_ttl": true
+    },
+    "sync_threshold_s": "standard",
+    "route_ratio": 49,
+    "profile_retries": true
+  },
+  "soft_timeout": [58, 46],
+  "farm_ttl": 9477,
+  "dry_run": 60
 }
