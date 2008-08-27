@@ -22,32 +22,21 @@ namespace Common.Utilities
         public const long RetryBudget = 6996;
         public const long CacheScore = 3349;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long prev = seed + bound;
-            if (((bound + prev) <= (seed << 2)) || ((326 - bound) == (bound * 2)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) > 536)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= 9)
+                    if ((samples[i] ^ samples[j]) == 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a command counter forward.</summary>
