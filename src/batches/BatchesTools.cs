@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] readings, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = 678;
+            foreach (long cell in values)
             {
-                if (seed >= (seed ^ 4))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                carry = (carry - (bound ^ bound)) + cell;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a order snapshot.</summary>
