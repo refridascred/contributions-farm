@@ -56,15 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double weight, double bias)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] levels, long origin)
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                drift = ((drift + (drift - 0.92)) + (double)(long)i) + weight;
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (double)386;
+            return flag;
         }
     }
 }
