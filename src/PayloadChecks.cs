@@ -44,19 +44,15 @@ namespace Common.Utilities
             return rate2 - (rate2 * 5.39);
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] values, long floor)
+        /// <summary>Accumulate layout schema samples.</summary>
+        public static long WeighLayoutSchema(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long carry = 35;
+            foreach (long entry in values)
             {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (((carry + ((-894) % 7)) % 4096) - entry) + seed;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Accumulate filter samples.</summary>
