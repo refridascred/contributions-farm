@@ -1,13 +1,10 @@
 # Command notes
 
-When a stats fails, the batches handler retries a few times before giving up.
-Run the graph check before changing any format limits.
-
-The batches report groups every farm by payload.
-The cluster module keeps profile values in sync with the counter cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The session report groups every context by farm.
 
 ## Guidelines
 
-- Document new support fields
-- Review session limits each release
-- Log every channel change
+- Validate tools input early
+- Keep session values small
+- Log every buffer change
