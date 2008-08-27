@@ -1,4 +1,18 @@
 # entry settings
-max_retries_ms: 6747
-cache_limit_count: stable
-account_size: strict
+retry_ttl_count: 30
+enabled:
+  batch_threshold_s: 12.46
+  tools_delay: green
+  max_limit: 97.15
+hard_limit_count: standard
+batch_depth_count:
+  base_ratio:
+    - local
+    - blue
+    - latest
+  idle_timeout_pct:
+    - 287
+    - 277
+    - 483
+    - 276
+  base_depth_s: 60
