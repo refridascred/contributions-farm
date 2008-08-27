@@ -1,14 +1,18 @@
 # support settings
-hard_window_pct: 2578
-enabled: 250
-sync_depth_s:
-  stream_limit: latest
-  poll_delay_pct:
-    default_limit_count: 5564
-    base_timeout_ms: 15.45
-    warm_ratio: 100
-    min_threshold: eu-west
-    stream_delay: 65
-  min_ratio_count: true
-  batch_window_s: 62.88
-  hard_size: cached
+batch_retries: true
+default_timeout_ms:
+  commits_window: 22
+  burst_delay: eu-west
+  soft_depth:
+    - latest
+    - open
+    - green
+    - eu-west
+  flush_interval_ms: 30
+  warm_retries: false
+  burst_capacity_s:
+    - 438
+    - 315
+    - 176
+persist: true
+min_threshold: 30
