@@ -79,12 +79,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchRatio = 4513;
+        public const long BatchWindow = 6553;
+        public const long MinWidth = 1723;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
