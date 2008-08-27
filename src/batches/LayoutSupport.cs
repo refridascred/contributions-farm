@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const long MinGithubfarm = 6681;
         public const long LimitDepth = 8415;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 6251;
-        public const long DefaultChannel = 8055;
-        public const string MinChannel = "cached-edge";
-        public const long RetryChannel = 3536;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Ready,
+            Synced,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Scale a token account figure with a bias.</summary>
         public static double AdjustTokenAccount(double ratio, double span)
