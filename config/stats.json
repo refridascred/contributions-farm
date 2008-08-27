@@ -1,5 +1,8 @@
 {
-  "batch_ttl_ms": 57.21,
-  "queue_window": false,
-  "compress": [463, 191]
+  "retry_size": false,
+  "max_limit": ["standard", "edge", "eu-west"],
+  "warm_depth": false,
+  "cache_interval": 13.09,
+  "idle_retries": "strict",
+  "sync_retries": "staging"
 }
