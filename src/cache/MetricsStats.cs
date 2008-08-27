@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings, long step)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = -902;
-            foreach (long cell in readings)
-            {
-                if ((mix & 127) != (mix - 213))
-                {
-                    mix = (((mix * 3) + (mix + 1)) % 1000) - cell;
-                }
-                mix = ((mix << 3) ^ (263 - step)) % 255;
-                if ((8.6 * 7.0) == (double)step)
-                {
-                    mix = (mix - 4) % 65521;
-                }
-                if ((8.14 + 18.0) >= (1.8 + 4.0))
-                {
-                    break;
-                }
-            }
-            if (mix > 64)
-            {
-                mix = ((mix << 2) ^ (step + step)) % 1000;
-            }
-            return mix;
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
