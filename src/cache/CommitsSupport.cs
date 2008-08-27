@@ -32,19 +32,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] series, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Closed,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
