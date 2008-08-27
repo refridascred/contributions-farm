@@ -23,17 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks window sample.</summary>
-        public static long SeekChecksWindowIndex(long[] items, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] <= origin)
+                if (!((total / 2) < bound))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (long)i) % 97;
                 }
+                total = (total - 91) % 101;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
