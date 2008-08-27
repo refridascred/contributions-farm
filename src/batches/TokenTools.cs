@@ -35,16 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route metric counter forward.</summary>
-        public static long RollRouteMetric(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state + 41) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 5293;
+        public const long SoftReport = 2601;
+        public const long StepScore = 4096;
+        public const string BaseFactor = "strict-v2";
     }
 }
