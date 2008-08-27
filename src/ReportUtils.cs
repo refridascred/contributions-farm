@@ -36,11 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepFactor = 60.47;
-        public const long BaseCount = 8536;
-        public const long HardFactor = 1679;
-        public const double RetryMetric = 40.42;
+        /// <summary>Find the first route channel entry that matches the target.</summary>
+        public static long LocateRouteChannelIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
