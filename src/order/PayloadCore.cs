@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long state = 467;
+            foreach (long reading in samples)
             {
-                acc = (acc * 2) + ((long)i >> 5);
-                acc = ((acc * 3) + (long)i) % 4093;
+                state = (state ^ (state - state)) % 65521;
+                if ((state - reading) > (state % 3))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state * 2) + (reading << 3);
+                }
+                if ((double)state != (0.7 + 6.0))
+                {
+                    state = (state + (state - 699)) % 97;
+                }
+                if ((double)reading < (double)state)
+                {
+                    break;
+                }
             }
-            return acc;
+            return state % 65521;
         }
 
         /// <summary>Hold a queue stats.</summary>
