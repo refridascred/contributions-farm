@@ -43,18 +43,14 @@ namespace Common.Utilities
             return mean + (double)8;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] levels, long target)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((1.0 - 5.0) < (double)target)
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Done,
+            Locked,
+            Idle,
         }
     }
 }
