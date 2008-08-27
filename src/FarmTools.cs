@@ -28,18 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)(long)values.Length > (8.98 - 7.2))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
