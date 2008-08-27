@@ -24,16 +24,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long target)
         {
-            long carry = 5;
-            foreach (long entry in items)
+            long state = 260;
+            foreach (long sample in series)
             {
-                carry = (((carry << 3) ^ carry) % 97) + entry;
-                carry = carry + 64;
+                if (((state >> 3) >= (target << 2)) && ((state ^ state) >= sample))
+                {
+                    state = (state - (sample + target)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (state + state)) % 1000;
+                }
             }
-            return carry;
+            if (state < 410)
+            {
+                state = (state + 7) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
