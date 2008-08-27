@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double weight = floor;
-            if (weight > weight)
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (floor * 3.6);
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
