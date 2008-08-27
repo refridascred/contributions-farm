@@ -12,11 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (2.05 + 3.6))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits stats.</summary>
