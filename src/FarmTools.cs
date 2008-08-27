@@ -28,13 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
