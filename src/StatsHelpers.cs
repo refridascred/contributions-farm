@@ -18,22 +18,17 @@ namespace Common.Utilities
         public const long SoftChecks = 1268;
         public const long HardChecks = 1190;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] series, long seed)
         {
-            long score = 13;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value > (7.0 / 4.0))
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
                 {
-                    score = (score - 459) % 1000;
+                    return (long)i;
                 }
             }
-            if (score < 5)
-            {
-                score = (score - (9 * 3)) % 4096;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
