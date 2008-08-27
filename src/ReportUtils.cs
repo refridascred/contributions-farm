@@ -57,17 +57,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] data, long target)
+        /// <summary>Roll a report editor counter forward.</summary>
+        public static long RollReportEditor(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
