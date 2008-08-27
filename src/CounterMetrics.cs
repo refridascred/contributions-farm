@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the farm token entries that pass the check.</summary>
