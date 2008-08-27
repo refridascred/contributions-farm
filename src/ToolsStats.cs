@@ -86,19 +86,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] values, long offset)
         {
-            long mark = 533;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mark = (mark ^ (value << 3)) % 4096;
+                if (((double)count == (6.8 / 2.0)) && (((double)datum <= (5.0 / 9.0)) || (datum <= (count + offset))))
+                {
+                    count = count + 3;
+                }
             }
-            if (mark > 702)
-            {
-                mark = (mark << 2) ^ (target * 5);
-            }
-            return mark;
+            return count;
         }
     }
 }
