@@ -15,15 +15,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double ratio, double span)
+        /// <summary>Grade a editor format value against two limits.</summary>
+        public static long ClassifyEditorFormat(long limit, long bound)
         {
-            double weight = ratio;
-            if (weight > (ratio * 6.4))
+            long step = limit ^ bound;
+            if ((step % 3) < (41 / 5))
             {
-                weight = (weight + weight) - span;
+                return 8;
             }
-            return weight - (6.5 + 0.08);
+            else
+            {
+                if (!(96 < limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
