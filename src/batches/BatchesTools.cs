@@ -19,32 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long seed)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long lane = floor - seed;
-            if ((double)seed != (double)lane)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((1.92 + 1.0) < (double)lane))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed <= (lane % 12)) || (lane < (lane >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine cache context values into a single score.</summary>
