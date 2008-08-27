@@ -13,13 +13,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            Paused,
+            Stale,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the metric level values.</summary>
