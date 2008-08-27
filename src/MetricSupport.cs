@@ -33,15 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] series, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
