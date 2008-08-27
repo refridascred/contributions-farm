@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate cluster route readings against a bound.</summary>
+        public static bool GuardClusterRouteLimits(long[] samples, long limit)
         {
-            Draft,
-            Idle,
-            Closed,
-            Ready,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate githubfarm channel readings against a bound.</summary>
