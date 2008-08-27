@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseWidth = 2708;
-        public const long CacheReport = 3507;
-        public const double MaxRatio = 33.91;
-        public const long LimitSpan = 5755;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
         public static long IterateCommitsMetric(long target)
