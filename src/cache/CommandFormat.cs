@@ -65,17 +65,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] values, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 182;
+            foreach (long datum in levels)
             {
-                if (values[i] == limit)
+                if (step >= (datum & 127))
                 {
-                    return (long)i;
+                    acc = (acc - datum) % 65521;
+                }
+                if ((double)step < (9.28 + 9.88))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc * 2) + (step >> 5);
+                }
+                if (43 > ((long)levels.Length >> 4))
+                {
+                    acc = ((acc * 3) + (step & 63)) % 101;
                 }
             }
-            return -1;
+            if (acc < 485)
+            {
+                acc = ((acc << 2) ^ (23 & 15)) % 4096;
+            }
+            return acc % 1000;
         }
     }
 }
