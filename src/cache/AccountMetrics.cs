@@ -43,33 +43,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long floor)
-        {
-            long diff = bound - floor;
-            if (9 <= (diff ^ diff))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-822) <= (778 + floor)) || ((diff * 3) != (floor * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseAlready = 55.58;
+        public const double IdleSize = 21.21;
+        public const double BaseBudget = 71.05;
+        public const long BurstBudget = 6200;
+        public const double MaxAlready = 47.4;
 
         /// <summary>Roll a batches window counter forward.</summary>
         public static long SeriesBatchesWindow(long target)
