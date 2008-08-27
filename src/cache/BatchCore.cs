@@ -66,18 +66,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter cluster values into a single score.</summary>
-        public static long TotalFilterCluster(long[] readings, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long score = -5;
-            foreach (long reading in readings)
-            {
-                if ((score <= offset) || ((offset - reading) > (score >> 4)))
-                {
-                    score = score ^ (offset - score);
-                }
-            }
-            return score % 65521;
+            Paused,
+            Synced,
+            Draft,
+            Active,
+            Done,
         }
     }
 }
