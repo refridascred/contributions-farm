@@ -1,13 +1,6 @@
 {
-  "editor_ttl": "fallback",
-  "dry_run": "green",
-  "editor_threshold": 1024,
-  "burst_ratio": {
-    "min_limit_s": 1024,
-    "min_ratio_ms": [257, 139, 187, 434],
-    "dry_run": 7781,
-    "poll_window_pct": 60
-  },
-  "min_size_ms": 95.04,
-  "warm_timeout_count": "open"
+  "poll_size": ["strict", "staging"],
+  "cache_delay_count": "blue",
+  "hard_interval_pct": 30,
+  "base_retries": 8228
 }
