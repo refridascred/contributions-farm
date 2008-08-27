@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double weight2 = (double)916 + (floor / 3.0);
-            return (weight2 - floor) + weight;
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a graph session reading by value.</summary>
