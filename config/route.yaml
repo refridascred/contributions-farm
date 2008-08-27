@@ -1,18 +1,13 @@
 # route settings
-cache_ttl_count: 12.37
-dry_run:
-  account_interval:
-    hard_retries: open
-    retry_capacity:
-      - green
-      - fallback
-    base_ratio_count:
-      - edge
-      - standard
-  default_threshold_ms: edge
-  dry_run: latest
-queue_retries: latest
-booking_timeout:
-  - latest
+warm_delay_s:
+  - eu-west
   - local
-  - open
+  - strict
+  - stable
+poll_timeout:
+  persist: open
+  burst_delay_pct: green
+  verbose: true
+  compress: 19
+  enabled: 77.07
+persist: primary
