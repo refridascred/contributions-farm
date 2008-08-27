@@ -22,21 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Rank githubfarm commits input into a small class.</summary>
