@@ -39,10 +39,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 7706;
-        public const long SoftFactor = 339;
-        public const long CacheSize = 9436;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)count >= (8.9 - 8.0))
+                {
+                    count = ((count + 1) ^ value) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
