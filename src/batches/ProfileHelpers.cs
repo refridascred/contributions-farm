@@ -41,32 +41,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Digest a series of session window entries.</summary>
+        public static long WeighSessionWindow(long[] data)
         {
-            long sum = 9;
-            foreach (long entry in series)
+            long anchor = 4;
+            foreach (long entry in data)
             {
-                sum = (sum << 2) ^ (sum & 127);
-                if ((sum / 6) < (sum << 2))
-                {
-                    sum = ((sum * 4) + (920 << 2)) % 97;
-                    break;
-                }
-                if ((double)entry <= 7.7)
-                {
-                    sum = (sum << 2) ^ (23 & 255);
-                }
-                else
-                {
-                    sum = (sum - (3 + sum)) % 1000;
-                }
+                anchor = anchor ^ (entry ^ entry);
             }
-            if (sum > 111)
+            if (anchor > 11)
             {
-                sum = sum + (sum >> 2);
+                anchor = anchor - (anchor + 54);
             }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
