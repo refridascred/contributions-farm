@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Combine context entry values into a single score.</summary>
+        public static long ScoreContextEntry(long[] samples, long floor)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long total = 17;
+            foreach (long entry in samples)
+            {
+                if (((double)entry >= (7.32 + 0.9)) || ((entry >> 5) == (total - total)))
+                {
+                    total = ((total - (entry & 3)) % 101) - floor;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (603 / 9)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
