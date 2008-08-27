@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] readings, long seed)
+        /// <summary>Classify a queue report pair into a bucket.</summary>
+        public static long GradeQueueReport(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if (((origin + floor) <= (origin + origin)) || ((double)floor < (6.7 - 8.0)))
             {
-                if ((seed & 63) <= (matches - seed))
+                return 4;
+            }
+            else
+            {
+                if ((floor % 3) == (origin + (-15)))
                 {
-                    matches = (matches + 3) + sample;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a notes payload reading.</summary>
