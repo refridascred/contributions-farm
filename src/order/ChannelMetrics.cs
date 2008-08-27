@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > target)
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
