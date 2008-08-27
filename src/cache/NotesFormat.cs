@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] readings, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 370;
+            foreach (long reading in items)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - (mark << 3)) ^ reading;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
