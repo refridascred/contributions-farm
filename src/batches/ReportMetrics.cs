@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (seen >= datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
