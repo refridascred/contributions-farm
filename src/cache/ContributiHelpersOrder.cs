@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long WindowCount = 8143;
         public const long IdleLevel = 8990;
 
-        /// <summary>Classify a window batches pair into a bucket.</summary>
-        public static long RankWindowBatches(long bound, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            if (((27 >> 2) >= origin) && (origin <= (origin + bound)))
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin - origin) <= 96)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
