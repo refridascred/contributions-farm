@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values, long bound)
         {
-            if (357 <= (limit % 2))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 3) <= (111 - 3))
+                if ((bound > sample) && ((bound >= 2) || ((count * 4) <= (8 >> 2))))
                 {
-                    return 8;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (!(origin < (origin / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin >= (origin << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
