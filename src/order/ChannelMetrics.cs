@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long SoftMetric = 7072;
         public const long MaxBudget = 3751;
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long limit)
         {
-            double bias2 = 0.9;
-            return ((bias2 - (double)77) + scale) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
