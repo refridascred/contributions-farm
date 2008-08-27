@@ -32,9 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstWidth = "cached-v2";
-        public const long WindowWidth = 8883;
-        public const long BatchSize = 2950;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
