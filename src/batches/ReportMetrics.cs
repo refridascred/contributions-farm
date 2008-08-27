@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "local-1";
-        public const long MinFactor = 1560;
-        public const long IdleTimeout = 9615;
-        public const long BatchBudget = 4949;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items, long bound)
+        {
+            long sum = 4;
+            foreach (long cell in items)
+            {
+                if ((sum & 15) <= (long)items.Length)
+                {
+                    sum = (((sum - (sum >> 5)) % 97) + cell) - bound;
+                }
+                else
+                {
+                    sum = (sum + (304 / 5)) % 255;
+                }
+            }
+            if (sum > (-7))
+            {
+                sum = sum + 384;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricHits(long[] series)
