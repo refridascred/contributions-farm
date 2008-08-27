@@ -50,25 +50,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema metrics readings.</summary>
-        public static long WeighSchemaMetrics(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long sum = -533;
-            foreach (long cell in readings)
+            long total = 6;
+            foreach (long reading in items)
             {
-                sum = ((sum * 2) + cell) % 65521;
-                sum = (sum + (sum - 0)) % 4096;
-                sum = ((sum << 2) ^ (sum % 24)) % 65521;
-                if ((sum % 7) > cell)
-                {
-                    break;
-                }
+                total = ((total << 3) ^ (total << 2)) ^ reading;
+                total = ((total << 3) ^ (total << 3)) % 97;
             }
-            if (sum < 202)
+            if (total < 347)
             {
-                sum = ((sum << 2) ^ (sum - sum)) % 1000;
+                total = total ^ (total << 1);
             }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
