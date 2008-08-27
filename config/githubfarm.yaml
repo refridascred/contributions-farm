@@ -1,29 +1,5 @@
 # githubfarm settings
-poll_retries:
-  schema_ttl:
-    enabled:
-      - 107
-      - 89
-    batches_delay: 500
-    max_ttl: fallback
-  dry_run: stable
-  retry_timeout_count:
-    - blue
-    - staging
-  metrics_depth: standard
-  compress:
-    - green
-    - standard
-    - legacy
-stats_capacity:
-  - blue
-  - local
-  - local
-  - latest
-batch_ratio: 31.91
-flush_delay_count:
-  commits_limit: strict
-  idle_ratio: open
-  cache_ratio_count: 60
-record_depth: false
-batch_threshold: true
+retry_limit_s: 22
+hard_timeout_s: 7
+dry_run: 62
+flush_timeout: primary
