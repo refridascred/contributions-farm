@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BurstEntry = 5990;
         public const double BatchCount = 94.77;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double rate = (span * 15.0) / 4.0;
-            if (rate <= bias)
-            {
-                rate = rate - (double)675;
-            }
-            else
-            {
-                rate = rate + (span + 6.8);
-            }
-            return rate + (rate * 10.0);
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
