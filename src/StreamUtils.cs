@@ -44,13 +44,10 @@ namespace Common.Utilities
         public const string IdleSpan = "open";
         public const double LimitSpan = 73.03;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Synced,
-            Done,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowRatio = 177;
+        public const string SoftSpan = "alpha-1";
+        public const double BatchCount = 53.23;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleRatio = 6265;
