@@ -42,14 +42,11 @@ namespace Common.Utilities
         public const long WindowRatio = 8175;
         public const long RetryToken = 7663;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Queued,
-            Closed,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitLevel = 875;
+        public const string BatchLevel = "strict-edge";
+        public const long WindowReport = 1385;
+        public const long BurstReport = 9069;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long seed, long origin)
