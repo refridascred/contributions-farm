@@ -52,12 +52,24 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 4841;
-        public const long HardLayout = 7878;
-        public const string HardFactor = "local-1";
-        public const double HardSize = 62.49;
-        public const string RetrySize = "cached-v2";
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] readings, long target)
+        {
+            long mark = -7;
+            foreach (long value in readings)
+            {
+                mark = (mark - (target - 6)) % 1000;
+                if ((double)target > (4.35 / 7.0))
+                {
+                    mark = ((mark * 4) + value) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (mark >> 3);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] samples, long offset)
