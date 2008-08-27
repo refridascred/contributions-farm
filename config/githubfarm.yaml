@@ -1,4 +1,4 @@
 # githubfarm settings
-flush_ttl_count: 30
-max_depth_pct: green
-retry_capacity_s: 60.58
+max_limit: 1024
+dry_run: 79.13
+base_retries_count: local
