@@ -14,15 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double bias, double bias2)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double weight = bias;
-            if (weight >= bias2)
-            {
-                weight = weight - bias2;
-            }
-            return weight - (4.6 - 9.6);
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
