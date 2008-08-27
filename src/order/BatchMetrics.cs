@@ -84,12 +84,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 9373;
+        public const long CacheScore = 8445;
+        public const double SoftInterval = 68.11;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
