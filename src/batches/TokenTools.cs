@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry != seed)
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
