@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items, long bound)
+        /// <summary>Look up the position of a metrics channel sample.</summary>
+        public static long FindMetricsChannelIndex(long[] readings, long floor)
         {
-            long sum = 4;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum & 15) <= (long)items.Length)
+                if (readings[i] < floor)
                 {
-                    sum = (((sum - (sum >> 5)) % 97) + cell) - bound;
-                }
-                else
-                {
-                    sum = (sum + (304 / 5)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > (-7))
-            {
-                sum = sum + 384;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
