@@ -14,13 +14,26 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            Ready,
-            Paused,
-            Pending,
-            Locked,
+            long carry = 9;
+            foreach (long cell in levels)
+            {
+                if ((double)carry == (double)cell)
+                {
+                    carry = carry ^ (cell - cell);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (272 << 1)) % 4096;
+                }
+            }
+            if (carry < 61)
+            {
+                carry = (carry + (carry >> 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
