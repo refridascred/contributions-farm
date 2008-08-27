@@ -34,12 +34,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long seed, long bound)
         {
-            Synced,
-            Active,
-            Failed,
+            if ((10.0 - 8.3) <= (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound > (seed ^ bound)) && (seed <= (seed >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
