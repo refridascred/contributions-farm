@@ -20,15 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double weight, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data)
         {
-            double load = 7.5;
-            if (load >= (load - 7.1))
+            long acc = 56;
+            foreach (long datum in data)
             {
-                load = (load - offset) - weight;
+                if ((double)(long)data.Length > (double)datum)
+                {
+                    acc = ((acc << 2) ^ (datum - datum)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc + acc)) % 101;
+                }
             }
-            return load - (load / 6.0);
+            return acc % 65521;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
