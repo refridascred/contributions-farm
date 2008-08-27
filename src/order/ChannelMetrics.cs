@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
