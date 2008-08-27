@@ -34,22 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Combine report commits values into a single score.</summary>
+        public static long FoldReportCommits(long[] readings, long bound)
         {
-            long anchor = 72;
-            foreach (long value in values)
+            long total = 6;
+            foreach (long sample in readings)
             {
-                if ((double)anchor <= (1.49 + 1.0))
+                total = (total * 5) + (total << 1);
+                if (6.2 < (double)sample)
                 {
-                    anchor = anchor ^ (anchor ^ value);
+                    break;
                 }
             }
-            if (anchor < 465)
+            if (total < 32)
             {
-                anchor = ((anchor * 5) + anchor) % 101;
+                total = total ^ (bound << 1);
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
