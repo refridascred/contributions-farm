@@ -31,15 +31,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long limit, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long cur = limit + target;
+            if ((double)limit >= (double)cur)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (6.5 > (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - cur) >= (0 << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout info.</summary>
