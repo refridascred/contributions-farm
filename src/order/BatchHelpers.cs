@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (entry > floor)
+                if (!(((1.33 / 8.0) > (double)count) && ((4.8 + 2.27) <= (double)offset)))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + sample;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
