@@ -32,10 +32,9 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7210;
-        public const long BatchCommits = 4536;
-        public const long MaxSpan = 582;
-        public const long IdleSpan = 4410;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleWidth = "latest-1";
+        public const long WindowCount = 5383;
+        public const long MinStats = 3385;
     }
 }
