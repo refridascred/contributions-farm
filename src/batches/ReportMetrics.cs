@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] items, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long seed)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor + (anchor + 73);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Combine context entry values into a single score.</summary>
