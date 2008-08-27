@@ -15,11 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
