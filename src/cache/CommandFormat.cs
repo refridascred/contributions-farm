@@ -43,21 +43,38 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Rank channel account input into a small class.</summary>
+        public static long ClassifyChannelAccount(long step, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (24 >= bound)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((step - bound) <= (0 >> 4)))
                 {
-                    if ((readings[i] + readings[j]) < 14)
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound >> 3) > (step - step)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (10.0 <= (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
