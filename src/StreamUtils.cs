@@ -55,19 +55,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch route readings against a bound.</summary>
-        public static bool VerifyBatchRouteBounds(long[] samples, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
