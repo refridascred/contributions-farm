@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] readings, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long acc = 9;
-            foreach (long item in readings)
-            {
-                if ((acc >> 1) == (acc + item))
-                {
-                    acc = ((acc + (item + item)) % 1000) - step;
-                }
-            }
-            if (acc > (-61))
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
