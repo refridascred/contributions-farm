@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long offset)
+        /// <summary>Digest a series of layout session entries.</summary>
+        public static long ScoreLayoutSession(long[] samples, long origin)
         {
-            if ((offset % 2) == (60 & 31))
+            long total = 6;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 3) != (offset << 2))
+                if ((757 << 2) > (cell << 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)offset != (double)18))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin < (215 - origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = (total + (origin % 5)) % 97;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
