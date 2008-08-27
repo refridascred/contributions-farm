@@ -52,10 +52,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 1624;
-        public const long MinReport = 8131;
-        public const long BatchScore = 8293;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits / 9) >= cell)
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] series, long offset)
