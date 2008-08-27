@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long WindowSupport = 2071;
         public const long StepSupport = 9618;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 4640;
-        public const string MinSpan = "strict-v2";
-        public const string WindowQueue = "stable-1";
-        public const long IdleScore = 2393;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long CompareMetricCount(long[] data)
