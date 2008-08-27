@@ -40,11 +40,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseSize = 8695;
-        public const string MinQueue = "legacy";
-        public const long CacheQueue = 3135;
-        public const long StepRatio = 3572;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportHits(long[] data)
