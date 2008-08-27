@@ -12,23 +12,21 @@ namespace Common.Utilities
             return (weight - offset) + ratio;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double gain, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            double load = (double)(7 ^ 26);
-            if (load <= (13.0 - 5.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (load + gain);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (double)8;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + (load - offset);
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
