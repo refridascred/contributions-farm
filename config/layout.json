@@ -1,11 +1,6 @@
 {
-  "hard_ttl_count": "open",
-  "idle_interval_s": "fallback",
-  "default_interval": "edge",
-  "poll_retries": {
-    "enabled": ["eu-west", "staging", "strict", "stable"],
-    "persist": 19.7,
-    "default_timeout_pct": "fallback",
-    "schema_ratio": 59
-  }
+  "poll_retries_ms": "primary",
+  "enabled": [33, 191, 89],
+  "schema_size": ["edge", "staging", "latest", "local"],
+  "base_ttl_s": 1024
 }
