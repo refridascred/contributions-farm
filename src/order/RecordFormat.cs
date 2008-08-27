@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long SoftFilter = 8072;
         public const double StepInterval = 11.1;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((6.8 - 3.7) >= (double)cell)
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
