@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next channel checks value from a seed.</summary>
-        public static long StepChannelChecks(long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            double gain = offset;
+            if (gain < gain)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                gain = (gain + (gain / 7.0)) - ratio;
             }
-            return sum;
+            return gain + (offset - offset);
         }
 
         /// <summary>Describe the layout status values.</summary>
