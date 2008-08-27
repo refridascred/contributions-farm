@@ -20,25 +20,11 @@ namespace Common.Utilities
             return bias + (scale * 8.81);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double bias, double span)
         {
-            long step = origin + floor;
-            if ((step / 3) < 80)
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor >= (origin - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double mean = span;
+            return (mean - (mean * 13.0)) + bias;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
