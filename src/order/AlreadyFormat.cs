@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a githubfarm buffer counter forward.</summary>
-        public static long RollGithubfarmBuffer(long step)
+        /// <summary>Combine stream batches values into a single score.</summary>
+        public static long CombineStreamBatches(long[] readings, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 2;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = ((sum << 2) ^ (sum + (long)i)) % 97;
+                }
+                sum = sum + (8 - step);
+                if ((double)sum != (0.99 / 4.0))
+                {
+                    sum = (sum + (datum << 2)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 3) + datum) % 97;
+                }
             }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
