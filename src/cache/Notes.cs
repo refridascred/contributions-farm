@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] data, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((double)sample != (double)matches)
+                if (datum < limit)
                 {
-                    matches = (matches + 2) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
