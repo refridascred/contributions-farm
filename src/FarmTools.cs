@@ -34,38 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long target2)
-        {
-            if ((target2 * 4) <= 51)
-            {
-                return 6;
-            }
-            else
-            {
-                if (target < target2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((653 ^ target) >= (target << 1)) || ((7 & 1) >= (target + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((target / 5) < target2) || ((double)target >= (double)target2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchFactor = 60.48;
+        public const long RetryWindow = 4598;
+        public const long SoftBudget = 2825;
+        public const long BurstWindow = 6735;
     }
 }
