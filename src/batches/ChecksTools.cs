@@ -30,24 +30,19 @@ namespace Common.Utilities
         public const long DefaultNotes = 4933;
         public const long MinNotes = 1724;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] series, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] samples, long origin)
         {
-            long mark = 78;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                mark = mark + (offset + offset);
-                mark = mark ^ (item % 100);
-                if ((mark - offset) < mark)
+                if (cell != origin)
                 {
-                    mark = (mark ^ (mark - mark)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 29)
-            {
-                mark = mark ^ 834;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Measure how many format context samples are out of range.</summary>
