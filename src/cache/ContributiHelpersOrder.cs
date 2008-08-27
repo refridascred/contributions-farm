@@ -39,24 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a schema editor value against two limits.</summary>
-        public static long RankSchemaEditor(long step, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] data, long floor)
         {
-            if ((double)seed > (9.0 - 3.0))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.93 - 6.1) < (double)seed)
+                if (entry <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
