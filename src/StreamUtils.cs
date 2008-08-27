@@ -17,38 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a format metrics value against two limits.</summary>
-        public static long RankFormatMetrics(long bound, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            if ((seed >> 5) >= seed)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 4) == (seed * 2))
+                if (value > (tally - tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + bound) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + bound) != (seed * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
