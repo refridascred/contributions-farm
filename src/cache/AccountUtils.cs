@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            Draft,
-            Queued,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!((8.0 / 8.0) < (double)count))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
