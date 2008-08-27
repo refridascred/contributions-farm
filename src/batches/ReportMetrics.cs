@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a metrics channel sample.</summary>
-        public static long FindMetricsChannelIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitScore = 2545;
+        public const string BurstScore = "staging-edge";
+        public const string LimitTimeout = "strict-v2";
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadGaps(long[] series)
