@@ -39,13 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] readings)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((0 >= (entry + entry)) && (((entry / 4) <= 532) && ((double)matches > (2.0 - 4.1))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
