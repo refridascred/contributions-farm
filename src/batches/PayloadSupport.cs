@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] readings, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (cell < limit)
+                if (reading < floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
