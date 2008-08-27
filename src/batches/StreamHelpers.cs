@@ -30,18 +30,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine session profile values into a single score.</summary>
-        public static long CombineSessionProfile(long[] levels)
+        /// <summary>Compare every pair of command payload readings.</summary>
+        public static long CompareCommandPayloadCount(long[] levels)
         {
-            long acc = 85;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + acc) >= acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc - (316 + 93);
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
