@@ -87,24 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long limit2)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] values, long offset)
         {
-            if ((double)limit2 <= (1.54 + 6.01))
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.6 + 8.2) < (double)limit)
+                if (cell > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
