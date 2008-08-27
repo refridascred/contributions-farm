@@ -54,17 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] readings, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 2;
+            foreach (long item in samples)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total + offset) % 101) - item;
             }
-            return -1;
+            if (total < 387)
+            {
+                total = (total + (offset + offset)) % 65521;
+            }
+            return total;
         }
     }
 }
