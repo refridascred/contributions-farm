@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank schema buffer input into a small class.</summary>
-        public static long ClassifySchemaBuffer(long offset, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] series, long bound)
         {
-            long offset2 = offset + origin;
-            if ((double)offset < (12.0 - 9.6))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset2 ^ offset2) >= 652))
+                if (datum <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin <= (2.15 + 8.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset & 31) < (offset - offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
