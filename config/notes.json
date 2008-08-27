@@ -1,13 +1,8 @@
 {
-  "batch_threshold_pct": 60,
-  "commits_timeout": "stable",
-  "sync_limit_count": "stable",
-  "enabled": {
-    "flush_retries_pct": "stable",
-    "strict": true,
-    "audit": "legacy",
-    "default_threshold": "staging",
-    "min_interval_count": "standard",
-    "dry_run": 5470
-  }
+  "window_depth": 100,
+  "route_delay": "local",
+  "entry_capacity": "eu-west",
+  "idle_limit_pct": false,
+  "poll_retries": 12,
+  "session_timeout": "open"
 }
