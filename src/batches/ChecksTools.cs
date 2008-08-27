@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support token measurements.</summary>
-        public static double SmoothSupportToken(double scale, double floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            double mean = 2.5 - (double)160;
-            for (int i = 0; i < 4; i++)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mean = ((mean - (floor / 6.0)) - (double)(long)i) - scale;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mean + floor;
+            return score;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
