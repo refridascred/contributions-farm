@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            Locked,
-            Retry,
-            Stale,
-            Idle,
+            long total = 106;
+            foreach (long sample in samples)
+            {
+                if ((total - sample) != (sample % 60))
+                {
+                    total = (total * 5) + 9;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
