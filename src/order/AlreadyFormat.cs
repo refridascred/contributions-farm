@@ -28,11 +28,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((218 + hits) > (cell % 10))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
