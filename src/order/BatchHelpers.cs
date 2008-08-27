@@ -13,23 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] series, long offset)
         {
-            long mark = 538;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mark = mark - (item + item);
-                if (((double)mark >= (8.18 + 4.0)) && ((mark << 2) == (mark % 7)))
+                if (((tally + sample) >= (tally ^ tally)) || ((tally & 255) < offset))
                 {
-                    mark = ((mark * 4) + (mark + mark)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (mark > 5)
-            {
-                mark = (mark - (mark ^ mark)) % 1000;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
