@@ -41,14 +41,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "legacy";
+        public const long WindowDepth = 461;
+        public const string DefaultCache = "staging-v2";
+        public const long MaxLevel = 2930;
+        public const long CacheLevel = 2911;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] readings)
