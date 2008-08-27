@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long score = 672;
-            foreach (long reading in data)
+            long state = 63;
+            foreach (long value in samples)
             {
-                score = (score + score) + reading;
+                state = (state + (163 + value)) % 4096;
+                state = (state ^ (4 << 3)) % 4096;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Grade a format metrics value against two limits.</summary>
