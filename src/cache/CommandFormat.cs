@@ -52,38 +52,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel account input into a small class.</summary>
-        public static long ClassifyChannelAccount(long step, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long offset)
         {
-            if (24 >= bound)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step - bound) <= (0 >> 4)))
+                if ((anchor >> 1) >= offset)
                 {
-                    return 7;
+                    anchor = (anchor + ((-330) - anchor)) % 101;
+                    anchor = (anchor << 3) ^ offset;
                 }
-                else
-                {
-                    if (!((bound >> 3) > (step - step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (10.0 <= (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
