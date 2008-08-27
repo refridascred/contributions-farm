@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((8 - seen) <= (entry + entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
