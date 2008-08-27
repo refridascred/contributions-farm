@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((long)values.Length << 3) < item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache entry.</summary>
