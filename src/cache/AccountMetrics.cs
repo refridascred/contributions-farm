@@ -57,23 +57,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches / 2) >= (matches - datum))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheInterval = "legacy-1";
+        public const string DefaultContext = "staging-edge";
+        public const long MaxSize = 2586;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long floor, long origin)
