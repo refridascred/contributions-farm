@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLevel = 2979;
-        public const long BatchLayout = 8598;
-        public const long BaseLevel = 9613;
-        public const long StepLayout = 8254;
-        public const long MinLayout = 2155;
+        /// <summary>Fold a list of checks metric readings.</summary>
+        public static long FoldChecksMetric(long[] series)
+        {
+            long result = -2;
+            foreach (long datum in series)
+            {
+                if ((result + result) <= (result + datum))
+                {
+                    result = (result ^ (result / 5)) % 97;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double SmoothFilter(double rate, double floor)
