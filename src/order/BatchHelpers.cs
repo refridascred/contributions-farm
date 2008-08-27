@@ -41,16 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                acc = (acc ^ ((long)i / 2)) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((double)cell < 5.0)
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
