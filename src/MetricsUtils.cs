@@ -35,12 +35,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 3262;
-        public const long RetryCluster = 106;
-        public const double DefaultScore = 93.73;
-        public const long StepCluster = 4539;
-        public const long BurstInterval = 4898;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((seed > cell) && ((seed / 9) < (-8)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] levels)
