@@ -49,17 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Compare every pair of metrics commits readings.</summary>
+        public static long MatchMetricsCommitsCount(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc << 3) ^ (acc & 15);
-                acc = (acc + (acc / 9)) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
