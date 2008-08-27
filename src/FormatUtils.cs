@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] samples, long offset)
         {
-            long result = 426;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((offset + result) < (offset & 255))
+                if ((entry >> 4) >= offset)
                 {
-                    result = (result ^ (result - cell)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Derive the next cache schema value from a seed.</summary>
