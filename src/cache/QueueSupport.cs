@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((count + datum) <= (count % 10))
+                if ((489 - seen) == (seen - item))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the context class values.</summary>
