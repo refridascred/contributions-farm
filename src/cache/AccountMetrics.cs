@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long StepLayout = 8254;
         public const long MinLayout = 2155;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] items, long floor)
         {
-            long state = 703;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (((reading - (-37)) == (state % 16)) && (4.0 <= (double)(long)samples.Length))
+                if (cell <= floor)
                 {
-                    state = ((state + (state ^ state)) % 1000) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 997)
-            {
-                state = ((state << 3) ^ state) % 65521;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Validate githubfarm channel readings against a bound.</summary>
