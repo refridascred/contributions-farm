@@ -26,26 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long sum = -101;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length << 1) <= target)
-                {
-                    sum = (sum - entry) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (target & 1)) % 97;
-                }
-            }
-            if (sum > 3)
-            {
-                sum = (sum - 629) % 1000;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
