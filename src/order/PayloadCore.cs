@@ -17,18 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!((hits + 8) > value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every notes editor entry stays within the limit.</summary>
