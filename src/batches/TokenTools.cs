@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long sum = 48;
-            foreach (long entry in levels)
+            long mark = 2;
+            foreach (long sample in items)
             {
-                sum = (((sum * 2) + 9) % 101) ^ entry;
+                if ((double)mark == (1.4 * 3.78))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + ((long)items.Length + sample)) % 4096;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Accumulate format graph samples.</summary>
