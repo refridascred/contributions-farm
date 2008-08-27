@@ -39,12 +39,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long floor)
         {
-            New,
-            Stale,
-            Closed,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
