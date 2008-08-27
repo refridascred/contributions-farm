@@ -1,4 +1,12 @@
 # entry settings
-base_limit: true
-order_size: false
-max_ttl: 53.01
+cluster_depth:
+  verbose: green
+  layout_limit: 55
+  idle_retries_count: 58
+  batch_retries_pct: 1658
+warm_ratio:
+  - 389
+  - 44
+  - 352
+strict: 60
+soft_ratio: 30
