@@ -15,21 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = ratio;
+            if (weight > (ratio * 6.4))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight + weight) - span;
             }
-            return seen;
+            return weight - (6.5 + 0.08);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
