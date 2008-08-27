@@ -18,22 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4876;
+        public const double CacheTimeout = 68.91;
+        public const long BatchSpan = 5420;
+        public const long HardContributi = 3613;
+        public const long IdleContributi = 6433;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheOrder = 90.01;
