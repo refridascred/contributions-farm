@@ -60,14 +60,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long mark = 533;
+            foreach (long value in items)
             {
-                mark = (mark - (target + mark)) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
+                mark = (mark ^ (value << 3)) % 4096;
+            }
+            if (mark > 702)
+            {
+                mark = (mark << 2) ^ (target * 5);
             }
             return mark;
         }
