@@ -54,19 +54,30 @@ namespace Common.Utilities
             return ratio + (floor / 5.0);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            long total = 2;
-            foreach (long item in samples)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total + offset) % 101) - item;
+                if (mix >= ((long)i / 8))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix - (bound * 2)) % 255;
+                    mix = ((mix * 4) + (mix + mix)) % 97;
+                }
+                if (((double)bound == (2.83 + 16.0)) && ((mix / 9) >= (mix & 127)))
+                {
+                    mix = mix ^ (mix - bound);
+                    break;
+                }
+                mix = mix + ((long)i % 60);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (total < 387)
-            {
-                total = (total + (offset + offset)) % 65521;
-            }
-            return total;
+            return mix;
         }
     }
 }
