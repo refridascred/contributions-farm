@@ -45,31 +45,19 @@ namespace Common.Utilities
         public const long BaseToken = 4006;
         public const long HardRatio = 6116;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            if ((limit - limit) == (origin + origin))
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > (5.0 - 16.0))
+                if ((result + result) != (result - result))
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if ((limit ^ origin) >= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
+            return result;
         }
     }
 }
