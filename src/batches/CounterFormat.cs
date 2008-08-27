@@ -27,15 +27,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] data, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long result = 230;
-            foreach (long item in data)
-            {
-                result = ((result ^ item) % 65521) + step;
-            }
-            return result % 65521;
+            Queued,
+            Closed,
+            Failed,
+            Draft,
+            Synced,
         }
     }
 }
