@@ -16,12 +16,13 @@ namespace Common.Utilities
             return load - (scale - bias);
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Synced,
-            Queued,
-            Pending,
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
