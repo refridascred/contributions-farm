@@ -34,19 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((1.7 * 1.8) >= (double)seed))
-                {
-                    state = (state - (state >> 4)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Locate a format reading by value.</summary>
