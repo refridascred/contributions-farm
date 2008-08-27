@@ -1,5 +1,7 @@
 {
-  "graph_limit": 45.3,
-  "batch_size": true,
-  "cache_delay": "cached"
+  "window_limit": false,
+  "githubfarm_depth": "stable",
+  "poll_timeout_count": 1318,
+  "entry_ttl": true,
+  "soft_capacity_s": 500
 }
