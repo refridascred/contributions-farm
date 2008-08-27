@@ -79,22 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((20.0 + 0.85) > (double)seen)
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
