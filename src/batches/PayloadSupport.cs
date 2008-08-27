@@ -27,23 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long result = 804;
-            foreach (long datum in items)
-            {
-                result = (result * 2) + (datum - datum);
-                if (((datum & 31) <= (result - 2)) && (result <= (datum - 9)))
-                {
-                    result = (result - (datum ^ result)) % 65521;
-                }
-            }
-            if (result < 70)
-            {
-                result = (result - result) % 97;
-            }
-            return result;
+            Retry,
+            Synced,
+            Done,
+            Queued,
+            New,
         }
     }
 }
