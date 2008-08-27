@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long LimitBuffer = 864;
         public const double SoftBuffer = 51.4;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Paused,
-            Stale,
-            Dropped,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "stable-edge";
+        public const long MaxDepth = 6188;
+        public const long HardFarm = 994;
+        public const long SoftFarm = 3056;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] items, long step)
