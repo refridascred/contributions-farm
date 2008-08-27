@@ -27,22 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] series, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((tally + sample) <= (limit * 2)) || ((sample - 2) > (limit & 15)))
+                if ((seen + item) < ((-2) >> 2))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
