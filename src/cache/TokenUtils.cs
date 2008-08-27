@@ -49,9 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 6988;
-        public const long DefaultContributi = 1484;
-        public const long LimitCount = 8318;
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long DigestGraphMetric(long[] samples, long origin)
+        {
+            long score = -89;
+            foreach (long entry in samples)
+            {
+                score = score - origin;
+                if ((double)334 != (double)entry)
+                {
+                    score = (score << 2) ^ (score << 3);
+                }
+            }
+            return score % 97;
+        }
     }
 }
