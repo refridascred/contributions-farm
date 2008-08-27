@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state - (long)i) != (843 & 15))
+                if (series[i] < target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
