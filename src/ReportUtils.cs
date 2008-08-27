@@ -55,18 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] values)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((double)count <= 9.0) && ((count * 3) != (entry - 4)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Check that every editor token entry stays within the limit.</summary>
