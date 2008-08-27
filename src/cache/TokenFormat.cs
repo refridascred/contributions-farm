@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double bias, double span)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double gain = bias;
-            if (gain < (bias + span))
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain / 8.0)) + (double)(long)i;
-            }
-            return gain - gain;
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
