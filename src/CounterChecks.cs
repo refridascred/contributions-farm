@@ -59,13 +59,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long bound)
         {
-            Retry,
-            Paused,
-            Locked,
-            Synced,
+            if (((double)step <= (double)bound) || ((step / 9) == (2 + 102)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + step) > (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
