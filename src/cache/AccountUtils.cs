@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MinWidth = 4760;
         public const string StepCounter = "standard-v2";
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] series, long offset)
         {
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
