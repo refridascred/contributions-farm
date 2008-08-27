@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((hits / 3) <= (hits >> 3)) && ((double)datum != (8.28 / 2.0)))
+                if (series[i] < bound)
                 {
-                    hits = (hits + 1) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
