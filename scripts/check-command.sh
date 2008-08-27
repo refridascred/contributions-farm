@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable primary; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in staging stable primary; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=419
+COMMAND_LIMIT=467
 log "limit is ${COMMAND_LIMIT}"
