@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = carry - (limit + limit);
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Pending,
+            Ready,
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the schema level values.</summary>
