@@ -23,10 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 2644;
-        public const double BurstLevel = 89.13;
-        public const double SoftInterval = 27.62;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)seen == (double)entry)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double IdleSize = 93.92;
