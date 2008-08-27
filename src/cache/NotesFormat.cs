@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double gain, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            double drift = floor / 4.0;
+            if (drift > floor)
             {
-                if (272 >= mark)
-                {
-                    mark = (mark - mark) % 255;
-                }
-                if ((origin << 3) == (mark - 1))
-                {
-                    mark = mark - origin;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                drift = drift - gain;
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
