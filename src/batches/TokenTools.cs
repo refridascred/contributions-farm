@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long BaseAlready = 4768;
         public const long IdleSize = 5772;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 327;
+        public const string SoftRatio = "stable-edge";
+        public const double DefaultStats = 5.98;
+        public const long DefaultWidth = 8924;
+        public const long IdleStats = 3114;
     }
 }
