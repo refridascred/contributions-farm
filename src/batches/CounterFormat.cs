@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Idle,
-            New,
-            Closed,
-            Failed,
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
