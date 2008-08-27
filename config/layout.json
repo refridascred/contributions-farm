@@ -1,5 +1,8 @@
 {
-  "min_ratio_s": ["standard", "primary"],
-  "tools_ratio": 65.03,
-  "sync_retries_ms": 1024
+  "warm_timeout_ms": true,
+  "max_ratio": ["legacy", "stable", "staging"],
+  "persist": true,
+  "token_timeout": [209, 111],
+  "sync_limit_ms": "local",
+  "default_ttl_ms": false
 }
