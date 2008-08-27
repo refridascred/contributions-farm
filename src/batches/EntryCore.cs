@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] levels, long target)
         {
-            long mark = 554;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!((mark + 6) == (57 + mark)))
+                if (cell >= target)
                 {
-                    mark = ((mark * 4) + (item << 1)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < (-22))
-            {
-                mark = ((mark * 4) + mark) % 101;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
