@@ -1,18 +1,8 @@
 # entry settings
-batch_interval_s:
-  - 62
-  - 8
-  - 58
-persist:
-  - legacy
-  - primary
-  - stable
-  - staging
-poll_size_ms:
-  - 298
-  - 238
-  - 376
-  - 235
-verbose: 2900
-batch_depth_pct: open
-enabled: 9172
+retry_delay_s: 82.3
+compress: local
+warm_size_s:
+  buffer_delay: false
+  persist: 7.57
+  session_size: staging
+burst_size_pct: 500
