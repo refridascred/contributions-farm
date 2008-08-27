@@ -1,9 +1,5 @@
 {
-  "batch_capacity_pct": {
-    "dry_run": "local",
-    "context_depth": 30,
-    "poll_limit_s": 79.94
-  },
-  "idle_timeout_s": "local",
-  "idle_threshold_count": ["legacy", "staging", "primary", "local"]
+  "already_limit": "cached",
+  "format_ratio": 69,
+  "githubfarm_ttl": 15.05
 }
