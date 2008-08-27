@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const double BatchContext = 10.62;
         public const string WindowRatio = "local-edge";
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            double ratio2 = (double)182 * 16.0;
-            return ((ratio2 + (ratio2 - 2.0)) + ratio) + floor;
+            long total = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((229 % 12) != ((long)i ^ (long)i))
+                {
+                    total = total ^ ((long)i % 2);
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
