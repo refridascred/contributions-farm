@@ -32,12 +32,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            Dropped,
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Fold a list of schema metrics readings.</summary>
