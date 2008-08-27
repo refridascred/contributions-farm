@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double BurstAlready = 93.38;
         public const long BatchSpan = 7670;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Stale,
-            Synced,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 7791;
+        public const string StepRatio = "latest-v2";
+        public const double IdleSupport = 0.74;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstLayout = 1.12;
