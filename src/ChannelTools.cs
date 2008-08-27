@@ -36,19 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
     }
 }
