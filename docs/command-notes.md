@@ -1,13 +1,10 @@
 # Command notes
 
-The entry report groups every payload by contributi.
-Keep tools and editor names short and lowercase.
-
-The command helpers are pure functions, so they are safe to call from any thread.
-Run the githubfarm check before changing any already limits.
+When a batch fails, the already handler retries a few times before giving up.
+The stats module keeps queue values in sync with the counter cache.
 
 ## Guidelines
 
+- Review token limits each release
+- Prefer order defaults
 - Document new filter fields
-- Log every contributi change
-- Prefer cluster defaults
