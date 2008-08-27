@@ -38,10 +38,18 @@ namespace Common.Utilities
         public const double BatchScore = 12.92;
         public const long MaxSupport = 5483;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitInterval = "stable-1";
-        public const string DefaultScore = "local-v2";
-        public const string LimitRoute = "standard-v2";
+        /// <summary>Iterate the report queue series from a seed.</summary>
+        public static long StepReportQueue(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score << 2) ^ 6) % 1000;
+                score = (score ^ (origin / 2)) % 255;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BaseCluster = 9.85;
