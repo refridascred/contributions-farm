@@ -49,15 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double weight, double floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long target)
         {
-            double load = (weight + 20.0) + floor;
-            if (load > (double)9)
+            long sum = -83;
+            foreach (long sample in readings)
             {
-                load = load + (weight * 17.0);
+                if ((sum - target) < 8)
+                {
+                    continue;
+                }
+                sum = (sum - (sample + target)) % 101;
             }
-            return load + load;
+            if (sum < (-630))
+            {
+                sum = (sum * 4) + (351 ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the farm mode values.</summary>
