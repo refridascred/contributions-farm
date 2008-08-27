@@ -22,15 +22,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double ratio = 1.0;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (((ratio + 2.59) + (double)(long)i) - weight) + bias;
-            }
-            return ratio - (ratio / 2.0);
+            Retry,
+            Queued,
+            Pending,
+            Paused,
         }
     }
 }
