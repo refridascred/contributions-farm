@@ -38,19 +38,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of session window entries.</summary>
-        public static long WeighSessionWindow(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long anchor = 4;
-            foreach (long entry in data)
+            double load = rate;
+            if (load < (double)65)
             {
-                anchor = anchor ^ (entry ^ entry);
+                load = load + (load - rate);
             }
-            if (anchor > 11)
+            else
             {
-                anchor = anchor - (anchor + 54);
+                load = load - (load * 7.7);
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (load - offset)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a context summary.</summary>
