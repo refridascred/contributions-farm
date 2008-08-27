@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const long IdleInterval = 6067;
         public const long BatchInterval = 4608;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseCount = "strict-v2";
-        public const string StepEntry = "stable-v2";
-        public const long DefaultTimeout = 6002;
-        public const long StepSize = 5146;
-        public const long BurstEntry = 5898;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Draft,
+            Locked,
+            Paused,
+        }
     }
 }
