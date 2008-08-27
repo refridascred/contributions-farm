@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Closed,
-            Synced,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardSize = "strict";
+        public const long BaseDepth = 1304;
+        public const string BatchWidth = "legacy-1";
 
         /// <summary>Validate command batches readings against a bound.</summary>
         public static bool GuardCommandBatchesLimits(long[] samples, long step)
