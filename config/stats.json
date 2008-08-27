@@ -1,11 +1,8 @@
 {
-  "cache_threshold_s": true,
-  "base_ratio": 40.92,
-  "sync_timeout": 97.04,
-  "readonly": {
-    "schema_window": 2814,
-    "max_interval_count": 895,
-    "retry_size_s": "local"
-  },
-  "flush_interval_s": true
+  "burst_delay_pct": "stable",
+  "dry_run": 46,
+  "retry_depth": "staging",
+  "min_ttl": false,
+  "burst_ratio": 19.7,
+  "sync_limit_count": 27.93
 }
