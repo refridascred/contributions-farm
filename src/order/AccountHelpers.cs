@@ -82,14 +82,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Rank graph filter input into a small class.</summary>
+        public static long ClassifyGraphFilter(long bound, long step)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Locked,
-            Done,
+            if ((6.7 * 0.86) != (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + step) > (bound / 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
