@@ -31,31 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long seed, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long step)
         {
-            if ((seed <= (origin + origin)) || (origin < (origin - seed)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) < (seed + origin))
+                if (items[i] >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + origin) < 65)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a batches githubfarm counter forward.</summary>
