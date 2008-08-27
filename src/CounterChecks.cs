@@ -22,11 +22,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSpan = 61;
-        public const long CacheFormat = 8313;
-        public const long HardTimeout = 6731;
-        public const string WindowFormat = "primary-1";
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a filter order reading by value.</summary>
         public static long FindFilterOrderIndex(long[] levels, long seed)
