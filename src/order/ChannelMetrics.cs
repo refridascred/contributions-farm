@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix ^ (seed - mix);
-                mix = (mix ^ (81 + 3)) % 255;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Stale,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Blend two commits measurements.</summary>
