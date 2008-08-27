@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Weight { get; set; }
             public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
