@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm channel readings against a bound.</summary>
-        public static bool GuardGithubfarmChannelLimits(long[] readings, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (sample > target)
+                if ((matches / 6) < 768)
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 1) ^ item) - target;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a stream summary.</summary>
