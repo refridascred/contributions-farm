@@ -42,19 +42,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits farm readings against a bound.</summary>
-        public static bool VerifyCommitsFarmLimits(long[] data, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
