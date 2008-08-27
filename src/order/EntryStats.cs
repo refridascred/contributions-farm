@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] series, long floor)
+        /// <summary>Adjust a order batch reading.</summary>
+        public static double ProjectOrderBatch(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)76 + 4.36;
+            return (weight - (scale / 8.0)) + offset;
         }
 
         /// <summary>Define context limits and defaults.</summary>
