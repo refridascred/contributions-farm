@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of command filter readings.</summary>
+        public static long WeighCommandFilter(long[] data)
         {
-            New,
-            Synced,
-            Stale,
+            long total = 6;
+            foreach (long item in data)
+            {
+                total = ((total * 3) + total) % 97;
+                total = total + item;
+                if ((total % 10) > item)
+                {
+                    total = ((total << 3) ^ total) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the report state values.</summary>
