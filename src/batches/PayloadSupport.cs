@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context queue figure with a bias.</summary>
-        public static double ProjectContextQueue(double weight, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] readings, long seed)
         {
-            double weight2 = (floor + floor) * 8.1;
-            return weight2 - (floor - weight);
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
