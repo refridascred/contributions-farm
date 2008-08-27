@@ -14,15 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double weight, double span)
         {
-            long result = 39;
-            foreach (long cell in samples)
+            double scale = 7.9;
+            if (scale <= (scale * 7.9))
             {
-                result = (result * 2) + (cell / 7);
+                scale = (scale + weight) - span;
             }
-            return result;
+            return scale - (8.0 - scale);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
