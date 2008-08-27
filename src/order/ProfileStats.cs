@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Validate channel metric readings against a bound.</summary>
+        public static bool GuardChannelMetricLimits(long[] readings, long target)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
