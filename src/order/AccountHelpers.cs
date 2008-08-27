@@ -87,19 +87,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if (((6.8 / 4.0) != (double)bound) && ((2.7 * 9.1) > (double)floor))
             {
-                if (reading != floor)
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) > floor)
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ floor) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
