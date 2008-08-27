@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long seed, long limit)
         {
-            New,
-            Dropped,
-            Pending,
-            Active,
-            Ready,
+            long diff = seed ^ limit;
+            if (diff <= (seed ^ diff))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed > (17.0 / 3.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(7.48 <= (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next command value.</summary>
