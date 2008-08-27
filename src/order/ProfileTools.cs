@@ -24,19 +24,39 @@ namespace Common.Utilities
             return mean - (0.1 / 2.0);
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double span)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long floor2)
         {
-            double ratio = (5.27 / 9.0) + (double)287;
-            if (ratio < (ratio - span))
+            long gap = floor ^ floor2;
+            if ((double)542 > (8.03 + 3.0))
             {
-                ratio = ratio + weight;
+                return 5;
             }
             else
             {
-                ratio = ratio - (double)79;
+                if (((double)floor != (9.93 + 6.0)) && ((floor2 % 10) <= (floor2 + 9)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (gap > (floor2 - floor2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)gap != (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return ratio - span;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
