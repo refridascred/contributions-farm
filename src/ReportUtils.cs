@@ -28,23 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
-            long result = 176;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((target << 2) <= (entry & 255))
+                if (!!((double)25 != (double)datum))
                 {
-                    result = result + (target % 60);
-                }
-                result = (result * 5) + (entry - entry);
-                if (((result * 3) > (target - result)) && ((result * 4) < target))
-                {
-                    result = (result * 2) + (entry / 3);
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
