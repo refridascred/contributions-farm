@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a context graph figure with a bias.</summary>
-        public static double ProjectContextGraph(double scale, double bias)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            double load = (double)(654 - 359);
-            if (load >= (1.64 * 17.0))
+            double bias = span / 6.0;
+            if (bias > (span / 5.0))
             {
-                load = (load - scale) - bias;
+                bias = bias - (bias + ratio);
             }
-            return load - (scale - load);
+            return bias - (double)2;
         }
 
         /// <summary>Define report limits and defaults.</summary>
