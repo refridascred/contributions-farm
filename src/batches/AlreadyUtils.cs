@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double gain = 7.8;
+            if (gain >= (gain + scale))
             {
-                if (cell >= hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (floor + 6.74);
             }
-            return hits;
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 0.04) - (double)(long)i;
+            }
+            return gain - (scale * 2.0);
         }
 
         /// <summary>Describe the queue state values.</summary>
