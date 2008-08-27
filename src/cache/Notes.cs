@@ -73,14 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Stale,
-            Idle,
-            New,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 3860;
+        public const long LimitTools = 4048;
+        public const long StepTools = 2949;
+        public const string DefaultRatio = "local-edge";
+        public const long BaseDepth = 5231;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
