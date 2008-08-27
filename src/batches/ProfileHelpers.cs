@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            long state = 15;
-            foreach (long reading in readings)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((step << 2) != (reading << 2))
-                {
-                    state = (state * 4) + reading;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
             return state;
         }
