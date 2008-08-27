@@ -32,31 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command commits value against two limits.</summary>
-        public static long RankCommandCommits(long offset, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if ((offset << 2) < offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + offset) <= 11)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)offset > (8.0 * 7.38)) || ((double)target > 20.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
