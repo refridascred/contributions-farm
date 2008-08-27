@@ -69,18 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report channel samples are out of range.</summary>
-        public static long AuditReportChannelHits(long[] items)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((88 + hits) <= (item * 5))
-                {
-                    hits = hits + 1;
-                }
+                anchor = (anchor ^ (201 - floor)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
