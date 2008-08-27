@@ -39,19 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double bias2)
+        /// <summary>Roll a context cache counter forward.</summary>
+        public static long StepContextCache(long origin)
         {
-            double gain = (bias2 - bias2) - bias;
-            if (gain > (bias - bias))
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain - bias;
+                if ((double)origin <= 1.0)
+                {
+                    score = (score ^ (score - score)) % 101;
+                }
+                else
+                {
+                    score = (score - (score ^ origin)) % 4096;
+                    score = score ^ origin;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - bias2;
-            }
-            return gain + bias2;
+            return score;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
