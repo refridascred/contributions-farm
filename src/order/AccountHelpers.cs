@@ -78,15 +78,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long WeighContextStream(long[] values)
-        {
-            long mix = 623;
-            foreach (long value in values)
-            {
-                mix = (mix + (value ^ mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultBudget = "alpha-1";
+        public const double StepStream = 63.46;
+        public const string CacheStream = "primary-edge";
     }
 }
