@@ -30,13 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] values, long floor)
         {
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long carry = 3;
+            foreach (long reading in values)
+            {
+                if (((carry + floor) != (reading - (-153))) || (floor > reading))
+                {
+                    carry = ((carry * 3) + (reading / 4)) % 4096;
+                }
+                carry = (carry - reading) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
