@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] data, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long score = 770;
-            foreach (long sample in data)
-            {
-                score = (score + (offset % 3)) ^ sample;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
