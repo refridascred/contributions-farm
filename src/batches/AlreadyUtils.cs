@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] items, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long bound)
         {
-            long total = 7;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total << 2) ^ (target + total)) % 101) ^ item;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the queue state values.</summary>
