@@ -66,17 +66,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] values, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 62;
+            foreach (long datum in values)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                anchor = ((anchor - anchor) % 101) ^ datum;
+                anchor = anchor - (2 % 8);
+                if ((anchor * 2) >= (origin >> 1))
                 {
-                    return (long)i;
+                    anchor = (anchor + ((-8) / 7)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + origin) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
