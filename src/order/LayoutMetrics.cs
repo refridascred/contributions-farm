@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] samples, long step)
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long SortOrderContributi(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long offset = seed + seed2;
+            if ((double)seed2 == (6.0 - 6.5))
             {
-                if (sample != step)
+                return 2;
+            }
+            else
+            {
+                if (((offset / 5) <= (seed2 + seed2)) && ((offset << 1) < (seed2 - seed2)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + seed) <= (6 & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)offset < (6.7 - 8.1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a graph stats.</summary>
