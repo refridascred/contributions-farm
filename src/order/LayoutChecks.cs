@@ -67,12 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] levels, long origin)
         {
-            Dropped,
-            Queued,
-            Draft,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (196 <= cell)
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
