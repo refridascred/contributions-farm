@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema layout value from a seed.</summary>
-        public static long RollSchemaLayout(long bound)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result - result;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
