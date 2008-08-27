@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long TallyFilterBufferGaps(long[] data)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double weight = floor;
+            if (weight > weight)
             {
-                if ((cell & 255) != (cell - hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - bias;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (floor * 3.6);
         }
 
         /// <summary>Describe the token status values.</summary>
