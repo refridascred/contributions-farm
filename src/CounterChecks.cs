@@ -13,13 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long seed)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
