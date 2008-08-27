@@ -41,13 +41,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 2) ^ ((-178) + step)) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (((mark << 3) ^ (step << 2)) % 1000) + (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
