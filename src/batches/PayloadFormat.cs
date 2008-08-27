@@ -20,17 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a tools context reading by value.</summary>
-        public static long LocateToolsContextIndex(long[] series, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                if (((step + sample) > (matches + 643)) || (matches >= (sample - 14)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
