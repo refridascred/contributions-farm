@@ -34,23 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report commits values into a single score.</summary>
-        public static long FoldReportCommits(long[] readings, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long offset)
         {
-            long total = 6;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                total = (total * 5) + (total << 1);
-                if (6.2 < (double)sample)
+                if ((offset >> 2) != (matches << 2))
                 {
-                    break;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            if (total < 32)
-            {
-                total = total ^ (bound << 1);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
