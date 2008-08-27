@@ -38,11 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheLevel = 98.22;
-        public const long MinSize = 4625;
-        public const double CacheSpan = 67.19;
-        public const double MinScore = 33.45;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Synced,
+            Ready,
+            Locked,
+            New,
+            Active,
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long limit)
