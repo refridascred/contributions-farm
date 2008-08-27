@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of context command entries.</summary>
-        public static long TotalContextCommand(long[] items)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] readings, long limit)
         {
-            long acc = -8;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (0 & 255)) % 1000) - cell;
-                if (!((double)acc >= (5.31 * 4.4)))
+                if (readings[i] < limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 238)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
