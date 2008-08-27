@@ -59,19 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] samples, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
