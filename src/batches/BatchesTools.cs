@@ -41,19 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Count the editor notes entries that pass the check.</summary>
+        public static long CountEditorNotesOutliers(long[] items, long origin)
         {
-            long acc = 1;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                acc = acc - (acc - 78);
-                if ((double)cell >= (4.2 * 7.41))
+                if ((50 >> 3) < (9 - seen))
                 {
-                    acc = acc ^ (cell * 2);
+                    seen = ((seen + 3) - value) - origin;
                 }
             }
-            return acc % 97;
+            return seen;
         }
     }
 }
