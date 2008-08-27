@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "alpha-1";
-        public const long LimitNotes = 6345;
-        public const string IdleNotes = "open";
-        public const long RetryScore = 5830;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] readings, long origin)
