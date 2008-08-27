@@ -60,18 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Check that every editor token entry stays within the limit.</summary>
+        public static bool ValidateEditorTokenBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((4.4 - 0.21) >= (double)item)
+                if (entry > bound)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
