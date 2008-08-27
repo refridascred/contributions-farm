@@ -1,6 +1,18 @@
 {
-  "poll_size": ["strict", "staging"],
-  "cache_delay_count": "blue",
-  "hard_interval_pct": 30,
-  "base_retries": 8228
+  "warm_capacity": "local",
+  "counter_window": 100,
+  "layout_delay": 24,
+  "hard_threshold_count": {
+    "warm_size_count": 12.05,
+    "farm_threshold": "standard",
+    "default_threshold_count": {
+      "retry_size_s": ["edge", "eu-west", "fallback"],
+      "cache_depth": 3,
+      "persist": "fallback",
+      "hard_delay": "blue",
+      "min_ttl": "local"
+    },
+    "min_limit_s": "eu-west"
+  },
+  "warm_ttl_count": "green"
 }
