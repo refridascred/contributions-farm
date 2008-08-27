@@ -39,18 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((0 >= (entry + entry)) && (((entry / 4) <= 532) && ((double)matches > (2.0 - 4.1))))
+                if ((tally >> 3) < (datum << 3))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
