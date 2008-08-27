@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] readings, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long origin)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < limit)
+                if (!((mark << 1) != (origin << 1)))
                 {
-                    ready = false;
-                    break;
+                    mark = mark - (origin % 24);
                 }
+                long lane = (long)i;
+                if ((lane - origin) > (mark & 127))
+                {
+                    mark = ((mark << 2) ^ (9 + (long)i)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
