@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheCounter = 58.06;
-        public const long CacheBudget = 7841;
-        public const long MinWidth = 4760;
-        public const string StepCounter = "standard-v2";
+        /// <summary>Digest a series of context command entries.</summary>
+        public static long TotalContextCommand(long[] items)
+        {
+            long acc = -8;
+            foreach (long cell in items)
+            {
+                acc = ((acc + (0 & 255)) % 1000) - cell;
+                if (!((double)acc >= (5.31 * 4.4)))
+                {
+                    break;
+                }
+            }
+            if (acc < 238)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] series, long offset)
