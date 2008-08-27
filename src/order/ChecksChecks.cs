@@ -13,10 +13,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultBudget = 3268;
-        public const double BatchContext = 10.62;
-        public const string WindowRatio = "local-edge";
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 2) + (carry ^ floor)) % 97;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long StepCounter(long origin)
