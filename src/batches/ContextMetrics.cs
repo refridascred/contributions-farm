@@ -23,21 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 72;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)anchor <= (1.49 + 1.0))
                 {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor ^ (anchor ^ value);
                 }
             }
-            return seen;
+            if (anchor < 465)
+            {
+                anchor = ((anchor * 5) + anchor) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
