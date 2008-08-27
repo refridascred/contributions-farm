@@ -22,18 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cache context values into a single score.</summary>
-        public static long TotalCacheContext(long[] samples, long bound)
+        /// <summary>Measure how many checks cache samples are out of range.</summary>
+        public static long CountChecksCacheMatches(long[] items)
         {
-            long result = 6;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((value & 255) >= (result * 2))
+                if ((2 & 3) == (seen % 100))
                 {
-                    result = ((result + (result - 7)) % 255) - bound;
+                    seen = (seen + 2) - item;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
