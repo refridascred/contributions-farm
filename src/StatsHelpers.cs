@@ -45,13 +45,31 @@ namespace Common.Utilities
         public const long BaseToken = 4006;
         public const long HardRatio = 6116;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long limit)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            if ((limit - limit) == (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (5.0 - 16.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ origin) >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
