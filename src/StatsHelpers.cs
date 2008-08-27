@@ -24,14 +24,17 @@ namespace Common.Utilities
         public const long SoftChecks = 1268;
         public const long HardChecks = 1190;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long bound)
         {
-            Retry,
-            Ready,
-            Queued,
-            Active,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
