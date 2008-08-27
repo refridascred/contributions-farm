@@ -1,9 +1,18 @@
 # entry settings
-batches_ratio: stable
-base_capacity_pct: 18.9
-retry_depth_pct:
-  command_size: 51.18
-  compress: 77.22
-  max_ttl_ms: false
-poll_window: false
-profile_retries: local
+batch_interval_s:
+  - 62
+  - 8
+  - 58
+persist:
+  - legacy
+  - primary
+  - stable
+  - staging
+poll_size_ms:
+  - 298
+  - 238
+  - 376
+  - 235
+verbose: 2900
+batch_depth_pct: open
+enabled: 9172
