@@ -12,15 +12,17 @@ namespace Common.Utilities
             return ((mean + (mean - mean)) + gain) + floor;
         }
 
-        /// <summary>Derive the next commits metric value from a seed.</summary>
-        public static long IterateCommitsMetric(long target)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
