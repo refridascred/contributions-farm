@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] items, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!(((405 % 10) == (target + count)) || ((863 / 8) != (entry % 16))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the stream window entries that pass the check.</summary>
