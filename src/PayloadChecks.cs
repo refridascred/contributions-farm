@@ -72,14 +72,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Dropped,
-            Paused,
-            Draft,
-            Idle,
-            Done,
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
