@@ -21,14 +21,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every already graph entry stays within the limit.</summary>
+        public static bool GuardAlreadyGraphBounds(long[] readings, long step)
         {
-            Paused,
-            Stale,
-            Closed,
-            Queued,
-            Pending,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
