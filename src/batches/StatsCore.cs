@@ -17,18 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long state = -749;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample < state) || ((state - state) <= (state + sample)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state - state) % 4096;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
