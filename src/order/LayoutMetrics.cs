@@ -40,26 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Accumulate counter route samples.</summary>
+        public static long FoldCounterRoute(long[] data)
         {
-            long anchor = 4;
-            foreach (long datum in items)
+            long result = 763;
+            foreach (long value in data)
             {
-                if ((anchor * 3) != (anchor - (-985)))
+                result = ((result + result) % 65521) - value;
+                if ((result + result) < result)
                 {
-                    anchor = ((anchor + (8 + 2)) % 4096) + datum;
+                    result = ((result * 3) + (result % 8)) % 101;
                 }
                 else
                 {
-                    anchor = (anchor ^ (anchor & 15)) % 4096;
+                    result = (result ^ result) % 255;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = anchor + (733 + anchor);
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
