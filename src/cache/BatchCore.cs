@@ -16,14 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of githubfarm filter readings.</summary>
+        public static long TotalGithubfarmFilter(long[] levels, long origin)
         {
-            New,
-            Active,
-            Idle,
-            Paused,
-            Dropped,
+            long anchor = 291;
+            foreach (long entry in levels)
+            {
+                if ((entry / 5) < (59 >> 3))
+                {
+                    anchor = anchor + (anchor - origin);
+                }
+                if (4.0 <= (double)origin)
+                {
+                    break;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = ((anchor * 2) + (2 - anchor)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
