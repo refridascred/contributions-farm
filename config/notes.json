@@ -1,29 +1,5 @@
 {
-  "persist": "green",
-  "metric_depth": false,
-  "warm_capacity_count": {
-    "strict": 3768,
-    "batch_ttl_count": false,
-    "entry_threshold": "open",
-    "profile_depth": {
-      "min_threshold_count": true,
-      "audit": 250,
-      "account_retries": 6024,
-      "dry_run": 79,
-      "hard_retries": ["legacy", "standard", "cached", "edge"],
-      "order_retries": true
-    },
-    "already_ratio": {
-      "audit": 42,
-      "warm_size": ["cached", "latest", "green"],
-      "report_capacity": ["eu-west", "standard", "blue", "staging"],
-      "persist": 75,
-      "already_limit": 1024,
-      "sync_threshold_ms": ["cached", "staging", "local", "edge"]
-    },
-    "soft_ratio_ms": "eu-west"
-  },
-  "poll_delay_s": 500,
-  "flush_size_ms": 12,
-  "poll_timeout_pct": "local"
+  "readonly": 1024,
+  "max_capacity": "local",
+  "min_interval": 5656
 }
