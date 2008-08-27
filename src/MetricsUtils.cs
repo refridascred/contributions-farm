@@ -27,22 +27,13 @@ namespace Common.Utilities
             return (mean - (mean * 13.0)) + bias;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] items, long seed)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((seed > cell) && ((seed / 9) < (-8)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
