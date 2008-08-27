@@ -66,12 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            double ratio2 = 4.7;
+            if (ratio2 < ratio)
+            {
+                ratio2 = ratio2 + bias;
+            }
+            else
+            {
+                ratio2 = ratio2 - (bias - ratio);
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
