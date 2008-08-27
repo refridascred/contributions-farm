@@ -27,18 +27,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = 0;
+            foreach (long item in values)
             {
-                if ((seen + item) < ((-2) >> 2))
+                if (((mark ^ item) <= ((long)values.Length * 4)) && ((item % 10) > (item * 5)))
                 {
-                    seen = seen + 1;
+                    mark = (mark ^ (item - 26)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 4) + ((-879) / 2)) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
