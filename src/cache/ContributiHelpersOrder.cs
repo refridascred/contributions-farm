@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long StepSchemaQueue(long offset)
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result + (offset >> 3)) % 255;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
