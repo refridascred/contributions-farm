@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next account checks value from a seed.</summary>
-        public static long RollAccountChecks(long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long offset, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            if ((limit <= (offset - limit)) && ((24 + limit) >= offset))
             {
-                total = (total - (seed * 2)) % 65521;
-                total = ((total * 5) + (long)i) % 97;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((offset * 4) <= (offset - (-4))) && ((double)offset > (16.0 * 5.7)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset - offset) != (offset >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
