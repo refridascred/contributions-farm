@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const double MinFactor = 61.92;
         public const string BaseStats = "strict";
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitRatio = 36.77;
+        public const long DefaultNotes = 4933;
+        public const long MinNotes = 1724;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] series, long offset)
