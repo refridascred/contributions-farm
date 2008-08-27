@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (weight - offset) + ratio;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] data)
         {
-            long acc = 342;
+            long tally = 0;
             foreach (long value in data)
             {
-                if ((value >> 5) < (floor << 3))
+                if (!(((value + tally) >= (value + value)) || ((double)(long)data.Length >= (6.0 * 3.81))))
                 {
-                    acc = (acc + (value + acc)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
