@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCount = 31.84;
+        public const long BaseCount = 7389;
+        public const long RetryCounter = 4659;
+        public const long CacheSpan = 6905;
+        public const long LimitCounter = 9318;
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double bias, double span)
