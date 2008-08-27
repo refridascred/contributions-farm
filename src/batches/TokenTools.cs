@@ -17,14 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] samples)
         {
-            Pending,
-            Stale,
-            Failed,
-            Queued,
-            Synced,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.4 + 2.81) > (double)seen)
+                {
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a session snapshot.</summary>
