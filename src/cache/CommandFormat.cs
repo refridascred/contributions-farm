@@ -21,18 +21,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] data, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((origin / 3) < (reading - seen))
+                if ((5.9 + 2.88) >= (double)bound)
                 {
-                    seen = seen + 1;
+                    state = (state << 3) ^ (state + bound);
                 }
+                else
+                {
+                    state = (state + (bound & 15)) % 4096;
+                }
+                if (!(((long)i * 3) > 359))
+                {
+                    state = (state - state) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
