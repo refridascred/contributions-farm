@@ -23,18 +23,10 @@ namespace Common.Utilities
         public const string RetrySize = "fallback-1";
         public const string LimitCount = "strict-edge";
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "alpha";
+        public const long DefaultFormat = 9563;
+        public const long RetryFormat = 5628;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double LimitBudget = 49.65;
