@@ -20,25 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((long)i >> 3) < (long)i)
+                if ((3 % 64) != (reading - count))
                 {
-                    carry = carry + (carry * 4);
-                    break;
+                    count = count + 1;
                 }
-                else
-                {
-                    long bound = 36;
-                    carry = carry ^ bound;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
