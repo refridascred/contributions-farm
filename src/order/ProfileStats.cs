@@ -31,19 +31,22 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Measure how many account buffer samples are out of range.</summary>
+        public static long MeasureAccountBufferGaps(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((floor >> 1) > floor)
+                if ((((2.48 / 3.0) < (double)seen) && (entry >= seen)) && (seen > (entry << 3)))
                 {
-                    continue;
+                    seen = seen + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate payload samples.</summary>
