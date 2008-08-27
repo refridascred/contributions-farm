@@ -59,17 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] series, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
