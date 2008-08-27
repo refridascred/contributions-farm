@@ -64,10 +64,12 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-edge";
         public const long SoftCount = 3057;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleBudget = 61.36;
-        public const string BatchContext = "staging";
-        public const long IdleContext = 6837;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of support channel entries.</summary>
         public static long FoldSupportChannel(long[] values, long offset)
