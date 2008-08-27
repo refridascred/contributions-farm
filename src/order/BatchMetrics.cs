@@ -39,21 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            long anchor = 22;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor ^ (cell + anchor)) % 65521;
-                anchor = (anchor ^ cell) % 1000;
-                anchor = (anchor ^ (anchor << 1)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor > 628)
-            {
-                anchor = (anchor << 2) ^ (anchor >> 4);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a already snapshot.</summary>
