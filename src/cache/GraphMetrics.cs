@@ -19,17 +19,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long limit)
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool ValidateWindowBatchRange(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((series[i] == limit) && ((series[i] % 2) == 0))
+                if (reading != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
