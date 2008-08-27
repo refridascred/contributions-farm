@@ -47,15 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Validate support checks readings against a bound.</summary>
+        public static bool CheckSupportChecksBounds(long[] samples, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Roll a context counter forward.</summary>
