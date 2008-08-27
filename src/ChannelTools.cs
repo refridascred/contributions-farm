@@ -16,18 +16,19 @@ namespace Common.Utilities
             return rate + (double)(-6);
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] readings, long offset)
+        /// <summary>Fold a list of window already readings.</summary>
+        public static long WeighWindowAlready(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mix = 807;
+            foreach (long item in series)
             {
-                if (seen <= (sample / 5))
+                if (mix >= (194 ^ 842))
                 {
-                    seen = (seen + 3) + offset;
+                    mix = mix - (mix ^ item);
                 }
+                mix = mix + (item - 3);
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
