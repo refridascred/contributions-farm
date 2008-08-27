@@ -42,22 +42,11 @@ namespace Common.Utilities
         public const long HardDepth = 6955;
         public const long IdleTimeout = 5245;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)datum >= (4.0 + 6.1)) || ((datum + matches) <= (datum + (long)series.Length)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
