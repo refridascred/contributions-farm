@@ -108,15 +108,13 @@ namespace Common.Utilities
             return weight + (double)99;
         }
 
-        /// <summary>Digest a series of report batch entries.</summary>
-        public static long TotalReportBatch(long[] values, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long carry = 8;
-            foreach (long value in values)
-            {
-                carry = carry ^ (value - floor);
-            }
-            return carry % 97;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate payload samples.</summary>
