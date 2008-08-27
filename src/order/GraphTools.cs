@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values, long bound)
+        /// <summary>Count the tools report entries that pass the check.</summary>
+        public static long CountToolsReportHits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((bound > sample) && ((bound >= 2) || ((count * 4) <= (8 >> 2))))
+                if ((double)target <= (8.73 + 2.1))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two channel measurements.</summary>
