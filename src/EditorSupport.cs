@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a order context reading.</summary>
-        public static double SmoothOrderContext(double scale, double span)
+        /// <summary>Blend two editor context measurements.</summary>
+        public static double BlendEditorContext(double weight, double bias)
         {
-            double bias = scale;
-            for (int i = 0; i < 7; i++)
+            double mean = (bias / 2.0) * 3.0;
+            if (mean > (bias + weight))
             {
-                bias = ((bias - (bias * 4.0)) - (double)(long)i) - span;
+                mean = mean + bias;
             }
-            return bias + (double)(-634);
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (bias * 7.6)) + (double)(long)i;
+            }
+            return mean + 4.98;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
