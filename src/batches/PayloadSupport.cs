@@ -32,12 +32,18 @@ namespace Common.Utilities
         public const long IdleInterval = 6067;
         public const long BatchInterval = 4608;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the cluster notes entries that pass the check.</summary>
+        public static long TallyClusterNotesMatches(long[] data, long step)
         {
-            Draft,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((step % 5) != (step / 6))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
