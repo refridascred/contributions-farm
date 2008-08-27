@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] series, long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long mark = -90;
+            foreach (long item in data)
             {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark - mark) - item;
+                mark = (mark - step) % 255;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
