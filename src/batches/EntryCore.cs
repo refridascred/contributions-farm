@@ -54,11 +54,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardBudget = "legacy-v2";
-        public const long MaxMetrics = 4097;
-        public const long BaseScore = 9717;
-        public const double BurstMetrics = 33.29;
+        /// <summary>Adjust a checks metrics reading.</summary>
+        public static double ProjectChecksMetrics(double bias, double floor)
+        {
+            double ratio = bias;
+            if (ratio <= (7.0 / 9.0))
+            {
+                ratio = ratio - (ratio * 9.6);
+            }
+            else
+            {
+                ratio = ratio + (bias / 6.0);
+            }
+            return ratio + (floor / 5.0);
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] samples, long offset)
