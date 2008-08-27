@@ -1,8 +1,17 @@
 {
-  "verbose": "eu-west",
-  "max_window_s": "eu-west",
-  "min_window_s": false,
-  "retry_delay_count": 3,
-  "profile_depth": true,
-  "burst_capacity_pct": ["latest", "open", "eu-west", "eu-west"]
+  "channel_depth": {
+    "retry_capacity": 73.73,
+    "enabled": {
+      "persist": 500,
+      "warm_size": "legacy",
+      "cache_threshold_ms": 87,
+      "flush_retries_s": 30,
+      "token_size": false,
+      "burst_interval_s": 572
+    },
+    "default_size_count": false
+  },
+  "flush_window_count": 83.49,
+  "hard_ratio_pct": 1024,
+  "order_ttl": ["eu-west", "standard", "fallback", "stable"]
 }
