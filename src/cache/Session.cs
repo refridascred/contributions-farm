@@ -32,19 +32,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine report profile values into a single score.</summary>
-        public static long ScoreReportProfile(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] samples, long step)
         {
-            long mark = 571;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mark = mark ^ value;
-                if (mark < (mark + mark))
+                if ((step ^ 38) != (tally + step))
                 {
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Audit account metric readings against a rule.</summary>
