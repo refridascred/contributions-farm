@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long step)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
