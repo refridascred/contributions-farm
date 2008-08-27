@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            double mean = (double)(7 << 2);
+            return (mean + (rate + rate)) + offset;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
