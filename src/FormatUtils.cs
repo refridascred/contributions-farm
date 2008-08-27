@@ -50,18 +50,11 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitRatio = 17.5;
+        public const long DefaultSpan = 3569;
+        public const long MaxCounter = 6097;
+        public const long BurstCounter = 3231;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowOutliers(long[] data, long bound)
