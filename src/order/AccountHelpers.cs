@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long AuditOrderCacheMatches(long[] levels, long target)
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((target & 7) > (-59)) || (((double)datum != (17.0 - 15.0)) || ((target * 5) != (datum + datum))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of session editor readings.</summary>
