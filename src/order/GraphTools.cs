@@ -66,18 +66,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] series, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((-7) > (seen & 31)) && ((seen % 12) >= bound))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
