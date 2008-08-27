@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] readings, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
