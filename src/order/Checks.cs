@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load - (scale - bias);
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            double drift = offset;
-            if (drift <= (double)444)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                drift = (drift + (double)87) - bias;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (((state << 2) ^ state) % 4096) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + 1.6;
-            }
-            return drift - (4.0 - offset);
+            return state;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
