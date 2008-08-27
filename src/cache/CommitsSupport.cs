@@ -56,24 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            if (floor > (floor / 8))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor < (offset - floor)) && ((floor - floor) >= (8 / 8)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
