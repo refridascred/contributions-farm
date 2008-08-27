@@ -12,22 +12,12 @@ namespace Common.Utilities
             return (weight - offset) + ratio;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 911;
+        public const long DefaultTools = 1314;
+        public const long BatchTools = 9936;
+        public const long DefaultSize = 4994;
+        public const double MinSize = 24.32;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] series, long floor)
