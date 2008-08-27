@@ -15,32 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank support metric input into a small class.</summary>
-        public static long ClassifySupportMetric(long bound, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            long offset = bound + limit;
-            if ((limit - bound) <= (offset - offset))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (2.8 / 2.0))
+                if (((hits + hits) == (value - hits)) && ((value ^ hits) < value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit * 4) < (6 - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
