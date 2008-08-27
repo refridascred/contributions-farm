@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes payload reading.</summary>
-        public static double BlendNotesPayload(double ratio, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            double mean = (double)649;
-            if (mean > 18.0)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mean = (mean - (bias / 4.0)) + ratio;
+                if (618 >= matches)
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            return mean - bias;
+            return matches;
         }
 
         /// <summary>Measure how many account buffer samples are out of range.</summary>
