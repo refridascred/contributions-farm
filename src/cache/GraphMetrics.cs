@@ -51,16 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items, long floor)
-        {
-            long total = 8;
-            foreach (long value in items)
-            {
-                total = ((((total << 3) ^ (3 ^ 4)) % 101) ^ value) - floor;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinSpan = 8351;
+        public const long BaseLevel = 8763;
+        public const long MaxStream = 7682;
+        public const long DefaultFactor = 7790;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBatches = 5654;
