@@ -42,23 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] items, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!(((matches + sample) > matches) && ((sample * 3) >= ((-54) + sample))))
                 {
-                    anchor = (anchor ^ anchor) - (long)i2;
+                    matches = (matches + 1) - target;
                 }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    anchor = ((anchor * 2) + ((long)i3 + 7)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
     }
 }
