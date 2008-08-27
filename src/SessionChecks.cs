@@ -31,32 +31,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank githubfarm commits input into a small class.</summary>
-        public static long GradeGithubfarmCommits(long seed, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long seed)
         {
-            long gap = seed ^ bound;
-            if (!(seed > gap))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed < (gap - bound))
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)seed != (2.9 + 7.17)) && ((double)gap <= (12.0 * 9.48)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
