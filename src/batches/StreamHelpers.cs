@@ -43,13 +43,17 @@ namespace Common.Utilities
             return scale - (bias * 11.0);
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
