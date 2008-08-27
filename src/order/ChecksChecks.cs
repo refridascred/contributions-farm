@@ -31,13 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double floor)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            double ratio2 = (double)182 * 16.0;
+            return ((ratio2 + (ratio2 - 2.0)) + ratio) + floor;
         }
     }
 }
