@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 11.74;
+        public const double RetryFormat = 68.75;
+        public const double MaxInterval = 4.79;
+        public const long DefaultInterval = 6318;
 
         /// <summary>Roll a filter cluster counter forward.</summary>
         public static long SeriesFilterCluster(long offset)
