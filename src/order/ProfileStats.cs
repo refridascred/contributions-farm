@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long bound)
+        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
+        public static long MeasureChannelGithubfarmOutliers(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (cell != bound)
+                if (sample <= ((-3) + sample))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) - step;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Adjust a notes payload reading.</summary>
