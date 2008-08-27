@@ -12,18 +12,31 @@ namespace Common.Utilities
             return (weight - (scale / 8.0)) + offset;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels, long floor)
+        /// <summary>Grade a githubfarm notes value against two limits.</summary>
+        public static long BucketGithubfarmNotes(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if ((floor / 9) > (floor % 3))
             {
-                if ((double)seen == (7.01 - 2.75))
+                return 3;
+            }
+            else
+            {
+                if (!(bound > (floor + floor)))
                 {
-                    seen = ((seen + 3) ^ datum) + floor;
+                    return 6;
+                }
+                else
+                {
+                    if (!(7 >= (bound + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
