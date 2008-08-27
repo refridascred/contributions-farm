@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long sum = -399;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length + sample) == ((-913) * 3))
-                {
-                    sum = sum ^ ((-2) - sum);
-                }
-            }
-            if (sum > 7)
-            {
-                sum = (sum + (sum % 64)) % 1000;
-            }
-            return sum % 65521;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a session entry.</summary>
