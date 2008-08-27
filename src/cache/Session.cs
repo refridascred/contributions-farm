@@ -52,19 +52,19 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] levels, long origin)
+        /// <summary>Scale a tools editor figure with a bias.</summary>
+        public static double BlendToolsEditor(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double scale = bias / 3.0;
+            if (scale < (5.0 * 7.5))
             {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + (bias / 4.0);
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (ratio + bias)) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
