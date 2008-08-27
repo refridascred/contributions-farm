@@ -29,20 +29,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((offset - offset) >= score))
+                if (data[i] >= seed)
                 {
-                    score = score + offset;
-                    score = score - offset;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
