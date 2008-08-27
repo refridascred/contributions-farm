@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double scale, double span)
         {
-            double bias = span / 6.0;
-            if (bias > (span / 5.0))
+            double drift = (double)((-8) - 840);
+            if (drift <= span)
             {
-                bias = bias - (bias + ratio);
+                drift = (drift + 4.0) + scale;
             }
-            return bias - (double)2;
+            return drift - 16.0;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
