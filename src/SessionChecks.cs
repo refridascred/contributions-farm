@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
             public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
