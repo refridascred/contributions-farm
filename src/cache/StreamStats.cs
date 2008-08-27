@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] readings)
         {
-            double weight = (double)235 * 16.0;
-            if (weight > (offset / 5.0))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                weight = weight - (scale - 6.35);
+                if (item <= 3)
+                {
+                    tally = tally + 2;
+                }
             }
-            return weight + (double)945;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
