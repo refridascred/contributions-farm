@@ -40,13 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] items)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long anchor = 4;
+            foreach (long datum in items)
+            {
+                if ((anchor * 3) != (anchor - (-985)))
+                {
+                    anchor = ((anchor + (8 + 2)) % 4096) + datum;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor & 15)) % 4096;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = anchor + (733 + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
