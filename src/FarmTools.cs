@@ -16,10 +16,24 @@ namespace Common.Utilities
             return drift - 16.0;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowSpan = 5375;
-        public const long LimitProfile = 8195;
-        public const long RetryProfile = 9057;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values, long floor)
+        {
+            long state = 0;
+            foreach (long sample in values)
+            {
+                state = ((state - (floor + 5)) % 101) ^ sample;
+                if ((((long)values.Length + state) >= (floor - floor)) && ((floor % 3) <= state))
+                {
+                    break;
+                }
+            }
+            if (state > 611)
+            {
+                state = (state * 2) + (floor - 416);
+            }
+            return state;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchFactor = 60.48;
