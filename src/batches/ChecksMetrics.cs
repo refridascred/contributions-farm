@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string BatchRecord = "legacy-v2";
         public const long LimitInterval = 9187;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstDepth = 6292;
-        public const double HardFactor = 94.87;
-        public const string RetryRoute = "fallback-1";
-        public const double SoftRoute = 80.76;
-        public const string LimitRoute = "cached-v2";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series, long seed)
+        {
+            long mark = 134;
+            foreach (long sample in series)
+            {
+                if (mark <= (sample % 7))
+                {
+                    mark = (((mark << 2) ^ (sample % 24)) % 97) - seed;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Combine layout buffer values into a single score.</summary>
         public static long WeighLayoutBuffer(long[] series, long limit)
