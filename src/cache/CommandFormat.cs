@@ -27,24 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cluster counter input into a small class.</summary>
-        public static long BucketClusterCounter(long origin, long origin2)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if (((14.0 * 10.0) != (double)origin2) || ((70 ^ origin) <= (origin / 9)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 1) == (origin / 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
