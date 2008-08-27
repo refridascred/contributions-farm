@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] readings, long limit)
         {
-            long total = 106;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((total - sample) != (sample % 60))
+                if (sample < limit)
                 {
-                    total = (total * 5) + 9;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ready;
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
