@@ -1,18 +1,15 @@
 # entry settings
-queue_threshold:
-  support_threshold: 30
-  command_retries: local
-  enabled: 7066
-  persist:
-    persist: 2550
-    burst_interval_count: primary
-    soft_window_pct: false
-    metric_interval: 11.14
-    farm_size: 19
-base_threshold: primary
-farm_capacity: true
-compress: 63.85
-sync_size_pct: 100
-enabled:
-  - 154
-  - 11
+poll_window_s: 12.68
+batch_window:
+  persist: 47.43
+  batch_depth_ms:
+    idle_delay: fallback
+    verbose: 6851
+    soft_delay: 92
+  checks_depth:
+    poll_timeout_pct: fallback
+    audit: 96
+    compress: staging
+    flush_delay_pct: 78
+  idle_threshold: false
+soft_ratio_s: 38
