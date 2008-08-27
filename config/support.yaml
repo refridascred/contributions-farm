@@ -1,5 +1,18 @@
 # support settings
-hard_limit_ms: latest
-idle_retries: cached
-batch_timeout_ms: local
-enabled: 36
+batch_ttl: local
+warm_limit_pct: legacy
+dry_run:
+  - cached
+  - strict
+report_depth: 53
+session_limit:
+  readonly: 71.58
+  min_capacity_s: 69
+  batch_size:
+    hard_ttl_ms: open
+    strict: staging
+    burst_ratio_ms: primary
+    max_capacity_count: edge
+enabled:
+  - 121
+  - 67
