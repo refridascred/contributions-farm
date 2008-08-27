@@ -36,15 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
