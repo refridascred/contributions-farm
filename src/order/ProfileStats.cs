@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of report cache readings.</summary>
-        public static long TotalReportCache(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            long sum = 363;
-            foreach (long cell in levels)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                sum = ((sum << 3) ^ (sum << 2)) - cell;
-            }
-            if (sum > 695)
-            {
-                sum = (sum + (sum + sum)) % 255;
+                if ((1.0 * 2.23) >= (double)(long)i)
+                {
+                    sum = ((sum * 4) + (61 & 127)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + ((long)i + sum)) % 101;
+                    sum = (sum - (long)i) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
             return sum;
         }
