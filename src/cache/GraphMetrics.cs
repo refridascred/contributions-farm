@@ -51,9 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 9.85;
-        public const long RetryCluster = 4841;
-        public const long CacheScore = 4819;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
