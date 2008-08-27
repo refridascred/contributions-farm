@@ -44,16 +44,19 @@ namespace Common.Utilities
         public const string IdleProfile = "fallback-1";
         public const long LimitDepth = 4881;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long total = 3;
+            foreach (long sample in data)
             {
-                result = result + (752 + 145);
-                result = ((result * 3) + (long)i) % 97;
+                for (int i = 0; i < 3; i++)
+                {
+                    total = ((total + (sample ^ 51)) ^ (long)i) + floor;
+                }
+                total = (total - (total - total)) % 255;
             }
-            return result;
+            return total % 65521;
         }
     }
 }
