@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a already notes counter forward.</summary>
-        public static long IterateAlreadyNotes(long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)state <= (7.05 / 5.0))
-                {
-                    state = (state << 2) ^ ((long)i * 5);
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Roll a filter cluster counter forward.</summary>
