@@ -26,15 +26,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] readings, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long seed)
         {
-            long mark = 645;
-            foreach (long item in readings)
+            if (((seed - seed) >= (floor - floor)) && ((floor * 3) > (seed - seed)))
             {
-                mark = (mark - (offset + item)) % 1000;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((floor < (floor % 3)) && (floor > (floor << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
