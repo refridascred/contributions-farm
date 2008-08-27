@@ -1,11 +1,15 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-A profile that stays idle for too long is moved to the report list.
-The context module keeps format values in sync with the order cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often batch data is refreshed.
+
+Run the order check before changing any order limits.
+When a contributi fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate record input early
-- Log every githubfarm change
-- Keep payload values small
+- Document new commits fields
+- Keep schema values small
+- Review payload limits each release
+- Validate queue input early
