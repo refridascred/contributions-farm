@@ -53,22 +53,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!(matches < (sample / 2)) && ((sample ^ (long)values.Length) <= (985 >> 5)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
