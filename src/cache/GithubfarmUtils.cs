@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long target)
         {
-            Idle,
-            Active,
-            Synced,
+            long mix = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((long)i <= (mix * 2)))
+                {
+                    mix = mix ^ ((long)i + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi class values.</summary>
