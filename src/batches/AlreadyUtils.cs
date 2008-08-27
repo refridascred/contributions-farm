@@ -34,13 +34,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] values)
         {
-            Retry,
-            Queued,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)value < (19.0 * 2.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
