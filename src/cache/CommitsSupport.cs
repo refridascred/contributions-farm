@@ -68,18 +68,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings)
-        {
-            long mark = 67;
-            foreach (long value in readings)
-            {
-                if ((mark + 33) != (mark + value))
-                {
-                    mark = ((mark * 2) + (22 % 24)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 6842;
+        public const long BaseInterval = 5837;
+        public const string IdleCount = "strict-v2";
+        public const long LimitLevel = 6200;
     }
 }
