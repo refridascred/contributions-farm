@@ -29,17 +29,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 3510;
+        public const long CacheDepth = 6755;
+        public const long CacheNotes = 1437;
     }
 }
