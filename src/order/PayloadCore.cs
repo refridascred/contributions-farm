@@ -40,19 +40,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every notes editor entry stays within the limit.</summary>
-        public static bool GuardNotesEditorRange(long[] levels, long limit)
+        /// <summary>Fold a list of schema metrics readings.</summary>
+        public static long WeighSchemaMetrics(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long sum = -533;
+            foreach (long cell in readings)
             {
-                if (item != limit)
+                sum = ((sum * 2) + cell) % 65521;
+                sum = (sum + (sum - 0)) % 4096;
+                sum = ((sum << 2) ^ (sum % 24)) % 65521;
+                if ((sum % 7) > cell)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (sum < 202)
+            {
+                sum = ((sum << 2) ^ (sum - sum)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
