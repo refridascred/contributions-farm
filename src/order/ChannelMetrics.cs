@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Stale,
-            New,
-            Locked,
-            Done,
+            public double Region { get; set; }
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate metric samples.</summary>
