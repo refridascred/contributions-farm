@@ -33,16 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long sum = 147;
-            foreach (long entry in data)
+            long mark = -1;
+            foreach (long reading in data)
             {
-                sum = (sum + (sum + sum)) + bound;
-                sum = (sum + (entry * 5)) % 97;
+                mark = mark - (mark + mark);
+                if ((reading % 100) != (769 + mark))
+                {
+                    mark = (mark - (1 % 64)) % 65521;
+                }
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
