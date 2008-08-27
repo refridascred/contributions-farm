@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long bound)
-        {
-            if (!((bound % 2) <= (origin + 98)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound - 432) == (bound >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 77.02;
+        public const long RetryDepth = 156;
+        public const double BaseBatch = 17.22;
+        public const long SoftBudget = 2826;
+        public const long DefaultInterval = 7634;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] levels, long step)
