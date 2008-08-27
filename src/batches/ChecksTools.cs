@@ -33,20 +33,24 @@ namespace Common.Utilities
         public const long MaxScore = 9830;
         public const long BatchReport = 1981;
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long TotalReportCache(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long mix = 15;
-            foreach (long datum in items)
+            long score = -4;
+            foreach (long entry in items)
             {
-                mix = mix + (datum + mix);
-                mix = ((mix << 2) ^ (mix - mix)) % 101;
-                if ((datum & 7) < (datum ^ 19))
+                if (!((score ^ entry) <= score))
                 {
-                    mix = mix - (datum + mix);
+                    score = (score ^ (entry * 4)) % 97;
+                    score = (score * 5) + (-20);
                 }
+                score = ((score * 2) + (score + entry)) % 4096;
             }
-            return mix;
+            if (score < (-7))
+            {
+                score = (score * 4) + (long)items.Length;
+            }
+            return score % 1000;
         }
     }
 }
