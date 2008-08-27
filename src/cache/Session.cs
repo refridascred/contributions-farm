@@ -37,22 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] samples, long bound)
+        /// <summary>Grade a checks counter value against two limits.</summary>
+        public static long GradeChecksCounter(long limit, long floor)
         {
-            long score = 733;
-            foreach (long item in samples)
+            long slot = limit + floor;
+            if (((double)slot >= 13.0) || ((floor + slot) < floor))
             {
-                if ((double)bound < (3.0 / 4.0))
+                return 8;
+            }
+            else
+            {
+                if (slot >= (3 - floor))
                 {
-                    score = (((score << 2) ^ (44 / 8)) % 65521) ^ item;
+                    return 2;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (4 + bound)) % 1000;
+                    return 4;
                 }
             }
-            return score;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
