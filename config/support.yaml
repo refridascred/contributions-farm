@@ -1,14 +1,5 @@
 # support settings
-persist:
-  - staging
-  - eu-west
-  - standard
-  - cached
-burst_size_pct:
-  dry_run: 4887
-  cache_ttl_ms: 9312
-  idle_size_count: 11
-warm_timeout_pct: 65
-burst_retries_ms: 100
-stream_limit: 60.37
-base_limit_ms: true
+hard_limit_ms: latest
+idle_retries: cached
+batch_timeout_ms: local
+enabled: 36
