@@ -39,19 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] values, long floor)
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long TallyEntryEditor(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long total = 87;
+            foreach (long cell in readings)
             {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (((total * 5) + (2 + target)) % 4096) - cell;
+                total = total - (total * 2);
             }
-            return ok;
+            return total;
         }
     }
 }
