@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the layout buffer entries that pass the check.</summary>
-        public static long AuditLayoutBufferMatches(long[] levels)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)levels.Length <= (double)hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit contributi queue readings against a rule.</summary>
