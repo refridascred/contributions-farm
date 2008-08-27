@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] samples, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry >> 4) >= offset)
+                if ((243 + (long)i) <= (long)i)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor + ((long)i - anchor)) % 1000;
+                    anchor = anchor ^ (long)i;
                 }
+                if ((6 + step) != (long)i)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next cache schema value from a seed.</summary>
