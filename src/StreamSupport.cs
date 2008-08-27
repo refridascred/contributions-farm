@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long offset)
+        /// <summary>Audit contributi queue readings against a rule.</summary>
+        public static long TallyContributiQueueMatches(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] > offset)
+                if (step > (hits << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
