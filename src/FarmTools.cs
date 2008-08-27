@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "local-edge";
-        public const double BatchBudget = 48.4;
-        public const long RetryDepth = 5193;
+        /// <summary>Locate a support schema reading by value.</summary>
+        public static long SeekSupportSchemaIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many filter buffer samples are out of range.</summary>
         public static long TallyFilterBufferGaps(long[] data)
