@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long limit, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((double)limit == (3.62 - 4.86))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - limit) < (step * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Locked,
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
