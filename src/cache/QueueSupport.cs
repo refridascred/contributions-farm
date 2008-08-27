@@ -20,13 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Idle,
-            Pending,
-            Paused,
+            Queued,
+            Done,
             Active,
+            Pending,
             Synced,
         }
 
