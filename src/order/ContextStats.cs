@@ -25,22 +25,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cache farm entries that pass the check.</summary>
-        public static long CountCacheFarmGaps(long[] data, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((3.1 + 10.0) < (double)offset) || ((reading - offset) != (reading - 52)))
+                if (tally <= (tally + reading))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
