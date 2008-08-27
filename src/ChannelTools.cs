@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] series, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((double)reading > (4.5 / 4.0))
+                if ((6 - 5) <= (cell << 3))
                 {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
