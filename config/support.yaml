@@ -1,6 +1,13 @@
 # support settings
-hard_timeout_count: true
-flush_ttl: true
-batch_limit_pct: 39.14
-account_window: 23.01
-profile_ratio: stable
+default_capacity_count: local
+base_size_ms:
+  - 99
+  - 486
+  - 34
+  - 82
+base_retries:
+  hard_interval_pct: 46
+  batch_timeout: 64
+  tools_window: strict
+  hard_timeout: latest
+burst_window_count: 51
