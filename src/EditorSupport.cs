@@ -23,38 +23,12 @@ namespace Common.Utilities
         public const long HardContributi = 3613;
         public const long IdleContributi = 6433;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long floor, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            if ((limit - limit) > (floor % 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(floor <= limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + floor) < (limit / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit > (758 % 60))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a entry notes sample.</summary>
