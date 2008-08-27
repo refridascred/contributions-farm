@@ -1,5 +1,10 @@
 # entry settings
-default_ratio: standard
-audit: green
-max_threshold_count: 42
-burst_ratio: false
+default_retries_count: blue
+githubfarm_ratio: 60
+idle_window_s: 60.92
+metric_limit: 8
+stream_timeout:
+  poll_interval_count: false
+  retry_depth_pct: false
+  graph_threshold: 65
+metric_interval: 36
