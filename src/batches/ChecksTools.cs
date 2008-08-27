@@ -28,10 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "fallback";
-        public const long MaxScore = 9830;
-        public const long BatchReport = 1981;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 9807;
+        public const long StepDepth = 6016;
+        public const long MinSchema = 4810;
+        public const double IdleBudget = 43.42;
+        public const long CacheSchema = 2782;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] items)
