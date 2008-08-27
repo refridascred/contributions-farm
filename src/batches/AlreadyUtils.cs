@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format order reading by value.</summary>
-        public static long LocateFormatOrderIndex(long[] values, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (values[i] > origin)
+                if (value >= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the tools status values.</summary>
