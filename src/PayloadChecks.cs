@@ -79,18 +79,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long TallyBatchChecksHits(long[] values, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((target << 1) > count) && (((161 - (-62)) != (73 - datum)) && ((target / 4) <= target)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
