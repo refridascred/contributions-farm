@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double rate, double span)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double rate2 = 9.43 / 3.0;
-            if (rate2 >= span)
-            {
-                rate2 = (rate2 - rate2) - rate;
-            }
-            return rate2 - (rate2 * 5.39);
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Accumulate layout schema samples.</summary>
