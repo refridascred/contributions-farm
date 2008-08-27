@@ -29,17 +29,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a order tools reading by value.</summary>
-        public static long SeekOrderToolsIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "stable";
+        public const long DefaultTimeout = 8572;
+        public const long BaseFactor = 4221;
+        public const string StepContext = "open";
     }
 }
