@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] samples, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long mix = 6;
+            foreach (long sample in series)
             {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix - sample) % 4096) - offset;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Blend two contributi commits measurements.</summary>
