@@ -1,15 +1,15 @@
 # Command notes
 
-When a contributi fails, the queue handler retries a few times before giving up.
-Keep stream and command names short and lowercase.
-Each checks is validated before it reaches the format queue.
+Use filter settings to tune how often buffer data is refreshed.
+A queue that stays idle for too long is moved to the metrics list.
+Defaults for report live in the config folder and can be overridden per environment.
 
-The tools module keeps filter values in sync with the context cache.
-The payload report groups every queue by farm.
+Keep metric and cluster names short and lowercase.
+The channel report groups every stream by graph.
+Keep buffer and farm names short and lowercase.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Log every farm change
-- Keep farm values small
-- Validate cache input early
+- Document new notes fields
+- Prefer notes defaults
+- Log every stats change
