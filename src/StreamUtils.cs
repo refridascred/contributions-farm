@@ -51,10 +51,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleRatio = 6265;
-        public const string BaseChecks = "standard";
-        public const long RetryWidth = 6897;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long SeriesBatch(long target)
