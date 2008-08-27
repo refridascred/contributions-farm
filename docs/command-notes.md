@@ -1,15 +1,12 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-The route module keeps entry values in sync with the cache cache.
-
-When a route fails, the editor handler retries a few times before giving up.
-Each already is validated before it reaches the profile queue.
-Run the commits check before changing any tools limits.
+When a token fails, the tools handler retries a few times before giving up.
+When a context fails, the stats handler retries a few times before giving up.
+The account module keeps counter values in sync with the tools cache.
 
 ## Guidelines
 
-- Validate batch input early
-- Log every format change
-- Keep commits values small
-- Prefer buffer defaults
+- Log every counter change
+- Prefer session defaults
+- Review stream limits each release
+- Keep window values small
