@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 362;
+            foreach (long cell in series)
             {
-                if (data[i] >= origin)
+                if ((mix - cell) <= (mix + mix))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ cell) % 101;
                 }
             }
-            return -1;
+            if (mix < 573)
+            {
+                mix = (mix << 2) ^ (mix + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
