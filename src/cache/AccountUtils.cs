@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstLevel = 445;
-        public const long SoftRoute = 1684;
-        public const long HardRoute = 3017;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long floor)
