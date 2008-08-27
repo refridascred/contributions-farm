@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (item <= 3)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
