@@ -17,18 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] series, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] items)
         {
-            long anchor = 729;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((step * 4) != (entry >> 2)) && ((double)step <= (3.7 / 9.0)))
+                if (9.8 >= (double)value)
                 {
-                    anchor = ((anchor << 2) ^ (17 % 16)) % 97;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the editor notes entries that pass the check.</summary>
