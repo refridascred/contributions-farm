@@ -19,20 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long total = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((double)total < (0.6 / 6.0))
                 {
-                    anchor = ((anchor << 2) ^ (long)i2) % 255;
+                    total = (total * 3) + entry;
                 }
-                anchor = ((anchor << 3) ^ (anchor % 10)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                else
+                {
+                    total = total ^ entry;
+                }
+                if ((limit & 15) > (entry - (long)data.Length))
+                {
+                    total = total ^ (entry - entry);
+                }
+                else
+                {
+                    total = (total + (limit + entry)) % 255;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
