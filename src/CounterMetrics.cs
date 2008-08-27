@@ -39,22 +39,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data)
-        {
-            long mix = 911;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = (((mix * 5) + (mix % 97)) % 4096) + (long)i;
-                }
-                if ((mix % 3) <= value)
-                {
-                    mix = mix + ((long)data.Length - value);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchDepth = 6089;
+        public const long SoftReport = 8799;
+        public const string LimitTimeout = "staging-v2";
     }
 }
