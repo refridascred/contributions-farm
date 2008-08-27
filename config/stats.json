@@ -1,6 +1,16 @@
 {
-  "dry_run": "latest",
-  "channel_window": "strict",
-  "route_ratio": "eu-west",
-  "hard_retries_ms": 500
+  "flush_ratio_ms": {
+    "sync_ttl": 34.2,
+    "audit": 69,
+    "compress": 59,
+    "sync_ratio": "stable",
+    "context_timeout": {
+      "editor_timeout": "fallback",
+      "batch_size": 30,
+      "contributi_retries": true
+    },
+    "idle_ttl": "standard"
+  },
+  "min_retries": 100,
+  "stats_ratio": "local"
 }
