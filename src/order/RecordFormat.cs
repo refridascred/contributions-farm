@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate farm record readings against a bound.</summary>
-        public static bool CheckFarmRecordRange(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleLevel = 668;
+        public const long HardFilter = 1788;
+        public const double DefaultCount = 9.51;
+        public const long SoftFilter = 8072;
+        public const double StepInterval = 11.1;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long origin)
