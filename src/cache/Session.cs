@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Fold a list of tools session readings.</summary>
+        public static long TallyToolsSession(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long state = 70;
+            foreach (long sample in items)
             {
-                mark = (mark * 2) + (mark + (long)i);
-                mark = ((mark * 2) + (long)i) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((double)state >= 0.97)
                 {
-                    mark = ((mark - ((long)i ^ mark)) % 1000) ^ (long)i2;
+                    state = ((state + (state << 3)) % 65521) + sample;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                else
+                {
+                    state = ((state << 3) ^ 381) % 97;
+                }
             }
-            return mark;
+            return state % 65521;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
