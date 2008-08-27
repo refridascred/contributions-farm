@@ -1,5 +1,10 @@
 {
-  "already_limit": "cached",
-  "format_ratio": 69,
-  "githubfarm_ttl": 15.05
+  "support_ttl": 8046,
+  "filter_depth": {
+    "warm_window": 19,
+    "readonly": [352, 157, 176, 492],
+    "batch_capacity_pct": 100
+  },
+  "schema_interval": true,
+  "sync_ratio_pct": 7019
 }
