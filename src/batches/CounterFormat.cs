@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] values)
+        /// <summary>Look up the position of a schema channel sample.</summary>
+        public static long SeekSchemaChannelIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)values.Length << 3) < item)
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
