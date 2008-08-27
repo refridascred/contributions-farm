@@ -14,11 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepScore = 13.87;
-        public const long BaseFactor = 1070;
-        public const string LimitBuffer = "legacy-edge";
-        public const long SoftBuffer = 4079;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 6988;
