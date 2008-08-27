@@ -28,18 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cluster schema readings.</summary>
-        public static long TallyClusterSchema(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] data, long origin)
         {
-            long carry = 85;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((5.33 / 5.0) == (double)carry) || (128 < carry))
+                if (reading >= origin)
                 {
-                    carry = ((carry - (carry + carry)) % 4096) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
