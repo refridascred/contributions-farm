@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long step)
         {
-            long mix = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long value in values)
             {
-                mix = (mix - (7 - mix)) ^ datum;
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < 95)
-            {
-                mix = mix ^ (mix - floor);
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Accumulate stream route samples.</summary>
