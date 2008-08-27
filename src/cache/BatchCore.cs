@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine token cluster values into a single score.</summary>
+        public static long FoldTokenCluster(long[] items)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long carry = 4;
+            foreach (long sample in items)
+            {
+                carry = ((carry * 5) + (sample & 3)) % 1000;
+                if ((sample <= (571 + carry)) && (1 < carry))
+                {
+                    carry = carry + (sample % 10);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a session counter forward.</summary>
