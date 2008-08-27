@@ -50,22 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel metrics values into a single score.</summary>
-        public static long ScoreChannelMetrics(long[] samples)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long carry = 6;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)samples.Length + entry) != (carry + 885))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry - (carry + entry);
-                }
-                else
-                {
-                    carry = (carry ^ (carry ^ carry)) % 101;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
