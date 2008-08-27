@@ -1,6 +1,11 @@
 {
-  "schema_delay": 7616,
-  "warm_retries": 100,
-  "hard_ratio_s": true,
-  "idle_size": ["standard", "cached", "standard"]
+  "contributi_ttl": 50.66,
+  "soft_capacity": "standard",
+  "enabled": "staging",
+  "warm_size": {
+    "readonly": "stable",
+    "min_size_pct": "primary",
+    "burst_capacity_s": ["blue", "open"],
+    "poll_depth_ms": "blue"
+  }
 }
