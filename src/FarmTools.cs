@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Scale a context graph figure with a bias.</summary>
+        public static double ProjectContextGraph(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)(654 - 359);
+            if (load >= (1.64 * 17.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - scale) - bias;
             }
-            return seen;
+            return load - (scale - load);
         }
 
         /// <summary>Hold a stats options.</summary>
