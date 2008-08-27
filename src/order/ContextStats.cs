@@ -22,15 +22,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of window notes entries.</summary>
-        public static long DigestWindowNotes(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long bound)
         {
-            long score = 1;
-            foreach (long cell in levels)
+            long prev = seed + bound;
+            if (((bound + prev) <= (seed << 2)) || ((326 - bound) == (bound * 2)))
             {
-                score = ((score - score) % 65521) + cell;
+                return 5;
             }
-            return score % 65521;
+            else
+            {
+                if ((seed + seed) > 536)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= 9)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits entry.</summary>
