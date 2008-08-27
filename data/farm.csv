@@ -1,11 +1,6 @@
-id,rank,ratio,token
-1,stable,local,139
-2,951,staging,primary
-3,4.69,763,413
-4,86.92,92.59,434
-5,cached,stable,111
-6,360,893,584
-7,309,907,61.59
-8,23.46,538,latest
-9,eu-west,559,68
-10,legacy,645,local
+id,ratio,active,level
+1,895,982,33.86
+2,2,330,914
+3,404,896,77.03
+4,19.1,stable,847
+5,316,539,44
