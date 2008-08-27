@@ -57,18 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mix = 898;
+            foreach (long cell in levels)
             {
-                if ((entry - bound) >= bound)
+                if ((double)origin < (2.0 - 4.0))
                 {
-                    matches = matches + 2;
+                    mix = mix - (cell + mix);
+                }
+                else
+                {
+                    mix = (mix ^ (494 & 1)) % 4096;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
