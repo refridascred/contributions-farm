@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in stable fallback latest; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=358
+log "limit is ${CHANNEL_LIMIT}"
