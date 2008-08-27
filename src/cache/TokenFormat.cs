@@ -21,15 +21,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] items, long step)
         {
-            long total = 163;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                total = ((((total * 3) + (total * 5)) % 4096) - item) - offset;
+                if ((797 - (long)items.Length) > (step / 5))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
