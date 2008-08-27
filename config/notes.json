@@ -1,8 +1,5 @@
 {
-  "window_depth": 100,
-  "route_delay": "local",
-  "entry_capacity": "eu-west",
-  "idle_limit_pct": false,
-  "poll_retries": 12,
-  "session_timeout": "open"
+  "persist": 5.93,
+  "commits_window": true,
+  "strict": 60
 }
