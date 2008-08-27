@@ -1,11 +1,15 @@
 # Command notes
 
-The contributi report groups every filter by counter.
-The route module keeps command values in sync with the metrics cache.
-A stream that stays idle for too long is moved to the graph list.
+The tools module keeps queue values in sync with the payload cache.
+The stats report groups every batch by counter.
+
+The cluster report groups every buffer by buffer.
+Use support settings to tune how often stats data is refreshed.
+Each format is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new payload fields
-- Log every buffer change
+- Log every counter change
+- Review graph limits each release
+- Document new buffer fields
+- Prefer notes defaults
