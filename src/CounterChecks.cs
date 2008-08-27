@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const long DefaultStats = 6762;
         public const long MaxBudget = 6232;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 4)
+                    if ((series[i] ^ series[j]) != 13)
                     {
                         tally = tally + 1;
                     }
