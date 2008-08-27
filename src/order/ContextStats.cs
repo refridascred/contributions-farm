@@ -15,25 +15,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long limit, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            long offset = limit - bound;
-            if (offset <= (6 >> 1))
+            long carry = -68;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 * 15.0) < (double)bound)
+                carry = (carry ^ (cell << 2)) % 65521;
+                carry = ((carry * 2) + ((-6) + carry)) % 1000;
+                if ((5.66 * 8.75) <= (double)cell)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            if (carry > 8)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
