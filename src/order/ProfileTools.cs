@@ -47,19 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (((mark << 3) ^ origin) % 101) - (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                acc = (acc << 3) ^ (acc & 15);
+                acc = (acc + (acc / 9)) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
