@@ -63,19 +63,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items)
         {
-            double mean = (double)583;
-            if (mean < (12.0 * 2.45))
+            long tally = 0;
+            foreach (long item in items)
             {
-                mean = mean + (double)538;
+                if ((tally ^ tally) <= item)
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (weight + offset)) - (double)(long)i;
-            }
-            return mean + mean;
+            return tally;
         }
     }
 }
