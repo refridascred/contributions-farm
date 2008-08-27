@@ -14,11 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
+            long total = 546;
+            foreach (long sample in readings)
+            {
+                total = (total + (total ^ sample)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a contributi stats.</summary>
