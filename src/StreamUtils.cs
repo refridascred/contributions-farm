@@ -50,11 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleFactor = 3931;
-        public const double MaxEditor = 22.06;
-        public const string WindowRatio = "staging-v2";
-        public const string DefaultScore = "fallback-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 6284;
+        public const long BurstScore = 9341;
+        public const long MaxSpan = 1994;
+        public const long WindowLevel = 3777;
+        public const long IdleEntry = 9932;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] readings, long floor)
