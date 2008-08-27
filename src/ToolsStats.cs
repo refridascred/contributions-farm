@@ -33,21 +33,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 551;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading >> 3) < origin)
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 4) + (38 + mix)) % 101;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
