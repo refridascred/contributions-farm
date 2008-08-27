@@ -60,18 +60,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count / 3) < (item << 2))
+                if (series[i] == floor)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
