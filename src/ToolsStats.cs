@@ -48,11 +48,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long target)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long mark = target;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark - (target + mark)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
