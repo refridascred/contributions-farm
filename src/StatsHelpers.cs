@@ -34,22 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            long sum = 246;
-            foreach (long datum in levels)
+            double drift = (double)(297 + 447);
+            if (drift <= (double)840)
             {
-                if (!((0.93 * 4.55) >= (double)sum))
-                {
-                    sum = (sum << 3) ^ (sum >> 3);
-                }
-                if (datum > (sum + datum))
-                {
-                    break;
-                }
+                drift = (drift + bias) - bias2;
             }
-            return sum % 65521;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - (2.69 + 7.0);
         }
     }
 }
