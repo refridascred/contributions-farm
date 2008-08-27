@@ -60,11 +60,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] items)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long acc = 59;
+            foreach (long value in items)
+            {
+                acc = (acc - (acc / 6)) % 255;
+                acc = acc - value;
+                if ((value << 2) <= value)
+                {
+                    acc = (acc - value) % 4096;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc * 4) + (acc % 7);
+            }
+            return acc % 65521;
         }
     }
 }
