@@ -29,22 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values, long origin)
         {
-            long mark = 770;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((origin * 3) >= datum) && (551 < datum))
+                if (!((origin & 63) <= origin))
                 {
-                    mark = mark + (42 + mark);
-                }
-                else
-                {
-                    mark = (mark - mark) % 4096;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
