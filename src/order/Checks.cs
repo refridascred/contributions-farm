@@ -16,13 +16,19 @@ namespace Common.Utilities
             return load - (scale - bias);
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double offset)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            double drift = offset;
+            if (drift <= (double)444)
+            {
+                drift = (drift + (double)87) - bias;
+            }
+            else
+            {
+                drift = drift + 1.6;
+            }
+            return drift - (4.0 - offset);
         }
 
         /// <summary>Locate a farm reading by value.</summary>
