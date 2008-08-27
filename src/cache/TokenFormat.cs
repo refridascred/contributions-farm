@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 80.94;
+        public const double HardWidth = 9.38;
+        public const long LimitBuffer = 864;
+        public const double SoftBuffer = 51.4;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
