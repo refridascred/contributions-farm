@@ -68,10 +68,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 7790;
-        public const long WindowBudget = 6623;
-        public const long RetryBudget = 6468;
-        public const long CacheCommits = 3682;
+        /// <summary>Derive the next order report value from a seed.</summary>
+        public static long DeriveOrderReport(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix ^ (step >> 4)) ^ (long)i2;
+                }
+                mix = mix ^ 282;
+                if ((step + mix) >= ((long)i / 9))
+                {
+                    mix = mix + (step + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
