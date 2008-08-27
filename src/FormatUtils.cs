@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine buffer stats values into a single score.</summary>
-        public static long TallyBufferStats(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] series)
         {
-            long mark = 69;
-            foreach (long value in readings)
+            long state = -90;
+            foreach (long sample in series)
             {
-                if (((8.0 / 4.0) < (double)mark) || ((mark ^ mark) == (mark % 64)))
+                if ((2.75 + 4.94) == (double)sample)
                 {
-                    mark = mark + (value / 8);
+                    state = (state << 2) ^ (state ^ sample);
                 }
                 else
                 {
-                    mark = (mark + (414 + 645)) % 4096;
+                    state = ((state * 2) + (sample / 2)) % 4096;
                 }
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Roll a format counter forward.</summary>
