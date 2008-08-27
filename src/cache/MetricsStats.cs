@@ -26,11 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "stable";
-        public const string DefaultToken = "staging-v2";
-        public const long WindowRatio = 8175;
-        public const long RetryToken = 7663;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels)
+        {
+            long acc = 967;
+            foreach (long entry in levels)
+            {
+                if (((entry * 2) <= (entry - acc)) && ((acc - acc) >= (entry * 4)))
+                {
+                    acc = acc - (acc - 797);
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitLevel = 875;
