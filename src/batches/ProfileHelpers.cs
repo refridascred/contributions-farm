@@ -38,18 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster stats samples are out of range.</summary>
-        public static long TallyClusterStatsHits(long[] items, long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((origin % 64) > (item - origin))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the order level values.</summary>
