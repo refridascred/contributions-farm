@@ -88,27 +88,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] values)
         {
-            long sum = 283;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((reading > (sum / 6)) && (reading < (reading + offset)))
+                if ((7.49 - 8.6) <= (double)reading)
                 {
-                    sum = sum + (70 / 3);
-                    sum = sum - (sum >> 1);
-                }
-                if (offset < reading)
-                {
-                    sum = (sum << 3) ^ (offset & 7);
-                }
-                else
-                {
-                    sum = (sum + (offset ^ sum)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return sum % 1000;
+            return hits;
         }
     }
 }
