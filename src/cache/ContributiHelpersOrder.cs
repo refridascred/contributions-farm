@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long target, long target2)
         {
-            long acc = 983;
-            foreach (long value in readings)
+            long delta = target ^ target2;
+            if (((delta / 5) != (target2 % 24)) || ((7.9 / 8.0) > (double)delta))
             {
-                if (51 > (27 ^ acc))
+                return 6;
+            }
+            else
+            {
+                if ((target + target2) <= 54)
                 {
-                    acc = ((acc << 3) ^ (offset % 7)) - value;
+                    return 5;
                 }
                 else
                 {
-                    acc = (acc + (offset + offset)) % 101;
+                    if ((87 - target2) >= delta)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(target2 >= (target - delta)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc < 104)
-            {
-                acc = acc ^ (offset ^ 21);
-            }
-            return acc;
         }
 
         /// <summary>Classify a window batches pair into a bucket.</summary>
