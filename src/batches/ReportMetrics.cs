@@ -29,19 +29,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 9275;
+        public const double MaxGithubfarm = 28.42;
+        public const long BurstScore = 8975;
     }
 }
