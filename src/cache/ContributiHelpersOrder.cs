@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 6255;
-        public const string MaxBudget = "standard-1";
-        public const long WindowCount = 8143;
-        public const long IdleLevel = 8990;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long seed)
