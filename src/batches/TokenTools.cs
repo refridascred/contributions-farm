@@ -16,22 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] samples)
+        /// <summary>Accumulate format graph samples.</summary>
+        public static long TallyFormatGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = 72;
+            foreach (long item in items)
             {
-                if ((entry % 100) > seen)
+                if ((875 - carry) <= item)
                 {
-                    seen = seen + 3;
+                    carry = (carry + 59) % 65521;
                 }
-                else
+                if ((double)carry == (double)item)
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Hold a session snapshot.</summary>
