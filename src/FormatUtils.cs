@@ -31,19 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a schema support reading.</summary>
-        public static double ProjectSchemaSupport(double ratio, double offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            double scale = ratio;
-            if (scale > (offset * 11.0))
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                scale = scale + (double)75;
+                carry = (carry + 155) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale - (double)484;
-            }
-            return scale + offset;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
