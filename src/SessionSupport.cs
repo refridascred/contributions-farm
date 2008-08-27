@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate report counter readings against a bound.</summary>
-        public static bool CheckReportCounterLimits(long[] data, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long total = 0;
+            foreach (long value in series)
             {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total + (total >> 3)) % 101) ^ value;
             }
-            return flag;
+            if (total < 347)
+            {
+                total = (total - bound) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
