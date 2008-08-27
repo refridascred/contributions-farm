@@ -56,26 +56,11 @@ namespace Common.Utilities
         public const long MaxCounter = 6097;
         public const long BurstCounter = 3231;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long limit, long step)
-        {
-            long next = limit + step;
-            if (((0.78 - 10.0) < (double)limit) || (45 < (8 ^ limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)next < (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchSize = "alpha-v2";
+        public const long SoftStats = 3118;
+        public const long WindowInterval = 3617;
+        public const long DefaultStats = 2690;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
