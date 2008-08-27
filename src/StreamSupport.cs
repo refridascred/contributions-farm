@@ -32,10 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheCount = 1.65;
-        public const long LimitFormat = 9621;
-        public const long MaxSpan = 4763;
-        public const string RetryFormat = "alpha-v2";
+        /// <summary>Grade a command commits value against two limits.</summary>
+        public static long RankCommandCommits(long offset, long target)
+        {
+            if ((offset << 2) < offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + offset) <= 11)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)offset > (8.0 * 7.38)) || ((double)target > 20.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
