@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Project the next githubfarm cache value.</summary>
+        public static double AdjustGithubfarmCache(double scale, double offset)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            double mean = scale;
+            return mean + offset;
         }
 
         /// <summary>Accumulate commits samples.</summary>
