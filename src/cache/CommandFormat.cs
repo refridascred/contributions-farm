@@ -61,20 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Check that every cache commits entry stays within the limit.</summary>
+        public static bool ValidateCacheCommitsRange(long[] readings, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((anchor >> 1) >= offset)
+                if (reading >= bound)
                 {
-                    anchor = (anchor + ((-330) - anchor)) % 101;
-                    anchor = (anchor << 3) ^ offset;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return stale;
         }
     }
 }
