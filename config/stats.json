@@ -1,6 +1,5 @@
 {
-  "verbose": "eu-west",
-  "idle_window_ms": 5467,
-  "default_ttl_pct": 250,
-  "route_ttl": ["latest", "legacy", "edge"]
+  "buffer_ratio": 3577,
+  "strict": 8275,
+  "cache_depth": "stable"
 }
