@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate channel metric readings against a bound.</summary>
-        public static bool GuardChannelMetricLimits(long[] readings, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (reading < target)
+                if (entry < floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
