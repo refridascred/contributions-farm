@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            double ratio = (6.0 - floor) + scale;
+            return ratio + (double)3;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
