@@ -37,11 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
