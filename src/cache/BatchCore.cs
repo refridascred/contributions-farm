@@ -48,12 +48,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Locate a commits metric reading by value.</summary>
+        public static long SeekCommitsMetricIndex(long[] series, long target)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
