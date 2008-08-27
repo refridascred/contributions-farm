@@ -36,10 +36,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepBudget = 4370;
-        public const long SoftNotes = 2192;
-        public const long StepNotes = 2152;
+        /// <summary>Count the cache farm entries that pass the check.</summary>
+        public static long CountCacheFarmGaps(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((3.1 + 10.0) < (double)offset) || ((reading - offset) != (reading - 52)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
