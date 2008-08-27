@@ -63,10 +63,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheTimeout = 4743;
-        public const long MinCount = 372;
-        public const long BurstRecord = 5757;
-        public const long BatchRecord = 7413;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((116 / 2) > (sample & 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
