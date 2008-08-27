@@ -16,10 +16,27 @@ namespace Common.Utilities
             return ratio - (double)29;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftWidth = 5604;
-        public const double DefaultSize = 82.32;
-        public const long LimitMetric = 2157;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] samples, long limit)
+        {
+            long state = 429;
+            foreach (long entry in samples)
+            {
+                if (limit >= (state + limit))
+                {
+                    state = (state - (entry / 8)) % 101;
+                }
+                if (((entry / 6) <= (state & 1)) || ((10.0 - 6.8) >= (double)limit))
+                {
+                    state = state - (state + entry);
+                }
+                else
+                {
+                    state = (state * 3) + entry;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleFactor = 3931;
