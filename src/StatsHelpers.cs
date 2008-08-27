@@ -46,21 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin + seed) <= seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed <= 13.0)
                 {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a channel entry.</summary>
