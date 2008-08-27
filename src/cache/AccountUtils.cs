@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxSpan = 32.57;
-        public const long RetryBudget = 5801;
-        public const long BaseCount = 3562;
-        public const long RetryTimeout = 8627;
-        public const string BatchCount = "alpha-1";
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Pending,
+            Active,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] series, long offset)
