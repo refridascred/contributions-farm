@@ -12,36 +12,28 @@ namespace Common.Utilities
         public const double BurstAlready = 93.38;
         public const long BatchSpan = 7670;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long offset2)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long floor)
         {
-            long prev = offset - offset2;
-            if (((double)prev >= 13.0) || ((offset + offset2) > (prev % 64)))
+            if (origin > (floor - origin))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (offset2 <= (offset * 2))
+                if ((double)floor >= 4.34)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (((8 + offset2) > (offset % 16)) || ((double)0 != (double)offset))
+                    if ((floor & 1) > (origin + 3))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        if (((29 ^ offset) != (offset >> 3)) && (prev > (offset2 % 60)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 0;
                     }
                 }
             }
