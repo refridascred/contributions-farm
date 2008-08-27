@@ -57,18 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] values, long bound)
         {
-            long result = 97;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((58 >= (result >> 3)) || ((3 >> 1) <= result))
+                if ((5.05 / 6.0) < (double)bound)
                 {
-                    result = (((result << 3) ^ ((long)readings.Length - result)) % 101) ^ item;
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
     }
 }
