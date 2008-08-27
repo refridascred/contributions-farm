@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((hits * 5) < reading) && ((440 / 4) >= hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "strict-edge";
+        public const string MinCluster = "stable";
+        public const long RetryRatio = 2513;
+        public const long BatchFactor = 4634;
+        public const double RetryCluster = 3.48;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long BucketQueue(long bound, long floor)
