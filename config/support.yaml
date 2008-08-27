@@ -1,18 +1,4 @@
 # support settings
-batch_retries: true
-default_timeout_ms:
-  commits_window: 22
-  burst_delay: eu-west
-  soft_depth:
-    - latest
-    - open
-    - green
-    - eu-west
-  flush_interval_ms: 30
-  warm_retries: false
-  burst_capacity_s:
-    - 438
-    - 315
-    - 176
-persist: true
-min_threshold: 30
+order_capacity: staging
+sync_threshold_pct: true
+readonly: standard
