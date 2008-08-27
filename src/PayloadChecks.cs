@@ -46,23 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)count >= (8.9 - 8.0))
-                {
-                    count = ((count + 1) ^ value) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxRatio = 1435;
+        public const string MinLevel = "stable-1";
+        public const string HardSchema = "standard";
+        public const long BatchWidth = 8846;
+        public const long CacheBudget = 6124;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
