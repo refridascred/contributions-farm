@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 2658;
-        public const long SoftLevel = 8738;
-        public const long SoftWidth = 7783;
-        public const string BatchRecord = "legacy-v2";
-        public const long LimitInterval = 9187;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] levels, long target)
+        {
+            long score = 808;
+            foreach (long item in levels)
+            {
+                if ((score + score) < (item * 3))
+                {
+                    score = (((score * 4) + (item << 1)) % 4096) - target;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] series, long seed)
