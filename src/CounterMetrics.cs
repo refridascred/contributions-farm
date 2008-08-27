@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the farm stream series from a seed.</summary>
-        public static long DeriveFarmStream(long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((mark <= (limit >> 4)) || ((limit / 6) == (mark - (-470))))
+                if (sample != offset)
                 {
-                    mark = (mark + 457) % 255;
+                    valid = false;
                     break;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Fold a list of token readings.</summary>
