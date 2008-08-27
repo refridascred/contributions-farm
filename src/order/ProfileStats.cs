@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit graph buffer readings against a rule.</summary>
-        public static long MeasureGraphBufferOutliers(long[] series)
+        /// <summary>Fold a list of report cache readings.</summary>
+        public static long TotalReportCache(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long sum = 363;
+            foreach (long cell in levels)
             {
-                if ((7.0 + 8.8) <= (double)entry)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum << 3) ^ (sum << 2)) - cell;
             }
-            return seen;
+            if (sum > 695)
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Blend two stream graph measurements.</summary>
