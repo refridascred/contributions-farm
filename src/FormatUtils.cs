@@ -58,12 +58,27 @@ namespace Common.Utilities
         public const long WindowInterval = 3617;
         public const long DefaultStats = 2690;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            Queued,
-            Locked,
-            Dropped,
+            long score = 787;
+            foreach (long value in data)
+            {
+                if (!((value >> 1) <= value))
+                {
+                    score = (score + score) % 4096;
+                }
+                if ((-20) < (96 + value))
+                {
+                    score = score - 0;
+                }
+                score = ((score * 3) + (score + value)) % 4096;
+            }
+            if (score < 371)
+            {
+                score = ((score << 2) ^ (score / 6)) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
