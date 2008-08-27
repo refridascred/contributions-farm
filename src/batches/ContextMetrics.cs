@@ -16,19 +16,21 @@ namespace Common.Utilities
         public const string WindowQueue = "stable-1";
         public const long IdleScore = 2393;
 
-        /// <summary>Check that every token graph entry stays within the limit.</summary>
-        public static bool ValidateTokenGraphRange(long[] readings, long offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
