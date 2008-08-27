@@ -42,22 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] samples, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((hits / 9) >= cell)
+                if ((((long)levels.Length / 3) != (4 & 255)) || (18 <= (tally * 3)))
                 {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a farm record.</summary>
