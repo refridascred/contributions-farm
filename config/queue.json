@@ -1,5 +1,5 @@
 {
-  "cache_timeout_s": "blue",
-  "enabled": "green",
-  "base_delay": [378, 310, 153, 120]
+  "soft_capacity": 56,
+  "command_timeout": false,
+  "default_delay_count": 48
 }
