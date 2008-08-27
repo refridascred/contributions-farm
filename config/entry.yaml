@@ -1,4 +1,24 @@
 # entry settings
-hard_limit_s: 60
-max_timeout_count: 100
-batch_limit_pct: 9850
+retry_ttl:
+  - 67
+  - 114
+  - 401
+filter_threshold: false
+audit: 7008
+warm_ttl: true
+hard_timeout_s:
+  idle_ratio: 1521
+  max_ratio: latest
+  burst_limit: staging
+  base_window_s: open
+  flush_capacity:
+    persist:
+      - 353
+      - 19
+    min_timeout_ms: stable
+    support_ttl: 35.64
+  compress: false
+buffer_limit:
+  flush_ratio: 64
+  hard_ratio: true
+  batch_size_count: 27.12
