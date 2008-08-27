@@ -59,19 +59,17 @@ namespace Common.Utilities
         public const long HardTimeout = 6731;
         public const string WindowFormat = "primary-1";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Locate a filter order reading by value.</summary>
+        public static long FindFilterOrderIndex(long[] levels, long seed)
         {
-            long sum = -710;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum << 3)) % 4096) - entry;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 22)
-            {
-                sum = (sum - (sum + (long)readings.Length)) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
