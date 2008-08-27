@@ -13,24 +13,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of buffer stream readings.</summary>
-        public static long FoldBufferStream(long[] samples, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long state = 7;
-            foreach (long entry in samples)
-            {
-                state = (state * 2) + (entry / 8);
-                state = ((state * 2) + (floor ^ floor)) % 101;
-                if (entry > (-528))
-                {
-                    state = (state + (-3)) % 97;
-                }
-                else
-                {
-                    state = ((state << 2) ^ floor) % 1000;
-                }
-            }
-            return state;
+            Draft,
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
