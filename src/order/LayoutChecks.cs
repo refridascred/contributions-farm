@@ -67,25 +67,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long gap = limit - origin;
-            if (origin < (origin ^ origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit % 64) != (gap & 31)) && ((origin >> 3) == (gap ^ 80)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Active,
+            Paused,
+            Locked,
         }
     }
 }
