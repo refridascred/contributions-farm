@@ -37,10 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 101;
-        public const long StepChannel = 2456;
-        public const long LimitFactor = 7645;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result ^ (limit - 8)) % 1000;
+                result = (result - (limit & 127)) % 1000;
+                if (!(limit > (result ^ result)))
+                {
+                    result = (result - (long)i) % 101;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] values, long floor)
