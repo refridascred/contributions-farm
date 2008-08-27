@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 2;
+            foreach (long value in data)
+            {
+                sum = (sum + (69 + bound)) - value;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch status values.</summary>
