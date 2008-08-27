@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "stable-edge";
-        public const long SoftFormat = 4813;
-        public const long MaxFormat = 9682;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long ScoreStats(long[] data, long limit)
