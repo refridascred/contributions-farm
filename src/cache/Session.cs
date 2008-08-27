@@ -37,25 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks counter value against two limits.</summary>
-        public static long GradeChecksCounter(long limit, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double ratio, double offset)
         {
-            long slot = limit + floor;
-            if (((double)slot >= 13.0) || ((floor + slot) < floor))
+            double load = (double)(395 - (-529));
+            if (load <= (2.8 / 4.0))
             {
-                return 8;
+                load = (load + load) + ratio;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (slot >= (3 - floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = (load + (offset - 3.1)) + (double)(long)i;
             }
+            return load - offset;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
