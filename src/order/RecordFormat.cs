@@ -46,11 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((long)items.Length >= (count % 97))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
