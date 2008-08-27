@@ -38,19 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the already schema series from a seed.</summary>
-        public static long DeriveAlreadySchema(long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long state = 199;
+            foreach (long sample in data)
             {
-                if (!((origin - (-7)) <= (origin - anchor)))
+                if (step > (sample * 5))
                 {
-                    anchor = (anchor ^ (origin / 3)) % 101;
+                    state = (state - (step + sample)) % 65521;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return state % 65521;
         }
     }
 }
