@@ -29,9 +29,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 2919;
-        public const double BaseGithubfarm = 65.35;
-        public const long LimitGithubfarm = 2144;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+        }
     }
 }
