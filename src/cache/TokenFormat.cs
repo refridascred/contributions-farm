@@ -28,14 +28,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            Locked,
-            New,
-            Idle,
-            Closed,
-            Retry,
+            double ratio = 1.0;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (((ratio + 2.59) + (double)(long)i) - weight) + bias;
+            }
+            return ratio - (ratio / 2.0);
         }
     }
 }
