@@ -40,18 +40,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster notes entries that pass the check.</summary>
-        public static long TallyClusterNotesMatches(long[] data, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long result = 804;
+            foreach (long datum in items)
             {
-                if ((step % 5) != (step / 6))
+                result = (result * 2) + (datum - datum);
+                if (((datum & 31) <= (result - 2)) && (result <= (datum - 9)))
                 {
-                    count = (count + 3) ^ entry;
+                    result = (result - (datum ^ result)) % 65521;
                 }
             }
-            return count;
+            if (result < 70)
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
     }
 }
