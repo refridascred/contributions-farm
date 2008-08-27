@@ -41,22 +41,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item <= 15.0))
-                {
-                    anchor = (anchor << 3) ^ (item << 1);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-            }
-            return anchor;
+            Failed,
+            Ready,
+            Draft,
+            Active,
+            Retry,
         }
     }
 }
