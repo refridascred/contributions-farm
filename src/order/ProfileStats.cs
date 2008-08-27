@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long FoldProfileOrder(long[] levels, long floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long total = 2;
-            foreach (long entry in levels)
-            {
-                if ((double)floor <= (2.65 + 9.0))
-                {
-                    total = (total << 3) ^ (floor / 9);
-                }
-                else
-                {
-                    total = (total - entry) % 255;
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
