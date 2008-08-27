@@ -19,20 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of command filter readings.</summary>
-        public static long WeighCommandFilter(long[] data)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] readings, long limit)
         {
-            long total = 6;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                total = ((total * 3) + total) % 97;
-                total = total + item;
-                if ((total % 10) > item)
+                if (datum < limit)
                 {
-                    total = ((total << 3) ^ total) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the report state values.</summary>
