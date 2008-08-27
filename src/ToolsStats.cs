@@ -66,18 +66,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((116 / 2) > (sample & 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
