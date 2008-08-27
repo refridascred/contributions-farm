@@ -1,10 +1,6 @@
-id,region,score,rank
-1,790,0.73,6.45
-2,174,local,65.79
-3,eu-west,blue,cached
-4,48.38,54,573
-5,50.8,380,837
-6,legacy,7.4,557
-7,434,eu-west,legacy
-8,30.47,7.05,strict
-9,87,edge,500
+id,level,active,label
+1,50.79,10.52,29.81
+2,993,84.37,63
+3,141,401,staging
+4,85.79,442,725
+5,53.61,245,54.81
