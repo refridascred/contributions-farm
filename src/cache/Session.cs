@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const string WindowScore = "alpha-1";
         public const long DefaultRoute = 448;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] values, long limit)
+        /// <summary>Combine report profile values into a single score.</summary>
+        public static long ScoreReportProfile(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 571;
+            foreach (long value in levels)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
+                mark = mark ^ value;
+                if (mark < (mark + mark))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
