@@ -16,23 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate counter route samples.</summary>
-        public static long FoldCounterRoute(long[] data)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long result = 763;
-            foreach (long value in data)
-            {
-                result = ((result + result) % 65521) - value;
-                if ((result + result) < result)
-                {
-                    result = ((result * 3) + (result % 8)) % 101;
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
-                }
-            }
-            return result;
+            Paused,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
