@@ -23,14 +23,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data, long floor)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Queued,
-            Idle,
+            long total = 42;
+            foreach (long datum in data)
+            {
+                if ((total + total) < (20 + datum))
+                {
+                    total = (total * 5) + (12 - total);
+                }
+            }
+            if (total < 5)
+            {
+                total = (total * 4) + (floor / 6);
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
