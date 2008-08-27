@@ -26,22 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!((tally ^ tally) <= (sample - (long)values.Length)))
+                if (((double)count < 6.1) || ((double)item < 0.85))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a account counter forward.</summary>
