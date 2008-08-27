@@ -43,11 +43,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Fold a list of report metric readings.</summary>
+        public static long WeighReportMetric(long[] items, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long carry = 711;
+            foreach (long sample in items)
+            {
+                carry = ((carry - (sample + 1)) % 65521) + offset;
+            }
+            return carry;
         }
 
         /// <summary>Describe the buffer class values.</summary>
