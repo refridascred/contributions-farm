@@ -15,12 +15,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 75.42;
-        public const long DefaultLevel = 6076;
-        public const long RetryReport = 7715;
-        public const long RetryBudget = 6996;
-        public const long CacheScore = 3349;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long limit, long bound)
+        {
+            long offset = limit - bound;
+            if (offset <= (6 >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6.0 * 15.0) < (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] samples)
