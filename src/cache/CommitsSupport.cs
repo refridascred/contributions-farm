@@ -13,13 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Validate command batches readings against a bound.</summary>
+        public static bool GuardCommandBatchesLimits(long[] samples, long step)
         {
-            Done,
-            Ready,
-            Pending,
-            New,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a command snapshot.</summary>
