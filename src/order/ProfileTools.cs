@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseBudget = 38.19;
-        public const long BurstFarm = 4370;
-        public const long IdleFarm = 6941;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next schema layout value from a seed.</summary>
         public static long RollSchemaLayout(long bound)
