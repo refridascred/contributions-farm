@@ -43,15 +43,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of report metric readings.</summary>
-        public static long WeighReportMetric(long[] items, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] series)
         {
-            long carry = 711;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry - (sample + 1)) % 65521) + offset;
+                if ((datum % 64) <= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the buffer class values.</summary>
