@@ -1,10 +1,15 @@
 {
-  "max_threshold": [71, 158],
-  "retry_interval_pct": {
-    "compress": "primary",
-    "dry_run": "green",
-    "idle_ttl_pct": ["staging", "standard", "standard", "staging"],
-    "session_retries": 3422
+  "soft_retries_ms": 99,
+  "dry_run": ["local", "stable", "stable"],
+  "support_limit": {
+    "sync_interval": 56,
+    "graph_interval": {
+      "strict": 79,
+      "poll_size": 3.56,
+      "soft_depth_s": 26.82,
+      "idle_timeout_ms": 1430
+    },
+    "max_limit": "legacy"
   },
-  "idle_interval_s": 36.97
+  "format_window": 30
 }
