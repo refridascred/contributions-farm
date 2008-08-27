@@ -51,17 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster support entry that matches the target.</summary>
-        public static long LookupClusterSupportIndex(long[] levels, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 5;
+            foreach (long reading in samples)
             {
-                if (levels[i] < origin)
+                long step = (reading + (long)samples.Length) - (seed + carry);
+                if (((double)reading == (3.82 + 1.0)) && ((double)step < (double)4))
                 {
-                    return (long)i;
+                    step = (step * 3) + (seed + reading);
+                    step = ((step << 3) ^ (carry / 2)) % 4096;
                 }
+                carry = carry + (4 >> 2);
             }
-            return -1;
+            return carry;
         }
     }
 }
