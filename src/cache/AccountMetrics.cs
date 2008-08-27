@@ -25,18 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] items, long target)
+        /// <summary>Match up route filter samples.</summary>
+        public static long PairRouteFilterCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches / 6) < 768)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 1) ^ item) - target;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
