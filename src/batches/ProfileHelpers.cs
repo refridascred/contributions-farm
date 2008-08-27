@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "open-1";
-        public const long SoftDepth = 5887;
-        public const string RetryScore = "standard-1";
-        public const double WindowPayload = 96.38;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Failed,
+            Closed,
+            Ready,
+            Queued,
+            Active,
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
