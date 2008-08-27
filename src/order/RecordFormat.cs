@@ -23,27 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] values, long seed)
         {
-            long anchor = 158;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 3; i++)
+                if (sample <= seed)
                 {
-                    anchor = ((anchor - (-8)) % 255) + (long)i;
-                }
-                anchor = anchor ^ (1 + sample);
-                if ((double)sample < 9.1)
-                {
-                    anchor = (anchor + (offset + offset)) % 65521;
-                }
-                if (((anchor - offset) <= (sample * 2)) && ((11.0 + 3.4) == (double)anchor))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
