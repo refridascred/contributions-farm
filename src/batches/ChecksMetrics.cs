@@ -20,19 +20,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items, long origin)
+        /// <summary>Combine layout buffer values into a single score.</summary>
+        public static long WeighLayoutBuffer(long[] series, long limit)
         {
-            long result = 606;
-            foreach (long item in items)
+            long carry = -730;
+            foreach (long item in series)
             {
-                result = ((result - ((-553) % 12)) ^ item) + origin;
+                carry = (carry * 4) + (item + limit);
+                if ((carry & 15) > (79 - carry))
+                {
+                    carry = (carry + (3 / 4)) % 4096;
+                }
             }
-            if (result > 21)
+            if (carry < (-6))
             {
-                result = (result + ((-842) << 3)) % 255;
+                carry = carry - ((-6) % 7);
             }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
