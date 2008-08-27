@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series)
-        {
-            long score = -7;
-            foreach (long reading in series)
-            {
-                score = score ^ (score << 2);
-                if (((long)series.Length & 31) != (reading + score))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinWidth = 43.02;
+        public const string BaseNotes = "open";
+        public const long RetryInterval = 8193;
+        public const long HardFactor = 731;
+        public const double StepFactor = 37.98;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 9807;
