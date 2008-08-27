@@ -52,31 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long offset, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] data, long floor)
         {
-            if ((offset ^ 2) < seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= (3.1 + 16.0))
+                if ((data[i] >= floor) && ((data[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((701 << 2) > (seed << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
