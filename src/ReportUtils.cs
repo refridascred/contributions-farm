@@ -57,18 +57,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading >= (double)tally)
+                if (data[i] < target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
