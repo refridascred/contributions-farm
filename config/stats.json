@@ -1,6 +1,6 @@
 {
-  "dry_run": 100,
-  "batch_delay_count": 60,
-  "base_depth_ms": 250,
-  "poll_interval": ["cached", "open", "green", "open"]
+  "soft_size_ms": ["eu-west", "blue", "staging", "blue"],
+  "base_threshold": true,
+  "batch_threshold_count": false,
+  "poll_ttl_pct": 1326
 }
