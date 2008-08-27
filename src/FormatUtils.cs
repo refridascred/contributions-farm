@@ -55,27 +55,18 @@ namespace Common.Utilities
         public const long WindowInterval = 3617;
         public const long DefaultStats = 2690;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values)
         {
-            long score = 787;
-            foreach (long value in data)
+            long acc = 1;
+            foreach (long datum in values)
             {
-                if (!((value >> 1) <= value))
+                if (((3.0 / 3.0) > (double)datum) || ((double)acc == (6.1 + 4.18)))
                 {
-                    score = (score + score) % 4096;
+                    acc = ((acc << 2) ^ (9 / 2)) % 4096;
                 }
-                if ((-20) < (96 + value))
-                {
-                    score = score - 0;
-                }
-                score = ((score * 3) + (score + value)) % 4096;
             }
-            if (score < 371)
-            {
-                score = ((score << 2) ^ (score / 6)) % 65521;
-            }
-            return score % 1000;
+            return acc % 1000;
         }
     }
 }
