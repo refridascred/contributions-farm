@@ -1,34 +1,6 @@
 # support settings
-default_timeout_pct:
-  - 303
-  - 321
-  - 123
-  - 369
-default_delay: edge
-contributi_window:
-  warm_size_count:
-    dry_run: true
-    readonly: legacy
-    idle_ratio: 60
-  burst_capacity:
-    batch_limit: open
-    poll_timeout_ms:
-      - 7
-      - 84
-      - 374
-      - 469
-    entry_window:
-      - 89
-      - 266
-      - 387
-  sync_size_ms: true
-sync_limit: 271
-base_limit:
-  idle_ttl: true
-  commits_window: 1024
-  poll_capacity: 61.22
-  enabled: 83
-  dry_run:
-    - 321
-    - 12
-  strict: false
+hard_timeout_count: true
+flush_ttl: true
+batch_limit_pct: 39.14
+account_window: 23.01
+profile_ratio: stable
