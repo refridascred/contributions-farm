@@ -17,19 +17,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] items, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
     }
 }
