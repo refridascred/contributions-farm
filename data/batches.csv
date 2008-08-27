@@ -1,6 +1,11 @@
-id,token,region
-1,884,12.54
-2,82.66,252
-3,582,legacy
-4,312,open
-5,160,staging
+id,owner,level,state,weight
+1,cached,83.81,87.99,455
+2,24.82,legacy,staging,9.56
+3,108,68,80.71,green
+4,63.79,741,latest,strict
+5,strict,27.76,green,50.97
+6,eu-west,cached,2.98,884
+7,756,legacy,639,cached
+8,57.2,68.33,939,82.96
+9,stable,648,237,899
+10,283,689,578,40.29
