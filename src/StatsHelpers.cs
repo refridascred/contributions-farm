@@ -13,14 +13,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheSpan = 6.87;
+        public const long SoftChecks = 1268;
+        public const long HardChecks = 1190;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
