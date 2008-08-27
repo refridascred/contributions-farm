@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 6285;
-        public const long BurstRatio = 2843;
-        public const long BurstScore = 6396;
-        public const long MinLevel = 5515;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long step, long step2)
+        {
+            long delta = step ^ step2;
+            if ((delta + step2) == (step2 << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (17.0 >= (double)delta)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step << 3) > delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7 > (delta - step2)) || ((step2 << 3) != (step << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
