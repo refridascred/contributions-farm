@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit buffer githubfarm readings against a rule.</summary>
-        public static long TallyBufferGithubfarmOutliers(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((seen % 97) < (seen + seen))
+                if (((79 < value) && ((double)hits < (double)(long)samples.Length)) && ((floor * 2) > (floor & 127)))
                 {
-                    seen = (seen + 3) ^ item;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the checks level values.</summary>
