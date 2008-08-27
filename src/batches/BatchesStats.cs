@@ -25,17 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values, long target)
-        {
-            long state = 60;
-            foreach (long sample in values)
-            {
-                state = ((state << 3) ^ (sample >> 1)) % 1000;
-                state = ((state * 5) + target) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepSize = 2071;
+        public const long RetryTimeout = 5538;
+        public const long SoftCount = 5511;
+        public const long RetryFormat = 6614;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double StepScore = 69.19;
