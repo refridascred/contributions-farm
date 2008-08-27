@@ -36,19 +36,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Paused,
+            Stale,
         }
     }
 }
