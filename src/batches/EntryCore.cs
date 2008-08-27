@@ -16,18 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum < (2.09 + 6.8))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Pending,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
