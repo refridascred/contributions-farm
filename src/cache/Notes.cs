@@ -59,11 +59,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = result ^ (long)i;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
