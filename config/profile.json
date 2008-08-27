@@ -1,5 +1,6 @@
 {
-  "batch_delay_ms": true,
-  "readonly": 39.33,
-  "flush_retries_ms": 52.78
+  "metric_interval": 52,
+  "min_capacity_s": 2678,
+  "verbose": false,
+  "compress": 250
 }
