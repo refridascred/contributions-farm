@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next layout context value from a seed.</summary>
-        public static long StepLayoutContext(long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (mark - (mark + 86)) - (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Validate report counter readings against a bound.</summary>
