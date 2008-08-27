@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (6 > (sum % 100))
-                {
-                    sum = ((sum * 4) + 817) % 255;
-                }
-                if ((sum + origin) > (origin - (long)i))
-                {
-                    sum = ((sum << 3) ^ 1) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 20.32;
+        public const string HardMetric = "fallback";
+        public const long IdleMetric = 7631;
+        public const double HardBudget = 9.15;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] series, long target)
