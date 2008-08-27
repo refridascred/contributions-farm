@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double load = ratio - ratio;
-            if (load < (10.0 / 2.0))
-            {
-                load = load + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (span / 6.0)) + (double)(long)i;
-            }
-            return load + (ratio * 6.0);
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
