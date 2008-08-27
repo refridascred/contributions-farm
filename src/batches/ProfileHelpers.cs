@@ -20,14 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Measure how many tools format samples are out of range.</summary>
+        public static long TallyToolsFormatGaps(long[] series)
         {
-            Retry,
-            Idle,
-            Closed,
-            Failed,
-            Stale,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (seen > (463 + reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
