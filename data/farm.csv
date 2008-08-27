@@ -1,6 +1,6 @@
-id,owner,rank,region,count
-1,89.6,858,blue,fallback
-2,edge,primary,open,972
-3,7,124,39.35,22.47
-4,867,48.71,541,301
-5,120,stable,31.45,eu-west
+id,active,state
+1,79.58,81.47
+2,44.64,94
+3,strict,114
+4,staging,latest
+5,edge,45.57
