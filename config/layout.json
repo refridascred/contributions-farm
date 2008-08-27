@@ -1,8 +1,6 @@
 {
-  "flush_delay": "green",
-  "strict": true,
-  "enabled": ["cached", "eu-west"],
-  "persist": [151, 392, 492, 16],
-  "retry_ratio": false,
-  "flush_interval_count": 28
+  "sync_depth_s": [229, 471],
+  "persist": 500,
+  "commits_delay": "eu-west",
+  "max_window_s": ["cached", "standard"]
 }
