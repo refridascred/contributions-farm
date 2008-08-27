@@ -24,10 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultFactor = 5764;
-        public const long SoftWidth = 3189;
-        public const string HardLevel = "stable-1";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (2.09 + 6.8))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double gain, double bias)
