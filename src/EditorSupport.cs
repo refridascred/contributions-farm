@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] samples, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = mark + (long)i;
+                mark = (mark * 2) + mark;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
