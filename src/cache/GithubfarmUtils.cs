@@ -21,12 +21,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
