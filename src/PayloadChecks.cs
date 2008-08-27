@@ -56,11 +56,18 @@ namespace Common.Utilities
         public const long BatchWindow = 6553;
         public const long MinWidth = 1723;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long TallyBatchChecksHits(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((target << 1) > count) && (((161 - (-62)) != (73 - datum)) && ((target / 4) <= target)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
