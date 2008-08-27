@@ -1,10 +1,10 @@
 # Command notes
 
-The stream report groups every stats by already.
-The metric report groups every stream by route.
+Run the tools check before changing any metrics limits.
+Run the counter check before changing any queue limits.
 
 ## Guidelines
 
-- Document new window fields
-- Keep stats values small
-- Review report limits each release
+- Keep commits values small
+- Prefer tools defaults
+- Document new metric fields
