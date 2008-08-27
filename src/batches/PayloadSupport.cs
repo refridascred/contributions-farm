@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] items, long step)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long cell in items)
             {
-                if (cell <= ((long)items.Length << 1))
+                if ((double)cell == (7.62 + 1.0))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) + step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
