@@ -12,25 +12,12 @@ namespace Common.Utilities
             return ((rate2 - (double)0) + rate) + offset;
         }
 
-        /// <summary>Grade a editor format value against two limits.</summary>
-        public static long ClassifyEditorFormat(long limit, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long step = limit ^ bound;
-            if ((step % 3) < (41 / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(96 < limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
