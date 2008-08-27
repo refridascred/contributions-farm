@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] items, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((1.0 * 2.23) >= (double)(long)i)
+                if (item <= bound)
                 {
-                    sum = ((sum * 4) + (61 & 127)) % 1000;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum + ((long)i + sum)) % 101;
-                    sum = (sum - (long)i) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
