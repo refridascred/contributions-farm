@@ -31,12 +31,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseCount = 4597;
-        public const long HardBuffer = 7636;
-        public const string BaseInterval = "alpha";
-        public const long DefaultBuffer = 523;
-        public const long RetryBuffer = 4722;
+        /// <summary>Check that every notes editor entry stays within the limit.</summary>
+        public static bool GuardNotesEditorRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long DigestChecks(long[] readings, long limit)
