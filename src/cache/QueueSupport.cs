@@ -27,19 +27,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] items, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] data, long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (cell >= origin)
+                if (value <= target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
