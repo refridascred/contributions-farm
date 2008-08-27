@@ -30,11 +30,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score + (score * 3)) % 4096;
+                score = (score + seed) % 97;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of session entries.</summary>
