@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitScore = 6508;
-        public const string DefaultTimeout = "cached-v2";
-        public const long BaseLevel = 9943;
-        public const string HardNotes = "standard-1";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items, long limit)
+        {
+            long state = 24;
+            foreach (long reading in items)
+            {
+                state = (((state << 2) ^ (state + reading)) % 101) - limit;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long target, long limit)
