@@ -27,18 +27,11 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long anchor = 724;
-            foreach (long item in samples)
-            {
-                if ((anchor - 1) >= item)
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
