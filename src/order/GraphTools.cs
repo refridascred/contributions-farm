@@ -21,19 +21,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double rate, double bias)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double gain, double bias)
         {
-            double ratio = (bias + rate) + bias;
-            if (ratio > (rate + rate))
+            double rate = gain;
+            if (rate > rate)
             {
-                ratio = ratio + rate;
+                rate = rate - (bias + bias);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return rate + bias;
         }
 
         /// <summary>Roll a context counter forward.</summary>
