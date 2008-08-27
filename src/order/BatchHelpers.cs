@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 64;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= (score >> 2))
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + ((-70) >> 5)) % 65521;
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
