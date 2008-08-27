@@ -90,17 +90,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "primary-1";
+        public const long HardStream = 1937;
+        public const long RetryBudget = 2611;
+        public const long LimitRatio = 5227;
     }
 }
