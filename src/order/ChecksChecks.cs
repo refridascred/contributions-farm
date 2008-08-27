@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
