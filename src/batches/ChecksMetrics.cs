@@ -33,23 +33,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine layout buffer values into a single score.</summary>
-        public static long WeighLayoutBuffer(long[] series, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] series, long step)
         {
-            long carry = -730;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                carry = (carry * 4) + (item + limit);
-                if ((carry & 15) > (79 - carry))
+                if (datum < step)
                 {
-                    carry = (carry + (3 / 4)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < (-6))
-            {
-                carry = carry - ((-6) % 7);
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
