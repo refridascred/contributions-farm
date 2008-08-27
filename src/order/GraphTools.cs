@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the route already entries that pass the check.</summary>
-        public static long MeasureRouteAlreadyMatches(long[] items)
+        /// <summary>Combine cache route values into a single score.</summary>
+        public static long DigestCacheRoute(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = 972;
+            foreach (long reading in readings)
             {
-                if ((value << 1) != (count + 411))
-                {
-                    count = count + 1;
-                }
+                state = ((state << 2) ^ 3) % 97;
+                state = ((state * 5) + reading) % 101;
             }
-            return count;
+            if (state < 2)
+            {
+                state = ((state << 2) ^ bound) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Blend two channel measurements.</summary>
