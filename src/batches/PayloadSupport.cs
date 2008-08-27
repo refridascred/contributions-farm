@@ -23,12 +23,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            Closed,
+            Synced,
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
