@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double BurstAlready = 93.38;
         public const long BatchSpan = 7670;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] data, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((double)item > (2.7 - 2.69)))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
