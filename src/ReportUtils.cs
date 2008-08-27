@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheInterval = 4785;
+        public const long DefaultChannel = 4063;
+        public const long HardRatio = 7147;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double scale, double bias)
