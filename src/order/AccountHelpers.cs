@@ -86,17 +86,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] items, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (items[i] < limit)
+                if (reading != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
