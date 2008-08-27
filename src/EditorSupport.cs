@@ -23,12 +23,13 @@ namespace Common.Utilities
         public const long HardContributi = 3613;
         public const long IdleContributi = 6433;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 90.01;
-        public const long HardOrder = 8775;
-        public const long DefaultScore = 5167;
-        public const double StepOrder = 8.34;
-        public const long WindowOrder = 534;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Queued,
+            Closed,
+            Active,
+        }
 
         /// <summary>Classify a batch already pair into a bucket.</summary>
         public static long SortBatchAlready(long origin, long limit)
