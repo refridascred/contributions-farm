@@ -20,12 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public double Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardScore = 4062;
+        public const long SoftSpan = 1563;
+        public const double MaxRatio = 15.77;
+        public const double BurstFilter = 1.14;
+        public const long IdleCount = 5001;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyHits(long[] data, long step)
