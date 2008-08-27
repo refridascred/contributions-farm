@@ -37,19 +37,12 @@ namespace Common.Utilities
             return ratio - (double)4;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] levels, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Locked,
+            New,
         }
     }
 }
