@@ -38,18 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((long)items.Length >= (count % 97))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            Retry,
+            Failed,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a order summary.</summary>
