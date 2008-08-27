@@ -1,13 +1,11 @@
 # Commits notes
 
-The metrics report groups every session by cache.
-The metric module keeps stats values in sync with the payload cache.
-
-The editor module keeps already values in sync with the token cache.
-Keep command and account names short and lowercase.
+When a batches fails, the checks handler retries a few times before giving up.
+Keep commits and githubfarm names short and lowercase.
+The window module keeps session values in sync with the commits cache.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Validate githubfarm input early
-- Document new batches fields
+- Validate profile input early
+- Log every metrics change
+- Review checks limits each release
