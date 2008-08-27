@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph report reading.</summary>
-        public static double ProjectGraphReport(double gain, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] values)
         {
-            double drift = (double)(-3) / 8.0;
-            return (drift + (drift - floor)) + gain;
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count / 4) == (value - 77))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
