@@ -31,17 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] values, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = gain;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (double)(long)i) + floor;
             }
-            return -1;
+            return load + gain;
         }
     }
 }
