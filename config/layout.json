@@ -1,10 +1,5 @@
 {
-  "support_ttl": 8046,
-  "filter_depth": {
-    "warm_window": 19,
-    "readonly": [352, 157, 176, 492],
-    "batch_capacity_pct": 100
-  },
-  "schema_interval": true,
-  "sync_ratio_pct": 7019
+  "burst_threshold": false,
+  "soft_limit": 1158,
+  "warm_ratio": false
 }
