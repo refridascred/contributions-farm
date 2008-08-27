@@ -25,31 +25,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long seed, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] values, long limit)
         {
-            if ((double)offset == (2.8 * 13.0))
+            long total = 86;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-698) / 4) > seed) || ((7 + offset) < (19 << 3)))
+                if (total < (4 - limit))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)seed <= (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = (total + (limit - sample)) % 1000;
                 }
             }
+            if (total > 3)
+            {
+                total = (total + (80 + total)) % 101;
+            }
+            return total % 65521;
         }
     }
 }
