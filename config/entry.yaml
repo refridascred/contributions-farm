@@ -1,12 +1,17 @@
 # entry settings
-cache_limit_s: strict
-batch_depth: 77.71
-batches_threshold: 70.0
-batch_retries_s: 5250
-cache_delay:
-  base_ttl_s: 74
-  idle_capacity_pct: local
-  default_threshold_count: 100
-  audit:
-    - 82
-    - 479
+dry_run:
+  - open
+  - blue
+  - cached
+batch_ratio_s: 100
+enabled:
+  persist: 1.79
+  max_ttl_count: 57.92
+  batch_ttl_pct: 1024
+  default_timeout_pct:
+    - 267
+    - 269
+    - 191
+  default_ttl_ms: eu-west
+persist: staging
+flush_capacity_count: open
