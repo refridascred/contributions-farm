@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long seed, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] data, long origin)
         {
-            long diff = seed ^ limit;
-            if (diff <= (seed ^ diff))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed > (17.0 / 3.0))
+                if ((data[i] >= origin) && ((data[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(7.48 <= (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
