@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] items, long seed)
+        /// <summary>Count the profile counter entries that pass the check.</summary>
+        public static long TallyProfileCounterHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (item >= seed)
+                if (!(((double)sample >= (9.77 / 9.0)) && ((count >> 4) == (count >> 1))))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
