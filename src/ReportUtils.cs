@@ -15,12 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a metric checks reading by value.</summary>
-        public static long LocateMetricChecksIndex(long[] series, long bound)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] < bound)
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
