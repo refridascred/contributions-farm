@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Synced,
-            Locked,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheWidth = "alpha-1";
+        public const long MinTimeout = 2704;
+        public const long LimitNotes = 5400;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long bound)
