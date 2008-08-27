@@ -51,19 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] samples, long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
