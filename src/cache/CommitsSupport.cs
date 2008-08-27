@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next order queue value.</summary>
-        public static double BlendOrderQueue(double scale, double offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double bias = (8.47 - scale) - (double)295;
-            if (bias <= (2.0 + 2.0))
-            {
-                bias = (bias + bias) - offset;
-            }
-            else
-            {
-                bias = bias - (double)111;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (bias * 3.0)) - (double)(long)i;
-            }
-            return bias - (3.0 - scale);
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the record kind values.</summary>
