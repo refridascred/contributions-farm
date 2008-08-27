@@ -28,13 +28,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long bound, long floor)
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            long step = bound - floor;
+            if (step > (floor % 16))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step ^ bound) > floor) || ((double)bound >= 1.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-19) + floor) > (84 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
