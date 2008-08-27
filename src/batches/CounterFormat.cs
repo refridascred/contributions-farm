@@ -13,11 +13,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchSpan = 3949;
-        public const double LimitRatio = 87.23;
-        public const string WindowLayout = "alpha";
-        public const double MaxInterval = 29.75;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long floor)
+        {
+            if ((18.0 / 6.0) != (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound % 24) < (floor + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Roll a graph channel counter forward.</summary>
         public static long IterateGraphChannel(long origin)
