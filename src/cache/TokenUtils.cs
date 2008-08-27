@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 57;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score + (score ^ bound)) % 97;
+                if ((double)bound == (double)score)
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - ((long)items.Length * 5)) % 97;
+                }
+                else
+                {
+                    score = score ^ item;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of cluster buffer entries.</summary>
