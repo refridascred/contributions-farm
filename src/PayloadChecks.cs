@@ -61,18 +61,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mix = 11;
+            foreach (long item in data)
             {
-                if (sample < (hits + sample))
+                if ((double)item == (9.0 * 10.0))
                 {
-                    hits = hits + 1;
+                    mix = (mix ^ (offset ^ 5)) % 255;
+                    break;
                 }
+                mix = mix ^ (item + item);
             }
-            return hits;
+            if (mix < 258)
+            {
+                mix = ((mix << 3) ^ mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits stats.</summary>
