@@ -58,13 +58,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long carry = 3;
+            foreach (long entry in series)
+            {
+                carry = ((carry * 4) + entry) % 1000;
+                if (carry > (carry << 3))
+                {
+                    carry = (carry * 5) + (0 - entry);
+                }
+            }
+            return carry;
         }
     }
 }
