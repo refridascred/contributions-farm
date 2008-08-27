@@ -63,19 +63,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double bias, double bias2)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double drift = (double)(297 + 447);
-            if (drift <= (double)840)
-            {
-                drift = (drift + bias) - bias2;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift - (2.69 + 7.0);
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
