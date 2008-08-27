@@ -12,11 +12,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitRatio = "legacy-edge";
-        public const string BatchEditor = "local";
-        public const double BaseTimeout = 1.27;
-        public const long DefaultEditor = 2708;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] samples, long bound)
