@@ -10,22 +10,16 @@ namespace Common.Utilities
         public const string BurstScore = "staging-edge";
         public const string LimitTimeout = "strict-v2";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long carry = 5;
+            foreach (long entry in items)
             {
-                if ((3.63 / 9.0) < (double)matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (((carry << 3) ^ carry) % 97) + entry;
+                carry = carry + 64;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
