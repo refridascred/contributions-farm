@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up context contributi samples.</summary>
-        public static long CompareContextContributiCount(long[] series)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit == (3.62 - 4.86))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit - limit) < (step * 2))
                 {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
