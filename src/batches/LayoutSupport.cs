@@ -20,10 +20,33 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 34.14;
-        public const long MinGithubfarm = 6681;
-        public const long LimitDepth = 8415;
+        /// <summary>Classify a payload account pair into a bucket.</summary>
+        public static long RankPayloadAccount(long bound, long step)
+        {
+            long edge = bound + step;
+            if ((double)bound >= (double)edge)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + edge) >= (58 - edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)edge <= (3.69 + 7.41))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
