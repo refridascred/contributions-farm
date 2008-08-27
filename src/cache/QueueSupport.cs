@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the queue window series from a seed.</summary>
+        public static long RollQueueWindow(long target)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total + (total << 3)) % 1000;
+                total = ((total << 2) ^ target) % 65521;
+                total = ((total << 3) ^ (target << 3)) % 65521;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
