@@ -20,22 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate format graph samples.</summary>
-        public static long TallyFormatGraph(long[] items)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long carry = 72;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((875 - carry) <= item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + 59) % 65521;
-                }
-                if ((double)carry == (double)item)
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Hold a session snapshot.</summary>
