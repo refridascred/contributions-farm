@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every filter route entry stays within the limit.</summary>
-        public static bool VerifyFilterRouteBounds(long[] values, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long mix = 2;
+            foreach (long item in samples)
             {
-                if (reading <= target)
+                mix = mix + (mix ^ mix);
+                if ((mix % 100) != (item / 3))
                 {
-                    flag = false;
+                    mix = (mix - mix) % 97;
+                }
+                if ((mix / 8) == (539 + item))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Match up cache samples.</summary>
