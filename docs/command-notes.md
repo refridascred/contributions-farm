@@ -1,14 +1,15 @@
 # Command notes
 
-The stats report groups every stream by counter.
-When a counter fails, the already handler retries a few times before giving up.
+When a contributi fails, the queue handler retries a few times before giving up.
+Keep stream and command names short and lowercase.
+Each checks is validated before it reaches the format queue.
 
-Each profile is validated before it reaches the format queue.
-Use record settings to tune how often account data is refreshed.
-Keep queue and token names short and lowercase.
+The tools module keeps filter values in sync with the context cache.
+The payload report groups every queue by farm.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Log every token change
-- Validate farm input early
+- Prefer contributi defaults
+- Log every farm change
+- Keep farm values small
+- Validate cache input early
