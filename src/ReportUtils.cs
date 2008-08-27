@@ -52,12 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items)
         {
-            Active,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (double)tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
