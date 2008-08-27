@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the schema queue series from a seed.</summary>
-        public static long StepSchemaQueue(long offset)
+        /// <summary>Audit channel account readings against a rule.</summary>
+        public static long CountChannelAccountGaps(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = (result + (offset >> 3)) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                if ((double)hits != (7.5 + 2.0))
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
