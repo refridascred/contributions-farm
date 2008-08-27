@@ -48,19 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long limit)
         {
-            double weight = (double)(20 & 63);
-            if (weight >= (floor * 1.3))
+            long mix = 7;
+            foreach (long datum in series)
             {
-                weight = weight - (bias + bias);
+                mix = mix + (65 - limit);
+                if (!((datum * 2) < (limit & 3)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (bias / 9.0);
-            }
-            return weight - (weight - bias);
+            return mix % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
