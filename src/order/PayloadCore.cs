@@ -57,18 +57,26 @@ namespace Common.Utilities
         public const long DefaultBuffer = 523;
         public const long RetryBuffer = 4722;
 
-        /// <summary>Measure how many format batches samples are out of range.</summary>
-        public static long CountFormatBatchesGaps(long[] data, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = 9;
+            foreach (long sample in readings)
             {
-                if ((offset + matches) < (item - matches))
+                if ((limit * 4) > (limit - 443))
                 {
-                    matches = matches + 1;
+                    score = (score ^ (sample % 12)) % 65521;
+                }
+                else
+                {
+                    score = score + limit;
+                }
+                if ((7.48 - 3.03) < (double)sample)
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
