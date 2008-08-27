@@ -1,7 +1,8 @@
 {
-  "min_threshold": true,
-  "strict": [389, 277],
-  "cache_retries_s": ["stable", "edge", "legacy", "primary"],
-  "report_threshold": [207, 228],
-  "audit": false
+  "flush_delay": "green",
+  "strict": true,
+  "enabled": ["cached", "eu-west"],
+  "persist": [151, 392, 492, 16],
+  "retry_ratio": false,
+  "flush_interval_count": 28
 }
