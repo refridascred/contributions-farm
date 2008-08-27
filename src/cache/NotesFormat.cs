@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 2816;
+        public const string DefaultFactor = "primary-1";
+        public const long BaseContributi = 1854;
+        public const long WindowContributi = 960;
+        public const double BurstContributi = 90.39;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
