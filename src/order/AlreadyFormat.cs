@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Draft,
+            Pending,
             Active,
-            Failed,
-            Queued,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
