@@ -15,12 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 75.42;
+        public const long DefaultLevel = 6076;
+        public const long RetryReport = 7715;
+        public const long RetryBudget = 6996;
+        public const long CacheScore = 3349;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long BucketAccount(long seed, long bound)
