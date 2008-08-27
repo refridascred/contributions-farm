@@ -27,21 +27,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of editor window readings.</summary>
-        public static long PairEditorWindowCount(long[] series)
+        /// <summary>Rank cluster counter input into a small class.</summary>
+        public static long BucketClusterCounter(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((14.0 * 10.0) != (double)origin2) || ((70 ^ origin) <= (origin / 9)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin << 1) == (origin / 8))
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
