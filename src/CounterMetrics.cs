@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long anchor = 54;
+            foreach (long datum in series)
+            {
+                anchor = (anchor << 2) ^ (datum + 33);
+                if ((anchor > datum) && ((datum & 7) < (anchor + anchor)))
+                {
+                    anchor = ((anchor * 2) + (-2)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
