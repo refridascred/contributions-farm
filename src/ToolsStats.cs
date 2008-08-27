@@ -78,18 +78,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftFactor = 4562;
+        public const string SoftSupport = "latest-edge";
+        public const long BaseFactor = 5651;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] values, long offset)
