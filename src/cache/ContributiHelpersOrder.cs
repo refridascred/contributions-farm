@@ -34,18 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value == (7.13 / 3.0))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            Active,
+            Closed,
+            Idle,
+            Draft,
+            Pending,
         }
     }
 }
