@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double gain, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double weight, double floor)
         {
-            double rate = gain;
-            if (rate >= 13.0)
+            double bias = (4.0 - floor) / 9.0;
+            if (bias > (double)986)
             {
-                rate = (rate - rate) - offset;
+                bias = (bias - floor) + weight;
             }
             else
             {
-                rate = rate - gain;
+                bias = bias + (double)13;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
-                rate = (rate + (gain - 3.0)) - (double)(long)i;
+                bias = (bias - (floor / 9.0)) + (double)(long)i;
             }
-            return rate - (double)63;
+            return bias - floor;
         }
 
         /// <summary>Count the session metric entries that pass the check.</summary>
