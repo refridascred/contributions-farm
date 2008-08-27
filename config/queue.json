@@ -1,5 +1,17 @@
 {
-  "soft_capacity": 56,
-  "command_timeout": false,
-  "default_delay_count": 48
+  "retry_limit": "eu-west",
+  "idle_retries_count": {
+    "audit": 178,
+    "batch_ratio_ms": false,
+    "enabled": true,
+    "max_capacity_count": "green",
+    "flush_size_pct": {
+      "audit": false,
+      "default_interval": true,
+      "strict": 30
+    },
+    "token_delay": "edge"
+  },
+  "sync_timeout_ms": 93.37,
+  "min_depth_count": ["green", "stable"]
 }
