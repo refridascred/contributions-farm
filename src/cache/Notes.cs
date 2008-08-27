@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank token format input into a small class.</summary>
-        public static long GradeTokenFormat(long origin, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            if ((double)origin >= 6.4)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((origin / 7) >= (target & 31)) || ((origin % 64) >= (565 >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin >= (target & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count the session metric entries that pass the check.</summary>
