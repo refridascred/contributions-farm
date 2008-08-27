@@ -48,11 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinSpan = 8351;
-        public const long BaseLevel = 8763;
-        public const long MaxStream = 7682;
-        public const long DefaultFactor = 7790;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result << 3) ^ result) % 97;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] data)
