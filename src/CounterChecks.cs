@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of tools already entries.</summary>
+        public static long TallyToolsAlready(long[] series)
         {
-            Done,
-            Closed,
-            Active,
+            long mix = 81;
+            foreach (long value in series)
+            {
+                if ((2.0 / 2.0) <= (double)value)
+                {
+                    mix = (mix + (value << 2)) % 255;
+                }
+            }
+            if (mix > 293)
+            {
+                mix = ((mix << 3) ^ (1 + mix)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
