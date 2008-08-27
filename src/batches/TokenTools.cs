@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((22 - 94) >= mix)
+                if (((reading + limit) != (limit - 67)) && ((tally % 10) < tally))
                 {
-                    mix = (mix ^ (long)i) % 65521;
-                    mix = ((mix * 3) + (mix + seed)) % 4096;
-                    continue;
+                    tally = tally + 1;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
