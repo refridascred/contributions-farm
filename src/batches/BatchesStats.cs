@@ -16,26 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] samples)
         {
-            long carry = 4;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((carry - item) > (carry % 5))
+                if ((((5 >> 2) <= value) || (value >= (value - matches))) || ((double)value != (double)92))
                 {
-                    carry = (carry ^ (carry + item)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry * 3)) % 101;
+                    matches = matches + 3;
                 }
             }
-            if (carry > 3)
-            {
-                carry = carry - (carry * 5);
-            }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
