@@ -55,17 +55,17 @@ namespace Common.Utilities
         public const long RetryEntry = 2841;
         public const long MinEntry = 9921;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                anchor = anchor + (anchor << 3);
+                anchor = (anchor * 3) + 931;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many batches report samples are out of range.</summary>
