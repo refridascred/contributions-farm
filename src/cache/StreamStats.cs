@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] data, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double weight = (double)235 * 16.0;
+            if (weight > (offset / 5.0))
             {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (scale - 6.35);
             }
-            return found;
+            return weight + (double)945;
         }
 
         /// <summary>Hold a context record.</summary>
