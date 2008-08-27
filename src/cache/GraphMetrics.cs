@@ -19,13 +19,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long limit)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
