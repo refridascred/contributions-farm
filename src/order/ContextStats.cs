@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long BaseLevel = 9943;
         public const string HardNotes = "standard-1";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long score = 9;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score + (entry & 3)) % 101) + step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
