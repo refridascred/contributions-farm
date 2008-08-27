@@ -1,6 +1,11 @@
-id,owner,label
-1,29,10.85
-2,924,196
-3,staging,7
-4,681,88.05
-5,fallback,cached
+id,token,active,owner
+1,legacy,edge,edge
+2,blue,553,eu-west
+3,strict,open,stable
+4,570,156,11
+5,10.39,970,44.91
+6,23.41,159,908
+7,55.07,811,67.31
+8,150,92.11,62.23
+9,183,966,477
+10,874,19.76,147
