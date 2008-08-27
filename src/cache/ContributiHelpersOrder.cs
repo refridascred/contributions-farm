@@ -35,15 +35,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double bias, double span)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            double gain = 11.0 * 8.9;
-            if (gain <= bias)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                gain = gain + (gain + gain);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score - (4 + score)) % 1000) ^ (long)i2;
+                }
+                if ((bound ^ (long)i) >= score)
+                {
+                    score = score - (score - bound);
+                }
+                else
+                {
+                    score = (score + (long)i) % 1000;
+                    score = (score ^ (score - bound)) % 97;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return gain + span;
+            return score;
         }
     }
 }
