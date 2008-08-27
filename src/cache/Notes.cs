@@ -24,18 +24,14 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Count the session metric entries that pass the check.</summary>
-        public static long TallySessionMetricOutliers(long[] levels, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (767 > step)
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the session kind values.</summary>
