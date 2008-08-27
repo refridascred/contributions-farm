@@ -22,11 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 6688;
-        public const long BaseLayout = 427;
-        public const double SoftScore = 89.4;
-        public const long BatchCount = 7731;
-        public const long LimitCount = 5321;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+        }
     }
 }
