@@ -1,17 +1,4 @@
 # githubfarm settings
-cache_delay: false
-strict: 2.4
-persist:
-  format_ttl: legacy
-  warm_capacity_pct: green
-  default_timeout_s:
-    - 460
-    - 306
-    - 4
-    - 13
-graph_delay:
-  already_size: 87.37
-  buffer_threshold: true
-  enabled: true
-  soft_size: 500
-dry_run: blue
+flush_ttl_count: 30
+max_depth_pct: green
+retry_capacity_s: 60.58
