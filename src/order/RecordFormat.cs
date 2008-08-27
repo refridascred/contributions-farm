@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] values, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (sample <= seed)
+                if (!((double)item < (7.97 / 8.0)) && ((double)tally != (20.0 - 4.2)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
