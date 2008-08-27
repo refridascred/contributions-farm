@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many cluster support samples are out of range.</summary>
-        public static long TallyClusterSupportGaps(long[] values, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)step < 6.0)
+                if ((4.26 + 5.05) >= (double)offset)
                 {
-                    count = (count + 3) + entry;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
