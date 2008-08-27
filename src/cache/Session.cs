@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double ratio, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] readings)
         {
-            double load = (double)(395 - (-529));
-            if (load <= (2.8 / 4.0))
+            long mark = 3;
+            foreach (long sample in readings)
             {
-                load = (load + load) + ratio;
+                if ((double)sample > 3.59)
+                {
+                    mark = ((mark << 2) ^ (sample * 5)) % 97;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (offset - 3.1)) + (double)(long)i;
-            }
-            return load - offset;
+            return mark;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
