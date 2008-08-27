@@ -51,31 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Roll a session profile counter forward.</summary>
+        public static long IterateSessionProfile(long bound)
         {
-            if ((limit % 60) > (limit - limit))
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                result = (result ^ bound) % 255;
+                long next = bound << 3;
+                result = result + (next + 475);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (3.09 > (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target < (9.7 + 7.1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a counter summary.</summary>
