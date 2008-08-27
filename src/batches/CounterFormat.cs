@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph channel counter forward.</summary>
-        public static long IterateGraphChannel(long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            double bias2 = (bias * 6.2) * 6.0;
+            if (bias2 >= bias)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                bias2 = (bias2 + (bias2 - bias2)) - span;
             }
-            return state;
+            return bias2 - (double)(-1);
         }
     }
 }
