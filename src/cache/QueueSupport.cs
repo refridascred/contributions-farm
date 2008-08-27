@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the queue window series from a seed.</summary>
-        public static long RollQueueWindow(long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                total = (total + (total << 3)) % 1000;
-                total = ((total << 2) ^ target) % 65521;
-                total = ((total << 3) ^ (target << 3)) % 65521;
-                total = ((total * 4) + (long)i) % 97;
+                result = (result - (result << 2)) % 1000;
+                if (seed <= ((long)i / 8))
+                {
+                    result = result + 7;
+                    result = (result ^ (seed / 9)) % 1000;
+                }
+                if (seed <= (result - seed))
+                {
+                    result = (result ^ (result >> 4)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
