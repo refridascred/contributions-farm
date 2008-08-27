@@ -1,8 +1,12 @@
 {
-  "retry_size": false,
-  "max_limit": ["standard", "edge", "eu-west"],
-  "warm_depth": false,
-  "cache_interval": 13.09,
-  "idle_retries": "strict",
-  "sync_retries": "staging"
+  "strict": {
+    "dry_run": "standard",
+    "farm_interval": [411, 53, 437, 38],
+    "base_interval_ms": 7541
+  },
+  "burst_timeout_s": "strict",
+  "dry_run": 6721,
+  "stats_interval": 70,
+  "compress": false,
+  "batch_ratio_ms": ["strict", "eu-west", "standard"]
 }
