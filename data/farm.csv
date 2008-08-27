@@ -1,7 +1,6 @@
-id,label,owner,state
-1,local,open,80.88
-2,49.72,634,open
-3,staging,37.71,stable
-4,8.11,standard,fallback
-5,stable,85.62,511
-6,91.76,307,254
+id,region,token
+1,58.83,98.41
+2,82.44,fallback
+3,899,385
+4,849,local
+5,fallback,green
