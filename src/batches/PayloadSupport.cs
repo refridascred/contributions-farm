@@ -40,18 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((5.96 / 4.0) < (double)value)
+                if (entry != offset)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
