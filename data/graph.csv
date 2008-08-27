@@ -1,11 +1,6 @@
-id,owner,region
-1,green,40.51
-2,660,18.82
-3,520,711
-4,latest,363
-5,50.78,759
-6,strict,218
-7,453,eu-west
-8,8.82,50.37
-9,strict,331
-10,75,standard
+id,rank,label
+1,202,legacy
+2,cached,757
+3,31.45,latest
+4,legacy,71.85
+5,latest,95.69
