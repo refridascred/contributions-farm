@@ -37,11 +37,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCount = "standard-v2";
-        public const string HardCache = "local-v2";
-        public const long MinCache = 1622;
-        public const long RetryCache = 6622;
+        /// <summary>Rank stream batch input into a small class.</summary>
+        public static long ClassifyStreamBatch(long target, long target2)
+        {
+            long step = target + target2;
+            if ((double)target == (double)target2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6 - target2) == (target2 % 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step >> 1) >= target2) || ((7 + target) <= (target & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] data, long floor)
