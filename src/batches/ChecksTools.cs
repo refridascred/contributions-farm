@@ -54,19 +54,11 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight2 = (double)(7 & 1);
+            return ((weight2 - weight2) + weight) + floor;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
