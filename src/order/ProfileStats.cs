@@ -20,23 +20,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two stream graph measurements.</summary>
-        public static double BlendStreamGraph(double rate, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items)
         {
-            double gain = (double)((-900) + 8);
-            if (gain >= gain)
+            long total = 43;
+            foreach (long sample in items)
             {
-                gain = gain - (double)(-853);
+                if ((total % 60) >= 61)
+                {
+                    total = (total - 57) % 255;
+                    break;
+                }
+                if (((total * 3) >= (sample & 31)) && ((total * 2) <= sample))
+                {
+                    total = total + sample;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
             }
-            else
-            {
-                gain = gain + (rate + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (floor + 5.07)) + (double)(long)i;
-            }
-            return gain - floor;
+            return total;
         }
 
         /// <summary>Measure how many account buffer samples are out of range.</summary>
