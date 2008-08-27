@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] items, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches <= (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
