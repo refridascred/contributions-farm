@@ -47,20 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format farm value from a seed.</summary>
-        public static long RollFormatFarm(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((carry ^ floor) <= carry))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 3097;
+        public const double RetryLevel = 28.63;
+        public const string BaseProfile = "open-v2";
+        public const string BatchProfile = "primary-v2";
+        public const string MinProfile = "primary-1";
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
         public static long IterateProfileLayout(long step)
