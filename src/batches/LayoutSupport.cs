@@ -31,27 +31,12 @@ namespace Common.Utilities
         public const long MinGithubfarm = 6681;
         public const long LimitDepth = 8415;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels, long step)
-        {
-            long acc = 65;
-            foreach (long reading in levels)
-            {
-                if (((step / 2) <= (acc % 3)) && (4.0 > (13.0 / 6.0)))
-                {
-                    acc = acc + (reading + step);
-                }
-                else
-                {
-                    acc = acc ^ step;
-                }
-            }
-            if (acc < 86)
-            {
-                acc = ((acc << 2) ^ (acc - acc)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinBudget = 26.46;
+        public const long HardCluster = 4896;
+        public const string MinWidth = "staging-1";
+        public const long BatchTimeout = 7713;
+        public const double MinCluster = 83.3;
 
         /// <summary>Scale a token account figure with a bias.</summary>
         public static double AdjustTokenAccount(double ratio, double span)
