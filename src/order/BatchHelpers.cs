@@ -13,14 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Combine stats notes values into a single score.</summary>
+        public static long ScoreStatsNotes(long[] values, long limit)
         {
-            Locked,
-            Retry,
-            Paused,
-            Active,
-            Done,
+            long sum = 364;
+            foreach (long datum in values)
+            {
+                if (9.78 > (double)limit)
+                {
+                    sum = ((sum << 3) ^ (sum - 206)) ^ datum;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = (sum << 3) ^ (sum * 4);
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
