@@ -36,22 +36,11 @@ namespace Common.Utilities
             return drift - (drift * 6.81);
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "stable";
+        public const string DefaultToken = "staging-v2";
+        public const long WindowRatio = 8175;
+        public const long RetryToken = 7663;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
