@@ -57,17 +57,18 @@ namespace Common.Utilities
         public const long WindowLevel = 3777;
         public const long IdleEntry = 9932;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] < floor)
+                if (!((tally + datum) > 22))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
