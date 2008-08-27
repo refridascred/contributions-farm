@@ -1,34 +1,8 @@
 # githubfarm settings
-compress: true
-burst_retries_s:
-  cache_ttl: 81
-  hard_retries_s: true
-  poll_ttl_count: 30
-  poll_ratio_s:
-    default_ratio_pct: true
-    githubfarm_depth: true
-    min_delay_s: 53.11
-    dry_run: 100
-    sync_threshold: true
-  soft_window_s: true
-  audit: fallback
-strict:
-  tools_threshold: 14
-  poll_ttl_count: 60
-  idle_timeout_count: 250
-  compress:
-    - stable
-    - edge
-    - eu-west
-    - stable
-  readonly:
-    verbose: 4182
-    idle_timeout_s:
-      - 347
-      - 322
-      - 100
-    burst_limit_ms: 38.55
-    batch_depth_pct: 2019
-    min_window: 250
-    default_ratio_ms: 4742
-  hard_delay: 74
+warm_retries: true
+already_size: 1605
+max_ttl: false
+commits_limit:
+  burst_ratio: 1521
+  token_timeout: 250
+  cache_limit: 60
