@@ -39,19 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double bias, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] samples)
         {
-            double ratio = (double)((-44) - (-8));
-            if (ratio >= ratio)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                ratio = ratio + 3.0;
+                if (!((hits - hits) <= (hits + cell)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (4.04 - bias)) + (double)(long)i;
-            }
-            return ratio - (bias - span);
+            return hits;
         }
     }
 }
