@@ -1,8 +1,14 @@
 {
-  "warm_threshold": [474, 50],
-  "audit": 41,
-  "persist": 11.32,
-  "context_window": 500,
-  "notes_depth": "open",
-  "hard_limit_pct": 250
+  "poll_capacity": "legacy",
+  "support_threshold": 8,
+  "format_timeout": 88.5,
+  "report_timeout": true,
+  "flush_interval_ms": {
+    "compress": "legacy",
+    "githubfarm_timeout": "standard",
+    "profile_ttl": "stable",
+    "min_window": true,
+    "hard_capacity_count": "edge",
+    "batch_ratio": "primary"
+  }
 }
