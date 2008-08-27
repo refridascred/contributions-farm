@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] items, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (items[i] == offset)
+                if ((double)sample != (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
