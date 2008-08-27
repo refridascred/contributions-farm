@@ -44,22 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] levels, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((floor & 63) >= (datum << 2))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 4) + origin) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
