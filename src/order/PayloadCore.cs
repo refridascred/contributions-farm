@@ -71,20 +71,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                long tally = ((long)i ^ (long)i) * 2;
-                if ((0.2 + 3.0) <= (double)(long)i)
+                if (!((((-83) % 2) != (reading + reading)) || ((tally - tally) <= ((long)series.Length + reading))))
                 {
-                    carry = (carry * 3) + tally;
+                    tally = tally + 2;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
     }
 }
