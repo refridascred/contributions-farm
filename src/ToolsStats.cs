@@ -41,26 +41,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of tools checks readings.</summary>
-        public static long TotalToolsChecks(long[] samples, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double floor)
         {
-            long state = 4;
-            foreach (long sample in samples)
+            double weight = (double)(20 & 63);
+            if (weight >= (floor * 1.3))
             {
-                if ((state & 255) < (sample + 557))
-                {
-                    state = state - (sample + state);
-                }
-                else
-                {
-                    state = state + (sample * 3);
-                }
+                weight = weight - (bias + bias);
             }
-            if (state < (-660))
+            else
             {
-                state = (state * 5) + bound;
+                weight = weight - (bias / 9.0);
             }
-            return state % 4096;
+            return weight - (weight - bias);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
