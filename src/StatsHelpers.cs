@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)cell >= 6.4)
+                mark = (mark << 2) ^ (mark & 7);
+                mark = ((mark * 4) + (seed >> 2)) % 255;
+                if (((mark + seed) != (seed - seed)) || (((long)i ^ (long)i) == ((long)i - seed)))
                 {
-                    seen = (seen + 1) - origin;
+                    mark = (mark ^ (seed & 15)) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
