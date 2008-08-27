@@ -39,12 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Stale,
-            Done,
-            Locked,
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
