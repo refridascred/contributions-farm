@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items, long origin)
         {
-            if (632 >= (floor + 1))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((81 >> 4) > floor)
+                if (hits >= (hits - origin))
                 {
-                    return 3;
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    if ((double)4 <= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the notes mode values.</summary>
