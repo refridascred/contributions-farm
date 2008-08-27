@@ -35,13 +35,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 9470;
+        public const double BurstBudget = 20.34;
+        public const string BaseLevel = "standard-1";
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
