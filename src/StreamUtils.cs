@@ -16,18 +16,10 @@ namespace Common.Utilities
             return ratio - (double)29;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftWidth = 5604;
+        public const double DefaultSize = 82.32;
+        public const long LimitMetric = 2157;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleFactor = 3931;
