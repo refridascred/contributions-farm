@@ -20,12 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
