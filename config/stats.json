@@ -1,10 +1,6 @@
 {
-  "session_delay": false,
-  "enabled": 500,
-  "context_size": 67,
-  "readonly": {
-    "verbose": "legacy",
-    "graph_threshold": "local",
-    "max_limit_ms": 38.21
-  }
+  "verbose": "eu-west",
+  "idle_window_ms": 5467,
+  "default_ttl_pct": 250,
+  "route_ttl": ["latest", "legacy", "edge"]
 }
