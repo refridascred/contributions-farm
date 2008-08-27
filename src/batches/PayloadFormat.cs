@@ -41,18 +41,15 @@ namespace Common.Utilities
         public const long WindowRatio = 7752;
         public const long WindowMetrics = 6161;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] samples)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (3 <= tally)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
     }
 }
