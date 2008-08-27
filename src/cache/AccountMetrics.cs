@@ -51,12 +51,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
