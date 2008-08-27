@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long floor, long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double ratio, double floor)
         {
-            if (((floor % 10) > floor) || ((double)seed < 0.8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed * 4) < (floor % 100))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((floor & 1) > (seed / 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double scale = 9.0 * 9.0;
+            return ((scale - (scale + 0.93)) + ratio) + floor;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
