@@ -32,10 +32,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 8037;
-        public const long WindowFarm = 3909;
-        public const long LimitFarm = 7633;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((limit - datum) > (tally + limit))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of schema metrics readings.</summary>
         public static long WeighSchemaMetrics(long[] readings)
