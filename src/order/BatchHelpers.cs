@@ -29,9 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 1637;
-        public const string SoftSpan = "stable-v2";
-        public const long IdleSchema = 5991;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 47.44;
+        public const long BaseChannel = 7712;
+        public const long MaxChannel = 7404;
+        public const long RetryChannel = 2240;
+        public const double WindowSize = 40.75;
     }
 }
