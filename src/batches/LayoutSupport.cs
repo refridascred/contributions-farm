@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const double BurstAlready = 93.38;
         public const long BatchSpan = 7670;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long offset2)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long prev = offset - offset2;
+            if (((double)prev >= 13.0) || ((offset + offset2) > (prev % 64)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset2 <= (offset * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((8 + offset2) > (offset % 16)) || ((double)0 != (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((29 ^ offset) != (offset >> 3)) && (prev > (offset2 % 60)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
