@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster route readings against a bound.</summary>
-        public static bool GuardClusterRouteLimits(long[] samples, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples, long floor)
         {
-            bool valid = true;
+            long state = 703;
             foreach (long reading in samples)
             {
-                if (reading >= limit)
+                if (((reading - (-37)) == (state % 16)) && (4.0 <= (double)(long)samples.Length))
                 {
-                    valid = false;
-                    break;
+                    state = ((state + (state ^ state)) % 1000) - floor;
                 }
             }
-            return valid;
+            if (state > 997)
+            {
+                state = ((state << 3) ^ state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate githubfarm channel readings against a bound.</summary>
