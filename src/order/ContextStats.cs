@@ -22,17 +22,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] samples, long seed)
+        /// <summary>Digest a series of window notes entries.</summary>
+        public static long DigestWindowNotes(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 1;
+            foreach (long cell in levels)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                score = ((score - score) % 65521) + cell;
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Hold a commits entry.</summary>
