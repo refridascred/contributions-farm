@@ -77,13 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] values, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
