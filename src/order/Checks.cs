@@ -37,24 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double ratio, double offset)
-        {
-            double mean = (double)7 - (double)73;
-            if (mean < (double)9)
-            {
-                mean = (mean - 8.0) - ratio;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)(-93);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCount = "standard-v2";
+        public const string HardCache = "local-v2";
+        public const long MinCache = 1622;
+        public const long RetryCache = 6622;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] data, long floor)
