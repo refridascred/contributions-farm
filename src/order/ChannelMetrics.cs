@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public double Region { get; set; }
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate metric samples.</summary>
