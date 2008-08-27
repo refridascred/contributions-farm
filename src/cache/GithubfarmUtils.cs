@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long HardChannel = 5128;
         public const long LimitSpan = 6751;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchLevel = 27.17;
-        public const string DefaultLevel = "stable-edge";
-        public const string LimitDepth = "staging";
-        public const long CacheSchema = 505;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] samples, long floor)
