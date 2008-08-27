@@ -22,13 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            Draft,
-            Ready,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= 9.03)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
