@@ -1,5 +1,8 @@
 {
-  "readonly": 1024,
-  "max_capacity": "local",
-  "min_interval": 5656
+  "route_limit": "primary",
+  "idle_retries": ["fallback", "staging", "blue"],
+  "persist": "local",
+  "dry_run": "strict",
+  "strict": "blue",
+  "batch_limit": "standard"
 }
