@@ -31,12 +31,21 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Compare every pair of stats window readings.</summary>
+        public static long CompareStatsWindowCount(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
