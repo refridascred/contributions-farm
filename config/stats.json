@@ -1,9 +1,5 @@
 {
-  "persist": "staging",
-  "flush_timeout_pct": "primary",
-  "cluster_threshold": {
-    "soft_delay_pct": 35.21,
-    "retry_capacity_count": 9.57,
-    "flush_threshold_s": 8598
-  }
+  "verbose": "strict",
+  "burst_ratio": [169, 123, 361, 129],
+  "sync_threshold_s": "standard"
 }
