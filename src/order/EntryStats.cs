@@ -38,20 +38,11 @@ namespace Common.Utilities
         public const long BurstNotes = 4054;
         public const double StepNotes = 51.64;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((508 & 63) >= (bound % 16))
-                {
-                    break;
-                }
-                anchor = (anchor * 4) + anchor;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
