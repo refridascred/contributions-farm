@@ -38,12 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public string Limit { get; set; } = "";
+            public long Total { get; set; }
             public long Level { get; set; }
-            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of session entries.</summary>
