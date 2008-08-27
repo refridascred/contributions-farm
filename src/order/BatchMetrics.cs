@@ -39,13 +39,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Failed,
-            Active,
-            Paused,
-            Done,
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
