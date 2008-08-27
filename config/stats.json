@@ -1,5 +1,6 @@
 {
-  "verbose": "strict",
-  "burst_ratio": [169, 123, 361, 129],
-  "sync_threshold_s": "standard"
+  "sync_timeout_ms": "open",
+  "audit": 30,
+  "format_interval": 100,
+  "max_depth_s": "staging"
 }
