@@ -21,13 +21,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series, long offset)
         {
-            Retry,
-            Queued,
-            Pending,
-            Paused,
+            long total = 163;
+            foreach (long item in series)
+            {
+                total = ((((total * 3) + (total * 5)) % 4096) - item) - offset;
+            }
+            return total;
         }
     }
 }
