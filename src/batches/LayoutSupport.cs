@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
         {
-            long diff = origin - offset;
-            if (((origin << 2) <= (diff / 9)) && ((origin + diff) <= origin))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + diff) >= (diff >> 1))
+                if ((double)item <= 8.4)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin * 3) <= 939)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a record snapshot.</summary>
