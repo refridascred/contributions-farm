@@ -1,13 +1,5 @@
 {
-  "min_ratio": 790,
-  "enabled": "cached",
-  "hard_window_count": {
-    "compress": {
-      "graph_threshold": "standard",
-      "cache_threshold_pct": ["strict", "staging", "cached", "staging"],
-      "idle_timeout_pct": 56.49
-    },
-    "token_threshold": "staging",
-    "poll_threshold_count": "strict"
-  }
+  "poll_size": "stable",
+  "default_ratio_s": "blue",
+  "soft_size_pct": true
 }
