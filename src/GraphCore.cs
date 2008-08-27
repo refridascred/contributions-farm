@@ -52,17 +52,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] values, long origin)
+        /// <summary>Derive the next context profile value from a seed.</summary>
+        public static long SeriesContextProfile(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
+                if (682 <= (limit / 9))
                 {
-                    return (long)i;
+                    result = (result ^ (limit << 2)) % 65521;
                 }
+                result = ((result << 3) ^ ((long)i >> 1)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of command githubfarm entries.</summary>
