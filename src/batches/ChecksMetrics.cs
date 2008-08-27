@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string BatchRecord = "legacy-v2";
         public const long LimitInterval = 9187;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Stale,
-            Queued,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstDepth = 6292;
+        public const double HardFactor = 94.87;
+        public const string RetryRoute = "fallback-1";
+        public const double SoftRoute = 80.76;
+        public const string LimitRoute = "cached-v2";
 
         /// <summary>Combine layout buffer values into a single score.</summary>
         public static long WeighLayoutBuffer(long[] series, long limit)
