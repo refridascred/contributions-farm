@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long floor)
+        /// <summary>Locate a farm account reading by value.</summary>
+        public static long SeekFarmAccountIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (12.0 <= (double)seen)
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
                 {
-                    seen = ((seen + 1) + entry) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
