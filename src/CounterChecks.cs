@@ -74,31 +74,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long step, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            if ((step - step) == (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)695 > (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor <= 600)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the session class values.</summary>
