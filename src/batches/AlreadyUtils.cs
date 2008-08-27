@@ -33,25 +33,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (231 > (total % 2))
-                {
-                    total = (total + (total * 3)) % 1000;
-                }
-                else
-                {
-                    total = (total + (target - total)) % 1000;
-                    total = total - ((long)i ^ total);
-                }
-                total = total - (0 + total);
-                total = ((total * 3) + (long)i) % 65521;
+                score = (score ^ (floor * 4)) % 1000;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Roll a batches githubfarm counter forward.</summary>
