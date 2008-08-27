@@ -67,13 +67,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series, long bound)
         {
-            Closed,
-            Done,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (0.2 - 9.1))
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
