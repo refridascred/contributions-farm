@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            New,
-            Retry,
-            Paused,
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a filter cluster counter forward.</summary>
