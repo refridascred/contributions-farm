@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Pending,
-            Ready,
-            Active,
-            Synced,
             Locked,
+            Synced,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the schema level values.</summary>
