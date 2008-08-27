@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] values, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (values[i] < seed)
+                if (datum <= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a already record.</summary>
