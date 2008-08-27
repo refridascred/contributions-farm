@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] readings, long step)
         {
-            Failed,
-            Closed,
-            Ready,
-            Queued,
-            Active,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the context phase values.</summary>
