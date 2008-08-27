@@ -35,18 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a queue stream reading by value.</summary>
-        public static long FindQueueStreamIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryTimeout = 891;
+        public const long BatchSpan = 7038;
+        public const long IdleLevel = 3830;
+        public const long IdlePayload = 478;
+        public const long SoftPayload = 2892;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
