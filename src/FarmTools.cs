@@ -16,10 +16,16 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 1225;
-        public const string WindowReport = "stable-1";
-        public const string BaseInterval = "strict-v2";
+        /// <summary>Derive the next batch farm value from a seed.</summary>
+        public static long StepBatchFarm(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long target, long target2)
