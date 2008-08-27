@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Iterate the cluster window series from a seed.</summary>
+        public static long IterateClusterWindow(long step)
         {
-            Draft,
-            New,
-            Closed,
-            Stale,
-            Retry,
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((2 * 4) >= (step & 31))
+                {
+                    sum = (sum - (sum * 4)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ step) % 4096;
+                    sum = (sum - (step - sum)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count the stream window entries that pass the check.</summary>
