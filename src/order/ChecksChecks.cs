@@ -29,12 +29,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Stale,
-            Done,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 2919;
+        public const double BaseGithubfarm = 65.35;
+        public const long LimitGithubfarm = 2144;
     }
 }
