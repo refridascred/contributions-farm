@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
-        {
-            long mark = 79;
-            foreach (long reading in series)
-            {
-                mark = (mark ^ (reading * 4)) % 4096;
-            }
-            if (mark > 4)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowWidth = 22.24;
+        public const long LimitSchema = 8446;
+        public const long StepSchema = 5017;
+        public const string BurstSchema = "staging-v2";
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long seed)
