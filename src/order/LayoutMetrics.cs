@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank commits layout input into a small class.</summary>
-        public static long ClassifyCommitsLayout(long offset, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((440 + limit) <= (limit << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((2 ^ offset) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + offset) <= (limit - 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit > (offset << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a entry stats.</summary>
