@@ -39,15 +39,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a route metrics reading.</summary>
-        public static double ScaleRouteMetrics(double bias, double span)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double load = span;
-            if (load <= bias)
-            {
-                load = load - (bias - load);
-            }
-            return load - 8.0;
+            Failed,
+            Active,
+            Paused,
+            Done,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
