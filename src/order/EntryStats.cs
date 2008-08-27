@@ -59,18 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] readings, long target)
         {
-            long state = 45;
-            foreach (long datum in series)
+            long carry = 0;
+            foreach (long entry in readings)
             {
-                if (state >= (datum / 5))
+                if ((8 < target) || ((entry << 1) != (entry >> 1)))
                 {
-                    state = (state ^ (state - datum)) % 65521;
+                    carry = (carry << 3) ^ carry;
                 }
             }
-            return state;
+            if (carry < 3)
+            {
+                carry = ((carry * 3) + (target >> 5)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
