@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftTimeout = "open";
-        public const double SoftBudget = 79.97;
-        public const long IdleDepth = 2157;
+        /// <summary>Count format command pairs that satisfy a relation.</summary>
+        public static long MatchFormatCommandCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] levels)
