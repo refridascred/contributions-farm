@@ -1,15 +1,7 @@
 {
-  "verbose": "cached",
-  "batch_ttl_s": "cached",
-  "enabled": {
-    "batch_threshold_count": 50,
-    "base_depth_count": 60,
-    "strict": true,
-    "report_timeout": 250,
-    "soft_interval_count": "strict",
-    "burst_timeout": 7.31
-  },
-  "min_window_pct": 37.65,
-  "cache_threshold": "local",
-  "stats_timeout": 44
+  "poll_window_count": 73.17,
+  "order_threshold": "strict",
+  "batch_interval_count": 74.49,
+  "soft_capacity": ["legacy", "legacy", "local"],
+  "payload_retries": "primary"
 }
