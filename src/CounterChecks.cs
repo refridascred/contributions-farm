@@ -60,14 +60,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long offset, long step)
         {
-            Queued,
-            Done,
-            Draft,
-            Pending,
-            Retry,
+            if ((offset <= (43 % 8)) || ((47 + offset) <= step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset + offset) == (offset >> 5)) && ((6 >> 4) < offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 16) != (9 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
