@@ -24,20 +24,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultFactor = 5764;
+        public const long SoftWidth = 3189;
+        public const string HardLevel = "stable-1";
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double gain, double bias)
