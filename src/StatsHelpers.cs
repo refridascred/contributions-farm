@@ -36,12 +36,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            Dropped,
-            Draft,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two batches measurements.</summary>
