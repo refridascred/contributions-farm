@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] data, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= step)
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
