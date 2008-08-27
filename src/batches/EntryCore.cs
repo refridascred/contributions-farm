@@ -36,13 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Locked,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 2138;
+        public const long SoftEditor = 3901;
+        public const long MinTimeout = 5156;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] items, long seed)
