@@ -1,14 +1,11 @@
 # Command notes
 
-The report module keeps graph values in sync with the queue cache.
-Each record is validated before it reaches the record queue.
-
-The tools report groups every layout by editor.
-The format helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the order list.
+Each channel is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Log every stream change
-- Document new checks fields
-- Validate editor input early
-- Prefer cache defaults
+- Prefer payload defaults
+- Review schema limits each release
+- Log every graph change
+- Validate filter input early
