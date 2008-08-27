@@ -1,17 +1,17 @@
 # githubfarm settings
-audit:
-  soft_capacity_ms:
-    - green
-    - primary
-    - strict
-  min_size_s: stable
-  route_size: false
-  flush_ttl_pct: legacy
-  schema_ratio: 2493
-  stream_retries: 17.66
-burst_retries_count:
-  - blue
-  - primary
-  - eu-west
-  - staging
-batch_limit_ms: stable
+retry_delay_count: green
+audit: 1943
+support_window: 62
+retry_capacity: false
+max_size_s: 250
+default_interval:
+  min_capacity:
+    - staging
+    - staging
+  session_limit: 1024
+  persist:
+    - 99
+    - 324
+    - 445
+    - 211
+  burst_delay_s: 3.46
