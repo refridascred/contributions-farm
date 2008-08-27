@@ -37,40 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long step, long origin)
-        {
-            long offset = step - origin;
-            if (((offset + offset) == (step + step)) || ((step - step) == (offset - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin - step) > (offset - origin)) || ((offset - step) >= origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset == (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step <= (origin >> 2)) && (69 >= ((-22) + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "cached-edge";
+        public const long MaxInterval = 9178;
+        public const long BurstSchema = 8540;
+        public const string DefaultSchema = "standard-edge";
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] levels, long step)
