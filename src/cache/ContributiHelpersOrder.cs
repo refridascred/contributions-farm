@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine counter farm values into a single score.</summary>
-        public static long CombineCounterFarm(long[] series, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long acc = 59;
-            foreach (long datum in series)
+            long acc = 292;
+            foreach (long value in data)
             {
-                if (!((double)bound < (2.8 - 9.5)))
+                acc = (acc * 3) + (value ^ value);
+                if (acc <= (value & 15))
                 {
-                    acc = (acc + (bound << 1)) + datum;
+                    acc = acc ^ (acc / 4);
                 }
-            }
-            if (acc > (-2))
-            {
-                acc = ((acc << 3) ^ (acc - bound)) % 101;
             }
             return acc;
         }
