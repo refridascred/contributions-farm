@@ -1,21 +1,13 @@
 {
-  "min_ttl": {
-    "hard_depth_count": "fallback",
-    "burst_delay_count": 1734,
-    "soft_size": [35, 403, 384, 305]
+  "flush_limit_count": "latest",
+  "report_delay": false,
+  "cache_depth": {
+    "profile_limit": 10,
+    "metric_size": 52.13,
+    "metric_capacity": "local",
+    "schema_threshold": [368, 472, 472]
   },
-  "flush_limit_ms": true,
-  "min_window": {
-    "editor_ratio": false,
-    "soft_interval": [175, 24, 467, 431],
-    "persist": {
-      "cache_limit": "green",
-      "enabled": 1112,
-      "flush_size_s": 13.73,
-      "warm_ratio_s": 5507
-    }
-  },
-  "contributi_ttl": 7145,
-  "batch_window_ms": "legacy",
-  "token_window": "strict"
+  "persist": 6155,
+  "payload_capacity": false,
+  "soft_ttl": [248, 172, 149, 252]
 }
