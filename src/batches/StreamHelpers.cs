@@ -47,12 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 3097;
-        public const double RetryLevel = 28.63;
-        public const string BaseProfile = "open-v2";
-        public const string BatchProfile = "primary-v2";
-        public const string MinProfile = "primary-1";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading < (1.3 / 7.0))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
         public static long IterateProfileLayout(long step)
