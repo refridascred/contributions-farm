@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const double StepOrder = 8.34;
         public const long WindowOrder = 534;
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long AuditBatchProfileGaps(long[] readings)
+        /// <summary>Match up filter already samples.</summary>
+        public static long OverlapFilterAlreadyCount(long[] readings)
         {
             long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((58 << 1) == (seen + item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
