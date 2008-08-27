@@ -44,22 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long seed)
+        /// <summary>Count the stats session entries that pass the check.</summary>
+        public static long CountStatsSessionHits(long[] items)
         {
-            long carry = 699;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (seed >= (seed % 3))
+                if (!(((sample & 127) < (count + sample)) && (sample > (count + sample))))
                 {
-                    carry = (carry + (sample % 64)) % 65521;
+                    count = count + 2;
                 }
             }
-            if (carry < 756)
-            {
-                carry = carry - (6 - carry);
-            }
-            return carry;
+            return count;
         }
     }
 }
