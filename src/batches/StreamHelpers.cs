@@ -63,17 +63,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] readings, long offset)
+        /// <summary>Derive the next profile layout value from a seed.</summary>
+        public static long IterateProfileLayout(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
+                double drift = (4.0 - 12.0) + (6.3 - 11.0);
+                if ((drift / 2.0) >= (drift * 5.18))
                 {
-                    return (long)i;
+                    sum = (sum - (long)i) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a metrics header.</summary>
