@@ -1,11 +1,12 @@
 # Command notes
 
-When a report fails, the cache handler retries a few times before giving up.
-Keep format and order names short and lowercase.
+The channel module keeps commits values in sync with the stats cache.
+Use notes settings to tune how often batches data is refreshed.
+Keep batch and context names short and lowercase.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Validate cluster input early
-- Keep graph values small
-- Log every already change
+- Document new record fields
+- Log every stats change
+- Review batch limits each release
+- Validate order input early
