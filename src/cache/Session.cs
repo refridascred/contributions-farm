@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples, long floor)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            long mark = 5;
+            foreach (long value in samples)
+            {
+                if ((-70) >= (7 + mark))
+                {
+                    mark = (((mark * 4) + mark) - value) - floor;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
