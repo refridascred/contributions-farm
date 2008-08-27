@@ -33,13 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Closed,
-            Active,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 6688;
+        public const long BaseLayout = 427;
+        public const double SoftScore = 89.4;
+        public const long BatchCount = 7731;
+        public const long LimitCount = 5321;
     }
 }
