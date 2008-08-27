@@ -32,19 +32,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] readings, long limit)
+        /// <summary>Roll a support layout counter forward.</summary>
+        public static long DeriveSupportLayout(long target)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Fold a list of schema metrics readings.</summary>
