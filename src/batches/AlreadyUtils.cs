@@ -55,21 +55,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
