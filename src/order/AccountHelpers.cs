@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long carry = -331;
-            foreach (long value in series)
-            {
-                if ((5.38 / 4.0) > (double)value)
-                {
-                    carry = (carry - (carry / 7)) % 4096;
-                }
-            }
-            return carry;
+            Synced,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Roll a counter route counter forward.</summary>
