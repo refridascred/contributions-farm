@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of layout session entries.</summary>
-        public static long ScoreLayoutSession(long[] samples, long origin)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long total = 6;
-            foreach (long cell in samples)
-            {
-                if ((757 << 2) > (cell << 2))
-                {
-                    total = (total + (origin % 5)) % 97;
-                }
-            }
-            return total % 65521;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of cache readings.</summary>
