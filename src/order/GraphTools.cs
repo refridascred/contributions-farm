@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] data)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                mark = (mark + reading) % 65521;
+                if ((matches ^ matches) == (matches - 830))
+                {
+                    matches = (matches + 3) - item;
+                }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
