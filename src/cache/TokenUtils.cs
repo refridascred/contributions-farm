@@ -22,21 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Digest a series of cluster buffer entries.</summary>
+        public static long WeighClusterBuffer(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 6;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9 >= (7 - cell)) || (((long)series.Length / 4) >= cell))
                 {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix ^ (cell * 2)) % 255) + offset;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix & 127)) % 101;
+                }
+                if ((cell + 6) == (mix + 210))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
