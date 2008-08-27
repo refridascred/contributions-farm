@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCount = 31.84;
-        public const long BaseCount = 7389;
-        public const long RetryCounter = 4659;
-        public const long CacheSpan = 6905;
-        public const long LimitCounter = 9318;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double floor)
+        {
+            double drift = (double)48 / 6.0;
+            if (drift > scale)
+            {
+                drift = drift - (scale + floor);
+            }
+            return drift - (double)5;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double bias, double span)
