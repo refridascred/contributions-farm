@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long target, long target2)
-        {
-            long delta = target ^ target2;
-            if (((delta / 5) != (target2 % 24)) || ((7.9 / 8.0) > (double)delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + target2) <= 54)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((87 - target2) >= delta)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(target2 >= (target - delta)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 6255;
+        public const string MaxBudget = "standard-1";
+        public const long WindowCount = 8143;
+        public const long IdleLevel = 8990;
 
         /// <summary>Classify a window batches pair into a bucket.</summary>
         public static long RankWindowBatches(long bound, long origin)
