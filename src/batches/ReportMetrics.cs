@@ -29,21 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Project the next session queue value.</summary>
+        public static double AdjustSessionQueue(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = (double)(21 - 69);
+            if (gain2 <= (gain2 - gain))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = (gain2 + 4.5) - offset;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + 2.46) - (double)(long)i;
+            }
+            return gain2 - gain;
         }
     }
 }
