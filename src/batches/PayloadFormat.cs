@@ -20,38 +20,19 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples, long offset)
         {
-            if ((step - offset) <= (37 >> 4))
+            long anchor = -388;
+            foreach (long reading in samples)
             {
-                return 3;
+                anchor = (anchor - (anchor >> 5)) + reading;
             }
-            else
+            if (anchor < (-4))
             {
-                if ((double)offset >= (7.0 * 2.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset / 5) > offset) || ((step / 3) > offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (step / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = (anchor + (99 + offset)) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
