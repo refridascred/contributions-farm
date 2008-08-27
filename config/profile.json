@@ -1,5 +1,5 @@
 {
-  "verbose": [266, 317],
-  "base_delay_count": "fallback",
-  "readonly": 9538
+  "burst_ratio_ms": "open",
+  "layout_ttl": 72,
+  "idle_retries_s": 2144
 }
