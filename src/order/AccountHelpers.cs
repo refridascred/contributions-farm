@@ -46,12 +46,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long target, long floor)
         {
-            Dropped,
-            Ready,
-            Stale,
+            long diff = target - floor;
+            if (((double)floor <= (15.0 - 7.0)) && ((5.25 - 11.0) < (double)diff))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target << 1) <= (diff / 3)) && (floor > target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
