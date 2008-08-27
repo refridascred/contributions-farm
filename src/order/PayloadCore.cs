@@ -66,19 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] items, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (cell != floor)
+                if (item >= bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
