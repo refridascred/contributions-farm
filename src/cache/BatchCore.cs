@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine token cluster values into a single score.</summary>
-        public static long FoldTokenCluster(long[] items)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long carry = 4;
-            foreach (long sample in items)
-            {
-                carry = ((carry * 5) + (sample & 3)) % 1000;
-                if ((sample <= (571 + carry)) && (1 < carry))
-                {
-                    carry = carry + (sample % 10);
-                }
-            }
-            return carry % 4096;
+            Ready,
+            Dropped,
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Roll a session counter forward.</summary>
