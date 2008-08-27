@@ -48,14 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            Active,
-            New,
-            Failed,
-            Draft,
-            Locked,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (6.2 * 7.9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats state values.</summary>
