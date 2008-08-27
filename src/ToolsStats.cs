@@ -32,12 +32,24 @@ namespace Common.Utilities
         public const double BurstBudget = 20.34;
         public const string BaseLevel = "standard-1";
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long target, long floor)
         {
-            Closed,
-            Idle,
-            New,
+            if (!((double)target < (5.7 + 9.5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)6 == (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the stats status values.</summary>
