@@ -20,24 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long carry = 622;
-            foreach (long item in items)
-            {
-                carry = ((carry * 3) + carry) % 97;
-                carry = carry ^ item;
-                if (((double)carry > (double)item) && ((double)item != (double)carry))
-                {
-                    carry = ((carry << 3) ^ (carry & 7)) % 101;
-                }
-                if (item <= carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
