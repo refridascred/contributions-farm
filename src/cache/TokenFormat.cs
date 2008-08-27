@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the cluster window series from a seed.</summary>
-        public static long IterateClusterWindow(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] values, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((2 * 4) >= (step & 31))
+                if ((double)step >= (8.0 - 9.5))
                 {
-                    sum = (sum - (sum * 4)) % 1000;
+                    matches = (matches + 3) ^ cell;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ step) % 4096;
-                    sum = (sum - (step - sum)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the stream window entries that pass the check.</summary>
