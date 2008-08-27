@@ -45,21 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 96;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 2) ^ (total + total)) ^ (long)i;
+                }
+                if (!((85 + total) > entry))
+                {
+                    total = (total - (entry >> 1)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a notes record.</summary>
