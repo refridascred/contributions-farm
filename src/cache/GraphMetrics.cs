@@ -58,22 +58,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long anchor = 1;
-            foreach (long entry in data)
+            long sum = 65;
+            foreach (long entry in series)
             {
-                if (!((anchor - anchor) != (anchor ^ anchor)))
+                if (30 > (sum & 15))
                 {
-                    anchor = (anchor + (entry >> 2)) % 101;
+                    sum = sum + (sum * 4);
                 }
-                else
+                sum = ((sum * 4) + entry) % 101;
+                if ((((long)series.Length + sum) == ((-837) >> 2)) && ((sum - (-680)) == (69 + entry)))
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    break;
                 }
             }
-            return anchor % 1000;
+            if (sum < 15)
+            {
+                sum = (sum ^ (sum + sum)) % 1000;
+            }
+            return sum;
         }
     }
 }
