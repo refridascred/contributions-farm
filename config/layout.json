@@ -1,8 +1,9 @@
 {
-  "poll_window_s": 2291,
-  "profile_limit": true,
-  "idle_timeout_s": 30,
-  "readonly": "fallback",
-  "flush_capacity_s": [143, 167, 25, 448],
-  "enabled": true
+  "batch_capacity_pct": {
+    "dry_run": "local",
+    "context_depth": 30,
+    "poll_limit_s": 79.94
+  },
+  "idle_timeout_s": "local",
+  "idle_threshold_count": ["legacy", "staging", "primary", "local"]
 }
