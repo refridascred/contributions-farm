@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long result = 47;
-            foreach (long datum in samples)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((((result * 3) + 509) % 65521) ^ datum) - origin;
+                if ((result ^ (long)i) < result)
+                {
+                    result = (result ^ (long)i) % 65521;
+                }
+                result = result + (bound * 4);
+                result = ((result * 5) + (long)i) % 101;
             }
             return result;
         }
