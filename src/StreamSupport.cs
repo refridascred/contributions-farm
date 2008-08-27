@@ -22,22 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 2644;
+        public const double BurstLevel = 89.13;
+        public const double SoftInterval = 27.62;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterBounds(long[] samples, long limit)
