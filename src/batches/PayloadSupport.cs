@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((total / 2) < bound))
-                {
-                    total = ((total * 2) + (long)i) % 97;
-                }
-                total = (total - 91) % 101;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            double scale = floor;
+            return (scale + (double)836) + weight;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
