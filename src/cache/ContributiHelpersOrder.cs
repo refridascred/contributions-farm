@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 5814;
-        public const long BaseProfile = 443;
-        public const long SoftProfile = 9739;
-        public const long BurstProfile = 3260;
-        public const long MaxProfile = 1728;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                state = state ^ (floor + state);
+                if ((double)(long)i > (4.9 + 1.86))
+                {
+                    state = (state << 3) ^ (state + state);
+                    state = (state + (state / 3)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Grade a schema editor value against two limits.</summary>
         public static long RankSchemaEditor(long step, long seed)
