@@ -51,18 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session profile counter forward.</summary>
-        public static long IterateSessionProfile(long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result ^ bound) % 255;
-                long next = bound << 3;
-                result = result + (next + 475);
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
