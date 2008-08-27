@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    label TEXT,
+    created_at TIMESTAMP,
+    owner TEXT NOT NULL,
     region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
-
-INSERT INTO stats_logs (rank, label, region) VALUES (6, 'open', 'eu-west');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
