@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] samples, long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((hits + sample) <= (98 + sample)) && ((sample - sample) <= (-89)))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
