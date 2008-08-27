@@ -19,11 +19,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
