@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed & 63) > (seed >> 1))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) - datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
