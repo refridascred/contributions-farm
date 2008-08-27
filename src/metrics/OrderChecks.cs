@@ -20,10 +20,16 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 1344;
-        public const long SoftContributi = 701;
-        public const long StepContributi = 9796;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double span)
+        {
+            double drift = 0.3;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (rate + span)) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] values, long step)
