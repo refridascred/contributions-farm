@@ -14,27 +14,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels)
-        {
-            long carry = 9;
-            foreach (long cell in levels)
-            {
-                if ((double)carry == (double)cell)
-                {
-                    carry = carry ^ (cell - cell);
-                }
-                else
-                {
-                    carry = ((carry * 5) + (272 << 1)) % 4096;
-                }
-            }
-            if (carry < 61)
-            {
-                carry = (carry + (carry >> 3)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepScore = 13.87;
+        public const long BaseFactor = 1070;
+        public const string LimitBuffer = "legacy-edge";
+        public const long SoftBuffer = 4079;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 6988;
