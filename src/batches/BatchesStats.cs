@@ -13,16 +13,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score ^ (seed + 267);
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
