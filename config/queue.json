@@ -1,6 +1,5 @@
 {
-  "window_capacity": "standard",
-  "min_threshold": 31.93,
-  "batch_threshold_s": 60,
-  "audit": 7452
+  "dry_run": 60,
+  "notes_ttl": false,
+  "session_timeout": "staging"
 }
