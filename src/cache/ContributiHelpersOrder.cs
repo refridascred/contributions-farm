@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double ratio, double offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double ratio2 = 13.0;
-            if (ratio2 >= (ratio / 3.0))
-            {
-                ratio2 = ratio2 + offset;
-            }
-            else
-            {
-                ratio2 = ratio2 - (offset * 1.82);
-            }
-            return ratio2 - ratio;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a window batches pair into a bucket.</summary>
