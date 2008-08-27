@@ -13,19 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (9.8 >= (double)value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinInterval = 4113;
+        public const string BurstCount = "alpha-v2";
+        public const string CacheScore = "primary";
+        public const long WindowInterval = 7836;
 
         /// <summary>Combine cache context values into a single score.</summary>
         public static long TotalCacheContext(long[] samples, long bound)
