@@ -55,20 +55,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Match up metrics buffer samples.</summary>
+        public static long CompareMetricsBufferCount(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (offset + mix)) % 97;
-                if ((60 - 0) > (mix & 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (mix + mix)) % 65521;
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
