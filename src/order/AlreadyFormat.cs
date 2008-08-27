@@ -51,13 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Stale,
-            Idle,
-            Closed,
-            New,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
