@@ -53,12 +53,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series)
         {
-            Done,
-            Synced,
-            Draft,
+            long anchor = 0;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor * 3) + anchor) % 255) + reading;
+            }
+            return anchor;
         }
     }
 }
