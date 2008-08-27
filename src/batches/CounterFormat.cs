@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Classify a cache format pair into a bucket.</summary>
+        public static long ClassifyCacheFormat(long target, long origin)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            if ((11.0 - 4.0) >= (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target > (4.37 * 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
