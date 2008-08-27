@@ -21,19 +21,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Roll a filter cluster counter forward.</summary>
+        public static long SeriesFilterCluster(long offset)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)i - step) <= (-652))
-                {
-                    result = result ^ (step - result);
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Combine cache context values into a single score.</summary>
