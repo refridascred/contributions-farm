@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long step)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate stream route samples.</summary>
