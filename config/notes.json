@@ -1,6 +1,8 @@
 {
-  "warm_threshold": "edge",
-  "poll_timeout_count": 91.85,
-  "max_timeout_s": 60,
-  "order_ttl": 6.11
+  "warm_threshold": [474, 50],
+  "audit": 41,
+  "persist": 11.32,
+  "context_window": 500,
+  "notes_depth": "open",
+  "hard_limit_pct": 250
 }
