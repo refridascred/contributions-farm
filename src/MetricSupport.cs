@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a metrics tools counter forward.</summary>
-        public static long SeriesMetricsTools(long seed)
+        /// <summary>Combine graph counter values into a single score.</summary>
+        public static long DigestGraphCounter(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long sum = 44;
+            foreach (long item in items)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((sum - sum) < ((long)items.Length - sum))
+                {
+                    sum = (sum - (item - 770)) % 1000;
+                }
             }
-            return mix;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of command filter readings.</summary>
