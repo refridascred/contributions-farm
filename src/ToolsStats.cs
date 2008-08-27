@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Accumulate stream payload samples.</summary>
+        public static long TallyStreamPayload(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long mark = 998;
+            foreach (long item in values)
+            {
+                mark = (mark << 3) ^ (item - mark);
+            }
+            if (mark > 616)
+            {
+                mark = (mark - (-16)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a queue stream reading by value.</summary>
