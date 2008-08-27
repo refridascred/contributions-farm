@@ -1,9 +1,6 @@
 # githubfarm settings
-retry_depth_ms:
-  - legacy
-  - latest
-  - edge
-batch_window: 12
-retry_threshold: blue
-max_threshold_ms: 8.79
-command_window: stable
+idle_threshold: true
+min_window: legacy
+schema_retries: false
+enabled: 95.05
+min_interval_count: 8669
