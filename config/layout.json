@@ -1,6 +1,8 @@
 {
-  "batch_capacity": [83, 399, 377, 332],
-  "strict": 14.92,
-  "warm_depth_pct": 4259,
-  "batches_retries": 1024
+  "base_delay": "eu-west",
+  "idle_ratio_pct": 82,
+  "sync_depth_s": 97.14,
+  "readonly": "green",
+  "verbose": ["cached", "latest", "edge", "fallback"],
+  "cache_size_pct": true
 }
