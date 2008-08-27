@@ -80,18 +80,10 @@ namespace Common.Utilities
         public const string SoftSupport = "latest-edge";
         public const long BaseFactor = 5651;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((double)count == (6.8 / 2.0)) && (((double)datum <= (5.0 / 9.0)) || (datum <= (count + offset))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 6726;
+        public const double DefaultCounter = 29.79;
+        public const long WindowFactor = 7467;
+        public const long DefaultBudget = 3183;
     }
 }
