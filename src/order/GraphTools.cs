@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cache route values into a single score.</summary>
-        public static long DigestCacheRoute(long[] readings, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long state = 972;
-            foreach (long reading in readings)
-            {
-                state = ((state << 2) ^ 3) % 97;
-                state = ((state * 5) + reading) % 101;
-            }
-            if (state < 2)
-            {
-                state = ((state << 2) ^ bound) % 1000;
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
