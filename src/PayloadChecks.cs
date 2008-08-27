@@ -44,21 +44,19 @@ namespace Common.Utilities
             return rate2 - (rate2 * 5.39);
         }
 
-        /// <summary>Iterate the command batches series from a seed.</summary>
-        public static long SeriesCommandBatches(long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] values, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (((origin + 68) < ((long)i * 2)) && ((double)mark < (7.2 * 1.0)))
+                if (reading < floor)
                 {
-                    mark = (mark << 2) ^ mark;
-                    mark = (mark << 3) ^ (origin / 2);
+                    ready = false;
+                    break;
                 }
-                mark = ((mark << 3) ^ origin) % 65521;
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Accumulate filter samples.</summary>
