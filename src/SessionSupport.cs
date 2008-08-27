@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] data)
         {
-            long mark = -3;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((mark ^ value) <= 396)
+                if (((907 - sample) < hits) || !(((-361) ^ hits) != (hits - sample)))
                 {
-                    mark = mark ^ (7 ^ 7);
+                    hits = hits + 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
