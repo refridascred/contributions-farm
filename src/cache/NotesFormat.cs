@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long anchor = 35;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor + (sample ^ anchor)) % 65521) + limit;
-                anchor = (anchor + (sample % 24)) % 97;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
