@@ -46,14 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            Paused,
-            Queued,
-            Dropped,
-            Locked,
-            Active,
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i * 4) > (origin & 255))
+                {
+                    mark = mark - ((-21) >> 4);
+                }
+                else
+                {
+                    mark = (mark * 5) + (209 % 64);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
