@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] readings, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                result = (result * 4) + bound;
-                result = ((result * 3) + (long)i) % 65521;
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
