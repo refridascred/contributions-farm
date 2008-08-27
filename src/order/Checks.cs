@@ -16,10 +16,22 @@ namespace Common.Utilities
             return load - (scale - bias);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheCount = 29.27;
-        public const string DefaultRatio = "alpha-edge";
-        public const long StepFactor = 9384;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] levels, long limit)
