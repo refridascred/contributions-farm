@@ -68,38 +68,12 @@ namespace Common.Utilities
         public const string HardOrder = "stable-v2";
         public const double StepOrder = 74.5;
 
-        /// <summary>Rank stream graph input into a small class.</summary>
-        public static long RankStreamGraph(long limit, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            if (((double)limit != (17.0 / 3.0)) && ((8.91 / 8.0) > (double)target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((7.26 + 7.0) > (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((478 + 90) <= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 1) < target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
