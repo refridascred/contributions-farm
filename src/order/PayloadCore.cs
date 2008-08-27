@@ -50,20 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Combine channel metrics values into a single score.</summary>
+        public static long ScoreChannelMetrics(long[] samples)
         {
-            long total = 6;
-            foreach (long reading in items)
+            long carry = 6;
+            foreach (long entry in samples)
             {
-                total = ((total << 3) ^ (total << 2)) ^ reading;
-                total = ((total << 3) ^ (total << 3)) % 97;
+                if (((long)samples.Length + entry) != (carry + 885))
+                {
+                    carry = carry - (carry + entry);
+                }
+                else
+                {
+                    carry = (carry ^ (carry ^ carry)) % 101;
+                }
             }
-            if (total < 347)
-            {
-                total = total ^ (total << 1);
-            }
-            return total;
+            return carry % 97;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
