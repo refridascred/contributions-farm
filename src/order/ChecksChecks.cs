@@ -26,26 +26,19 @@ namespace Common.Utilities
             return weight - (6.5 + 0.08);
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            long total = 872;
-            foreach (long item in data)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item + item) <= (total / 2))
+                if (((long)i + anchor) < anchor)
                 {
-                    total = (total ^ total) % 101;
+                    anchor = anchor ^ (bound & 31);
                 }
-                if ((item / 5) != (item << 1))
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (total < 61)
-            {
-                total = (total - (88 / 5)) % 97;
-            }
-            return total;
+            return anchor;
         }
     }
 }
