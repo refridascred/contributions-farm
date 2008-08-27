@@ -53,18 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record tools readings against a rule.</summary>
-        public static long TallyRecordToolsHits(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((-841) % 16) != (cell / 3))
+                if (2 > seen)
                 {
-                    matches = matches + 1;
+                    seen = (seen + 1) + item;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
