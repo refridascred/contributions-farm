@@ -25,39 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long step)
-        {
-            if (!((19.0 + 1.6) > (5.71 + 14.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.4 - 1.2) > (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((315 / 3) < (seed % 60)) && ((double)step != (2.0 / 9.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)seed >= (3.1 / 7.0)) || ((double)step != (5.76 / 9.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 49.52;
+        public const long BaseAlready = 4768;
+        public const long IdleSize = 5772;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] items, long floor)
