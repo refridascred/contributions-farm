@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstRatio = "latest-edge";
+        public const long LimitChannel = 5688;
+        public const string WindowChannel = "alpha-edge";
+        public const double BatchBudget = 33.13;
 
         /// <summary>Measure how many tools format samples are out of range.</summary>
         public static long TallyToolsFormatGaps(long[] series)
