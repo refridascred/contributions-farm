@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long limit)
         {
-            Failed,
-            Idle,
-            Locked,
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = carry - (limit + limit);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
