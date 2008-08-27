@@ -15,15 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] samples, long floor)
+        /// <summary>Project the next schema token value.</summary>
+        public static double ScaleSchemaToken(double scale, double offset)
         {
-            long result = 51;
-            foreach (long value in samples)
+            double drift = (double)(856 % 64);
+            if (drift > offset)
             {
-                result = result + (floor + value);
+                drift = (drift + 6.04) - scale;
             }
-            return result;
+            return drift - drift;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
