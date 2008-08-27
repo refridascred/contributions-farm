@@ -38,23 +38,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double load = rate;
-            if (load < (double)65)
-            {
-                load = load + (load - rate);
-            }
-            else
-            {
-                load = load - (load * 7.7);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (load - offset)) + (double)(long)i;
-            }
-            return load - load;
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
