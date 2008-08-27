@@ -35,11 +35,16 @@ namespace Common.Utilities
         public const string WindowRatio = "staging-v2";
         public const string DefaultScore = "fallback-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstStream = 4.95;
-        public const long BurstWidth = 7589;
-        public const string IdleStream = "alpha-v2";
-        public const long MinStream = 313;
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double span)
+        {
+            double bias = gain * 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (bias * 3.9)) + (double)(long)i;
+            }
+            return bias - span;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleRatio = 6265;
