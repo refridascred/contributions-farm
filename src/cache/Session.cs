@@ -56,22 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double weight, double bias)
         {
-            long acc = 8;
-            foreach (long sample in samples)
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((acc + 0) <= sample)
-                {
-                    acc = (acc * 5) + 9;
-                }
-                else
-                {
-                    acc = (acc + (sample / 7)) % 255;
-                }
+                drift = ((drift + (drift - 0.92)) + (double)(long)i) + weight;
             }
-            return acc;
+            return drift - (double)386;
         }
     }
 }
