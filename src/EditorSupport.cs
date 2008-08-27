@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate githubfarm metric readings against a bound.</summary>
-        public static bool ValidateGithubfarmMetricBounds(long[] series, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long anchor = 285;
+            foreach (long value in samples)
             {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (value + anchor)) % 1000;
             }
-            return valid;
+            if (anchor < 539)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a token summary.</summary>
