@@ -20,21 +20,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Combine checks format values into a single score.</summary>
+        public static long TotalChecksFormat(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 655;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark + (90 - 84)) % 101) ^ (long)i) + cell;
+                    mark = mark - (mark - 813);
                 }
+                mark = (mark + (mark - mark)) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the report class values.</summary>
