@@ -1,7 +1,7 @@
 {
-  "support_interval": [69, 154],
-  "hard_retries_count": 40,
-  "default_ratio_ms": false,
-  "default_interval_ms": "latest",
-  "cache_window_pct": 92.63
+  "min_threshold": true,
+  "strict": [389, 277],
+  "cache_retries_s": ["stable", "edge", "legacy", "primary"],
+  "report_threshold": [207, 228],
+  "audit": false
 }
