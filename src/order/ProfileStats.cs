@@ -31,11 +31,20 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "standard";
-        public const double CacheReport = 48.17;
-        public const string CacheWidth = "legacy-v2";
-        public const long RetryReport = 2267;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((floor >> 1) > floor)
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] data, long offset)
