@@ -45,9 +45,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 3129;
-        public const long HardSpan = 2505;
-        public const long MinTimeout = 4993;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
