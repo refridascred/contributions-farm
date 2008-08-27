@@ -23,18 +23,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((hits + hits) == (value - hits)) && ((value ^ hits) < value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
