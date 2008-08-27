@@ -30,13 +30,15 @@ namespace Common.Utilities
         public const string BaseTimeout = "fallback-1";
         public const double BasePayload = 16.78;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long bound)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
