@@ -41,11 +41,14 @@ namespace Common.Utilities
             return ratio - 9.9;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLayout = 1.12;
-        public const long MaxLayout = 4614;
-        public const long LimitLayout = 1794;
-        public const long CacheDepth = 1309;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Draft,
+            Done,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstTimeout = 616;
