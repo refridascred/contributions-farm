@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series)
         {
-            long carry = 3;
-            foreach (long item in samples)
+            long carry = -331;
+            foreach (long value in series)
             {
-                if (item <= ((long)samples.Length >> 5))
+                if ((5.38 / 4.0) > (double)value)
                 {
-                    carry = ((carry * 5) + (carry ^ item)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (3 * 4);
-                }
-                if (!((carry ^ item) >= 948))
-                {
-                    carry = carry ^ (carry << 2);
-                }
-                if ((carry - item) > (carry * 5))
-                {
-                    carry = ((carry * 3) + item) % 1000;
+                    carry = (carry - (carry / 7)) % 4096;
                 }
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Roll a counter route counter forward.</summary>
