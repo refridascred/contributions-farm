@@ -56,19 +56,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] data, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Active,
+            Pending,
+            Draft,
+            Synced,
         }
     }
 }
