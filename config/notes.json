@@ -1,20 +1,15 @@
 {
-  "route_timeout": "staging",
-  "min_ttl_ms": "strict",
-  "context_threshold": "latest",
-  "sync_depth_count": {
-    "entry_delay": "strict",
-    "payload_delay": "stable",
-    "layout_capacity": 250,
-    "soft_ratio": true,
-    "hard_limit": {
-      "record_capacity": 23,
-      "hard_delay_pct": [351, 431, 415],
-      "filter_ttl": 86.61,
-      "report_capacity": 100,
-      "max_retries": true
-    }
-  },
-  "persist": ["legacy", "stable", "eu-west", "standard"],
-  "audit": "strict"
+  "warm_retries": "open",
+  "burst_capacity_count": 7958,
+  "soft_delay_pct": 53.5,
+  "batch_window_count": 100,
+  "soft_capacity": 64.43,
+  "audit": {
+    "dry_run": 23.12,
+    "cache_ratio_count": 91.53,
+    "idle_window_ms": "staging",
+    "audit": false,
+    "max_interval": 45.98,
+    "metrics_threshold": [450, 154, 401]
+  }
 }
