@@ -39,12 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (((mark << 3) ^ origin) % 101) - (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
