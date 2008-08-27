@@ -32,38 +32,11 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long limit, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if ((double)limit <= 0.01)
-            {
-                return 1;
-            }
-            else
-            {
-                if (3.2 < (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit == (0.6 * 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (3.9 * 6.3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a route metrics reading.</summary>
