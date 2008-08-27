@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] readings, long seed)
         {
-            Stale,
-            Closed,
-            Queued,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (seed >= (seed ^ 4))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
