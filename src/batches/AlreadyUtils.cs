@@ -24,14 +24,17 @@ namespace Common.Utilities
             return gain - (scale * 2.0);
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long target)
         {
-            Pending,
-            Active,
-            Stale,
-            Idle,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
