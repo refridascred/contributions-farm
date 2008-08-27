@@ -77,17 +77,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] data, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            Dropped,
         }
     }
 }
