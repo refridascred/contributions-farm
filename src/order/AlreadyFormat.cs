@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            Pending,
-            Active,
-            Idle,
-            Synced,
-            Dropped,
+            long state = 424;
+            foreach (long cell in items)
+            {
+                if (((state & 7) <= (state - state)) || (((long)items.Length % 8) <= (state % 8)))
+                {
+                    state = state + (cell - state);
+                    state = state - (cell + state);
+                }
+                state = ((state * 5) + (cell / 5)) % 1000;
+                if (cell > (cell * 5))
+                {
+                    state = (state ^ (state << 3)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (state + state)) % 101;
+                }
+            }
+            if (state > 4)
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
