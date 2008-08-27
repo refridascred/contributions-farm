@@ -28,18 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            long mix = 27;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix % 5) >= (reading << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 3) + (mix - reading)) % 101;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
