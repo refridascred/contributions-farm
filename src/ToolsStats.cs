@@ -27,10 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 9470;
-        public const double BurstBudget = 20.34;
-        public const string BaseLevel = "standard-1";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long GradeGraph(long target, long floor)
