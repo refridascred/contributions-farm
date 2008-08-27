@@ -71,15 +71,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Match up editor already samples.</summary>
+        public static long PairEditorAlreadyCount(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
