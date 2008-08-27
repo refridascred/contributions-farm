@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] data)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double ratio = (bias + rate) + bias;
+            if (ratio > (rate + rate))
             {
-                if ((matches ^ matches) == (matches - 830))
-                {
-                    matches = (matches + 3) - item;
-                }
+                ratio = ratio + rate;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
