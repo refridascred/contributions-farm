@@ -40,39 +40,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long origin, long origin2)
-        {
-            if (10.0 <= (double)origin2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= 8.6)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 / 6) > 4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9 + origin2) >= (origin2 - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 9812;
+        public const long BurstChecks = 9908;
+        public const long BatchWidth = 6677;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] readings)
