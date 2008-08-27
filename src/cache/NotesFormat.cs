@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            long mark = 370;
-            foreach (long reading in items)
+            long anchor = 678;
+            foreach (long datum in levels)
             {
-                mark = (mark - (mark << 3)) ^ reading;
+                if (!((double)datum < (19.0 / 9.0)))
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+                if ((datum + anchor) != (anchor & 7))
+                {
+                    anchor = (anchor - (datum - datum)) % 65521;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
