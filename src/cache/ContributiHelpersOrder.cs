@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double ratio, double offset)
-        {
-            double weight = ratio;
-            return (weight + ratio) + offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 5814;
+        public const long BaseProfile = 443;
+        public const long SoftProfile = 9739;
+        public const long BurstProfile = 3260;
+        public const long MaxProfile = 1728;
 
         /// <summary>Grade a schema editor value against two limits.</summary>
         public static long RankSchemaEditor(long step, long seed)
