@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate buffer entry readings against a bound.</summary>
-        public static bool ValidateBufferEntryRange(long[] samples, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long carry = 679;
+            foreach (long value in readings)
             {
-                if (cell <= seed)
+                if (value < (carry - value))
                 {
-                    stale = false;
-                    break;
+                    carry = carry ^ (carry + floor);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (649 + 56)) % 255;
                 }
             }
-            return stale;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
