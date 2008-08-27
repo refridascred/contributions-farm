@@ -63,27 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache payload entries.</summary>
-        public static long DigestCachePayload(long[] levels, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] data, long bound)
         {
-            long mix = 1;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((sample >= bound) || ((sample ^ mix) > (bound + sample)))
+                if ((4.6 * 5.6) != (double)bound)
                 {
-                    mix = (mix + (sample + bound)) % 101;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ (sample / 6)) % 101;
-                }
-                if ((mix & 127) >= (bound >> 2))
-                {
-                    mix = (mix - (mix + bound)) % 65521;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the editor state values.</summary>
