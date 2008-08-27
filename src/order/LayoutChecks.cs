@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowWidth = "standard-edge";
-        public const long CacheBuffer = 8936;
-        public const string CacheInterval = "cached-1";
-        public const string StepSpan = "open";
-        public const long BurstCount = 5466;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double span)
+        {
+            double drift = 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (drift - ratio)) + (double)(long)i) + span;
+            }
+            return drift + ratio;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long CompareMetricsCount(long[] items)
