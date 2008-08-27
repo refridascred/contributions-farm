@@ -22,18 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long delta = offset + floor;
+            if (((delta + delta) != ((-58) << 1)) && (offset >= (delta + 23)))
             {
-                if ((datum / 2) >= (datum << 1))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > (double)delta)
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (offset <= 5)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset / 4) < (floor + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
