@@ -26,19 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= 9.03)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseInterval = 35.79;
+        public const string BurstWidth = "open-1";
+        public const long StepStats = 1400;
+        public const long HardStats = 1133;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] items, long seed)
