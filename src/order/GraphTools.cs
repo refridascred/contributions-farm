@@ -47,19 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate buffer graph readings against a bound.</summary>
-        public static bool VerifyBufferGraphLimits(long[] data, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (datum > offset)
+                if (entry != origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
