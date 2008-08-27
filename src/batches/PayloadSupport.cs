@@ -41,31 +41,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank schema stream input into a small class.</summary>
-        public static long ClassifySchemaStream(long seed, long limit)
-        {
-            if (seed < (limit ^ limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit < (seed ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < (limit << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 9612;
+        public const long IdleEditor = 9099;
+        public const long SoftEditor = 3191;
+        public const long MaxEditor = 571;
     }
 }
