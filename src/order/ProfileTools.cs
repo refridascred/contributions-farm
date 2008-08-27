@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count editor tools pairs that satisfy a relation.</summary>
-        public static long MatchEditorToolsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseBudget = 38.19;
+        public const long BurstFarm = 4370;
+        public const long IdleFarm = 6941;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] levels)
