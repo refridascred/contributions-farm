@@ -17,10 +17,12 @@ namespace Common.Utilities
         public const double MinAlready = 36.88;
         public const string MinCount = "stable-edge";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "alpha";
-        public const long DefaultFormat = 9563;
-        public const long RetryFormat = 5628;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxScore = 3755;
+        public const long SoftBatches = 5375;
+        public const long RetryWidth = 1892;
+        public const string LimitLevel = "cached-v2";
+        public const string LimitFactor = "cached-v2";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
