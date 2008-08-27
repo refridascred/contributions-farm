@@ -1,13 +1,4 @@
 # githubfarm settings
-report_size: false
-max_capacity:
-  - cached
-  - standard
-  - strict
-min_window_count:
-  warm_timeout_ms: 15
-  metric_depth: 1326
-  editor_depth: green
-enabled: 48.74
-hard_interval: 60
-persist: 78.44
+idle_interval_pct: staging
+persist: 17.9
+session_timeout: 30
