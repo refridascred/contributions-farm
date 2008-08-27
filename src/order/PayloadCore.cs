@@ -53,18 +53,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value % 2) <= value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Draft,
         }
     }
 }
