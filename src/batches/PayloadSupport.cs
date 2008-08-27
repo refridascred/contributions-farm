@@ -23,11 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            double scale = floor;
-            return (scale + (double)836) + weight;
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
