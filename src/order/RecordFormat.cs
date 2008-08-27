@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the buffer layout series from a seed.</summary>
