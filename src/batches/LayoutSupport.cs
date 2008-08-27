@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item <= 8.4)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 629;
+        public const long MaxScore = 1533;
+        public const double LimitAlready = 95.86;
+        public const double BurstAlready = 93.38;
+        public const long BatchSpan = 7670;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
