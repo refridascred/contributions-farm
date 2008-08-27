@@ -31,11 +31,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double offset)
-        {
-            double gain = rate * 7.4;
-            return (gain - (rate - rate)) + offset;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 7518;
+        public const long DefaultEntry = 9406;
+        public const string BaseCount = "fallback";
+        public const long DefaultTimeout = 3313;
     }
 }
