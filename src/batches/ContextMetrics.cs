@@ -75,22 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] readings, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (736 >= (8 ^ entry))
+                if ((tally <= (entry - 23)) && (offset <= (offset + tally)))
                 {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
