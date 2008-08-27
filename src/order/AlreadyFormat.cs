@@ -68,19 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer schema samples are out of range.</summary>
-        public static long CountBufferSchemaHits(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)hits >= (8.8 * 3.59))
-                {
-                    hits = ((hits + 1) + item) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleSize = "standard-1";
+        public const string MaxBatch = "strict-1";
+        public const long LimitSize = 5158;
+        public const double HardBatch = 44.82;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long OverlapChannelCount(long[] data)
