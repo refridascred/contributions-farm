@@ -23,14 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long step)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Paused,
-            Failed,
+            if ((step - offset) <= (37 >> 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= (7.0 * 2.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset / 5) > offset) || ((step / 3) > offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset < (step / 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi level values.</summary>
