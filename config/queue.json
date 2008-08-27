@@ -1,5 +1,11 @@
 {
-  "notes_capacity": 1024,
-  "cache_delay_ms": true,
-  "min_ttl_pct": ["cached", "standard"]
+  "warm_depth_pct": "eu-west",
+  "persist": 30,
+  "queue_threshold": {
+    "stats_window": 47,
+    "max_limit_s": "eu-west",
+    "warm_size": false,
+    "soft_capacity_ms": 250
+  },
+  "default_capacity_count": ["legacy", "standard"]
 }
