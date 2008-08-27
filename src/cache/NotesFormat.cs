@@ -34,21 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 8080;
+        public const long CacheQueue = 5515;
+        public const long DefaultInterval = 2825;
+        public const long MinInterval = 2731;
     }
 }
