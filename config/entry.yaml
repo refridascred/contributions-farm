@@ -1,5 +1,5 @@
 # entry settings
-counter_retries: 59.44
-verbose: cached
-dry_run: 16
-soft_depth_count: 25
+default_threshold_s: 85
+batch_timeout: true
+soft_depth_pct: open
+hard_delay_pct: strict
