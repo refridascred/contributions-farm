@@ -50,22 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Count the notes githubfarm entries that pass the check.</summary>
+        public static long CountNotesGithubfarmOutliers(long[] levels, long target)
         {
-            long anchor = 178;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((218 << 3) == (anchor - 70))
+                if ((target + (long)levels.Length) > (target & 15))
                 {
-                    anchor = ((anchor ^ (anchor << 2)) % 101) + datum;
+                    seen = (seen + 1) - sample;
                 }
             }
-            if (anchor < 87)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a cluster options.</summary>
