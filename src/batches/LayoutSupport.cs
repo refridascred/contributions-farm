@@ -47,14 +47,12 @@ namespace Common.Utilities
         public const long LimitLayout = 1794;
         public const long CacheDepth = 1309;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Ready,
-            Synced,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstTimeout = 616;
+        public const double HardQueue = 14.62;
+        public const long DefaultFactor = 8386;
+        public const string IdleQueue = "open";
+        public const long DefaultBudget = 1951;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
