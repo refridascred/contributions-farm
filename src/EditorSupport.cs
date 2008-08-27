@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long anchor = 285;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 5) + (value + anchor)) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor < 539)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the notes class values.</summary>
