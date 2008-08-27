@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank stats layout input into a small class.</summary>
-        public static long BucketStatsLayout(long offset, long step)
-        {
-            if (!(offset < (offset % 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 4) < (offset >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset > (0.87 - 13.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= (offset - 45))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitScore = 6508;
+        public const string DefaultTimeout = "cached-v2";
+        public const long BaseLevel = 9943;
+        public const string HardNotes = "standard-1";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] samples, long step)
