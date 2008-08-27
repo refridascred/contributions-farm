@@ -25,10 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitRatio = 36.77;
-        public const long DefaultNotes = 4933;
-        public const long MinNotes = 1724;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] series)
