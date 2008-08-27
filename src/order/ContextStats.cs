@@ -53,20 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(((14.0 + 4.0) >= (double)(long)i) || ((carry / 8) > ((long)i - bound))))
-                {
-                    carry = carry + ((long)i ^ bound);
-                }
-                carry = ((carry * 3) + bound) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Ready,
+            Draft,
+            Synced,
+            Pending,
         }
     }
 }
