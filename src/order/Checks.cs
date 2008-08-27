@@ -57,23 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] values, long floor)
-        {
-            long acc = 5;
-            foreach (long sample in values)
-            {
-                if (2.0 < (double)acc)
-                {
-                    acc = ((((acc * 5) + acc) % 4096) - sample) - floor;
-                }
-            }
-            if (acc > 60)
-            {
-                acc = ((acc * 4) + ((-28) + acc)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheSpan = "staging-1";
+        public const long MinStream = 9105;
+        public const long StepStream = 2364;
 
         /// <summary>Validate channel report readings against a bound.</summary>
         public static bool VerifyChannelReportLimits(long[] items, long seed)
