@@ -13,10 +13,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 9896;
-        public const long CacheSpan = 4228;
-        public const long MaxRatio = 6620;
+        /// <summary>Classify a format batches pair into a bucket.</summary>
+        public static long RankFormatBatches(long step, long bound)
+        {
+            long diff = step ^ bound;
+            if ((9.06 * 3.4) < (double)diff)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + diff) < step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowPayload = "stable";
