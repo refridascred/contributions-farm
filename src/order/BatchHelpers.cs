@@ -13,23 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next entry token value.</summary>
-        public static double BlendEntryToken(double scale, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            double gain = 6.49;
-            if (gain < (11.0 / 3.0))
+            long mark = 538;
+            foreach (long item in items)
             {
-                gain = (gain + 5.47) - floor;
+                mark = mark - (item + item);
+                if (((double)mark >= (8.18 + 4.0)) && ((mark << 2) == (mark % 7)))
+                {
+                    mark = ((mark * 4) + (mark + mark)) % 4096;
+                }
             }
-            else
+            if (mark > 5)
             {
-                gain = gain - scale;
+                mark = (mark - (mark ^ mark)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain - scale;
+            return mark % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
