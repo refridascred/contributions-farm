@@ -1,19 +1,11 @@
 {
-  "cache_threshold_pct": {
-    "cache_threshold_pct": {
-      "persist": 26.04,
-      "idle_threshold_s": [265, 26, 103, 326],
-      "sync_timeout": 30.85,
-      "entry_ratio": "standard",
-      "max_depth_ms": 60,
-      "poll_timeout": false
-    },
-    "hard_ratio_pct": 281,
-    "audit": "legacy",
-    "burst_delay_s": true
+  "cache_threshold_s": true,
+  "base_ratio": 40.92,
+  "sync_timeout": 97.04,
+  "readonly": {
+    "schema_window": 2814,
+    "max_interval_count": 895,
+    "retry_size_s": "local"
   },
-  "audit": false,
-  "notes_timeout": "green",
-  "batch_capacity_ms": "standard",
-  "hard_threshold_pct": "standard"
+  "flush_interval_s": true
 }
