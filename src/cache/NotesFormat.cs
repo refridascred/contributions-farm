@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double gain, double floor)
-        {
-            double drift = floor / 4.0;
-            if (drift > floor)
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift - floor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitSpan = "primary-edge";
+        public const long LimitRecord = 9778;
+        public const string BaseRecord = "cached-edge";
+        public const long BatchRecord = 9828;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowInterval = 7518;
