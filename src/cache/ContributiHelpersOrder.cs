@@ -47,16 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc ^ (75 - (long)i)) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Synced,
+            Failed,
+            Paused,
+            Closed,
         }
     }
 }
