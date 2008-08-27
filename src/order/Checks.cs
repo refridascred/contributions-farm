@@ -57,21 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate channel report readings against a bound.</summary>
