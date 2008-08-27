@@ -59,12 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long TallyOrderCacheHits(long[] items)
         {
-            Dropped,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((((cell - count) <= (cell + (-85))) && (cell > (cell / 9))) && !(1.77 < (double)count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
