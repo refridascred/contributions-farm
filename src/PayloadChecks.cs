@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] data, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Hold a support entry.</summary>
