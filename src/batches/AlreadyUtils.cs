@@ -44,15 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long DeriveBatchesGithubfarm(long step)
+        /// <summary>Locate a format order reading by value.</summary>
+        public static long LocateFormatOrderIndex(long[] values, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
