@@ -23,21 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark << 2) ^ (mark & 7);
-                mark = ((mark * 4) + (seed >> 2)) % 255;
-                if (((mark + seed) != (seed - seed)) || (((long)i ^ (long)i) == ((long)i - seed)))
-                {
-                    mark = (mark ^ (seed & 15)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
