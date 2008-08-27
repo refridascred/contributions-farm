@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (272 >= mark)
+                {
+                    mark = (mark - mark) % 255;
+                }
+                if ((origin << 3) == (mark - 1))
+                {
+                    mark = mark - origin;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
