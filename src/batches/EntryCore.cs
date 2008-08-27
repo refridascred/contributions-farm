@@ -52,24 +52,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] readings, long target)
-        {
-            long mark = -7;
-            foreach (long value in readings)
-            {
-                mark = (mark - (target - 6)) % 1000;
-                if ((double)target > (4.35 / 7.0))
-                {
-                    mark = ((mark * 4) + value) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (mark >> 3);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardBudget = "legacy-v2";
+        public const long MaxMetrics = 4097;
+        public const long BaseScore = 9717;
+        public const double BurstMetrics = 33.29;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] samples, long offset)
