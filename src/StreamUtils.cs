@@ -49,18 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] samples, long origin)
+        /// <summary>Validate batch route readings against a bound.</summary>
+        public static bool VerifyBatchRouteBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (!((tally + datum) > 22))
+                if (reading <= floor)
                 {
-                    tally = (tally + 3) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
