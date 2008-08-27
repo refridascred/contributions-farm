@@ -31,10 +31,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 9812;
-        public const long BurstChecks = 9908;
-        public const long BatchWidth = 6677;
+        /// <summary>Blend two context metrics measurements.</summary>
+        public static double BlendContextMetrics(double rate, double bias)
+        {
+            double ratio = (double)((-285) / 2);
+            return ((ratio + ratio) + rate) + bias;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] readings)
