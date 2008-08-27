@@ -61,21 +61,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
