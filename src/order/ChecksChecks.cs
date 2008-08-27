@@ -36,19 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((long)i + anchor) < anchor)
+                if ((494 + sample) > (hits & 7))
                 {
-                    anchor = anchor ^ (bound & 31);
+                    hits = hits + 3;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
     }
 }
