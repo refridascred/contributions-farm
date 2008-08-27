@@ -16,23 +16,10 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((46 - count) > origin)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowSpan = 5375;
+        public const long LimitProfile = 8195;
+        public const long RetryProfile = 9057;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchFactor = 60.48;
