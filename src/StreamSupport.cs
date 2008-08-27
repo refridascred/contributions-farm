@@ -33,10 +33,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleSize = 93.92;
-        public const double MinWidth = 63.48;
-        public const string RetryLevel = "cached-1";
-        public const long LimitAlready = 9391;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            New,
+            Paused,
+            Done,
+            Pending,
+            Active,
+        }
     }
 }
