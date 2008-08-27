@@ -1,19 +1,10 @@
 # support settings
-batch_capacity_pct:
-  min_delay_ms: 89
-  editor_ttl: 54.33
-  sync_ttl_ms:
-    - 407
-    - 238
-    - 407
-    - 402
-flush_delay_s: local
-payload_retries: 741
-soft_ttl:
-  already_ratio: 8387
-  tools_ratio: true
-  buffer_ttl: staging
-  compress: true
-  hard_timeout_s: 51.97
-readonly: 87.56
-default_window: fallback
+metrics_window: 29.42
+audit: 30.73
+soft_retries: 84
+readonly: 63
+idle_size:
+  - 386
+  - 150
+  - 304
+  - 297
