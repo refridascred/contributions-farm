@@ -50,13 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] levels, long origin)
         {
-            Dropped,
-            Done,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry % 12) <= (entry & 255))
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of notes window readings.</summary>
