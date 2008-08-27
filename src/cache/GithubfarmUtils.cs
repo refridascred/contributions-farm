@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 97.14;
-        public const double IdleChannel = 12.99;
-        public const long RetryBudget = 5997;
-        public const long HardChannel = 5128;
-        public const long LimitSpan = 6751;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels)
+        {
+            long mix = 8;
+            foreach (long cell in levels)
+            {
+                mix = ((mix << 3) ^ cell) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
