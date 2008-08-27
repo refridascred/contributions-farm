@@ -26,19 +26,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] data, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] levels, long target)
         {
-            long score = 14;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - (item & 1)) - offset;
-                if ((item >> 1) <= ((long)data.Length * 5))
+                if (levels[i] <= target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
