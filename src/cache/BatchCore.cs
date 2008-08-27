@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series, long offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((offset >> 1) > (count / 2))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine token cluster values into a single score.</summary>
