@@ -36,11 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a session notes figure with a bias.</summary>
-        public static double SmoothSessionNotes(double weight, double floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double scale = 0.7;
-            return ((scale + 2.0) + weight) + floor;
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
