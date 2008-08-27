@@ -59,11 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long bound)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
