@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a schema counter sample.</summary>
-        public static long LookupSchemaCounterIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 59.24;
+        public const long StepTimeout = 1848;
+        public const long RetryTimeout = 1678;
+        public const long IdleReport = 9892;
 
         /// <summary>Blend two support measurements.</summary>
         public static double SmoothSupport(double bias, double span)
