@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total + (total + total);
-                total = ((total * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
