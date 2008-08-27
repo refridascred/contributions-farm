@@ -57,19 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] readings, long limit)
         {
-            long total = 161;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                total = (total - (total + 17)) ^ sample;
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 814)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            return found;
         }
     }
 }
