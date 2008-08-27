@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const string BaseTimeout = "fallback-1";
         public const double BasePayload = 16.78;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((389 & 31) > (item + item))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
