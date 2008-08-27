@@ -36,26 +36,11 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long target)
-        {
-            long prev = step + target;
-            if (prev > (step - 725))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + target) == (prev % 97))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "standard";
+        public const double CacheReport = 48.17;
+        public const string CacheWidth = "legacy-v2";
+        public const long RetryReport = 2267;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] readings, long limit)
