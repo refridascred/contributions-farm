@@ -1,6 +1,6 @@
-id,ratio,active,level
-1,895,982,33.86
-2,2,330,914
-3,404,896,77.03
-4,19.1,stable,847
-5,316,539,44
+id,active,owner,region
+1,staging,866,90.14
+2,fallback,88.38,224
+3,324,legacy,552
+4,352,96.48,575
+5,110,latest,local
