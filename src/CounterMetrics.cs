@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next githubfarm cache value.</summary>
-        public static double AdjustGithubfarmCache(double scale, double offset)
+        /// <summary>Iterate the farm stream series from a seed.</summary>
+        public static long DeriveFarmStream(long limit)
         {
-            double mean = scale;
-            return mean + offset;
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((mark <= (limit >> 4)) || ((limit / 6) == (mark - (-470))))
+                {
+                    mark = (mark + 457) % 255;
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of token readings.</summary>
