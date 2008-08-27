@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 20.32;
-        public const string HardMetric = "fallback";
-        public const long IdleMetric = 7631;
-        public const double HardBudget = 9.15;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] data, long offset)
+        {
+            long score = 770;
+            foreach (long sample in data)
+            {
+                score = (score + (offset % 3)) ^ sample;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] series, long target)
