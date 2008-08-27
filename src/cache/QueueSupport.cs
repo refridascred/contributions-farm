@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Failed,
-            Synced,
-            Paused,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7161;
+        public const long DefaultTimeout = 9227;
+        public const long IdleBatches = 6780;
+        public const long WindowCount = 9668;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 3510;
