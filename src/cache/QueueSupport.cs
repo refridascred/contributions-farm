@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!(482 > matches))
+                if ((count + datum) <= (count % 10))
                 {
-                    matches = (matches + 2) + entry;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
