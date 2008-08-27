@@ -41,25 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session already input into a small class.</summary>
-        public static long RankSessionAlready(long seed, long seed2)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long lane = seed ^ seed2;
-            if (!(lane < (seed - lane)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((14.0 + 0.1) != (double)lane)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
