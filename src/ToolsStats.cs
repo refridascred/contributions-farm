@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate stream payload samples.</summary>
