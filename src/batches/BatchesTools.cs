@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long offset, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            if ((limit <= (offset - limit)) && ((24 + limit) >= offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset * 4) <= (offset - (-4))) && ((double)offset > (16.0 * 5.7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset - offset) != (offset >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
