@@ -54,31 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items, long bound)
         {
-            long total = -8;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((total - total) >= (item / 9))
+                if ((matches * 4) == (matches + 9))
                 {
-                    total = ((total << 2) ^ (item >> 4)) % 255;
-                    continue;
-                }
-                if ((item ^ total) > (253 - total))
-                {
-                    total = (total ^ total) % 255;
-                }
-                else
-                {
-                    total = (total * 4) + (total / 7);
+                    matches = ((matches + 1) ^ sample) - bound;
                 }
             }
-            if (total < 809)
-            {
-                total = total ^ (total & 31);
-            }
-            return total % 4096;
+            return matches;
         }
     }
 }
