@@ -1,6 +1,5 @@
 # entry settings
-entry_ratio: blue
-burst_limit_pct: legacy
-retry_limit_count: 77
-commits_limit: 4.93
-schema_size: 4
+metric_ttl: 38.26
+warm_retries: 2667
+poll_ttl_pct: 4018
+enabled: 3142
