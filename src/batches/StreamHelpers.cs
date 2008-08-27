@@ -30,19 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Combine session profile values into a single score.</summary>
+        public static long CombineSessionProfile(long[] levels)
         {
-            double scale = floor / 8.0;
-            if (scale >= bias)
+            long acc = 85;
+            foreach (long reading in levels)
             {
-                scale = scale - (floor + bias);
+                if ((reading + acc) >= acc)
+                {
+                    acc = acc - (316 + 93);
+                }
             }
-            else
-            {
-                scale = scale + (double)8;
-            }
-            return scale - (bias * 11.0);
+            return acc;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
