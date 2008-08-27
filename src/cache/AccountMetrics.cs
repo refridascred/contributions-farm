@@ -71,24 +71,13 @@ namespace Common.Utilities
         public const string DefaultContext = "staging-edge";
         public const long MaxSize = 2586;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((floor * 5) < (floor % 60))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 4) == (origin / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
