@@ -36,12 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] values)
         {
-            Ready,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)seen == (1.34 + 1.3))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
