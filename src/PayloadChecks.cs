@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Paused,
-            Failed,
-            Synced,
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
