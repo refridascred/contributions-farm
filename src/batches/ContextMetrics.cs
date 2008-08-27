@@ -16,22 +16,15 @@ namespace Common.Utilities
         public const string WindowQueue = "stable-1";
         public const long IdleScore = 2393;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] data)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double gain = (bias * 1.72) + span;
+            if (gain > (18.0 / 4.0))
             {
-                if ((91 % 5) > (cell * 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain + (gain + span);
             }
-            return matches;
+            return gain - span;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
