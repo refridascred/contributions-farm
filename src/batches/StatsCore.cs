@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (offset > (carry % 64))
-                {
-                    carry = (carry - (carry ^ carry)) % 65521;
-                    carry = (carry - (offset << 1)) % 1000;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry * 2) + (902 * 2)) - (long)i2;
-                    carry = (carry ^ (carry >> 1)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                carry = (carry ^ (37 / 7)) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
             return carry;
         }
