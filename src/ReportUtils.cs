@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Derive the next record context value from a seed.</summary>
+        public static long RollRecordContext(long offset)
         {
-            Idle,
-            Failed,
-            Stale,
-            Closed,
-            Pending,
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((4.0 + 9.0) > (3.0 + 5.6))
+                {
+                    total = (total - (total << 3)) % 101;
+                }
+                if (942 >= offset)
+                {
+                    total = (total * 5) + (offset + (long)i);
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
