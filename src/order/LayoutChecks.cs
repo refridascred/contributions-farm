@@ -43,24 +43,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((bound % 3) >= ((long)i - (long)i)))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total ^ (total + 188)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetrySpan = "standard";
+        public const string BurstDepth = "alpha-v2";
+        public const long WindowProfile = 2032;
+        public const long BatchSpan = 3027;
+        public const string HardFactor = "strict-1";
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
