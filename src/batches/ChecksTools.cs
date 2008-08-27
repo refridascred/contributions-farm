@@ -39,24 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context cache counter forward.</summary>
-        public static long StepContextCache(long origin)
+        /// <summary>Blend two support token measurements.</summary>
+        public static double SmoothSupportToken(double scale, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            double mean = 2.5 - (double)160;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)origin <= 1.0)
-                {
-                    score = (score ^ (score - score)) % 101;
-                }
-                else
-                {
-                    score = (score - (score ^ origin)) % 4096;
-                    score = score ^ origin;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                mean = ((mean - (floor / 6.0)) - (double)(long)i) - scale;
             }
-            return score;
+            return mean + floor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
