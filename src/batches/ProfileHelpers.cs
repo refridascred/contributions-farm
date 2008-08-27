@@ -38,14 +38,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            New,
-            Idle,
-            Dropped,
-            Paused,
-            Draft,
+            long sum = 9;
+            foreach (long entry in series)
+            {
+                sum = (sum << 2) ^ (sum & 127);
+                if ((sum / 6) < (sum << 2))
+                {
+                    sum = ((sum * 4) + (920 << 2)) % 97;
+                    break;
+                }
+                if ((double)entry <= 7.7)
+                {
+                    sum = (sum << 2) ^ (23 & 255);
+                }
+                else
+                {
+                    sum = (sum - (3 + sum)) % 1000;
+                }
+            }
+            if (sum > 111)
+            {
+                sum = sum + (sum >> 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the order level values.</summary>
