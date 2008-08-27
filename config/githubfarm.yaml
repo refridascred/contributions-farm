@@ -1,6 +1,6 @@
 # githubfarm settings
-idle_threshold_pct: 12.37
-burst_retries_s: 49.97
-default_timeout_ms: standard
-max_limit_s: false
-idle_interval_ms: false
+base_ratio_ms: 6115
+base_window_s: 42
+idle_interval_count: 31
+idle_interval_pct: local
+default_retries_ms: 140
