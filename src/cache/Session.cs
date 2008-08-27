@@ -56,13 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples)
         {
-            Done,
-            Pending,
-            Retry,
-            Stale,
+            long acc = 8;
+            foreach (long sample in samples)
+            {
+                if ((acc + 0) <= sample)
+                {
+                    acc = (acc * 5) + 9;
+                }
+                else
+                {
+                    acc = (acc + (sample / 7)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
