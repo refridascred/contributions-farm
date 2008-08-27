@@ -38,12 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            Paused,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
