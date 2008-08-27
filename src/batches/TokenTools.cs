@@ -43,18 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits + 1) <= (hits & 63))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
