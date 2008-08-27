@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            if (seed < (step % 60))
             {
-                result = (result - (result << 2)) % 1000;
-                if (seed <= ((long)i / 8))
-                {
-                    result = result + 7;
-                    result = (result ^ (seed / 9)) % 1000;
-                }
-                if (seed <= (result - seed))
-                {
-                    result = (result ^ (result >> 4)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((seed ^ step) <= (3 & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
