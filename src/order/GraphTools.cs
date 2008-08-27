@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ratio + 4.0;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double gain, double bias)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double rate = gain;
-            if (rate > rate)
-            {
-                rate = rate - (bias + bias);
-            }
-            return rate + bias;
+            public bool Region { get; set; }
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
