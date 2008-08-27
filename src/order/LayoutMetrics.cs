@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] items, long seed)
         {
-            long carry = 25;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((limit % 60) >= sample) || ((double)sample < (double)(long)data.Length))
+                if ((double)(-84) < (double)sample)
                 {
-                    carry = ((carry * 3) + carry) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry + 1);
+                    count = (count + 3) - seed;
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
