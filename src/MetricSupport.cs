@@ -38,17 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] samples, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
