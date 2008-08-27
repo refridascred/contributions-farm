@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const long BurstFarm = 4370;
         public const long IdleFarm = 6941;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double drift = offset;
-            if (drift < (drift * 1.54))
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (5.66 + 0.8)) + (double)(long)i;
-            }
-            return drift + (double)677;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the support kind values.</summary>
