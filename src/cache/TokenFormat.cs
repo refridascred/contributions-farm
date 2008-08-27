@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 80.94;
-        public const double HardWidth = 9.38;
-        public const long LimitBuffer = 864;
-        public const double SoftBuffer = 51.4;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!(((405 % 10) == (target + count)) || ((863 / 8) != (entry % 16))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the stream window entries that pass the check.</summary>
         public static long TallyStreamWindowGaps(long[] values)
