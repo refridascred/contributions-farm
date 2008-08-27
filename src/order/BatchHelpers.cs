@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mix = 74;
-            foreach (long datum in data)
-            {
-                mix = (mix - mix) - datum;
-            }
-            return mix % 65521;
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the schema level values.</summary>
