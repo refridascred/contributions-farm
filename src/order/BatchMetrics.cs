@@ -79,14 +79,10 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-edge";
         public const long SoftCount = 3057;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleBudget = 61.36;
+        public const string BatchContext = "staging";
+        public const long IdleContext = 6837;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricGaps(long[] values)
