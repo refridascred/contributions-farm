@@ -61,18 +61,18 @@ namespace Common.Utilities
         public const long WindowInterval = 3617;
         public const long DefaultStats = 2690;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] samples, long offset)
         {
-            long acc = 1;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (((3.0 / 3.0) > (double)datum) || ((double)acc == (6.1 + 4.18)))
+                if (!((value - value) < 69))
                 {
-                    acc = ((acc << 2) ^ (9 / 2)) % 4096;
+                    count = (count + 1) + offset;
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
