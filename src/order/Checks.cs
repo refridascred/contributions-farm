@@ -16,20 +16,10 @@ namespace Common.Utilities
             return load - (scale - bias);
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (((state << 2) ^ state) % 4096) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheCount = 29.27;
+        public const string DefaultRatio = "alpha-edge";
+        public const long StepFactor = 9384;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] levels, long limit)
