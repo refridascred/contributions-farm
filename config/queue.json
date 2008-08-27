@@ -1,7 +1,8 @@
 {
-  "batch_ratio_ms": 52.83,
-  "record_timeout": 57.98,
-  "queue_delay": [489, 405, 189],
-  "report_delay": 100,
-  "dry_run": true
+  "strict": 96,
+  "hard_window_s": 5509,
+  "burst_delay_ms": "local",
+  "already_capacity": "eu-west",
+  "default_size_ms": 500,
+  "base_ttl_pct": true
 }
