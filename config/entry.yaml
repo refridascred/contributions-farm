@@ -1,8 +1,4 @@
 # entry settings
-hard_timeout_ms: 94.54
-readonly:
-  - open
-  - strict
-  - staging
-  - blue
-format_ttl: 23.92
+base_limit: true
+order_size: false
+max_ttl: 53.01
