@@ -1,5 +1,19 @@
 # entry settings
-readonly: 31
-hard_retries: 95.18
-dry_run: 4323
-metrics_retries: 10
+poll_timeout_pct:
+  - 84
+  - 96
+  - 245
+  - 14
+poll_delay_ms:
+  - 450
+  - 146
+  - 398
+  - 211
+retry_depth_s:
+  - 449
+  - 489
+  - 176
+  - 407
+dry_run: false
+flush_ttl_s: fallback
+readonly: 21.68
