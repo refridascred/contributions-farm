@@ -67,18 +67,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell != (0.2 - 9.1))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Failed,
+            Closed,
+            Pending,
         }
     }
 }
