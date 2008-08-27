@@ -39,21 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)((-44) - (-8));
+            if (ratio >= ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + 3.0;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (4.04 - bias)) + (double)(long)i;
+            }
+            return ratio - (bias - span);
         }
     }
 }
