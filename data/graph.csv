@@ -1,11 +1,6 @@
-id,level,label,owner
-1,fallback,33.97,71.26
-2,370,staging,753
-3,56.93,475,36.63
-4,53.72,90.12,eu-west
-5,304,local,867
-6,98.06,760,blue
-7,49,757,173
-8,25.02,19,59
-9,cached,primary,48.44
-10,standard,eu-west,293
+id,active,token,level,ratio
+1,open,726,53.8,local
+2,117,30.46,244,green
+3,cached,777,107,staging
+4,edge,94.22,967,32.48
+5,24.91,458,704,62.26
