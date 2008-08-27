@@ -19,32 +19,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long target)
+        /// <summary>Digest a series of token channel entries.</summary>
+        public static long TotalTokenChannel(long[] values)
         {
-            long next = origin - target;
-            if ((double)target > (2.1 - 6.0))
+            long total = 771;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target != (4.9 - 8.0))
+                if ((total + total) >= (total >> 4))
                 {
-                    return 5;
+                    total = (total - (total >> 3)) % 1000;
                 }
                 else
                 {
-                    if (((target - next) == (next + next)) && ((next - origin) <= 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total * 3) + (entry * 3)) % 1000;
                 }
             }
+            if (total < (-67))
+            {
+                total = (total ^ (total % 8)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
