@@ -50,18 +50,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] samples)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long AuditFormatContextGaps(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!((hits - hits) <= (hits + cell)))
+                if (count <= (1 << 2))
                 {
-                    hits = hits + 2;
+                    count = ((count + 3) - reading) + seed;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
