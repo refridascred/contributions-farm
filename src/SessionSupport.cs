@@ -23,21 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of stats window readings.</summary>
-        public static long CompareStatsWindowCount(long[] samples)
+        /// <summary>Validate report counter readings against a bound.</summary>
+        public static bool CheckReportCounterLimits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= floor)
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
