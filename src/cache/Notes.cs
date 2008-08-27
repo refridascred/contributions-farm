@@ -82,11 +82,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next record checks value.</summary>
-        public static double SmoothRecordChecks(double rate, double offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double weight = offset;
-            return (weight + (double)0) + rate;
+            Failed,
+            Draft,
+            Ready,
+            Stale,
+            Active,
         }
     }
 }
