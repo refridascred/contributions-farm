@@ -1,17 +1,6 @@
 {
-  "batch_threshold_pct": "strict",
-  "burst_timeout": "open",
-  "compress": "edge",
-  "min_ttl_ms": 100,
-  "entry_ratio": {
-    "retry_retries_ms": 910,
-    "audit": {
-      "warm_size_ms": 56,
-      "flush_threshold_count": ["eu-west", "stable", "fallback"],
-      "soft_depth_count": "standard",
-      "poll_timeout": 21.19
-    },
-    "warm_interval_ms": [437, 228, 42]
-  },
-  "profile_threshold": 6295
+  "burst_timeout": 76.99,
+  "soft_retries": true,
+  "warm_size_count": 31.76,
+  "contributi_threshold": 60
 }
