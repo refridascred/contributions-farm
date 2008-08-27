@@ -41,22 +41,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] series, long floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long origin, long limit)
         {
-            long carry = -4;
-            foreach (long sample in series)
+            long diff = origin + limit;
+            if (((-69) * 4) == (origin - diff))
             {
-                if ((sample / 6) <= (sample + floor))
+                return 4;
+            }
+            else
+            {
+                if ((origin % 8) != (limit ^ diff))
                 {
-                    carry = (carry + 18) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit * 3) > (origin % 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (carry < (-6))
-            {
-                carry = carry + carry;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Measure how many report channel samples are out of range.</summary>
