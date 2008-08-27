@@ -27,11 +27,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long mix = 57;
+            foreach (long cell in data)
+            {
+                if (((mix ^ mix) < (mix & 255)) || ((double)cell >= 9.1))
+                {
+                    mix = mix - cell;
+                }
+                else
+                {
+                    mix = mix - (mix - mix);
+                }
+            }
+            if (mix < (-569))
+            {
+                mix = ((mix * 4) + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
