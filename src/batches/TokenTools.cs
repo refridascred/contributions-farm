@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long acc = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc + ((long)i2 ^ seed)) % 97;
-                }
-                if (((seed + acc) > ((-2) ^ sample)) || ((10.0 / 7.0) == (double)sample))
-                {
-                    acc = (acc << 3) ^ (880 << 1);
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
