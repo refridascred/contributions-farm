@@ -62,25 +62,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a queue context value against two limits.</summary>
-        public static long RankQueueContext(long target, long target2)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long offset = target + target2;
-            if ((target2 + target2) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (8.7 + 9.83))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
