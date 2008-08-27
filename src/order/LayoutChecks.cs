@@ -75,21 +75,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)tally >= (double)item)
                 {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
