@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long SoftRoute = 1684;
         public const long HardRoute = 3017;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] series, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series)
         {
-            bool flag = true;
+            long anchor = -50;
             foreach (long reading in series)
             {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ anchor) ^ reading;
             }
-            return flag;
+            if (anchor > 96)
+            {
+                anchor = (anchor ^ (2 ^ anchor)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
