@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const long DefaultNotes = 4933;
         public const long MinNotes = 1724;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] samples, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many format context samples are out of range.</summary>
