@@ -1,12 +1,8 @@
 # support settings
-base_threshold_count: 1024
-burst_delay:
-  readonly: latest
-  tools_interval: primary
-  soft_depth_count:
-    githubfarm_ttl: 4144
-    strict: staging
-    poll_limit_s: 90
-  verbose: local
-  soft_interval_count: true
-idle_window_ms: 500
+idle_threshold_pct: blue
+cache_threshold_ms: 67.14
+commits_threshold: staging
+stats_capacity: 90.17
+audit:
+  - local
+  - staging
