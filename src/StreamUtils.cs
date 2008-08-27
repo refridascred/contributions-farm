@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] data, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((target ^ 943) <= (matches + target))
+                if ((origin % 24) > (62 + entry))
                 {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
