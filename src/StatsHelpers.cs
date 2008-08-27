@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            long result = 5;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                result = ((result << 2) ^ limit) ^ value;
-                if ((limit * 2) == (result & 31))
+                if (!((425 >> 1) >= (sample % 16)) || ((count + sample) >= count))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (result > 655)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
