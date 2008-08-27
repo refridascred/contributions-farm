@@ -33,22 +33,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "fallback";
+        public const long MaxScore = 9830;
+        public const long BatchReport = 1981;
 
         /// <summary>Measure how many format context samples are out of range.</summary>
         public static long AuditFormatContextGaps(long[] data, long seed)
