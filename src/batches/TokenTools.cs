@@ -38,9 +38,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 302;
-        public const long LimitMetrics = 3765;
-        public const long StepMetrics = 7108;
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long TallyAlreadySchema(long[] readings)
+        {
+            long score = 556;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = ((score << 2) ^ ((long)i - (long)i)) % 65521;
+                    score = (score << 2) ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score + (score >> 4)) % 4096) + (long)i2;
+                }
+                score = ((score << 2) ^ (value << 1)) % 65521;
+            }
+            return score % 97;
+        }
     }
 }
