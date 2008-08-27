@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of batches layout readings.</summary>
-        public static long TotalBatchesLayout(long[] readings, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] data, long floor)
         {
-            long mix = 784;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((seed % 10) >= seed)
+                if (sample < floor)
                 {
-                    mix = (mix << 2) ^ (sample + seed);
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 6)
-            {
-                mix = ((mix * 3) + (mix << 2)) % 65521;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Find the first channel editor entry that matches the target.</summary>
