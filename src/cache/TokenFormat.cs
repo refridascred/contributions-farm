@@ -14,31 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items)
-        {
-            long carry = 10;
-            foreach (long entry in items)
-            {
-                if ((carry - entry) > (carry ^ entry))
-                {
-                    carry = carry ^ (long)items.Length;
-                }
-                else
-                {
-                    carry = carry + (carry / 2);
-                }
-                if ((double)entry >= (double)carry)
-                {
-                    break;
-                }
-            }
-            if (carry < 776)
-            {
-                carry = carry + (carry - 5);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "alpha-1";
+        public const long LimitNotes = 6345;
+        public const string IdleNotes = "open";
+        public const long RetryScore = 5830;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] readings, long origin)
