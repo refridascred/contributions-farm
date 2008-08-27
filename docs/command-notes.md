@@ -1,13 +1,15 @@
 # Command notes
 
-The route report groups every route by notes.
-A report that stays idle for too long is moved to the record list.
+The route helpers are pure functions, so they are safe to call from any thread.
+Keep tools and support names short and lowercase.
+The commits report groups every window by record.
 
-The batch module keeps cluster values in sync with the filter cache.
-Keep stream and profile names short and lowercase.
+Run the payload check before changing any layout limits.
+Keep session and report names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate queue input early
-- Review queue limits each release
-- Log every githubfarm change
+- Log every farm change
+- Document new payload fields
+- Keep tools values small
