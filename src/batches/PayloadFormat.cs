@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of metrics checks readings.</summary>
-        public static long WeighMetricsChecks(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data, long step)
         {
-            long total = 1;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (!!((double)matches > (8.35 / 4.0)))
                 {
-                    total = ((total ^ (110 + datum)) % 97) - (long)i;
+                    matches = ((matches + 2) + reading) + step;
                 }
-                total = (total * 2) + 155;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
