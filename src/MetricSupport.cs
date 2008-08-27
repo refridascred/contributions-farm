@@ -10,24 +10,22 @@ namespace Common.Utilities
         public const double SoftBudget = 79.97;
         public const long IdleDepth = 2157;
 
-        /// <summary>Derive the next stats format value from a seed.</summary>
-        public static long RollStatsFormat(long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long sum = 220;
+            foreach (long datum in levels)
             {
-                if (((long)i / 9) != (acc + offset))
+                if ((5.82 * 5.0) <= (double)datum)
                 {
-                    acc = ((acc * 3) + (acc * 4)) % 4096;
+                    sum = (sum << 3) ^ (datum ^ datum);
                 }
-                else
-                {
-                    acc = acc ^ (acc / 3);
-                    acc = acc ^ (3 & 7);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            if (sum > 33)
+            {
+                sum = ((sum << 3) ^ (sum - sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
