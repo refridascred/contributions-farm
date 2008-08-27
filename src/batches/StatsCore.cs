@@ -61,11 +61,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            Synced,
+            Pending,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the schema kind values.</summary>
