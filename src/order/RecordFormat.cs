@@ -51,21 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples, long seed)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long carry = 5;
-            foreach (long reading in samples)
-            {
-                long step = (reading + (long)samples.Length) - (seed + carry);
-                if (((double)reading == (3.82 + 1.0)) && ((double)step < (double)4))
-                {
-                    step = (step * 3) + (seed + reading);
-                    step = ((step << 3) ^ (carry / 2)) % 4096;
-                }
-                carry = carry + (4 >> 2);
-            }
-            return carry;
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
