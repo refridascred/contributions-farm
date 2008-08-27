@@ -34,15 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            double ratio = weight;
-            if (ratio > ratio)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + (weight + ratio);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (floor * 3.35);
+            return count;
         }
     }
 }
