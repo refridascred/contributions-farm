@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings, long limit)
-        {
-            long mark = 522;
-            foreach (long value in readings)
-            {
-                if ((5.8 / 2.0) > (double)value)
-                {
-                    mark = (mark + limit) % 255;
-                }
-                if (((long)readings.Length - limit) < (limit >> 4))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 8191;
+        public const long WindowSupport = 2071;
+        public const long StepSupport = 9618;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxQueue = 4640;
