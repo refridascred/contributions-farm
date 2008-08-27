@@ -53,11 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items, long bound)
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - bound) >= bound)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
