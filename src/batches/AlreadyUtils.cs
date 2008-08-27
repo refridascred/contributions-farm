@@ -36,23 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!((double)seen > (17.0 - 3.3)) && ((value + seen) > value))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "cached-1";
+        public const string BatchDepth = "primary-1";
+        public const double HardBudget = 23.99;
+        public const long DefaultStream = 4310;
+        public const long RetryScore = 599;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] values)
