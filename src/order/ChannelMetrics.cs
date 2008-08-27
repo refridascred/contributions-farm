@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] items, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((bound * 4) >= (24 + value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double bias2 = 0.9;
+            return ((bias2 - (double)77) + scale) + bias;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
