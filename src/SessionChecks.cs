@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double floor)
-        {
-            double weight2 = floor + (double)9;
-            if (weight2 <= (double)609)
-            {
-                weight2 = (weight2 + (double)6) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - (floor * 4.95);
-            }
-            return weight2 - (double)3;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseWidth = 2708;
+        public const long CacheReport = 3507;
+        public const double MaxRatio = 33.91;
+        public const long LimitSpan = 5755;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long origin)
