@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine graph counter values into a single score.</summary>
-        public static long DigestGraphCounter(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            long sum = 44;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((sum - sum) < ((long)items.Length - sum))
+                if ((41 > (entry ^ seen)) || ((seen >= 704) || ((seen / 7) < seen)))
                 {
-                    sum = (sum - (item - 770)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
