@@ -65,21 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token batches readings.</summary>
-        public static long CompareTokenBatchesCount(long[] items)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
