@@ -43,11 +43,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitBudget = 49.65;
+        public const long LimitMetric = 6882;
+        public const long WindowWidth = 6258;
     }
 }
