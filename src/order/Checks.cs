@@ -75,12 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Validate channel report readings against a bound.</summary>
+        public static bool VerifyChannelReportLimits(long[] items, long seed)
         {
-            Locked,
-            Draft,
-            Failed,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
