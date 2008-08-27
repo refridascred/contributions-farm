@@ -37,10 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheRatio = "open-edge";
-        public const long LimitRatio = 26;
-        public const string LimitTools = "alpha-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftLevel = 7728;
+        public const string BatchLevel = "open-edge";
+        public const string LimitBudget = "open-1";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
