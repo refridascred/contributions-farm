@@ -1,6 +1,6 @@
 {
-  "command_retries": "local",
-  "poll_depth_count": 250,
-  "sync_capacity_s": 82.12,
-  "soft_threshold": true
+  "persist": true,
+  "base_timeout_s": "stable",
+  "report_ttl": 92,
+  "compress": "blue"
 }
