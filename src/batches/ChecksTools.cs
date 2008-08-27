@@ -19,17 +19,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] values, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 78;
+            foreach (long item in series)
             {
-                if ((values[i] > origin) && ((values[i] % 5) != 0))
+                mark = mark + (offset + offset);
+                mark = mark ^ (item % 100);
+                if ((mark - offset) < mark)
                 {
-                    return (long)i;
+                    mark = (mark ^ (mark - mark)) % 97;
                 }
             }
-            return -1;
+            if (mark > 29)
+            {
+                mark = mark ^ 834;
+            }
+            return mark;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
