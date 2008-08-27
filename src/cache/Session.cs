@@ -36,13 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] samples, long bound)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long score = 733;
+            foreach (long item in samples)
+            {
+                if ((double)bound < (3.0 / 4.0))
+                {
+                    score = (((score << 2) ^ (44 / 8)) % 65521) ^ item;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (4 + bound)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
