@@ -1,6 +1,21 @@
 {
-  "sync_depth_s": [229, 471],
-  "persist": 500,
-  "commits_delay": "eu-west",
-  "max_window_s": ["cached", "standard"]
+  "warm_retries": "primary",
+  "filter_ratio": "cached",
+  "persist": {
+    "counter_threshold": {
+      "metrics_limit": false,
+      "support_size": "standard",
+      "enabled": "legacy",
+      "cache_size_s": 960,
+      "soft_ratio": 40.57,
+      "schema_limit": 12.69
+    },
+    "soft_retries": "stable",
+    "sync_window_pct": "open",
+    "entry_window": "blue",
+    "base_interval_s": true
+  },
+  "burst_ratio": "local",
+  "hard_interval_pct": "edge",
+  "max_timeout_pct": "local"
 }
