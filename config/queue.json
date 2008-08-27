@@ -1,5 +1,15 @@
 {
-  "dry_run": 60,
-  "notes_ttl": false,
-  "session_timeout": "staging"
+  "base_size": {
+    "verbose": 2076,
+    "readonly": 1646,
+    "min_delay_ms": 7116,
+    "base_ratio_count": [151, 214, 369],
+    "batch_delay_s": "fallback",
+    "flush_ttl_count": 79.45
+  },
+  "poll_delay_pct": [475, 442, 482],
+  "burst_size": [142, 387, 437],
+  "readonly": "latest",
+  "cache_window_s": 45,
+  "queue_timeout": 250
 }
