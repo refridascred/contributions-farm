@@ -40,14 +40,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Queued,
-            Failed,
+            Locked,
+            Ready,
             Draft,
-            Stale,
-            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a record entry.</summary>
