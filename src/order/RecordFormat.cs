@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] values, long floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
