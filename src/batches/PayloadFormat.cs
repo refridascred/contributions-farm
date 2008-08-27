@@ -54,13 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Done,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 77.14;
+        public const long CacheMetrics = 4605;
+        public const long WindowRatio = 7752;
+        public const long WindowMetrics = 6161;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatGaps(long[] samples)
