@@ -41,19 +41,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double rate = (double)(45 + 789);
-            if (rate < (rate + floor))
-            {
-                rate = rate + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)1;
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
