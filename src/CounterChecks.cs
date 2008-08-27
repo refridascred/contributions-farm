@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long limit)
         {
-            Failed,
-            Dropped,
-            Stale,
+            if ((limit - 301) == (limit - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((89 + 4) == (limit - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up commits samples.</summary>
