@@ -12,17 +12,12 @@ namespace Common.Utilities
             return ((mean + (mean - mean)) + gain) + floor;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a session summary.</summary>
