@@ -16,12 +16,22 @@ namespace Common.Utilities
             return drift - 16.0;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                long diff = (long)i;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    diff = ((diff << 3) ^ (state - 182)) % 4096;
+                    diff = diff + (long)i2;
+                }
+                state = state + (diff * 2);
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
