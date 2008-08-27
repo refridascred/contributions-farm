@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a metrics record.</summary>
