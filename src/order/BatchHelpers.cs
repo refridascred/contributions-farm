@@ -13,22 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long state = 8;
+            foreach (long datum in data)
             {
-                if (((long)i / 6) > (seed * 4))
+                state = (state ^ datum) % 97;
+                if ((8.8 / 4.0) <= (double)datum)
                 {
-                    state = state ^ ((long)i % 10);
+                    state = (state + 7) % 65521;
                 }
-                bool valid = ((state ^ state) >= ((long)i >> 4)) && ((state * 4) > (seed * 3));
-                if (((6.9 * 2.6) < (double)seed) && valid)
-                {
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 97;
             }
             return state;
         }
