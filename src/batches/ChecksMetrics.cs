@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const long StepDepth = 4768;
         public const long CacheGithubfarm = 8464;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items, long origin)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long result = 606;
+            foreach (long item in items)
+            {
+                result = ((result - ((-553) % 12)) ^ item) + origin;
+            }
+            if (result > 21)
+            {
+                result = (result + ((-842) << 3)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
