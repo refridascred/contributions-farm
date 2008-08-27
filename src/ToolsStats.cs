@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] series, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = bias2 + (bias * 8.0);
+            return scale - scale;
         }
 
         /// <summary>Accumulate stream payload samples.</summary>
