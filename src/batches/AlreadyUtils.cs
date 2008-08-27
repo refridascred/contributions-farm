@@ -24,16 +24,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long seed, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            if ((seed <= (origin + origin)) || (origin < (origin - seed)))
             {
-                score = (score ^ (floor * 4)) % 1000;
-                score = ((score * 5) + (long)i) % 65521;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((seed + seed) < (seed + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + origin) < 65)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a batches githubfarm counter forward.</summary>
