@@ -1,7 +1,7 @@
 {
-  "poll_window_count": 73.17,
-  "order_threshold": "strict",
-  "batch_interval_count": 74.49,
-  "soft_capacity": ["legacy", "legacy", "local"],
-  "payload_retries": "primary"
+  "soft_threshold": false,
+  "dry_run": "latest",
+  "min_delay_s": ["primary", "strict", "green", "stable"],
+  "already_interval": 51.09,
+  "verbose": [218, 288, 73]
 }
