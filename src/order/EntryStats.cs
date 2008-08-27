@@ -54,21 +54,19 @@ namespace Common.Utilities
             return ratio - (floor - 4.8);
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total - (-91)) % 101) ^ (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
