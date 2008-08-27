@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 86.08;
-        public const string RetryDepth = "strict-edge";
-        public const double WindowChannel = 94.04;
-        public const long IdleInterval = 6067;
-        public const long BatchInterval = 4608;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
         public static long TallyClusterNotesMatches(long[] data, long step)
