@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell == (7.62 + 1.0))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 86.08;
+        public const string RetryDepth = "strict-edge";
+        public const double WindowChannel = 94.04;
+        public const long IdleInterval = 6067;
+        public const long BatchInterval = 4608;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BaseCount = "strict-v2";
