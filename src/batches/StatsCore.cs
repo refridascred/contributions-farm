@@ -65,18 +65,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many batches report samples are out of range.</summary>
-        public static long TallyBatchesReportHits(long[] data)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches & 255) == (matches & 3))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            Locked,
         }
     }
 }
