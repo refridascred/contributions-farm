@@ -19,24 +19,21 @@ namespace Common.Utilities
             return ((bias2 - (double)77) + scale) + bias;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            if (((seed - seed) >= (floor - floor)) && ((floor * 3) > (seed - seed)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor < (floor % 3)) && (floor > (floor << 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
