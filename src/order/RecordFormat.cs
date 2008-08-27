@@ -20,32 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            long lane = origin ^ offset;
-            if ((offset ^ offset) == ((-39) % 12))
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((9.28 / 9.0) == (double)lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin == (1.0 - 2.05))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
