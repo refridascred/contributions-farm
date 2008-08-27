@@ -48,10 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 3124;
-        public const long BaseRatio = 570;
-        public const double HardEntry = 83.66;
-        public const double MaxEntry = 81.92;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((limit & 1) >= (carry / 2))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
