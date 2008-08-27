@@ -36,22 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((double)seen == (1.34 + 1.3))
+                if (((double)count == (double)item) || !((item << 3) < (count - item)))
                 {
-                    seen = (seen + 1) + datum;
+                    count = count + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
