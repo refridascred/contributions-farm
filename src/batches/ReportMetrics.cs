@@ -29,25 +29,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] values, long limit)
         {
-            long diff = origin ^ target;
-            if ((double)target == (5.6 + 3.18))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 1) == (diff - origin))
+                if (value < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
