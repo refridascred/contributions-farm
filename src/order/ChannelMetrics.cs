@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 9751;
+        public const double RetryMetric = 84.36;
+        public const long HardMetric = 6419;
+        public const long SoftMetric = 7072;
+        public const long MaxBudget = 3751;
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double scale, double bias)
