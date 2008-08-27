@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryTimeout = 829;
-        public const string StepLevel = "open-1";
-        public const long SoftSize = 3090;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long target, long step)
+        {
+            if (!((target - step) < target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((target + step) >= (target >> 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] series, long target)
