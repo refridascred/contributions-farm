@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long SoftRoute = 1684;
         public const long HardRoute = 3017;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            Ready,
-            Stale,
-            Locked,
-            Done,
+            long anchor = 539;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor - (anchor << 3)) % 97) + datum;
+                anchor = ((anchor * 2) + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stream header.</summary>
