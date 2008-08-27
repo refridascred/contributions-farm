@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the token entry entries that pass the check.</summary>
-        public static long CountTokenEntryHits(long[] data, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double ratio = rate;
+            if (ratio >= (span + 7.0))
             {
-                if (((-9) / 8) > (limit + matches))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                ratio = ratio + (rate * 3.6);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - 7.31) + (double)(long)i;
+            }
+            return ratio + 4.0;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
