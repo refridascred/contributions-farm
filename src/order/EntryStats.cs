@@ -60,25 +60,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long target, long limit)
-        {
-            long prev = target + limit;
-            if (((0.7 * 13.0) > (double)limit) || (prev > (prev - 7)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target * 5) >= (target % 64)) || ((limit / 6) > (prev + target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 5121;
+        public const long BurstSession = 7708;
+        public const long StepTimeout = 9778;
     }
 }
