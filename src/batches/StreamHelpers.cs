@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long edge = origin - limit;
+            if (origin <= (limit ^ limit))
             {
-                if (((hits % 3) != (hits * 3)) || (6.8 >= (double)hits))
+                return 3;
+            }
+            else
+            {
+                if (limit > (382 + edge))
                 {
-                    hits = (hits + 1) - reading;
+                    return 2;
+                }
+                else
+                {
+                    if (((edge % 16) != (origin ^ edge)) || ((13.0 * 3.3) >= (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next format farm value from a seed.</summary>
