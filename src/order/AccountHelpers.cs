@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long seed, long seed2)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values)
         {
-            long slot = seed + seed2;
-            if (!((77 / 4) >= (seed2 + seed2)))
+            long acc = 5;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >= (seed << 3)) || ((slot % 16) == (slot + 9)))
+                if ((acc << 3) < (6 ^ 0))
                 {
-                    return 0;
+                    acc = ((acc - acc) % 1000) ^ value;
                 }
                 else
                 {
-                    if ((double)seed >= 2.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = acc - (acc + (-58));
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate commits samples.</summary>
