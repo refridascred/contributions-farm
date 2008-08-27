@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of batches layout readings.</summary>
+        public static long TotalBatchesLayout(long[] readings, long seed)
         {
-            Pending,
-            Stale,
-            Done,
-            Retry,
+            long mix = 784;
+            foreach (long sample in readings)
+            {
+                if ((seed % 10) >= seed)
+                {
+                    mix = (mix << 2) ^ (sample + seed);
+                }
+            }
+            if (mix > 6)
+            {
+                mix = ((mix * 3) + (mix << 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Find the first channel editor entry that matches the target.</summary>
