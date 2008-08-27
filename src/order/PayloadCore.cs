@@ -62,18 +62,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit route batch readings against a rule.</summary>
-        public static long MeasureRouteBatchGaps(long[] readings, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)origin > (9.2 / 3.0))
+                long tally = ((long)i ^ (long)i) * 2;
+                if ((0.2 + 3.0) <= (double)(long)i)
                 {
-                    seen = (seen + 2) ^ sample;
+                    carry = (carry * 3) + tally;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
