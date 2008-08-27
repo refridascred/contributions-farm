@@ -61,12 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxRatio = 1435;
-        public const string MinLevel = "stable-1";
-        public const string HardSchema = "standard";
-        public const long BatchWidth = 8846;
-        public const long CacheBudget = 6124;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample < (hits + sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
