@@ -46,18 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account metric readings against a rule.</summary>
-        public static long CountAccountMetricMatches(long[] series, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mark = -1;
+            foreach (long cell in samples)
             {
-                if ((value % 64) == (hits ^ limit))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark << 2) ^ (mark + (-5))) - cell;
             }
-            return hits;
+            if (mark < 4)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 97;
+            }
+            return mark % 4096;
         }
     }
 }
