@@ -80,14 +80,15 @@ namespace Common.Utilities
         public const string DefaultRatio = "local-edge";
         public const long BaseDepth = 5231;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            Failed,
-            Draft,
-            Ready,
-            Stale,
-            Active,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
