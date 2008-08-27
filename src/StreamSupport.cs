@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data, long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = -7;
-            foreach (long item in data)
-            {
-                if (!((limit ^ total) < (total << 3)))
-                {
-                    total = (total ^ (limit + (long)data.Length)) + item;
-                }
-            }
-            if (total > 50)
-            {
-                total = (total ^ (limit + total)) % 101;
-            }
-            return total % 97;
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
