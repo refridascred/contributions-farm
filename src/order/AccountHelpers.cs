@@ -87,31 +87,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long floor)
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long WeighContextStream(long[] values)
         {
-            if (((6.8 / 4.0) != (double)bound) && ((2.7 * 9.1) > (double)floor))
+            long mix = 623;
+            foreach (long value in values)
             {
-                return 7;
+                mix = (mix + (value ^ mix)) % 255;
             }
-            else
-            {
-                if ((floor + floor) > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ floor) > bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
