@@ -26,15 +26,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next support stream value from a seed.</summary>
-        public static long RollSupportStream(long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] readings, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long mark = 645;
+            foreach (long item in readings)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                mark = (mark - (offset + item)) % 1000;
             }
-            return carry;
+            return mark;
         }
     }
 }
