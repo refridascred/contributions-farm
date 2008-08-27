@@ -22,17 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] data, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = ratio;
+            return (weight + ratio) + offset;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
