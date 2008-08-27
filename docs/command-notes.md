@@ -1,12 +1,11 @@
 # Command notes
 
-The channel module keeps commits values in sync with the stats cache.
-Use notes settings to tune how often batches data is refreshed.
-Keep batch and context names short and lowercase.
+Run the githubfarm check before changing any editor limits.
+The session report groups every stats by batches.
 
 ## Guidelines
 
-- Document new record fields
-- Log every stats change
-- Review batch limits each release
-- Validate order input early
+- Validate record input early
+- Prefer githubfarm defaults
+- Log every graph change
+- Keep batches values small
