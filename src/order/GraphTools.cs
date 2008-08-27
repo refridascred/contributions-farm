@@ -65,20 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
-                if (floor < (373 ^ floor))
-                {
-                    anchor = (anchor - floor) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinInterval = 2733;
+        public const long SoftScore = 747;
+        public const long LimitChecks = 7077;
+        public const string IdleChecks = "staging-edge";
+        public const long StepScore = 2573;
     }
 }
