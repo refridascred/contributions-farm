@@ -77,14 +77,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "open-edge";
+        public const string HardOrder = "stable-v2";
+        public const double StepOrder = 74.5;
 
         /// <summary>Rank stream graph input into a small class.</summary>
         public static long RankStreamGraph(long limit, long target)
