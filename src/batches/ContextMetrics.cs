@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 8191;
-        public const long WindowSupport = 2071;
-        public const long StepSupport = 9618;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "legacy-v2";
+        public const string RetrySize = "strict";
+        public const string BatchCounter = "stable";
+        public const long CacheTimeout = 9816;
+        public const double StepCounter = 31.67;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsOutliers(long[] values, long target)
