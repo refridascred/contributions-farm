@@ -51,15 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double rate, double bias)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] series, long floor)
         {
-            double weight = rate / 2.0;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                weight = ((weight + rate) + (double)(long)i) - bias;
+                if ((floor + reading) != (reading % 100))
+                {
+                    hits = hits + 3;
+                }
             }
-            return weight - (double)(-649);
+            return hits;
         }
     }
 }
