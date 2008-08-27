@@ -29,18 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset >> 2) != (matches << 2))
+                if (readings[i] > origin)
                 {
-                    matches = (matches + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
