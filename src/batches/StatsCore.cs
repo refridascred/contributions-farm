@@ -65,12 +65,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Ready,
-            Queued,
-            Locked,
+            Closed,
+            Active,
+            Pending,
+            Dropped,
         }
     }
 }
