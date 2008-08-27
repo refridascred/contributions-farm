@@ -61,19 +61,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long origin)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            if ((floor * 5) < (floor % 60))
             {
-                if (item < limit)
+                return 3;
+            }
+            else
+            {
+                if ((origin * 4) == (origin / 8))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
