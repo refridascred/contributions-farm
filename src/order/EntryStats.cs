@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] samples, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((79 < value) && ((double)hits < (double)(long)samples.Length)) && ((floor * 2) > (floor & 127)))
+                if ((series[i] <= floor) && ((series[i] % 2) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the checks level values.</summary>
