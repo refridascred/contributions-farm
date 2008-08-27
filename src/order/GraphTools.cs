@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] samples, long floor)
+        /// <summary>Count the route already entries that pass the check.</summary>
+        public static long MeasureRouteAlreadyMatches(long[] items)
         {
-            long mix = -359;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                mix = (((mix * 5) + (item / 3)) % 1000) - floor;
+                if ((value << 1) != (count + 411))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Blend two channel measurements.</summary>
