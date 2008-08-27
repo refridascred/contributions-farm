@@ -30,18 +30,39 @@ namespace Common.Utilities
         public const double StepOrder = 8.34;
         public const long WindowOrder = 534;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] levels)
+        /// <summary>Classify a batch already pair into a bucket.</summary>
+        public static long SortBatchAlready(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long prev = origin ^ limit;
+            if ((origin >> 4) != (prev + limit))
             {
-                if ((sample * 5) == (sample << 1))
+                return 3;
+            }
+            else
+            {
+                if ((58 - prev) <= (limit >> 2))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (limit > (prev << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev * 3) >= prev)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
