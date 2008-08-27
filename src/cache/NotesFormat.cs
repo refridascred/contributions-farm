@@ -31,10 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 8080;
-        public const long CacheQueue = 5515;
-        public const long DefaultInterval = 2825;
-        public const long MinInterval = 2731;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double rate, double offset)
+        {
+            double gain = rate * 7.4;
+            return (gain - (rate - rate)) + offset;
+        }
     }
 }
