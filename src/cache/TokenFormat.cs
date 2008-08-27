@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long LimitBuffer = 864;
         public const double SoftBuffer = 51.4;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "stable-edge";
-        public const long MaxDepth = 6188;
-        public const long HardFarm = 994;
-        public const long SoftFarm = 3056;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((long)i > bound))
+                {
+                    state = ((state * 3) + bound) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] items, long step)
