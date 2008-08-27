@@ -1,7 +1,6 @@
 # githubfarm settings
-min_retries_count: 5474
-hard_depth_pct: 73.94
-githubfarm_threshold: 54.51
-audit: standard
-strict: 10.34
-flush_ttl_count: 500
+idle_threshold_pct: 12.37
+burst_retries_s: 49.97
+default_timeout_ms: standard
+max_limit_s: false
+idle_interval_ms: false
