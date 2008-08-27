@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            double bias2 = (bias * 6.2) * 6.0;
-            if (bias2 >= bias)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 + (bias2 - bias2)) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 - (double)(-1);
+            return count;
         }
     }
 }
