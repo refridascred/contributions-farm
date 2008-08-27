@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-v2";
         public const string LimitFactor = "cached-v2";
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] levels, long origin)
         {
-            Ready,
-            Locked,
-            Done,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
