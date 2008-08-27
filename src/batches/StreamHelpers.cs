@@ -33,18 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)reading < (1.3 / 7.0))
+                if (((double)8 >= (double)score) || ((double)(long)i != (double)target))
                 {
-                    seen = (seen + 2) + offset;
+                    score = score ^ (score ^ target);
+                    score = (score * 2) + (score - (long)i);
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
