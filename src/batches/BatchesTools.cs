@@ -22,18 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((offset ^ item) <= (item % 10))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
