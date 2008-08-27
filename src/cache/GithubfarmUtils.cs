@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long bound)
-        {
-            long gap = floor - bound;
-            if (gap > (585 - floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (gap > (floor % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3 ^ gap) <= (floor - 79))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 27.7;
+        public const long BatchFactor = 3522;
+        public const string MinBuffer = "cached-v2";
+        public const long LimitBuffer = 5588;
+        public const double BatchInterval = 80.69;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] data, long bound)
