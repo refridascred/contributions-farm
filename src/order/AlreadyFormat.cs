@@ -51,19 +51,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double span)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long target, long limit)
         {
-            double rate = 3.57;
-            if (rate > (gain * 12.0))
+            if ((limit % 60) > (limit - limit))
             {
-                rate = rate - (double)603;
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate - (double)27) + (double)(long)i;
+                if (3.09 > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target < (9.7 + 7.1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return rate - (span * 8.0);
         }
 
         /// <summary>Hold a counter summary.</summary>
