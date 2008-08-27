@@ -19,17 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] values, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Idle,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
