@@ -1,5 +1,17 @@
 # entry settings
-metric_ttl: 38.26
-warm_retries: 2667
-poll_ttl_pct: 4018
-enabled: 3142
+max_timeout: 0.13
+compress:
+  - open
+  - primary
+strict:
+  hard_ttl_pct: 30
+  flush_retries_count: 30
+  cache_threshold_count:
+    default_ttl: 250
+    base_timeout_pct: 4048
+    notes_window: 28.55
+    sync_ratio_s:
+      - standard
+      - strict
+      - staging
+  burst_ttl: staging
