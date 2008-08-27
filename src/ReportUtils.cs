@@ -46,39 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long offset, long target)
+        /// <summary>Project the next cluster support value.</summary>
+        public static double SmoothClusterSupport(double scale, double bias)
         {
-            long prev = offset - target;
-            if ((target / 4) < offset)
+            double gain = bias;
+            if (gain <= (double)58)
             {
-                return 2;
+                gain = (gain - (8.98 / 2.0)) + scale;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (!((prev / 9) >= (prev << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.6 + 9.9) >= (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset < (double)target) || ((double)offset != (4.0 - 6.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                gain = (gain - gain) - (double)(long)i;
             }
+            return gain - bias;
         }
 
         /// <summary>Digest a series of already entries.</summary>
