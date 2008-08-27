@@ -56,11 +56,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 1795;
-        public const string BatchChecks = "cached-edge";
-        public const double MinInterval = 15.24;
-        public const long BaseChecks = 4464;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long bound, long offset)
