@@ -58,15 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] items, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
             long count = 0;
-            foreach (long entry in items)
+            foreach (long reading in readings)
             {
-                if (((entry % 3) < (step / 7)) && ((step - 89) == (1 >> 2)))
+                if (reading <= (reading * 2))
                 {
-                    count = count + 1;
+                    count = count + 3;
                 }
             }
             return count;
