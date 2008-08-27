@@ -1,21 +1,5 @@
 {
-  "max_ratio_s": 9933,
-  "verbose": false,
-  "strict": {
-    "graph_ratio": 27.38,
-    "dry_run": {
-      "cache_size": "primary",
-      "token_capacity": 3977,
-      "buffer_delay": false,
-      "contributi_retries": "latest"
-    },
-    "warm_ttl_count": 65.93,
-    "window_delay": 18,
-    "poll_depth_count": {
-      "compress": "legacy",
-      "strict": 9193,
-      "contributi_window": "green"
-    }
-  },
-  "notes_delay": 8787
+  "readonly": 94.71,
+  "idle_interval_ms": true,
+  "max_delay_count": "blue"
 }
