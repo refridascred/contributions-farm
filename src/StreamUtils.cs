@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] data, long target)
         {
-            long mark = 6;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (30 > (mark - mark))
+                if ((target ^ 943) <= (matches + target))
                 {
-                    mark = ((mark * 3) + (mark - value)) % 255;
+                    matches = (matches + 3) + item;
                 }
                 else
                 {
-                    mark = mark - (mark * 5);
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
