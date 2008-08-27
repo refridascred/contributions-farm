@@ -49,13 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            New,
+            Failed,
+            Ready,
         }
     }
 }
