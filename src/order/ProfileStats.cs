@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const string CacheWidth = "legacy-v2";
         public const long RetryReport = 2267;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] readings, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long score = 923;
+            foreach (long datum in data)
             {
-                if (value >= limit)
+                if ((offset & 31) == (datum - (long)data.Length))
                 {
-                    found = false;
-                    break;
+                    score = score - offset;
                 }
+                score = score + (240 & 1);
             }
-            return found;
+            return score;
         }
     }
 }
