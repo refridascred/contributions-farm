@@ -33,11 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitRatio = 8236;
-        public const long BaseCounter = 2837;
-        public const string BurstSize = "primary-1";
-        public const long LimitCounter = 2881;
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double bias)
+        {
+            double mean = rate;
+            if (mean <= (double)8)
+            {
+                mean = mean - (bias - mean);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double ratio, double bias)
