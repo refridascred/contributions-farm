@@ -28,10 +28,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 14.89;
-        public const long WindowSupport = 2168;
-        public const long DefaultSupport = 2623;
-        public const string LimitFactor = "legacy-v2";
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
