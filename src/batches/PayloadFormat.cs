@@ -45,9 +45,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinWidth = 92.21;
-        public const long SoftOrder = 1996;
-        public const long HardRatio = 4338;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long limit, long bound)
+        {
+            long gap = limit - bound;
+            if (((gap << 2) >= gap) || ((double)limit < (double)505))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound >= (bound % 16))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 1) >= (bound + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)gap >= (9.0 - 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
