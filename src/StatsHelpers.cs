@@ -29,17 +29,14 @@ namespace Common.Utilities
         public const long SoftChecks = 1268;
         public const long HardChecks = 1190;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
