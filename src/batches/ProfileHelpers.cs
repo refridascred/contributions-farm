@@ -57,12 +57,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public double Region { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 8299;
+        public const long DefaultTimeout = 2365;
+        public const long RetryInterval = 8866;
+        public const string RetryDepth = "alpha-edge";
+        public const long RetryEntry = 3335;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long offset)
