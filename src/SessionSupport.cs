@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if (!((80 & 63) <= step))
             {
-                if (((907 - sample) < hits) || !(((-361) ^ hits) != (hits - sample)))
+                return 5;
+            }
+            else
+            {
+                if (3.29 < (double)step)
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
