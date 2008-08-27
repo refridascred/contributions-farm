@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command batches readings against a bound.</summary>
-        public static bool GuardCommandBatchesLimits(long[] samples, long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
