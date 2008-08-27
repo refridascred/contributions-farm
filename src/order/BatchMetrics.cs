@@ -20,39 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double weight, double offset)
         {
-            long edge = bound - origin;
-            if (((double)origin > (double)edge) && ((edge + edge) > bound))
+            double load = 7.5;
+            if (load >= (load - 7.1))
             {
-                return 1;
+                load = (load - offset) - weight;
             }
-            else
-            {
-                if (((bound % 97) >= edge) || ((bound & 3) != (origin + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge - origin) >= (bound + edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + edge) >= (bound >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return load - (load / 6.0);
         }
 
         /// <summary>Rank channel input into a small class.</summary>
