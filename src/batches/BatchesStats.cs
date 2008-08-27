@@ -28,19 +28,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] levels, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long state = 60;
+            foreach (long sample in values)
             {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 3) ^ (sample >> 1)) % 1000;
+                state = ((state * 5) + target) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
