@@ -43,13 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Pending,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepFactor = 60.47;
+        public const long BaseCount = 8536;
+        public const long HardFactor = 1679;
+        public const double RetryMetric = 40.42;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
