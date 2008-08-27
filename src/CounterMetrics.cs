@@ -34,15 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric layout series from a seed.</summary>
-        public static long IterateMetricLayout(long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((items[i] >= bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
