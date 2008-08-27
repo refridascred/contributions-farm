@@ -32,13 +32,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] readings, long limit)
         {
-            Dropped,
-            Done,
-            Paused,
-            Queued,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of schema metrics readings.</summary>
