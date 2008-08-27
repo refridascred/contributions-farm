@@ -58,19 +58,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate metrics schema readings against a bound.</summary>
-        public static bool ValidateMetricsSchemaLimits(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= seed)
+                if (((datum ^ seen) <= (datum << 2)) || ((seen * 5) > (datum & 15)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
