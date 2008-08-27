@@ -20,12 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            Queued,
-            Locked,
-            Pending,
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i >> 3) < (long)i)
+                {
+                    carry = carry + (carry * 4);
+                    break;
+                }
+                else
+                {
+                    long bound = 36;
+                    carry = carry ^ bound;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
