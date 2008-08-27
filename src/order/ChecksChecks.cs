@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 66;
+            foreach (long value in series)
             {
-                if (series[i] < target)
+                if (2 < value)
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc + (long)series.Length)) % 255;
                 }
             }
-            return -1;
+            if (acc > 269)
+            {
+                acc = ((acc * 2) + (9 + origin)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
