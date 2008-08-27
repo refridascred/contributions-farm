@@ -1,31 +1,19 @@
 # support settings
-readonly: latest
-retry_limit:
-  - cached
-  - open
-tools_threshold: standard
-dry_run: blue
-retry_delay_ms:
-  soft_ratio_ms: true
-  retry_interval_pct: 500
-  retry_capacity_ms: false
-  enabled: false
-  idle_size:
-    - 424
-    - 50
-    - 154
-  sync_interval:
-    compress:
-      - 445
-      - 462
-      - 308
-      - 238
-    entry_timeout: 1024
-    soft_capacity: cached
-    record_capacity: 3603
-    sync_ttl_ms: true
-    min_size_ms: 6324
-verbose:
-  - 50
-  - 28
-  - 255
+batch_capacity_pct:
+  min_delay_ms: 89
+  editor_ttl: 54.33
+  sync_ttl_ms:
+    - 407
+    - 238
+    - 407
+    - 402
+flush_delay_s: local
+payload_retries: 741
+soft_ttl:
+  already_ratio: 8387
+  tools_ratio: true
+  buffer_ttl: staging
+  compress: true
+  hard_timeout_s: 51.97
+readonly: 87.56
+default_window: fallback
