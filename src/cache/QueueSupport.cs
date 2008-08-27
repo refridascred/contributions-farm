@@ -27,19 +27,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long step)
         {
-            long total = 307;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total + (datum & 1)) % 97) - bound;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 54)
-            {
-                total = (total * 2) + (total + total);
-            }
-            return total;
+            return -1;
         }
     }
 }
