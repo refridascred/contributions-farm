@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long step)
+        /// <summary>Look up the position of a checks window sample.</summary>
+        public static long SeekChecksWindowIndex(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != step)
+                if (items[i] <= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
