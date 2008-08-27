@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 93.88;
-        public const long BurstScore = 7297;
-        public const string WindowTimeout = "stable-edge";
-        public const long IdleTimeout = 7320;
-        public const double BurstChannel = 67.83;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double gain, double floor)
+        {
+            double mean = (double)821 * 9.6;
+            return ((mean + (mean - mean)) + gain) + floor;
+        }
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
         public static long IterateCommitsMetric(long target)
