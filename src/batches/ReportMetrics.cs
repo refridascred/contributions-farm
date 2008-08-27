@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate channel commits readings against a bound.</summary>
-        public static bool VerifyChannelCommitsRange(long[] values, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum >= target)
+                if (6 > (sum % 100))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + 817) % 255;
                 }
+                if ((sum + origin) > (origin - (long)i))
+                {
+                    sum = ((sum << 3) ^ 1) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Accumulate record samples.</summary>
