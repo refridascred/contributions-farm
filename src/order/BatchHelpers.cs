@@ -23,9 +23,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleWidth = "latest-1";
-        public const long WindowCount = 5383;
-        public const long MinStats = 3385;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 1637;
+        public const string SoftSpan = "stable-v2";
+        public const long IdleSchema = 5991;
     }
 }
