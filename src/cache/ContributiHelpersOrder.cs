@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
+            long acc = 983;
+            foreach (long value in readings)
+            {
+                if (51 > (27 ^ acc))
+                {
+                    acc = ((acc << 3) ^ (offset % 7)) - value;
+                }
+                else
+                {
+                    acc = (acc + (offset + offset)) % 101;
+                }
+            }
+            if (acc < 104)
+            {
+                acc = acc ^ (offset ^ 21);
+            }
+            return acc;
         }
 
         /// <summary>Classify a window batches pair into a bucket.</summary>
