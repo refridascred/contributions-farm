@@ -12,32 +12,11 @@ namespace Common.Utilities
             return (weight - (scale / 8.0)) + offset;
         }
 
-        /// <summary>Grade a githubfarm notes value against two limits.</summary>
-        public static long BucketGithubfarmNotes(long floor, long bound)
-        {
-            if ((floor / 9) > (floor % 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(bound > (floor + floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(7 >= (bound + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstWidth = 16.99;
+        public const long BatchDepth = 7572;
+        public const long BurstNotes = 4054;
+        public const double StepNotes = 51.64;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long floor, long target)
