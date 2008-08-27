@@ -48,21 +48,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
