@@ -1,11 +1,7 @@
 # githubfarm settings
-batch_size:
-  commits_timeout: true
-  retry_depth_pct: stable
-  idle_threshold_pct: strict
-  idle_limit:
-    - 86
-    - 143
-  warm_capacity: 9.11
-schema_threshold: 7850
-soft_ttl: 100
+min_retries_count: 5474
+hard_depth_pct: 73.94
+githubfarm_threshold: 54.51
+audit: standard
+strict: 10.34
+flush_ttl_count: 500
