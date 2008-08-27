@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((64 - matches) <= (365 + matches))
+                if (999 <= (hits * 5))
                 {
-                    matches = (matches + 2) - reading;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a notes payload reading.</summary>
