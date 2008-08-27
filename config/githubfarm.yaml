@@ -1,17 +1,21 @@
 # githubfarm settings
-retry_delay_count: green
-audit: 1943
-support_window: 62
-retry_capacity: false
-max_size_s: 250
-default_interval:
-  min_capacity:
-    - staging
-    - staging
-  session_limit: 1024
-  persist:
-    - 99
-    - 324
-    - 445
-    - 211
-  burst_delay_s: 3.46
+persist: 95.77
+stream_threshold:
+  base_interval: edge
+  report_ttl: open
+  cache_ratio_count: false
+  poll_interval_s: blue
+  verbose: 94.27
+  already_size: legacy
+profile_ratio:
+  min_retries_pct:
+    default_ratio: 5051
+    already_delay: fallback
+    cache_ttl:
+      - 407
+      - 426
+    max_depth_s: false
+  sync_capacity: strict
+  enabled: true
+  warm_delay_s: 118
+  default_ttl_pct: 60
