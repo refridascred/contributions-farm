@@ -34,10 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "stable";
-        public const string DefaultFactor = "open-1";
-        public const long StepRatio = 254;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] items)
