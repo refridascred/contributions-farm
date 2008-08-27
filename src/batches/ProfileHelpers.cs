@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((80 * 3) >= (entry + entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
