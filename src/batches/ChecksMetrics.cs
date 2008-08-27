@@ -49,18 +49,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            long sum = 2;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + sum) != ((long)items.Length >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - sample) % 4096;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
