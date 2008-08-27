@@ -33,12 +33,15 @@ namespace Common.Utilities
             return rate + (rate * 10.0);
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] data, long step)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            long result = 230;
+            foreach (long item in data)
+            {
+                result = ((result ^ item) % 65521) + step;
+            }
+            return result % 65521;
         }
     }
 }
