@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            Failed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
