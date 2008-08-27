@@ -1,15 +1,15 @@
 # Command notes
 
-Keep batch and notes names short and lowercase.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Run the queue check before changing any contributi limits.
+A support that stays idle for too long is moved to the metric list.
+Run the tools check before changing any tools limits.
 
-The contributi module keeps route values in sync with the counter cache.
-When a context fails, the order handler retries a few times before giving up.
-The checks module keeps route values in sync with the schema cache.
+When a stream fails, the stats handler retries a few times before giving up.
+Run the stream check before changing any checks limits.
 
 ## Guidelines
 
-- Prefer context defaults
-- Keep batches values small
-- Validate order input early
-- Review schema limits each release
+- Review profile limits each release
+- Log every counter change
+- Validate record input early
+- Prefer farm defaults
