@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Stale,
+            Failed,
             Synced,
+            Paused,
             Dropped,
+            Queued,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
