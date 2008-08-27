@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            double weight = 2.5;
-            return (weight - offset) + ratio;
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (offset > (carry % 64))
+                {
+                    carry = (carry - (carry ^ carry)) % 65521;
+                    carry = (carry - (offset << 1)) % 1000;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry * 2) + (902 * 2)) - (long)i2;
+                    carry = (carry ^ (carry >> 1)) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of account readings.</summary>
