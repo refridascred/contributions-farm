@@ -23,18 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] levels, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((step + sample) > (matches + 643)) || (matches >= (sample - 14)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the contributi level values.</summary>
