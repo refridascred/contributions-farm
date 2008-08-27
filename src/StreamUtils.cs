@@ -76,18 +76,15 @@ namespace Common.Utilities
         public const string BaseChecks = "standard";
         public const long RetryWidth = 6897;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] items, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double bias = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits - 9) >= hits)
-                {
-                    hits = ((hits + 1) + datum) + origin;
-                }
+                bias = ((bias + 4.7) - (double)(long)i) - floor;
             }
-            return hits;
+            return bias - (6.6 / 8.0);
         }
     }
 }
