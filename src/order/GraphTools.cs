@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the already format entries that pass the check.</summary>
-        public static long CountAlreadyFormatGaps(long[] series, long limit)
+        /// <summary>Count the token entry entries that pass the check.</summary>
+        public static long CountTokenEntryHits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((limit - count) < 7)
+                if (((-9) / 8) > (limit + matches))
                 {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
