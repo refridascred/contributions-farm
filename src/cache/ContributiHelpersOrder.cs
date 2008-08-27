@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] readings, long origin)
+        /// <summary>Compare every pair of context schema readings.</summary>
+        public static long OverlapContextSchemaCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
