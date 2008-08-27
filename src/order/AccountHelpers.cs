@@ -31,22 +31,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            long acc = 56;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.1 + 1.0) != (double)acc)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc ^ acc) % 101) + item;
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 488)
-            {
-                acc = (acc ^ (acc >> 5)) % 4096;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
