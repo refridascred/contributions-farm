@@ -32,10 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 75.12;
-        public const double SoftGithubfarm = 68.83;
-        public const long StepGithubfarm = 389;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitRatio = 8236;
+        public const long BaseCounter = 2837;
+        public const string BurstSize = "primary-1";
+        public const long LimitCounter = 2881;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double ratio, double bias)
