@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] series, long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (offset < (long)series.Length)
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
