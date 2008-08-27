@@ -52,18 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] readings, long target)
         {
-            long state = 199;
-            foreach (long sample in data)
+            long total = 607;
+            foreach (long item in readings)
             {
-                if (step > (sample * 5))
+                total = (((total * 3) + (item - 74)) % 4096) - target;
+                if (552 <= item)
                 {
-                    state = (state - (step + sample)) % 65521;
+                    break;
                 }
             }
-            return state % 65521;
+            return total;
         }
     }
 }
