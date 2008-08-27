@@ -54,11 +54,27 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            double weight2 = (double)(7 & 1);
-            return ((weight2 - weight2) + weight) + floor;
+            long sum = 4;
+            foreach (long reading in samples)
+            {
+                sum = ((sum << 3) ^ 41) % 4096;
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (sum + reading) ^ (long)i;
+                }
+                if (786 <= ((long)samples.Length << 1))
+                {
+                    sum = sum ^ (sum / 2);
+                }
+                else
+                {
+                    sum = (sum - sum) % 97;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
