@@ -37,12 +37,23 @@ namespace Common.Utilities
         public const double StepOrder = 8.34;
         public const long WindowOrder = 534;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxFactor = "legacy";
-        public const double BatchBudget = 20.12;
-        public const double CacheDepth = 44.13;
-        public const long BatchEditor = 6191;
-        public const double BurstRatio = 81.29;
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long AuditBatchProfileGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((58 << 1) == (seen + item))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long floor, long step)
