@@ -27,18 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] data, long step)
+        /// <summary>Roll a graph channel counter forward.</summary>
+        public static long IterateGraphChannel(long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally + tally) >= (978 << 2))
-                {
-                    tally = ((tally + 3) + value) + step;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
