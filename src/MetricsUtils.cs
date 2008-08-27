@@ -27,24 +27,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long target, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long step)
         {
-            if ((19.0 - 2.8) == (double)target)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) >= (target - 64))
+                if (entry >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the stream phase values.</summary>
