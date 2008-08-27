@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a channel entry figure with a bias.</summary>
-        public static double AdjustChannelEntry(double gain, double bias)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long origin)
         {
-            double weight = (gain / 2.0) * 20.0;
-            if (weight >= (double)50)
+            long diff = limit ^ origin;
+            if (((double)diff < (6.9 + 5.32)) && ((12.0 * 7.8) < (double)origin))
             {
-                weight = weight + 6.99;
+                return 8;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                weight = (weight + (weight * 4.82)) - (double)(long)i;
+                if ((origin + origin) >= (diff ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(origin <= (diff + diff)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return weight - bias;
         }
 
         /// <summary>Combine checks format values into a single score.</summary>
