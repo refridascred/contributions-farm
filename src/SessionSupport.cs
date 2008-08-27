@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long mark = -3;
+            foreach (long value in values)
             {
-                if (!((5.9 / 5.0) != (double)offset))
+                if ((mark ^ value) <= 396)
                 {
-                    sum = sum - (sum ^ sum);
+                    mark = mark ^ (7 ^ 7);
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum - (6 % 24)) % 1000) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
