@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-blue}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in open green blue standard; do
+for item in eu-west blue; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=388
+BUFFER_LIMIT=340
 log "limit is ${BUFFER_LIMIT}"
