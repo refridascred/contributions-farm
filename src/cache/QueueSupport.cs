@@ -30,17 +30,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 86;
+            foreach (long reading in items)
             {
-                if (series[i] < limit)
+                if ((reading & 63) >= reading)
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ ((long)items.Length + sum);
+                }
+                else
+                {
+                    sum = sum ^ (sum + 65);
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
