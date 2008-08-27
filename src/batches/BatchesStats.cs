@@ -28,18 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many farm order samples are out of range.</summary>
-        public static long TallyFarmOrderMatches(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double span)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double mean = span;
+            if (mean > 6.0)
             {
-                if ((double)datum <= (7.2 - 2.8))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - (bias + 3.57);
             }
-            return hits;
+            else
+            {
+                mean = mean + (mean * 8.9);
+            }
+            return mean + (double)8;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
