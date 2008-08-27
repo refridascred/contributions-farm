@@ -47,32 +47,12 @@ namespace Common.Utilities
         public const long BatchFactor = 4634;
         public const double RetryCluster = 3.48;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long bound, long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long step = bound - floor;
-            if (step > (floor % 16))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step ^ bound) > floor) || ((double)bound >= 1.5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-19) + floor) > (84 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Active,
         }
     }
 }
