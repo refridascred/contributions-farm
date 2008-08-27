@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long offset)
         {
-            long state = -90;
-            foreach (long sample in series)
+            long result = 426;
+            foreach (long cell in data)
             {
-                if ((2.75 + 4.94) == (double)sample)
+                if ((offset + result) < (offset & 255))
                 {
-                    state = (state << 2) ^ (state ^ sample);
-                }
-                else
-                {
-                    state = ((state * 2) + (sample / 2)) % 4096;
+                    result = (result ^ (result - cell)) % 1000;
                 }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Derive the next cache schema value from a seed.</summary>
