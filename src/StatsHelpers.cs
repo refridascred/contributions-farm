@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] data, long seed)
+        /// <summary>Audit metrics queue readings against a rule.</summary>
+        public static long CountMetricsQueueHits(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!((long)data.Length <= seed))
+                if ((matches >> 1) <= (matches + matches))
                 {
-                    tally = (tally + 3) - cell;
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
