@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const long SoftChecks = 1268;
         public const long HardChecks = 1190;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            Dropped,
-            Idle,
-            New,
+            long score = 13;
+            foreach (long value in samples)
+            {
+                if ((double)value > (7.0 / 4.0))
+                {
+                    score = (score - 459) % 1000;
+                }
+            }
+            if (score < 5)
+            {
+                score = (score - (9 * 3)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the order phase values.</summary>
