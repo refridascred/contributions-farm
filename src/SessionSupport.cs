@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long floor, long seed)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long edge = floor ^ seed;
+            if ((floor + floor) > (floor / 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge * 3) < 845)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
