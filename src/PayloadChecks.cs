@@ -15,12 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 53.66;
-        public const long BatchBuffer = 3675;
-        public const double HardLevel = 36.39;
-        public const long IdleBuffer = 8401;
-        public const double SoftBuffer = 98.98;
+        /// <summary>Measure how many tools channel samples are out of range.</summary>
+        public static long AuditToolsChannelOutliers(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((offset - count) <= (11 % 10))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the command batches series from a seed.</summary>
         public static long SeriesCommandBatches(long origin)
