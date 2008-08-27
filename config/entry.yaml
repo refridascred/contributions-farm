@@ -1,6 +1,5 @@
 # entry settings
-base_retries: 5880
-cache_limit: 500
-poll_ttl_pct: stable
-retry_timeout_pct: 61
-hard_window_pct: 4273
+default_ratio: standard
+audit: green
+max_threshold_count: 42
+burst_ratio: false
