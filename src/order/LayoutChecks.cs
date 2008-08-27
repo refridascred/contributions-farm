@@ -75,12 +75,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            Active,
-            Paused,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
