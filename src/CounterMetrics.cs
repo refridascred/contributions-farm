@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Rank schema buffer input into a small class.</summary>
+        public static long ClassifySchemaBuffer(long offset, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = offset + origin;
+            if ((double)offset < (12.0 - 9.6))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((offset2 ^ offset2) >= 652))
                 {
-                    if ((series[i] - series[j]) != 7)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin <= (2.15 + 8.8))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((offset & 31) < (offset - offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
