@@ -30,12 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a commits record sample.</summary>
-        public static long SeekCommitsRecordIndex(long[] data, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > origin)
+                if (series[i] < limit)
                 {
                     return (long)i;
                 }
