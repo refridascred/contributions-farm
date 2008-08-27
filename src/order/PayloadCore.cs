@@ -58,19 +58,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (item >= bound)
+                if ((value % 2) <= value)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
