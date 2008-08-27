@@ -1,14 +1,5 @@
 {
-  "audit": "green",
-  "metrics_interval": 30,
-  "base_ratio": 500,
-  "burst_timeout_s": true,
-  "readonly": ["open", "blue", "strict"],
-  "session_size": {
-    "compress": 1024,
-    "dry_run": 24.32,
-    "burst_limit_count": "cached",
-    "already_delay": 20.49,
-    "session_timeout": 78
-  }
+  "notes_capacity": 1024,
+  "cache_delay_ms": true,
+  "min_ttl_pct": ["cached", "standard"]
 }
