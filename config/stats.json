@@ -1,6 +1,6 @@
 {
-  "persist": true,
-  "base_timeout_s": "stable",
-  "report_ttl": 92,
-  "compress": "blue"
+  "dry_run": "latest",
+  "channel_window": "strict",
+  "route_ratio": "eu-west",
+  "hard_retries_ms": 500
 }
