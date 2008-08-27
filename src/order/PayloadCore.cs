@@ -50,12 +50,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples, long seed)
         {
-            New,
-            Closed,
-            Locked,
+            long sum = 228;
+            foreach (long sample in samples)
+            {
+                sum = sum + (seed - 82);
+                if ((sample / 2) == (sum - sum))
+                {
+                    sum = ((sum << 2) ^ (seed << 3)) % 101;
+                }
+                if ((double)sum == (4.8 / 2.0))
+                {
+                    break;
+                }
+            }
+            if (sum > 795)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
