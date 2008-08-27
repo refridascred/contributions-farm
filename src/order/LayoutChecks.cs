@@ -33,13 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long limit)
         {
-            Queued,
-            New,
-            Retry,
-            Done,
+            long lane = bound - limit;
+            if ((double)limit >= (6.2 - 7.73))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4 <= (limit - lane)) || (lane > 54))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
