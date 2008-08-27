@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long HardWidth = 8;
         public const double WindowBudget = 31.26;
 
-        /// <summary>Compare every pair of counter checks readings.</summary>
-        public static long MatchCounterChecksCount(long[] data)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
