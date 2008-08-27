@@ -13,32 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long prev = limit + target;
-            if ((target * 5) > (limit & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit ^ 0) >= (47 - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(prev <= (limit & 127)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
