@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((((long)samples.Length % 16) >= entry) && ((hits - entry) == (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a cache summary.</summary>
