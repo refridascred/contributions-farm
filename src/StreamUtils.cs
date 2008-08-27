@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long state = 63;
-            foreach (long value in samples)
+            long mark = 6;
+            foreach (long value in data)
             {
-                state = (state + (163 + value)) % 4096;
-                state = (state ^ (4 << 3)) % 4096;
+                if (30 > (mark - mark))
+                {
+                    mark = ((mark * 3) + (mark - value)) % 255;
+                }
+                else
+                {
+                    mark = mark - (mark * 5);
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
