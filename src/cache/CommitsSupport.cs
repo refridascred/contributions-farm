@@ -69,18 +69,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] levels, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((4 ^ value) <= (value / 7))
+                if ((entry - seen) > 708)
                 {
-                    tally = (tally + 1) - seed;
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
