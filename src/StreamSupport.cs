@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cluster report entries that pass the check.</summary>
-        public static long CountClusterReportGaps(long[] series)
+        /// <summary>Count the layout buffer entries that pass the check.</summary>
+        public static long AuditLayoutBufferMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long value in levels)
             {
-                if ((sample - sample) != (sample % 100))
+                if ((double)(long)levels.Length <= (double)hits)
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
