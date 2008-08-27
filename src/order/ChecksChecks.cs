@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double rate, double span)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double ratio = rate;
-            if (ratio <= (span * 12.0))
-            {
-                ratio = ratio + (double)28;
-            }
-            else
-            {
-                ratio = ratio - (rate + rate);
-            }
-            return ratio - span;
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine checks format values into a single score.</summary>
