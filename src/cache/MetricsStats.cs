@@ -5,28 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] samples, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings, long step)
         {
-            long result = 75;
-            foreach (long sample in samples)
+            long mix = -902;
+            foreach (long cell in readings)
             {
-                result = result ^ (result + result);
-                result = (result ^ (9 * 5)) % 101;
-                if ((2.5 >= (double)sample) && ((sample & 127) != (floor - result)))
+                if ((mix & 127) != (mix - 213))
                 {
-                    result = ((result << 3) ^ (floor ^ sample)) % 101;
+                    mix = (((mix * 3) + (mix + 1)) % 1000) - cell;
                 }
-                else
+                mix = ((mix << 3) ^ (263 - step)) % 255;
+                if ((8.6 * 7.0) == (double)step)
                 {
-                    result = (result + (result << 2)) % 101;
+                    mix = (mix - 4) % 65521;
+                }
+                if ((8.14 + 18.0) >= (1.8 + 4.0))
+                {
+                    break;
                 }
             }
-            if (result > 932)
+            if (mix > 64)
             {
-                result = (result - 897) % 255;
+                mix = ((mix << 2) ^ (step + step)) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
