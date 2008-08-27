@@ -26,18 +26,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long step, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            long offset = step - origin;
+            if (((offset + offset) == (step + step)) || ((step - step) == (offset - step)))
             {
-                if (((double)count < 6.1) || ((double)item < 0.85))
+                return 1;
+            }
+            else
+            {
+                if (((origin - step) > (offset - origin)) || ((offset - step) >= origin))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset == (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step <= (origin >> 2)) && (69 >= ((-22) + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a account counter forward.</summary>
