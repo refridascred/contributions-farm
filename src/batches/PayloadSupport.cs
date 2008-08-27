@@ -23,13 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] readings, long limit)
         {
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
