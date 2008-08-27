@@ -47,21 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry tools pairs that satisfy a relation.</summary>
-        public static long CompareEntryToolsCount(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc ^ (75 - (long)i)) % 255;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
