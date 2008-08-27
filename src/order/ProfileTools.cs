@@ -49,21 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics commits readings.</summary>
-        public static long MatchMetricsCommitsCount(long[] items)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
