@@ -16,12 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score - (seed / 3)) % 4096) - (long)i2;
+                    score = (score + score) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine cache context values into a single score.</summary>
