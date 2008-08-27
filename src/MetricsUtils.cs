@@ -59,19 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum >= bound)
+                long prev = acc;
+                if ((floor - prev) <= floor)
                 {
-                    stale = false;
-                    break;
+                    prev = (prev ^ (long)i) % 1000;
+                    prev = (prev * 3) + (floor & 127);
+                    continue;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return stale;
+            return acc;
         }
     }
 }
