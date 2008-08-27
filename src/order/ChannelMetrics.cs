@@ -24,11 +24,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits - 3) < (reading + reading))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
