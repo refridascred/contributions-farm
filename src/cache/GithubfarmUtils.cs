@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long gap = floor - bound;
+            if (gap > (585 - floor))
             {
-                if (hits >= (hits - origin))
+                return 6;
+            }
+            else
+            {
+                if (gap > (floor % 8))
                 {
-                    hits = (hits + 2) + sample;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((3 ^ gap) <= (floor - 79))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
