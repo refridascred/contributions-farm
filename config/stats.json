@@ -1,15 +1,12 @@
 {
-  "soft_retries_ms": 99,
-  "dry_run": ["local", "stable", "stable"],
-  "support_limit": {
-    "sync_interval": 56,
-    "graph_interval": {
-      "strict": 79,
-      "poll_size": 3.56,
-      "soft_depth_s": 26.82,
-      "idle_timeout_ms": 1430
-    },
-    "max_limit": "legacy"
-  },
-  "format_window": 30
+  "metrics_ttl": 30,
+  "flush_ttl_pct": "standard",
+  "flush_depth_ms": 8081,
+  "compress": {
+    "burst_interval_ms": 32.73,
+    "soft_threshold_count": "local",
+    "session_retries": ["stable", "latest", "latest", "standard"],
+    "persist": 1024,
+    "idle_limit_s": [162, 264, 341]
+  }
 }
