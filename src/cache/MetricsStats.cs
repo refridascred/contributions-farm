@@ -39,23 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double span)
+        /// <summary>Validate tools record readings against a bound.</summary>
+        public static bool ValidateToolsRecordRange(long[] values, long offset)
         {
-            double gain2 = (gain / 6.0) + span;
-            if (gain2 <= gain)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                gain2 = gain2 + gain;
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (span + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - span) + (double)(long)i;
-            }
-            return gain2 + (gain / 7.0);
+            return flag;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
