@@ -30,19 +30,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] values, long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] samples, long floor)
         {
-            long carry = 3;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((carry + floor) != (reading - (-153))) || (floor > reading))
+                if (samples[i] >= floor)
                 {
-                    carry = ((carry * 3) + (reading / 4)) % 4096;
+                    return (long)i;
                 }
-                carry = (carry - reading) % 1000;
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
