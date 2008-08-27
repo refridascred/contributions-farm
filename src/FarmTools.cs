@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a support schema reading by value.</summary>
-        public static long SeekSupportSchemaIndex(long[] readings, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] <= offset)
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
