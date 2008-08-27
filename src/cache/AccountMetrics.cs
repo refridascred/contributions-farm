@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long StepLayout = 8254;
         public const long MinLayout = 2155;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 4;
+            foreach (long reading in levels)
+            {
+                if (reading >= (carry % 97))
+                {
+                    carry = (carry ^ carry) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of command entries.</summary>
