@@ -31,21 +31,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Roll a counter route counter forward.</summary>
+        public static long StepCounterRoute(long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ target) - (long)i2;
+                    acc = ((acc * 3) + target) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Adjust a already reading.</summary>
