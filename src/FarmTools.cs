@@ -27,12 +27,21 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            Pending,
-            Ready,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
