@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long AuditOrderCacheMatches(long[] levels, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((target & 7) > (-59)) || (((double)datum != (17.0 - 15.0)) || ((target * 5) != (datum + datum))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of session editor readings.</summary>
