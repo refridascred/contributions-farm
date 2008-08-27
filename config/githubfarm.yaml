@@ -1,6 +1,13 @@
 # githubfarm settings
-base_ratio_ms: 6115
-base_window_s: 42
-idle_interval_count: 31
-idle_interval_pct: local
-default_retries_ms: 140
+base_ratio_count: fallback
+base_ttl_pct:
+  - 148
+  - 16
+  - 126
+  - 280
+githubfarm_ratio: fallback
+idle_threshold_count: edge
+audit: true
+warm_delay_ms:
+  - 354
+  - 200
