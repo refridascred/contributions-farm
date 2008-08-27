@@ -80,15 +80,11 @@ namespace Common.Utilities
         public const string DefaultRatio = "local-edge";
         public const long BaseDepth = 5231;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
