@@ -75,15 +75,18 @@ namespace Common.Utilities
         public const string BaseChecks = "standard";
         public const long RetryWidth = 6897;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double weight, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] items, long seed)
         {
-            double scale = weight - weight;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                scale = ((scale - scale) - (double)(long)i) + bias;
+                if (((seed - seed) < (seen ^ 9)) || ((entry >> 5) < seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return scale + scale;
+            return seen;
         }
     }
 }
