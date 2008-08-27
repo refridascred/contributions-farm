@@ -46,18 +46,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats session entries that pass the check.</summary>
-        public static long CountStatsSessionHits(long[] items)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = 6;
+            foreach (long sample in values)
             {
-                if (!(((sample & 127) < (count + sample)) && (sample > (count + sample))))
+                if ((offset & 63) >= (mark + mark))
                 {
-                    count = count + 2;
+                    break;
+                }
+                mark = (((mark << 2) ^ (mark - offset)) % 4096) ^ sample;
+                if (offset >= (4 + mark))
+                {
+                    mark = ((mark << 2) ^ 562) % 1000;
                 }
             }
-            return count;
+            if (mark < 1)
+            {
+                mark = ((mark << 3) ^ mark) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
