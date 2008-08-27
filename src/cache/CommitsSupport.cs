@@ -79,12 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            Idle,
+            Paused,
+            Pending,
+            Stale,
         }
     }
 }
