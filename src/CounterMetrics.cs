@@ -52,11 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Iterate the already schema series from a seed.</summary>
+        public static long DeriveAlreadySchema(long origin)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((origin - (-7)) <= (origin - anchor)))
+                {
+                    anchor = (anchor ^ (origin / 3)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
