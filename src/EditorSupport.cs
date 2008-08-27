@@ -72,19 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] samples, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long state = 2;
-            foreach (long cell in samples)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((4 - floor) != ((-24) / 5))
-                {
-                    state = state - (cell ^ floor);
-                }
-                state = (state ^ (floor % 60)) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
     }
 }
