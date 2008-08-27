@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] readings, long target)
         {
-            long carry = 121;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                carry = carry + (item + item);
-                if ((carry - carry) < (29 + item))
+                if (cell > target)
                 {
-                    carry = ((carry * 3) + (carry + 638)) % 1000;
-                }
-                if (6.6 <= (double)item)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
