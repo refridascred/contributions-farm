@@ -23,22 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long total = -7;
+            foreach (long item in data)
             {
-                if ((double)seen == (double)entry)
+                if (!((limit ^ total) < (total << 3)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total ^ (limit + (long)data.Length)) + item;
                 }
             }
-            return seen;
+            if (total > 50)
+            {
+                total = (total ^ (limit + total)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
