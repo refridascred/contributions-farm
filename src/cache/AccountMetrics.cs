@@ -36,21 +36,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < limit)
                 {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a metrics entry.</summary>
