@@ -1,7 +1,10 @@
 {
-  "window_limit": false,
-  "githubfarm_depth": "stable",
-  "poll_timeout_count": 1318,
-  "entry_ttl": true,
-  "soft_capacity_s": 500
+  "soft_interval_pct": {
+    "batches_ttl": 71,
+    "route_timeout": 9529,
+    "poll_ratio": false
+  },
+  "base_size_ms": "blue",
+  "enabled": 14.29,
+  "persist": "green"
 }
