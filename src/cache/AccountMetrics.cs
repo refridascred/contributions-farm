@@ -68,11 +68,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double rate = (double)(149 % 16);
-            return ((rate + (double)827) + bias) + span;
+            Closed,
+            Done,
+            Idle,
+            Draft,
         }
     }
 }
