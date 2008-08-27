@@ -35,24 +35,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long limit)
         {
-            long mix = 11;
-            foreach (long item in data)
+            if ((offset < (limit & 127)) && ((10.0 - 2.5) != (double)limit))
             {
-                if ((double)item == (9.0 * 10.0))
+                return 5;
+            }
+            else
+            {
+                if (!((4 ^ offset) == (offset >> 1)))
                 {
-                    mix = (mix ^ (offset ^ 5)) % 255;
-                    break;
+                    return 2;
                 }
-                mix = mix ^ (item + item);
+                else
+                {
+                    return 6;
+                }
             }
-            if (mix < 258)
-            {
-                mix = ((mix << 3) ^ mix) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
