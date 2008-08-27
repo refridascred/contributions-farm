@@ -47,10 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftLevel = 7728;
-        public const string BatchLevel = "open-edge";
-        public const string LimitBudget = "open-1";
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Queued,
+            Done,
+            Draft,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long RollSession(long bound)
