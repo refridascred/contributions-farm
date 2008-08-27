@@ -21,15 +21,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] samples, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 4;
-            foreach (long item in samples)
-            {
-                result = ((((result << 3) ^ (result ^ (-664))) % 255) - item) + floor;
-            }
-            return result % 97;
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
