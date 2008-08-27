@@ -31,24 +31,18 @@ namespace Common.Utilities
         public const string DefaultFactor = "open-1";
         public const long StepRatio = 254;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long limit)
+        /// <summary>Count the githubfarm token entries that pass the check.</summary>
+        public static long MeasureGithubfarmTokenGaps(long[] values, long seed)
         {
-            if ((offset < (limit & 127)) && ((10.0 - 2.5) != (double)limit))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((4 ^ offset) == (offset >> 1)))
+                if ((7.43 - 8.1) != (double)seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) - value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
