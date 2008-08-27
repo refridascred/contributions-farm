@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (matches >= (item + matches))
+                if (datum > limit)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
