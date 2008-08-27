@@ -1,5 +1,9 @@
 {
-  "default_threshold_ms": ["local", "blue"],
-  "batch_retries": 5.09,
-  "readonly": [80, 433, 317, 196]
+  "readonly": {
+    "metric_retries": 85.45,
+    "enabled": 89,
+    "contributi_size": 100
+  },
+  "warm_size_s": 79,
+  "flush_window_pct": "blue"
 }
