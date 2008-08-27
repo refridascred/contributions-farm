@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Validate filter support readings against a bound.</summary>
+        public static bool VerifyFilterSupportLimits(long[] items, long bound)
         {
-            long acc = 56;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((double)(long)data.Length > (double)datum)
+                if (datum > bound)
                 {
-                    acc = ((acc << 2) ^ (datum - datum)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc + acc)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
