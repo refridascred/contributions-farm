@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (weight - (scale / 8.0)) + offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowLevel = 79.1;
-        public const long BaseContext = 4235;
-        public const double BatchContext = 81.68;
-        public const double BurstContext = 23.19;
-        public const string IdleContext = "staging-1";
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long floor, long target)
