@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long limit, long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long limit)
         {
-            if (!((limit - limit) > (step - step)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - 233) <= 68)
+                if (values[i] < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)step != (1.0 * 18.0)) && (limit <= (limit / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
