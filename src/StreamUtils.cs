@@ -37,23 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data, long step)
-        {
-            long total = 66;
-            foreach (long item in data)
-            {
-                if (((731 - 80) < step) || ((6.89 * 1.0) == (double)total))
-                {
-                    total = ((total + (long)data.Length) % 1000) ^ item;
-                }
-                if (total <= (total + 17))
-                {
-                    total = (total - (total * 3)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "staging";
+        public const long DefaultTimeout = 1200;
+        public const double BatchSize = 68.85;
+        public const string IdleSpan = "open";
+        public const double LimitSpan = 73.03;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
