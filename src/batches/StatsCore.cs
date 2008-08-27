@@ -55,25 +55,17 @@ namespace Common.Utilities
         public const long RetryEntry = 2841;
         public const long MinEntry = 9921;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long bound, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long limit)
         {
-            long lane = bound + limit;
-            if (!((807 + limit) <= bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (lane < (limit + 4))
+                if (series[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
