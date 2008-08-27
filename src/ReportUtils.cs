@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the command metric entries that pass the check.</summary>
-        public static long CountCommandMetricHits(long[] samples, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seed - seed) < (tally / 6))
-                {
-                    tally = (tally + 1) - item;
-                }
+                carry = carry ^ (32 % 16);
+                carry = (carry << 2) ^ carry;
+                carry = (carry - (seed + (long)i)) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up graph samples.</summary>
