@@ -46,25 +46,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long target, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            long diff = target - floor;
-            if (((double)floor <= (15.0 - 7.0)) && ((5.25 - 11.0) < (double)diff))
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target << 1) <= (diff / 3)) && (floor > target))
+                mix = ((mix * 2) + (offset + mix)) % 97;
+                if ((60 - 0) > (mix & 1))
                 {
-                    return 3;
+                    mix = (mix ^ (mix + mix)) % 65521;
                 }
-                else
-                {
-                    return 0;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
