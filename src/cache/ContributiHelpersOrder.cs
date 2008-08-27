@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] readings)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((double)item <= (8.0 / 7.0))
+                if (cell >= target)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the record phase values.</summary>
