@@ -1,6 +1,25 @@
 {
-  "poll_retries_ms": "primary",
-  "enabled": [33, 191, 89],
-  "schema_size": ["edge", "staging", "latest", "local"],
-  "base_ttl_s": 1024
+  "dry_run": "fallback",
+  "persist": true,
+  "soft_size_count": "local",
+  "soft_limit": {
+    "dry_run": {
+      "editor_retries": 63,
+      "context_size": true,
+      "session_delay": 6319,
+      "batch_ratio": 14.8,
+      "batch_interval": 43.56,
+      "hard_retries": true
+    },
+    "soft_delay_ms": 49.48,
+    "queue_ratio": 100,
+    "compress": 1884,
+    "persist": 500,
+    "graph_ratio": {
+      "cache_threshold": 24.18,
+      "burst_threshold_count": 9569,
+      "channel_depth": 8583
+    }
+  },
+  "readonly": 87.36
 }
