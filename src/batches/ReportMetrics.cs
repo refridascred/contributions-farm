@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((3.63 / 9.0) < (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
