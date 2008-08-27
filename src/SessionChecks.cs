@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (readings[i] < step)
+                if (sample <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Match up record samples.</summary>
