@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long anchor = 0;
-            foreach (long item in readings)
-            {
-                if (((5.19 - 8.3) < (double)anchor) && ((floor / 2) < (floor + 8)))
-                {
-                    anchor = ((anchor << 2) ^ (floor ^ floor)) % 1000;
-                }
-                anchor = anchor + (anchor ^ item);
-            }
-            return anchor;
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Blend two token measurements.</summary>
