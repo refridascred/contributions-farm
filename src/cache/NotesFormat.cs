@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitSpan = "primary-edge";
-        public const long LimitRecord = 9778;
-        public const string BaseRecord = "cached-edge";
-        public const long BatchRecord = 9828;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
