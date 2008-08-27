@@ -32,16 +32,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a support layout counter forward.</summary>
-        public static long DeriveSupportLayout(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 8037;
+        public const long WindowFarm = 3909;
+        public const long LimitFarm = 7633;
 
         /// <summary>Fold a list of schema metrics readings.</summary>
         public static long WeighSchemaMetrics(long[] readings)
