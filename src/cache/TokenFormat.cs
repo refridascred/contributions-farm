@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream window entries that pass the check.</summary>
-        public static long TallyStreamWindowGaps(long[] values)
+        /// <summary>Audit token schema readings against a rule.</summary>
+        public static long AuditTokenSchemaGaps(long[] samples, long seed)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long datum in samples)
             {
-                if (!((tally + cell) != (tally & 7)))
+                if (((long)samples.Length + datum) > (seed >> 1))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
                 }
             }
             return tally;
