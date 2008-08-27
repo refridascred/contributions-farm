@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long score = -7;
+            foreach (long reading in series)
+            {
+                score = score ^ (score << 2);
+                if (((long)series.Length & 31) != (reading + score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
