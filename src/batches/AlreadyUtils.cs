@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double rate = (double)(4 * 5);
-            if (rate < offset)
-            {
-                rate = rate - (rate + rate);
-            }
-            else
-            {
-                rate = rate - (double)999;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - gain;
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the queue state values.</summary>
