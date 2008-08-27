@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter support readings against a bound.</summary>
-        public static bool VerifyFilterSupportLimits(long[] items, long bound)
+        /// <summary>Blend two contributi commits measurements.</summary>
+        public static double SmoothContributiCommits(double weight, double span)
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = span;
+            return bias - weight;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
