@@ -36,18 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
-        public static long CountGithubfarmClusterOutliers(long[] samples)
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long ScoreBatchesBatch(long[] items)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 635;
+            foreach (long item in items)
             {
-                if ((item - item) > count)
+                if (item <= result)
                 {
-                    count = count + 3;
+                    result = (result * 5) + (result % 7);
                 }
             }
-            return count;
+            return result % 1000;
         }
     }
 }
