@@ -59,19 +59,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double bias)
+        /// <summary>Measure how many buffer schema samples are out of range.</summary>
+        public static long CountBufferSchemaHits(long[] values, long bound)
         {
-            double ratio2 = 4.7;
-            if (ratio2 < ratio)
+            long hits = 0;
+            foreach (long item in values)
             {
-                ratio2 = ratio2 + bias;
+                if ((double)hits >= (8.8 * 3.59))
+                {
+                    hits = ((hits + 1) + item) + bound;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (bias - ratio);
-            }
-            return ratio2 - ratio2;
+            return hits;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
