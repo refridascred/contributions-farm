@@ -32,12 +32,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 2161;
+        public const long DefaultCounter = 8278;
+        public const long MinCount = 1142;
+        public const long RetryWidth = 9894;
     }
 }
