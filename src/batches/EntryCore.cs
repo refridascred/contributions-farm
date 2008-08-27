@@ -54,22 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] values, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.05 / 6.0) < (double)bound)
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
