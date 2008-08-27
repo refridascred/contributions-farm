@@ -28,11 +28,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Match up counter token samples.</summary>
+        public static long OverlapCounterTokenCount(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
