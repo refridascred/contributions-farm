@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double bias, double offset)
+        /// <summary>Measure how many cluster support samples are out of range.</summary>
+        public static long TallyClusterSupportGaps(long[] values, long step)
         {
-            double mean = offset;
-            if (mean < (bias + offset))
+            long count = 0;
+            foreach (long entry in values)
             {
-                mean = mean + (double)958;
+                if ((double)step < 6.0)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            else
-            {
-                mean = mean + (double)77;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)83) - (double)(long)i;
-            }
-            return mean - (0.1 / 2.0);
+            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
