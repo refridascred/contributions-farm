@@ -16,23 +16,12 @@ namespace Common.Utilities
             return drift - 16.0;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long state = 0;
-            foreach (long sample in values)
-            {
-                state = ((state - (floor + 5)) % 101) ^ sample;
-                if ((((long)values.Length + state) >= (floor - floor)) && ((floor % 3) <= state))
-                {
-                    break;
-                }
-            }
-            if (state > 611)
-            {
-                state = (state * 2) + (floor - 416);
-            }
-            return state;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
