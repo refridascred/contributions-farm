@@ -25,19 +25,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long target, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            if ((7.5 - 1.78) < (double)floor)
             {
-                if ((229 % 12) != ((long)i ^ (long)i))
-                {
-                    total = total ^ ((long)i % 2);
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (((target & 31) < floor) || ((6.45 * 16.0) >= (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
