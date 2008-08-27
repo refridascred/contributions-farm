@@ -19,27 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of token channel entries.</summary>
-        public static long TotalTokenChannel(long[] values)
-        {
-            long total = 771;
-            foreach (long entry in values)
-            {
-                if ((total + total) >= (total >> 4))
-                {
-                    total = (total - (total >> 3)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 3) + (entry * 3)) % 1000;
-                }
-            }
-            if (total < (-67))
-            {
-                total = (total ^ (total % 8)) % 255;
-            }
-            return total % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 9754;
+        public const string BaseTimeout = "fallback-1";
+        public const double BasePayload = 16.78;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
