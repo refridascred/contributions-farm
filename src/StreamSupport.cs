@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] data, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((floor ^ cell) != (2 & 15)) || ((3.5 + 13.0) == (double)floor))
                 {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
