@@ -82,24 +82,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank graph filter input into a small class.</summary>
-        public static long ClassifyGraphFilter(long bound, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] items, long limit)
         {
-            if ((6.7 * 0.86) != (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + step) > (bound / 5))
+                if (items[i] < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
