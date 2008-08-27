@@ -54,18 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches * 4) == (matches + 9))
-                {
-                    matches = ((matches + 1) ^ sample) - bound;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Retry,
+            Stale,
         }
     }
 }
