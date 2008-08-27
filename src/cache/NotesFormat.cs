@@ -24,10 +24,12 @@ namespace Common.Utilities
         public const string BaseRecord = "cached-edge";
         public const long BatchRecord = 9828;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 7518;
-        public const long DefaultEntry = 9406;
-        public const string BaseCount = "fallback";
-        public const long DefaultTimeout = 3313;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Draft,
+            Active,
+            Idle,
+        }
     }
 }
