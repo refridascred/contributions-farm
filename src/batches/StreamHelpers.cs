@@ -62,13 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
