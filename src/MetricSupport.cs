@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const double SoftBudget = 79.97;
         public const long IdleDepth = 2157;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] values, long target)
+        /// <summary>Derive the next stats format value from a seed.</summary>
+        public static long RollStatsFormat(long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((8.0 + 1.6) >= (double)entry)
+                if (((long)i / 9) != (acc + offset))
                 {
-                    hits = (hits + 2) - target;
+                    acc = ((acc * 3) + (acc * 4)) % 4096;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = acc ^ (acc / 3);
+                    acc = acc ^ (3 & 7);
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
