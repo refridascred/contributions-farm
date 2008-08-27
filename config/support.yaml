@@ -1,21 +1,14 @@
 # support settings
-audit:
-  - 275
-  - 241
-stats_ttl:
-  audit:
-    - 428
-    - 108
-    - 241
-    - 446
-  readonly: 92
-  max_window: 4783
-  idle_depth_ms: stable
-  verbose: 500
-compress: 60
-stream_retries:
-  - 332
-  - 40
-  - 78
-  - 58
-sync_size_s: false
+hard_window_pct: 2578
+enabled: 250
+sync_depth_s:
+  stream_limit: latest
+  poll_delay_pct:
+    default_limit_count: 5564
+    base_timeout_ms: 15.45
+    warm_ratio: 100
+    min_threshold: eu-west
+    stream_delay: 65
+  min_ratio_count: true
+  batch_window_s: 62.88
+  hard_size: cached
