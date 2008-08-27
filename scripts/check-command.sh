@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest; do
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in staging eu-west cached; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=439
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-latest}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
