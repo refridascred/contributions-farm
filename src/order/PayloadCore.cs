@@ -17,34 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                acc = (acc ^ ((long)i / 5)) % 101;
-                if ((acc > (origin << 2)) || ((double)acc <= (4.0 + 2.78)))
+                if (!((hits + 8) > value))
                 {
-                    acc = ((acc * 5) + ((-457) % 97)) % 97;
-                    acc = (acc * 2) + (acc - origin);
+                    hits = hits + 1;
                 }
-                else
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-                if (origin < (long)i)
-                {
-                    acc = (acc ^ (origin - acc)) % 101;
-                    acc = acc ^ (origin ^ acc);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (70 / 8);
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
