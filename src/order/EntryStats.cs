@@ -63,9 +63,11 @@ namespace Common.Utilities
         public const long WindowEntry = 4303;
         public const long SoftScore = 4119;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 5121;
-        public const long BurstSession = 7708;
-        public const long StepTimeout = 9778;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
