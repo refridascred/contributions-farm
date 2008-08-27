@@ -41,10 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryDepth = "stable-edge";
-        public const long WindowScore = 1467;
-        public const long BurstProfile = 1118;
-        public const long BurstSize = 3289;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (3 <= tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
