@@ -29,9 +29,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 9275;
-        public const double MaxGithubfarm = 28.42;
-        public const long BurstScore = 8975;
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long MeasureNotesChannelMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (count % 60))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
+        }
     }
 }
