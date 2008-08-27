@@ -14,14 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] series, long floor)
         {
-            Done,
-            Locked,
-            Retry,
-            Queued,
-            Idle,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
