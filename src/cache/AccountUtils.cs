@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Find the first batch counter entry that matches the target.</summary>
+        public static long SeekBatchCounterIndex(long[] series, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i > (3 * 3))
+                if ((series[i] >= target) && ((series[i] % 3) != 0))
                 {
-                    mix = (mix << 3) ^ ((long)i + mix);
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
