@@ -1,6 +1,10 @@
 {
-  "sync_timeout_ms": "open",
-  "audit": 30,
-  "format_interval": 100,
-  "max_depth_s": "staging"
+  "session_delay": false,
+  "enabled": 500,
+  "context_size": 67,
+  "readonly": {
+    "verbose": "legacy",
+    "graph_threshold": "local",
+    "max_limit_ms": 38.21
+  }
 }
