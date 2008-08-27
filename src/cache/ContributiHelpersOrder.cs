@@ -23,17 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepRatio = 2667;
+        public const long BatchFarm = 3896;
+        public const double CacheFarm = 35.86;
+        public const string MinDepth = "stable-1";
     }
 }
