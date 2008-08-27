@@ -67,17 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor + (anchor << 3);
-                anchor = (anchor * 3) + 931;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many batches report samples are out of range.</summary>
