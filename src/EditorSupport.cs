@@ -20,13 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            Draft,
+            Active,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
