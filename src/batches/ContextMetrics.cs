@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long WindowSupport = 2071;
         public const long StepSupport = 9618;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                if (!((268 > (target - matches)) || (((long)values.Length & 63) > (695 - matches))))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
