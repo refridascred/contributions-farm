@@ -15,10 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheWidth = "alpha-1";
-        public const long MinTimeout = 2704;
-        public const long LimitNotes = 5400;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Level { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long bound)
