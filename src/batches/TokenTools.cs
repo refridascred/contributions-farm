@@ -35,11 +35,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 302;
+        public const long LimitMetrics = 3765;
+        public const long StepMetrics = 7108;
     }
 }
