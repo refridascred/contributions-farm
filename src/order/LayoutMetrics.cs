@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long SoftFormat = 4813;
         public const long MaxFormat = 9682;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Paused,
-            Failed,
-            Retry,
-            Synced,
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
