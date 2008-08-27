@@ -1,7 +1,12 @@
 {
-  "max_ratio_ms": ["cached", "legacy"],
-  "readonly": true,
-  "warm_ratio_count": 500,
-  "hard_capacity_ms": 1024,
-  "default_depth_s": true
+  "burst_interval_count": 46.21,
+  "verbose": true,
+  "soft_threshold_s": "primary",
+  "idle_retries_s": {
+    "batch_size": 9567,
+    "layout_retries": 3078,
+    "readonly": "legacy",
+    "min_depth_count": false,
+    "metric_interval": "fallback"
+  }
 }
