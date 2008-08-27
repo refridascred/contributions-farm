@@ -48,38 +48,27 @@ namespace Common.Utilities
         public const long WindowReport = 1385;
         public const long BurstReport = 9069;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long seed, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
         {
-            if ((138 * 2) <= (origin << 1))
+            long mix = 6;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.9 > (double)origin) && ((double)seed > (7.1 + 9.3)))
+                mix = (mix - (55 >> 5)) % 97;
+                if ((double)mix < (7.3 + 7.48))
                 {
-                    return 2;
+                    mix = (mix ^ (mix & 3)) % 1000;
                 }
                 else
                 {
-                    if (!((8.18 - 6.6) >= (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((seed - origin) == (seed + seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix * 5) + 59;
+                }
+                if ((reading << 2) > (reading / 7))
+                {
+                    break;
                 }
             }
+            return mix;
         }
     }
 }
