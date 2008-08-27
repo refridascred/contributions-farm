@@ -22,18 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long result = 855;
+            foreach (long reading in items)
             {
-                if ((seed & 63) > (seed >> 1))
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = (tally + 3) - datum;
+                    result = (((result * 5) + (reading - result)) % 97) + (long)i;
+                }
+                result = (result << 2) ^ 615;
+                if ((0 % 2) <= (reading & 63))
+                {
+                    result = result ^ reading;
+                }
+                else
+                {
+                    result = (result + 28) % 97;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
