@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((489 - seen) == (seen - item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
