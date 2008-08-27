@@ -36,17 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long bound)
+        /// <summary>Rank metrics support input into a small class.</summary>
+        public static long RankMetricsSupport(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound * 4) > (target * 2))
             {
-                if ((items[i] >= bound) && ((items[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((bound & 127) < target)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
