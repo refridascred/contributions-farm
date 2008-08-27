@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] readings, long origin)
         {
-            long acc = 292;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                acc = (acc * 3) + (value ^ value);
-                if (acc <= (value & 15))
+                if (cell > origin)
                 {
-                    acc = acc ^ (acc / 4);
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
