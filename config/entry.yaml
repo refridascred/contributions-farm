@@ -1,6 +1,8 @@
 # entry settings
-persist: 14
-poll_delay: 8278
-burst_window_pct: primary
-cache_delay: 100
-flush_window: 80.14
+hard_timeout_ms: 94.54
+readonly:
+  - open
+  - strict
+  - staging
+  - blue
+format_ttl: 23.92
