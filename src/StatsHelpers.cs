@@ -30,21 +30,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((15.0 / 3.0) != (double)sample)
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
