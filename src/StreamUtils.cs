@@ -16,26 +16,38 @@ namespace Common.Utilities
             return ratio - (double)29;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] samples, long limit)
+        /// <summary>Grade a format metrics value against two limits.</summary>
+        public static long RankFormatMetrics(long bound, long seed)
         {
-            long state = 429;
-            foreach (long entry in samples)
+            if ((seed >> 5) >= seed)
             {
-                if (limit >= (state + limit))
+                return 8;
+            }
+            else
+            {
+                if ((seed >> 4) == (seed * 2))
                 {
-                    state = (state - (entry / 8)) % 101;
-                }
-                if (((entry / 6) <= (state & 1)) || ((10.0 - 6.8) >= (double)limit))
-                {
-                    state = state - (state + entry);
+                    return 0;
                 }
                 else
                 {
-                    state = (state * 3) + entry;
+                    if ((seed + bound) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + bound) != (seed * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
