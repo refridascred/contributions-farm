@@ -67,18 +67,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] levels, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long gap = limit - origin;
+            if (origin < (origin ^ origin))
             {
-                if (196 <= cell)
+                return 7;
+            }
+            else
+            {
+                if (((limit % 64) != (gap & 31)) && ((origin >> 3) == (gap ^ 80)))
                 {
-                    seen = (seen + 1) + origin;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
