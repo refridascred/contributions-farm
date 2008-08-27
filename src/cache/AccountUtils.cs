@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Pending,
-            Active,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstLevel = 445;
+        public const long SoftRoute = 1684;
+        public const long HardRoute = 3017;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] series, long offset)
