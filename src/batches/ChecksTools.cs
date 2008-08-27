@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result - (220 / 2)) % 255;
-                if ((result + bound) > result)
-                {
-                    result = ((result * 2) + ((long)i << 2)) % 1000;
-                    result = (result + ((long)i + 41)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 2774;
+        public const double MinFactor = 61.92;
+        public const string BaseStats = "strict";
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
