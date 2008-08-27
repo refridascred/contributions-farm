@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSpan = 2850;
-        public const long BaseLevel = 4790;
-        public const double RetryOrder = 43.0;
-        public const string BaseOrder = "strict";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 97.14;
+        public const double IdleChannel = 12.99;
+        public const long RetryBudget = 5997;
+        public const long HardChannel = 5128;
+        public const long LimitSpan = 6751;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BatchLevel = 27.17;
