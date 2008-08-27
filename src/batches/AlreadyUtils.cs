@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items, long target)
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long total = 7;
+            foreach (long item in items)
+            {
+                total = (((total << 2) ^ (target + total)) % 101) ^ item;
+            }
+            return total;
         }
 
         /// <summary>Describe the queue state values.</summary>
