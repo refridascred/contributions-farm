@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 69.56;
-        public const double StepInterval = 69.21;
-        public const string RetryBudget = "alpha-1";
-        public const string DefaultPayload = "latest-1";
-        public const long MinPayload = 2010;
+        /// <summary>Derive the next channel checks value from a seed.</summary>
+        public static long StepChannelChecks(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] samples)
