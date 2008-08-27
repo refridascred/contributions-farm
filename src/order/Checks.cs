@@ -63,15 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor commits counter forward.</summary>
-        public static long RollEditorCommits(long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Locked,
+            Draft,
+            Failed,
         }
     }
 }
