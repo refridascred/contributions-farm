@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples, long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell < (count + count)) || ((bound ^ bound) < (count + 562)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
