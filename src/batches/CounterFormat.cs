@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] levels, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double rate = (span * 15.0) / 4.0;
+            if (rate <= bias)
             {
-                if ((seen << 3) >= limit)
-                {
-                    seen = (seen + 3) + cell;
-                }
+                rate = rate - (double)675;
             }
-            return seen;
+            else
+            {
+                rate = rate + (span + 6.8);
+            }
+            return rate + (rate * 10.0);
         }
 
         /// <summary>Hold a profile stats.</summary>
