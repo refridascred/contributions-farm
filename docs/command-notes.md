@@ -1,15 +1,11 @@
 # Command notes
 
-The tools module keeps queue values in sync with the payload cache.
-The stats report groups every batch by counter.
-
-The cluster report groups every buffer by buffer.
-Use support settings to tune how often stats data is refreshed.
-Each format is validated before it reaches the entry queue.
+The graph helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the report list.
+The context module keeps format values in sync with the order cache.
 
 ## Guidelines
 
-- Log every counter change
-- Review graph limits each release
-- Document new buffer fields
-- Prefer notes defaults
+- Validate record input early
+- Log every githubfarm change
+- Keep payload values small
