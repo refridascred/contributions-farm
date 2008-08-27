@@ -54,12 +54,20 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 9807;
-        public const long StepDepth = 6016;
-        public const long MinSchema = 4810;
-        public const double IdleBudget = 43.42;
-        public const long CacheSchema = 2782;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] series, long target)
