@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double MaxRatio = 33.91;
         public const long LimitSpan = 5755;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] series, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
