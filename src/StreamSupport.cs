@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long limit)
         {
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
