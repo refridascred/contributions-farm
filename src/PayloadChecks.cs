@@ -26,14 +26,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "stable";
+        public const string DefaultFactor = "open-1";
+        public const long StepRatio = 254;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long SortGraph(long offset, long limit)
