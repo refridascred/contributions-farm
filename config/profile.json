@@ -1,6 +1,7 @@
 {
-  "metric_interval": 52,
-  "min_capacity_s": 2678,
-  "verbose": false,
-  "compress": 250
+  "batch_ttl": false,
+  "checks_size": "standard",
+  "strict": true,
+  "flush_interval_ms": "legacy",
+  "dry_run": ["local", "eu-west", "edge"]
 }
