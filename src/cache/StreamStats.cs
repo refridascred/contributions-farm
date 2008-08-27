@@ -28,18 +28,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit window metrics readings against a rule.</summary>
-        public static long CountWindowMetricsOutliers(long[] data, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (step <= (step << 2))
+                if ((series[i] < seed) && ((series[i] % 5) != 0))
                 {
-                    matches = (matches + 1) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
