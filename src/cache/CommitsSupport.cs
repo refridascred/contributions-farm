@@ -22,24 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long step, long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            if ((target >> 5) < (target << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + target) == (step << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit window readings against a rule.</summary>
