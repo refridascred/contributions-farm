@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long bound)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = floor;
+            if (ratio > (gain / 2.0))
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + 8.03;
             }
-            return -1;
+            return ratio - (double)29;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
