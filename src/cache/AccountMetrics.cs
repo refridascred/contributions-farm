@@ -53,10 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheInterval = "legacy-1";
-        public const string DefaultContext = "staging-edge";
-        public const long MaxSize = 2586;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double SmoothStats(double bias, double span)
