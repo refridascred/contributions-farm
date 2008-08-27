@@ -1,5 +1,10 @@
 {
-  "strict": "green",
-  "base_timeout_count": false,
-  "batch_ttl_s": 1024
+  "default_interval_count": 23.73,
+  "entry_interval": false,
+  "readonly": {
+    "profile_threshold": 7143,
+    "warm_capacity_ms": ["open", "green", "standard", "cached"],
+    "idle_timeout": ["primary", "eu-west"],
+    "cache_delay_ms": 9287
+  }
 }
