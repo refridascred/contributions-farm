@@ -72,10 +72,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 6842;
-        public const long BaseInterval = 5837;
-        public const string IdleCount = "strict-v2";
-        public const long LimitLevel = 6200;
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long TallyOrderChecks(long[] data)
+        {
+            long carry = 93;
+            foreach (long sample in data)
+            {
+                if ((sample / 6) < carry)
+                {
+                    carry = ((carry * 4) + (carry + sample)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry + (long)data.Length)) % 97;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
