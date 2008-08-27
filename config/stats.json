@@ -1,12 +1,12 @@
 {
-  "metrics_ttl": 30,
-  "flush_ttl_pct": "standard",
-  "flush_depth_ms": 8081,
-  "compress": {
-    "burst_interval_ms": 32.73,
-    "soft_threshold_count": "local",
-    "session_retries": ["stable", "latest", "latest", "standard"],
-    "persist": 1024,
-    "idle_limit_s": [162, 264, 341]
-  }
+  "hard_depth_pct": true,
+  "persist": {
+    "sync_size_pct": false,
+    "batch_capacity": 93,
+    "cache_ttl_s": 100,
+    "batch_depth": false,
+    "max_threshold_s": "local",
+    "persist": "open"
+  },
+  "poll_interval": 15.02
 }
