@@ -1,21 +1,12 @@
 # support settings
-batch_size_s: 30.06
-sync_depth: 53.87
-batch_capacity_ms: 3947
-idle_ratio_pct:
-  - primary
-  - latest
-  - latest
-  - legacy
-flush_retries_s:
-  warm_depth_s: 19.96
-  idle_interval_pct:
-    - local
-    - local
-  flush_interval_s: 57.44
-  poll_threshold: staging
-  base_depth_ms: true
-  cache_timeout:
-    - latest
-    - staging
-min_timeout: fallback
+base_threshold_count: 1024
+burst_delay:
+  readonly: latest
+  tools_interval: primary
+  soft_depth_count:
+    githubfarm_ttl: 4144
+    strict: staging
+    poll_limit_s: 90
+  verbose: local
+  soft_interval_count: true
+idle_window_ms: 500
