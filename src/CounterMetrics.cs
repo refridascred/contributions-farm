@@ -37,20 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches contributi readings.</summary>
-        public static long DigestBatchesContributi(long[] series)
-        {
-            long sum = 3;
-            foreach (long reading in series)
-            {
-                sum = ((sum << 3) ^ (sum + reading)) % 255;
-                if (sum <= (sum ^ sum))
-                {
-                    sum = sum - (reading << 3);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxBudget = 56.8;
+        public const long WindowTimeout = 7302;
+        public const string HardFormat = "primary-v2";
+        public const double LimitCount = 93.9;
 
         /// <summary>Iterate the already schema series from a seed.</summary>
         public static long DeriveAlreadySchema(long origin)
