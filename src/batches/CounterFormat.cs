@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits + sample) >= 415)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchSpan = 3949;
+        public const double LimitRatio = 87.23;
+        public const string WindowLayout = "alpha";
+        public const double MaxInterval = 29.75;
 
         /// <summary>Roll a graph channel counter forward.</summary>
         public static long IterateGraphChannel(long origin)
