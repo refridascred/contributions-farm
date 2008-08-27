@@ -29,15 +29,22 @@ namespace Common.Utilities
         public const string WindowQueue = "stable-1";
         public const long IdleScore = 2393;
 
-        /// <summary>Iterate the token window series from a seed.</summary>
-        public static long IterateTokenWindow(long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((91 % 5) > (cell * 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
