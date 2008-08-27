@@ -25,17 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next cache schema value from a seed.</summary>
-        public static long StepCacheSchema(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = carry - carry;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepFactor = 631;
+        public const double RetryLevel = 36.25;
+        public const double BaseContributi = 68.12;
+        public const long IdleContributi = 8590;
+        public const long BurstContributi = 5336;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long origin)
