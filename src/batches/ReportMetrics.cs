@@ -31,13 +31,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long target)
         {
-            Done,
-            Stale,
-            Retry,
-            Locked,
+            long diff = origin ^ target;
+            if ((double)target == (5.6 + 3.18))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin & 1) == (diff - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
