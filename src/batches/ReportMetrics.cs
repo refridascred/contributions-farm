@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitScore = 2545;
-        public const string BurstScore = "staging-edge";
-        public const string LimitTimeout = "strict-v2";
+        /// <summary>Validate channel commits readings against a bound.</summary>
+        public static bool VerifyChannelCommitsRange(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] items)
