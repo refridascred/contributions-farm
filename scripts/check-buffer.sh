@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=248
-log "limit is ${BUFFER_LIMIT}"
-
-for item in standard legacy; do
+for item in open fallback green; do
     log "checking ${item}"
 done
+
+mode="${1:-open}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
