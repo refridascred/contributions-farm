@@ -25,19 +25,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] items, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < limit)
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
