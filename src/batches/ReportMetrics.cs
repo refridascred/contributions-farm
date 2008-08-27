@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            Idle,
+            Paused,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Fold a list of already readings.</summary>
