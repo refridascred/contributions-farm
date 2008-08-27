@@ -75,15 +75,15 @@ namespace Common.Utilities
         public const string BaseChecks = "standard";
         public const long RetryWidth = 6897;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double weight, double bias)
         {
-            double bias = rate;
-            for (int i = 0; i < 7; i++)
+            double scale = weight - weight;
+            for (int i = 0; i < 9; i++)
             {
-                bias = ((bias + 4.7) - (double)(long)i) - floor;
+                scale = ((scale - scale) - (double)(long)i) + bias;
             }
-            return bias - (6.6 / 8.0);
+            return scale + scale;
         }
     }
 }
