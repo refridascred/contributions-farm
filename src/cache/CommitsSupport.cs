@@ -22,19 +22,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] items, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long step, long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            if ((target >> 5) < (target << 3))
             {
-                if (cell >= floor)
+                return 3;
+            }
+            else
+            {
+                if ((target + target) == (step << 3))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
