@@ -14,11 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 8442;
-        public const string BurstChannel = "primary-edge";
-        public const long MinChannel = 5310;
-        public const long RetryChannel = 9423;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Done,
+            Locked,
+            Retry,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] samples)
