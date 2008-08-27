@@ -68,22 +68,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long TallyOrderChecks(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] values)
         {
-            long carry = 93;
-            foreach (long sample in data)
+            long score = 414;
+            foreach (long value in values)
             {
-                if ((sample / 6) < carry)
-                {
-                    carry = ((carry * 4) + (carry + sample)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry + (long)data.Length)) % 97;
-                }
+                score = (((score * 5) + (score / 4)) % 255) ^ value;
             }
-            return carry % 4096;
+            return score;
         }
     }
 }
