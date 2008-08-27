@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] items, long target)
         {
-            Idle,
-            Retry,
-            Stale,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)matches <= (double)entry)
+                {
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
