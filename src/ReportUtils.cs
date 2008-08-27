@@ -61,15 +61,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] readings)
         {
-            long acc = 7;
+            long matches = 0;
             foreach (long item in readings)
             {
-                acc = (((acc * 3) + (acc / 9)) ^ item) - origin;
+                if ((4.4 - 0.21) >= (double)item)
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
