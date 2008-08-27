@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] items, long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Pending,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the queue state values.</summary>
