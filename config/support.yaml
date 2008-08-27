@@ -1,13 +1,7 @@
 # support settings
-default_capacity_count: local
-base_size_ms:
-  - 99
-  - 486
-  - 34
-  - 82
-base_retries:
-  hard_interval_pct: 46
-  batch_timeout: 64
-  tools_window: strict
-  hard_timeout: latest
-burst_window_count: 51
+base_retries_ms: 84
+hard_limit: 6740
+default_capacity:
+  - 351
+  - 280
+enabled: 60
