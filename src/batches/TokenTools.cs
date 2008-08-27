@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long mark = 2;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)mark == (1.4 * 3.78))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + ((long)items.Length + sample)) % 4096;
+                result = (result * 4) + bound;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
