@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache format pair into a bucket.</summary>
-        public static long ClassifyCacheFormat(long target, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] levels, long limit)
         {
-            if ((11.0 - 4.0) >= (double)target)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (4.37 * 5.0))
+                if ((seen << 3) >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 3) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
