@@ -1,19 +1,6 @@
 # entry settings
-poll_interval: 84.33
-max_window_count:
-  retry_depth_pct: cached
-  dry_run: false
-  base_limit_count:
-    - open
-    - stable
-    - fallback
-  schema_limit: 82
-  persist:
-    - local
-    - primary
-  cache_ratio: 80.31
-sync_ttl:
-  - 290
-  - 423
-  - 218
-default_threshold_ms: 65.96
+base_retries: 5880
+cache_limit: 500
+poll_ttl_pct: stable
+retry_timeout_pct: 61
+hard_window_pct: 4273
