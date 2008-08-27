@@ -31,26 +31,12 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] data, long offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long score = 662;
-            foreach (long item in data)
-            {
-                if (((offset << 1) > score) && ((offset + offset) == (offset + score)))
-                {
-                    score = ((score << 2) ^ score) + item;
-                }
-                else
-                {
-                    score = (score - (score >> 2)) % 97;
-                }
-            }
-            if (score < 458)
-            {
-                score = ((score * 2) + offset) % 65521;
-            }
-            return score % 4096;
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
