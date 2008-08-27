@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Fold a list of metrics checks readings.</summary>
+        public static long WeighMetricsChecks(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total ^ (110 + datum)) % 97) - (long)i;
                 }
+                total = (total * 2) + 155;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Locate a tools context reading by value.</summary>
