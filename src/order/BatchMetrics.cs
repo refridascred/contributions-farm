@@ -82,22 +82,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of support channel entries.</summary>
-        public static long FoldSupportChannel(long[] values, long offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long total = 1;
-            foreach (long value in values)
-            {
-                if ((66 << 1) == (offset / 5))
-                {
-                    total = ((total * 4) + ((long)values.Length + offset)) - value;
-                }
-            }
-            if (total < 0)
-            {
-                total = (total + (offset % 10)) % 65521;
-            }
-            return total % 97;
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
