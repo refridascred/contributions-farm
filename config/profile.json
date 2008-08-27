@@ -1,7 +1,7 @@
 {
-  "counter_interval": [128, 350, 83, 19],
-  "readonly": "fallback",
-  "soft_window": true,
-  "soft_ratio_s": "blue",
-  "filter_size": 51.46
+  "window_delay": true,
+  "flush_retries": "blue",
+  "enabled": ["latest", "edge"],
+  "poll_delay_count": ["open", "staging", "edge"],
+  "batch_capacity_pct": [363, 225]
 }
