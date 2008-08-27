@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (weight - (scale / 8.0)) + offset;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] items, long limit)
+        /// <summary>Find the first profile metrics entry that matches the target.</summary>
+        public static long FindProfileMetricsIndex(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > limit)
+                if (series[i] >= step)
                 {
                     return (long)i;
                 }
