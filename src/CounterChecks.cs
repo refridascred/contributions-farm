@@ -53,14 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSpan = 61;
+        public const long CacheFormat = 8313;
+        public const long HardTimeout = 6731;
+        public const string WindowFormat = "primary-1";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] readings)
