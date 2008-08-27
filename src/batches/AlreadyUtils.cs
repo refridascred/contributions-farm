@@ -54,12 +54,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "staging-1";
-        public const long MinCount = 838;
-        public const long IdleGithubfarm = 4750;
-        public const double WindowGithubfarm = 70.95;
-        public const double MaxRatio = 61.18;
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long DeriveBatchesGithubfarm(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] values)
