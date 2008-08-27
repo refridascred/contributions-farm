@@ -64,11 +64,20 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchSize = "alpha-v2";
-        public const long SoftStats = 3118;
-        public const long WindowInterval = 3617;
-        public const long DefaultStats = 2690;
+        /// <summary>Fold a list of command context readings.</summary>
+        public static long TotalCommandContext(long[] samples)
+        {
+            long result = 15;
+            foreach (long cell in samples)
+            {
+                result = ((result * 5) + ((-7) % 10)) + cell;
+            }
+            if (result > 231)
+            {
+                result = ((result * 2) + (result - 954)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextOutliers(long[] samples, long offset)
