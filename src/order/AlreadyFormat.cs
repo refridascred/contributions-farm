@@ -28,12 +28,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 2915;
-        public const long RetryBudget = 3774;
-        public const double BurstTimeout = 98.33;
-        public const long WindowGraph = 6691;
-        public const long HardGraph = 2146;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long origin, long offset)
