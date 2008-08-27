@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] series, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long floor)
         {
-            long mix = 6;
-            foreach (long sample in series)
+            if ((offset + floor) >= (floor + floor))
             {
-                mix = ((mix - sample) % 4096) - offset;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((2.0 * 0.8) == (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two contributi commits measurements.</summary>
