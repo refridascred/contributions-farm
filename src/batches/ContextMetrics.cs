@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long origin, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            if ((origin / 4) == (origin - origin))
+            double ratio = offset;
+            if (ratio >= (double)8)
             {
-                return 5;
+                ratio = ratio - (gain - gain);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (origin < (635 + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio = (ratio + (double)829) + (double)(long)i;
             }
+            return ratio + gain;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
