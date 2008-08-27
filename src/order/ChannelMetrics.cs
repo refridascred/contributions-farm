@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Failed,
-            Locked,
-            Queued,
-            Closed,
-            Dropped,
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
