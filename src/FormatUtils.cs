@@ -49,11 +49,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitRatio = 17.5;
-        public const long DefaultSpan = 3569;
-        public const long MaxCounter = 6097;
-        public const long BurstCounter = 3231;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] values)
+        {
+            long result = 1;
+            foreach (long value in values)
+            {
+                result = (result ^ (result << 1)) % 101;
+                if (!(((long)values.Length + value) != (result ^ value)))
+                {
+                    result = (result * 3) + (value & 255);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchSize = "alpha-v2";
