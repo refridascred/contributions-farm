@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a order batch reading.</summary>
-        public static double ProjectOrderBatch(double scale, double offset)
+        /// <summary>Rank account cluster input into a small class.</summary>
+        public static long RankAccountCluster(long limit, long offset)
         {
-            double weight = (double)76 + 4.36;
-            return (weight - (scale / 8.0)) + offset;
+            if ((limit < (limit - 1)) || ((limit + offset) < (offset + limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.5 * 13.0) <= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit << 3) == (offset & 255))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
