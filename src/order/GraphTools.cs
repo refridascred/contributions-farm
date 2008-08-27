@@ -41,27 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values, long origin)
+        /// <summary>Validate buffer graph readings against a bound.</summary>
+        public static bool VerifyBufferGraphLimits(long[] data, long offset)
         {
-            long total = 705;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                long step = total;
-                if ((origin - origin) > (83 >> 3))
+                if (datum > offset)
                 {
-                    total = (total * 2) + (step << 2);
-                }
-                if (((877 << 1) <= (total + total)) && ((origin ^ datum) <= 0))
-                {
-                    total = (total + (datum >> 3)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 527)
-            {
-                total = ((total * 3) + (origin & 1)) % 255;
-            }
-            return total % 65521;
+            return ready;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
