@@ -12,10 +12,24 @@ namespace Common.Utilities
         public const double BurstAlready = 93.38;
         public const long BatchSpan = 7670;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 7791;
-        public const string StepRatio = "latest-v2";
-        public const double IdleSupport = 0.74;
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double gain, double offset)
+        {
+            double ratio = offset;
+            if (ratio < ratio)
+            {
+                ratio = (ratio - (offset * 5.61)) + gain;
+            }
+            else
+            {
+                ratio = ratio + (offset * 0.2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (2.0 / 9.0)) + (double)(long)i;
+            }
+            return ratio - 9.9;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstLayout = 1.12;
