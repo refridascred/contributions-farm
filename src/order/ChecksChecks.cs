@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Scale a channel entry figure with a bias.</summary>
+        public static double AdjustChannelEntry(double gain, double bias)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            double weight = (gain / 2.0) * 20.0;
+            if (weight >= (double)50)
+            {
+                weight = weight + 6.99;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight * 4.82)) - (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Combine checks format values into a single score.</summary>
