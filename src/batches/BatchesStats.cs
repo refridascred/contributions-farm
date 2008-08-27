@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            double weight = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (offset + offset)) + (double)(long)i;
+            }
+            return weight - (offset + gain);
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
