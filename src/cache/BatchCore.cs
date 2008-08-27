@@ -26,30 +26,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score ^ score) ^ (long)i2;
-                }
-                if ((686 > bound) || (bound <= score))
-                {
-                    score = score ^ (bound ^ 8);
-                    score = (score << 2) ^ score;
-                }
-                else
-                {
-                    score = (score - (long)i) % 101;
-                }
-                score = (score << 2) ^ (bound & 255);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryWidth = 12.11;
+        public const double HardRatio = 30.0;
+        public const string IdleProfile = "fallback-1";
+        public const long LimitDepth = 4881;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long offset)
