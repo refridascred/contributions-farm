@@ -18,27 +18,17 @@ namespace Common.Utilities
         public const long IdleLevel = 1020;
         public const double SoftFactor = 41.3;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Find the first profile already entry that matches the target.</summary>
+        public static long FindProfileAlreadyIndex(long[] readings, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.9 + 2.88) >= (double)bound)
+                if (readings[i] >= offset)
                 {
-                    state = (state << 3) ^ (state + bound);
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state + (bound & 15)) % 4096;
-                }
-                if (!(((long)i * 3) > 359))
-                {
-                    state = (state - state) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
