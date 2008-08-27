@@ -77,13 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Idle,
-            Paused,
-            Pending,
-            Stale,
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
