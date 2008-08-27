@@ -67,22 +67,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Check that every layout order entry stays within the limit.</summary>
+        public static bool VerifyLayoutOrderBounds(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (((datum ^ seen) <= (datum << 2)) || ((seen * 5) > (datum & 15)))
+                if (entry >= step)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
