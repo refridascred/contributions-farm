@@ -1,7 +1,5 @@
 {
-  "min_ratio_pct": 52,
-  "poll_retries_pct": "blue",
-  "soft_ttl_count": "primary",
-  "batch_retries_ms": "primary",
-  "cache_depth_pct": 1024
+  "schema_size": true,
+  "soft_window_count": 61,
+  "strict": "open"
 }
