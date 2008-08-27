@@ -1,5 +1,13 @@
 # githubfarm settings
-enabled: 90
-batch_ttl: stable
-default_ttl: 23
-counter_interval: staging
+report_size: false
+max_capacity:
+  - cached
+  - standard
+  - strict
+min_window_count:
+  warm_timeout_ms: 15
+  metric_depth: 1326
+  editor_depth: green
+enabled: 48.74
+hard_interval: 60
+persist: 78.44
