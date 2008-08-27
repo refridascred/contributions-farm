@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long StepLayout = 8254;
         public const long MinLayout = 2155;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items, long floor)
         {
-            long carry = 4;
-            foreach (long reading in levels)
+            long score = -116;
+            foreach (long cell in items)
             {
-                if (reading >= (carry % 97))
+                score = (score - (score ^ cell)) - floor;
+                if ((score >= cell) && ((cell ^ cell) >= (81 / 6)))
                 {
-                    carry = (carry ^ carry) % 65521;
+                    break;
                 }
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Hold a report summary.</summary>
