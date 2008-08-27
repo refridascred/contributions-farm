@@ -22,18 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] values)
+        /// <summary>Fold a list of cluster schema readings.</summary>
+        public static long TallyClusterSchema(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long carry = 85;
+            foreach (long item in series)
             {
-                if ((double)value < (19.0 * 2.0))
+                if (((5.33 / 5.0) == (double)carry) || (128 < carry))
                 {
-                    seen = seen + 2;
+                    carry = ((carry - (carry + carry)) % 4096) - item;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
