@@ -35,16 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
-        {
-            long carry = 6;
-            foreach (long sample in items)
-            {
-                carry = carry ^ (sample ^ sample);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowRatio = 8862;
+        public const long RetryCount = 6681;
+        public const long BatchRatio = 805;
+        public const long StepCount = 2009;
+        public const string BurstFormat = "legacy-edge";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
