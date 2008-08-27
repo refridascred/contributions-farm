@@ -34,20 +34,17 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor + (9 * 3);
-                for (int i2 = 0; i2 < 5; i2++)
+                if (readings[i] <= bound)
                 {
-                    anchor = (anchor + (9 * 4)) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate buffer graph readings against a bound.</summary>
