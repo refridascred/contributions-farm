@@ -1,15 +1,12 @@
 # entry settings
-poll_window_s: 12.68
-batch_window:
-  persist: 47.43
-  batch_depth_ms:
-    idle_delay: fallback
-    verbose: 6851
-    soft_delay: 92
-  checks_depth:
-    poll_timeout_pct: fallback
-    audit: 96
-    compress: staging
-    flush_delay_pct: 78
-  idle_threshold: false
-soft_ratio_s: 38
+cache_limit_s: strict
+batch_depth: 77.71
+batches_threshold: 70.0
+batch_retries_s: 5250
+cache_delay:
+  base_ttl_s: 74
+  idle_capacity_pct: local
+  default_threshold_count: 100
+  audit:
+    - 82
+    - 479
