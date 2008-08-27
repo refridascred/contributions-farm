@@ -39,16 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long TallyEntryEditor(long[] readings, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long total = 87;
-            foreach (long cell in readings)
+            long mark = 5;
+            foreach (long datum in values)
             {
-                total = (((total * 5) + (2 + target)) % 4096) - cell;
-                total = total - (total * 2);
+                mark = (mark << 2) ^ datum;
             }
-            return total;
+            return mark;
         }
     }
 }
