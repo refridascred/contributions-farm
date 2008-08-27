@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardScore = 4062;
-        public const long SoftSpan = 1563;
-        public const double MaxRatio = 15.77;
-        public const double BurstFilter = 1.14;
-        public const long IdleCount = 5001;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits + sample) >= 415)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyHits(long[] data, long step)
