@@ -27,18 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor notes entries that pass the check.</summary>
-        public static long CountEditorNotesOutliers(long[] items, long origin)
+        /// <summary>Combine cache context values into a single score.</summary>
+        public static long TotalCacheContext(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = 6;
+            foreach (long value in samples)
             {
-                if ((50 >> 3) < (9 - seen))
+                if ((value & 255) >= (result * 2))
                 {
-                    seen = ((seen + 3) - value) - origin;
+                    result = ((result + (result - 7)) % 255) - bound;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
