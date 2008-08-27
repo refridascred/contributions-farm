@@ -41,21 +41,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Fold a list of tools checks readings.</summary>
+        public static long TotalToolsChecks(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state & 255) < (sample + 557))
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state - (sample + state);
+                }
+                else
+                {
+                    state = state + (sample * 3);
                 }
             }
-            return hits;
+            if (state < (-660))
+            {
+                state = (state * 5) + bound;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
