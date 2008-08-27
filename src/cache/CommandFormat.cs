@@ -66,19 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache commits entry stays within the limit.</summary>
-        public static bool ValidateCacheCommitsRange(long[] readings, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= bound)
+                if (values[i] == limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
