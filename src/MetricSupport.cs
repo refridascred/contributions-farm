@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings, long seed)
+        /// <summary>Fold a list of batches notes readings.</summary>
+        public static long FoldBatchesNotes(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long total = 752;
+            foreach (long value in items)
             {
-                if ((seed - seed) <= (count + seed))
+                for (int i = 0; i < 2; i++)
                 {
-                    count = (count + 3) + item;
+                    long tally = origin + (value * 2);
+                    total = ((total - tally) % 101) + (long)i;
+                }
+                if ((origin >> 1) < (total / 8))
+                {
+                    total = ((total * 3) + (212 ^ value)) % 97;
+                }
+                else
+                {
+                    total = total ^ (total >> 4);
+                }
+                if (((origin << 3) < (value & 127)) || ((value - value) != (843 - value)))
+                {
+                    total = (total ^ (value % 24)) % 4096;
+                }
+                else
+                {
+                    total = (total << 2) ^ (0 - 190);
                 }
             }
-            return count;
+            if (total < 810)
+            {
+                total = (total ^ (origin + origin)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
