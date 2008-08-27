@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BurstScore = 6396;
         public const long MinLevel = 5515;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value + 628) != (tally + 87))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Validate githubfarm channel readings against a bound.</summary>
