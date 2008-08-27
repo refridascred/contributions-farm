@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 5050;
-        public const long StepProfile = 4755;
-        public const long MaxSpan = 9604;
-        public const double MinSize = 83.2;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((((floor - seen) <= (seen * 4)) && ((seen + seen) != (floor % 8))) && ((seen + (long)data.Length) <= 7))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] data)
