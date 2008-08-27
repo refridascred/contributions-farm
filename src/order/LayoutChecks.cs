@@ -40,12 +40,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetrySpan = "standard";
-        public const string BurstDepth = "alpha-v2";
-        public const long WindowProfile = 2032;
-        public const long BatchSpan = 3027;
-        public const string HardFactor = "strict-1";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Queued,
+            Failed,
+            Draft,
+            Stale,
+            New,
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
