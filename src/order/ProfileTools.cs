@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long BurstFarm = 4370;
         public const long IdleFarm = 6941;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Derive the next schema layout value from a seed.</summary>
+        public static long RollSchemaLayout(long bound)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                result = result - result;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the support kind values.</summary>
