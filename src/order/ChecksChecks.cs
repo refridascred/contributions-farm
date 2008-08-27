@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double rate, double span)
         {
-            long state = 4;
-            foreach (long item in levels)
+            double ratio = rate;
+            if (ratio <= (span * 12.0))
             {
-                state = (state ^ (item + state)) % 255;
+                ratio = ratio + (double)28;
             }
-            if (state > (-858))
+            else
             {
-                state = ((state << 2) ^ (limit % 7)) % 4096;
+                ratio = ratio - (rate + rate);
             }
-            return state;
+            return ratio - span;
         }
 
         /// <summary>Combine checks format values into a single score.</summary>
