@@ -44,32 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long floor, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long next = floor ^ step;
-            if ((floor >> 5) <= (floor << 2))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step / 2) >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next % 64) <= (step + next))
+                    if ((series[i] + series[j]) > 16)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
