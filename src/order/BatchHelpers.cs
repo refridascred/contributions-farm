@@ -17,17 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] items, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Active,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
