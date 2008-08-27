@@ -59,17 +59,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a commits metric reading by value.</summary>
-        public static long SeekCommitsMetricIndex(long[] series, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 5;
+            foreach (long cell in values)
             {
-                if (series[i] <= target)
+                if ((cell - 475) == (anchor ^ cell))
                 {
-                    return (long)i;
+                    anchor = (anchor - cell) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (anchor - (long)values.Length);
                 }
             }
-            return -1;
+            if (anchor > 91)
+            {
+                anchor = anchor - 105;
+            }
+            return anchor;
         }
     }
 }
