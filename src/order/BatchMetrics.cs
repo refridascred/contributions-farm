@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] readings)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((6 > (value << 3)) && (((matches * 3) >= (matches + value)) || ((double)(long)readings.Length != (4.9 * 12.0))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
