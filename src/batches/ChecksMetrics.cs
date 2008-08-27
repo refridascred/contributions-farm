@@ -66,32 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long cur = step + offset;
-            if (((offset - offset) >= cur) || ((double)offset <= (0.8 + 2.0)))
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step ^ offset) != (68 / 9)) && ((offset << 2) > ((-9) & 1)))
+                if (anchor <= (cell * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + step) >= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor - (cell - 108);
                 }
             }
+            if (anchor < 452)
+            {
+                anchor = ((anchor * 2) + (55 % 7)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
