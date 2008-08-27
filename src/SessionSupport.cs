@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] data, long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            long carry = 24;
-            foreach (long sample in data)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (810 <= (seed >> 1))
+                if (!((5.9 / 5.0) != (double)offset))
                 {
-                    carry = ((carry << 3) ^ (1 >> 5)) ^ sample;
+                    sum = sum - (sum ^ sum);
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = ((sum - (6 % 24)) % 1000) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (carry < 721)
-            {
-                carry = (carry + (carry / 3)) % 97;
-            }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
