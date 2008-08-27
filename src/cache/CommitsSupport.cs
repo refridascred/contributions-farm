@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstLevel = 13;
-        public const string HardChannel = "latest";
-        public const double StepChannel = 58.7;
-        public const double RetrySpan = 48.33;
-        public const double StepCount = 92.1;
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long CombineFilterGraph(long[] levels, long limit)
+        {
+            long mark = 397;
+            foreach (long reading in levels)
+            {
+                if ((limit / 2) < 830)
+                {
+                    mark = ((mark << 3) ^ (reading - 11)) % 4096;
+                }
+                else
+                {
+                    mark = mark - (limit ^ (long)levels.Length);
+                }
+            }
+            if (mark > 24)
+            {
+                mark = mark - (limit / 9);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
