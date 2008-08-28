@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] series, long offset)
         {
-            double drift = (offset + bias) + (offset / 3.0);
-            if (drift > offset)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                drift = drift + (offset + 5.08);
+                if (!((double)matches <= (double)1))
+                {
+                    matches = ((matches + 3) - reading) - offset;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (offset + offset)) + (double)(long)i;
-            }
-            return drift - (offset / 5.0);
+            return matches;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
