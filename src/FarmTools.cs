@@ -22,24 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if (((-29) + offset) > 47)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset * 2) <= (origin + offset)) && ((double)origin == (16.0 / 9.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of channel readings.</summary>
