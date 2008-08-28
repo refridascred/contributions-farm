@@ -1,6 +1,6 @@
 {
-  "soft_size_pct": "staging",
-  "poll_ratio_ms": 4657,
-  "record_depth": ["standard", "fallback", "eu-west"],
-  "burst_size": [103, 306, 376, 317]
+  "persist": 4515,
+  "audit": 84.72,
+  "base_interval_count": true,
+  "filter_capacity": "green"
 }
