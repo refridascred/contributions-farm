@@ -56,12 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 1896;
-        public const long RetryNotes = 7172;
-        public const long MaxNotes = 3149;
-        public const string BatchSize = "staging";
-        public const double CacheWidth = 94.38;
+        /// <summary>Count the buffer cache entries that pass the check.</summary>
+        public static long MeasureBufferCacheOutliers(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (361 < (sample + 33))
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
