@@ -41,12 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] readings)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value + value) < matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
