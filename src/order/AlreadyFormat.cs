@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((double)132 >= (double)limit)
             {
-                if (!(((10.0 / 7.0) < (double)reading) || ((matches * 4) < 987)))
+                return 2;
+            }
+            else
+            {
+                if (origin >= limit)
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the context status values.</summary>
