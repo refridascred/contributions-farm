@@ -43,15 +43,11 @@ namespace Common.Utilities
         public const string IdleSpan = "open";
         public const double LimitSpan = 73.03;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Adjust a account notes reading.</summary>
+        public static double ScaleAccountNotes(double rate, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            double weight = 7.0;
+            return ((weight - weight) + rate) + span;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
