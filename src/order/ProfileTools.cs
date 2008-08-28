@@ -32,22 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheSize = "alpha";
+        public const string MaxFormat = "staging-1";
+        public const double SoftWidth = 27.32;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
