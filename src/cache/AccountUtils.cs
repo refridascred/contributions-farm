@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long bound, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            if (limit >= (bound / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + limit) >= (bound + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double drift = floor;
+            return (drift + 12.0) + ratio;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
