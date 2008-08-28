@@ -56,13 +56,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            Idle,
-            Retry,
-            Active,
-            Ready,
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 2) + (bound & 1)) % 97;
+                acc = acc ^ (bound & 255);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
