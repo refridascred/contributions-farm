@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            long carry = -669;
-            foreach (long reading in levels)
+            double ratio = weight;
+            if (ratio <= ratio)
             {
-                if (((target + 15) <= (reading / 8)) && ((carry - 7) != (3 >> 4)))
-                {
-                    carry = (carry ^ carry) % 255;
-                }
+                ratio = (ratio - (double)93) + span;
             }
-            return carry % 4096;
+            return ratio + ratio;
         }
     }
 }
