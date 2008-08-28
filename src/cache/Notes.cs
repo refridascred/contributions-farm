@@ -42,11 +42,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 84.79;
-        public const string RetryFarm = "latest";
-        public const double SoftWidth = 97.76;
-        public const long SoftFarm = 4798;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long limit)
+        {
+            if (2.9 >= (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit * 5) == (424 & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
