@@ -62,13 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            Queued,
-            Draft,
-            Failed,
-            Paused,
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark * 5) + mark;
+                mark = (mark ^ (offset & 255)) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
