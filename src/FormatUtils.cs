@@ -15,11 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
