@@ -26,18 +26,15 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Audit graph command readings against a rule.</summary>
-        public static long AuditGraphCommandGaps(long[] values, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)bound >= 7.52)
-                {
-                    tally = (tally + 2) ^ item;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
     }
 }
