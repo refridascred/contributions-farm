@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const string WindowChannel = "alpha-edge";
         public const double BatchBudget = 33.13;
 
-        /// <summary>Rank profile tools input into a small class.</summary>
-        public static long ClassifyProfileTools(long seed, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            if ((target & 255) <= target)
+            long mark = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < (seed * 2))
+                if (!(mark < (mark >> 5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed > (target + (-13)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed << 2) >= (515 & 15))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = ((mark + (mark >> 3)) % 1000) + cell;
                 }
             }
+            return mark;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
