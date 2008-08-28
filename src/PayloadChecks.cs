@@ -82,12 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long target)
         {
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
