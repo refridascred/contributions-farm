@@ -20,22 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
-        public static long MeasureSchemaGithubfarmGaps(long[] samples, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 96;
+            foreach (long cell in samples)
             {
-                if (!!((target * 2) > entry))
+                sum = sum - 195;
+                if ((9.0 / 8.0) < (double)sum)
                 {
-                    matches = matches + 2;
+                    sum = (sum - (cell & 3)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum * 2) + (floor + 18);
+                }
+                if (sum < ((-633) + 655))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 18)
+            {
+                sum = sum + (floor - sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up notes samples.</summary>
