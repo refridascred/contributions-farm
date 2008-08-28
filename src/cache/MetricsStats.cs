@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long RetryCount = 5358;
         public const long BaseContext = 588;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] series, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (entry > floor)
+                if ((double)count >= (7.27 + 9.7))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + sample;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a report header.</summary>
