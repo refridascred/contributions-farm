@@ -53,9 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 2804;
-        public const long IdleReport = 6812;
-        public const long DefaultReport = 7334;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+        }
     }
 }
