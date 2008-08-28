@@ -28,21 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < limit)
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
