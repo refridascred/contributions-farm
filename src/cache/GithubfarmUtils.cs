@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const string StepWidth = "standard-1";
         public const double RetryCount = 67.9;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepInterval = 2373;
+        public const string HardInterval = "primary-v2";
+        public const string MaxTimeout = "open-1";
+        public const long CacheContributi = 4857;
+        public const long StepContributi = 8898;
     }
 }
