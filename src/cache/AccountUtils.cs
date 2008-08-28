@@ -13,18 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the editor entry entries that pass the check.</summary>
-        public static long CountEditorEntryOutliers(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((hits % 5) > hits))
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
