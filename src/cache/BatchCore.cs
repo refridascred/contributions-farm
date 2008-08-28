@@ -47,18 +47,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] readings, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit < (hits + (-285)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - item;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
