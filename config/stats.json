@@ -1,18 +1,5 @@
 {
-  "cache_interval": {
-    "base_capacity_count": "standard",
-    "dry_run": [386, 177, 86],
-    "entry_depth": "open"
-  },
-  "default_threshold_count": 1024,
-  "dry_run": {
-    "enabled": 5072,
-    "record_retries": [216, 108],
-    "max_capacity_pct": 8524,
-    "commits_ratio": "primary",
-    "batches_delay": 5370,
-    "burst_capacity_pct": 59.5
-  },
-  "queue_size": false,
-  "entry_retries": "local"
+  "flush_limit": 24.01,
+  "flush_depth": false,
+  "format_threshold": ["strict", "legacy", "fallback"]
 }
