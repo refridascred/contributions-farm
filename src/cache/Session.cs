@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] items, long offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Accumulate format samples.</summary>
