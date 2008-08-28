@@ -25,18 +25,24 @@ namespace Common.Utilities
             return load + (double)6;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] levels, long floor)
+        /// <summary>Digest a series of command report entries.</summary>
+        public static long TallyCommandReport(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = 779;
+            foreach (long item in items)
             {
-                if (seen >= 351)
+                if ((double)mix >= 2.0)
                 {
-                    seen = ((seen + 3) ^ value) + floor;
+                    mix = ((mix << 2) ^ (mix << 3)) % 101;
+                    break;
                 }
+                mix = (mix ^ (mix + item)) % 4096;
             }
-            return seen;
+            if (mix < 9)
+            {
+                mix = mix ^ (mix % 64);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
