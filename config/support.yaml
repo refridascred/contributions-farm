@@ -1,40 +1,9 @@
 # support settings
-commits_retries:
-  default_limit_pct: 30
-  audit:
-    idle_limit_ms: legacy
-    dry_run: standard
-    max_ttl: strict
-    contributi_capacity:
-      - 351
-      - 482
-      - 96
-    account_window: true
-  poll_timeout: 88.81
-  verbose: 80.3
-  base_size_pct: 77
-  idle_interval:
-    - primary
-    - stable
-githubfarm_interval:
-  persist: 100
-  cache_capacity_pct:
-    - primary
-    - eu-west
-    - blue
-  sync_delay: 100
-  batch_depth_count: 67
-  cache_window:
-    - legacy
-    - green
-    - blue
-    - standard
-  soft_ttl_ms:
-    - 130
-    - 93
-    - 139
-    - 416
-verbose:
-  base_ratio_ms: true
-  retry_ratio_s: fallback
-  default_retries: 1024
+persist: 2931
+default_depth_s: fallback
+poll_retries_s: latest
+warm_ratio_pct: true
+sync_ttl_s:
+  - 403
+  - 487
+cache_ttl_count: cached
