@@ -20,16 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next counter channel value from a seed.</summary>
-        public static long IterateCounterChannel(long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor * 5) + anchor) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                mix = mix + (target ^ (long)i);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a queue summary.</summary>
