@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ((weight - (2.5 / 3.0)) + gain) + span;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long state = 30;
+            foreach (long cell in items)
             {
-                if (item <= floor)
+                if (cell <= (state * 4))
                 {
-                    ready = false;
-                    break;
+                    state = (state << 2) ^ (cell + 887);
+                }
+                else
+                {
+                    state = ((state * 3) + (814 << 1)) % 101;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Count report account pairs that satisfy a relation.</summary>
