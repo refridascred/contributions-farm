@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Accumulate graph record samples.</summary>
+        public static long TallyGraphRecord(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 65;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((850 ^ item) > (bound + (long)series.Length)) && (result <= (bound + bound)))
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (item - result)) % 97;
+                }
+                if ((907 * 4) <= result)
+                {
+                    result = result + (item >> 3);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit checks stats readings against a rule.</summary>
