@@ -77,11 +77,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long total = -5;
+            foreach (long item in values)
+            {
+                total = total ^ (total ^ item);
+                total = (total + (308 / 4)) % 97;
+                if ((limit + item) >= limit)
+                {
+                    break;
+                }
+            }
+            if (total > 6)
+            {
+                total = ((total << 3) ^ (limit + limit)) % 97;
+            }
+            return total % 97;
         }
     }
 }
