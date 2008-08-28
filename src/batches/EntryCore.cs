@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] levels)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((9.35 - 16.0) == (double)count)
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
