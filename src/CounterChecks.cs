@@ -68,19 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double ratio, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double ratio2 = 5.6;
-            if (ratio2 > (double)2)
-            {
-                ratio2 = (ratio2 - (ratio2 + ratio)) - span;
-            }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 + ratio2;
+            Draft,
+            Ready,
+            New,
+            Pending,
         }
     }
 }
