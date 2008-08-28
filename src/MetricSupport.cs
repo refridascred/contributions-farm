@@ -28,12 +28,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Match up cache session samples.</summary>
+        public static long CompareCacheSessionCount(long[] data)
         {
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
