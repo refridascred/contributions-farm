@@ -1,7 +1,5 @@
 {
-  "counter_capacity": 47.0,
-  "retry_interval_ms": false,
-  "report_threshold": ["strict", "standard", "staging", "latest"],
-  "default_capacity_pct": "standard",
-  "stream_capacity": false
+  "hard_depth": ["edge", "fallback", "fallback"],
+  "cache_retries_s": false,
+  "persist": [138, 12, 477, 308]
 }
