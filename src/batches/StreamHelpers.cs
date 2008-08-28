@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 53;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((((anchor * 2) + (long)samples.Length) % 1000) ^ datum) - offset;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
