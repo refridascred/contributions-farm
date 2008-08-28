@@ -27,39 +27,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a channel cache pair into a bucket.</summary>
-        public static long GradeChannelCache(long floor, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            long prev = floor + target;
-            if (prev <= floor)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target >> 3) < (target + floor))
+                if ((matches - matches) == (value + value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(0.2 <= (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((0.8 - 1.1) > (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of context tools entries.</summary>
