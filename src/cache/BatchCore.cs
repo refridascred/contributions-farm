@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ((weight - (2.5 / 3.0)) + gain) + span;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long floor)
         {
-            Active,
-            New,
-            Pending,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count report account pairs that satisfy a relation.</summary>
