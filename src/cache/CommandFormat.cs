@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings, long target)
+        /// <summary>Validate buffer format readings against a bound.</summary>
+        public static bool CheckBufferFormatLimits(long[] samples, long limit)
         {
-            long state = 3;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (!((436 - target) > (long)readings.Length))
+                if (sample < limit)
                 {
-                    state = (state - (item - state)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the schema status values.</summary>
