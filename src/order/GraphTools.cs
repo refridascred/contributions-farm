@@ -74,22 +74,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 1) <= (target - value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 94.1;
+        public const long IdleEditor = 1140;
+        public const long MaxEditor = 4447;
+        public const long DefaultScore = 9756;
+        public const long DefaultEditor = 2803;
     }
 }
