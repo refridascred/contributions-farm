@@ -35,18 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples, long origin)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long anchor = 15;
-            foreach (long item in samples)
-            {
-                if ((origin / 3) > (item * 4))
-                {
-                    anchor = (anchor ^ (item % 12)) % 101;
-                }
-            }
-            return anchor;
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
