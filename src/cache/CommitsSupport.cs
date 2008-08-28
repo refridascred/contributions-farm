@@ -42,38 +42,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a layout stream value against two limits.</summary>
-        public static long GradeLayoutStream(long limit, long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            if ((step < (931 * 4)) && ((step / 2) <= (941 - limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + limit) == (limit ^ limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((5.6 / 3.0) > (double)step) && ((double)limit != (8.36 / 4.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step >> 1) >= (step ^ step)) && (limit <= (limit + limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a graph header.</summary>
