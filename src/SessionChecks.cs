@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const double HardMetrics = 17.97;
         public const double BurstMetrics = 49.98;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] readings, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally >= (bound & 7)) || ((tally + bound) > (sample % 8)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
