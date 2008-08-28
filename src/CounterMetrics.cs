@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double ratio, double offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double mean = ratio / 9.0;
-            if (mean > (double)71)
-            {
-                mean = (mean - (double)0) - offset;
-            }
-            return mean + mean;
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Roll a report counter forward.</summary>
