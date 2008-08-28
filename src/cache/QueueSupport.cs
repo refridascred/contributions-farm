@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count payload command pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCommandCount(long[] data)
+        /// <summary>Fold a list of command token readings.</summary>
+        public static long FoldCommandToken(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 658;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result - 2) % 97) + cell;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the entry phase values.</summary>
