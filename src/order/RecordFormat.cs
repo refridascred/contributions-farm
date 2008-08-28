@@ -57,18 +57,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] samples)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((((double)tally > (8.1 - 5.03)) && ((double)item <= (6.6 - 3.76))) || ((item - tally) > (tally + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
