@@ -13,38 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long limit, long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (origin < (origin / 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin % 16) >= (limit + limit)) && (476 > (origin ^ 54)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit <= (96 ^ origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6.25 - 4.23) < (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
