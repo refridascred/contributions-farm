@@ -33,32 +33,18 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long limit)
+        /// <summary>Measure how many already tools samples are out of range.</summary>
+        public static long AuditAlreadyToolsGaps(long[] data)
         {
-            long span = step + limit;
-            if (((limit / 3) > (step % 2)) || ((limit - 370) == (span - limit)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((8 << 2) < (step + step)))
+                if ((double)tally <= 8.9)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (19.0 > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
