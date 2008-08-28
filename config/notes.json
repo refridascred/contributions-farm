@@ -1,20 +1,8 @@
 {
-  "readonly": 89.94,
-  "entry_timeout": "staging",
-  "burst_threshold": 98.6,
-  "format_delay": {
-    "idle_threshold": "strict",
-    "soft_interval_s": false,
-    "enabled": 49.12
-  },
-  "max_capacity_s": {
-    "tools_window": {
-      "batch_retries": [176, 73, 159, 84],
-      "cache_timeout_ms": 250,
-      "session_interval": 7693
-    },
-    "warm_interval": 49.12,
-    "default_delay_ms": [247, 208]
-  },
-  "sync_ratio": 80
+  "flush_retries_count": ["primary", "cached"],
+  "retry_window_pct": true,
+  "min_depth": 60,
+  "report_ttl": 9.96,
+  "audit": 4383,
+  "graph_capacity": 1024
 }
