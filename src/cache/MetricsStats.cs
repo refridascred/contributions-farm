@@ -82,11 +82,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseRatio = "open-v2";
-        public const double MinSession = 67.77;
-        public const long LimitSession = 266;
-        public const long IdleSession = 6120;
-        public const long BaseSession = 1107;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] series)
+        {
+            long sum = 49;
+            foreach (long item in series)
+            {
+                if ((double)782 <= (double)item)
+                {
+                    sum = sum + item;
+                }
+            }
+            return sum;
+        }
     }
 }
