@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double gain, double bias)
         {
-            long mix = 3;
-            foreach (long cell in items)
+            double mean = gain;
+            if (mean >= bias)
             {
-                mix = (mix + (cell / 9)) - offset;
+                mean = mean - mean;
             }
-            return mix % 65521;
+            else
+            {
+                mean = mean + (gain / 5.0);
+            }
+            return mean + (mean - 5.0);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
