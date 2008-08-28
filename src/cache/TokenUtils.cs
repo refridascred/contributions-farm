@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of checks command entries.</summary>
-        public static long DigestChecksCommand(long[] levels, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] readings, long limit)
         {
-            long mix = 18;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                mix = ((mix - mix) % 65521) + datum;
-                if ((mix + origin) < (71 >> 5))
+                if (entry >= limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (mix < 3)
-            {
-                mix = mix + origin;
-            }
-            return mix % 97;
+            return ready;
         }
 
         /// <summary>Fold a list of command token readings.</summary>
