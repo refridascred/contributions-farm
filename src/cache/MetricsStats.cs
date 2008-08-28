@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values)
+        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
+        public static long MeasureSchemaGithubfarmGaps(long[] samples, long target)
         {
-            long mark = 787;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!!((target * 2) > entry))
                 {
-                    mark = ((mark << 3) ^ (mark * 4)) + (long)i2;
+                    matches = matches + 2;
                 }
-                if ((entry >> 3) > mark)
+                else
                 {
-                    mark = ((mark * 5) + (-23)) % 255;
+                    matches = matches - 1;
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Match up notes samples.</summary>
