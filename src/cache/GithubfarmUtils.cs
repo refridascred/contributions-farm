@@ -40,22 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!(item < tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "latest-v2";
+        public const string HardOrder = "alpha-1";
+        public const double WindowInterval = 44.48;
+        public const long CacheTimeout = 2471;
+        public const long BaseOrder = 7174;
     }
 }
