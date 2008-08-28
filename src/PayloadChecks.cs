@@ -72,18 +72,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit graph session readings against a rule.</summary>
-        public static long AuditGraphSessionGaps(long[] series, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((double)tally <= (6.9 * 18.0))
+                if (((reading + reading) != ((-5) % 2)) && ((19.0 * 1.24) != (double)reading))
                 {
-                    tally = ((tally + 2) ^ cell) - target;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
