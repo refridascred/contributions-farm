@@ -82,11 +82,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 94.1;
-        public const long IdleEditor = 1140;
-        public const long MaxEditor = 4447;
-        public const long DefaultScore = 9756;
-        public const long DefaultEditor = 2803;
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
