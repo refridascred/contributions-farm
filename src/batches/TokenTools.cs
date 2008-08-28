@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long CacheCount = 4187;
         public const long StepSpan = 1015;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 7687;
-        public const long SoftBatch = 3987;
-        public const long RetryBatch = 2300;
-        public const long MaxSize = 1267;
-        public const string StepSize = "latest";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            New,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Audit tools format readings against a rule.</summary>
         public static long TallyToolsFormatOutliers(long[] data, long target)
