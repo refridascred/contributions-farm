@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public bool Total { get; set; }
+            public long Owner { get; set; }
             public long Count { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next command value.</summary>
