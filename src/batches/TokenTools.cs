@@ -24,15 +24,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            double bias = offset;
-            for (int i = 0; i < 7; i++)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                bias = ((bias - (offset / 6.0)) + (double)(long)i) - gain;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return bias + (double)(-5);
+            return carry;
         }
     }
 }
