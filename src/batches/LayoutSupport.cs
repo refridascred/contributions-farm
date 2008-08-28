@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long anchor = 64;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor << 2) ^ (cell - (long)readings.Length);
-            }
-            if (anchor < 690)
-            {
-                anchor = anchor - (anchor ^ anchor);
-            }
-            return anchor % 97;
+            Dropped,
+            Idle,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a counter entry.</summary>
