@@ -24,13 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Queued,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSpan = 4314;
+        public const long MaxCount = 1449;
+        public const string DefaultAccount = "staging";
+        public const long BaseAccount = 6644;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long RankBatch(long target, long offset)
