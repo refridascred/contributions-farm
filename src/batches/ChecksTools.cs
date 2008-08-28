@@ -16,15 +16,11 @@ namespace Common.Utilities
             return gain2 + (double)0;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Stale,
-            Pending,
-            Closed,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 1419;
+        public const double IdleSchema = 66.36;
+        public const long CacheBudget = 1646;
+        public const long LimitSchema = 8751;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long IterateRecord(long limit)
