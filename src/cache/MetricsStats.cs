@@ -32,12 +32,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Classify a already channel pair into a bucket.</summary>
+        public static long ClassifyAlreadyChannel(long limit, long seed)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            if (!((limit + seed) >= (seed & 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((4.3 + 8.0) >= (double)limit) && ((limit / 4) < (seed * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed << 2) >= (865 * 5)) && ((44 - (-70)) <= limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
