@@ -27,27 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values, long offset)
+        /// <summary>Check that every batches stats entry stays within the limit.</summary>
+        public static bool ValidateBatchesStatsBounds(long[] readings, long step)
         {
-            long mark = 6;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((offset & 63) >= (mark + mark))
+                if (item <= step)
                 {
+                    found = false;
                     break;
                 }
-                mark = (((mark << 2) ^ (mark - offset)) % 4096) ^ sample;
-                if (offset >= (4 + mark))
-                {
-                    mark = ((mark << 2) ^ 562) % 1000;
-                }
             }
-            if (mark < 1)
-            {
-                mark = ((mark << 3) ^ mark) % 97;
-            }
-            return mark % 1000;
+            return found;
         }
     }
 }
