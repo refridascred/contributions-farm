@@ -41,19 +41,17 @@ namespace Common.Utilities
         public const long DefaultDepth = 7211;
         public const long BatchStats = 6397;
 
-        /// <summary>Validate metrics contributi readings against a bound.</summary>
-        public static bool VerifyMetricsContributiBounds(long[] series, long limit)
+        /// <summary>Locate a schema cluster reading by value.</summary>
+        public static long LookupSchemaClusterIndex(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > limit)
+                if (levels[i] <= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
