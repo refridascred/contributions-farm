@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series, long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long result = 2;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result ^ floor) % 4096) ^ datum;
-                result = (result ^ (floor << 1)) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
