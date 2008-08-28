@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a githubfarm counter reading by value.</summary>
-        public static long SeekGithubfarmCounterIndex(long[] data, long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
