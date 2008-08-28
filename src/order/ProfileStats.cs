@@ -41,11 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheTimeout = 38.8;
-        public const string RetrySpan = "strict-edge";
-        public const string LimitGithubfarm = "staging-v2";
-        public const long DefaultGithubfarm = 8917;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstFactor = 2363;
+        public const long WindowOrder = 7530;
+        public const long BatchOrder = 6190;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesOutliers(long[] items, long origin)
