@@ -60,27 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels, long step)
         {
-            long mix = 6;
-            foreach (long reading in values)
+            long state = 347;
+            foreach (long sample in levels)
             {
-                mix = (mix - (55 >> 5)) % 97;
-                if ((double)mix < (7.3 + 7.48))
+                if ((double)state >= 1.0)
                 {
-                    mix = (mix ^ (mix & 3)) % 1000;
+                    state = (state - (step * 4)) % 97;
                 }
                 else
                 {
-                    mix = (mix * 5) + 59;
-                }
-                if ((reading << 2) > (reading / 7))
-                {
-                    break;
+                    state = (state * 3) + (sample % 10);
                 }
             }
-            return mix;
+            return state;
         }
     }
 }
