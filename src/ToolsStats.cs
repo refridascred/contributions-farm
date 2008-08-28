@@ -47,18 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] levels, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry % 12) <= (entry & 255))
+                if ((items[i] >= floor) && ((items[i] % 2) != 0))
                 {
-                    count = (count + 1) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of notes window readings.</summary>
