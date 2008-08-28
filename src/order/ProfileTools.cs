@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long state = 583;
+            foreach (long value in data)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((double)value <= (0.4 * 1.1))
+                {
+                    state = (state - (value & 31)) % 101;
+                }
             }
-            return carry;
+            return state % 1000;
         }
 
         /// <summary>Describe the context phase values.</summary>
