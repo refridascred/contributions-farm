@@ -1,5 +1,9 @@
 # githubfarm settings
-graph_timeout: green
-idle_depth_ms: strict
-window_interval: 84.15
-channel_ratio: 81
+soft_delay_pct: false
+cluster_ratio:
+  readonly: false
+  dry_run: 93
+  idle_size: true
+support_timeout: 63
+cache_ttl: 48.36
+sync_size_count: 5349
