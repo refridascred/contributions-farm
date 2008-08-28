@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the window cluster series from a seed.</summary>
-        public static long IterateWindowCluster(long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] items, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + (9 - origin)) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
