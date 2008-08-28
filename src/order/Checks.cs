@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Audit metric batches readings against a rule.</summary>
+        public static long CountMetricBatchesGaps(long[] levels)
         {
-            long total = 523;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((919 + reading) == ((long)levels.Length ^ total))
+                if (!!((tally + tally) != (tally - datum)))
                 {
-                    total = (total ^ (total ^ reading)) % 255;
-                    total = (total + (reading % 64)) % 1000;
-                }
-                total = (total ^ (reading - 897)) % 65521;
-                if ((1 + total) >= (total + 31))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (total > 4)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
