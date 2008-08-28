@@ -22,10 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 35.35;
-        public const string WindowWidth = "cached-v2";
-        public const string RetryScore = "alpha-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheInterval = 2813;
+        public const string DefaultBudget = "legacy-v2";
+        public const double HardMetrics = 17.97;
+        public const double BurstMetrics = 49.98;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterHits(long[] readings, long bound)
