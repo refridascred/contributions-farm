@@ -27,17 +27,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long target)
+        /// <summary>Digest a series of order farm entries.</summary>
+        public static long DigestOrderFarm(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 29;
+            foreach (long item in values)
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
+                long hits = 0;
+                result = ((result - (item ^ hits)) % 101) + offset;
+                if (!(result >= (result + result)))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ result) % 255;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Project the next schema value.</summary>
