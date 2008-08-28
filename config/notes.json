@@ -1,5 +1,11 @@
 {
-  "base_threshold_count": ["legacy", "eu-west", "staging"],
-  "stats_capacity": "stable",
-  "report_interval": "latest"
+  "hard_capacity": {
+    "burst_window_ms": 0.1,
+    "cache_size_s": [483, 237, 467],
+    "profile_interval": 14,
+    "base_interval_pct": false
+  },
+  "hard_ratio": 57.09,
+  "farm_capacity": [345, 287],
+  "max_window": "primary"
 }
