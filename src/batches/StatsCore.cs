@@ -18,14 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long origin, long seed)
         {
-            New,
-            Stale,
-            Done,
-            Active,
-            Locked,
+            if (seed <= 7)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(origin >= (origin * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
