@@ -98,22 +98,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long CountFarmProfileGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (446 > count)
-                {
-                    count = ((count + 2) + datum) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "fallback-v2";
+        public const long BurstCommand = 6796;
+        public const long LimitSpan = 4152;
     }
 }
