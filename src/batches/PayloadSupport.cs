@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data, long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long limit)
         {
-            long total = 744;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 3) + ((-19) - bound)) % 1000;
-                if (((double)bound != (0.76 / 3.0)) || ((total - value) < (-551)))
+                if (samples[i] > limit)
                 {
-                    total = total ^ (bound % 64);
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
