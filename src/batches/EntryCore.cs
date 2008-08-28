@@ -77,17 +77,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] values, long target)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
