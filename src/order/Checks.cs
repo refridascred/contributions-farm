@@ -12,25 +12,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] series, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long total = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (((result << 3) ^ target) % 4096) - (long)i2;
-                    result = result - (result + target);
-                }
-                result = ((result << 2) ^ (result - result)) % 4096;
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    result = ((result ^ (699 + result)) % 4096) ^ (long)i3;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                total = ((((total << 2) ^ (81 & 7)) % 4096) + datum) + origin;
             }
-            return result;
+            if (total > 51)
+            {
+                total = total - ((long)series.Length << 2);
+            }
+            return total;
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
