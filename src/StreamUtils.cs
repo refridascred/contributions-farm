@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= target)
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
