@@ -1,19 +1,8 @@
 {
-  "flush_interval": 71.91,
-  "min_window_pct": {
-    "enabled": 7329,
-    "cache_interval": {
-      "stream_size": 90,
-      "poll_ttl_s": true,
-      "contributi_retries": 82,
-      "hard_ttl_ms": "strict"
-    },
-    "schema_capacity": "legacy",
-    "profile_window": "cached",
-    "cache_retries_s": 22.69
-  },
-  "persist": false,
-  "retry_limit_pct": "local",
-  "burst_window_ms": "strict",
-  "base_depth_s": 6488
+  "audit": false,
+  "stream_size": ["strict", "legacy", "blue"],
+  "default_window": 97.02,
+  "soft_capacity_s": 9335,
+  "contributi_ratio": "edge",
+  "dry_run": false
 }
