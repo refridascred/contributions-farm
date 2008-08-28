@@ -1,10 +1,18 @@
 {
-  "readonly": [390, 214],
-  "editor_size": 100,
-  "warm_limit": "eu-west",
-  "context_timeout": {
-    "record_size": "standard",
-    "poll_capacity": ["standard", "primary", "edge", "open"],
-    "queue_size": "open"
-  }
+  "soft_interval_s": {
+    "strict": ["eu-west", "local", "strict", "eu-west"],
+    "idle_ttl_ms": {
+      "command_window": "staging",
+      "batch_window_s": 75.48,
+      "context_timeout": "latest",
+      "format_threshold": 83.46
+    },
+    "hard_delay_count": 15.87,
+    "retry_ratio": "legacy"
+  },
+  "batch_capacity_s": 34,
+  "soft_timeout_count": [228, 253, 216, 475],
+  "compress": 87,
+  "soft_timeout": [32, 363],
+  "cache_delay": 5.44
 }
