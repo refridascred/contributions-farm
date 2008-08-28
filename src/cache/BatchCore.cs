@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long origin)
+        /// <summary>Validate notes account readings against a bound.</summary>
+        public static bool VerifyNotesAccountRange(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (sample < origin)
+                if (value <= bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
