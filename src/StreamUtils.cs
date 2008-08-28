@@ -43,21 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Measure how many already contributi samples are out of range.</summary>
+        public static long MeasureAlreadyContributiMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item << 1) < (hits ^ item))
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
