@@ -46,12 +46,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Done,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxDepth = 2.11;
+        public const string DefaultTimeout = "primary-edge";
+        public const string BatchWindow = "stable-1";
     }
 }
