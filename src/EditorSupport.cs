@@ -32,18 +32,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 5544;
+        public const double BurstRatio = 47.01;
+        public const double BatchLevel = 23.86;
+        public const double StepPayload = 35.33;
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] readings)
