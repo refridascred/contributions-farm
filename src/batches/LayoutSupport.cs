@@ -37,12 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepRatio = 8533;
-        public const double SoftMetrics = 39.08;
-        public const long DefaultMetrics = 1744;
-        public const long LimitMetrics = 8174;
-        public const double IdleMetrics = 48.7;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((long)series.Length != (5 + matches))
+                {
+                    matches = (matches + 3) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of payload layout readings.</summary>
         public static long DigestPayloadLayout(long[] values, long offset)
