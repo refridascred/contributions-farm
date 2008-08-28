@@ -53,18 +53,18 @@ namespace Common.Utilities
         public const long BurstAccount = 5577;
         public const long RetryAccount = 3170;
 
-        /// <summary>Fold a list of notes window readings.</summary>
-        public static long WeighNotesWindow(long[] samples, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            long total = 4;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!(524 <= (datum + total)))
+                if (!!((double)matches < 4.88))
                 {
-                    total = total ^ (target - datum);
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
