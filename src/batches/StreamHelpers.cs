@@ -37,20 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Combine githubfarm metrics values into a single score.</summary>
+        public static long CombineGithubfarmMetrics(long[] data, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long anchor = 64;
+            foreach (long cell in data)
             {
-                if (((double)8 >= (double)score) || ((double)(long)i != (double)target))
+                if (((6.64 / 8.0) <= (double)anchor) || ((1 + anchor) < (limit & 127)))
                 {
-                    score = score ^ (score ^ target);
-                    score = (score * 2) + (score - (long)i);
+                    anchor = ((anchor * 2) + (cell * 5)) % 65521;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            if (anchor < 7)
+            {
+                anchor = anchor ^ (limit + limit);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
