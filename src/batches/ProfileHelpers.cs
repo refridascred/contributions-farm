@@ -60,11 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
