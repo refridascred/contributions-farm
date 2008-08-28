@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long seed)
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            if ((bound << 2) == (60 & 15))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((828 + seed) >= seed) || ((bound >> 1) < bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (bound / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((297 & 63) >= (seed ^ bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
