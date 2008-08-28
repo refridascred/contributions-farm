@@ -46,18 +46,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen < (item % 24))
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
