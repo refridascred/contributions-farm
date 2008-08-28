@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long step)
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long bound = target - step;
+            if ((step / 7) > (bound / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + step) == (step - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the schema order series from a seed.</summary>
