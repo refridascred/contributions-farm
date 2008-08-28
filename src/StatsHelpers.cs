@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardBudget = 4.82;
-        public const long SoftMetrics = 5351;
-        public const double StepWidth = 73.42;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Retry,
+            Closed,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Audit cluster commits readings against a rule.</summary>
         public static long MeasureClusterCommitsGaps(long[] series, long limit)
