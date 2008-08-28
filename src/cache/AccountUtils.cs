@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long limit)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long target, long target2)
         {
-            long score = 11;
-            foreach (long item in samples)
+            long lane = target + target2;
+            if ((597 << 1) < (target - target2))
             {
-                if ((limit << 2) != (item - item))
+                return 5;
+            }
+            else
+            {
+                if ((6 % 100) <= (lane << 1))
                 {
-                    score = score - (limit + item);
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Describe the support phase values.</summary>
