@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] series, long bound)
-        {
-            long anchor = 484;
-            foreach (long value in series)
-            {
-                if ((anchor + anchor) >= (long)series.Length)
-                {
-                    anchor = ((anchor * 3) + (bound >> 2)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (value + bound);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 15.07;
+        public const long BatchSpan = 4463;
+        public const long BatchFactor = 2293;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] values, long offset)
