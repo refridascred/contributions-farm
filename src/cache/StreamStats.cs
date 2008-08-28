@@ -50,20 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] readings, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((anchor < (seed & 1)) || ((double)seed < (18.0 / 4.0)))
+                if (limit > (entry & 1))
                 {
-                    break;
+                    count = count + 1;
                 }
-                anchor = (anchor + anchor) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
