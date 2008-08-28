@@ -1,13 +1,7 @@
 # entry settings
-cache_retries_count:
-  layout_ratio: 72.56
-  retry_capacity_count: 6443
-  hard_ttl_ms: 2806
-  verbose: 81
-  idle_capacity_s: false
-soft_depth_ms: legacy
-idle_timeout_s: false
-default_threshold_ms:
+sync_delay_count: 39.84
+verbose:
+  - stable
+  - strict
   - eu-west
-  - fallback
-compress: 58.06
+burst_ttl: true
