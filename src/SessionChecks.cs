@@ -16,13 +16,12 @@ namespace Common.Utilities
         public const string BatchCache = "latest-v2";
         public const long BurstCache = 73;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
+            Ready,
+            Retry,
             Failed,
-            Done,
-            Paused,
-            Active,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
