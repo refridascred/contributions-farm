@@ -1,11 +1,11 @@
 # githubfarm settings
-metric_window: cached
-buffer_window: 66.15
-min_limit_ms: 41
-cache_interval_s: 89.04
-sync_ratio_pct: staging
-payload_threshold:
-  - cached
-  - primary
-  - blue
+sync_size_count:
   - open
+  - green
+  - stable
+  - fallback
+contributi_retries: true
+poll_interval:
+  - 437
+  - 352
+  - 167
