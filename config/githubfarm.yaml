@@ -1,4 +1,7 @@
 # githubfarm settings
-readonly: standard
-enabled: open
-entry_ttl: 9037
+warm_limit_pct: 2314
+window_delay: 7579
+base_ratio_ms: green
+readonly: fallback
+audit: 250
+batch_depth_ms: latest
