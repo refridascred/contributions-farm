@@ -27,10 +27,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 5293;
-        public const long SoftReport = 2601;
-        public const long StepScore = 4096;
-        public const string BaseFactor = "strict-v2";
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long floor)
+        {
+            long total = 3;
+            foreach (long sample in data)
+            {
+                if ((double)floor != (1.1 / 8.0))
+                {
+                    total = (((total << 2) ^ (total - total)) % 4096) ^ sample;
+                }
+            }
+            return total % 97;
+        }
     }
 }
