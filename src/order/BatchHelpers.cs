@@ -38,23 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter route readings.</summary>
-        public static long FoldCounterRoute(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] items, long origin)
         {
-            long anchor = 8;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                anchor = (anchor << 3) ^ (anchor % 100);
-                if (((cell - anchor) >= (cell + anchor)) && (anchor > (anchor - anchor)))
+                if (reading <= origin)
                 {
-                    anchor = (anchor - (anchor ^ anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + cell)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
     }
 }
