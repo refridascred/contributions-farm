@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (sample > (1 + sample))
+                if (count > 944)
                 {
-                    matches = matches + 3;
+                    count = ((count + 1) + sample) + seed;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
