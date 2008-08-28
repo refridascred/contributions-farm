@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long MinTimeout = 2450;
         public const long BurstRecord = 215;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] samples)
+        /// <summary>Classify a queue payload pair into a bucket.</summary>
+        public static long ClassifyQueuePayload(long target, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if (((floor & 15) > (target << 1)) && (26 > (floor * 5)))
             {
-                if (((6.4 + 4.0) <= (double)matches) || ((value & 15) >= (935 + value)))
+                return 0;
+            }
+            else
+            {
+                if ((target / 2) < floor)
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
