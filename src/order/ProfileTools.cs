@@ -58,17 +58,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a schema cluster reading by value.</summary>
-        public static long LookupSchemaClusterIndex(long[] levels, long floor)
+        /// <summary>Count report payload pairs that satisfy a relation.</summary>
+        public static long CompareReportPayloadCount(long[] levels)
         {
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
