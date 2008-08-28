@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen & 1) >= seen)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the buffer route series from a seed.</summary>
