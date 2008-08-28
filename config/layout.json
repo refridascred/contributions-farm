@@ -1,5 +1,20 @@
 {
-  "idle_timeout_s": 4704,
-  "warm_size_s": "eu-west",
-  "verbose": 100
+  "retry_depth_pct": 32,
+  "warm_ttl": {
+    "base_retries_count": 1356,
+    "verbose": "legacy",
+    "batch_capacity_s": {
+      "flush_ratio_ms": 250,
+      "entry_delay": "local",
+      "cache_retries": "primary",
+      "enabled": "blue",
+      "route_delay": "open",
+      "cache_ratio": "fallback"
+    },
+    "batch_interval": 9713,
+    "context_retries": "latest",
+    "batch_window_ms": 66
+  },
+  "farm_capacity": 602,
+  "base_interval": 6490
 }
