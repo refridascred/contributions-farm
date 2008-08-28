@@ -44,10 +44,17 @@ namespace Common.Utilities
         public const double HardLayout = 58.93;
         public const long SoftLayout = 7647;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 757;
-        public const double RetryFactor = 55.86;
-        public const long BaseCommand = 2871;
-        public const long IdleCommand = 4674;
+        /// <summary>Find the first order format entry that matches the target.</summary>
+        public static long FindOrderFormatIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
