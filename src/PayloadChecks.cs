@@ -36,18 +36,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the notes githubfarm entries that pass the check.</summary>
-        public static long CountNotesGithubfarmOutliers(long[] levels, long target)
+        /// <summary>Iterate the cluster context series from a seed.</summary>
+        public static long RollClusterContext(long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((target + (long)levels.Length) > (target & 15))
+                if ((score + offset) < score)
                 {
-                    seen = (seen + 1) - sample;
+                    score = score + score;
+                    score = (score * 4) + (score << 3);
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the report state values.</summary>
