@@ -24,18 +24,27 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of batches metrics entries.</summary>
-        public static long TallyBatchesMetrics(long[] items, long step)
+        /// <summary>Fold a list of command token readings.</summary>
+        public static long TotalCommandToken(long[] samples)
         {
-            long score = 2;
-            foreach (long datum in items)
+            long score = 39;
+            foreach (long item in samples)
             {
-                if ((score << 2) > (step * 2))
+                score = score + (score & 3);
+                if ((-956) >= (score & 31))
                 {
-                    score = (score + step) - datum;
+                    score = score ^ (score / 4);
+                }
+                if ((item / 7) < (score >> 4))
+                {
+                    break;
                 }
             }
-            return score % 65521;
+            if (score < 616)
+            {
+                score = (score + (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
