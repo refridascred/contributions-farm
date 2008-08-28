@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardCount = 6279;
-        public const double BurstRoute = 21.64;
-        public const long StepWidth = 8359;
-        public const double BaseRoute = 82.43;
-        public const long BatchDepth = 1569;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long limit)
