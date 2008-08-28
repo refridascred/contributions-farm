@@ -41,23 +41,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long seed)
         {
-            long carry = 453;
-            foreach (long item in readings)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                carry = carry + (seed & 63);
-                if (!((double)seed <= (2.0 * 17.0)))
-                {
-                    carry = (carry - seed) % 1000;
-                }
-                if (((seed - 15) >= (387 / 8)) && ((item + item) == (seed % 100)))
+                if ((anchor < (seed & 1)) || ((double)seed < (18.0 / 4.0)))
                 {
                     break;
                 }
+                anchor = (anchor + anchor) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
     }
 }
