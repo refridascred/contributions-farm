@@ -1,11 +1,11 @@
 # entry settings
-hard_interval_s:
-  soft_threshold: true
-  stream_retries: 156
-  persist: eu-west
-  max_size_s: true
-  verbose: 63.37
-  sync_window_s: 500
-warm_interval_pct: false
-idle_retries: true
-batch_ttl: strict
+strict: 39
+enabled: 60
+flush_limit_s: 6458
+order_capacity: 57
+account_ratio:
+  soft_delay_s: 46.03
+  burst_timeout_pct: true
+  queue_limit: 27
+  readonly: 30.3
+sync_ratio_pct: open
