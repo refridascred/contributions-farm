@@ -1,7 +1,14 @@
 # support settings
-hard_size_ms:
-  - eu-west
-  - stable
-  - local
-warm_depth_count: false
-stream_size: 62
+base_ttl:
+  burst_threshold_ms: 31
+  farm_window: 56.9
+  soft_depth_ms: 34
+  format_retries:
+    - cached
+    - primary
+    - blue
+soft_ratio_ms: 1024
+stream_ratio: 3016
+verbose: blue
+idle_delay_s: eu-west
+retry_interval_pct: green
