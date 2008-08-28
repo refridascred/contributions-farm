@@ -44,14 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] levels, long target)
         {
-            Done,
-            New,
-            Draft,
-            Locked,
-            Failed,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a graph header.</summary>
