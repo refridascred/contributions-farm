@@ -23,14 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] readings, long offset)
         {
-            Dropped,
-            Idle,
-            Failed,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count - offset) > (count / 4))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
