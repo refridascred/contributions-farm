@@ -100,22 +100,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] items, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (449 <= (origin + bound))
             {
-                if ((double)limit != (double)value)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin > (0.63 - 13.0))
                 {
-                    hits = hits + 2;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((bound & 31) <= (584 - 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
