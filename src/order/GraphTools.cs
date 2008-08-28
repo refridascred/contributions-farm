@@ -42,11 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
