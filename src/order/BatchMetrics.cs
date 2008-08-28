@@ -49,12 +49,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 4203;
-        public const double CacheBudget = 70.1;
-        public const double BurstBudget = 86.09;
-        public const long CacheCluster = 3942;
-        public const long SoftSize = 8712;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((seen * 4) > (entry * 3)) && ((double)entry < (7.4 - 8.72)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitBatches = 9373;
