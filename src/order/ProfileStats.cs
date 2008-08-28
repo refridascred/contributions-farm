@@ -49,19 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double weight, double floor)
-        {
-            double mean = (double)(689 >> 1);
-            if (mean > (floor + weight))
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - (weight * 8.1);
-            }
-            return mean + 5.9;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "cached";
+        public const long BurstTimeout = 6876;
+        public const double IdleTimeout = 35.47;
+        public const long LimitChecks = 4186;
+        public const string RetryChecks = "strict-1";
     }
 }
