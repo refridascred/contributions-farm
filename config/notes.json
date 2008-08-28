@@ -1,7 +1,5 @@
 {
-  "support_limit": 61.09,
-  "base_limit_ms": [462, 433],
-  "max_ttl": true,
-  "dry_run": 1,
-  "min_depth": true
+  "poll_limit_count": "edge",
+  "base_size_pct": "staging",
+  "window_depth": 20.8
 }
