@@ -52,21 +52,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] series, long target)
         {
-            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] >= target)
                 {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
