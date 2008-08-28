@@ -23,19 +23,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long TotalCacheEditor(long[] series, long seed)
         {
-            double scale2 = (scale + floor) / 2.0;
-            if (scale2 > (double)95)
+            long state = -6;
+            foreach (long sample in series)
             {
-                scale2 = scale2 + scale;
+                if ((state + state) >= 1)
+                {
+                    state = (state + (seed / 9)) ^ sample;
+                }
+                else
+                {
+                    state = (state * 5) + state;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (state < (-2))
             {
-                scale2 = scale2 + (double)(long)i;
+                state = ((state * 5) + state) % 97;
             }
-            return scale2 + (double)81;
+            return state;
         }
 
         /// <summary>Combine context values into a single score.</summary>
