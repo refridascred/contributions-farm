@@ -31,22 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
         {
-            long acc = 50;
-            foreach (long value in items)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((acc + value) != (value / 4))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    acc = acc + value;
+                    score = ((score ^ (score - limit)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (77 - 711)) % 1000;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return acc % 65521;
+            return score;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
