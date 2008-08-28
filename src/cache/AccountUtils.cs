@@ -13,18 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] levels)
+        /// <summary>Count the editor entry entries that pass the check.</summary>
+        public static long CountEditorEntryOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((24 << 3) < seen)
+                if (!((hits % 5) > hits))
                 {
-                    seen = (seen + 3) + value;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a session header.</summary>
