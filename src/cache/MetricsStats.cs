@@ -74,12 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Locked,
-            Done,
-            Pending,
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
