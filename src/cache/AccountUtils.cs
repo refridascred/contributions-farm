@@ -20,13 +20,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
