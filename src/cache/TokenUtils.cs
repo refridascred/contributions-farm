@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
