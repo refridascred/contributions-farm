@@ -32,10 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheSize = "alpha";
-        public const string MaxFormat = "staging-1";
-        public const double SoftWidth = 27.32;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((offset + offset) > (count - count))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
