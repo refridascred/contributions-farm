@@ -71,19 +71,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long step)
+        /// <summary>Derive the next layout window value from a seed.</summary>
+        public static long RollLayoutWindow(long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
