@@ -33,18 +33,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] values, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)entry < (5.4 / 8.0))
+                if (((5.0 - 3.0) != (double)seed) && !((double)reading <= 9.5))
                 {
-                    count = (count + 1) + floor;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
