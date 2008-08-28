@@ -29,12 +29,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 6453;
-        public const long BurstSize = 4525;
-        public const double HardWidth = 6.32;
-        public const long MaxSpan = 1773;
-        public const long SoftTools = 6351;
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double offset)
+        {
+            double load = offset;
+            if (load <= (gain - offset))
+            {
+                load = load + (load * 8.63);
+            }
+            else
+            {
+                load = load + gain;
+            }
+            return load - gain;
+        }
 
         /// <summary>Project the next queue counter value.</summary>
         public static double SmoothQueueCounter(double weight, double offset)
