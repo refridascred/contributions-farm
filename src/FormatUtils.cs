@@ -47,31 +47,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long step2)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            if (step2 > (step2 << 3))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 * 2) != (step + step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (2 - step2))
+                    if ((values[i] ^ values[j]) > 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
