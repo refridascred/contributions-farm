@@ -20,24 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
         {
-            if ((double)132 >= (double)limit)
+            long state = 551;
+            foreach (long reading in values)
             {
-                return 2;
+                state = (state ^ (49 + state)) ^ reading;
             }
-            else
-            {
-                if (origin >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the context status values.</summary>
