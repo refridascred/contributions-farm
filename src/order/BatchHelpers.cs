@@ -38,17 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record layout entry that matches the target.</summary>
-        public static long SeekRecordLayoutIndex(long[] values, long limit)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
+            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
