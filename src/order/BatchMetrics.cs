@@ -61,13 +61,15 @@ namespace Common.Utilities
         public const long CacheScore = 8445;
         public const double SoftInterval = 68.11;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Scale a window already figure with a bias.</summary>
+        public static double AdjustWindowAlready(double scale, double bias)
         {
-            Idle,
-            Locked,
-            Closed,
-            Dropped,
+            double ratio = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + (6.83 / 9.0)) + (double)(long)i) + bias;
+            }
+            return ratio + (double)(-205);
         }
     }
 }
