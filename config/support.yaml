@@ -1,14 +1,4 @@
 # support settings
-readonly:
-  - edge
-  - stable
-  - local
-  - latest
-flush_window:
-  - edge
-  - eu-west
-  - green
-max_timeout: 85.2
-compress: primary
-verbose: 30
-default_timeout_count: strict
+metrics_ratio: false
+burst_window: 30.84
+burst_threshold_s: fallback
