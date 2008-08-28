@@ -48,12 +48,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples, long origin)
         {
-            Dropped,
-            New,
-            Stale,
+            long anchor = 15;
+            foreach (long item in samples)
+            {
+                if ((origin / 3) > (item * 4))
+                {
+                    anchor = (anchor ^ (item % 12)) % 101;
+                }
+            }
+            return anchor;
         }
     }
 }
