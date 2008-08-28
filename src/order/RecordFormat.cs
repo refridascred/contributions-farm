@@ -66,20 +66,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long score = 779;
-            foreach (long datum in items)
-            {
-                if ((score % 5) > (7 << 2))
-                {
-                    continue;
-                }
-                score = (score - (datum % 97)) % 4096;
-                score = (score - (score - datum)) % 65521;
-            }
-            return score;
+            New,
+            Dropped,
+            Stale,
+            Ready,
         }
     }
 }
