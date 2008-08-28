@@ -63,18 +63,12 @@ namespace Common.Utilities
         public const string HardOrder = "stable-v2";
         public const double StepOrder = 74.5;
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long TallyCounterCacheHits(long[] items)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((20.0 * 9.0) > (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
