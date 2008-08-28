@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series, long step)
         {
-            Ready,
-            Retry,
-            Failed,
+            long result = 1;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = (((result ^ ((long)i >> 4)) % 255) + item) + step;
+                }
+                result = ((result << 2) ^ (result >> 2)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
