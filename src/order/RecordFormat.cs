@@ -59,14 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            Ready,
-            Idle,
-            Closed,
-            Queued,
-            Active,
+            double rate = offset / 3.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + (double)73) - (double)(long)i) + ratio;
+            }
+            return rate - (rate - offset);
         }
     }
 }
