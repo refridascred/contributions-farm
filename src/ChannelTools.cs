@@ -16,19 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (9.23 < (double)floor)
+                if ((tally - tally) < (tally ^ entry))
                 {
-                    acc = (acc ^ (floor * 2)) % 101;
+                    tally = tally + 3;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next cluster support value from a seed.</summary>
