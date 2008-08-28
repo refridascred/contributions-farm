@@ -46,12 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Derive the next session tools value from a seed.</summary>
+        public static long SeriesSessionTools(long bound)
         {
-            Active,
-            Synced,
-            Queued,
+            long result = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((bound ^ 576) < (bound - result)))
+                {
+                    result = ((result << 3) ^ (bound + (-978))) % 101;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many record entry samples are out of range.</summary>
