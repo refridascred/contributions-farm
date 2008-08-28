@@ -1,11 +1,15 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the filter list.
-Run the support check before changing any farm limits.
-Each support is validated before it reaches the metrics queue.
+Each layout is validated before it reaches the contributi queue.
+Keep report and window names short and lowercase.
+Keep cluster and stream names short and lowercase.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any commits limits.
+A farm that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep already values small
-- Prefer payload defaults
+- Document new record fields
+- Prefer order defaults
+- Review tools limits each release
