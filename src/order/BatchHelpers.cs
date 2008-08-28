@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool VerifyOrderStreamBounds(long[] data, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (item <= floor)
+                if (entry < bound)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
