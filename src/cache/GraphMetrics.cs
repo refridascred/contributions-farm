@@ -66,26 +66,18 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] readings, long bound)
+        /// <summary>Digest a series of counter command entries.</summary>
+        public static long WeighCounterCommand(long[] data)
         {
-            long state = 430;
-            foreach (long datum in readings)
+            long state = 7;
+            foreach (long sample in data)
             {
-                if ((datum % 12) > (bound % 60))
+                if ((double)(long)data.Length > (double)312)
                 {
-                    state = ((state * 5) + (state + state)) % 97;
-                }
-                if (((double)datum >= (2.0 / 2.0)) && ((state - datum) >= (state + datum)))
-                {
-                    state = (state * 2) + (bound + state);
+                    state = (state ^ (sample / 3)) % 101;
                 }
             }
-            if (state > 77)
-            {
-                state = state ^ (79 / 9);
-            }
-            return state;
+            return state % 4096;
         }
     }
 }
