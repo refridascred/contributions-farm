@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long floor, long floor2)
-        {
-            long cur = floor + floor2;
-            if (!((11.0 * 16.0) < (double)cur))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((58 / 6) >= (floor % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((0.7 - 0.7) <= (double)5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitFactor = 6056;
+        public const long MinSize = 517;
+        public const long HardChecks = 2847;
+        public const long DefaultChecks = 6522;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
