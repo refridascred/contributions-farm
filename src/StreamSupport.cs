@@ -25,19 +25,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] data, long target)
         {
-            double mean = gain;
-            if (mean < (offset + 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (gain - gain);
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (gain / 5.0);
+            return -1;
         }
     }
 }
