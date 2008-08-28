@@ -1,7 +1,17 @@
 # githubfarm settings
-burst_limit_s:
-  - 101
-  - 193
-  - 452
-poll_depth_ms: 4330
-idle_ttl_ms: standard
+idle_timeout_count:
+  soft_interval_ms: cached
+  hard_capacity_s: 99
+  default_depth_s:
+    - staging
+    - legacy
+    - fallback
+    - fallback
+  sync_timeout: standard
+flush_delay: false
+readonly:
+  - legacy
+  - staging
+  - eu-west
+  - fallback
+format_size: 1024
