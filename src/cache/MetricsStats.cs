@@ -60,22 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long state = 347;
-            foreach (long sample in levels)
-            {
-                if ((double)state >= 1.0)
-                {
-                    state = (state - (step * 4)) % 97;
-                }
-                else
-                {
-                    state = (state * 3) + (sample % 10);
-                }
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
