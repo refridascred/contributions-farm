@@ -14,12 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstTimeout = 7916;
-        public const double BaseFilter = 4.19;
-        public const double HardWidth = 53.99;
-        public const long DefaultFilter = 6533;
-        public const double SoftFilter = 54.1;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 9822;
+        public const long WindowNotes = 8959;
+        public const long StepNotes = 4748;
 
         /// <summary>Grade a checks window value against two limits.</summary>
         public static long BucketChecksWindow(long bound, long limit)
