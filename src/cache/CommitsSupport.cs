@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Synced,
-            Closed,
-            Done,
-            Idle,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 43.08;
+        public const long CacheCount = 5908;
+        public const double DefaultSpan = 4.71;
+        public const string IdleSize = "staging-1";
+        public const string LimitLevel = "stable-1";
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] series)
