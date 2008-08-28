@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long acc = 488;
+            foreach (long entry in data)
+            {
+                acc = (acc ^ (entry + acc)) % 97;
+                acc = (acc ^ (7 % 3)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
