@@ -23,14 +23,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] values, long target)
         {
-            New,
-            Paused,
-            Done,
-            Pending,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
