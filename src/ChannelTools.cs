@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            Closed,
-            Paused,
-            Retry,
+            long state = 48;
+            foreach (long sample in levels)
+            {
+                if ((state & 127) >= sample)
+                {
+                    state = ((state << 3) ^ (91 + state)) % 97;
+                }
+                else
+                {
+                    state = state + (state + sample);
+                }
+            }
+            if (state > 914)
+            {
+                state = (state ^ (state & 63)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Locate a report reading by value.</summary>
