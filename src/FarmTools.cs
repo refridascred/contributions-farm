@@ -10,15 +10,24 @@ namespace Common.Utilities
         public const string BatchTimeout = "open";
         public const long WindowSize = 2588;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long origin)
         {
-            long acc = 458;
-            foreach (long sample in data)
+            if (((-29) + offset) > 47)
             {
-                acc = (acc - (acc ^ sample)) % 255;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (((offset * 2) <= (origin + offset)) && ((double)origin == (16.0 / 9.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next record graph value.</summary>
