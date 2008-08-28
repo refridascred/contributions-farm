@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a format batches pair into a bucket.</summary>
