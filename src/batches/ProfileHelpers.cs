@@ -65,18 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long AuditMetricStreamMatches(long[] levels, long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((451 > seed) || ((double)seen <= (7.0 + 4.2)))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
