@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long RetryCounter = 4932;
         public const long BatchScore = 726;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] data, long floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)floor != (8.5 / 7.0))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
