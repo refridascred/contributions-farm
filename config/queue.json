@@ -1,8 +1,7 @@
 {
-  "audit": "cached",
-  "poll_threshold_pct": 1154,
-  "retry_delay_ms": [351, 207, 485, 328],
-  "enabled": 11.45,
-  "max_delay": 2201,
-  "contributi_size": 89.84
+  "compress": 500,
+  "buffer_ratio": "open",
+  "default_ratio": 93.1,
+  "dry_run": 6735,
+  "persist": 45
 }
