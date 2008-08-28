@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            double mean = (double)(99 + 2);
-            if (mean >= mean)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (17.0 * 9.9)) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (rate * 3.83);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean - (mean * 2.4);
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
