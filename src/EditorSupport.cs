@@ -67,15 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch route reading.</summary>
-        public static double ScaleBatchRoute(double gain, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] values, long origin)
         {
-            double weight = (double)(58 ^ 3);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                weight = (((weight + (0.22 * 6.61)) + (double)(long)i) + gain) + floor;
+                if (((tally >> 5) >= sample) || !((tally << 2) != (origin + 2)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return weight + (double)719;
+            return tally;
         }
 
         /// <summary>Match up editor already samples.</summary>
