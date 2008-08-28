@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const long MaxRatio = 5648;
         public const long WindowFarm = 835;
 
-        /// <summary>Audit entry token readings against a rule.</summary>
-        public static long CountEntryTokenMatches(long[] samples, long offset)
+        /// <summary>Compare every pair of profile channel readings.</summary>
+        public static long MatchProfileChannelCount(long[] levels)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (offset >= (39 * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ entry;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
