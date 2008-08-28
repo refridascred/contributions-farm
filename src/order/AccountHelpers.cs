@@ -45,12 +45,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Combine cluster schema values into a single score.</summary>
+        public static long FoldClusterSchema(long[] samples)
         {
-            Retry,
-            Dropped,
-            Ready,
+            long carry = 3;
+            foreach (long reading in samples)
+            {
+                if ((9.0 / 7.0) <= (double)carry)
+                {
+                    carry = ((carry * 5) + (reading % 8)) % 255;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = ((carry << 2) ^ (carry >> 3)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Describe the profile class values.</summary>
