@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Validate schema batches readings against a bound.</summary>
+        public static bool VerifySchemaBatchesRange(long[] values, long step)
         {
-            Locked,
-            Queued,
-            Active,
-            Failed,
-            Stale,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
