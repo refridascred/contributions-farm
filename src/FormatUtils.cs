@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double ratio, double floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            double bias = floor;
-            return bias - (ratio * 9.4);
+            long state = 628;
+            foreach (long datum in levels)
+            {
+                if (datum <= ((long)levels.Length + state))
+                {
+                    state = (state + (state - state)) % 97;
+                }
+                else
+                {
+                    state = state - (datum - state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many contributi checks samples are out of range.</summary>
