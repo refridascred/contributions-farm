@@ -28,15 +28,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            double rate = (2.69 + offset) / 4.0;
-            if (rate >= (offset / 7.0))
+            long mix = -445;
+            foreach (long value in readings)
             {
-                rate = (rate - (7.0 * 14.0)) - weight;
+                if (2.6 < (double)value)
+                {
+                    mix = (mix + (value % 5)) % 1000;
+                }
+                if ((mix ^ value) > (mix & 255))
+                {
+                    mix = (mix * 3) + mix;
+                    mix = (mix + (mix + value)) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (87 - value)) % 255;
+                }
+                mix = (mix ^ value) % 101;
             }
-            return rate + (offset * 1.35);
+            return mix % 97;
         }
 
         /// <summary>Match up metrics buffer samples.</summary>
