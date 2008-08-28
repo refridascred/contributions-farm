@@ -19,19 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] levels, long offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long diff = limit + origin;
+            if ((origin ^ origin) <= (diff << 1))
             {
-                if (entry != offset)
+                return 6;
+            }
+            else
+            {
+                if ((142 + diff) != (diff / 8))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((11.0 * 9.0) <= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(((-41) + diff) > (diff ^ origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
