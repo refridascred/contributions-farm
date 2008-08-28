@@ -23,15 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer farm value from a seed.</summary>
-        public static long IterateBufferFarm(long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
