@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long floor)
+        /// <summary>Rank report contributi input into a small class.</summary>
+        public static long ClassifyReportContributi(long step, long seed)
         {
-            if ((offset + floor) >= (floor + floor))
+            if ((double)seed <= (double)step)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((2.0 * 0.8) == (double)offset)
+                if (step > (seed << 3))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
