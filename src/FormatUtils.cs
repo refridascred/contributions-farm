@@ -74,18 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] samples, long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value - value) < 69))
+                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
                 {
-                    count = (count + 1) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
