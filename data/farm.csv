@@ -1,11 +1,6 @@
-id,count,label,level
-1,67.85,685,261
-2,741,standard,15.62
-3,35.77,759,64.84
-4,92.01,35.87,legacy
-5,staging,528,404
-6,21.02,257,280
-7,66.34,59.13,960
-8,971,15,790
-9,220,991,35.93
-10,fallback,78.46,61.51
+id,count,region,token,label
+1,latest,199,74.79,924
+2,12.62,65.19,eu-west,cached
+3,fallback,stable,latest,23.06
+4,984,latest,74.29,338
+5,603,4.44,legacy,698
