@@ -35,21 +35,14 @@ namespace Common.Utilities
         public const double DefaultInterval = 92.23;
         public const double IdleCommand = 48.51;
 
-        /// <summary>Match up metrics buffer samples.</summary>
-        public static long CompareMetricsBufferCount(long[] readings)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Idle,
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
