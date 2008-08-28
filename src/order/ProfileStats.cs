@@ -23,28 +23,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long limit)
         {
-            if ((seed % 3) < (374 - seed))
+            if ((4 + limit) < (971 - limit))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((floor + floor) >= (floor & 63))
+                if (limit <= offset)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((0 << 2) < (seed & 127))
+                    if (limit >= (limit + limit))
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        return 0;
                     }
                 }
             }
