@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank window farm input into a small class.</summary>
-        public static long RankWindowFarm(long step, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels)
         {
-            if ((origin + origin) == (origin + step))
+            long anchor = -4;
+            foreach (long entry in levels)
             {
-                return 3;
+                anchor = (((anchor << 3) ^ 2) % 1000) - entry;
             }
-            else
-            {
-                if (!((double)origin <= (3.0 + 4.8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((2.6 * 20.0) != (double)origin) || ((origin << 2) < 821))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin & 3) <= (step % 5)) && (step < origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
