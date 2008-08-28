@@ -55,15 +55,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                anchor = (((anchor * 3) + anchor) % 255) + reading;
+                if ((double)seen > (7.0 * 3.33))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
