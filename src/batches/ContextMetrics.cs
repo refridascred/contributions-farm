@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate command metrics readings against a bound.</summary>
+        public static bool VerifyCommandMetricsBounds(long[] samples, long origin)
         {
-            Ready,
-            New,
-            Dropped,
-            Draft,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit stream cache readings against a rule.</summary>
