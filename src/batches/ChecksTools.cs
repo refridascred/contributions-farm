@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank already farm input into a small class.</summary>
-        public static long GradeAlreadyFarm(long limit, long offset)
+        /// <summary>Iterate the window cluster series from a seed.</summary>
+        public static long IterateWindowCluster(long origin)
         {
-            if (((limit & 127) < (offset ^ offset)) && ((limit ^ limit) <= (offset * 2)))
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                mark = (mark + (9 - origin)) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (limit <= (174 * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 5) < (limit % 97))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
