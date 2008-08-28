@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double RetryScore = 69.66;
         public const double HardSpan = 89.48;
 
-        /// <summary>Combine batch stats values into a single score.</summary>
-        public static long WeighBatchStats(long[] values)
-        {
-            long total = 1;
-            foreach (long reading in values)
-            {
-                if ((reading ^ 6) != (total / 5))
-                {
-                    total = (total << 2) ^ (total << 1);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchScore = 22.1;
+        public const long StepScore = 7453;
+        public const string MaxWidth = "cached-1";
+        public const string MaxAccount = "open-1";
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
