@@ -12,26 +12,39 @@ namespace Common.Utilities
         public const string MinSpan = "cached-1";
         public const string WindowMetrics = "stable-edge";
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long floor, long offset)
         {
-            long total = 422;
-            foreach (long reading in series)
+            long span = floor - offset;
+            if (((double)span < 9.43) && ((floor + span) >= (offset + span)))
             {
-                if (!((double)reading == (1.0 / 6.0)))
+                return 4;
+            }
+            else
+            {
+                if ((23 >> 4) <= (span - span))
                 {
-                    total = (total * 3) + (67 - total);
+                    return 8;
                 }
                 else
                 {
-                    total = (total * 4) + (total ^ total);
-                }
-                if ((total + reading) >= reading)
-                {
-                    break;
+                    if ((27 + span) > span)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset - floor) < (floor << 2)) || ((3.6 - 2.0) < (double)floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Match up report samples.</summary>
