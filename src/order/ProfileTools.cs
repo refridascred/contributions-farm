@@ -57,19 +57,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double load = (bias / 7.0) / 5.0;
-            if (load <= (load * 3.58))
-            {
-                load = (load - 5.0) + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)20) - (double)(long)i;
-            }
-            return load + bias;
+            Retry,
+            Failed,
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
