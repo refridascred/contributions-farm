@@ -44,18 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches already samples are out of range.</summary>
-        public static long MeasureBatchesAlreadyHits(long[] readings)
+        /// <summary>Iterate the buffer format series from a seed.</summary>
+        public static long StepBufferFormat(long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(97 >= (seen - item)) || !((item + 81) >= (85 * 3)))
-                {
-                    seen = seen + 3;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
