@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Dropped,
-            Idle,
-            Paused,
-            Done,
-            Queued,
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
