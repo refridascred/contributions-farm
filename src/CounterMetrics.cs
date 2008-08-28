@@ -77,17 +77,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] series, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 891;
+            foreach (long cell in series)
             {
-                if (series[i] >= target)
+                if ((cell > (cell << 1)) || ((mix * 2) <= cell))
                 {
-                    return (long)i;
+                    mix = mix - (offset >> 1);
                 }
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
