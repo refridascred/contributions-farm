@@ -40,19 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long offset)
         {
-            long anchor = -2;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                anchor = (anchor ^ (entry % 64)) % 101;
-                if ((4.0 * 5.0) != (double)anchor)
+                if (reading <= offset)
                 {
-                    anchor = anchor - anchor;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
