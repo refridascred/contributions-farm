@@ -69,23 +69,30 @@ namespace Common.Utilities
         public const string MaxSpan = "fallback-v2";
         public const string BurstFactor = "stable-v2";
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long target, long target2)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long step)
         {
-            long step = target - target2;
-            if ((double)target < (double)step)
+            long delta = limit - step;
+            if ((delta <= (43 + step)) && (step > (limit + delta)))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (((step >> 1) >= (target2 + step)) && ((1 & 63) == (step - 174)))
+                if (step < (step / 8))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if ((delta << 2) < (9 >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
