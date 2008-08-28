@@ -27,17 +27,39 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step = floor - seed;
+            if (((0 ^ seed) > seed) || ((double)floor == (double)step))
             {
-                if (values[i] > target)
+                return 2;
+            }
+            else
+            {
+                if (((seed >> 1) <= floor) && ((step % 2) > seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) >= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step + floor) > (seed / 5)) || ((floor & 15) <= step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a cluster githubfarm reading.</summary>
