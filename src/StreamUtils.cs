@@ -89,23 +89,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long acc = 449;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.2 < (double)acc) || (854 <= origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long matches = acc;
-                    acc = ((acc * 2) + matches) % 97;
-                }
-                if ((8.0 - 7.3) < (double)origin)
-                {
-                    acc = (acc - value) % 4096;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
