@@ -74,22 +74,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long limit)
         {
-            long sum = 880;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((long)values.Length + reading) != (310 + (-16)))
+                if ((double)reading < (14.0 - 14.0))
                 {
-                    sum = ((sum * 4) + reading) + limit;
-                }
-                if (8 >= (sum - 98))
-                {
-                    break;
+                    count = (count + 2) - limit;
                 }
             }
-            return sum % 1000;
+            return count;
         }
     }
 }
