@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long sum = 964;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading & 31) >= (reading - seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = sum - seed;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
