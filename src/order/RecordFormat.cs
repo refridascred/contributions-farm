@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!(5.0 <= (double)value) && (8.81 >= (double)(long)readings.Length))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the buffer layout series from a seed.</summary>
