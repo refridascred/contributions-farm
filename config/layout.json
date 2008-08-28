@@ -1,28 +1,5 @@
 {
-  "cache_size": 100,
-  "notes_capacity": {
-    "schema_size": "stable",
-    "graph_ttl": 1024,
-    "hard_threshold_count": 4.02,
-    "warm_depth_count": true
-  },
-  "base_ratio_pct": {
-    "compress": "green",
-    "idle_interval": 3890,
-    "readonly": 41,
-    "batch_depth": {
-      "sync_limit_s": true,
-      "min_timeout": "stable",
-      "strict": 29.21,
-      "min_threshold": ["green", "primary", "local"],
-      "base_ttl": 1024
-    },
-    "format_ttl": true,
-    "order_retries": 2631
-  },
-  "layout_threshold": {
-    "verbose": 51.14,
-    "profile_delay": 50.32,
-    "enabled": "local"
-  }
+  "batch_retries_count": true,
+  "readonly": "latest",
+  "verbose": 65.56
 }
