@@ -1,5 +1,6 @@
 {
-  "flush_limit": 24.01,
-  "flush_depth": false,
-  "format_threshold": ["strict", "legacy", "fallback"]
+  "soft_size_pct": "staging",
+  "poll_ratio_ms": 4657,
+  "record_depth": ["standard", "fallback", "eu-west"],
+  "burst_size": [103, 306, 376, 317]
 }
