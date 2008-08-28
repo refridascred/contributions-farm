@@ -25,15 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Validate contributi record readings against a bound.</summary>
+        public static bool GuardContributiRecordLimits(long[] samples, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Locate a record reading by value.</summary>
