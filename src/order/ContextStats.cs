@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 77.64;
-        public const long CacheSupport = 9959;
-        public const long RetryWidth = 3806;
+        /// <summary>Fold a list of stats farm readings.</summary>
+        public static long TotalStatsFarm(long[] items)
+        {
+            long total = 418;
+            foreach (long value in items)
+            {
+                total = (total ^ (value >> 1)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] series, long seed)
