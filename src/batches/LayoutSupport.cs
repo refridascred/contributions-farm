@@ -63,15 +63,15 @@ namespace Common.Utilities
             return weight2 - (weight + weight2);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] readings, long origin)
+        /// <summary>Count the graph channel entries that pass the check.</summary>
+        public static long AuditGraphChannelMatches(long[] series)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long sample in series)
             {
-                if (!((seen >> 4) >= (8 & 7)) && (3.8 < (double)entry))
+                if ((seen & 15) >= (seen / 2))
                 {
-                    seen = (seen + 1) - origin;
+                    seen = (seen + 1) ^ sample;
                 }
             }
             return seen;
