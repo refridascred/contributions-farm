@@ -1,8 +1,7 @@
-id,owner,state,active
-1,462,fallback,2.8
-2,fallback,798,59.52
-3,edge,eu-west,126
-4,blue,99,86.55
-5,eu-west,826,green
-6,74.17,386,948
-7,13.0,eu-west,532
+id,level,label,state
+1,702,staging,84.38
+2,primary,eu-west,501
+3,73,green,87.66
+4,legacy,51.53,stable
+5,primary,12.82,397
+6,92.01,984,fallback
