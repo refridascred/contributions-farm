@@ -23,10 +23,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleFactor = 8003;
-        public const double DefaultSession = 71.78;
-        public const double BatchSession = 10.93;
+        /// <summary>Derive the next buffer farm value from a seed.</summary>
+        public static long IterateBufferFarm(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] series)
