@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] items, long bound)
+        /// <summary>Digest a series of format command entries.</summary>
+        public static long FoldFormatCommand(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                if (!(entry >= (bound + entry)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix ^ (mix << 1)) + value;
             }
-            return seen;
+            if (mix > 70)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
