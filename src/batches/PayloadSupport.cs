@@ -22,15 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long DeriveOrderContext(long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                result = ((result * 3) + (result - (long)i)) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Audit contributi token readings against a rule.</summary>
