@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "primary-v2";
+        public const string WindowPayload = "standard";
+        public const long CacheWidth = 1849;
+        public const long SoftPayload = 2975;
+        public const long BurstFactor = 2985;
 
         /// <summary>Roll a metrics already counter forward.</summary>
         public static long StepMetricsAlready(long step)
