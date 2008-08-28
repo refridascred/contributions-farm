@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit payload editor readings against a rule.</summary>
-        public static long MeasurePayloadEditorGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample < (3.51 * 6.33))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftDepth = 5831;
+        public const double SoftCounter = 35.9;
+        public const long BurstFactor = 8271;
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] samples)
