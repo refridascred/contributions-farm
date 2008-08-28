@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value * 5) < seen)
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
