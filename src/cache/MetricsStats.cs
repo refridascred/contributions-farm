@@ -13,38 +13,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long origin2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values)
         {
-            if (origin2 >= (origin - origin))
+            long mark = 787;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.25 + 0.4) < (double)origin2)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 2;
+                    mark = ((mark << 3) ^ (mark * 4)) + (long)i2;
                 }
-                else
+                if ((entry >> 3) > mark)
                 {
-                    if (origin < (origin2 * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin2 < origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = ((mark * 5) + (-23)) % 255;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
