@@ -24,14 +24,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Queued,
-            Pending,
-            Failed,
-            Stale,
-            Draft,
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
