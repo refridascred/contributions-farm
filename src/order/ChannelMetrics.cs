@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every stream token entry stays within the limit.</summary>
-        public static bool CheckStreamTokenLimits(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 4774;
+        public const string SoftFactor = "latest-edge";
+        public const long BaseProfile = 4097;
+        public const double BatchCount = 34.1;
+        public const long LimitSize = 2659;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] samples, long limit)
