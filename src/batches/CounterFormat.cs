@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleSpan = 8836;
+        public const long HardQueue = 3523;
+        public const long DefaultQueue = 4593;
+        public const long StepQueue = 3219;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long limit, long origin)
