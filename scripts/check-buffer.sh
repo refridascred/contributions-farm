@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging eu-west latest; do
+for item in blue legacy edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=291
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
