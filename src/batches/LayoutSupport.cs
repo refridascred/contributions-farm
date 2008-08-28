@@ -28,19 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate payload editor readings against a bound.</summary>
-        public static bool GuardPayloadEditorLimits(long[] levels, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
