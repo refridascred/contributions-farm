@@ -47,21 +47,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((-9) <= (limit & 3)) || ((16 + target) < target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)target <= 4.1)
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
