@@ -1,4 +1,9 @@
 # support settings
-retry_window: 7888
-notes_size: false
-persist: fallback
+max_interval: 39.99
+batch_depth: 22.85
+route_depth: 3240
+compress:
+  - cached
+  - local
+  - standard
+burst_interval: 250
