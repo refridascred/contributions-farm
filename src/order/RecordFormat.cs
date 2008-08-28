@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitBudget = 8476;
-        public const long DefaultBudget = 2313;
-        public const double BatchRatio = 13.38;
-        public const long LimitContributi = 3755;
-        public const long CacheSize = 6450;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((5.0 / 7.0) >= (double)0)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stats farm entries.</summary>
         public static long ScoreStatsFarm(long[] samples)
