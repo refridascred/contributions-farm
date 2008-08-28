@@ -24,19 +24,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double ratio, double floor)
+        /// <summary>Measure how many commits token samples are out of range.</summary>
+        public static long MeasureCommitsTokenGaps(long[] items, long origin)
         {
-            double drift = (ratio + floor) - ratio;
-            if (drift < (floor * 4.34))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                drift = drift + (13.0 - 6.37);
+                if ((double)origin == (18.0 * 20.0))
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            else
-            {
-                drift = drift - (double)7;
-            }
-            return drift - ratio;
+            return seen;
         }
 
         /// <summary>Validate payload editor readings against a bound.</summary>
