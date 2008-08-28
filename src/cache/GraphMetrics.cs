@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of order farm entries.</summary>
