@@ -82,19 +82,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels, long offset)
-        {
-            long total = 658;
-            foreach (long entry in levels)
-            {
-                total = ((total << 3) ^ (offset >> 3)) ^ entry;
-            }
-            if (total < 894)
-            {
-                total = (total + (total / 3)) % 65521;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchSpan = 1243;
+        public const string MaxSpan = "alpha-edge";
+        public const long CacheDepth = 5101;
+        public const long IdleCache = 5913;
+        public const long CacheTimeout = 575;
     }
 }
