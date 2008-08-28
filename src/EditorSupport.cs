@@ -51,12 +51,13 @@ namespace Common.Utilities
             return ratio + (5.59 + span);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxRatio = 6899;
-        public const long BaseCounter = 1635;
-        public const string RetryCounter = "strict-v2";
-        public const long DefaultCounter = 4425;
-        public const double HardSize = 61.7;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] series, long floor)
