@@ -38,17 +38,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (series[i] > origin)
+                if (((double)item > (6.65 / 2.0)) || ((double)seen != (5.61 - 4.26)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
