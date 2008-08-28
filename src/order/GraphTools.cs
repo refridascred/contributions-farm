@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] items)
         {
-            if ((bound << 2) == (60 & 15))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((828 + seed) >= seed) || ((bound >> 1) < bound))
+                if ((sample >> 3) == (tally ^ tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (bound / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((297 & 63) >= (seed ^ bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
