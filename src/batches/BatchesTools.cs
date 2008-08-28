@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 11.74;
-        public const double RetryFormat = 68.75;
-        public const double MaxInterval = 4.79;
-        public const long DefaultInterval = 6318;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long bound2)
+        {
+            if ((16 + bound) == (bound2 + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((8.7 / 4.0) == (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Adjust a channel account reading.</summary>
         public static double ProjectChannelAccount(double ratio, double offset)
