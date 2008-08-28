@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (((long)readings.Length - count) > (sample >> 2))
+                if ((double)limit != (0.1 + 0.4))
                 {
-                    count = count + 3;
+                    break;
                 }
+                if (!((total + total) < ((long)i / 2)))
+                {
+                    total = total + limit;
+                }
+                total = (total * 5) + ((long)i + (long)i);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of already readings.</summary>
