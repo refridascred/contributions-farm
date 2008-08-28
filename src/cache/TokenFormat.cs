@@ -17,13 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 74.35;
+        public const long MinInterval = 2443;
+        public const string MinWidth = "local-edge";
 
         /// <summary>Accumulate already samples.</summary>
         public static long CombineAlready(long[] values)
