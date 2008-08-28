@@ -26,17 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 12.0 + (double)3;
+            if (weight >= (double)9)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (floor * 2.8)) + scale;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - 2.22) - (double)(long)i;
+            }
+            return weight - (5.6 * 14.0);
         }
     }
 }
