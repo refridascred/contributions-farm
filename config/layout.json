@@ -1,6 +1,17 @@
 {
-  "min_interval": false,
-  "warm_depth_pct": "eu-west",
-  "compress": "local",
-  "metrics_retries": 250
+  "channel_limit": 500,
+  "soft_retries": {
+    "contributi_size": ["eu-west", "cached"],
+    "batches_ratio": false,
+    "batches_retries": {
+      "buffer_window": [390, 144, 483, 43],
+      "queue_ratio": false,
+      "strict": 38,
+      "sync_depth": false,
+      "session_window": 60
+    },
+    "dry_run": 100
+  },
+  "order_interval": 28,
+  "compress": 17
 }
