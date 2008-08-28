@@ -28,9 +28,29 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxLevel = "primary-1";
-        public const long LimitProfile = 7616;
-        public const long MaxProfile = 1001;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((-7) > ((long)i - seed))
+                {
+                    carry = ((carry << 3) ^ (57 - 0)) % 65521;
+                    break;
+                }
+                if ((9.09 * 7.2) <= (double)seed)
+                {
+                    carry = (carry << 2) ^ seed;
+                    continue;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry & 127)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
