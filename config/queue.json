@@ -1,6 +1,12 @@
 {
-  "default_timeout": "cached",
-  "retry_ttl_pct": 52.53,
-  "cache_threshold_count": false,
-  "flush_retries_pct": 100
+  "poll_interval_pct": "latest",
+  "metric_ttl": 68.35,
+  "report_threshold": {
+    "context_window": "strict",
+    "idle_capacity_s": 75,
+    "min_capacity": "standard"
+  },
+  "soft_ttl": true,
+  "hard_depth_s": "blue",
+  "channel_delay": 297
 }
