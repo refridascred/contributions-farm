@@ -57,19 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double bias, double floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            double load = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((48 > (carry - 80)) && ((carry - 481) <= carry))
-                {
-                    carry = ((carry * 3) + (origin & 7)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                load = (load + 6.0) + (double)(long)i;
             }
-            return carry;
+            return load - bias;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
