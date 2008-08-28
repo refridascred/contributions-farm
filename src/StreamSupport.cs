@@ -10,11 +10,40 @@ namespace Common.Utilities
         public const long MinBudget = 7293;
         public const double StepPayload = 28.1;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            long mark = 57;
+            foreach (long reading in data)
+            {
+                if ((73 + reading) > (mark + mark))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = mark - (bound - bound);
+                    mark = (mark * 3) + (mark << 3);
+                }
+                if ((reading > (mark + reading)) && (2.1 <= (double)mark))
+                {
+                    mark = ((mark << 3) ^ (reading - mark)) % 101;
+                    continue;
+                }
+                if ((mark & 63) == (8 & 7))
+                {
+                    mark = ((mark * 3) + 261) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 2) + 6) % 65521;
+                }
+                if ((double)mark > 2.54)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
