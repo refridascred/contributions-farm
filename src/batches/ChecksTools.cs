@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] samples)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((entry / 2) < (entry % 5))
-                {
-                    seen = seen + 2;
-                }
+                score = score ^ (score % 97);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Digest a series of graph metrics entries.</summary>
