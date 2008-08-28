@@ -15,13 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            double gain = ratio;
+            return (gain - (double)185) + floor;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
