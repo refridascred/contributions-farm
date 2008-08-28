@@ -66,13 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            double rate = 20.0;
+            if (rate > floor)
+            {
+                rate = rate - floor;
+            }
+            return rate + bias;
         }
     }
 }
