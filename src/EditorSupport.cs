@@ -59,19 +59,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long floor)
+        /// <summary>Accumulate batches batch samples.</summary>
+        public static long ScoreBatchesBatch(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long anchor = 751;
+            foreach (long datum in values)
             {
-                if (datum <= floor)
+                if (((long)values.Length + anchor) >= anchor)
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor ^ (anchor - datum);
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Adjust a batch route reading.</summary>
