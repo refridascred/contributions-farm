@@ -60,12 +60,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] data, long floor)
         {
-            Draft,
-            Active,
-            Synced,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count << 3) > count)
+                {
+                    count = ((count + 1) - entry) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up stream route samples.</summary>
