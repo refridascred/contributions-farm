@@ -18,13 +18,19 @@ namespace Common.Utilities
             return (mean - (mean * 13.0)) + bias;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Project the next account cache value.</summary>
+        public static double BlendAccountCache(double weight, double offset)
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            double rate = (double)((-6) ^ (-9));
+            if (rate > rate)
+            {
+                rate = rate + offset;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + weight;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
