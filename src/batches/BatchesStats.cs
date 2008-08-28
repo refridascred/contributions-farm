@@ -21,19 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long result = 22;
-            foreach (long item in readings)
-            {
-                result = ((result * 2) + (result + result)) + item;
-            }
-            if (result > (-990))
-            {
-                result = ((result * 2) + (result % 2)) % 65521;
-            }
-            return result;
+            Pending,
+            Retry,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the entry level values.</summary>
