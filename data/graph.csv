@@ -1,9 +1,6 @@
-id,active,count
-1,staging,44.19
-2,stable,954
-3,69.76,10.85
-4,fallback,stable
-5,23.71,90.78
-6,492,427
-7,976,local
-8,85.43,88.55
+id,weight,level
+1,903,41.59
+2,560,679
+3,241,83.26
+4,69,stable
+5,136,427
