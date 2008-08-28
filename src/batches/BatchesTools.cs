@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const double MaxInterval = 4.79;
         public const long DefaultInterval = 6318;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 9261;
-        public const long BurstOrder = 5427;
-        public const double DefaultOrder = 46.53;
-        public const long IdleWidth = 2499;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] readings, long step)
+        {
+            long total = 9;
+            foreach (long datum in readings)
+            {
+                total = ((total ^ (46 / 2)) ^ datum) + step;
+            }
+            if (total < 340)
+            {
+                total = (total << 2) ^ (total << 1);
+            }
+            return total;
+        }
 
         /// <summary>Audit graph command readings against a rule.</summary>
         public static long AuditGraphCommandGaps(long[] values, long bound)
