@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string BaseSession = "legacy-edge";
         public const long MaxSession = 3317;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
