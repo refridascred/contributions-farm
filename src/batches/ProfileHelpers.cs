@@ -33,12 +33,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the token tools entries that pass the check.</summary>
+        public static long TallyTokenToolsMatches(long[] items)
         {
-            Failed,
-            Dropped,
-            Pending,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >= count) || !((double)count <= (4.2 - 5.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
