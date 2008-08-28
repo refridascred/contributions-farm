@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 9153;
+        public const string BatchTimeout = "open";
+        public const long WindowSize = 2588;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] data)
