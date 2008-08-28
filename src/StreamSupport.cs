@@ -25,17 +25,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] data, long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Stale,
+            Retry,
         }
     }
 }
