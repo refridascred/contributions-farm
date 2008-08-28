@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long BaseSpan = 1627;
         public const long SoftScore = 2525;
 
-        /// <summary>Measure how many tools account samples are out of range.</summary>
-        public static long AuditToolsAccountOutliers(long[] levels)
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long MeasureFarmCounterHits(long[] values)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long item in values)
             {
-                if ((tally > (tally + tally)) && (((8.4 + 4.9) == (double)tally) || (tally <= (cell + cell))))
+                if (!((tally - tally) < item))
                 {
                     tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
