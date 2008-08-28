@@ -69,12 +69,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)matches < 7.9)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
