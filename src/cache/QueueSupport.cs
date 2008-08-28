@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double load = bias;
-            if (load < bias)
-            {
-                load = load + (ratio + load);
-            }
-            else
-            {
-                load = load + (load - ratio);
-            }
-            return load - (1.14 + ratio);
+            Synced,
+            Paused,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
