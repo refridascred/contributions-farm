@@ -47,17 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = ratio + ratio;
+            if (rate >= (bias / 6.0))
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate = rate - (6.0 + 2.65);
             }
-            return -1;
+            else
+            {
+                rate = rate - (4.06 / 7.0);
+            }
+            return rate - 19.0;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
