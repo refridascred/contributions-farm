@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor ^ anchor) % 97;
-                if ((floor + (long)i) != ((long)i / 7))
-                {
-                    anchor = anchor - ((long)i % 5);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Synced,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
