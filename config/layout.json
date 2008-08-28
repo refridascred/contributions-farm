@@ -1,8 +1,17 @@
 {
-  "payload_capacity": ["stable", "blue", "fallback"],
-  "poll_threshold": "standard",
-  "idle_delay": true,
-  "idle_limit_ms": "open",
-  "enabled": 65,
-  "readonly": "edge"
+  "context_delay": 250,
+  "strict": [163, 463, 94, 220],
+  "soft_limit_count": {
+    "verbose": false,
+    "sync_depth": "standard",
+    "cache_retries": {
+      "dry_run": 67,
+      "retry_interval_ms": "edge",
+      "report_limit": "legacy",
+      "verbose": 3640,
+      "poll_ttl": 9341,
+      "max_delay": true
+    }
+  },
+  "session_window": ["green", "legacy", "open", "local"]
 }
