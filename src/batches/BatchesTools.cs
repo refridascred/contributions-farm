@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const double MaxInterval = 4.79;
         public const long DefaultInterval = 6318;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] readings, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long target)
         {
-            long total = 9;
-            foreach (long datum in readings)
+            long lane = step - target;
+            if (lane <= (step + step))
             {
-                total = ((total ^ (46 / 2)) ^ datum) + step;
+                return 1;
             }
-            if (total < 340)
+            else
             {
-                total = (total << 2) ^ (total << 1);
+                if (((target ^ lane) < (step / 7)) || ((step * 4) > (step >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return total;
         }
 
         /// <summary>Audit graph command readings against a rule.</summary>
