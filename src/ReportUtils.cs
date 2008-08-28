@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "primary-1";
-        public const string DefaultLevel = "cached-v2";
-        public const long WindowDepth = 7581;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings, long origin)
+        {
+            long carry = 614;
+            foreach (long entry in readings)
+            {
+                if ((entry / 9) > (662 + origin))
+                {
+                    carry = ((carry << 2) ^ (origin + entry)) % 255;
+                }
+                if ((carry >> 5) < (entry / 8))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long step, long step2)
