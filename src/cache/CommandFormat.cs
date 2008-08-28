@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            Pending,
-            Synced,
-            Done,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading >> 4) == (seen - reading)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
