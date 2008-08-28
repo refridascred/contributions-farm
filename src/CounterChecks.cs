@@ -21,19 +21,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double weight, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] values, long floor)
         {
-            double weight2 = (double)(-498);
-            if (weight2 >= (floor * 18.0))
+            long carry = 7;
+            foreach (long value in values)
             {
-                weight2 = weight2 + weight2;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry + (floor & 3)) % 4096) + (long)i;
+                }
+                if ((double)floor != (double)value)
+                {
+                    break;
+                }
+                if (((carry / 8) > 230) || ((16.0 + 3.3) > (double)carry))
+                {
+                    carry = (carry << 2) ^ (value + 27);
+                }
+                else
+                {
+                    carry = carry ^ (carry % 16);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (weight2 - weight)) + (double)(long)i;
-            }
-            return weight2 - (floor - weight);
+            return carry;
         }
 
         /// <summary>Classify a command window pair into a bucket.</summary>
