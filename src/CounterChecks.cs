@@ -40,22 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] readings, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long sum = 63;
-            foreach (long value in readings)
-            {
-                if ((sum << 2) <= (value - sum))
-                {
-                    sum = (sum ^ (target >> 5)) % 101;
-                }
-                if ((7.0 - 4.1) < (double)target)
-                {
-                    sum = (sum ^ (value << 3)) % 65521;
-                }
-            }
-            return sum % 97;
+            Failed,
+            Idle,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Match up batches samples.</summary>
