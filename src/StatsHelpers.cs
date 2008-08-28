@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long SoftMetrics = 5351;
         public const double StepWidth = 73.42;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] items)
+        /// <summary>Audit cluster commits readings against a rule.</summary>
+        public static long MeasureClusterCommitsGaps(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (615 < (hits % 60))
+                if ((14.0 * 4.22) >= (double)item)
                 {
-                    hits = (hits + 3) + entry;
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a filter entry.</summary>
