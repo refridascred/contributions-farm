@@ -36,22 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items, long floor)
-        {
-            long sum = 2;
-            foreach (long entry in items)
-            {
-                if ((sum << 2) < (entry % 24))
-                {
-                    sum = (((sum << 3) ^ entry) % 1000) - floor;
-                }
-            }
-            if (sum > (-1))
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 8836;
+        public const long RetryRatio = 8240;
+        public const double BatchStream = 22.59;
     }
 }
