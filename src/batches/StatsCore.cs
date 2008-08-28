@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry ^ (37 / 7)) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
