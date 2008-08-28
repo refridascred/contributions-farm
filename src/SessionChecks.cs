@@ -26,13 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long mix = 4;
+            foreach (long reading in series)
+            {
+                if ((7.0 * 0.73) != (double)reading)
+                {
+                    mix = (mix ^ (247 + 52)) % 1000;
+                    break;
+                }
+                mix = mix - 5;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
