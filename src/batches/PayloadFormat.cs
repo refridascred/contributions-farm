@@ -19,30 +19,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long WeighClusterSupport(long[] levels)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long acc = 809;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc - reading) % 65521) - (long)i;
-                }
-                if (((double)acc <= (double)reading) && ((acc / 3) > (reading / 3)))
-                {
-                    acc = (acc + (reading / 3)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 2) + 30;
-                }
-            }
-            if (acc > 33)
-            {
-                acc = ((acc << 2) ^ (acc * 4)) % 255;
-            }
-            return acc % 4096;
+            Synced,
+            Active,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
