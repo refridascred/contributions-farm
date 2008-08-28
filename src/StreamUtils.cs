@@ -78,14 +78,21 @@ namespace Common.Utilities
         public const long SoftInterval = 3793;
         public const long IdleRatio = 7314;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count layout stream pairs that satisfy a relation.</summary>
+        public static long CompareLayoutStreamCount(long[] data)
         {
-            Draft,
-            Synced,
-            Dropped,
-            Paused,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
