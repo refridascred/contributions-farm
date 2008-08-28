@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=168
+mode="${1:-standard}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=335
 log "limit is ${RECORD_LIMIT}"
 
-for item in standard latest open; do
+for item in legacy fallback; do
     log "checking ${item}"
 done
