@@ -31,19 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream metric readings against a bound.</summary>
-        public static bool GuardStreamMetricBounds(long[] series, long limit)
+        /// <summary>Validate account githubfarm readings against a bound.</summary>
+        public static bool ValidateAccountGithubfarmLimits(long[] data, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (sample != limit)
+                if (entry >= target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Iterate the farm order series from a seed.</summary>
