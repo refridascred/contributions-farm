@@ -46,12 +46,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Classify a tools entry pair into a bucket.</summary>
+        public static long ClassifyToolsEntry(long step, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            if ((target % 7) >= (step >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (44 < (target + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
