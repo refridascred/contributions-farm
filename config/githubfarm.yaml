@@ -1,29 +1,22 @@
 # githubfarm settings
-cache_depth_count:
-  - strict
+retry_size: stable
+verbose:
+  token_window:
+    cache_depth_ms: 500
+    flush_retries: 996
+    flush_depth_ms:
+      - 159
+      - 285
+      - 322
+      - 129
+    hard_size_ms: 1493
+    channel_ratio: 43.75
+    window_retries: 9.63
+  sync_size_s: 54
+  cache_interval: edge
+graph_delay: 30
+readonly:
   - fallback
-counter_ttl: 2428
-compress:
-  verbose:
-    - cached
-    - standard
-    - legacy
-    - strict
-  account_ttl:
-    sync_timeout: 30
-    poll_delay_ms:
-      - open
-      - blue
-      - open
-      - fallback
-    enabled: 100
-    compress: 70.11
-    audit: false
-    sync_delay_count: false
-  cache_interval_count: false
-cache_window_s: 6886
-warm_capacity_count:
-  - 224
-  - 289
-  - 403
-batch_threshold: 1024
+  - blue
+min_limit_pct: blue
+profile_timeout: cached
