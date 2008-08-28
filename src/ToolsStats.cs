@@ -33,18 +33,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] values, long floor)
         {
-            long mix = 551;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((reading >> 3) < origin)
+                if ((double)entry < (5.4 / 8.0))
                 {
-                    mix = ((mix * 4) + (38 + mix)) % 101;
+                    count = (count + 1) + floor;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
