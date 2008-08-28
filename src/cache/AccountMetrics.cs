@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next context layout value.</summary>
-        public static double SmoothContextLayout(double rate, double span)
+        /// <summary>Locate a context profile reading by value.</summary>
+        public static long LookupContextProfileIndex(long[] items, long offset)
         {
-            double rate2 = (double)(2 + 88);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = ((rate2 - 5.78) + (double)(long)i) - rate;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - span;
+            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
