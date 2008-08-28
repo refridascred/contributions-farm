@@ -33,18 +33,13 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long anchor = 2;
-            foreach (long value in items)
-            {
-                if (((double)value < 4.9) || (value >= (anchor * 4)))
-                {
-                    anchor = anchor - (value * 5);
-                }
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
