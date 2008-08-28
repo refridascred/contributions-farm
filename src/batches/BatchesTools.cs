@@ -12,19 +12,22 @@ namespace Common.Utilities
             return (mean - (mean / 8.0)) + offset;
         }
 
-        /// <summary>Adjust a channel account reading.</summary>
-        public static double ProjectChannelAccount(double ratio, double offset)
+        /// <summary>Audit cluster already readings against a rule.</summary>
+        public static long AuditClusterAlreadyGaps(long[] series, long offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (offset / 6.0))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                ratio2 = ratio2 + (ratio * 1.0);
+                if (((double)offset <= (double)reading) && (hits > offset))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 + offset)) - (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
