@@ -24,20 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double gain, double bias)
-        {
-            double weight = gain + (gain / 5.0);
-            if (weight > (weight + weight))
-            {
-                weight = (weight - (double)51) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + 5.4;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 5109;
+        public const long DefaultReport = 5219;
+        public const long BurstReport = 1625;
+        public const long WindowTimeout = 5480;
+        public const long IdleReport = 7162;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
