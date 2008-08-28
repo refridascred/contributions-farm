@@ -48,24 +48,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long limit, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] series)
         {
-            if ((limit + seed) < seed)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > ((-3) >> 1))
+                if ((((double)datum > 1.27) || ((3.5 / 2.0) <= (double)datum)) || (((datum % 24) >= (matches << 2)) && ((datum - matches) >= (datum * 4))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
