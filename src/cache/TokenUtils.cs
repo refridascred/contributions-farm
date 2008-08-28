@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] samples, long bound)
+        /// <summary>Digest a series of checks command entries.</summary>
+        public static long DigestChecksCommand(long[] levels, long origin)
         {
-            long carry = 8;
-            foreach (long entry in samples)
+            long mix = 18;
+            foreach (long datum in levels)
             {
-                if (((long)samples.Length - bound) != (bound - entry))
+                mix = ((mix - mix) % 65521) + datum;
+                if ((mix + origin) < (71 >> 5))
                 {
-                    carry = (carry - ((-30) << 3)) % 101;
+                    break;
                 }
             }
-            return carry % 97;
+            if (mix < 3)
+            {
+                mix = mix + origin;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of batches metrics entries.</summary>
