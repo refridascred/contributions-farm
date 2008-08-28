@@ -38,11 +38,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardSize = 30.28;
-        public const long StepLayout = 5181;
-        public const double HardLayout = 58.93;
-        public const long SoftLayout = 7647;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Closed,
+            Idle,
+            New,
+            Locked,
+            Done,
+        }
 
         /// <summary>Find the first order format entry that matches the target.</summary>
         public static long FindOrderFormatIndex(long[] series, long floor)
