@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count >> 5) > (offset << 1))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
