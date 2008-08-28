@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitFactor = 6056;
-        public const long MinSize = 517;
-        public const long HardChecks = 2847;
-        public const long DefaultChecks = 6522;
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool GuardChecksRecordBounds(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] items)
