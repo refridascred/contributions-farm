@@ -20,18 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long acc = 886;
-            foreach (long sample in series)
-            {
-                if ((double)sample == (2.3 / 7.0))
-                {
-                    acc = (acc ^ (acc - 9)) % 255;
-                }
-            }
-            return acc % 4096;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
