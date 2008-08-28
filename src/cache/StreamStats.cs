@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] levels, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (levels[i] < seed)
+                if (datum > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
