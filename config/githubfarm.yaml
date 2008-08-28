@@ -1,9 +1,5 @@
 # githubfarm settings
-stream_timeout:
-  flush_delay: fallback
-  checks_delay: blue
-  verbose: 47.01
-  metric_retries: fallback
-  retry_ratio_ms: 6724
-burst_retries: blue
-base_threshold_count: true
+poll_ttl: open
+warm_interval_pct: false
+dry_run: open
+burst_window_count: standard
