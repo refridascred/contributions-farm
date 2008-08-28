@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every route counter entry stays within the limit.</summary>
-        public static bool CheckRouteCounterBounds(long[] samples, long offset)
+        /// <summary>Locate a cache filter reading by value.</summary>
+        public static long LookupCacheFilterIndex(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > offset)
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
