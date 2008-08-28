@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchTimeout = 69.01;
-        public const long BaseScore = 942;
-        public const double BaseBuffer = 19.51;
-        public const long WindowBuffer = 6271;
-        public const long MaxBuffer = 7544;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Locked,
+            Stale,
+            New,
+            Queued,
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsMatches(long[] readings, long floor)
