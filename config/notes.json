@@ -1,5 +1,5 @@
 {
-  "readonly": 94.71,
-  "idle_interval_ms": true,
-  "max_delay_count": "blue"
+  "base_threshold_count": ["legacy", "eu-west", "staging"],
+  "stats_capacity": "stable",
+  "report_interval": "latest"
 }
