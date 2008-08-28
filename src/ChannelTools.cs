@@ -16,26 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long state = 48;
-            foreach (long sample in levels)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((state & 127) >= sample)
+                if (9.23 < (double)floor)
                 {
-                    state = ((state << 3) ^ (91 + state)) % 97;
+                    acc = (acc ^ (floor * 2)) % 101;
                 }
-                else
-                {
-                    state = state + (state + sample);
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (state > 914)
-            {
-                state = (state ^ (state & 63)) % 65521;
-            }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Derive the next cluster support value from a seed.</summary>
