@@ -1,15 +1,6 @@
 {
-  "batch_window_pct": ["fallback", "cached", "strict", "eu-west"],
-  "retry_retries": {
-    "burst_ratio_ms": "stable",
-    "support_threshold": "standard",
-    "format_depth": "eu-west",
-    "enabled": 30,
-    "stream_retries": 60,
-    "burst_capacity_count": true
-  },
-  "window_ttl": 5676,
-  "enabled": "fallback",
-  "poll_interval": 74,
-  "layout_capacity": 50.55
+  "record_timeout": ["strict", "staging", "edge", "latest"],
+  "poll_depth_ms": 100,
+  "idle_retries_count": 51.59,
+  "dry_run": "fallback"
 }
