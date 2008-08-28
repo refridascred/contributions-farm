@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double floor)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            double ratio = floor;
+            if (ratio <= (floor + ratio))
+            {
+                ratio = (ratio - (ratio * 1.6)) - gain;
+            }
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Locate a cache filter reading by value.</summary>
