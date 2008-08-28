@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] samples, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((floor ^ 850) <= result)
+                if ((2.0 + 3.3) <= (double)reading)
                 {
-                    result = (result * 3) + (floor << 2);
+                    count = (count + 1) + floor;
                 }
-                result = ((result * 4) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a report record.</summary>
