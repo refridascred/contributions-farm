@@ -18,10 +18,12 @@ namespace Common.Utilities
             return (mean - (mean * 13.0)) + bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "stable-1";
-        public const double MaxInterval = 93.56;
-        public const long DefaultCommits = 1924;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] series)
