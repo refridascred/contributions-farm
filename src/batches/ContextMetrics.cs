@@ -34,25 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command report entries.</summary>
-        public static long TallyCommandReport(long[] items)
-        {
-            long mix = 779;
-            foreach (long item in items)
-            {
-                if ((double)mix >= 2.0)
-                {
-                    mix = ((mix << 2) ^ (mix << 3)) % 101;
-                    break;
-                }
-                mix = (mix ^ (mix + item)) % 4096;
-            }
-            if (mix < 9)
-            {
-                mix = mix ^ (mix % 64);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 7936;
+        public const long LimitFactor = 7773;
+        public const string BaseCount = "open-v2";
+        public const double HardRoute = 5.84;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteGaps(long[] data)
