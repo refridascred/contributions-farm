@@ -52,19 +52,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long step)
+        /// <summary>Count the window batch entries that pass the check.</summary>
+        public static long CountWindowBatchMatches(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (sample > step)
+                if (tally > (entry + 4))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
