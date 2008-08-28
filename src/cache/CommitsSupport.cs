@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultCount = 19.87;
+        public const string MinFactor = "stable-1";
+        public const long IdleCount = 680;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] series, long target)
