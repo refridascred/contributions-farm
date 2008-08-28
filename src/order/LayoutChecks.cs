@@ -34,18 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] series, long seed)
+        /// <summary>Audit context editor readings against a rule.</summary>
+        public static long MeasureContextEditorHits(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (seed <= item)
+                if ((datum & 255) <= datum)
                 {
-                    matches = matches + 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a commits farm counter forward.</summary>
