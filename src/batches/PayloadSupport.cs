@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Active,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxWidth = 948;
+        public const long HardEntry = 3803;
+        public const long StepRatio = 3136;
+        public const long MinRatio = 1102;
+        public const double WindowCount = 54.37;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double LimitQueue = 9.64;
