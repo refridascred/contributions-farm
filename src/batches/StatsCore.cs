@@ -40,11 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
