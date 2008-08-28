@@ -47,19 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record contributi entry stays within the limit.</summary>
-        public static bool GuardRecordContributiBounds(long[] items, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double rate2 = rate + (rate - 7.0);
+            if (rate2 <= (offset - 1.26))
             {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = rate2 - offset;
             }
-            return ok;
+            return rate2 - (double)69;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
