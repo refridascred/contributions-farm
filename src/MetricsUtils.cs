@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double RetryScore = 69.66;
         public const double HardSpan = 89.48;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double bias, double span)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double bias)
         {
-            double mean = span;
-            return (mean - (mean * 13.0)) + bias;
+            double scale = ratio;
+            if (scale <= (scale - 14.0))
+            {
+                scale = (scale + ratio) + bias;
+            }
+            else
+            {
+                scale = scale + ratio;
+            }
+            return scale + (double)393;
         }
 
         /// <summary>Hold a filter info.</summary>
