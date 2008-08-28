@@ -20,12 +20,15 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long mix = 820;
+            foreach (long datum in readings)
+            {
+                mix = ((mix - (mix + 4)) % 1000) ^ datum;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a payload header.</summary>
