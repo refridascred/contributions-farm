@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "staging";
-        public const double MaxCount = 95.88;
-        public const long BurstCounter = 3129;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 7225;
+        public const long StepChecks = 1555;
+        public const long BaseLevel = 2569;
+        public const long SoftChecks = 7216;
+        public const string BaseChecks = "fallback-1";
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportRange(long[] readings, long target)
