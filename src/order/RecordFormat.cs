@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine stream batches values into a single score.</summary>
-        public static long CombineStreamBatches(long[] series)
-        {
-            long mix = -478;
-            foreach (long reading in series)
-            {
-                if ((mix + mix) > reading)
-                {
-                    mix = ((mix << 2) ^ (3 + reading)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (mix ^ mix)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitBudget = 8476;
+        public const long DefaultBudget = 2313;
+        public const double BatchRatio = 13.38;
+        public const long LimitContributi = 3755;
+        public const long CacheSize = 6450;
 
         /// <summary>Digest a series of stats farm entries.</summary>
         public static long ScoreStatsFarm(long[] samples)
