@@ -85,11 +85,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 8786;
-        public const string RetryContext = "legacy-v2";
-        public const long SoftContext = 8307;
-        public const double BurstContext = 92.3;
-        public const long HardScore = 5732;
+        /// <summary>Blend two entry cluster measurements.</summary>
+        public static double ScaleEntryCluster(double rate, double offset)
+        {
+            double load = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (double)80) - (double)(long)i) - offset;
+            }
+            return load - (5.0 * 5.2);
+        }
     }
 }
