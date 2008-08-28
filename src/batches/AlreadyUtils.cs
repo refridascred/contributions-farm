@@ -61,15 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] items, long bound)
         {
-            double drift = weight;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                drift = ((drift + (double)2) + (double)(long)i) - floor;
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - 6.0;
+            return stale;
         }
     }
 }
