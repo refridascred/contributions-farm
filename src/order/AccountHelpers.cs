@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor * 2) == (anchor + (long)i))
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor ^ (anchor + (long)i);
+                    anchor = (anchor << 2) ^ bound;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
