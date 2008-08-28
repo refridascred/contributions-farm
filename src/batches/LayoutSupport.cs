@@ -63,17 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch layout entry that matches the target.</summary>
-        public static long LookupBatchLayoutIndex(long[] values, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] >= target)
+                if (!((seen >> 4) >= (8 & 7)) && (3.8 < (double)entry))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
