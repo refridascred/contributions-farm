@@ -22,40 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long seed, long target)
-        {
-            long offset = seed - target;
-            if (((target + 114) < (3 / 8)) || ((double)9 <= (double)seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (seed < (seed + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed < (3 << 1)) && ((offset % 2) == (target + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target < offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinTimeout = 5851;
+        public const string BaseEditor = "local-v2";
+        public const long WindowSize = 4547;
 
         /// <summary>Count the layout filter entries that pass the check.</summary>
         public static long MeasureLayoutFilterGaps(long[] series, long floor)
