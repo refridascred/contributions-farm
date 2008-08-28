@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            Pending,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
