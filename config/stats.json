@@ -1,8 +1,31 @@
 {
-  "stats_ratio": 3037,
-  "base_limit": 26,
-  "channel_limit": 48.94,
-  "support_depth": 34.24,
-  "burst_timeout": true,
-  "hard_size": 7256
+  "cache_capacity_pct": ["legacy", "green", "local", "strict"],
+  "idle_window_ms": {
+    "default_depth": "latest",
+    "route_depth": 64.13,
+    "min_threshold": {
+      "max_retries_count": [55, 289, 456],
+      "max_ratio": 30,
+      "flush_delay_s": true,
+      "route_limit": false,
+      "profile_capacity": 9.7,
+      "soft_interval_pct": 9902
+    }
+  },
+  "editor_window": "eu-west",
+  "poll_retries_s": true,
+  "batch_size_ms": {
+    "hard_threshold_pct": false,
+    "metrics_delay": {
+      "readonly": 500,
+      "farm_depth": true,
+      "max_threshold_ms": "cached"
+    },
+    "schema_window": {
+      "persist": "latest",
+      "tools_interval": "fallback",
+      "hard_depth_count": 3.32
+    },
+    "burst_retries_count": false
+  }
 }
