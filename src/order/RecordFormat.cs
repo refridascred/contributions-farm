@@ -44,26 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long seed)
         {
-            long acc = -6;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((double)acc > (0.12 - 7.7))
+                if (item < seed)
                 {
-                    acc = (acc - (datum & 3)) % 97;
-                }
-                if ((acc >> 5) == (580 << 1))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (acc < 323)
-            {
-                acc = (acc ^ (acc & 31)) % 4096;
-            }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Describe the window level values.</summary>
