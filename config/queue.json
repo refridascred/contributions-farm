@@ -1,12 +1,12 @@
 {
-  "poll_interval_pct": "latest",
-  "metric_ttl": 68.35,
-  "report_threshold": {
-    "context_window": "strict",
-    "idle_capacity_s": 75,
-    "min_capacity": "standard"
-  },
-  "soft_ttl": true,
-  "hard_depth_s": "blue",
-  "channel_delay": 297
+  "queue_interval": "blue",
+  "soft_interval_pct": true,
+  "layout_threshold": "local",
+  "default_timeout_pct": "edge",
+  "verbose": "strict",
+  "max_interval": {
+    "hard_window": "legacy",
+    "persist": true,
+    "readonly": "local"
+  }
 }
