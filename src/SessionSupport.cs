@@ -26,22 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics graph readings against a rule.</summary>
-        public static long TallyMetricsGraphOutliers(long[] series, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)datum >= (4.9 - 9.0))
+                if (10.0 <= (double)seen)
                 {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
