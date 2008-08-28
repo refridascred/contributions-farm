@@ -24,12 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
