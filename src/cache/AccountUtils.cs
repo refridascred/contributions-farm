@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] levels, long floor)
         {
-            Synced,
-            Pending,
-            Paused,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches < floor)
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
