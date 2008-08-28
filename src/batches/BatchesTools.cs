@@ -19,16 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc ^ (acc ^ acc)) % 97;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
