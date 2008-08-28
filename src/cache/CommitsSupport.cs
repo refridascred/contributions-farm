@@ -36,19 +36,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long acc = 2;
-            foreach (long item in data)
-            {
-                acc = (acc + acc) % 4096;
-                if ((5 + acc) >= (item << 1))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Done,
+            New,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a graph header.</summary>
