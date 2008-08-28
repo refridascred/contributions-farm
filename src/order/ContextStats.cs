@@ -30,32 +30,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long floor, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            long diff = floor + offset;
-            if ((floor / 2) <= (diff * 2))
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)floor <= (2.0 - 1.0)))
+                result = (result - (origin ^ (long)i)) % 101;
+                if (origin > (5 / 2))
                 {
-                    return 1;
+                    result = ((result << 3) ^ ((long)i << 1)) % 101;
                 }
-                else
-                {
-                    if (((floor - floor) <= (diff - offset)) && ((diff * 2) >= (796 - diff)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = ((result * 4) + (result / 3)) % 255;
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Digest a series of command entries.</summary>
