@@ -1,13 +1,6 @@
 # entry settings
-base_ttl_count:
-  flush_ratio_ms: 1179
-  audit: standard
-  hard_capacity_pct: 98.54
-  enabled: eu-west
-burst_limit_pct: green
-batch_ratio: open
-audit:
-  - 96
-  - 250
-  - 111
-filter_size: local
+soft_depth_ms: 51
+entry_retries:
+  - legacy
+  - strict
+min_ttl_pct: 53.15
