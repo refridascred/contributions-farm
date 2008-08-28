@@ -50,16 +50,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate commits layout samples.</summary>
-        public static long TallyCommitsLayout(long[] series, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long mix = 76;
-            foreach (long reading in series)
-            {
-                mix = ((mix - (mix + mix)) ^ reading) - origin;
-                mix = (mix ^ (mix % 24)) % 101;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
