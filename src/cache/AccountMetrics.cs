@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Locked,
+            Failed,
+            Queued,
+            Idle,
             Paused,
-            Active,
-            Pending,
-            Closed,
         }
 
         /// <summary>Compare every pair of already commits readings.</summary>
