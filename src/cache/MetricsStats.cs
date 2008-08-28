@@ -74,12 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples, long step)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            long acc = 876;
+            foreach (long reading in samples)
+            {
+                if (9.0 >= (double)reading)
+                {
+                    acc = (acc + step) % 97;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (reading << 1);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of context readings.</summary>
