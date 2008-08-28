@@ -64,21 +64,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up command entry samples.</summary>
-        public static long PairCommandEntryCount(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 49;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total - total) == (total << 1))
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ (long)series.Length;
+                }
+                else
+                {
+                    total = (total - (total + total)) % 4096;
+                }
+                if (reading >= (total - 327))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total % 97;
         }
     }
 }
