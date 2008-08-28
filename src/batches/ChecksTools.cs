@@ -44,12 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit editor entry readings against a rule.</summary>
+        public static long AuditEditorEntryHits(long[] levels)
         {
-            Dropped,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)hits < 7.9)
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
