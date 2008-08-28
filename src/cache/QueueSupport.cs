@@ -19,24 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            if ((bound + 1) != (559 + step))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound << 3) >= (step << 1)) || ((2.0 + 1.0) < (double)bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
