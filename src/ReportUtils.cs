@@ -38,24 +38,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long step2)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            if ((7.3 / 8.0) < (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.98 + 6.3) < (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
