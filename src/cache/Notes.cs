@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mix = mix + (target ^ (long)i);
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (!(((hits % 97) >= (-11)) && ((536 + value) == (value + hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a queue summary.</summary>
