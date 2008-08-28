@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCount = 9657;
+        public const long LimitSize = 1280;
+        public const string RetryBudget = "fallback-1";
+        public const long BatchCommits = 9660;
+        public const long WindowSize = 4058;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] values)
