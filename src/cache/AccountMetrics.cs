@@ -14,12 +14,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 2403;
-        public const long BatchRatio = 5702;
-        public const long MaxFactor = 7644;
-        public const double DefaultRatio = 6.89;
-        public const long MinFilter = 8231;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long target, long floor)
+        {
+            if ((target + target) >= (target ^ target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor < (target + 403)) || ((81 >> 2) <= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target & 31) < 63)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.7 / 6.0) != (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] readings, long step)
