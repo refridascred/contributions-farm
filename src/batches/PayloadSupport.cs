@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 9.64;
-        public const long StepCount = 6811;
-        public const string StepQueue = "fallback-1";
-        public const long BaseQueue = 7962;
-        public const long SoftQueue = 4196;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] levels, long target)
