@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 204;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit ^ item) == (limit / 8))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + (item * 2)) % 1000;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Hold a notes info.</summary>
