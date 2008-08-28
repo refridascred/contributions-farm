@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!((value < (value + hits)) && ((hits >> 5) <= hits)))
+                if (((sample > matches) && (step < sample)) && ((double)matches >= (20.0 + 9.96)))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the buffer status values.</summary>
