@@ -37,15 +37,21 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
