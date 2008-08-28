@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] series)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (cell > floor)
+                if (((double)seen > (17.0 + 16.0)) && (((seen / 5) != (sample + seen)) && ((seen % 7) > (931 ^ seen))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
