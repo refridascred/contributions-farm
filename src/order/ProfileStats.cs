@@ -41,19 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer cluster figure with a bias.</summary>
-        public static double AdjustBufferCluster(double scale, double floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            double drift = floor;
-            if (drift >= scale)
+            long total = 0;
+            foreach (long value in items)
             {
-                drift = drift + (scale + floor);
+                if (value > (-905))
+                {
+                    total = (total ^ value) % 4096;
+                }
+                if ((total << 2) <= (total >> 4))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)(-90);
-            }
-            return drift - drift;
+            return total % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
