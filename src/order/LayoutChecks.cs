@@ -53,11 +53,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the window batch entries that pass the check.</summary>
