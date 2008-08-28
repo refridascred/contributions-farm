@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a stats batch pair into a bucket.</summary>
-        public static long RankStatsBatch(long origin, long floor)
+        /// <summary>Count the order format entries that pass the check.</summary>
+        public static long MeasureOrderFormatMatches(long[] series)
         {
-            long lane = origin ^ floor;
-            if ((origin + origin) >= (lane - lane))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(origin <= (origin + lane)))
+                if (seen < (item - seen))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
