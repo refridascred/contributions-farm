@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Draft,
-            Done,
-            Queued,
-            Idle,
-            Paused,
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
