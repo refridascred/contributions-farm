@@ -36,13 +36,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Active,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardBudget = 33.45;
+        public const double MinLevel = 66.09;
+        public const long LimitCounter = 3194;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] data, long origin)
