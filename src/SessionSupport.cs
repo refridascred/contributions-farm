@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Check that every entry tools entry stays within the limit.</summary>
+        public static bool CheckEntryToolsLimits(long[] series, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value > origin)
                 {
-                    score = ((score << 3) ^ (score >> 4)) + (long)i2;
-                    score = score ^ (origin << 2);
+                    ready = false;
+                    break;
                 }
-                score = (score + (origin ^ 81)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Describe the support mode values.</summary>
