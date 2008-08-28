@@ -1,9 +1,11 @@
 # githubfarm settings
-poll_interval:
-  - open
-  - blue
-  - blue
-sync_window_s: 2263
-base_ratio: blue
-enabled: 72.68
-default_delay_ms: 2444
+audit:
+  default_ratio_s: false
+  report_capacity: 7951
+  hard_interval_pct: staging
+layout_timeout:
+  - 282
+  - 404
+  - 290
+cluster_depth: staging
+enabled: blue
