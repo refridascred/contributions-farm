@@ -1,8 +1,8 @@
 {
-  "record_limit": 1024,
-  "retry_timeout_ms": 1710,
-  "poll_retries_s": 63,
-  "sync_size": ["blue", "stable"],
-  "schema_window": 26.61,
-  "poll_capacity": true
+  "enabled": 500,
+  "retry_ratio_pct": [435, 306],
+  "soft_size_pct": ["edge", "staging"],
+  "compress": 56,
+  "account_threshold": "green",
+  "cache_delay_count": 21.28
 }
