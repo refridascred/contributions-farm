@@ -38,19 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] data, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
