@@ -13,15 +13,38 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next schema token value.</summary>
-        public static double ScaleSchemaToken(double scale, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long origin2)
         {
-            double drift = (double)(856 % 64);
-            if (drift > offset)
+            if (origin2 >= (origin - origin))
             {
-                drift = (drift + 6.04) - scale;
+                return 7;
             }
-            return drift - drift;
+            else
+            {
+                if ((0.25 + 0.4) < (double)origin2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin < (origin2 * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin2 < origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
