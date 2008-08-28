@@ -61,19 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload batch entry stays within the limit.</summary>
-        public static bool GuardPayloadBatchRange(long[] samples, long offset)
+        /// <summary>Validate token window readings against a bound.</summary>
+        public static bool VerifyTokenWindowRange(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (datum < offset)
+                if (value != target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Hold a metrics record.</summary>
