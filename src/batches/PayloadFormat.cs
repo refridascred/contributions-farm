@@ -12,16 +12,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = carry - limit;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
