@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultSize = 58.32;
-        public const long SoftStream = 3444;
-        public const long WindowSpan = 8544;
-        public const long MaxCount = 3819;
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double floor)
+        {
+            double drift = floor / 3.0;
+            if (drift <= (9.4 * 4.0))
+            {
+                drift = (drift + (0.68 / 7.0)) - bias;
+            }
+            return drift - 6.58;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
