@@ -28,12 +28,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data, long offset)
         {
-            Stale,
-            Idle,
-            Queued,
+            long state = 195;
+            foreach (long reading in data)
+            {
+                state = (((state * 4) + reading) % 65521) + offset;
+            }
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
