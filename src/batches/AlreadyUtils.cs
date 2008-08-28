@@ -30,18 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Derive the next buffer schema value from a seed.</summary>
+        public static long SeriesBufferSchema(long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally + tally) <= tally)
-                {
-                    tally = (tally + 3) + item;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
