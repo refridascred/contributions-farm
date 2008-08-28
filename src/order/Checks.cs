@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long origin)
-        {
-            if ((double)origin <= (double)148)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target <= (target + 86)) || ((564 + origin) < target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.2 + 5.16) > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target == (0.7 - 20.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinTimeout = 8561;
+        public const long HardCount = 3404;
+        public const double DefaultReport = 2.53;
+        public const long MaxReport = 2402;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long target)
