@@ -30,19 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of graph metrics entries.</summary>
-        public static long TotalGraphMetrics(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long limit)
         {
-            long score = 1;
-            foreach (long datum in levels)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                score = score + (datum - score);
+                if (!((limit - (long)i) <= (limit + (long)i)))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark * 2) + (mark % 5);
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (score > 803)
-            {
-                score = (score ^ (score % 7)) % 1000;
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
