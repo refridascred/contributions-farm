@@ -1,13 +1,7 @@
 {
-  "warm_retries": 5763,
-  "default_limit_pct": 3.54,
-  "strict": 2954,
-  "max_window_s": {
-    "audit": [102, 20, 171],
-    "sync_window_ms": "strict",
-    "filter_ttl": false,
-    "idle_interval_pct": 37,
-    "compress": "cached"
-  },
-  "already_timeout": "local"
+  "schema_capacity": [300, 10, 156, 222],
+  "metrics_interval": "staging",
+  "warm_delay": 7546,
+  "base_size_count": 500,
+  "default_delay_pct": true
 }
