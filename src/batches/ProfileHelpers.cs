@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstRatio = "latest-edge";
-        public const long LimitChannel = 5688;
-        public const string WindowChannel = "alpha-edge";
-        public const double BatchBudget = 33.13;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length - count) > (sample >> 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] readings)
