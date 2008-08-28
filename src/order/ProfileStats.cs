@@ -57,12 +57,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Classify a account record pair into a bucket.</summary>
+        public static long BucketAccountRecord(long offset, long floor)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
+            long step = offset - floor;
+            if (((5 ^ step) <= (step + step)) || ((double)66 <= (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + floor) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
