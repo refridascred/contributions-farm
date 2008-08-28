@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Active,
-            Dropped,
-            Locked,
+            Queued,
+            Synced,
             Stale,
-            New,
+            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
