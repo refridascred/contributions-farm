@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count record queue pairs that satisfy a relation.</summary>
