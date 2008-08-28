@@ -51,24 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long target, long offset)
+        /// <summary>Match up buffer batches samples.</summary>
+        public static long OverlapBufferBatchesCount(long[] data)
         {
-            if ((offset << 1) != (43 + 565))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset << 2) < offset) && ((double)target >= (6.8 + 6.4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the stream state values.</summary>
