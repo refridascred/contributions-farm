@@ -25,14 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            Draft,
-            Paused,
-            Closed,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((-337) >> 2) >= (cell ^ 0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
