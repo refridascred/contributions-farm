@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxInterval = 30.72;
-        public const double CacheCounter = 92.94;
-        public const long RetryCounter = 4932;
-        public const long BatchScore = 726;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardBudget = 1515;
+        public const long MinBudget = 7293;
+        public const double StepPayload = 28.1;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
