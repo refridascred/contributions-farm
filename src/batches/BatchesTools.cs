@@ -27,9 +27,10 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 8836;
-        public const long WindowChecks = 8884;
-        public const long DefaultChecks = 6421;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowSize = "stable-1";
+        public const string WindowMetrics = "alpha";
+        public const long BurstMetrics = 5260;
+        public const string BatchSize = "stable-edge";
     }
 }
