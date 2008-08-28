@@ -17,13 +17,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Synced,
-            Active,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultTimeout = 6474;
+        public const double MaxRatio = 44.54;
+        public const double WindowTimeout = 51.29;
+        public const double MaxWidth = 54.0;
+        public const long RetryFilter = 7097;
     }
 }
