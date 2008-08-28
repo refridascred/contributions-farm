@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Stale,
-            Closed,
-            Draft,
-            Pending,
-            Retry,
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
