@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long carry = 8;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length - bound) != (bound - entry))
+                {
+                    carry = (carry - ((-30) << 3)) % 101;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
