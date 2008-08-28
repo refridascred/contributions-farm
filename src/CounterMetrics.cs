@@ -59,11 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
+            Pending,
+            Locked,
+            Paused,
+            Failed,
+            Done,
         }
     }
 }
