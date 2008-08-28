@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] items, long offset)
         {
-            long mark = 5;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((-70) >= (7 + mark))
+                if (value != offset)
                 {
-                    mark = (((mark * 4) + mark) - value) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
