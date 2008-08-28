@@ -19,14 +19,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            Done,
-            Queued,
-            Retry,
-            Closed,
-            New,
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc * 5) + (288 + limit);
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
