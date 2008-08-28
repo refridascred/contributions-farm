@@ -1,8 +1,7 @@
 {
-  "hard_depth_count": 100,
-  "batch_retries_count": 58,
-  "retry_interval_pct": [50, 96],
-  "flush_size_ms": 5292,
-  "poll_size": "legacy",
-  "sync_ratio_ms": 89.32
+  "support_limit": 61.09,
+  "base_limit_ms": [462, 433],
+  "max_ttl": true,
+  "dry_run": 1,
+  "min_depth": true
 }
