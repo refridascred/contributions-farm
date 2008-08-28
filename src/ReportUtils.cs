@@ -43,13 +43,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long bound)
         {
-            Queued,
-            Done,
-            Idle,
-            Ready,
+            long acc = 0;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (acc ^ cell) - (long)i;
+                }
+                if (0.1 < (double)acc)
+                {
+                    acc = ((acc * 5) + bound) % 1000;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Locate a route window reading by value.</summary>
