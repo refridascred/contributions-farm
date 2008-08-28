@@ -27,15 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long CountRouteFarmOutliers(long[] readings, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((double)origin > 3.6)
+                {
+                    count = (count + 2) + value;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the notes githubfarm entries that pass the check.</summary>
