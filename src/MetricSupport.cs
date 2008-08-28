@@ -28,12 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Idle,
-            Stale,
-            Active,
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
