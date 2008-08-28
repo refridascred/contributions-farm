@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a cache summary.</summary>
