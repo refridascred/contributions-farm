@@ -1,5 +1,8 @@
 {
-  "githubfarm_window": "strict",
-  "hard_ratio_ms": 2141,
-  "compress": 47
+  "counter_delay": 9,
+  "default_window_pct": "fallback",
+  "tools_threshold": ["blue", "latest", "staging", "staging"],
+  "sync_size": 74.74,
+  "dry_run": "edge",
+  "cluster_capacity": "fallback"
 }
