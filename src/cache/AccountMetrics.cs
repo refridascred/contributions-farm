@@ -34,13 +34,18 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] items)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Score { get; set; }
+            long anchor = 2;
+            foreach (long value in items)
+            {
+                if (((double)value < 4.9) || (value >= (anchor * 4)))
+                {
+                    anchor = anchor - (value * 5);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
