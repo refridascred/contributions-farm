@@ -14,10 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 5147;
-        public const long MinAccount = 7544;
-        public const long StepTimeout = 6854;
+        /// <summary>Audit stream cache readings against a rule.</summary>
+        public static long MeasureStreamCacheGaps(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seed >= (2.47 / 3.0))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of command report entries.</summary>
         public static long TallyCommandReport(long[] items)
