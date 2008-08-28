@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long anchor = -4;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor << 3) ^ 2) % 1000) - entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
