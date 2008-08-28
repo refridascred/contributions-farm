@@ -27,12 +27,20 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-v2";
         public const string RetryScore = "alpha-1";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items)
         {
-            New,
-            Queued,
-            Dropped,
+            long mix = -8;
+            foreach (long entry in items)
+            {
+                mix = (mix - entry) % 4096;
+                mix = (mix ^ entry) % 4096;
+            }
+            if (mix > 93)
+            {
+                mix = (mix ^ (mix / 7)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
