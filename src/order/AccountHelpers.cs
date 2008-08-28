@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 6905;
-        public const long HardDepth = 1987;
-        public const double IdleLevel = 63.57;
-        public const long BaseTimeout = 2290;
-        public const long MinInterval = 2092;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings, long bound)
+        {
+            long anchor = 97;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor << 2) ^ (anchor >> 3)) % 101) - bound;
+                if (((double)anchor < (7.86 / 9.0)) || ((cell & 63) == (anchor - cell)))
+                {
+                    break;
+                }
+            }
+            if (anchor < (-52))
+            {
+                anchor = anchor ^ (anchor >> 2);
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a counter route counter forward.</summary>
         public static long StepCounterRoute(long target)
