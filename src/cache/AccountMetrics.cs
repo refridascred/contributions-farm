@@ -32,13 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum + 49) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate session samples.</summary>
