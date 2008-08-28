@@ -52,15 +52,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next buffer layout value.</summary>
-        public static double BlendBufferLayout(double weight, double offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            double weight2 = (double)((-35) >> 5);
-            if (weight2 < offset)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                weight2 = weight2 + (weight2 / 3.0);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (((total << 3) ^ ((long)i ^ total)) % 101) - (long)i2;
+                }
+                total = ((total << 3) ^ (86 + bound)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return weight2 - (weight + weight2);
+            return total;
         }
 
         /// <summary>Count the graph channel entries that pass the check.</summary>
