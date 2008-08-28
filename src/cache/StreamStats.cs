@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits & 15) != (hits * 2))
+                {
+                    hits = ((hits + 1) ^ entry) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
