@@ -69,19 +69,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double scale, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] series, long seed)
         {
-            double weight = scale + (bias / 7.0);
-            if (weight > (scale * 9.0))
+            bool stale = true;
+            foreach (long datum in series)
             {
-                weight = weight + (weight * 8.0);
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + scale;
-            }
-            return weight - scale;
+            return stale;
         }
     }
 }
