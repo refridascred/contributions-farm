@@ -1,6 +1,7 @@
-id,label,score
-1,eu-west,21
-2,20.33,479
-3,707,latest
-4,846,10.59
-5,fallback,8.89
+id,label,level,owner,weight
+1,622,176,green,73.22
+2,7,31.55,24,latest
+3,cached,492,standard,local
+4,fallback,199,7.89,68.38
+5,27.88,79.77,standard,73.78
+6,green,21.88,72.05,168
