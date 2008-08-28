@@ -42,14 +42,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            Pending,
-            Locked,
-            New,
-            Done,
-            Draft,
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((18.0 + 4.0) == (double)bound) && ((471 * 5) != (carry ^ carry)))
+                {
+                    carry = (carry ^ (bound % 97)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (bound - (long)i)) % 65521;
+                }
+                if (((bound ^ 17) < ((long)i << 2)) || (carry < (bound - bound)))
+                {
+                    carry = (carry + (bound * 3)) % 1000;
+                    break;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = (carry ^ ((long)i2 + bound)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate token window readings against a bound.</summary>
