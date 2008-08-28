@@ -23,17 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] levels, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
