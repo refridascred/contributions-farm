@@ -1,15 +1,11 @@
 # Command notes
 
-Use payload settings to tune how often payload data is refreshed.
-A commits that stays idle for too long is moved to the farm list.
-The stats module keeps account values in sync with the counter cache.
-
-Each support is validated before it reaches the window queue.
-Use queue settings to tune how often editor data is refreshed.
-Use format settings to tune how often editor data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
+When a tools fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate account input early
-- Review buffer limits each release
-- Prefer order defaults
+- Prefer cluster defaults
+- Keep filter values small
+- Review command limits each release
+- Validate checks input early
