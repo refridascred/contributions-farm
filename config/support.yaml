@@ -1,26 +1,14 @@
 # support settings
-idle_size:
-  default_retries_s:
-    max_limit_ms: 51
-    hard_timeout: 100
-    soft_timeout_count: 9351
-    profile_ratio: strict
-  batch_retries_count: 5223
-  flush_limit:
-    poll_ttl_ms: 98
-    burst_capacity_ms: 39
-    batch_ttl: blue
-    hard_retries_count: blue
-    audit: open
-  burst_retries:
-    burst_ttl_ms: primary
-    command_ttl: standard
-    warm_capacity: 1064
-    base_ttl_s: local
-    strict: green
-farm_window:
-  stream_retries: staging
-  burst_ttl_s: 81.77
-  dry_run: eu-west
-  warm_retries: 10
-readonly: 100
+readonly:
+  - edge
+  - stable
+  - local
+  - latest
+flush_window:
+  - edge
+  - eu-west
+  - green
+max_timeout: 85.2
+compress: primary
+verbose: 30
+default_timeout_count: strict
