@@ -62,24 +62,16 @@ namespace Common.Utilities
             return rate - 19.0;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            if (((56 ^ limit) != (49 & 15)) || (limit < (limit & 15)))
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                result = (result ^ result) % 97;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step + 711) > step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
     }
 }
