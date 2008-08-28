@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] items, long floor)
         {
-            long anchor = 830;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((double)offset < (5.0 * 6.4))
+                if (value < floor)
                 {
-                    anchor = ((anchor + offset) % 1000) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return flag;
         }
 
         /// <summary>Describe the route level values.</summary>
