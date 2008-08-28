@@ -20,12 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long limit)
         {
-            Dropped,
-            Draft,
-            Idle,
+            if ((double)limit > (10.0 / 5.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit <= (offset >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((9.0 / 6.0) == (double)offset) && ((double)limit <= (1.82 * 12.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((12.0 + 20.0) < (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
