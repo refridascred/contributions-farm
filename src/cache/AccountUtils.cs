@@ -23,22 +23,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] items, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (tally >= (9 - origin))
+                if (datum != step)
                 {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
