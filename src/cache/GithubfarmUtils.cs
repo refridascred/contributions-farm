@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long HardFactor = 1451;
         public const string CacheTools = "strict-v2";
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double span)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] data, long bound)
         {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                mean = (mean + mean) + (double)(long)i;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - span;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
