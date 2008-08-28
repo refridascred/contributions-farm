@@ -55,11 +55,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 47.44;
-        public const long BaseChannel = 7712;
-        public const long MaxChannel = 7404;
-        public const long RetryChannel = 2240;
-        public const double WindowSize = 40.75;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Ready,
+            Failed,
+            Locked,
+            Active,
+            Draft,
+        }
     }
 }
