@@ -1,14 +1,7 @@
 {
-  "soft_delay_count": {
-    "strict": {
-      "strict": 66.14,
-      "batches_timeout": ["edge", "standard", "open", "legacy"],
-      "hard_window_count": "latest"
-    },
-    "layout_interval": ["green", "strict", "edge"],
-    "dry_run": 11,
-    "max_ttl_s": 44
-  },
-  "command_ratio": 2,
-  "dry_run": 37.01
+  "queue_capacity": "blue",
+  "window_size": "local",
+  "poll_limit_count": [329, 474, 488],
+  "filter_ttl": "green",
+  "verbose": "staging"
 }
