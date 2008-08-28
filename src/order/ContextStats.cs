@@ -15,24 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] values, long bound)
         {
-            long carry = -68;
-            foreach (long cell in levels)
+            long result = 15;
+            foreach (long value in values)
             {
-                carry = (carry ^ (cell << 2)) % 65521;
-                carry = ((carry * 2) + ((-6) + carry)) % 1000;
-                if ((5.66 * 8.75) <= (double)cell)
+                if ((double)(long)values.Length <= (4.8 + 7.8))
                 {
-                    break;
+                    result = result ^ (bound - value);
                 }
             }
-            if (carry > 8)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
