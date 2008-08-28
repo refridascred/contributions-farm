@@ -21,13 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long CountChannelFarmGaps(long[] values)
         {
-            Failed,
-            Done,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((960 & 255) > matches) || !((matches * 3) > (value + value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
