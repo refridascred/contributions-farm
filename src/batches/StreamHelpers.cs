@@ -30,22 +30,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm metrics values into a single score.</summary>
-        public static long CombineGithubfarmMetrics(long[] data, long limit)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long anchor = 64;
-            foreach (long cell in data)
-            {
-                if (((6.64 / 8.0) <= (double)anchor) || ((1 + anchor) < (limit & 127)))
-                {
-                    anchor = ((anchor * 2) + (cell * 5)) % 65521;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = anchor ^ (limit + limit);
-            }
-            return anchor % 4096;
+            Closed,
+            Stale,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
