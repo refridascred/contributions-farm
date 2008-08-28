@@ -22,23 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double span)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double rate = ratio;
-            if (rate < (double)32)
-            {
-                rate = (rate - rate) - span;
-            }
-            else
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (double)0) + (double)(long)i;
-            }
-            return rate - (ratio - 2.6);
+            Closed,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
