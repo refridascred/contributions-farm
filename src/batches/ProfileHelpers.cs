@@ -53,10 +53,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 2225;
-        public const double BaseStats = 88.45;
-        public const string BaseInterval = "legacy-edge";
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((27 >> 4) > ((long)i >> 2))
+                {
+                    break;
+                }
+                if ((double)2 > (double)total)
+                {
+                    total = (total - limit) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitSize = 28.48;
