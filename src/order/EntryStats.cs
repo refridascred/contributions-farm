@@ -25,11 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] items)
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)cell <= (3.2 + 4.0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
