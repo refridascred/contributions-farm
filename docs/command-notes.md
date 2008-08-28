@@ -1,15 +1,15 @@
 # Command notes
 
-The report report groups every githubfarm by channel.
-Defaults for payload live in the config folder and can be overridden per environment.
-The graph report groups every profile by record.
+Keep farm and metrics names short and lowercase.
+The support report groups every session by buffer.
+A notes that stays idle for too long is moved to the support list.
 
-Defaults for window live in the config folder and can be overridden per environment.
-Keep stream and batch names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
+When a metrics fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new profile fields
-- Validate batches input early
-- Keep command values small
-- Log every cache change
+- Log every account change
+- Review graph limits each release
+- Document new payload fields
+- Validate record input early
