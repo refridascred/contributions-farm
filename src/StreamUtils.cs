@@ -41,15 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double weight, double offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double rate = weight;
-            if (rate >= (16.0 + 20.0))
-            {
-                rate = (rate + weight) + offset;
-            }
-            return rate + rate;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
