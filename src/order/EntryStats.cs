@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next stats batches value.</summary>
-        public static double SmoothStatsBatches(double scale, double span)
+        /// <summary>Combine layout buffer values into a single score.</summary>
+        public static long DigestLayoutBuffer(long[] values, long seed)
         {
-            double drift = scale;
-            if (drift >= drift)
+            long acc = -7;
+            foreach (long value in values)
             {
-                drift = drift - (scale * 1.4);
+                if ((double)seed <= (8.0 * 17.0))
+                {
+                    acc = ((acc << 2) ^ (acc - 94)) ^ value;
+                }
             }
-            else
-            {
-                drift = drift + 1.84;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift + span)) - (double)(long)i;
-            }
-            return drift - scale;
+            return acc % 1000;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
