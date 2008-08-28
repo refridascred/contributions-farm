@@ -31,17 +31,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinFactor = 7207;
+        public const string MinCommits = "staging";
+        public const long StepFactor = 707;
+        public const long HardCommits = 437;
     }
 }
