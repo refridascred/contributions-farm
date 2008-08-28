@@ -1,8 +1,7 @@
-id,score,level,owner
-1,65.0,101,latest
-2,608,legacy,strict
-3,blue,62.61,59.4
-4,standard,40.65,45.25
-5,19.86,23.44,89.21
-6,96.14,716,staging
-7,242,green,38.39
+id,token,rank,score
+1,91.56,317,736
+2,24,23.84,73.15
+3,30,edge,local
+4,stable,76.87,234
+5,54.14,2.59,432
+6,20.63,584,572
