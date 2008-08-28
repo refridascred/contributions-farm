@@ -24,31 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long origin)
+        /// <summary>Audit stream batches readings against a rule.</summary>
+        public static long AuditStreamBatchesMatches(long[] data)
         {
-            if (((origin + origin) < (origin + limit)) || ((double)limit == (6.71 - 8.34)))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (double)62)
+                if (hits <= (datum % 5))
                 {
-                    return 7;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((limit + limit) < (limit + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate support checks readings against a bound.</summary>
