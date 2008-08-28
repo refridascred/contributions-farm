@@ -24,24 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double gain, double bias)
         {
-            if (seed <= bound)
+            double weight = gain + (gain / 5.0);
+            if (weight > (weight + weight))
             {
-                return 3;
+                weight = (weight - (double)51) - bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((bound << 2) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
+                weight = (weight + weight) + (double)(long)i;
             }
+            return weight + 5.4;
         }
 
         /// <summary>Describe the context status values.</summary>
