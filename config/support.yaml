@@ -1,11 +1,4 @@
 # support settings
-persist: false
-strict: false
-burst_delay_pct:
-  warm_interval_s: staging
-  warm_capacity_count: 100
-  batch_capacity: true
-  window_interval: 53.55
-token_interval: cached
-max_ttl_count: local
-soft_interval: 65.59
+batch_timeout: fallback
+cache_threshold_pct: primary
+default_timeout_ms: 100
