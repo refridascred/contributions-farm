@@ -35,14 +35,12 @@ namespace Common.Utilities
         public const long WindowWidth = 1833;
         public const long BaseInterval = 4402;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Closed,
-            Draft,
-            Stale,
-            Ready,
-            Paused,
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count report account pairs that satisfy a relation.</summary>
