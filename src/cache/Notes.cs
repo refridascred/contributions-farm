@@ -26,11 +26,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSpan = 4314;
-        public const long MaxCount = 1449;
-        public const string DefaultAccount = "staging";
-        public const long BaseAccount = 6644;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long RankBatch(long target, long offset)
