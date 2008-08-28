@@ -1,5 +1,6 @@
 {
-  "poll_capacity_count": 83,
-  "report_depth": 60,
-  "retry_interval": "stable"
+  "default_timeout": "cached",
+  "retry_ttl_pct": 52.53,
+  "cache_threshold_count": false,
+  "flush_retries_pct": 100
 }
