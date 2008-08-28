@@ -1,11 +1,13 @@
 {
-  "cache_interval_pct": [333, 395, 99, 263],
-  "layout_size": "primary",
-  "poll_delay_pct": {
-    "persist": 1024,
-    "compress": ["blue", "local"],
-    "tools_ratio": 25.27,
-    "batch_capacity_count": ["staging", "legacy"]
+  "idle_capacity": 1024,
+  "default_limit_pct": {
+    "default_threshold_s": "standard",
+    "default_delay_s": 30,
+    "dry_run": "legacy",
+    "readonly": 10,
+    "counter_delay": "staging",
+    "base_ratio": 50.88
   },
-  "default_limit": 26.08
+  "hard_limit_count": [472, 110],
+  "sync_capacity": 54
 }
