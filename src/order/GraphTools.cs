@@ -48,31 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long limit)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double offset)
         {
-            if (((double)step > (12.0 / 8.0)) || ((step & 127) < limit))
+            double bias = offset;
+            if (bias <= (bias - offset))
             {
-                return 6;
+                bias = (bias + offset) + ratio;
             }
             else
             {
-                if ((823 << 2) >= (limit << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (23 >= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                bias = bias + (double)899;
             }
+            return bias + (double)16;
         }
 
         /// <summary>Measure how many record entry samples are out of range.</summary>
