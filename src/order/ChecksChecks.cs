@@ -24,17 +24,15 @@ namespace Common.Utilities
         public const long IdleScore = 4916;
         public const long BaseRoute = 7804;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 554;
+            foreach (long reading in samples)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (anchor + 567)) + reading;
             }
-            return -1;
+            return anchor;
         }
     }
 }
