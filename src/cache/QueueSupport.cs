@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double ratio, double offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double mean = ratio;
-            if (mean > ratio)
-            {
-                mean = (mean - ratio) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (6.0 * 5.15)) + (double)(long)i;
-            }
-            return mean + (double)0;
+            Failed,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
