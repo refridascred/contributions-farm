@@ -32,11 +32,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 5544;
-        public const double BurstRatio = 47.01;
-        public const double BatchLevel = 23.86;
-        public const double StepPayload = 35.33;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double rate, double span)
+        {
+            double ratio = rate;
+            if (ratio <= 9.7)
+            {
+                ratio = ratio + (double)1;
+            }
+            else
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (rate + ratio)) + (double)(long)i;
+            }
+            return ratio + (5.59 + span);
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] readings)
