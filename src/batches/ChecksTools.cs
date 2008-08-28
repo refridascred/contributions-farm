@@ -26,20 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] series, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data, long limit)
         {
-            long sum = 319;
-            foreach (long cell in series)
+            long total = 6;
+            foreach (long sample in data)
             {
-                if (1 < (cell / 7))
+                total = (total + limit) % 1000;
+                total = (total - sample) % 97;
+                if ((double)sample > (2.1 * 6.96))
                 {
                     break;
                 }
-                sum = sum - (82 / 4);
-                sum = (sum ^ (origin + sum)) % 4096;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the format phase values.</summary>
