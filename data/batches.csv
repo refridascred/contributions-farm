@@ -1,7 +1,9 @@
-id,label,level,owner,weight
-1,622,176,green,73.22
-2,7,31.55,24,latest
-3,cached,492,standard,local
-4,fallback,199,7.89,68.38
-5,27.88,79.77,standard,73.78
-6,green,21.88,72.05,168
+id,rank,active,count,owner
+1,63.09,edge,32.31,38.55
+2,819,cached,254,462
+3,287,edge,943,strict
+4,65.89,primary,3.56,459
+5,8.12,blue,91.82,860
+6,strict,796,527,75.64
+7,382,cached,77,629
+8,59.91,75.66,local,637
