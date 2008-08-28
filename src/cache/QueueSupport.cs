@@ -32,18 +32,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] values, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)tally == (1.0 * 9.91))
-                {
-                    tally = ((tally + 3) + item) + step;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Failed,
+            Stale,
         }
     }
 }
