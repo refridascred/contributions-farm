@@ -42,22 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((tally + target) >= (6 << 3)) && (70 > (entry + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 7479;
+        public const double RetryRatio = 85.78;
+        public const double CacheSpan = 45.18;
+        public const long DefaultSpan = 1311;
+        public const string StepInterval = "local-v2";
     }
 }
