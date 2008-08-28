@@ -1,5 +1,40 @@
 # support settings
-entry_timeout: 500
-account_interval: 99
-cache_limit: 41
-sync_capacity_count: 50.41
+commits_retries:
+  default_limit_pct: 30
+  audit:
+    idle_limit_ms: legacy
+    dry_run: standard
+    max_ttl: strict
+    contributi_capacity:
+      - 351
+      - 482
+      - 96
+    account_window: true
+  poll_timeout: 88.81
+  verbose: 80.3
+  base_size_pct: 77
+  idle_interval:
+    - primary
+    - stable
+githubfarm_interval:
+  persist: 100
+  cache_capacity_pct:
+    - primary
+    - eu-west
+    - blue
+  sync_delay: 100
+  batch_depth_count: 67
+  cache_window:
+    - legacy
+    - green
+    - blue
+    - standard
+  soft_ttl_ms:
+    - 130
+    - 93
+    - 139
+    - 416
+verbose:
+  base_ratio_ms: true
+  retry_ratio_s: fallback
+  default_retries: 1024
