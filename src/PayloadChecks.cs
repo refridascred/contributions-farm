@@ -71,11 +71,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "alpha";
+        public const string MaxRecord = "latest";
+        public const long BurstRecord = 4082;
     }
 }
