@@ -68,13 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] items)
         {
-            Failed,
-            Idle,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((((item + 27) != (item - seen)) && (3.24 < (double)item)) && ((double)seen != (double)35))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
