@@ -1,12 +1,16 @@
 # Payload notes
 
-The booking helpers are pure functions, so they are safe to call from any thread.
-The support report groups every booking by cache.
-A cluster that stays idle for too long is moved to the metric list.
+Use cluster settings to tune how often stream data is refreshed.
+The channel report groups every report by batches.
+The tools report groups every stream by support.
+
+Run the route check before changing any stats limits.
+The checks module keeps metrics values in sync with the account cache.
+Run the payload check before changing any entry limits.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Document new token fields
-- Log every route change
-- Review support limits each release
+- Validate report input early
+- Prefer counter defaults
+- Log every entry change
+- Keep buffer values small
