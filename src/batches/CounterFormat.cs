@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] values)
+        /// <summary>Measure how many schema channel samples are out of range.</summary>
+        public static long TallySchemaChannelHits(long[] items, long target)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long item in items)
             {
-                if (((reading >= matches) && (reading >= (reading + matches))) && (reading <= (matches * 3)))
+                if ((target + matches) == (matches & 7))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) - item;
                 }
             }
             return matches;
