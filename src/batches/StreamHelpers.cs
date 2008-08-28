@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] items, long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long score = 9;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score - limit) % 65521) - datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score < 54)
-            {
-                score = score ^ (score ^ limit);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
