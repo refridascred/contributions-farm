@@ -27,19 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batches stats entry stays within the limit.</summary>
-        public static bool ValidateBatchesStatsBounds(long[] readings, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (item <= step)
+                if ((((reading ^ reading) < (reading % 60)) && ((4.56 / 3.0) >= (double)reading)) && ((16.0 / 9.0) > (double)hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
