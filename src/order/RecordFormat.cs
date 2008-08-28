@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] readings)
+        /// <summary>Combine stream batches values into a single score.</summary>
+        public static long CombineStreamBatches(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mix = -478;
+            foreach (long reading in series)
             {
-                if (!(5.0 <= (double)value) && (8.81 >= (double)(long)readings.Length))
+                if ((mix + mix) > reading)
                 {
-                    count = count + 2;
+                    mix = ((mix << 2) ^ (3 + reading)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = (mix - (mix ^ mix)) % 97;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Iterate the buffer layout series from a seed.</summary>
