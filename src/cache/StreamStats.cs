@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] data, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = 9;
+            foreach (long datum in levels)
             {
-                if ((hits & 15) != (hits * 2))
-                {
-                    hits = ((hits + 1) ^ entry) - target;
-                }
+                state = ((state - state) + datum) + floor;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a notes info.</summary>
