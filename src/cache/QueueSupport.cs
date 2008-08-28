@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples)
+        /// <summary>Audit payload editor readings against a rule.</summary>
+        public static long MeasurePayloadEditorGaps(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((double)count >= (double)entry)
+                if ((double)sample < (3.51 * 6.33))
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
