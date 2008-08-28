@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] data, long limit)
+        /// <summary>Accumulate session contributi samples.</summary>
+        public static long TotalSessionContributi(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long value in readings)
             {
-                if (data[i] < limit)
+                anchor = (anchor << 3) ^ anchor;
+                if (((long)readings.Length - 855) != (anchor ^ value))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = anchor ^ (floor % 5);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two commits measurements.</summary>
