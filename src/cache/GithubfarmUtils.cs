@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 27.7;
-        public const long BatchFactor = 3522;
-        public const string MinBuffer = "cached-v2";
-        public const long LimitBuffer = 5588;
-        public const double BatchInterval = 80.69;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Pending,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long WeighCounter(long[] data, long floor)
