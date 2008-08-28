@@ -22,14 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long seed, long target)
         {
-            New,
-            Pending,
-            Done,
-            Draft,
-            Active,
+            long offset = seed - target;
+            if (((target + 114) < (3 / 8)) || ((double)9 <= (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed < (seed + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed < (3 << 1)) && ((offset % 2) == (target + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target < offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout filter entries that pass the check.</summary>
