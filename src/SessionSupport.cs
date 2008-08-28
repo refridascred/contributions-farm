@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseDepth = 5801;
+        public const long RetryStats = 9094;
+        public const long CacheFactor = 697;
+        public const double DefaultStats = 50.69;
+        public const long MaxSize = 1940;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] readings)
