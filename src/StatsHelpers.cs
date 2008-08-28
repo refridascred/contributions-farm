@@ -29,22 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            long anchor = 43;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item - anchor) > (507 & 63)) && (anchor > (40 * 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor - (item + anchor);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (item >> 3);
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
