@@ -38,14 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            Draft,
-            Stale,
-            Queued,
-            Closed,
-            Synced,
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((result ^ result) != (floor / 2))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a session options.</summary>
