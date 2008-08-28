@@ -1,4 +1,11 @@
 # entry settings
-compress: 14.46
-min_retries_ms: false
-counter_retries: true
+hard_interval_s:
+  soft_threshold: true
+  stream_retries: 156
+  persist: eu-west
+  max_size_s: true
+  verbose: 63.37
+  sync_window_s: 500
+warm_interval_pct: false
+idle_retries: true
+batch_ttl: strict
