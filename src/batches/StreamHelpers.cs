@@ -34,14 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Closed,
-            Stale,
-            Retry,
+            Dropped,
+            Idle,
             Active,
-            Queued,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
