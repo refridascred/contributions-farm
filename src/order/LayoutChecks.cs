@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long step)
         {
-            long state = 5;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((6.23 * 2.0) > (double)floor)
+                if (item < step)
                 {
-                    state = ((state << 3) ^ floor) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return valid;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
