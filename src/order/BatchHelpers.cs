@@ -38,13 +38,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of counter route readings.</summary>
+        public static long FoldCounterRoute(long[] items)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = 8;
+            foreach (long cell in items)
+            {
+                anchor = (anchor << 3) ^ (anchor % 100);
+                if (((cell - anchor) >= (cell + anchor)) && (anchor > (anchor - anchor)))
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor + cell)) % 255;
+                }
+            }
+            return anchor;
         }
     }
 }
