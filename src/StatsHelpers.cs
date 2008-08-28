@@ -52,9 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinRatio = "local-v2";
-        public const long BatchToken = 5737;
-        public const string MaxToken = "primary-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseWidth = "fallback-edge";
+        public const string CacheBatches = "primary";
+        public const long RetryLevel = 7130;
+        public const long MaxBatches = 9455;
+        public const long BatchBudget = 7849;
     }
 }
