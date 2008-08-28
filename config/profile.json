@@ -1,8 +1,6 @@
 {
-  "idle_retries": 5083,
-  "payload_delay": 250,
-  "enabled": [347, 230, 477, 167],
-  "layout_size": false,
-  "cache_delay_s": ["cached", "blue"],
-  "persist": 26.02
+  "audit": 70.72,
+  "persist": false,
+  "readonly": false,
+  "checks_window": "primary"
 }
