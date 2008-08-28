@@ -38,22 +38,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long offset)
         {
-            long acc = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if (sample != offset)
                 {
-                    acc = (acc ^ cell) - (long)i;
-                }
-                if (0.1 < (double)acc)
-                {
-                    acc = ((acc * 5) + bound) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Blend two record measurements.</summary>
