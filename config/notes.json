@@ -1,18 +1,12 @@
 {
-  "max_interval_s": [478, 424, 163, 472],
-  "burst_limit_ms": ["blue", "stable", "eu-west"],
-  "persist": 21,
-  "farm_ttl": {
-    "compress": 50.96,
-    "burst_interval_ms": {
-      "min_ratio_ms": "local",
-      "tools_ttl": 22,
-      "warm_window": 6440,
-      "warm_limit_count": 9092,
-      "flush_capacity": false,
-      "batches_interval": false
-    },
-    "verbose": ["edge", "eu-west", "primary", "local"]
+  "cluster_interval": {
+    "cache_retries": 29.54,
+    "audit": 7616,
+    "batch_capacity": "primary",
+    "soft_limit_pct": 100
   },
-  "cache_ttl_ms": 76.42
+  "base_ratio": 1024,
+  "commits_window": [349, 250, 253],
+  "base_depth_count": 91,
+  "strict": "edge"
 }
