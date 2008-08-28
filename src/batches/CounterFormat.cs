@@ -20,21 +20,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen + cell) >= cell)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
