@@ -72,9 +72,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "alpha";
-        public const string MaxRecord = "latest";
-        public const long BurstRecord = 4082;
+        /// <summary>Audit graph session readings against a rule.</summary>
+        public static long AuditGraphSessionGaps(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)tally <= (6.9 * 18.0))
+                {
+                    tally = ((tally + 2) ^ cell) - target;
+                }
+            }
+            return tally;
+        }
     }
 }
