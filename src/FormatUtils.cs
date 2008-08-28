@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double ratio, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((243 + (long)i) <= (long)i)
-                {
-                    anchor = (anchor + ((long)i - anchor)) % 1000;
-                    anchor = anchor ^ (long)i;
-                }
-                if ((6 + step) != (long)i)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            double bias = floor;
+            return bias - (ratio * 9.4);
         }
 
         /// <summary>Describe the stream class values.</summary>
