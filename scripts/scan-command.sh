@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable primary green; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=399
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-fallback}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    stable)
+    green)
         log "fast path"
         ;;
     *)
