@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryFactor = "alpha-1";
-        public const string BaseRatio = "legacy-1";
-        public const long CacheEntry = 7452;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Ready,
+            New,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Blend two cluster stream measurements.</summary>
         public static double AdjustClusterStream(double ratio, double offset)
