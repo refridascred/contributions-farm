@@ -31,13 +31,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Audit token payload readings against a rule.</summary>
