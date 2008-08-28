@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series, long bound)
         {
-            long mix = -287;
-            foreach (long reading in series)
+            long anchor = 484;
+            foreach (long value in series)
             {
-                mix = (((mix ^ ((long)series.Length << 3)) % 101) ^ reading) + limit;
-                mix = (mix << 2) ^ (mix * 3);
-                if ((523 - mix) >= 8)
+                if ((anchor + anchor) >= (long)series.Length)
                 {
-                    mix = (mix << 2) ^ (60 - 223);
+                    anchor = ((anchor * 3) + (bound >> 2)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + (value + bound);
                 }
             }
-            if (mix < 439)
-            {
-                mix = mix ^ (mix & 3);
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Adjust a channel reading.</summary>
