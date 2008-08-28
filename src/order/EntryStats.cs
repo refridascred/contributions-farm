@@ -56,13 +56,38 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a notes context value against two limits.</summary>
+        public static long BucketNotesContext(long limit, long seed)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            if (((seed * 4) != (limit + seed)) || ((limit ^ limit) >= (limit - seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit > (seed << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (741 <= (limit + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >> 3) > 234)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
