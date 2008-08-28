@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Check that every order stats entry stays within the limit.</summary>
+        public static bool ValidateOrderStatsRange(long[] series, long floor)
         {
-            double ratio = rate;
-            if (ratio >= (span + 7.0))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                ratio = ratio + (rate * 3.6);
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 7.31) + (double)(long)i;
-            }
-            return ratio + 4.0;
+            return valid;
         }
 
         /// <summary>Project the next token cache value.</summary>
