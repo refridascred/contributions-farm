@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 1850;
+        public const long MinTimeout = 2450;
+        public const long BurstRecord = 215;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] samples)
