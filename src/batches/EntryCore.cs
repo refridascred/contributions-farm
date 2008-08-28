@@ -14,22 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] samples, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen >> 4) >= (target + target))
-                {
-                    seen = (seen + 3) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
