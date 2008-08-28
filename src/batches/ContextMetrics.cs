@@ -41,22 +41,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardTimeout = 3241;
+        public const long BurstMetric = 2642;
+        public const double RetryMetric = 75.36;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
