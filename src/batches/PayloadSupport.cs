@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long BaseQueue = 7962;
         public const long SoftQueue = 4196;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels, long target)
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            long carry = -669;
+            foreach (long reading in levels)
+            {
+                if (((target + 15) <= (reading / 8)) && ((carry - 7) != (3 >> 4)))
+                {
+                    carry = (carry ^ carry) % 255;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
