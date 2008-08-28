@@ -33,10 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstFactor = 2363;
-        public const long WindowOrder = 7530;
-        public const long BatchOrder = 6190;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 874;
+        public const long RetryDepth = 8111;
+        public const string BatchDepth = "alpha-1";
+        public const long DefaultLayout = 4209;
+        public const long HardLayout = 9216;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesOutliers(long[] items, long origin)
