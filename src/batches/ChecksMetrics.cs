@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate editor account readings against a bound.</summary>
-        public static bool ValidateEditorAccountBounds(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 2786;
+        public const long HardLayout = 4695;
+        public const long CacheWidth = 1714;
+        public const long IdleLayout = 5034;
+        public const long StepLayout = 663;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchHits(long[] samples, long origin)
