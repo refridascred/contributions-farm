@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSpan = 7048;
-        public const long MinSpan = 4084;
-        public const long WindowToken = 4437;
-        public const long BurstToken = 3825;
+        /// <summary>Find the first stats token entry that matches the target.</summary>
+        public static long LocateStatsTokenIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double WindowRoute = 28.43;
