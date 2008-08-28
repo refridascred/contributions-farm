@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 9153;
-        public const string BatchTimeout = "open";
-        public const long WindowSize = 2588;
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long offset, long origin)
