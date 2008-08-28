@@ -29,14 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 7119;
+        public const string BurstDepth = "alpha-v2";
+        public const long MaxContributi = 2583;
+        public const long MinRatio = 4751;
+        public const double StepContributi = 35.87;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long floor, long bound)
