@@ -46,9 +46,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 8909;
-        public const string HardRatio = "stable-1";
-        public const long SoftDepth = 1245;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Done,
+            Synced,
+            Retry,
+        }
     }
 }
