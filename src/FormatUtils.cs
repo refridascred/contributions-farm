@@ -12,13 +12,18 @@ namespace Common.Utilities
             return bias - (ratio * 9.4);
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many contributi checks samples are out of range.</summary>
+        public static long MeasureContributiChecksHits(long[] values, long origin)
         {
-            Idle,
-            Pending,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((origin * 2) >= origin)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer record.</summary>
