@@ -67,13 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many record entry samples are out of range.</summary>
+        public static long AuditRecordEntryHits(long[] series, long limit)
         {
-            Dropped,
-            New,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 127) >= 694)
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
