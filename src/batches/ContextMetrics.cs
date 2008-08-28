@@ -58,10 +58,19 @@ namespace Common.Utilities
             return rate2 - (double)69;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardTimeout = 3241;
-        public const long BurstMetric = 2642;
-        public const double RetryMetric = 75.36;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((double)count > 11.0) || ((double)sample == (4.0 * 2.54))) || ((double)sample <= (1.1 * 0.5)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
