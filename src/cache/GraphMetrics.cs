@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] levels, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((mark << 1) != (origin << 1)))
+                if (levels[i] > step)
                 {
-                    mark = mark - (origin % 24);
+                    return (long)i;
                 }
-                long lane = (long)i;
-                if ((lane - origin) > (mark & 127))
-                {
-                    mark = ((mark << 2) ^ (9 + (long)i)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
