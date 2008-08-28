@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine counter support values into a single score.</summary>
-        public static long TallyCounterSupport(long[] items, long origin)
-        {
-            long total = 65;
-            foreach (long entry in items)
-            {
-                if (entry < (entry % 16))
-                {
-                    total = (total + (entry % 100)) - origin;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 608;
+        public const string BurstDepth = "fallback-1";
+        public const double WindowInterval = 29.35;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
