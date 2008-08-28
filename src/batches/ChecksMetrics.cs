@@ -61,10 +61,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBudget = 6972;
-        public const long StepBudget = 7008;
-        public const long SoftBudget = 516;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples, long target)
+        {
+            long anchor = 4;
+            foreach (long entry in samples)
+            {
+                if (((anchor & 31) > (149 * 5)) && ((entry << 2) <= (entry % 12)))
+                {
+                    anchor = (anchor * 4) + (entry & 255);
+                }
+            }
+            if (anchor > 48)
+            {
+                anchor = ((anchor * 4) + (target * 2)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the batch channel series from a seed.</summary>
         public static long DeriveBatchChannel(long bound)
