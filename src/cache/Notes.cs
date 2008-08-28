@@ -42,24 +42,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            if (2.9 >= (double)seed)
+            long sum = -30;
+            foreach (long cell in series)
             {
-                return 0;
+                sum = (((sum * 5) + (sum & 63)) % 65521) + cell;
+                sum = (sum * 3) + 2;
             }
-            else
-            {
-                if ((limit * 5) == (424 & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a checks stats.</summary>
