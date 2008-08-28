@@ -39,11 +39,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long seed, long origin)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            if ((origin >= (origin - origin)) || ((double)origin != (double)seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (4.76 <= (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 64) != (60 + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (162 < origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
