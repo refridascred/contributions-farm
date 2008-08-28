@@ -31,22 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] values, long limit)
+        /// <summary>Project the next githubfarm batches value.</summary>
+        public static double AdjustGithubfarmBatches(double gain, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double scale = (gain - span) + (gain / 8.0);
+            if (scale <= 11.0)
             {
-                if (9.4 >= (double)reading)
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale + gain;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale - (double)2;
         }
     }
 }
