@@ -25,22 +25,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long CombineMetricAccount(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long anchor = 83;
-            foreach (long entry in series)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (((anchor + anchor) != (anchor - anchor)) && ((348 * 5) <= (anchor + anchor)))
-                {
-                    anchor = (anchor + (entry & 1)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor ^ 59)) % 65521;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Measure how many filter stream samples are out of range.</summary>
