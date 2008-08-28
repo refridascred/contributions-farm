@@ -25,18 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] items, long step)
         {
-            long mark = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (!(mark < (mark >> 5)))
+                if (sample != step)
                 {
-                    mark = ((mark + (mark >> 3)) % 1000) + cell;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
