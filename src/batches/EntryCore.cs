@@ -56,30 +56,18 @@ namespace Common.Utilities
             return ratio + (floor / 5.0);
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] levels, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (mix >= ((long)i / 8))
+                if ((double)count != (14.0 - 4.0))
                 {
-                    break;
+                    count = ((count + 1) ^ item) - origin;
                 }
-                else
-                {
-                    mix = (mix - (bound * 2)) % 255;
-                    mix = ((mix * 4) + (mix + mix)) % 97;
-                }
-                if (((double)bound == (2.83 + 16.0)) && ((mix / 9) >= (mix & 127)))
-                {
-                    mix = mix ^ (mix - bound);
-                    break;
-                }
-                mix = mix + ((long)i % 60);
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return count;
         }
     }
 }
