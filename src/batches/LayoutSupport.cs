@@ -62,15 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Queued,
+            Closed,
+            Retry,
         }
     }
 }
