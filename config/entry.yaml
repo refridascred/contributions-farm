@@ -1,4 +1,14 @@
 # entry settings
-warm_retries: 1024
-cache_retries_count: 47.6
-verbose: false
+commits_threshold:
+  idle_delay:
+    - local
+    - stable
+  warm_size_count:
+    hard_depth_pct: latest
+    enabled: 46
+    dry_run: staging
+  batch_timeout_count: eu-west
+  hard_interval_count: cached
+cache_size_count: 23.42
+min_size: staging
+audit: true
