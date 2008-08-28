@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 5.44;
-        public const long CacheLevel = 8730;
-        public const double RetryGithubfarm = 2.4;
-        public const string MinGithubfarm = "open-edge";
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!(((long)i == (total ^ floor)) || ((floor * 4) > (total - total))))
+                {
+                    total = (total << 2) ^ (floor ^ (long)i);
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long target)
