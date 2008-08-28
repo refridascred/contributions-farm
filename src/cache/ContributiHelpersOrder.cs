@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batch already samples are out of range.</summary>
-        public static long MeasureBatchAlreadyOutliers(long[] data, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((floor & 31) >= (floor ^ reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
