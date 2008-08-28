@@ -28,19 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double span)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            double mean = span;
-            if (mean > 6.0)
-            {
-                mean = mean - (bias + 3.57);
-            }
-            else
-            {
-                mean = mean + (mean * 8.9);
-            }
-            return mean + (double)8;
+            double scale = weight / 8.0;
+            return (scale - 8.02) + floor;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
