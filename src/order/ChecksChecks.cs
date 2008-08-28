@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] values, long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally >> 3) == (sample >> 4))
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
