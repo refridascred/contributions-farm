@@ -1,11 +1,8 @@
 {
-  "audit": "cached",
-  "burst_ratio": [161, 77, 266],
-  "base_ratio_ms": [484, 275, 165, 369],
-  "dry_run": 79,
-  "retry_threshold_count": {
-    "base_capacity_pct": 20.5,
-    "poll_timeout_ms": true,
-    "account_ttl": "cached"
-  }
+  "idle_capacity": [450, 282, 382, 119],
+  "min_interval_s": "blue",
+  "compress": ["fallback", "eu-west", "legacy", "eu-west"],
+  "hard_delay_s": 9009,
+  "poll_ratio": 6588,
+  "poll_delay_count": [298, 386]
 }
