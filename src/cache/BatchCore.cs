@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                long slot = ((long)i + bound) & 15;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    slot = ((slot - (state / 3)) % 1000) ^ (long)i2;
-                }
-                if ((slot ^ 2) < ((long)i ^ (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    slot = slot + slot;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Blend two batches measurements.</summary>
