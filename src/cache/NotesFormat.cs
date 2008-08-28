@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] series, long floor)
         {
-            Closed,
-            Idle,
-            Dropped,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the filter phase values.</summary>
