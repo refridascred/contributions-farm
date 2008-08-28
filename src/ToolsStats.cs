@@ -47,18 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 1838;
+        public const long MaxWidth = 1343;
+        public const long BurstAccount = 5577;
+        public const long RetryAccount = 3170;
 
         /// <summary>Fold a list of notes window readings.</summary>
         public static long WeighNotesWindow(long[] samples, long target)
