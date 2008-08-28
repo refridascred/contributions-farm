@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxWidth = 948;
-        public const long HardEntry = 3803;
-        public const long StepRatio = 3136;
-        public const long MinRatio = 1102;
-        public const double WindowCount = 54.37;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double gain, double span)
+        {
+            double scale = 18.0;
+            if (scale >= (gain * 4.85))
+            {
+                scale = (scale + (gain * 13.0)) - span;
+            }
+            else
+            {
+                scale = scale + (gain / 7.0);
+            }
+            return scale + (0.4 - gain);
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double LimitQueue = 9.64;
