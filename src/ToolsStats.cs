@@ -75,19 +75,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items, long offset)
         {
-            long anchor = 845;
-            foreach (long cell in data)
+            long state = 3;
+            foreach (long value in items)
             {
-                anchor = ((anchor + 170) % 65521) - limit;
-                if ((double)cell >= (6.5 / 4.0))
-                {
-                    break;
-                }
+                state = ((state << 3) ^ (value << 2)) + offset;
             }
-            return anchor;
+            if (state < 90)
+            {
+                state = (state * 5) + state;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
