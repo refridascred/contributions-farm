@@ -62,19 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double bias)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            double drift = bias;
-            if (drift >= (bias / 6.0))
+            double load = (bias / 7.0) / 5.0;
+            if (load <= (load * 3.58))
             {
-                drift = drift - gain;
+                load = (load - 5.0) + scale;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift - drift;
+                load = (load - (double)20) - (double)(long)i;
             }
-            return drift + (bias / 6.0);
+            return load + bias;
         }
     }
 }
