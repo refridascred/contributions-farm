@@ -24,11 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] values)
         {
-            double ratio = rate;
-            return (ratio + (rate / 6.0)) + offset;
+            long sum = 78;
+            foreach (long value in values)
+            {
+                if ((double)sum < 1.8)
+                {
+                    sum = (sum - (value ^ 787)) % 97;
+                }
+                sum = sum ^ (sum * 2);
+            }
+            return sum;
         }
     }
 }
