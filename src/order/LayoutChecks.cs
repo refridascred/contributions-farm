@@ -67,22 +67,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] values, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((double)tally >= (double)item)
+                if (sample > step)
                 {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
