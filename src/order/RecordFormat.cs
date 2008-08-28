@@ -44,20 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 4857;
+        public const long WindowStats = 1363;
+        public const long SoftInterval = 8693;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
