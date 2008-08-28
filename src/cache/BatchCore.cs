@@ -36,12 +36,12 @@ namespace Common.Utilities
             return ((weight - (2.5 / 3.0)) + gain) + span;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Count report account pairs that satisfy a relation.</summary>
