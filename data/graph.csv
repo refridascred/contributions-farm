@@ -1,8 +1,8 @@
-id,owner,region,score
-1,684,staging,330
-2,edge,16.16,77
-3,64.07,primary,64.55
-4,568,95,68.27
-5,45.41,466,242
-6,staging,81.08,829
-7,6,498,76.19
+id,rank,token,ratio,weight
+1,52.17,816,legacy,451
+2,13.39,33.95,162,local
+3,standard,977,63.56,strict
+4,922,101,43.72,553
+5,12.16,330,staging,strict
+6,stable,staging,878,primary
+7,464,899,95.97,881
