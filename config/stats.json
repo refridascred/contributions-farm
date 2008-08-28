@@ -1,18 +1,18 @@
 {
-  "retry_ratio": 77.2,
-  "token_timeout": 50.18,
-  "route_delay": {
-    "retry_ratio_pct": "eu-west",
-    "batch_limit": ["cached", "staging"],
-    "hard_retries": 63,
-    "burst_window_count": 15.32,
-    "idle_window_count": ["cached", "latest"]
+  "cache_interval": {
+    "base_capacity_count": "standard",
+    "dry_run": [386, 177, 86],
+    "entry_depth": "open"
   },
-  "default_ttl_count": 78.7,
-  "warm_delay_s": "edge",
-  "retry_size_pct": {
-    "audit": 500,
-    "retry_retries_count": 93.14,
-    "retry_limit_count": false
-  }
+  "default_threshold_count": 1024,
+  "dry_run": {
+    "enabled": 5072,
+    "record_retries": [216, 108],
+    "max_capacity_pct": 8524,
+    "commits_ratio": "primary",
+    "batches_delay": 5370,
+    "burst_capacity_pct": 59.5
+  },
+  "queue_size": false,
+  "entry_retries": "local"
 }
