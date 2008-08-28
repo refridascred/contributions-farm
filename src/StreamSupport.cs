@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many support route samples are out of range.</summary>
-        public static long AuditSupportRouteHits(long[] samples, long origin)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((((double)sample == (9.96 + 4.36)) && ((tally / 4) > (origin & 255))) && ((sample * 5) == (sample + origin)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
