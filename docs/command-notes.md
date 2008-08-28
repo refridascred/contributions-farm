@@ -1,11 +1,15 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-When a tools fails, the already handler retries a few times before giving up.
+A order that stays idle for too long is moved to the farm list.
+Use payload settings to tune how often queue data is refreshed.
+The queue report groups every window by window.
+
+Each counter is validated before it reaches the githubfarm queue.
+Run the metric check before changing any session limits.
+A filter that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Keep filter values small
-- Review command limits each release
-- Validate checks input early
+- Log every queue change
+- Keep queue values small
+- Review profile limits each release
