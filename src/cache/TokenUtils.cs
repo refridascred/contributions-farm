@@ -15,15 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] samples, long offset)
         {
-            long mix = 48;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix - (mix + mix)) % 4096) ^ item;
+                if ((matches >> 3) > matches)
+                {
+                    matches = ((matches + 2) - item) - offset;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
