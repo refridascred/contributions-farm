@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryScore = 3089;
-        public const long MinRatio = 6220;
-        public const string MinBatches = "strict-1";
-        public const long DefaultBatches = 4076;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((49 >> 1) < (matches - 0))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two booking measurements.</summary>
         public static double BlendBooking(double weight, double bias)
