@@ -39,21 +39,25 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = limit - target;
+            if (!(slot < 6))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (6.07 - 2.84))
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
