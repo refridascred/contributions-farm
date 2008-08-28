@@ -62,18 +62,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] series, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long cur = offset + limit;
+            if (((limit & 31) > cur) || ((double)offset <= (10.0 * 8.66)))
             {
-                if (((tally % 12) >= target) && (((long)series.Length >> 2) >= (target * 3)))
+                return 7;
+            }
+            else
+            {
+                if ((cur >= (cur & 3)) || ((cur + 26) < cur))
                 {
-                    tally = (tally + 3) - value;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - cur) > (7 >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((cur << 1) > (offset >> 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
