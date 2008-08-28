@@ -38,16 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double gain, double span)
-        {
-            double ratio = gain;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - (span * 4.5);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheSpan = 18.85;
+        public const double BatchRatio = 36.6;
+        public const string DefaultMetric = "stable";
+        public const string CacheFactor = "alpha-1";
+        public const double HardMetric = 94.94;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
