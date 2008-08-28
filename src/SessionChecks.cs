@@ -26,38 +26,21 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-v2";
         public const string RetryScore = "alpha-1";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long floor, long offset)
+        /// <summary>Match up route counter samples.</summary>
+        public static long PairRouteCounterCount(long[] data)
         {
-            if ((offset - 968) == (floor ^ offset))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 3) <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset << 1) >= (9 - offset)))
+                    if ((data[i] ^ data[j]) < 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor < 9.9)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
