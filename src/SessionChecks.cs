@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-v2";
         public const string RetryScore = "alpha-1";
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] readings, long bound)
         {
-            Dropped,
-            Ready,
-            Retry,
-            Pending,
-            Idle,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally >= (bound & 7)) || ((tally + bound) > (sample % 8)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
