@@ -40,22 +40,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit token payload readings against a rule.</summary>
-        public static long AuditTokenPayloadHits(long[] items, long step)
+        /// <summary>Match up commits batches samples.</summary>
+        public static long MatchCommitsBatchesCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading + step) <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
