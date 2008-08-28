@@ -36,15 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long anchor = 554;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor + (anchor + 567)) + reading;
-            }
-            return anchor;
+            Draft,
+            Queued,
+            Stale,
         }
     }
 }
