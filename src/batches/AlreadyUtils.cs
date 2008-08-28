@@ -35,20 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 1701;
+        public const string HardSize = "standard-1";
+        public const double MaxFilter = 33.32;
+        public const double BatchFilter = 96.06;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
