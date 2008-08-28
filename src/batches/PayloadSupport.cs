@@ -13,23 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate command cache samples.</summary>
-        public static long TotalCommandCache(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] items, long target)
         {
-            long total = 237;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 10; i++)
+                if (datum < target)
                 {
-                    total = (((total * 2) + (datum / 7)) % 101) - (long)i;
-                }
-                total = ((total * 2) + 512) % 255;
-                if (((7.19 / 4.0) <= (double)datum) && ((4.0 - 9.27) < (double)datum))
-                {
-                    total = total + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Describe the filter mode values.</summary>
