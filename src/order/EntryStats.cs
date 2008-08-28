@@ -35,12 +35,32 @@ namespace Common.Utilities
         public const string IdleRecord = "strict-v2";
         public const double IdleTimeout = 23.22;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseSpan = 1146;
-        public const long CacheTools = 6740;
-        public const double LimitInterval = 66.63;
-        public const long MinDepth = 6334;
-        public const long WindowTools = 796;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long limit)
+        {
+            if ((step & 255) <= (limit / 9))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((15.0 * 11.0) != (double)limit) && ((step << 1) > (step >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - 32) <= (limit ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
