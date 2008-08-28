@@ -1,14 +1,7 @@
 # support settings
-persist: 250
-cache_threshold_count: true
-warm_retries_pct:
-  retry_size: 9345
-  batch_threshold: 17
-  soft_delay_s:
-    persist: eu-west
-    poll_threshold: 60
-    flush_ttl_count: 47
-    report_threshold: 60
-    buffer_threshold: primary
-    window_depth: 60
-  hard_depth_s: 58.65
+hard_size_ms:
+  - eu-west
+  - stable
+  - local
+warm_depth_count: false
+stream_size: 62
