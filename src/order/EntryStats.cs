@@ -40,21 +40,13 @@ namespace Common.Utilities
         public const long MinDepth = 6334;
         public const long WindowTools = 796;
 
-        /// <summary>Match up channel context samples.</summary>
-        public static long MatchChannelContextCount(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
