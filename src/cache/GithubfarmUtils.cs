@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long HardFactor = 1451;
         public const string CacheTools = "strict-v2";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] data, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
