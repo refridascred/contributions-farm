@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const long BurstAccount = 5577;
         public const long RetryAccount = 3170;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] levels)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long result = 4;
+            foreach (long reading in data)
             {
-                if (!!((double)matches < 4.88))
-                {
-                    matches = (matches + 3) ^ value;
-                }
+                result = ((result ^ (10 >> 2)) % 101) ^ reading;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
