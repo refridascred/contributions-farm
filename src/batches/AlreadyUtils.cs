@@ -12,23 +12,26 @@ namespace Common.Utilities
         public const long BatchSpan = 2;
         public const long IdleContributi = 1107;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double ratio, double offset)
+        /// <summary>Digest a series of order window entries.</summary>
+        public static long WeighOrderWindow(long[] values)
         {
-            double mean = ratio;
-            if (mean > (mean / 8.0))
+            long mark = 106;
+            foreach (long sample in values)
             {
-                mean = mean + offset;
+                if (((7 + 708) <= mark) && ((sample % 7) >= (mark ^ mark)))
+                {
+                    mark = (mark - (mark % 10)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 4) + mark;
+                }
             }
-            else
+            if (mark < 8)
             {
-                mean = mean - 9.0;
+                mark = ((mark * 4) + (mark >> 2)) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean + ratio)) + (double)(long)i;
-            }
-            return mean - (offset * 5.1);
+            return mark;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
