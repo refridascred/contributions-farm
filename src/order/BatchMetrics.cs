@@ -54,18 +54,13 @@ namespace Common.Utilities
         public const long CacheScore = 8445;
         public const double SoftInterval = 68.11;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] series)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)42 <= (double)count)
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Closed,
+            Dropped,
         }
     }
 }
