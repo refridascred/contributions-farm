@@ -17,19 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double mean = ratio / 9.0;
+            if (mean > (double)71)
             {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean - (double)0) - offset;
             }
-            return ready;
+            return mean + mean;
         }
 
         /// <summary>Roll a report counter forward.</summary>
