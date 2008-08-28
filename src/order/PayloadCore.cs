@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 1068;
-        public const string BaseInterval = "local";
-        public const long HardCount = 4762;
-        public const long HardDepth = 1656;
-        public const double BatchMetrics = 57.51;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many already tools samples are out of range.</summary>
         public static long AuditAlreadyToolsGaps(long[] data)
