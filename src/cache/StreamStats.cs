@@ -37,15 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] data, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((sample - matches) >= (sample + matches))
+                {
+                    matches = (matches + 2) + floor;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
