@@ -93,19 +93,11 @@ namespace Common.Utilities
         public const long MinStream = 9105;
         public const long StepStream = 2364;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double floor)
-        {
-            double rate2 = floor * 16.0;
-            if (rate2 <= 2.87)
-            {
-                rate2 = rate2 - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + (rate + rate)) + (double)(long)i;
-            }
-            return rate2 + rate;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCount = 2428;
+        public const double MaxCache = 90.02;
+        public const long DefaultCount = 5100;
+        public const string LimitSize = "strict-edge";
+        public const long StepCache = 7055;
     }
 }
