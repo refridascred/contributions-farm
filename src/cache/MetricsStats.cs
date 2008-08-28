@@ -59,19 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] levels, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long score = 94;
-            foreach (long datum in levels)
-            {
-                score = ((score - (score + datum)) % 97) + origin;
-            }
-            if (score < 83)
-            {
-                score = (score - (score % 3)) % 97;
-            }
-            return score;
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
