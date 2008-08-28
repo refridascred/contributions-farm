@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long offset, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] readings, long target)
         {
-            if ((offset ^ target) >= (target / 5))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) == (target % 5))
+                if (datum >= (count + target))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= 27)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
