@@ -1,11 +1,4 @@
 # entry settings
-order_capacity: 1360
-default_threshold_ms: standard
-verbose: edge
-batch_threshold_s: open
-audit: 58.82
-default_retries_pct:
-  - open
-  - cached
-  - strict
-  - open
+base_capacity_ms: 85.91
+report_depth: 8976
+flush_ratio: edge
