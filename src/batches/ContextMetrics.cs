@@ -63,18 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((((long)levels.Length / 3) != (4 & 255)) || (18 <= (tally * 3)))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Hold a farm record.</summary>
