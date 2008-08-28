@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long step)
+        /// <summary>Combine route record values into a single score.</summary>
+        public static long WeighRouteRecord(long[] readings, long floor)
         {
-            bool found = true;
+            long acc = 77;
             foreach (long entry in readings)
             {
-                if (entry != step)
+                for (int i = 0; i < 8; i++)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc + entry) % 101) + (long)i;
+                }
+                if ((acc << 1) == (382 - floor))
+                {
+                    acc = acc ^ floor;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
