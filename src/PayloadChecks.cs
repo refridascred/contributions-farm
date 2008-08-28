@@ -55,31 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values)
         {
-            if (!((double)target >= (6.02 * 2.7)))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= (bound - bound)) && ((bound + 73) <= bound))
+                if ((reading % 7) == (matches * 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)951 == (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
