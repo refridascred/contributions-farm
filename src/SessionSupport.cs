@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] items, long floor)
         {
-            long sum = 37;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((value % 100) < origin))
+                if ((items[i] > floor) && ((items[i] % 5) != 0))
                 {
-                    sum = sum - (sum & 255);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
