@@ -54,18 +54,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate batches batch samples.</summary>
-        public static long ScoreBatchesBatch(long[] values)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] items, long bound)
         {
-            long anchor = 751;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)values.Length + anchor) >= anchor)
+                if (items[i] < bound)
                 {
-                    anchor = anchor ^ (anchor - datum);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a batch route reading.</summary>
