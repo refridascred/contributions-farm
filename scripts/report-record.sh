@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=12
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    cached)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=92
+log "limit is ${RECORD_LIMIT}"
