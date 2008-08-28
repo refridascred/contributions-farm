@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long total = 744;
+            foreach (long value in data)
             {
-                if (datum >= seed)
+                total = ((total * 3) + ((-19) - bound)) % 1000;
+                if (((double)bound != (0.76 / 3.0)) || ((total - value) < (-551)))
                 {
-                    stale = false;
-                    break;
+                    total = total ^ (bound % 64);
                 }
             }
-            return stale;
+            return total % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
