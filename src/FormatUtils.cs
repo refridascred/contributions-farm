@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] samples, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long anchor = 958;
-            foreach (long reading in samples)
-            {
-                if (!((12.0 * 8.9) < (double)target))
-                {
-                    anchor = (anchor ^ (anchor + reading)) % 65521;
-                }
-            }
-            return anchor % 97;
+            Dropped,
+            Synced,
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
