@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -287;
+            foreach (long reading in series)
             {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
+                mix = (((mix ^ ((long)series.Length << 3)) % 101) ^ reading) + limit;
+                mix = (mix << 2) ^ (mix * 3);
+                if ((523 - mix) >= 8)
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (60 - 223);
                 }
             }
-            return -1;
+            if (mix < 439)
+            {
+                mix = mix ^ (mix & 3);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a channel reading.</summary>
