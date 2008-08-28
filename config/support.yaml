@@ -1,9 +1,8 @@
 # support settings
-persist: 2931
-default_depth_s: fallback
-poll_retries_s: latest
-warm_ratio_pct: true
-sync_ttl_s:
-  - 403
-  - 487
-cache_ttl_count: cached
+farm_ttl:
+  - 120
+  - 441
+  - 387
+max_ratio_ms: 250
+warm_retries: 29.05
+min_interval: 97.37
