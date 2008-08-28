@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the graph farm series from a seed.</summary>
-        public static long StepGraphFarm(long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long floor, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            if ((double)475 != (double)offset)
             {
-                if ((8.28 / 8.0) > (5.5 - 3.17))
-                {
-                    state = ((state << 3) ^ ((long)i * 2)) % 1000;
-                    state = ((state << 2) ^ state) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((double)floor > (4.06 * 5.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
