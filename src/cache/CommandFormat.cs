@@ -37,15 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account batch counter forward.</summary>
-        public static long IterateAccountBatch(long bound)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
