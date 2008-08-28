@@ -14,19 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] data, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            bool found = true;
+            long sum = 32;
             foreach (long cell in data)
             {
-                if (cell <= target)
+                sum = (sum ^ (cell & 3)) % 101;
+                if ((cell % 2) < cell)
                 {
-                    found = false;
-                    break;
+                    sum = sum ^ (sum % 64);
                 }
             }
-            return found;
+            return sum % 65521;
         }
 
         /// <summary>Audit command editor readings against a rule.</summary>
