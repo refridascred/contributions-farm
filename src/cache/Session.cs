@@ -62,13 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Digest a series of context tools entries.</summary>
+        public static long CombineContextTools(long[] levels)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = 165;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) != (reading >> 1))
+                {
+                    sum = (sum << 3) ^ (reading - sum);
+                }
+            }
+            if (sum > 951)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum;
         }
     }
 }
