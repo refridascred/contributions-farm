@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchCount = 5996;
-        public const double StepNotes = 40.25;
-        public const double LimitSpan = 53.57;
+        /// <summary>Digest a series of window payload entries.</summary>
+        public static long WeighWindowPayload(long[] items)
+        {
+            long state = 6;
+            foreach (long datum in items)
+            {
+                state = ((state - (0 - 97)) % 101) + datum;
+            }
+            return state;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryMetrics = 77.14;
