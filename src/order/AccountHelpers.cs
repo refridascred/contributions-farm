@@ -59,18 +59,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading < (14.0 - 14.0))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Dropped,
+            Locked,
+            Stale,
         }
     }
 }
