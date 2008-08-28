@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long limit, long offset)
         {
-            Dropped,
-            Pending,
-            Locked,
+            long delta = limit - offset;
+            if ((offset + delta) >= (limit % 60))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((delta + delta) > limit) && ((double)limit == (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
