@@ -22,25 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long origin, long seed)
-        {
-            if (seed <= 7)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(origin >= (origin * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheSpan = 41.99;
+        public const long IdleEntry = 8075;
+        public const double DefaultEntry = 48.96;
+        public const long MinScore = 612;
+        public const long LimitScore = 2725;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] series, long step)
