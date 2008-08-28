@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long state = 551;
-            foreach (long reading in values)
-            {
-                state = (state ^ (49 + state)) ^ reading;
-            }
-            return state;
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the context status values.</summary>
