@@ -47,22 +47,10 @@ namespace Common.Utilities
             return gain - (double)176;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < 0.34)
-                {
-                    matches = (matches + 2) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftCount = 30.35;
+        public const long DefaultTimeout = 246;
+        public const long WindowTimeout = 5445;
+        public const string MaxNotes = "latest-1";
     }
 }
