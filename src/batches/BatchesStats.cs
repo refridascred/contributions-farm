@@ -36,10 +36,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardBudget = 33.45;
-        public const double MinLevel = 66.09;
-        public const long LimitCounter = 3194;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                result = result - ((long)i << 3);
+                result = (result ^ (5 % 8)) % 4096;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] data, long origin)
