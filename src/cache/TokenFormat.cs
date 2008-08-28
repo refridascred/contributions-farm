@@ -29,34 +29,34 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long seed)
         {
-            if ((double)step < (double)target)
+            if ((limit - seed) <= (limit % 8))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (169 < step)
+                if (!((seed * 4) == (limit << 1)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (6 < (step / 6))
+                    if ((limit << 3) <= seed)
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((11.0 - 7.88) != (double)target)
+                        if (limit > (seed + 108))
                         {
-                            return 2;
+                            return 7;
                         }
                         else
                         {
-                            return 7;
+                            return 6;
                         }
                     }
                 }
