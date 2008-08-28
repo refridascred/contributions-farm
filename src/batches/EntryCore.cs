@@ -66,21 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Combine metrics command values into a single score.</summary>
+        public static long TallyMetricsCommand(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -446;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell << 2) == (mark & 31))
                 {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark ^ mark) % 65521;
                 }
             }
-            return tally;
+            if (mark < 76)
+            {
+                mark = (mark - (mark - mark)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
