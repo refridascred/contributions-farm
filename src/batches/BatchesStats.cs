@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] readings)
         {
-            long mark = 301;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark + datum) % 255) - origin;
-                if ((long)items.Length >= mark)
+                if (!((15.0 - 9.0) <= (double)hits) && ((value % 7) >= value))
                 {
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark << 3) ^ 86;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
