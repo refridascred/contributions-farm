@@ -35,25 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] series, long seed)
         {
-            long lane = bound - limit;
-            if ((double)limit >= (6.2 - 7.73))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4 <= (limit - lane)) || (lane > 54))
+                if (seed <= item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
