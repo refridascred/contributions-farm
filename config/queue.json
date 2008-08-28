@@ -1,16 +1,5 @@
 {
-  "checks_size": true,
-  "poll_depth_pct": "staging",
-  "dry_run": {
-    "notes_size": 100,
-    "metric_capacity": 1024,
-    "cache_ratio": {
-      "batch_delay": 82.57,
-      "flush_retries_count": 4866,
-      "poll_ratio_pct": 720,
-      "schema_capacity": 31.18
-    },
-    "sync_threshold_s": 53,
-    "retry_timeout_ms": ["local", "open"]
-  }
+  "graph_interval": "primary",
+  "max_size": "stable",
+  "min_interval_s": 96.74
 }
