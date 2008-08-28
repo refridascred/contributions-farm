@@ -27,21 +27,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 62;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((floor * 4) == (score - 5))
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ ((-83) + floor)) % 65521;
+                }
+                if ((score + score) < (cell << 2))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score < 983)
+            {
+                score = (score - (score / 8)) % 101;
+            }
+            return score % 97;
         }
     }
 }
