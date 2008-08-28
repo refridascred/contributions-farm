@@ -26,19 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long limit)
         {
-            double weight = 12.0 + (double)3;
-            if (weight >= (double)9)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                weight = (weight - (floor * 2.8)) + scale;
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - 2.22) - (double)(long)i;
-            }
-            return weight - (5.6 * 14.0);
+            return ok;
         }
     }
 }
