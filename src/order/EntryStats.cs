@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string BaseSession = "legacy-edge";
         public const long MaxSession = 3317;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Describe the editor state values.</summary>
