@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Count the editor support entries that pass the check.</summary>
-        public static long MeasureEditorSupportOutliers(long[] values, long floor)
+        /// <summary>Audit batches payload readings against a rule.</summary>
+        public static long MeasureBatchesPayloadOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((1.5 * 3.0) != (double)(long)values.Length))
+                if (cell > (cell & 3))
                 {
-                    hits = ((hits + 1) - value) + floor;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of record order readings.</summary>
