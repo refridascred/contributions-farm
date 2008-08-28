@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long floor, long floor2)
         {
-            long acc = 649;
-            foreach (long value in items)
+            long cur = floor + floor2;
+            if (!((11.0 * 16.0) < (double)cur))
             {
-                acc = (acc - (value / 7)) % 1000;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((58 / 6) >= (floor % 97))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((0.7 - 0.7) <= (double)5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout kind values.</summary>
