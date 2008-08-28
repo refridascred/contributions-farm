@@ -42,20 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support checks readings against a bound.</summary>
-        public static bool CheckSupportChecksBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 84.79;
+        public const string RetryFarm = "latest";
+        public const double SoftWidth = 97.76;
+        public const long SoftFarm = 4798;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
