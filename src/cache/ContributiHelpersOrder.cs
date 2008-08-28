@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long seed, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            long edge = seed - origin;
-            if ((origin * 2) == (edge + edge))
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
+                state = ((state * 2) + (long)i) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (!((seed ^ seed) > edge))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((edge / 2) < edge)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a entry summary.</summary>
