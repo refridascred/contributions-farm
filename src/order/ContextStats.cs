@@ -45,21 +45,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of farm githubfarm readings.</summary>
-        public static long PairFarmGithubfarmCount(long[] readings)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (bias / 9.0) + (bias - bias);
+            if (mean <= mean)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean - mean) + ratio;
             }
-            return matches;
+            else
+            {
+                mean = mean + (bias * 5.5);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (bias / 9.0)) + (double)(long)i;
+            }
+            return mean - (6.02 * 14.0);
         }
     }
 }
