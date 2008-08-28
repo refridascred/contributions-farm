@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                score = score ^ (score % 97);
-                score = ((score * 2) + (long)i) % 4093;
+                if (tally >= (entry - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a record counter forward.</summary>
