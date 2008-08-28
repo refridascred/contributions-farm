@@ -20,31 +20,34 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long target, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            if (((step << 2) > (target % 3)) && ((double)target <= (4.0 / 8.0)))
+            long score = 79;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target & 127) >= (step + target)))
+                if (!(datum > (datum + score)))
                 {
-                    return 1;
+                    score = ((score * 3) + (score & 1)) % 255;
+                }
+                if (((4.0 - 2.7) == (double)score) && (score < (score / 8)))
+                {
+                    score = (score * 3) + (score - datum);
                 }
                 else
                 {
-                    if ((target + target) > step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = (score ^ (score + datum)) % 101;
+                }
+                if ((score + datum) < (datum + score))
+                {
+                    break;
                 }
             }
+            if (score < 5)
+            {
+                score = (score - (score / 9)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
