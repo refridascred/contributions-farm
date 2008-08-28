@@ -42,39 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long offset, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            long cur = offset + limit;
-            if (((limit & 31) > cur) || ((double)offset <= (10.0 * 8.66)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur >= (cur & 3)) || ((cur + 26) < cur))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - cur) > (7 >> 4))
+                    if ((values[i] - values[j]) != 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((cur << 1) > (offset >> 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up session samples.</summary>
