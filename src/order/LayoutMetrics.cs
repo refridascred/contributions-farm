@@ -30,22 +30,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate editor entry samples.</summary>
-        public static long CombineEditorEntry(long[] data, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long step)
         {
-            long result = 7;
-            foreach (long datum in data)
+            long gap = limit - step;
+            if ((limit << 3) > 4)
             {
-                if ((9.9 + 3.0) > (double)datum)
+                return 2;
+            }
+            else
+            {
+                if ((double)gap != (double)limit)
                 {
-                    result = (result ^ (seed % 97)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((gap % 100) <= (gap & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (gap > (gap + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (result > (-431))
-            {
-                result = (result ^ (4 * 2)) % 4096;
-            }
-            return result % 1000;
         }
     }
 }
