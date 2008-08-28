@@ -60,10 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheSpan = "staging-1";
-        public const long MinStream = 9105;
-        public const long StepStream = 2364;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRatio = 3394;
+        public const long WindowRoute = 3559;
+        public const string RetryLevel = "alpha-v2";
+        public const string MaxSpan = "fallback-v2";
+        public const string BurstFactor = "stable-v2";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportHits(long[] levels, long target)
