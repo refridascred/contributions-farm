@@ -39,19 +39,21 @@ namespace Common.Utilities
         public const string LimitCluster = "open-v2";
         public const double CacheDepth = 33.8;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            long carry = -9;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry - (offset << 3)) % 255) - cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry < (-227))
-            {
-                carry = (carry + (-1)) % 255;
-            }
-            return carry % 1000;
+            return hits;
         }
     }
 }
