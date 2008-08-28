@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] samples, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] values)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((2.0 + 3.3) <= (double)reading)
+                if ((double)hits <= 19.0)
                 {
-                    count = (count + 1) + floor;
+                    hits = (hits + 1) ^ entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
