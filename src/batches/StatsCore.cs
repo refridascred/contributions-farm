@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Combine notes format values into a single score.</summary>
+        public static long TotalNotesFormat(long[] levels)
         {
-            long mix = 7;
-            foreach (long sample in values)
+            long mix = 12;
+            foreach (long item in levels)
             {
-                mix = (((mix * 4) + (mix & 31)) % 255) + sample;
+                if (((double)item >= (8.12 - 6.64)) || ((4.92 / 9.0) <= 6.2))
+                {
+                    mix = (mix + item) % 65521;
+                }
+                if ((1.6 * 0.02) >= (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 81)
+            {
+                mix = (mix * 2) + (mix % 97);
             }
             return mix;
         }
