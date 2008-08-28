@@ -63,12 +63,15 @@ namespace Common.Utilities
         public const string BatchSize = "staging";
         public const double CacheWidth = 94.38;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            Synced,
-            Closed,
-            Failed,
+            long anchor = 83;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor - (anchor << 3)) % 65521) + value;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the profile status values.</summary>
