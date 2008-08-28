@@ -49,11 +49,17 @@ namespace Common.Utilities
         public const long WindowStats = 1363;
         public const long SoftInterval = 8693;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] data, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
