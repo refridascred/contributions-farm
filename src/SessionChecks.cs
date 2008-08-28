@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long SoftAlready = 7720;
         public const long BaseSize = 9897;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleFactor = 2826;
-        public const string BatchCache = "latest-v2";
-        public const long BurstCache = 73;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
