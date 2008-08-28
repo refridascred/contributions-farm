@@ -1,17 +1,17 @@
 {
-  "min_capacity": 1024,
-  "flush_ratio_pct": "eu-west",
-  "enabled": "open",
-  "burst_window": {
-    "idle_depth": "open",
-    "farm_retries": 35,
-    "compress": 42.76,
-    "batch_ttl_pct": "primary",
-    "burst_capacity_count": "edge",
-    "dry_run": {
-      "default_ratio_count": false,
-      "hard_timeout_s": true,
-      "strict": 95.2
-    }
-  }
+  "persist": 66.45,
+  "entry_size": [353, 307, 160, 293],
+  "schema_window": {
+    "route_size": {
+      "min_threshold": 42,
+      "cache_size_pct": true,
+      "support_capacity": "fallback"
+    },
+    "idle_interval": 99,
+    "counter_depth": "primary",
+    "batch_timeout": 500,
+    "already_limit": "open"
+  },
+  "min_capacity": 88,
+  "enabled": 100
 }
