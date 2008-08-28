@@ -30,19 +30,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] items, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Paused,
+            Idle,
+            Closed,
         }
     }
 }
