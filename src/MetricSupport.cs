@@ -19,32 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long floor, long limit)
-        {
-            if ((9.72 + 9.4) > (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit != (2.0 + 0.59))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor - floor) <= floor) && (83 <= (limit / 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxCount = 4889;
+        public const string HardLevel = "strict-v2";
+        public const long BurstProfile = 9739;
+        public const long LimitTimeout = 5794;
+        public const long CacheBudget = 1909;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string IdleEditor = "strict-v2";
