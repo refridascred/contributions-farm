@@ -25,11 +25,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long floor, long offset)
         {
-            double gain = (double)(303 * 2);
-            return ((gain + (double)2) + bias) + bias2;
+            long diff = floor + offset;
+            if ((floor / 2) <= (diff * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)floor <= (2.0 - 1.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor - floor) <= (diff - offset)) && ((diff * 2) >= (796 - diff)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
