@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] values, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double weight, double span)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double load = weight;
+            if (load < (span - load))
             {
-                if (((reading + limit) != (limit - 67)) && ((tally % 10) < tally))
-                {
-                    tally = tally + 1;
-                }
+                load = load - (double)86;
             }
-            return tally;
+            return load - (double)44;
         }
 
         /// <summary>Describe the window phase values.</summary>
