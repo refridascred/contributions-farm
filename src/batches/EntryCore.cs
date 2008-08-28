@@ -80,12 +80,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema profile sample.</summary>
-        public static long FindSchemaProfileIndex(long[] series, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= limit)
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
