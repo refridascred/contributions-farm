@@ -59,21 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stream filter pairs that satisfy a relation.</summary>
-        public static long CompareStreamFilterCount(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 70;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((12.0 * 3.2) == (double)entry)
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result << 3) ^ entry;
                 }
             }
-            return matches;
+            if (result > 7)
+            {
+                result = ((result * 3) + (result & 7)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
