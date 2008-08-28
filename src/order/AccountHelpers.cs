@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Synced,
-            Locked,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 6905;
+        public const long HardDepth = 1987;
+        public const double IdleLevel = 63.57;
+        public const long BaseTimeout = 2290;
+        public const long MinInterval = 2092;
 
         /// <summary>Roll a counter route counter forward.</summary>
         public static long StepCounterRoute(long target)
