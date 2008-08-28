@@ -1,10 +1,17 @@
 {
-  "default_size_pct": "eu-west",
-  "sync_ttl": true,
-  "cache_size_ms": {
-    "dry_run": 6036,
-    "compress": "standard",
-    "enabled": "strict"
-  },
-  "poll_threshold_s": 30
+  "audit": 0.77,
+  "idle_threshold": 89.99,
+  "retry_window_ms": 4410,
+  "cache_capacity": {
+    "enabled": "fallback",
+    "cache_retries_s": "open",
+    "default_interval_ms": {
+      "max_window_s": 788,
+      "strict": 500,
+      "batches_ttl": 3565,
+      "persist": "legacy",
+      "flush_size_ms": 62.7
+    },
+    "cache_ratio": "strict"
+  }
 }
