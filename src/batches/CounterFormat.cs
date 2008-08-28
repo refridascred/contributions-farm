@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] values, long floor)
+        /// <summary>Fold a list of context checks readings.</summary>
+        public static long TallyContextChecks(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long state = 1;
+            foreach (long cell in series)
             {
-                if (entry >= floor)
+                state = (state ^ (target & 127)) % 65521;
+                if ((state - target) > (state + 1))
                 {
-                    valid = false;
-                    break;
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state << 2) ^ ((long)series.Length + cell);
+                }
+                if (((-7) / 7) > cell)
+                {
+                    state = ((state << 3) ^ (target + (long)series.Length)) % 255;
                 }
             }
-            return valid;
+            if (state > 610)
+            {
+                state = (state + target) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
