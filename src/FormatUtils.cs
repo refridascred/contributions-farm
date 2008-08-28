@@ -22,21 +22,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count payload notes pairs that satisfy a relation.</summary>
-        public static long MatchPayloadNotesCount(long[] data)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = (double)(520 & 31);
+            if (gain2 <= (gain2 - gain))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain2 = (gain2 + gain) + span;
             }
-            return seen;
+            else
+            {
+                gain2 = gain2 + (gain + gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (gain * 7.0)) + (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
