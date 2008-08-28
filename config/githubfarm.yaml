@@ -1,5 +1,5 @@
 # githubfarm settings
-poll_ttl: open
-warm_interval_pct: false
-dry_run: open
-burst_window_count: standard
+graph_timeout: green
+idle_depth_ms: strict
+window_interval: 84.15
+channel_ratio: 81
