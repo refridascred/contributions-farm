@@ -35,14 +35,9 @@ namespace Common.Utilities
             return (scale - 8.02) + floor;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Queued,
-            Ready,
-            Done,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 5100;
+        public const string RetryRecord = "latest-v2";
+        public const long WindowRecord = 3896;
     }
 }
