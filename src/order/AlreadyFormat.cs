@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = 592;
+            foreach (long sample in values)
             {
-                total = ((total * 3) + (long)i) % 101;
+                acc = (acc + (bound - 545)) % 255;
+                if ((6.47 - 8.51) > (double)bound)
+                {
+                    acc = acc - (sample - 86);
+                    acc = (acc ^ (bound + acc)) % 101;
+                }
+                if ((5.15 * 8.09) >= (double)acc)
+                {
+                    acc = (acc << 3) ^ ((-8) + bound);
+                }
+                else
+                {
+                    acc = acc + (acc << 2);
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
