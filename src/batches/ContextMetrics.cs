@@ -38,15 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] levels, long floor)
         {
-            double rate2 = rate + (rate - 7.0);
-            if (rate2 <= (offset - 1.26))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                rate2 = rate2 - offset;
+                if (seen >= 351)
+                {
+                    seen = ((seen + 3) ^ value) + floor;
+                }
             }
-            return rate2 - (double)69;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
