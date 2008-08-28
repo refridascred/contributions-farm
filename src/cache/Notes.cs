@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of contributi layout entries.</summary>
-        public static long FoldContributiLayout(long[] samples, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long mix = 28;
-            foreach (long datum in samples)
-            {
-                long diff = (mix - mix) - (mix >> 1);
-                if (!(((diff * 2) <= (219 - 28)) || ((datum + mix) >= (mix - 45))))
-                {
-                    diff = ((diff ^ (375 & 255)) % 255) - step;
-                }
-                mix = (mix ^ (mix + 8)) % 4096;
-            }
-            return mix;
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
