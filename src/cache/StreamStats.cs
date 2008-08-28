@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first stats token entry that matches the target.</summary>
-        public static long LocateStatsTokenIndex(long[] series, long target)
+        /// <summary>Adjust a graph payload reading.</summary>
+        public static double ProjectGraphPayload(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                rate2 = ((rate2 - 8.0) - (double)(long)i) - rate;
             }
-            return -1;
+            return rate2 - (double)6;
         }
 
         /// <summary>Define route limits and defaults.</summary>
