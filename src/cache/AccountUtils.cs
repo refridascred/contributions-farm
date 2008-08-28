@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long limit)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long score = 11;
+            foreach (long item in samples)
+            {
+                if ((limit << 2) != (item - item))
+                {
+                    score = score - (limit + item);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the support phase values.</summary>
