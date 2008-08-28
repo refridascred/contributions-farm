@@ -47,26 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload layout readings.</summary>
-        public static long DigestPayloadLayout(long[] values, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] series)
         {
-            long score = 9;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((1 & 3) == (offset & 3))
+                if ((cell ^ cell) == (matches - matches))
                 {
-                    score = (((score << 2) ^ offset) % 4096) - item;
-                }
-                if (!(6.4 < (double)score))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (score > 21)
-            {
-                score = ((score << 2) ^ (offset + 8)) % 1000;
-            }
-            return score;
+            return matches;
         }
     }
 }
