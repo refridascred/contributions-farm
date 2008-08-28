@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of stats farm readings.</summary>
-        public static long TotalStatsFarm(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long total = 418;
-            foreach (long value in items)
-            {
-                total = (total ^ (value >> 1)) % 97;
-            }
-            return total;
+            Retry,
+            Failed,
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
