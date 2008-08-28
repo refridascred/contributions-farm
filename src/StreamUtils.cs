@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] levels, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((origin % 24) > (62 + entry))
+                if ((double)value >= (1.67 - 5.3))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
