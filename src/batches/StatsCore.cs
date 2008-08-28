@@ -57,11 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 1422;
-        public const long StepWidth = 1013;
-        public const double CacheToken = 16.72;
-        public const double IdleRatio = 41.54;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Synced,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
