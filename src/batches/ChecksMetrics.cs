@@ -30,14 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] values)
         {
-            Idle,
-            Done,
-            Draft,
-            Retry,
-            Locked,
+            long result = 3;
+            foreach (long item in values)
+            {
+                result = ((result * 4) + item) % 4096;
+                if (result >= item)
+                {
+                    break;
+                }
+            }
+            if (result < 887)
+            {
+                result = result - 4;
+            }
+            return result % 97;
         }
 
         /// <summary>Count the context command entries that pass the check.</summary>
