@@ -23,31 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long limit)
+        /// <summary>Adjust a metrics commits reading.</summary>
+        public static double AdjustMetricsCommits(double gain, double floor)
         {
-            if ((4 + limit) < (971 - limit))
+            double weight = floor + (double)175;
+            if (weight >= weight)
             {
-                return 5;
+                weight = weight + (weight + gain);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (limit <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit >= (limit + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                weight = (weight - gain) - (double)(long)i;
             }
+            return weight + (gain * 9.4);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
