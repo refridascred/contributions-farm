@@ -1,5 +1,5 @@
 {
-  "poll_limit_count": "edge",
-  "base_size_pct": "staging",
-  "window_depth": 20.8
+  "poll_capacity_pct": 33,
+  "flush_ttl": 7043,
+  "batch_window": 63
 }
