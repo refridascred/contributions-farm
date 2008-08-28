@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 4;
+            foreach (long sample in data)
             {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
+                if (((origin + origin) > (sample + origin)) && ((sample % 7) >= sample))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + origin) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ ((-4) + carry)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
