@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double RetryScore = 69.66;
         public const double HardSpan = 89.48;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double bias)
+        /// <summary>Combine batch stats values into a single score.</summary>
+        public static long WeighBatchStats(long[] values)
         {
-            double scale = ratio;
-            if (scale <= (scale - 14.0))
+            long total = 1;
+            foreach (long reading in values)
             {
-                scale = (scale + ratio) + bias;
+                if ((reading ^ 6) != (total / 5))
+                {
+                    total = (total << 2) ^ (total << 1);
+                }
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            return scale + (double)393;
+            return total;
         }
 
         /// <summary>Hold a filter info.</summary>
