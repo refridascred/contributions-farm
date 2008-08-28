@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double rate, double span)
+        /// <summary>Project the next stats batches value.</summary>
+        public static double SmoothStatsBatches(double scale, double span)
         {
-            double drift = rate;
-            if (drift < (rate / 3.0))
+            double drift = scale;
+            if (drift >= drift)
             {
-                drift = drift + (4.1 + span);
+                drift = drift - (scale * 1.4);
             }
-            return drift + 8.2;
+            else
+            {
+                drift = drift + 1.84;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift + span)) - (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
