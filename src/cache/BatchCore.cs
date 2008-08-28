@@ -32,12 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data, long limit)
         {
-            Done,
-            Failed,
-            Queued,
+            long score = 0;
+            foreach (long datum in data)
+            {
+                if (18.0 < (double)score)
+                {
+                    score = ((score - (limit + score)) % 65521) - datum;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
