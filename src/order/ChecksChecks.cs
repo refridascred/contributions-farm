@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Fold a list of profile batches readings.</summary>
+        public static long ScoreProfileBatches(long[] data)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            long acc = 2;
+            foreach (long cell in data)
+            {
+                acc = ((acc * 2) + cell) % 1000;
+            }
+            if (acc > 866)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
