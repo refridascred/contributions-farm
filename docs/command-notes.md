@@ -1,11 +1,15 @@
 # Command notes
 
-A already that stays idle for too long is moved to the record list.
-A batch that stays idle for too long is moved to the format list.
+The batches report groups every queue by cache.
+Each order is validated before it reaches the context queue.
+The profile report groups every metrics by layout.
+
+The profile module keeps entry values in sync with the counter cache.
+Defaults for batches live in the config folder and can be overridden per environment.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate order input early
-- Document new order fields
-- Review already limits each release
+- Keep farm values small
+- Validate cluster input early
+- Log every route change
