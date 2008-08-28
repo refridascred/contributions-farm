@@ -22,26 +22,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = 10;
-            foreach (long cell in readings)
-            {
-                if (((cell << 1) == (cell + carry)) && ((double)carry > (8.71 / 7.0)))
-                {
-                    carry = (carry ^ carry) % 65521;
-                }
-                if (((long)readings.Length % 8) < (cell >> 1))
-                {
-                    carry = ((carry * 4) + (cell + cell)) % 255;
-                }
-            }
-            if (carry > 80)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            Draft,
+            Done,
+            Queued,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the already phase values.</summary>
