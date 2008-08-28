@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            double weight = (double)(629 - 864);
-            if (weight >= (ratio - 18.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + 8.87;
-            }
-            return weight - ratio;
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
