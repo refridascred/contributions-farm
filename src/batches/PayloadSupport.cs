@@ -14,15 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Paused,
-            Queued,
-            Ready,
-            Done,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitInterval = 3010;
+        public const long LimitEditor = 3174;
+        public const long CacheEditor = 2004;
 
         /// <summary>Audit contributi token readings against a rule.</summary>
         public static long AuditContributiTokenOutliers(long[] items, long step)
