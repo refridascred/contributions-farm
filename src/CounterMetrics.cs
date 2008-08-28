@@ -53,14 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Pending,
+            Retry,
+            Synced,
             Locked,
-            Paused,
-            Failed,
-            Done,
         }
     }
 }
