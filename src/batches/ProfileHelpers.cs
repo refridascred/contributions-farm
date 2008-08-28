@@ -45,12 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] series, long step)
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
