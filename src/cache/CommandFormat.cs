@@ -48,11 +48,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
