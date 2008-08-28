@@ -24,25 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long target, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long prev = target + origin;
-            if ((1.0 <= (double)prev) || ((2.35 + 6.0) <= (double)prev))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((87 << 1) >= (origin ^ prev))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
