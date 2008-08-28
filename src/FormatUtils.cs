@@ -25,12 +25,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepFactor = 631;
-        public const double RetryLevel = 36.25;
-        public const double BaseContributi = 68.12;
-        public const long IdleContributi = 8590;
-        public const long BurstContributi = 5336;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Idle,
+            Pending,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long origin)
