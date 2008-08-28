@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double BaseRoute = 82.43;
         public const long BatchDepth = 1569;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 85.18;
-        public const long MaxBatches = 6290;
-        public const double BaseInterval = 58.94;
-        public const long DefaultRatio = 1276;
-        public const long BaseBatches = 2927;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry - limit;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryMetrics = 77.14;
