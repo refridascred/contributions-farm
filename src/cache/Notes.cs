@@ -17,21 +17,31 @@ namespace Common.Utilities
         public const long IdleReport = 2636;
         public const long LimitLevel = 9154;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((origin + origin) < (origin + limit)) || ((double)limit == (6.71 - 8.34)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin == (double)62)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + limit) < (limit + origin))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate support checks readings against a bound.</summary>
