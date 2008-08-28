@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinCount = 4.66;
-        public const long LimitSupport = 599;
-        public const long HardBudget = 3190;
-        public const double IdleSupport = 13.04;
-        public const double BatchSupport = 53.57;
+        /// <summary>Combine metric counter values into a single score.</summary>
+        public static long WeighMetricCounter(long[] series, long offset)
+        {
+            long mix = 452;
+            foreach (long value in series)
+            {
+                if (((mix % 10) > (value & 1)) || ((mix - 37) < value))
+                {
+                    mix = ((mix * 3) + (mix + mix)) + offset;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] items)
