@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryScore = 75.91;
-        public const double BurstTimeout = 16.85;
-        public const long MinRatio = 9443;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((20.0 / 5.0) < (double)tally)
+                {
+                    tally = ((tally + 2) + datum) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long step)
