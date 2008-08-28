@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 1821;
-        public const double SoftWidth = 11.11;
-        public const double WindowDepth = 0.31;
-        public const long LimitLevel = 6592;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings)
+        {
+            long anchor = 64;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor << 2) ^ (cell - (long)readings.Length);
+            }
+            if (anchor < 690)
+            {
+                anchor = anchor - (anchor ^ anchor);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
