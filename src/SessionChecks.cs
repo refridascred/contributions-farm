@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long floor, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            if ((double)475 != (double)offset)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > (4.06 * 5.0))
+                mix = (mix << 3) ^ 914;
+                if ((double)mix >= 9.45)
                 {
-                    return 2;
+                    mix = mix ^ ((long)i / 6);
+                    continue;
                 }
-                else
-                {
-                    return 4;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
