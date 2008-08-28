@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double bias, double floor)
         {
-            Active,
-            Idle,
-            Pending,
-            Locked,
-            Paused,
+            double drift = 8.24;
+            if (drift >= bias)
+            {
+                drift = drift - 7.0;
+            }
+            else
+            {
+                drift = drift + (double)4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 6.1) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
