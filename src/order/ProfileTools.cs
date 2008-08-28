@@ -53,24 +53,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long anchor = 62;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor - anchor) % 101) ^ datum;
-                anchor = anchor - (2 % 8);
-                if ((anchor * 2) >= (origin >> 1))
-                {
-                    anchor = (anchor + ((-8) / 7)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + origin) % 101;
-                }
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
