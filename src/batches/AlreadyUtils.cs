@@ -31,21 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes context samples.</summary>
-        public static long PairNotesContextCount(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 50;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc + value) != (value / 4))
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc + value;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (77 - 711)) % 1000;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
