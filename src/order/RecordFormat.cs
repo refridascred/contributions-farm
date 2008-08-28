@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftInterval = 590;
-        public const long BurstRatio = 7305;
-        public const long RetryWidth = 1017;
-        public const long BaseCount = 5925;
-        public const long BatchPayload = 379;
+        /// <summary>Digest a series of batches counter entries.</summary>
+        public static long TallyBatchesCounter(long[] values, long offset)
+        {
+            long carry = 3;
+            foreach (long item in values)
+            {
+                if (!((double)offset <= 3.2))
+                {
+                    carry = (carry << 2) ^ (carry & 7);
+                }
+                carry = carry + (carry - item);
+            }
+            return carry;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
