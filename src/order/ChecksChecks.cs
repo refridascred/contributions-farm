@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Closed,
-            Retry,
-            Stale,
+            Paused,
             Active,
-            Queued,
+            Synced,
         }
 
         /// <summary>Hold a commits options.</summary>
