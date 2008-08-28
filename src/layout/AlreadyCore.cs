@@ -12,39 +12,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long offset, long step)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            long cur = offset + step;
-            if ((double)offset == (8.4 - 3.5))
+            double mean = ratio;
+            if (mean <= (span / 2.0))
             {
-                return 1;
+                mean = mean + (ratio / 5.0);
             }
             else
             {
-                if ((offset & 255) <= (659 % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset == (8.1 / 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((122 + cur) <= (offset & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mean = mean + span;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (5.62 * 1.0)) + (double)(long)i;
+            }
+            return mean - (double)1;
         }
 
         /// <summary>Count context metrics pairs that satisfy a relation.</summary>
