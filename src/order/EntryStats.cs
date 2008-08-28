@@ -19,15 +19,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] data, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
