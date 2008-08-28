@@ -14,31 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!((577 - 26) < total))
                 {
-                    result = (result ^ (8 - 10)) - (long)i2;
-                }
-                if (((long)i + result) == ((long)i * 3))
-                {
-                    result = (result + ((long)i + (long)i)) % 4096;
+                    total = ((total * 4) + total) % 65521;
                 }
                 else
                 {
-                    result = result - ((long)i & 15);
+                    total = ((total << 2) ^ total) % 101;
                 }
-                if ((7.7 + 13.0) > (5.47 + 9.0))
-                {
-                    result = (result - ((long)i % 100)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
