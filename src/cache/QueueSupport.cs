@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] values, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double ratio = (double)(5 + 113);
+            if (ratio > ratio)
             {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (double)724) - bias;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)867) + (double)(long)i;
+            }
+            return ratio + (ratio + gain);
         }
     }
 }
