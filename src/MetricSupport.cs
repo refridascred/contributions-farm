@@ -22,15 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long floor, long limit)
         {
-            long mix = 65;
-            foreach (long sample in samples)
+            if ((9.72 + 9.4) > (double)floor)
             {
-                mix = ((mix ^ (mix + seed)) % 1000) + sample;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((double)limit != (2.0 + 0.59))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor - floor) <= floor) && (83 <= (limit / 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
