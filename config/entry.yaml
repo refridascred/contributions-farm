@@ -1,11 +1,19 @@
 # entry settings
-default_depth_pct: local
-burst_depth:
-  - 202
-  - 33
-  - 203
-  - 394
-enabled: cached
-readonly: strict
-audit: strict
-already_interval: 81.81
+idle_timeout_pct: 65
+audit:
+  stream_interval: true
+  idle_threshold: 87.96
+  idle_capacity_ms: 95.49
+  layout_ratio:
+    verbose: 250
+    flush_capacity: true
+    flush_window: 42
+    poll_depth_s: false
+    persist: true
+    audit: false
+  session_limit: 20
+  stats_ratio: 19.19
+batch_window: primary
+window_delay: fallback
+warm_ratio_pct: 250
+default_depth: true
