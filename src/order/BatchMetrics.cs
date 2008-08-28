@@ -22,22 +22,18 @@ namespace Common.Utilities
             return (gain - (double)185) + floor;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                long matches = (mix ^ (long)i) >> 1;
-                if (!((matches >> 4) <= (floor >> 2)))
+                if ((tally << 2) >= (reading / 8))
                 {
-                    matches = matches ^ (matches + mix);
-                    matches = (matches - (floor - mix)) % 97;
+                    tally = tally + 3;
                 }
-                matches = matches + (floor - matches);
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many graph session samples are out of range.</summary>
