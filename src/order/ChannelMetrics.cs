@@ -39,11 +39,16 @@ namespace Common.Utilities
             return mean + (6.0 / 8.0);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 18; i++)
+            {
+                result = result ^ (target << 3);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
