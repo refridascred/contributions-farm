@@ -62,21 +62,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of format layout readings.</summary>
-        public static long OverlapFormatLayoutCount(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result + result) % 1000) + floor;
+                if ((47 - sample) >= 5)
                 {
-                    if ((levels[i] ^ levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (sample & 3)) % 101;
+                }
+                else
+                {
+                    result = (result ^ 8) % 255;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
