@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mean + (mean / 3.0);
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Active,
-            Synced,
-            Dropped,
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
