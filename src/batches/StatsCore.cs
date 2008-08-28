@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes format values into a single score.</summary>
-        public static long TotalNotesFormat(long[] levels)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mix = 12;
-            foreach (long item in levels)
-            {
-                if (((double)item >= (8.12 - 6.64)) || ((4.92 / 9.0) <= 6.2))
-                {
-                    mix = (mix + item) % 65521;
-                }
-                if ((1.6 * 0.02) >= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 81)
-            {
-                mix = (mix * 2) + (mix % 97);
-            }
-            return mix;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
