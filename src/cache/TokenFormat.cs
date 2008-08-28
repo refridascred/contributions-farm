@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double BurstTimeout = 16.85;
         public const long MinRatio = 9443;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the layout filter entries that pass the check.</summary>
