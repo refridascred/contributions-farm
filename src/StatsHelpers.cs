@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Retry,
-            Closed,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftRatio = 32.09;
+        public const double WindowGraph = 18.2;
+        public const string CacheGraph = "strict-1";
+        public const double BatchGraph = 21.42;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] readings)
