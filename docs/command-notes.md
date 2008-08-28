@@ -1,14 +1,15 @@
 # Command notes
 
-Run the window check before changing any notes limits.
-When a account fails, the notes handler retries a few times before giving up.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+When a record fails, the stream handler retries a few times before giving up.
+The support module keeps batches values in sync with the stats cache.
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Use payload settings to tune how often stats data is refreshed.
+The batches module keeps commits values in sync with the editor cache.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every profile change
-- Validate token input early
-- Prefer commits defaults
+- Prefer support defaults
+- Validate profile input early
+- Document new counter fields
+- Review cluster limits each release
