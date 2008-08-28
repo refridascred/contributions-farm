@@ -27,22 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double rate, double floor)
         {
-            long acc = 58;
-            foreach (long reading in levels)
+            double gain = rate;
+            if (gain < 6.8)
             {
-                if ((double)target >= 2.4)
-                {
-                    acc = ((acc ^ (target - target)) % 255) - reading;
-                }
+                gain = (gain - (double)663) - floor;
             }
-            if (acc > 499)
+            else
             {
-                acc = (acc - target) % 4096;
+                gain = gain + gain;
             }
-            return acc % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (double)(-237)) - (double)(long)i;
+            }
+            return gain + (double)(-62);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
