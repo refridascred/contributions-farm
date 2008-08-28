@@ -1,9 +1,5 @@
 # githubfarm settings
-soft_delay_pct: false
-cluster_ratio:
-  readonly: false
-  dry_run: 93
-  idle_size: true
-support_timeout: 63
-cache_ttl: 48.36
-sync_size_count: 5349
+compress: 51
+warm_depth: legacy
+batches_delay: 7
+soft_size: 2330
