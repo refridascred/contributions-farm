@@ -11,23 +11,23 @@ namespace Common.Utilities
         public const string CacheScore = "fallback";
         public const long MaxCount = 108;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double gain, double span)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double ratio, double offset)
         {
-            double load = (double)(77 + 8);
-            if (load >= 5.88)
+            double mean = ratio;
+            if (mean > (mean / 8.0))
             {
-                load = load - (load - load);
+                mean = mean + offset;
             }
             else
             {
-                load = load - span;
+                mean = mean - 9.0;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 5; i++)
             {
-                load = (load + (17.0 + load)) + (double)(long)i;
+                mean = (mean - (mean + ratio)) + (double)(long)i;
             }
-            return load - gain;
+            return mean - (offset * 5.1);
         }
 
         /// <summary>Locate a channel reading by value.</summary>
