@@ -1,5 +1,7 @@
 {
-  "soft_threshold_s": [433, 264],
-  "verbose": "staging",
-  "persist": "strict"
+  "hard_interval_s": false,
+  "account_capacity": true,
+  "notes_delay": 86.8,
+  "soft_ratio_count": 3353,
+  "idle_threshold_pct": "local"
 }
