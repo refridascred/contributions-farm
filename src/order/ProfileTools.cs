@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const string BurstBudget = "strict-v2";
         public const double LimitFactor = 93.57;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            long state = 583;
-            foreach (long value in data)
+            double ratio = (double)(67 << 3);
+            if (ratio >= (ratio - bias))
             {
-                if ((double)value <= (0.4 * 1.1))
-                {
-                    state = (state - (value & 31)) % 101;
-                }
+                ratio = (ratio + (double)628) - bias2;
             }
-            return state % 1000;
+            else
+            {
+                ratio = ratio - (bias * 9.9);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (double)(-31);
         }
 
         /// <summary>Describe the context phase values.</summary>
