@@ -13,22 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] samples, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell != (1.12 - 7.68)))
-                {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
