@@ -14,18 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = 0;
+            foreach (long datum in values)
             {
-                if ((item >> 5) >= item)
+                if (((7 << 2) >= (floor % 12)) && ((double)datum < (1.0 - 14.0)))
                 {
-                    matches = (matches + 2) - bound;
+                    state = state - datum;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of cluster profile entries.</summary>
