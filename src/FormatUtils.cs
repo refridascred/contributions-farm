@@ -55,21 +55,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -3;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark + (datum & 3)) % 65521;
+                if ((mark ^ datum) <= (mark * 2))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ (699 % 5);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark << 1);
+                }
+                if ((183 + datum) < mark)
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
