@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double bias, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            double drift = 8.24;
-            if (drift >= bias)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift - 7.0;
+                long offset = acc;
+                if ((double)offset < 1.0)
+                {
+                    acc = acc - offset;
+                }
+                else
+                {
+                    offset = (offset - acc) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift + (double)4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 6.1) + (double)(long)i;
-            }
-            return drift - floor;
+            return acc;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
