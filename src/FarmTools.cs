@@ -33,11 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long MeasureStreamRouteOutliers(long[] levels, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 2) >= (target & 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
