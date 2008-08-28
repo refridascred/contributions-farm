@@ -1,33 +1,25 @@
 # support settings
-sync_timeout:
-  poll_threshold_pct:
-    retry_ratio_ms: 500
-    queue_interval: 1
-    base_ttl_count: 83.7
-    session_capacity: legacy
-    readonly: 1024
-  persist: 2455
-  warm_interval_pct: 4245
-tools_retries: blue
-idle_depth_ms:
-  - 50
-  - 395
-  - 339
-  - 309
-poll_size_ms:
-  batch_size_pct:
-    - 145
-    - 97
-    - 95
-    - 202
-  min_ttl_s: green
-  audit: false
-  graph_size: 44.54
-  dry_run:
-    - 474
-    - 262
-    - 465
-    - 99
-  retry_limit_pct: 152
-base_ratio: 86
-poll_limit_ms: 421
+session_ttl: 34
+poll_threshold_pct:
+  - 315
+  - 401
+entry_retries: 250
+tools_ratio: 100
+batches_ratio: 82.03
+stream_ratio:
+  schema_window: 3.7
+  cache_limit_pct:
+    - 91
+    - 227
+  enabled:
+    - 344
+    - 443
+    - 41
+    - 216
+  route_window:
+    - 134
+    - 112
+    - 461
+    - 408
+  hard_threshold: true
+  sync_interval_ms: 61
