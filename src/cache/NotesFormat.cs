@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (series[i] >= target)
+                if ((cell % 3) != (7 - 94))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
