@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] samples)
+        /// <summary>Check that every token queue entry stays within the limit.</summary>
+        public static bool VerifyTokenQueueLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((reading << 2) <= (47 << 1)) && (((double)count >= (16.0 * 4.73)) || (reading < (80 >> 1))))
+                if (cell >= floor)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the session level values.</summary>
