@@ -53,15 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            long sum = 76;
-            foreach (long sample in samples)
+            double rate = (double)((-390) << 3);
+            if (rate > rate)
             {
-                sum = ((sum << 2) ^ (775 + (-81))) ^ sample;
+                rate = ((rate + (rate / 3.0)) + weight) + span;
             }
-            return sum % 4096;
+            else
+            {
+                rate = rate - 1.73;
+            }
+            return rate + rate;
         }
 
         /// <summary>Find the first batch layout entry that matches the target.</summary>
