@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] samples, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long origin)
         {
-            long sum = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                sum = (((sum << 3) ^ (origin >> 5)) % 4096) ^ item;
+                if ((423 ^ cell) == (6 + seen))
+                {
+                    seen = (seen + 1) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum > 50)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
