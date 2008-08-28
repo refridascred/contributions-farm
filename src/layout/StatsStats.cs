@@ -20,19 +20,14 @@ namespace Common.Utilities
         public const long HardStream = 3981;
         public const long RetrySpan = 6678;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] levels, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Queued,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
