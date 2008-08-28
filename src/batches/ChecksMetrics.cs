@@ -34,23 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] levels, long step)
         {
-            long result = 27;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                result = (result << 3) ^ (reading / 7);
-                if ((result >= (result + result)) && ((527 + (-22)) >= (reading - reading)))
+                if ((cell + 9) < (step - step))
                 {
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result > (-38))
-            {
-                result = ((result << 2) ^ (result % 10)) % 255;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the context command entries that pass the check.</summary>
