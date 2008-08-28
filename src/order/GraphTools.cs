@@ -59,19 +59,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next session tools value from a seed.</summary>
-        public static long SeriesSessionTools(long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] series, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (!((bound ^ 576) < (bound - result)))
+                if (((tally % 12) >= target) && (((long)series.Length >> 2) >= (target * 3)))
                 {
-                    result = ((result << 3) ^ (bound + (-978))) % 101;
+                    tally = (tally + 3) - value;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
