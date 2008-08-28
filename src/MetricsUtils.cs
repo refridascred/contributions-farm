@@ -45,19 +45,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (entry >= step)
+                if ((double)seed == (2.0 + 2.8))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the stream phase values.</summary>
