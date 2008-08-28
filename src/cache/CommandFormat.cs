@@ -53,22 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support buffer entries.</summary>
-        public static long DigestSupportBuffer(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] readings, long floor)
         {
-            long acc = 24;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((entry + entry) >= (9 / 4))
+                if ((matches / 7) > (9 + datum))
                 {
-                    acc = ((acc * 4) + (acc % 100)) % 101;
-                }
-                if ((double)entry > 8.6)
-                {
-                    break;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
