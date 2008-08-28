@@ -77,18 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] samples)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum & 3) <= hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Failed,
         }
     }
 }
