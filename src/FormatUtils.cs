@@ -41,11 +41,33 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinRatio = 7820;
-        public const long HardRatio = 8228;
-        public const string LimitSize = "cached";
-        public const long RetryInterval = 780;
+        /// <summary>Classify a metric command pair into a bucket.</summary>
+        public static long RankMetricCommand(long step, long seed)
+        {
+            long slot = step - seed;
+            if ((step + slot) > (slot & 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) <= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step % 5) <= slot)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long step, long step2)
