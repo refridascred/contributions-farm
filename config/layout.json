@@ -1,7 +1,7 @@
 {
-  "schema_capacity": [300, 10, 156, 222],
-  "metrics_interval": "staging",
-  "warm_delay": 7546,
-  "base_size_count": 500,
-  "default_delay_pct": true
+  "counter_capacity": 47.0,
+  "retry_interval_ms": false,
+  "report_threshold": ["strict", "standard", "staging", "latest"],
+  "default_capacity_pct": "standard",
+  "stream_capacity": false
 }
