@@ -41,15 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report editor counter forward.</summary>
-        public static long RollReportEditor(long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
