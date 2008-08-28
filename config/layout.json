@@ -1,8 +1,5 @@
 {
-  "audit": ["standard", "standard"],
-  "verbose": 2486,
-  "queue_limit": 79.95,
-  "burst_interval": 1.26,
-  "sync_limit_s": [115, 81],
-  "metric_ttl": [435, 30, 343]
+  "warm_ratio": true,
+  "queue_retries": false,
+  "metrics_delay": "eu-west"
 }
