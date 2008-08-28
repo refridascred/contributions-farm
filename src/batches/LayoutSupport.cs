@@ -53,19 +53,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] values, long floor)
         {
-            double rate = (double)((-390) << 3);
-            if (rate > rate)
+            long count = 0;
+            foreach (long datum in values)
             {
-                rate = ((rate + (rate / 3.0)) + weight) + span;
+                if ((floor % 12) == (799 * 3))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            else
-            {
-                rate = rate - 1.73;
-            }
-            return rate + rate;
+            return count;
         }
 
         /// <summary>Find the first batch layout entry that matches the target.</summary>
