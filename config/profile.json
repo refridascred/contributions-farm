@@ -1,18 +1,5 @@
 {
-  "default_limit_s": {
-    "route_retries": "green",
-    "editor_ttl": 370,
-    "report_retries": "staging",
-    "burst_depth": true,
-    "flush_ratio_s": "eu-west"
-  },
-  "format_ttl": [26, 421, 341],
-  "buffer_threshold": [233, 327, 48, 408],
-  "retry_capacity": {
-    "checks_size": [149, 203, 149, 311],
-    "poll_interval_s": [301, 146, 189, 463],
-    "min_ratio": 8212
-  },
-  "soft_retries": ["staging", "blue"],
-  "batch_delay_pct": 7415
+  "hard_limit_pct": "legacy",
+  "max_delay": "green",
+  "verbose": true
 }
