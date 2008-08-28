@@ -48,15 +48,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Iterate the farm order series from a seed.</summary>
+        public static long RollFarmOrder(long seed)
         {
-            long mix = offset;
+            long carry = seed;
             for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                carry = carry + (carry >> 3);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Measure how many record entry samples are out of range.</summary>
