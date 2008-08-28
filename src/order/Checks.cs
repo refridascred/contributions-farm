@@ -39,21 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (((result << 3) ^ target) % 4096) - (long)i2;
+                    result = result - (result + target);
                 }
+                result = ((result << 2) ^ (result - result)) % 4096;
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    result = ((result ^ (699 + result)) % 4096) ^ (long)i3;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
