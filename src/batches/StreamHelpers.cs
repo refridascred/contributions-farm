@@ -60,13 +60,18 @@ namespace Common.Utilities
         public const string HardOrder = "stable-v2";
         public const double StepOrder = 74.5;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long TallyCounterCacheHits(long[] items)
         {
-            Locked,
-            Stale,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((20.0 * 9.0) > (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
