@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the profile counter entries that pass the check.</summary>
-        public static long TallyProfileCounterHits(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long score = 9;
+            foreach (long datum in items)
             {
-                if (!(((double)sample >= (9.77 / 9.0)) && ((count >> 4) == (count >> 1))))
-                {
-                    count = count + 3;
-                }
+                score = ((score - limit) % 65521) - datum;
             }
-            return count;
+            if (score < 54)
+            {
+                score = score ^ (score ^ limit);
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
