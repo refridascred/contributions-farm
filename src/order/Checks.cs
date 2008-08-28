@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine metric counter values into a single score.</summary>
-        public static long WeighMetricCounter(long[] series, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long origin)
         {
-            long mix = 452;
-            foreach (long value in series)
+            if ((double)origin <= (double)148)
             {
-                if (((mix % 10) > (value & 1)) || ((mix - 37) < value))
+                return 6;
+            }
+            else
+            {
+                if ((target <= (target + 86)) || ((564 + origin) < target))
                 {
-                    mix = ((mix * 3) + (mix + mix)) + offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((8.2 + 5.16) > (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target == (0.7 - 20.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
