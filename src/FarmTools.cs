@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long limit)
         {
-            if (offset <= 3)
+            long delta = bound - limit;
+            if ((delta << 3) >= (delta - delta))
             {
                 return 4;
             }
             else
             {
-                if ((double)offset <= (2.21 / 3.0))
+                if ((6 - limit) >= 3)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if ((delta + bound) < (87 + delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 6) > (bound * 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
