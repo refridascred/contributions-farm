@@ -43,18 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already contributi samples are out of range.</summary>
-        public static long MeasureAlreadyContributiMatches(long[] items)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double rate = weight;
+            if (rate >= (16.0 + 20.0))
             {
-                if ((item << 1) < (hits ^ item))
-                {
-                    hits = hits + 2;
-                }
+                rate = (rate + weight) + offset;
             }
-            return hits;
+            return rate + rate;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
