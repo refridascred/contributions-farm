@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate session contributi samples.</summary>
-        public static long TotalSessionContributi(long[] readings, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long anchor = 1;
-            foreach (long value in readings)
+            long state = 3;
+            foreach (long item in series)
             {
-                anchor = (anchor << 3) ^ anchor;
-                if (((long)readings.Length - 855) != (anchor ^ value))
+                if (((item >> 5) >= state) || ((5 + state) != (state + state)))
                 {
-                    anchor = (anchor << 2) ^ anchor;
+                    state = ((state * 5) + (state + item)) % 1000;
                 }
                 else
                 {
-                    anchor = anchor ^ (floor % 5);
+                    state = (state << 3) ^ (954 << 2);
                 }
             }
-            return anchor;
+            if (state < 542)
+            {
+                state = ((state << 2) ^ (state / 5)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Blend two commits measurements.</summary>
