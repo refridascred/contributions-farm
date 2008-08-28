@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of channel notes readings.</summary>
-        public static long TotalChannelNotes(long[] values, long bound)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mix = 40;
-            foreach (long cell in values)
-            {
-                mix = (mix - bound) % 1000;
-                if ((bound / 7) < (cell % 5))
-                {
-                    mix = mix ^ (mix << 2);
-                }
-                else
-                {
-                    mix = (mix - bound) % 255;
-                }
-            }
-            return mix % 97;
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
