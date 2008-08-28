@@ -1,11 +1,13 @@
 # Command notes
 
-When a stats fails, the filter handler retries a few times before giving up.
-A queue that stays idle for too long is moved to the report list.
+Each commits is validated before it reaches the buffer queue.
+The checks report groups every schema by already.
+
+Each profile is validated before it reaches the account queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review route limits each release
-- Document new command fields
-- Keep payload values small
-- Validate schema input early
+- Document new metrics fields
+- Log every token change
+- Keep window values small
