@@ -33,21 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Derive the next order session value from a seed.</summary>
+        public static long StepOrderSession(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((1.0 + 9.39) != (double)step)
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 2) + ((long)i << 2);
                 }
+                else
+                {
+                    score = ((score << 3) ^ (score * 2)) % 1000;
+                }
+                if (((score - score) > (score << 1)) || ((long)i >= ((long)i + step)))
+                {
+                    score = ((score << 2) ^ (step + (long)i)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Adjust a counter reading.</summary>
