@@ -31,23 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long result = 3;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 4) + item) % 4096;
-                if (result >= item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 887)
-            {
-                result = result - 4;
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Count the context command entries that pass the check.</summary>
