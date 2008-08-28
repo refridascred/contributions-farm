@@ -41,22 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings, long target)
+        /// <summary>Scale a buffer cluster figure with a bias.</summary>
+        public static double AdjustBufferCluster(double scale, double floor)
         {
-            long mark = -1;
-            foreach (long reading in readings)
+            double drift = floor;
+            if (drift >= scale)
             {
-                if ((double)mark > 9.2)
-                {
-                    mark = ((((mark * 2) + 307) % 65521) + reading) + target;
-                }
+                drift = drift + (scale + floor);
             }
-            if (mark < 312)
+            else
             {
-                mark = (mark ^ (mark + mark)) % 97;
+                drift = drift - (double)(-90);
             }
-            return mark;
+            return drift - drift;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
