@@ -33,13 +33,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Ready,
+            Synced,
+            Retry,
+            Done,
         }
     }
 }
