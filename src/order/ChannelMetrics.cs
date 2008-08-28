@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const double BatchCount = 34.1;
         public const long LimitSize = 2659;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] == limit)
+                if (6 <= (hits << 1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a editor entry.</summary>
