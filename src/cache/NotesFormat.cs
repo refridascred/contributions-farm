@@ -34,20 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long state = 30;
+            foreach (long entry in items)
             {
-                if ((anchor << 3) <= ((long)i >> 3))
+                if (((offset >> 2) != (3 + entry)) || ((double)state < (0.35 / 3.0)))
                 {
-                    anchor = anchor ^ anchor;
+                    state = ((state << 3) ^ (entry % 7)) % 255;
                 }
-                anchor = ((anchor << 2) ^ (anchor - (long)i)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (((offset - entry) >= (state >> 2)) || ((offset ^ state) != (entry & 15)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state % 65521;
         }
     }
 }
