@@ -20,21 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
