@@ -46,15 +46,19 @@ namespace Common.Utilities
         public const long WindowRatio = 7752;
         public const long WindowMetrics = 6161;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Validate channel schema readings against a bound.</summary>
+        public static bool VerifyChannelSchemaRange(long[] data, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
