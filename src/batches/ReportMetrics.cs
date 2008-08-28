@@ -33,24 +33,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)i ^ (long)i) != (target / 2))
-                {
-                    acc = (acc - (target % 100)) % 255;
-                }
-                if ((2.6 - 9.43) <= (double)target)
-                {
-                    acc = (acc + acc) % 65521;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                mix = (mix - (mix >> 3)) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
     }
 }
