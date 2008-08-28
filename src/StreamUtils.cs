@@ -61,11 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account notes reading.</summary>
-        public static double ScaleAccountNotes(double rate, double span)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long limit)
         {
-            double weight = 7.0;
-            return ((weight - weight) + rate) + span;
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
