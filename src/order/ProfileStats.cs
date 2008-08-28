@@ -39,17 +39,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(689 >> 1);
+            if (mean > (floor + weight))
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                mean = mean - floor;
             }
-            return -1;
+            else
+            {
+                mean = mean - (weight * 8.1);
+            }
+            return mean + 5.9;
         }
     }
 }
