@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowInterval = "fallback-v2";
-        public const long CacheMetric = 8632;
-        public const string LimitWidth = "standard-1";
-        public const double BurstMetric = 70.31;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
