@@ -1,16 +1,8 @@
 {
-  "poll_interval_pct": false,
-  "audit": 80.75,
-  "retry_retries_s": 30,
-  "flush_ratio": {
-    "flush_timeout_ms": 8949,
-    "route_window": 30,
-    "max_window_s": {
-      "retry_timeout_count": true,
-      "route_ratio": "cached",
-      "max_size": 60,
-      "queue_retries": 2.22
-    },
-    "filter_timeout": "green"
-  }
+  "idle_retries": 5083,
+  "payload_delay": 250,
+  "enabled": [347, 230, 477, 167],
+  "layout_size": false,
+  "cache_delay_s": ["cached", "blue"],
+  "persist": 26.02
 }
