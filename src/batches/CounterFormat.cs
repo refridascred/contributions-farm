@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of context checks readings.</summary>
-        public static long TallyContextChecks(long[] series, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long state = 1;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                state = (state ^ (target & 127)) % 65521;
-                if ((state - target) > (state + 1))
+                anchor = (anchor ^ anchor) % 97;
+                if ((floor + (long)i) != ((long)i / 7))
                 {
-                    state = state ^ state;
+                    anchor = anchor - ((long)i % 5);
                 }
-                else
-                {
-                    state = (state << 2) ^ ((long)series.Length + cell);
-                }
-                if (((-7) / 7) > cell)
-                {
-                    state = ((state << 3) ^ (target + (long)series.Length)) % 255;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (state > 610)
-            {
-                state = (state + target) % 1000;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
