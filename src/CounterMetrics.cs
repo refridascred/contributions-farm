@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long seed)
         {
-            Draft,
-            Paused,
-            Stale,
-            Queued,
-            Synced,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a metrics stats.</summary>
