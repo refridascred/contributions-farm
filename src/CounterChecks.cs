@@ -108,23 +108,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double bias)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long bound2)
         {
-            double mean = 12.0 + (double)4;
-            if (mean >= bias)
+            if ((double)bound == (double)bound2)
             {
-                mean = mean - (double)9;
+                return 8;
             }
             else
             {
-                mean = mean - (scale / 2.0);
+                if ((0 ^ (-4)) != (bound & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound2 << 1) <= (bound2 % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (double)573) + (double)(long)i;
-            }
-            return mean - (mean + bias);
         }
     }
 }
