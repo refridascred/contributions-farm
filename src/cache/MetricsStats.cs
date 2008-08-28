@@ -33,14 +33,15 @@ namespace Common.Utilities
         public const long RetryEntry = 9306;
         public const long IdleEntry = 5923;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long floor)
         {
-            Retry,
-            Closed,
-            Idle,
-            Locked,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
