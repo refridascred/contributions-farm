@@ -14,22 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cluster commits readings against a rule.</summary>
-        public static long MeasureClusterCommitsGaps(long[] series, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((14.0 * 4.22) >= (double)item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a filter entry.</summary>
