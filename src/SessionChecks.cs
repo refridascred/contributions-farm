@@ -31,19 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            long acc = -3;
-            foreach (long entry in levels)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (acc ^ (729 << 1)) % 255;
-                if ((double)(long)levels.Length < (double)entry)
-                {
-                    acc = (acc - (acc + acc)) % 65521;
-                }
+                result = (result * 2) + ((long)i - offset);
+                result = (result ^ (56 / 9)) % 101;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
     }
 }
