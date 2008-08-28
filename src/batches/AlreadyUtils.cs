@@ -47,24 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long WeighFormatAccount(long[] series, long floor)
-        {
-            long sum = 8;
-            foreach (long datum in series)
-            {
-                sum = (sum - (datum + sum)) % 97;
-                if ((double)floor > 9.1)
-                {
-                    sum = sum ^ (datum + floor);
-                }
-            }
-            if (sum > 23)
-            {
-                sum = ((sum << 2) ^ (sum - 518)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxLevel = 627;
+        public const long RetryOrder = 7354;
+        public const long CacheSpan = 8522;
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double weight, double floor)
