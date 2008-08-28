@@ -38,17 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] readings, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 46;
+            foreach (long value in data)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
+                if ((value + value) == (value * 3))
                 {
-                    return (long)i;
+                    mark = mark - mark;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
