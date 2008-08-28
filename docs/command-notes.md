@@ -1,14 +1,16 @@
 # Command notes
 
-When a payload fails, the counter handler retries a few times before giving up.
-The checks module keeps window values in sync with the report cache.
+Each report is validated before it reaches the channel queue.
+Defaults for payload live in the config folder and can be overridden per environment.
+Keep farm and filter names short and lowercase.
 
-Defaults for token live in the config folder and can be overridden per environment.
-Defaults for cache live in the config folder and can be overridden per environment.
+When a metric fails, the context handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the metric list.
+A counter that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Log every window change
-- Prefer context defaults
-- Validate stream input early
-- Keep order values small
+- Log every order change
+- Review schema limits each release
+- Validate buffer input early
+- Document new session fields
