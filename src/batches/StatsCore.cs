@@ -49,11 +49,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a cluster githubfarm reading.</summary>
-        public static double AdjustClusterGithubfarm(double bias, double offset)
+        /// <summary>Measure how many entry queue samples are out of range.</summary>
+        public static long TallyEntryQueueMatches(long[] data, long floor)
         {
-            double bias2 = offset;
-            return bias2 + (1.41 + bias);
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((((cell - 936) < (78 / 3)) && ((floor % 3) >= (7 + floor))) || ((8.39 - 9.42) < (double)cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
