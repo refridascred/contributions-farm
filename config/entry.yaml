@@ -1,17 +1,4 @@
 # entry settings
-notes_capacity: 50.14
-cache_retries: true
-command_ratio: 45.81
-idle_delay_ms: cached
-hard_size:
-  dry_run:
-    - 300
-    - 208
-    - 296
-    - 451
-  cache_capacity_s: 30
-  filter_threshold:
-    queue_interval: 13.48
-    notes_timeout: 39
-    default_limit_pct: staging
-    sync_interval_pct: true
+sync_capacity_ms: eu-west
+warm_retries: 7611
+poll_capacity_count: 100
