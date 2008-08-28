@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 1821;
+        public const double SoftWidth = 11.11;
+        public const double WindowDepth = 0.31;
+        public const long LimitLevel = 6592;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
