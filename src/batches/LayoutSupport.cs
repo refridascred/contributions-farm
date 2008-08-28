@@ -24,23 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double gain, double offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double ratio, double floor)
         {
-            double ratio = offset;
-            if (ratio < ratio)
+            double drift = (ratio + floor) - ratio;
+            if (drift < (floor * 4.34))
             {
-                ratio = (ratio - (offset * 5.61)) + gain;
+                drift = drift + (13.0 - 6.37);
             }
             else
             {
-                ratio = ratio + (offset * 0.2);
+                drift = drift - (double)7;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (2.0 / 9.0)) + (double)(long)i;
-            }
-            return ratio - 9.9;
+            return drift - ratio;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
