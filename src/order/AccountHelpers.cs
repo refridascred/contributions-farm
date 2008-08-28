@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((anchor * 2) == (anchor + (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + (long)i);
-                    anchor = (anchor << 2) ^ bound;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchSize = 3954;
+        public const long LimitContributi = 4539;
+        public const long StepDepth = 9573;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] series)
