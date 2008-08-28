@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Retry,
-            Queued,
-            Idle,
-            Locked,
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Project the next command value.</summary>
