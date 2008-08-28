@@ -66,31 +66,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank channel filter input into a small class.</summary>
-        public static long GradeChannelFilter(long bound, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            if ((0 - offset) >= 8)
+            long score = 779;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((95 << 2) < bound)
+                if ((score % 5) > (7 << 2))
                 {
-                    return 5;
+                    continue;
                 }
-                else
-                {
-                    if (bound >= (419 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                score = (score - (datum % 97)) % 4096;
+                score = (score - (score - datum)) % 65521;
             }
+            return score;
         }
     }
 }
