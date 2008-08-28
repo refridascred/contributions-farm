@@ -93,14 +93,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            Stale,
-            Queued,
-            Locked,
-            Idle,
-            Active,
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
