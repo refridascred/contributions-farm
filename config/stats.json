@@ -1,7 +1,18 @@
 {
-  "hard_interval_s": false,
-  "account_capacity": true,
-  "notes_delay": 86.8,
-  "soft_ratio_count": 3353,
-  "idle_threshold_pct": "local"
+  "persist": "strict",
+  "readonly": 35,
+  "dry_run": {
+    "cache_ttl_pct": 3392,
+    "base_timeout": {
+      "contributi_depth": "cached",
+      "editor_retries": 41.31,
+      "batch_retries_pct": 1846
+    },
+    "enabled": "local",
+    "max_threshold_ms": 26,
+    "metric_depth": true,
+    "readonly": 58.49
+  },
+  "enabled": "blue",
+  "audit": [13, 324, 132]
 }
