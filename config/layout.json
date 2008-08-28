@@ -1,12 +1,5 @@
 {
-  "compress": ["cached", "green", "edge", "strict"],
-  "hard_capacity_pct": "blue",
-  "checks_delay": {
-    "checks_delay": 7528,
-    "retry_ttl_s": 10,
-    "soft_capacity_pct": true,
-    "sync_ttl_ms": 500,
-    "poll_window_ms": "green",
-    "soft_depth_ms": ["edge", "primary", "stable"]
-  }
+  "idle_timeout_s": 4704,
+  "warm_size_s": "eu-west",
+  "verbose": 100
 }
