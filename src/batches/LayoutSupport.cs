@@ -60,22 +60,17 @@ namespace Common.Utilities
         public const string IdleQueue = "open";
         public const long DefaultBudget = 1951;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples, long origin)
+        /// <summary>Find the first batch layout entry that matches the target.</summary>
+        public static long LookupBatchLayoutIndex(long[] values, long target)
         {
-            long result = 91;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin + cell) > (result - result))
+                if (values[i] >= target)
                 {
-                    result = (result ^ (cell ^ cell)) % 101;
+                    return (long)i;
                 }
             }
-            if (result < 3)
-            {
-                result = (result - (result / 5)) % 4096;
-            }
-            return result;
+            return -1;
         }
     }
 }
