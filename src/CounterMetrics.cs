@@ -22,23 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long state = 8;
-            foreach (long item in readings)
-            {
-                state = ((state << 2) ^ limit) + item;
-                if ((state % 10) > state)
-                {
-                    break;
-                }
-            }
-            if (state > 25)
-            {
-                state = state ^ (state / 8);
-            }
-            return state;
+            Draft,
+            Paused,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a metrics stats.</summary>
