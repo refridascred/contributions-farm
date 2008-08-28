@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Retry,
-            Draft,
-            Stale,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultCount = 15.01;
+        public const long StepBatches = 7847;
+        public const long SoftRatio = 4124;
+        public const string MinInterval = "alpha-v2";
+        public const double WindowInterval = 21.28;
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double gain, double offset)
