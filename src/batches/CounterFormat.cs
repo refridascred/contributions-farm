@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Paused,
-            Ready,
+            Done,
+            Draft,
+            Active,
             Pending,
+            Paused,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
