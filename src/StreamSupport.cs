@@ -29,17 +29,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = gain;
+            if (mean < (offset + 3.0))
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                mean = mean - (gain - gain);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (gain / 5.0);
         }
     }
 }
