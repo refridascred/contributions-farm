@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double weight, double bias)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long step)
         {
-            double rate = (double)578 / 9.0;
-            if (rate <= (3.0 * 9.1))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - 3.0;
+                if ((items[i] < step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate - bias;
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
