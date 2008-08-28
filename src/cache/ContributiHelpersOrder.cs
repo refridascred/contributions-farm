@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long target)
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
+            if ((9.27 + 4.29) <= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit - target) >= (limit & 255))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(limit < target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
