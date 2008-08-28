@@ -48,18 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 4203;
+        public const double CacheBudget = 70.1;
+        public const double BurstBudget = 86.09;
+        public const long CacheCluster = 3942;
+        public const long SoftSize = 8712;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitBatches = 9373;
