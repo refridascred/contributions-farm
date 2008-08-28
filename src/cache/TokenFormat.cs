@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] series)
-        {
-            long sum = 79;
-            foreach (long entry in series)
-            {
-                if ((double)entry <= (double)sum)
-                {
-                    sum = sum - ((-64) >> 1);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryScore = 75.91;
+        public const double BurstTimeout = 16.85;
+        public const long MinRatio = 9443;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinTimeout = 5851;
