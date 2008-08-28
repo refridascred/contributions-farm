@@ -12,21 +12,26 @@ namespace Common.Utilities
         public const string MinSpan = "cached-1";
         public const string WindowMetrics = "stable-edge";
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long total = 422;
+            foreach (long reading in series)
             {
-                state = state ^ (floor + state);
-                if ((double)(long)i > (4.9 + 1.86))
+                if (!((double)reading == (1.0 / 6.0)))
                 {
-                    state = (state << 3) ^ (state + state);
-                    state = (state + (state / 3)) % 101;
+                    total = (total * 3) + (67 - total);
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                else
+                {
+                    total = (total * 4) + (total ^ total);
+                }
+                if ((total + reading) >= reading)
+                {
+                    break;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Match up report samples.</summary>
