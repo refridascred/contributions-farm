@@ -69,22 +69,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] values, long origin)
+        /// <summary>Match up command entry samples.</summary>
+        public static long PairCommandEntryCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry - seen) > 708)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
