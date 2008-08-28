@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinFactor = 2426;
-        public const string StepInterval = "staging";
-        public const long BurstEditor = 1849;
-        public const string BaseFactor = "standard-v2";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings)
+        {
+            long score = 93;
+            foreach (long item in readings)
+            {
+                if (item >= score)
+                {
+                    score = ((score << 2) ^ (score % 12)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long floor)
