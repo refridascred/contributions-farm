@@ -1,11 +1,14 @@
 # Command notes
 
-The cluster module keeps stats values in sync with the tools cache.
-The batches report groups every stats by editor.
+A tools that stays idle for too long is moved to the editor list.
+When a batches fails, the batches handler retries a few times before giving up.
+
+The support report groups every window by commits.
+When a batch fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new batches fields
-- Review report limits each release
-- Log every notes change
+- Document new graph fields
+- Review command limits each release
 - Validate counter input early
+- Prefer githubfarm defaults
