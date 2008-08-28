@@ -59,38 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data, long offset)
         {
-            if ((seed + seed) >= seed)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed ^ step) == (42 << 2))
+                if (item >= (item + offset))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.0 / 4.0) < (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)step <= 7.9) || (seed >= (step / 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
