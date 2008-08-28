@@ -32,11 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftFactor = 27;
-        public const string WindowSession = "open-v2";
-        public const double BatchSession = 13.41;
-        public const string MaxSize = "standard-edge";
-        public const double RetrySession = 83.46;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
