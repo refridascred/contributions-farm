@@ -41,20 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile layout value from a seed.</summary>
-        public static long IterateProfileLayout(long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                double drift = (4.0 - 12.0) + (6.3 - 11.0);
-                if ((drift / 2.0) >= (drift * 5.18))
+                if ((double)count > (5.73 * 1.17))
                 {
-                    sum = (sum - (long)i) % 101;
+                    count = (count + 1) + reading;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
