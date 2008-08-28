@@ -92,13 +92,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values, long limit)
         {
-            Draft,
-            Failed,
-            Stale,
-            Pending,
+            long sum = 880;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length + reading) != (310 + (-16)))
+                {
+                    sum = ((sum * 4) + reading) + limit;
+                }
+                if (8 >= (sum - 98))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
