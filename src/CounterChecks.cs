@@ -114,15 +114,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double ratio = (offset - 8.17) * 8.4;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + (ratio * 2.0)) + (double)(long)i) - weight;
-            }
-            return ratio + offset;
+            Stale,
+            Retry,
+            Closed,
+            Paused,
         }
     }
 }
