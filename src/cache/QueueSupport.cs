@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)origin == (3.72 + 16.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((seed / 3) > (origin + seed))
                 {
-                    if ((levels[i] + levels[j]) < 13)
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed >> 4) >= (origin - seed)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.77 * 5.55) <= (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next command value.</summary>
