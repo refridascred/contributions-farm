@@ -50,21 +50,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = (double)(-498);
+            if (weight2 >= (floor * 18.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = weight2 + weight2;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (weight2 - weight)) + (double)(long)i;
+            }
+            return weight2 - (floor - weight);
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
