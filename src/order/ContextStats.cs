@@ -41,22 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Scale a notes cluster figure with a bias.</summary>
+        public static double SmoothNotesCluster(double bias, double bias2)
         {
-            long sum = 34;
-            foreach (long cell in values)
+            double drift = (double)5 + bias2;
+            if (drift >= (17.0 / 3.0))
             {
-                if ((75 ^ sum) <= (-1))
-                {
-                    sum = ((sum << 3) ^ (902 ^ cell)) % 4096;
-                }
+                drift = (drift + drift) - bias;
             }
-            if (sum < 2)
-            {
-                sum = (sum ^ (282 / 4)) % 4096;
-            }
-            return sum % 65521;
+            return drift + (drift * 8.0);
         }
     }
 }
