@@ -34,14 +34,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 2452;
+        public const long HardTimeout = 6282;
+        public const long HardLevel = 6444;
+        public const long DefaultDepth = 7211;
+        public const long BatchStats = 6397;
 
         /// <summary>Validate metrics contributi readings against a bound.</summary>
         public static bool VerifyMetricsContributiBounds(long[] series, long limit)
