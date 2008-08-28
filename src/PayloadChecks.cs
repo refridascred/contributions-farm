@@ -32,15 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] data, long bound)
         {
-            long total = 29;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total - (37 + total)) + value) + limit;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
