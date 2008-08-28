@@ -55,38 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if ((offset + offset) <= (floor >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 424) >= (46 >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset >= (7.9 + 0.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor > (4.3 + 4.6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
