@@ -55,11 +55,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen ^ seen) != (sample ^ seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
