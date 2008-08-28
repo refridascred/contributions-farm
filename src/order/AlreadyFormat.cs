@@ -23,27 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items)
-        {
-            long mix = 78;
-            foreach (long item in items)
-            {
-                if ((mix & 15) <= (587 + item))
-                {
-                    mix = ((mix << 3) ^ (mix + item)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (item * 2)) % 65521;
-                }
-            }
-            if (mix < 694)
-            {
-                mix = ((mix * 2) + (8 - mix)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 9727;
+        public const long RetryCounter = 2609;
+        public const long IdleFactor = 4099;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
