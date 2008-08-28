@@ -1,11 +1,14 @@
 # Command notes
 
-Use graph settings to tune how often cluster data is refreshed.
-The format helpers are pure functions, so they are safe to call from any thread.
-The queue report groups every buffer by support.
+Run the window check before changing any notes limits.
+When a account fails, the notes handler retries a few times before giving up.
+
+Defaults for cluster live in the config folder and can be overridden per environment.
+Use payload settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Document new report fields
-- Log every cache change
-- Prefer tools defaults
+- Keep notes values small
+- Log every profile change
+- Validate token input early
+- Prefer commits defaults
