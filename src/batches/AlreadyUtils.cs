@@ -46,10 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 627;
-        public const long RetryOrder = 7354;
-        public const long CacheSpan = 8522;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Stale,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double weight, double floor)
