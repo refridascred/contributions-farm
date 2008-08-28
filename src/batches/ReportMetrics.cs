@@ -13,17 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] samples, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 4;
+            foreach (long cell in readings)
             {
-                if (samples[i] == origin)
+                if (!(6 < (limit + cell)))
                 {
-                    return (long)i;
+                    mix = mix - (mix << 3);
+                }
+                else
+                {
+                    mix = mix ^ (mix << 3);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
