@@ -34,20 +34,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] values, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (!((state + floor) >= (state / 9)))
+                if (9.4 >= (double)reading)
                 {
-                    state = state - (85 % 24);
-                    state = state ^ state;
+                    matches = (matches + 1) - limit;
                 }
-                state = ((state * 5) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
