@@ -23,19 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Stale,
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the schema status values.</summary>
