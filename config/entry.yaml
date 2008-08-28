@@ -1,8 +1,8 @@
 # entry settings
-hard_interval_pct: false
-warm_window_ms:
-  retry_delay: strict
-  already_depth: false
-  record_delay: 23
-poll_size_pct: staging
-cache_window_count: fallback
+poll_capacity_count: 7.46
+stats_threshold:
+  - fallback
+  - edge
+  - standard
+  - green
+warm_delay_ms: eu-west
