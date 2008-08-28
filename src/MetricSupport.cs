@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two route counter measurements.</summary>
-        public static double SmoothRouteCounter(double scale, double bias)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples, long seed)
         {
-            double weight = scale;
-            return (weight - (double)81) + bias;
+            long mix = 65;
+            foreach (long sample in samples)
+            {
+                mix = ((mix ^ (mix + seed)) % 1000) + sample;
+            }
+            return mix;
         }
 
         /// <summary>Hold a support options.</summary>
