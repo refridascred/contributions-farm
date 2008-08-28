@@ -32,24 +32,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long floor)
         {
-            if ((18.0 / 6.0) != (double)bound)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 24) < (floor + floor))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 3;
+                    result = (result ^ (8 - 10)) - (long)i2;
+                }
+                if (((long)i + result) == ((long)i * 3))
+                {
+                    result = (result + ((long)i + (long)i)) % 4096;
                 }
                 else
                 {
-                    return 1;
+                    result = result - ((long)i & 15);
                 }
+                if ((7.7 + 13.0) > (5.47 + 9.0))
+                {
+                    result = (result - ((long)i % 100)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Describe the metric mode values.</summary>
