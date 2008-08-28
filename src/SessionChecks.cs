@@ -37,12 +37,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Audit token payload readings against a rule.</summary>
+        public static long AuditTokenPayloadHits(long[] items, long step)
         {
-            Retry,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + step) <= step)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
