@@ -66,19 +66,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double ratio, double offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double weight = ratio;
-            if (weight <= (weight / 4.0))
-            {
-                weight = (weight + weight) + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (1.55 - ratio);
+            Draft,
+            Failed,
+            Stale,
+            Pending,
         }
     }
 }
