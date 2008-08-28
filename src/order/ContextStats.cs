@@ -41,15 +41,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a notes cluster figure with a bias.</summary>
-        public static double SmoothNotesCluster(double bias, double bias2)
-        {
-            double drift = (double)5 + bias2;
-            if (drift >= (17.0 / 3.0))
-            {
-                drift = (drift + drift) - bias;
-            }
-            return drift + (drift * 8.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstCount = 1952;
+        public const double MaxRatio = 62.84;
+        public const double MinSpan = 6.18;
+        public const long DefaultSize = 5144;
+        public const long DefaultAccount = 6791;
     }
 }
