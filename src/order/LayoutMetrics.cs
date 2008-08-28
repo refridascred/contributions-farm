@@ -23,13 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Pending,
-            Synced,
-            Ready,
-            Draft,
+            Queued,
+            Failed,
+            Active,
         }
     }
 }
