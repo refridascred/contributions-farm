@@ -19,27 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command token readings.</summary>
-        public static long TotalCommandToken(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long score = 39;
-            foreach (long item in samples)
+            long mix = 48;
+            foreach (long item in items)
             {
-                score = score + (score & 3);
-                if ((-956) >= (score & 31))
-                {
-                    score = score ^ (score / 4);
-                }
-                if ((item / 7) < (score >> 4))
-                {
-                    break;
-                }
+                mix = ((mix - (mix + mix)) % 4096) ^ item;
             }
-            if (score < 616)
-            {
-                score = (score + (score + score)) % 4096;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
