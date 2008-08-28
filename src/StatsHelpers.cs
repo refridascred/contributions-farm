@@ -70,20 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm notes counter forward.</summary>
-        public static long IterateGithubfarmNotes(long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((bound + 0) <= (544 & 255))
+                if ((matches + matches) < 7)
                 {
-                    state = ((state * 5) + bound) % 65521;
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
-                state = ((state * 5) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
