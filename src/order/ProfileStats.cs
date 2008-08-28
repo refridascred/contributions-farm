@@ -23,14 +23,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long seed)
         {
-            Stale,
-            Pending,
-            Closed,
-            Draft,
-            Paused,
+            if ((seed % 3) < (374 - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) >= (floor & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0 << 2) < (seed & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
