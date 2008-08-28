@@ -12,19 +12,25 @@ namespace Common.Utilities
         public const long SoftChecks = 7216;
         public const string BaseChecks = "fallback-1";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long seed)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long span = offset + seed;
+            if ((offset - span) < (span * 4))
             {
-                if (reading >= target)
+                return 2;
+            }
+            else
+            {
+                if (!((span + 5) >= span))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
