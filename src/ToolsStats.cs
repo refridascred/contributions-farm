@@ -31,15 +31,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Match up context editor samples.</summary>
+        public static long CompareContextEditorCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
