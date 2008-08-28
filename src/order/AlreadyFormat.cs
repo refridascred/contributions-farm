@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] levels, long offset)
         {
-            long state = 424;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (((state & 7) <= (state - state)) || (((long)items.Length % 8) <= (state % 8)))
+                if ((9.4 - 2.23) < (double)item)
                 {
-                    state = state + (cell - state);
-                    state = state - (cell + state);
-                }
-                state = ((state * 5) + (cell / 5)) % 1000;
-                if (cell > (cell * 5))
-                {
-                    state = (state ^ (state << 3)) % 97;
+                    matches = (matches + 1) + offset;
                 }
                 else
                 {
-                    state = (state ^ (state + state)) % 101;
+                    matches = matches - 1;
                 }
             }
-            if (state > 4)
-            {
-                state = (state - state) % 101;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
