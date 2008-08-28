@@ -19,13 +19,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the schema order series from a seed.</summary>
+        public static long DeriveSchemaOrder(long seed)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score - (score << 3)) % 97) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
