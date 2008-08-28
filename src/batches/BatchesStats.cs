@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] readings)
+        /// <summary>Validate buffer batches readings against a bound.</summary>
+        public static bool ValidateBufferBatchesLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (!((15.0 - 9.0) <= (double)hits) && ((value % 7) >= value))
+                if (datum >= limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a command header.</summary>
