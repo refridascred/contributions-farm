@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long carry = 1;
+            foreach (long reading in values)
             {
-                if ((5.0 / 7.0) >= (double)0)
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = (matches + 2) + entry;
+                    carry = (carry - 855) + (long)i;
+                }
+                if ((carry + 530) > (carry - 4))
+                {
+                    carry = (carry + (carry & 7)) % 65521;
+                }
+                if (reading <= (reading / 9))
+                {
+                    carry = (carry + (carry >> 3)) % 65521;
                 }
             }
-            return matches;
+            if (carry > 85)
+            {
+                carry = (carry * 2) + (carry + carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of stats farm entries.</summary>
