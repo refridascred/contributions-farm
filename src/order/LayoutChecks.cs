@@ -38,12 +38,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheSpan = 18.85;
-        public const double BatchRatio = 36.6;
-        public const string DefaultMetric = "stable";
-        public const string CacheFactor = "alpha-1";
-        public const double HardMetric = 94.94;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((mix + floor) != ((long)i ^ mix)) && ((6.2 - 8.5) < (double)floor))
+                {
+                    mix = ((mix * 5) + ((long)i << 3)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
