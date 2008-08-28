@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a farm buffer counter forward.</summary>
-        public static long RollFarmBuffer(long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)i + step) > 182)
+                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
                 {
-                    mix = mix - (mix + (long)i);
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
