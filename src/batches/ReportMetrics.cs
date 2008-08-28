@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch token samples are out of range.</summary>
-        public static long MeasureBatchTokenOutliers(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long anchor = -354;
+            foreach (long sample in items)
             {
-                if ((double)tally > (double)item)
+                anchor = (anchor << 2) ^ (anchor & 15);
+                if ((sample & 1) <= (sample + anchor))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
