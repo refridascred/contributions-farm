@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const double BurstTimeout = 16.85;
         public const long MinRatio = 9443;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinTimeout = 5851;
-        public const string BaseEditor = "local-v2";
-        public const long WindowSize = 4547;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the layout filter entries that pass the check.</summary>
         public static long MeasureLayoutFilterGaps(long[] series, long floor)
