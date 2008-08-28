@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] samples, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (value > origin)
+                if (!(entry >= (bound + entry)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
