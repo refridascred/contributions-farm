@@ -55,13 +55,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
+            if (!((double)target >= (6.02 * 2.7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >= (bound - bound)) && ((bound + 73) <= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)951 == (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
