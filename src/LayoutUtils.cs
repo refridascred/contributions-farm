@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long TallyRecordOrder(long[] data, long bound)
-        {
-            long carry = 174;
-            foreach (long cell in data)
-            {
-                carry = (((carry << 2) ^ (bound - bound)) % 101) - cell;
-            }
-            if (carry < 1)
-            {
-                carry = ((carry * 4) + carry) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardScore = 2172;
+        public const double WindowFactor = 13.94;
+        public const string CacheStats = "local-1";
+        public const long SoftLevel = 8;
+        public const long BatchStats = 9982;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long step, long seed)
