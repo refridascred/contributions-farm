@@ -14,22 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of already commits readings.</summary>
-        public static long OverlapAlreadyCommitsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 2403;
+        public const long BatchRatio = 5702;
+        public const long MaxFactor = 7644;
+        public const double DefaultRatio = 6.89;
+        public const long MinFilter = 8231;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] readings, long step)
