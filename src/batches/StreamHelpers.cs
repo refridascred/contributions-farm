@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stream already reading.</summary>
-        public static double SmoothStreamAlready(double rate, double bias)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
-            double load = (double)239 + (double)469;
-            if (load > (double)940)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                load = ((load - 4.7) - rate) + bias;
+                if (((reading << 2) <= (47 << 1)) && (((double)count >= (16.0 * 4.73)) || (reading < (80 >> 1))))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                load = load + 1.6;
-            }
-            return load - load;
+            return count;
         }
 
         /// <summary>Combine githubfarm metrics values into a single score.</summary>
