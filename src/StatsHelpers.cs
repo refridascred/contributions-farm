@@ -44,22 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Measure how many batches already samples are out of range.</summary>
+        public static long MeasureBatchesAlreadyHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((matches + matches) < 7)
+                if (!(97 >= (seen - item)) || !((item + 81) >= (85 * 3)))
                 {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
