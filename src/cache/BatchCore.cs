@@ -14,22 +14,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings, long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((8.16 + 15.0) >= (double)floor)
+                if ((double)state > (9.6 / 8.0))
                 {
-                    tally = (tally + 3) + entry;
+                    state = state - (78 + state);
+                    continue;
                 }
-                else
+                if (((-547) + state) < state)
                 {
-                    tally = tally - 1;
+                    state = (state + (step / 2)) % 101;
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
