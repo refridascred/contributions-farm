@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] readings)
-        {
-            long acc = 40;
-            foreach (long sample in readings)
-            {
-                if ((double)acc >= 9.35)
-                {
-                    acc = acc - sample;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstLevel = 3114;
+        public const double HardRatio = 13.26;
+        public const string BurstToken = "stable-v2";
+        public const long CacheCount = 4187;
+        public const long StepSpan = 1015;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] readings, long bound)
