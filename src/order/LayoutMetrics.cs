@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] items, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double weight, double bias)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double drift = (double)527 / 2.0;
+            if (drift > (double)(-933))
             {
-                if ((double)(-84) < (double)sample)
-                {
-                    count = (count + 3) - seed;
-                }
+                drift = drift - (7.0 + weight);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (bias * 1.98)) - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
