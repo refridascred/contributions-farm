@@ -108,24 +108,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            double mean = 12.0 + (double)4;
+            if (mean >= bias)
             {
-                long offset = ((-39) & 7) & 1;
-                if (((7.2 * 2.0) > (double)target) && (mark > (offset >> 4)))
-                {
-                    mark = mark - ((long)i & 31);
-                }
-                if (((target / 2) >= (offset << 2)) && (offset <= 386))
-                {
-                    offset = ((offset * 5) + 65) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                mean = mean - (double)9;
             }
-            return mark;
+            else
+            {
+                mean = mean - (scale / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (double)573) + (double)(long)i;
+            }
+            return mean - (mean + bias);
         }
     }
 }
