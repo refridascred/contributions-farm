@@ -59,21 +59,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed + seed) >= seed)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed ^ step) == (42 << 2))
                 {
-                    if ((readings[i] - readings[j]) > 2)
+                    return 7;
+                }
+                else
+                {
+                    if ((7.0 / 4.0) < (double)seed)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)step <= 7.9) || (seed >= (step / 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
