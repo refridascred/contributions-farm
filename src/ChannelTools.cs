@@ -34,19 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster support value from a seed.</summary>
-        public static long DeriveClusterSupport(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (result ^ (long)i) + (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleDepth = "latest-1";
+        public const double BurstBuffer = 27.98;
+        public const double SoftWidth = 16.09;
+        public const long BatchWidth = 9570;
+        public const long BatchBuffer = 8634;
     }
 }
