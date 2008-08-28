@@ -1,4 +1,8 @@
 # githubfarm settings
-batch_interval_ms: true
-verbose: 30
-context_size: true
+hard_depth_count: 8508
+base_window: 909
+stats_timeout: standard
+batch_threshold: eu-west
+retry_timeout_ms:
+  - standard
+  - standard
