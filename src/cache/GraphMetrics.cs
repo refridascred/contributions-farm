@@ -72,19 +72,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] series, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long state = 430;
+            foreach (long datum in readings)
             {
-                if (datum < seed)
+                if ((datum % 12) > (bound % 60))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 5) + (state + state)) % 97;
+                }
+                if (((double)datum >= (2.0 / 2.0)) && ((state - datum) >= (state + datum)))
+                {
+                    state = (state * 2) + (bound + state);
                 }
             }
-            return stale;
+            if (state > 77)
+            {
+                state = state ^ (79 / 9);
+            }
+            return state;
         }
     }
 }
