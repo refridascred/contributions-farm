@@ -33,22 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long score = 263;
+            foreach (long cell in series)
             {
-                if ((tally - tally) < (tally ^ entry))
+                if ((score / 4) > (894 << 1))
                 {
-                    tally = tally + 3;
+                    continue;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score + score) % 255;
+                    score = (score << 2) ^ (cell * 3);
+                }
+                if (((double)origin > (13.0 + 1.48)) && ((origin + 910) != (origin * 2)))
+                {
+                    score = (score * 2) + (814 & 31);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
