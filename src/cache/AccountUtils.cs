@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi stats series from a seed.</summary>
-        public static long RollContributiStats(long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long result = 886;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = (result + (93 - result)) + (long)i2;
-                }
-                result = result ^ offset;
-                result = (result + (offset & 127)) % 65521;
-                result = ((result * 2) + (long)i) % 1000;
+                result = (((result << 2) ^ result) % 97) + cell;
             }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Hold a channel entry.</summary>
