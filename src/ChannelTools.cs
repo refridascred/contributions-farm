@@ -56,11 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 8685;
-        public const long LimitRatio = 5116;
-        public const double MinCommits = 23.58;
-        public const long CacheDepth = 7646;
-        public const double BatchSpan = 58.8;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Idle,
+            Retry,
+            Active,
+            Ready,
+        }
     }
 }
