@@ -27,18 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long CountRouteFarmOutliers(long[] readings, long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)origin > 3.6)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Count the notes githubfarm entries that pass the check.</summary>
