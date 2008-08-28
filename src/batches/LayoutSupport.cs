@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] series, long step)
         {
-            long acc = 153;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                acc = (acc ^ origin) % 4096;
-                if ((double)entry > (double)acc)
+                if (reading <= step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (acc < (-3))
-            {
-                acc = ((acc * 4) + origin) % 4096;
-            }
-            return acc % 4096;
+            return valid;
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
