@@ -28,18 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a metrics token reading by value.</summary>
-        public static long SeekMetricsTokenIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 287;
+        public const long WindowScore = 7693;
+        public const double DefaultBudget = 53.82;
+        public const double DefaultInterval = 92.23;
+        public const double IdleCommand = 48.51;
 
         /// <summary>Match up metrics buffer samples.</summary>
         public static long CompareMetricsBufferCount(long[] readings)
