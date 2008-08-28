@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate batches stats readings against a bound.</summary>
+        public static bool VerifyBatchesStatsLimits(long[] data, long floor)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
