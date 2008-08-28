@@ -52,18 +52,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of context record entries.</summary>
-        public static long CombineContextRecord(long[] samples, long origin)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            long mix = 235;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mix < (origin % 24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix - (7 ^ 31)) % 97) + entry;
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
