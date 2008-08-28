@@ -1,15 +1,9 @@
 # githubfarm settings
-batch_ttl_count:
-  farm_window: 24
-  default_depth_ms: 25
-  flush_interval: 65.18
-  default_interval_pct:
-    - staging
-    - green
-    - open
-    - standard
-  min_size: local
-soft_capacity_s: 77.49
-compress: 359
-flush_retries: 33.03
-batch_depth: 2840
+stream_timeout:
+  flush_delay: fallback
+  checks_delay: blue
+  verbose: 47.01
+  metric_retries: fallback
+  retry_ratio_ms: 6724
+burst_retries: blue
+base_threshold_count: true
