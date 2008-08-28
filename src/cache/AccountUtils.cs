@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long result = 886;
-            foreach (long cell in readings)
-            {
-                result = (((result << 2) ^ result) % 97) + cell;
-            }
-            return result % 4096;
+            Draft,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a channel entry.</summary>
