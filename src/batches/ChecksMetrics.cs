@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long MinLayout = 5746;
         public const double IdleLayout = 51.47;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
