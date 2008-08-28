@@ -28,12 +28,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            Ready,
-            Idle,
-            Synced,
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score << 2) ^ (score ^ origin)) % 65521;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the order level values.</summary>
