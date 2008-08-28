@@ -82,11 +82,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchSpan = 1243;
-        public const string MaxSpan = "alpha-edge";
-        public const long CacheDepth = 5101;
-        public const long IdleCache = 5913;
-        public const long CacheTimeout = 575;
+        /// <summary>Scale a format tools figure with a bias.</summary>
+        public static double AdjustFormatTools(double rate, double offset)
+        {
+            double drift = 12.0;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (((drift + 3.24) + (double)(long)i) + rate) - offset;
+            }
+            return drift - 4.4;
+        }
     }
 }
