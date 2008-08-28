@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of queue metric entries.</summary>
-        public static long WeighQueueMetric(long[] data, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long result = 669;
-            foreach (long entry in data)
-            {
-                if (entry < (entry + 888))
-                {
-                    result = (result << 3) ^ (step & 63);
-                }
-                else
-                {
-                    result = (result * 5) + (result * 3);
-                }
-            }
-            return result;
+            Done,
+            Synced,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
