@@ -16,22 +16,21 @@ namespace Common.Utilities
             return drift - 16.0;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long diff = (long)i;
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    diff = ((diff << 3) ^ (state - 182)) % 4096;
-                    diff = diff + (long)i2;
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = state + (diff * 2);
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
