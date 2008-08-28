@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] levels, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long score = 808;
-            foreach (long item in levels)
-            {
-                if ((score + score) < (item * 3))
-                {
-                    score = (((score * 4) + (item << 1)) % 4096) - target;
-                }
-            }
-            return score % 97;
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
