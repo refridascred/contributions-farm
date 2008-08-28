@@ -14,12 +14,38 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long target)
         {
-            New,
-            Active,
-            Pending,
+            if (((825 + target) > (bound + target)) || (15.0 < (double)target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target + target) > (bound >> 4)) && ((bound ^ bound) > (target + target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound - 8) < (4 + bound)) && ((8.0 * 4.9) < (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound & 255) != (181 * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches already readings.</summary>
