@@ -38,12 +38,13 @@ namespace Common.Utilities
             return weight + (gain * 9.4);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 874;
-        public const long RetryDepth = 8111;
-        public const string BatchDepth = "alpha-1";
-        public const long DefaultLayout = 4209;
-        public const long HardLayout = 9216;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesOutliers(long[] items, long origin)
