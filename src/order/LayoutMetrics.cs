@@ -36,10 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryCount = "staging";
-        public const double HardEntry = 34.63;
-        public const double CacheFactor = 1.37;
-        public const long SoftEntry = 8462;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 6341;
+        public const long RetryCount = 6459;
+        public const long IdleScore = 3026;
     }
 }
