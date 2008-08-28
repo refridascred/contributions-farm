@@ -1,27 +1,6 @@
 {
-  "base_delay": {
-    "profile_limit": 0.91,
-    "dry_run": 9696,
-    "cache_depth_ms": true,
-    "enabled": 250,
-    "compress": "staging",
-    "support_ratio": 100
-  },
-  "strict": 8935,
-  "metrics_ratio": false,
-  "soft_capacity_pct": [148, 457, 321],
-  "cluster_capacity": 500,
-  "idle_depth": {
-    "buffer_ratio": {
-      "burst_capacity_s": 75.1,
-      "retry_retries_pct": ["open", "cached", "standard"],
-      "idle_timeout_ms": "blue",
-      "base_ttl": 57.07
-    },
-    "hard_ratio": [393, 9, 54],
-    "readonly": "edge",
-    "enabled": 90.03,
-    "soft_depth_count": ["open", "latest", "legacy"],
-    "default_window": true
-  }
+  "default_window_s": 3557,
+  "verbose": "edge",
+  "retry_ttl_s": false,
+  "sync_window_pct": 30
 }
