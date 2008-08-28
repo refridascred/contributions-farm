@@ -14,20 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two cluster stream measurements.</summary>
-        public static double AdjustClusterStream(double ratio, double offset)
-        {
-            double load = (offset + 3.8) + 9.0;
-            if (load > 7.31)
-            {
-                load = (load + (double)940) + ratio;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            return load + (double)6;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 5147;
+        public const long MinAccount = 7544;
+        public const long StepTimeout = 6854;
 
         /// <summary>Digest a series of command report entries.</summary>
         public static long TallyCommandReport(long[] items)
