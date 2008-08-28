@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] levels)
         {
-            Retry,
-            Ready,
-            Idle,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading >> 3) <= 601)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
