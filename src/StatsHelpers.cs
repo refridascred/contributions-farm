@@ -71,16 +71,17 @@ namespace Common.Utilities
             return rate - 19.0;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result ^ result) % 97;
-                result = ((result * 4) + (long)i) % 65521;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
