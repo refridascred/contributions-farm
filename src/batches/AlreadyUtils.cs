@@ -30,23 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            double ratio = offset;
-            if (ratio >= 6.97)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                ratio = ratio + (ratio - offset);
+                if ((tally + tally) <= tally)
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)59;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - rate;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
