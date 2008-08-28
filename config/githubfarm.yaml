@@ -1,7 +1,9 @@
 # githubfarm settings
-burst_limit_ms: stable
-compress:
-  - primary
-  - open
-  - staging
-default_ttl: 14.38
+schema_limit: 59.88
+tools_limit: legacy
+session_capacity:
+  flush_interval_ms: 250
+  poll_size: 34
+  layout_threshold:
+    - open
+    - primary
