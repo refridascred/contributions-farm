@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 2059;
-        public const long RetryGithubfarm = 451;
-        public const long SoftGithubfarm = 2611;
-        public const long BaseInterval = 195;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] values)
