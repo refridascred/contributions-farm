@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((2.2 / 7.0) <= (double)matches)
+                if (entry > bound)
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
