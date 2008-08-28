@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] readings)
         {
-            long acc = 592;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                acc = (acc + (bound - 545)) % 255;
-                if ((6.47 - 8.51) > (double)bound)
+                if ((double)tally > (14.0 + 4.4))
                 {
-                    acc = acc - (sample - 86);
-                    acc = (acc ^ (bound + acc)) % 101;
-                }
-                if ((5.15 * 8.09) >= (double)acc)
-                {
-                    acc = (acc << 3) ^ ((-8) + bound);
-                }
-                else
-                {
-                    acc = acc + (acc << 2);
+                    tally = (tally + 2) + sample;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
