@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Queued,
-            New,
-            Done,
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
