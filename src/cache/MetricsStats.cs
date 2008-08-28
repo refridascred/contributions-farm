@@ -27,14 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 853;
+        public const string BurstEntry = "staging-1";
+        public const long RetryEntry = 9306;
+        public const long IdleEntry = 5923;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
