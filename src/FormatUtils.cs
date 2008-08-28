@@ -33,18 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] values)
+        /// <summary>Count payload notes pairs that satisfy a relation.</summary>
+        public static long MatchPayloadNotesCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample <= (3.55 * 2.01))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
