@@ -25,21 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of token editor readings.</summary>
-        public static long CompareTokenEditorCount(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a record reading by value.</summary>
