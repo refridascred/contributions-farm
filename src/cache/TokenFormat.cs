@@ -37,21 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = ((drift + (drift - drift)) + (double)(long)i) + bias;
             }
-            return seen;
+            return drift + (drift * 7.7);
         }
     }
 }
