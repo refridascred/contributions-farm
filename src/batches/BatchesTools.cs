@@ -31,15 +31,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long origin, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long next = origin ^ step;
+            if ((5.53 + 3.38) >= (double)step)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((next - origin) <= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((448 - next) > origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + origin) > next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
