@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] levels, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((19.0 - 12.0) >= (double)floor) && ((seen / 5) <= (seen * 2)))
-                {
-                    seen = (seen + 3) - datum;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a command entry counter forward.</summary>
