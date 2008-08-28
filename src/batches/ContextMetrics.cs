@@ -39,18 +39,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((((double)count > 11.0) || ((double)sample == (4.0 * 2.54))) || ((double)sample <= (1.1 * 0.5)))
+                if (((426 ^ value) <= (matches - matches)) && !(matches <= value))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the support class values.</summary>
