@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
