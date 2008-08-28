@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch buffer samples are out of range.</summary>
-        public static long CountBatchBufferOutliers(long[] data)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((-350) << 2) < (matches - entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Blend two graph measurements.</summary>
