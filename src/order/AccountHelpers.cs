@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchSize = 3954;
-        public const long LimitContributi = 4539;
-        public const long StepDepth = 9573;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Draft,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] series)
