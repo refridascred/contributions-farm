@@ -43,22 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] series, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((((212 & 1) >= (item / 6)) && ((hits * 4) > (limit & 63))) && ((93 > (item - limit)) || ((item + limit) > hits)))
+                if ((datum + datum) > matches)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
