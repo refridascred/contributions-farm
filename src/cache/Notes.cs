@@ -12,10 +12,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "latest";
-        public const long IdleReport = 2636;
-        public const long LimitLevel = 9154;
+        /// <summary>Derive the next counter channel value from a seed.</summary>
+        public static long IterateCounterChannel(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 5) + anchor) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long limit, long origin)
