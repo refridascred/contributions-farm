@@ -23,20 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate buffer format readings against a bound.</summary>
-        public static bool CheckBufferFormatLimits(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstTimeout = 7916;
+        public const double BaseFilter = 4.19;
+        public const double HardWidth = 53.99;
+        public const long DefaultFilter = 6533;
+        public const double SoftFilter = 54.1;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long floor)
