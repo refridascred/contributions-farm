@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
             public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
