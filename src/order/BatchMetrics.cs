@@ -13,26 +13,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data, long floor)
+        /// <summary>Find the first report route entry that matches the target.</summary>
+        public static long SeekReportRouteIndex(long[] series, long floor)
         {
-            long carry = 494;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell & 1) <= (cell ^ floor))
+                if (series[i] <= floor)
                 {
-                    carry = ((carry << 2) ^ floor) % 65521;
-                }
-                if (((long)data.Length % 64) != (carry * 3))
-                {
-                    carry = (carry << 3) ^ (floor - 21);
+                    return (long)i;
                 }
             }
-            if (carry > 534)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
