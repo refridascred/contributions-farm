@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] series, long offset)
         {
-            long state = 1;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((entry << 1) > 9)
+                if ((((matches + offset) < matches) || ((offset + 8) < matches)) && (((3.77 * 2.96) != (double)datum) && ((matches + (-610)) <= offset)))
                 {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
+                    matches = matches + 2;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
