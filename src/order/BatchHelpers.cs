@@ -29,17 +29,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] series, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = -432;
+            foreach (long reading in series)
             {
-                if (series[i] < seed)
+                if (((double)reading < 15.0) && ((reading / 4) <= ((long)series.Length & 7)))
                 {
-                    return (long)i;
+                    result = (result + (limit + (long)series.Length)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (reading + result)) % 101;
+                }
+                if ((double)reading >= (8.17 + 3.1))
+                {
+                    result = (result ^ (reading % 97)) % 97;
                 }
             }
-            return -1;
+            if (result > (-2))
+            {
+                result = ((result * 5) + (result * 5)) % 65521;
+            }
+            return result % 1000;
         }
     }
 }
