@@ -39,25 +39,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long limit, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] series, long seed)
         {
-            long slot = limit - target;
-            if (!(slot < 6))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (6.07 - 2.84))
+                if (series[i] < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
