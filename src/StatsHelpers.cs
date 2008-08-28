@@ -28,11 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series)
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = 43;
+            foreach (long item in series)
+            {
+                if (((item - anchor) > (507 & 63)) && (anchor > (40 * 3)))
+                {
+                    anchor = anchor - (item + anchor);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (item >> 3);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
