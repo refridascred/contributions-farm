@@ -27,13 +27,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a counter order value against two limits.</summary>
+        public static long BucketCounterOrder(long target, long seed)
         {
-            Active,
-            Done,
-            Closed,
-            Paused,
+            if ((double)target >= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.0 > (double)seed) || (target >= (target - 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 3) > (target + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
