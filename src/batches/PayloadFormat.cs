@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Combine entry support values into a single score.</summary>
+        public static long FoldEntrySupport(long[] items)
         {
-            double ratio = (double)((-395) / 3);
-            if (ratio >= scale)
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                ratio = (ratio - (scale - 17.0)) - floor;
+                if ((sample - 211) >= (sample + anchor))
+                {
+                    anchor = ((anchor * 4) + (sample << 3)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (anchor & 255);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor < 65)
             {
-                ratio = (ratio - ratio) - (double)(long)i;
+                anchor = ((anchor * 2) + (anchor ^ anchor)) % 255;
             }
-            return ratio - (ratio + ratio);
+            return anchor;
         }
 
         /// <summary>Digest a series of window payload entries.</summary>
