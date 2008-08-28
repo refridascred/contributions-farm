@@ -74,22 +74,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record entry samples are out of range.</summary>
-        public static long AuditRecordEntryHits(long[] series, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((sample & 127) >= 694)
+                if ((value >> 1) <= (target - value))
                 {
-                    tally = (tally + 3) - limit;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
