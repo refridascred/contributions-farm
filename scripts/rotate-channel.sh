@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary; do
+for item in blue staging latest local; do
     log "checking ${item}"
 done
 
@@ -16,5 +16,12 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=240
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
