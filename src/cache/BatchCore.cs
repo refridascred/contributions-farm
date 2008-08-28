@@ -35,11 +35,15 @@ namespace Common.Utilities
         public const long WindowWidth = 1833;
         public const long BaseInterval = 4402;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryWidth = 12.11;
-        public const double HardRatio = 30.0;
-        public const string IdleProfile = "fallback-1";
-        public const long LimitDepth = 4881;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Closed,
+            Draft,
+            Stale,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Count report account pairs that satisfy a relation.</summary>
         public static long OverlapReportAccountCount(long[] levels)
