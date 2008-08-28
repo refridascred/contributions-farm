@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long SoftBuffer = 2155;
         public const long CacheBuffer = 6734;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long offset, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] series, long seed)
         {
-            if ((double)seed >= (2.5 - 18.0))
+            bool found = true;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - seed) < (offset - seed))
+                if (cell < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
