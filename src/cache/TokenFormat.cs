@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format batch figure with a bias.</summary>
-        public static double ScaleFormatBatch(double rate, double span)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double bias = rate;
-            if (bias > (span + span))
-            {
-                bias = bias + (span * 1.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)(-75)) + (double)(long)i;
-            }
-            return bias - (span + bias);
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
