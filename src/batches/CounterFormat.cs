@@ -14,11 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many checks profile samples are out of range.</summary>
+        public static long CountChecksProfileOutliers(long[] levels, long offset)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((1 + offset) <= (sample * 2)) || (((sample - sample) > ((long)levels.Length & 255)) && ((tally % 97) < 5)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
