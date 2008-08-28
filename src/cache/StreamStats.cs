@@ -34,15 +34,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (count > sample)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a order entry.</summary>
