@@ -67,11 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinInterval = 2733;
-        public const long SoftScore = 747;
-        public const long LimitChecks = 7077;
-        public const string IdleChecks = "staging-edge";
-        public const long StepScore = 2573;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Dropped,
+            New,
+            Stale,
+            Active,
+        }
     }
 }
