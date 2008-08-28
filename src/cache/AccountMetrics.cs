@@ -90,18 +90,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] data, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if ((0.62 - 7.5) <= (double)step)
             {
-                if ((count << 3) > count)
+                return 3;
+            }
+            else
+            {
+                if (!((step + origin) <= (origin ^ step)))
                 {
-                    count = ((count + 1) - entry) - floor;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
