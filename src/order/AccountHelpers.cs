@@ -22,20 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter route counter forward.</summary>
-        public static long StepCounterRoute(long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ target) - (long)i2;
-                    acc = ((acc * 3) + target) % 101;
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
