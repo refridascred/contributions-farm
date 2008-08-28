@@ -1,11 +1,11 @@
 # support settings
-graph_window:
-  - local
-  - eu-west
-burst_size_pct: false
-soft_interval_count: stable
-hard_capacity:
-  - 370
-  - 400
-context_threshold: 96.17
-audit: 1644
+persist: false
+strict: false
+burst_delay_pct:
+  warm_interval_s: staging
+  warm_capacity_count: 100
+  batch_capacity: true
+  window_interval: 53.55
+token_interval: cached
+max_ttl_count: local
+soft_interval: 65.59
