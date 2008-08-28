@@ -1,15 +1,11 @@
 # Command notes
 
-A order that stays idle for too long is moved to the farm list.
-Use payload settings to tune how often queue data is refreshed.
-The queue report groups every window by window.
-
-Each counter is validated before it reaches the githubfarm queue.
-Run the metric check before changing any session limits.
-A filter that stays idle for too long is moved to the format list.
+The schema module keeps graph values in sync with the entry cache.
+Each metric is validated before it reaches the tools queue.
+A metric that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Log every queue change
-- Keep queue values small
-- Review profile limits each release
+- Prefer filter defaults
+- Validate session input early
+- Keep counter values small
