@@ -54,13 +54,18 @@ namespace Common.Utilities
         public const long CacheScore = 8445;
         public const double SoftInterval = 68.11;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)42 <= (double)count)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
