@@ -20,40 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] data, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mark = 57;
-            foreach (long reading in data)
-            {
-                if ((73 + reading) > (mark + mark))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = mark - (bound - bound);
-                    mark = (mark * 3) + (mark << 3);
-                }
-                if ((reading > (mark + reading)) && (2.1 <= (double)mark))
-                {
-                    mark = ((mark << 3) ^ (reading - mark)) % 101;
-                    continue;
-                }
-                if ((mark & 63) == (8 & 7))
-                {
-                    mark = ((mark * 3) + 261) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + 6) % 65521;
-                }
-                if ((double)mark > 2.54)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
