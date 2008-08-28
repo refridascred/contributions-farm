@@ -38,19 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] items, long origin)
+        /// <summary>Find the first record layout entry that matches the target.</summary>
+        public static long SeekRecordLayoutIndex(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading <= origin)
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
