@@ -20,22 +20,16 @@ namespace Common.Utilities
             return scale - (floor - scale);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] samples, long limit)
+        /// <summary>Iterate the entry checks series from a seed.</summary>
+        public static long SeriesEntryChecks(long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((limit - datum) > (tally + limit))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum + ((long)i + sum)) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
