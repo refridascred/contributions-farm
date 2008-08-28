@@ -1,6 +1,5 @@
 # entry settings
-soft_depth_ms: 51
-entry_retries:
-  - legacy
-  - strict
-min_ttl_pct: 53.15
+idle_interval_count: 10.03
+hard_size_count: 250
+verbose: 33
+buffer_depth: edge
