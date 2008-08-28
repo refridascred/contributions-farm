@@ -27,17 +27,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long WeighClusterSupport(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 809;
+            foreach (long reading in levels)
             {
-                if (readings[i] <= origin)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    acc = ((acc - reading) % 65521) - (long)i;
+                }
+                if (((double)acc <= (double)reading) && ((acc / 3) > (reading / 3)))
+                {
+                    acc = (acc + (reading / 3)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 2) + 30;
                 }
             }
-            return -1;
+            if (acc > 33)
+            {
+                acc = ((acc << 2) ^ (acc * 4)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
