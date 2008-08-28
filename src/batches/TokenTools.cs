@@ -32,18 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long total = 3;
-            foreach (long sample in data)
+            double bias = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)floor != (1.1 / 8.0))
-                {
-                    total = (((total << 2) ^ (total - total)) % 4096) ^ sample;
-                }
+                bias = ((bias - (offset / 6.0)) + (double)(long)i) - gain;
             }
-            return total % 97;
+            return bias + (double)(-5);
         }
     }
 }
