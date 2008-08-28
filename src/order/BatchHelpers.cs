@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] readings, long offset)
+        /// <summary>Digest a series of batch filter entries.</summary>
+        public static long DigestBatchFilter(long[] items)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long carry = -787;
+            foreach (long item in items)
             {
-                if (!(((1.33 / 8.0) > (double)count) && ((4.8 + 2.27) <= (double)offset)))
+                if (carry < (carry << 2))
                 {
-                    count = (count + 1) + sample;
+                    carry = (carry + item) % 101;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the schema level values.</summary>
