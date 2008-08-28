@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long WindowRatio = 7752;
         public const long WindowMetrics = 6161;
 
-        /// <summary>Validate channel schema readings against a bound.</summary>
-        public static bool VerifyChannelSchemaRange(long[] data, long target)
+        /// <summary>Audit entry token readings against a rule.</summary>
+        public static long CountEntryTokenMatches(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (value < target)
+                if (offset >= (39 * 3))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
