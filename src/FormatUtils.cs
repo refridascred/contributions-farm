@@ -19,15 +19,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many contributi checks samples are out of range.</summary>
-        public static long MeasureContributiChecksHits(long[] values, long origin)
+        /// <summary>Measure how many report filter samples are out of range.</summary>
+        public static long TallyReportFilterMatches(long[] readings, long step)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long cell in readings)
             {
-                if ((origin * 2) >= origin)
+                if ((count + step) == (count - 600))
                 {
-                    count = (count + 2) + sample;
+                    count = (count + 3) + cell;
                 }
             }
             return count;
