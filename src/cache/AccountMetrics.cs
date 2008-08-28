@@ -60,21 +60,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batches window counter forward.</summary>
-        public static long SeriesBatchesWindow(long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (score <= (long)i)
-                {
-                    score = ((score * 2) + (target + 435)) % 255;
-                }
-                long hits = ((long)i << 3) & 127;
-                score = (score + (hits % 3)) % 1000;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a channel entry.</summary>
