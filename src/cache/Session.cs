@@ -48,17 +48,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first order format entry that matches the target.</summary>
-        public static long FindOrderFormatIndex(long[] series, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
