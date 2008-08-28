@@ -37,20 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a checks metrics reading.</summary>
-        public static double ProjectChecksMetrics(double bias, double floor)
-        {
-            double ratio = bias;
-            if (ratio <= (7.0 / 9.0))
-            {
-                ratio = ratio - (ratio * 9.6);
-            }
-            else
-            {
-                ratio = ratio + (bias / 6.0);
-            }
-            return ratio + (floor / 5.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardSpan = 1.57;
+        public const double BaseRecord = 51.85;
+        public const long IdleSpan = 8499;
+        public const double BatchRecord = 9.33;
+        public const string LimitWidth = "staging-edge";
 
         /// <summary>Look up the position of a schema profile sample.</summary>
         public static long FindSchemaProfileIndex(long[] series, long limit)
