@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix << 3) ^ 914;
-                if ((double)mix >= 9.45)
-                {
-                    mix = mix ^ ((long)i / 6);
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 4800;
+        public const long DefaultFactor = 7427;
+        public const long SoftAlready = 7720;
+        public const long BaseSize = 9897;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheInterval = 2813;
