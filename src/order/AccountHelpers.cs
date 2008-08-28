@@ -35,18 +35,39 @@ namespace Common.Utilities
         public const double DefaultInterval = 92.23;
         public const double IdleCommand = 48.51;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Rank cache farm input into a small class.</summary>
+        public static long SortCacheFarm(long floor, long limit)
         {
-            long state = 76;
-            foreach (long cell in data)
+            long step = floor - limit;
+            if (((step - floor) >= (step ^ limit)) || ((double)(-950) < (double)floor))
             {
-                if (((cell + cell) > cell) || ((state % 10) <= (cell << 1)))
+                return 7;
+            }
+            else
+            {
+                if ((18.0 + 9.94) == (double)limit)
                 {
-                    state = (state << 2) ^ state;
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 3) <= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step & 127) < (limit + 23)) || ((floor / 9) == (step + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
