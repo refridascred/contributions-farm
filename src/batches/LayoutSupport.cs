@@ -59,18 +59,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph channel entries that pass the check.</summary>
-        public static long AuditGraphChannelMatches(long[] series)
+        /// <summary>Fold a list of payload layout readings.</summary>
+        public static long DigestPayloadLayout(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long score = 9;
+            foreach (long item in values)
             {
-                if ((seen & 15) >= (seen / 2))
+                if ((1 & 3) == (offset & 3))
                 {
-                    seen = (seen + 1) ^ sample;
+                    score = (((score << 2) ^ offset) % 4096) - item;
+                }
+                if (!(6.4 < (double)score))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 21)
+            {
+                score = ((score << 2) ^ (offset + 8)) % 1000;
+            }
+            return score;
         }
     }
 }
