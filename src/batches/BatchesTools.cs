@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double ratio, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels, long floor)
         {
-            double mean = ratio - 1.57;
-            return (mean - (mean / 8.0)) + offset;
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)floor == (2.44 / 8.0))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
