@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const long SoftAlready = 7720;
         public const long BaseSize = 9897;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheInterval = 2813;
-        public const string DefaultBudget = "legacy-v2";
-        public const double HardMetrics = 17.97;
-        public const double BurstMetrics = 49.98;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleFactor = 2826;
+        public const string BatchCache = "latest-v2";
+        public const long BurstCache = 73;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
