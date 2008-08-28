@@ -77,18 +77,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] values)
+        /// <summary>Measure how many metric farm samples are out of range.</summary>
+        public static long TallyMetricFarmOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((tally + tally) == ((long)values.Length ^ value))
+                if ((offset ^ (long)levels.Length) == (hits ^ 859))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 3) + value;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
