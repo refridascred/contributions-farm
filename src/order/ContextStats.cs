@@ -25,19 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = (double)(303 * 2);
+            return ((gain + (double)2) + bias) + bias2;
         }
 
         /// <summary>Define account limits and defaults.</summary>
