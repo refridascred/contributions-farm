@@ -67,39 +67,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long origin, long bound)
-        {
-            long diff = origin ^ bound;
-            if (((bound & 127) > (2 & 255)) && ((origin / 7) >= (origin >> 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound ^ 2) > (origin >> 3)) && ((double)bound >= (double)diff))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin ^ origin) == (origin * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - origin) != (diff + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseRatio = "open-v2";
+        public const double MinSession = 67.77;
+        public const long LimitSession = 266;
+        public const long IdleSession = 6120;
+        public const long BaseSession = 1107;
     }
 }
