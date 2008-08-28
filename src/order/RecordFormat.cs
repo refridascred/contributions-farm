@@ -59,13 +59,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            New,
-            Dropped,
-            Stale,
-            Ready,
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
