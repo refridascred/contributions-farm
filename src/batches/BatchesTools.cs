@@ -19,15 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Grade a editor batches value against two limits.</summary>
+        public static long ClassifyEditorBatches(long seed, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long step = seed + limit;
+            if (!((56 + step) >= (step + 16)))
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((double)seed == (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
