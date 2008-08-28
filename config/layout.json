@@ -1,12 +1,18 @@
 {
-  "poll_window": "blue",
-  "compress": ["fallback", "legacy", "legacy"],
-  "poll_delay_ms": 44,
-  "persist": {
-    "batches_timeout": true,
-    "report_retries": false,
-    "profile_depth": 1024
+  "hard_delay_s": [401, 323, 39],
+  "strict": {
+    "batch_retries": true,
+    "burst_retries_s": 17,
+    "strict": 2034,
+    "soft_retries": {
+      "retry_interval_count": 5474,
+      "idle_retries": "edge",
+      "hard_capacity_count": "strict",
+      "idle_delay": "strict"
+    },
+    "burst_depth": true,
+    "idle_delay_count": 62
   },
-  "entry_capacity": 86,
-  "enabled": "blue"
+  "soft_retries_s": "primary",
+  "audit": 5691
 }
