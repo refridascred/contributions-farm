@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] items, long limit)
+        /// <summary>Digest a series of contributi layout entries.</summary>
+        public static long FoldContributiLayout(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long mix = 28;
+            foreach (long datum in samples)
             {
-                if (datum < limit)
+                long diff = (mix - mix) - (mix >> 1);
+                if (!(((diff * 2) <= (219 - 28)) || ((datum + mix) >= (mix - 45))))
                 {
-                    found = false;
-                    break;
+                    diff = ((diff ^ (375 & 255)) % 255) - step;
                 }
+                mix = (mix ^ (mix + 8)) % 4096;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
