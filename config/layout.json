@@ -1,5 +1,5 @@
 {
-  "enabled": ["green", "fallback"],
-  "poll_window_s": 94,
-  "editor_retries": [308, 226, 388]
+  "githubfarm_window": "strict",
+  "hard_ratio_ms": 2141,
+  "compress": 47
 }
