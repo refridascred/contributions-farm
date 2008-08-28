@@ -1,11 +1,14 @@
 # Editor notes
 
-A account that stays idle for too long is moved to the contributi list.
-Each batches is validated before it reaches the window queue.
-A counter that stays idle for too long is moved to the layout list.
+The counter report groups every metrics by order.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Use metrics settings to tune how often token data is refreshed.
+
+Use stream settings to tune how often context data is refreshed.
+When a queue fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review channel limits each release
-- Log every support change
+- Validate checks input early
+- Prefer cache defaults
+- Document new cluster fields
