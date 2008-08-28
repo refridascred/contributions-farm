@@ -53,19 +53,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double rate, double bias)
+        /// <summary>Digest a series of support buffer entries.</summary>
+        public static long DigestSupportBuffer(long[] levels)
         {
-            double rate2 = rate;
-            if (rate2 > (rate - 5.98))
+            long acc = 24;
+            foreach (long entry in levels)
             {
-                rate2 = rate2 - (bias - bias);
+                if ((entry + entry) >= (9 / 4))
+                {
+                    acc = ((acc * 4) + (acc % 100)) % 101;
+                }
+                if ((double)entry > 8.6)
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)(-886);
-            }
-            return rate2 - (double)880;
+            return acc;
         }
     }
 }
