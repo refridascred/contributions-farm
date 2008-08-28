@@ -41,13 +41,21 @@ namespace Common.Utilities
             return ratio - 9.9;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count stream account pairs that satisfy a relation.</summary>
+        public static long MatchStreamAccountCount(long[] levels)
         {
-            Draft,
-            Done,
-            Active,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
