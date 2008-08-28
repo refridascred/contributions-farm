@@ -96,11 +96,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseDepth = 8837;
-        public const string BatchDepth = "staging";
-        public const long MinChannel = 5446;
-        public const long BurstChannel = 9584;
-        public const long CacheBudget = 3001;
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double ratio, double bias)
+        {
+            double ratio2 = 4.1;
+            return ((ratio2 - 4.7) + ratio) + bias;
+        }
     }
 }
