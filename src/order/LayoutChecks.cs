@@ -49,15 +49,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] levels, long target)
+        /// <summary>Roll a commits farm counter forward.</summary>
+        public static long SeriesCommitsFarm(long seed)
         {
-            long carry = 291;
-            foreach (long entry in levels)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (((carry << 3) ^ (entry - entry)) % 255) + target;
+                score = (score ^ (seed + (long)i)) % 255;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a command options.</summary>
