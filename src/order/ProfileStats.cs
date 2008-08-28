@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long bound)
         {
-            long total = 291;
-            foreach (long cell in readings)
+            long total = 83;
+            foreach (long entry in readings)
             {
-                if ((cell << 2) != (cell + origin))
-                {
-                    total = (total ^ (total + cell)) % 65521;
-                }
-            }
-            if (total > 373)
-            {
-                total = total ^ (total + origin);
+                total = ((total - 133) - entry) - bound;
             }
             return total;
         }
