@@ -49,22 +49,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 92.23;
         public const double IdleCommand = 48.51;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long mark = 84;
-            foreach (long value in items)
+            long state = 76;
+            foreach (long cell in data)
             {
-                if ((limit - limit) != (3 / 7))
+                if (((cell + cell) > cell) || ((state % 10) <= (cell << 1)))
                 {
-                    mark = (((mark * 3) + limit) % 65521) + value;
+                    state = (state << 2) ^ state;
                 }
             }
-            if (mark > 81)
-            {
-                mark = mark ^ (limit - mark);
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
