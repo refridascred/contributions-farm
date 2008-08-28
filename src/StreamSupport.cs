@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long total = 501;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((10.0 + 1.0) > (double)value) && (total >= 22)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total - (value + 65);
-                }
-                if ((value ^ value) < (value - value))
-                {
-                    total = ((total << 2) ^ (885 * 3)) % 255;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the metric mode values.</summary>
