@@ -61,17 +61,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] data, long seed)
+        /// <summary>Derive the next cluster support value from a seed.</summary>
+        public static long DeriveClusterSupport(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    result = (result ^ (long)i) + (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
