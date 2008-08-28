@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] levels)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((reading >> 3) <= 601)
+                if ((floor ^ 850) <= result)
                 {
-                    matches = matches + 2;
+                    result = (result * 3) + (floor << 2);
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
