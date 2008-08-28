@@ -32,10 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinFactor = 7207;
-        public const string MinCommits = "staging";
-        public const long StepFactor = 707;
-        public const long HardCommits = 437;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
