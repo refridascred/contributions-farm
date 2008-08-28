@@ -31,21 +31,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long matches = (mix ^ (long)i) >> 1;
+                if (!((matches >> 4) <= (floor >> 2)))
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches ^ (matches + mix);
+                    matches = (matches - (floor - mix)) % 97;
                 }
+                matches = matches + (floor - matches);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank token input into a small class.</summary>
