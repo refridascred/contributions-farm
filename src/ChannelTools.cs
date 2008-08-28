@@ -51,11 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleDepth = "latest-1";
-        public const double BurstBuffer = 27.98;
-        public const double SoftWidth = 16.09;
-        public const long BatchWidth = 9570;
-        public const long BatchBuffer = 8634;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 8685;
+        public const long LimitRatio = 5116;
+        public const double MinCommits = 23.58;
+        public const long CacheDepth = 7646;
+        public const double BatchSpan = 58.8;
     }
 }
