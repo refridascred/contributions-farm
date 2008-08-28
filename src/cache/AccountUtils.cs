@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (drift + 12.0) + ratio;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] levels)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((24 << 3) < seen)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
