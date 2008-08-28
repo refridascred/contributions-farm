@@ -39,13 +39,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
