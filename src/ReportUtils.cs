@@ -50,19 +50,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] series, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long next = floor - bound;
+            if ((next << 1) != (7 ^ floor))
             {
-                if (reading <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((17.0 / 5.0) < (double)next)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
     }
 }
