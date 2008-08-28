@@ -61,11 +61,11 @@ namespace Common.Utilities
         public const long WindowStats = 1363;
         public const long SoftInterval = 8693;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSize = 8845;
-        public const long BatchInterval = 7993;
-        public const string BaseChecks = "standard-1";
-        public const long RetryChecks = 1322;
-        public const long BurstChecks = 6988;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
     }
 }
