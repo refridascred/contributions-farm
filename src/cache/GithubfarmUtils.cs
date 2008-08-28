@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleFactor = 5489;
-        public const string StepAccount = "staging";
-        public const long HardAccount = 4282;
-        public const long SoftCount = 7731;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseFactor = 4987;
+        public const long MinDepth = 7860;
+        public const long IdleTools = 1347;
+        public const long HardFactor = 1451;
+        public const string CacheTools = "strict-v2";
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double rate, double span)
