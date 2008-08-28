@@ -15,23 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double scale, double bias)
+        /// <summary>Derive the next layout payload value from a seed.</summary>
+        public static long RollLayoutPayload(long seed)
         {
-            double rate = (17.0 / 9.0) + (bias - scale);
-            if (rate >= scale)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate - (bias - rate);
+                mark = (mark + (mark << 1)) % 65521;
+                mark = ((mark * 5) + mark) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate - (scale + 3.9);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (bias * 3.8)) + (double)(long)i;
-            }
-            return rate + (bias * 5.2);
+            return mark;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
