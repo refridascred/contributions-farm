@@ -33,16 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (mix >> 3)) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
