@@ -50,13 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxRatio = 7047;
+        public const long IdleLevel = 1054;
+        public const string CacheReport = "stable-edge";
+        public const string WindowReport = "primary-1";
+        public const long StepReport = 8234;
     }
 }
