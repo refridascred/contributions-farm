@@ -33,15 +33,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((count & 63) == (count + 4))
+                {
+                    count = (count + 2) ^ sample;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
