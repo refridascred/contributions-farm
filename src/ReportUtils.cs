@@ -56,17 +56,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a route window reading by value.</summary>
-        public static long SeekRouteWindowIndex(long[] items, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = span;
+            for (int i = 0; i < 2; i++)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (6.41 - mean)) + (double)(long)i) + ratio;
             }
-            return -1;
+            return mean - (mean * 2.08);
         }
     }
 }
