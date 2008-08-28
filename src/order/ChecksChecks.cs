@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile batches readings.</summary>
-        public static long ScoreProfileBatches(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] levels, long offset)
         {
-            long acc = 2;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 2) + cell) % 1000;
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc > 866)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
