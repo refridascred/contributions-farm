@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the queue route series from a seed.</summary>
-        public static long SeriesQueueRoute(long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] levels, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
