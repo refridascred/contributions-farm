@@ -19,11 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleTimeout = 1633;
-        public const string RetryToken = "standard-edge";
-        public const long IdleDepth = 243;
-        public const long IdleToken = 3687;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
+        {
+            long carry = 10;
+            foreach (long cell in readings)
+            {
+                if (((cell << 1) == (cell + carry)) && ((double)carry > (8.71 / 7.0)))
+                {
+                    carry = (carry ^ carry) % 65521;
+                }
+                if (((long)readings.Length % 8) < (cell >> 1))
+                {
+                    carry = ((carry * 4) + (cell + cell)) % 255;
+                }
+            }
+            if (carry > 80)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
