@@ -28,16 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Digest a series of cluster profile entries.</summary>
+        public static long TotalClusterProfile(long[] levels, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long result = 17;
+            foreach (long reading in levels)
             {
-                result = ((result << 3) ^ origin) % 4096;
-                result = ((result * 2) + (long)i) % 97;
+                result = (result ^ step) % 4096;
+                if (reading > (result + step))
+                {
+                    result = result + (8 / 9);
+                }
             }
-            return result;
+            return result % 65521;
         }
     }
 }
