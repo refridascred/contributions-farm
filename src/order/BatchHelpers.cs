@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] values, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
             long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen << 2) <= (seen ^ seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 2) + datum) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
