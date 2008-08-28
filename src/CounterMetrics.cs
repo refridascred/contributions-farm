@@ -32,16 +32,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                result = (result * 2) + (limit + 77);
-                result = ((result * 5) + (long)i) % 1000;
+                if (((limit + acc) == (limit + 516)) && (((long)i % 100) == (limit >> 3)))
+                {
+                    acc = (acc * 4) + (limit + (long)i);
+                    acc = (acc ^ (limit + 7)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Digest a series of context record entries.</summary>
