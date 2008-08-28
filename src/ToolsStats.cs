@@ -37,13 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of record readings.</summary>
