@@ -82,31 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long origin, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] samples, long limit)
         {
-            if (449 <= (origin + bound))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin > (0.63 - 13.0))
+                if (sample <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound & 31) <= (584 - 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
