@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up layout order samples.</summary>
-        public static long CompareLayoutOrderCount(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed % 12) > (665 ^ floor))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (5.0 >= (double)floor)
                 {
-                    if ((series[i] - series[j]) < 6)
+                    return 5;
+                }
+                else
+                {
+                    if (9 < (seed + floor))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor * 2) > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
