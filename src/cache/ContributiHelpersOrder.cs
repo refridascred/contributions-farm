@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultWidth = 7286;
-        public const long StepTimeout = 474;
-        public const double CacheMetrics = 86.62;
-        public const string MinSpan = "cached-1";
-        public const string WindowMetrics = "stable-edge";
+        /// <summary>Measure how many batch already samples are out of range.</summary>
+        public static long MeasureBatchAlreadyOutliers(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((floor & 31) >= (floor ^ reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] levels, long limit)
