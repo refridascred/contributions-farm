@@ -13,25 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a format batches pair into a bucket.</summary>
-        public static long RankFormatBatches(long step, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] samples)
         {
-            long diff = step ^ bound;
-            if ((9.06 * 3.4) < (double)diff)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + diff) < step)
+                if ((tally >> 2) > 763)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 2) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
