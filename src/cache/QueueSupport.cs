@@ -28,13 +28,17 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] values, long origin)
         {
-            New,
-            Locked,
-            Failed,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
