@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long seed)
+        /// <summary>Audit contributi support readings against a rule.</summary>
+        public static long CountContributiSupportHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((entry * 3) != (seen - entry))
+                if (offset > matches)
                 {
-                    seen = (seen + 3) + seed;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
