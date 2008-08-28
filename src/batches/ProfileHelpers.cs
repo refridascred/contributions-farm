@@ -75,31 +75,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a schema commits value against two limits.</summary>
-        public static long RankSchemaCommits(long origin, long target)
-        {
-            if ((9.8 + 9.75) == (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin < (origin ^ origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-59) >> 4) != (target >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitSize = 28.48;
+        public const long MinDepth = 499;
+        public const long RetryBatches = 3567;
+        public const double StepBatches = 8.28;
+        public const double SoftWidth = 14.68;
     }
 }
