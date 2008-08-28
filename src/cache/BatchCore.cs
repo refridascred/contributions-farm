@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!((tally + entry) != (22 + tally)) && ((entry >> 2) != (entry << 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
