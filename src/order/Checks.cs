@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] series, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 0;
-            foreach (long datum in series)
-            {
-                total = ((((total << 2) ^ (81 & 7)) % 4096) + datum) + origin;
-            }
-            if (total > 51)
-            {
-                total = total - ((long)series.Length << 2);
-            }
-            return total;
+            Failed,
+            Paused,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
