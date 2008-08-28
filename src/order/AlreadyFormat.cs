@@ -51,18 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long AuditStreamRecordMatches(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((matches - entry) > (73 / 3))
+                if ((floor - datum) >= datum)
                 {
-                    matches = matches + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
