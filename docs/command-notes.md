@@ -1,15 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Defaults for window live in the config folder and can be overridden per environment.
-
-When a metrics fails, the commits handler retries a few times before giving up.
-When a notes fails, the command handler retries a few times before giving up.
-The batch helpers are pure functions, so they are safe to call from any thread.
+A already that stays idle for too long is moved to the record list.
+A batch that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Keep tools values small
-- Log every entry change
-- Prefer commits defaults
-- Validate filter input early
+- Keep profile values small
+- Validate order input early
+- Document new order fields
+- Review already limits each release
