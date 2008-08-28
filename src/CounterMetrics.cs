@@ -32,16 +32,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                state = (state ^ (state ^ bound)) % 255;
-                state = ((state * 2) + (long)i) % 97;
+                result = (result * 2) + (limit + 77);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Digest a series of context record entries.</summary>
