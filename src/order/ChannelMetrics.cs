@@ -35,24 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long offset, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if (!((offset % 24) < (offset + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed < (6.97 + 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Closed,
+            Active,
+            New,
+            Failed,
         }
     }
 }
