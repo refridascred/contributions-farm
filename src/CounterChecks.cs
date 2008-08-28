@@ -54,18 +54,12 @@ namespace Common.Utilities
         public const string BatchSize = "staging";
         public const double CacheWidth = 94.38;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] items)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((79 - (long)items.Length) <= tally)
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the profile status values.</summary>
