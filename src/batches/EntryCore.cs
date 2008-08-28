@@ -14,13 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] data, long target)
         {
-            Queued,
-            Idle,
-            Draft,
-            Paused,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
