@@ -32,19 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
