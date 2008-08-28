@@ -20,13 +20,24 @@ namespace Common.Utilities
         public const string DefaultLevel = "cached-v2";
         public const long WindowDepth = 7581;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long step2)
         {
-            Done,
-            Failed,
-            Queued,
-            New,
+            if ((7.3 / 8.0) < (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.98 + 6.3) < (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
