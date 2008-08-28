@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((cell / 2) >= matches) || (((matches >> 4) != (cell + matches)) && ((matches - matches) == (cell - matches))))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches + 1;
+                    score = ((score << 3) ^ (score >> 4)) + (long)i2;
+                    score = score ^ (origin << 2);
                 }
+                score = (score + (origin ^ 81)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the support mode values.</summary>
