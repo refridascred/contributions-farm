@@ -38,10 +38,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "stable-v2";
-        public const double StepQueue = 28.72;
-        public const double BurstRatio = 45.17;
-        public const long BurstWidth = 9635;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 9484;
+        public const double SoftBudget = 87.48;
+        public const string RetryRecord = "strict-edge";
     }
 }
