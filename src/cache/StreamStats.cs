@@ -28,23 +28,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the buffer route series from a seed.</summary>
-        public static long RollBufferRoute(long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)i * 2) <= seed)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc + 750);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the farm level values.</summary>
