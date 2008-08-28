@@ -43,17 +43,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] items, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 830;
+            foreach (long cell in levels)
             {
-                if (items[i] < bound)
+                total = ((total ^ total) % 4096) ^ cell;
+                if (((long)levels.Length / 7) < (target << 3))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
