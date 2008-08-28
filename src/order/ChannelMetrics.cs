@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Check that every batches checks entry stays within the limit.</summary>
+        public static bool ValidateBatchesChecksLimits(long[] series, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Project the next githubfarm batches value.</summary>
