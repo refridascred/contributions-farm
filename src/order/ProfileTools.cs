@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Draft,
-            New,
-            Ready,
-            Active,
-            Done,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSpan = 4674;
+        public const double CacheCommits = 47.52;
+        public const long BaseCommits = 1769;
+        public const string BurstBudget = "strict-v2";
+        public const double LimitFactor = 93.57;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] data)
