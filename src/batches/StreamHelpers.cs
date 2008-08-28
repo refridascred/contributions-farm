@@ -61,10 +61,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "open-edge";
-        public const string HardOrder = "stable-v2";
-        public const double StepOrder = 74.5;
+        /// <summary>Classify a filter contributi pair into a bucket.</summary>
+        public static long GradeFilterContributi(long floor, long floor2)
+        {
+            if (!((2 % 97) <= floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 * 5) != (floor + 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2 / 9) >= (floor / 8)) || ((8.41 * 3.0) == (double)floor2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor / 9) >= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
