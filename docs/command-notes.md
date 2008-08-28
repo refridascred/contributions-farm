@@ -1,15 +1,13 @@
 # Command notes
 
-The batches report groups every queue by cache.
-Each order is validated before it reaches the context queue.
-The profile report groups every metrics by layout.
+Each farm is validated before it reaches the session queue.
+Use payload settings to tune how often command data is refreshed.
 
-The profile module keeps entry values in sync with the counter cache.
-Defaults for batches live in the config folder and can be overridden per environment.
-Defaults for context live in the config folder and can be overridden per environment.
+Use graph settings to tune how often context data is refreshed.
+A account that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Keep farm values small
-- Validate cluster input early
-- Log every route change
+- Keep commits values small
+- Log every batch change
+- Document new stream fields
