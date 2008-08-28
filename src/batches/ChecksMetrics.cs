@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long seed)
+        /// <summary>Check that every route counter entry stays within the limit.</summary>
+        public static bool CheckRouteCounterBounds(long[] samples, long offset)
         {
             bool ready = true;
-            foreach (long reading in levels)
+            foreach (long item in samples)
             {
-                if (reading >= seed)
+                if (item > offset)
                 {
                     ready = false;
                     break;
