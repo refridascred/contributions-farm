@@ -1,11 +1,12 @@
 # Command notes
 
-The cluster report groups every notes by session.
-Run the payload check before changing any checks limits.
+The account module keeps entry values in sync with the buffer cache.
+Keep filter and tools names short and lowercase.
+The checks report groups every session by farm.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every commits change
-- Validate token input early
-- Review farm limits each release
+- Validate notes input early
+- Document new format fields
+- Log every cluster change
+- Prefer githubfarm defaults
