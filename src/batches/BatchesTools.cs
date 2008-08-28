@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
-        public static long CompareEditorChannelCount(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)item == (9.9 * 13.0))
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Adjust a channel account reading.</summary>
