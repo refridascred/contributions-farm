@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] samples, long origin)
         {
-            Idle,
-            Synced,
-            Ready,
-            Done,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (3.32 < (double)origin)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
