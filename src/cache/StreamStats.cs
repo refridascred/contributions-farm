@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] samples)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((73 * 4) >= (matches - 8))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the buffer route series from a seed.</summary>
