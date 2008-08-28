@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinRatio = 4702;
-        public const long CacheSize = 261;
-        public const double LimitWidth = 76.94;
-        public const long StepMetric = 2612;
-        public const long CacheDepth = 8839;
+        /// <summary>Look up the position of a record cluster sample.</summary>
+        public static long LookupRecordClusterIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long limit, long target)
