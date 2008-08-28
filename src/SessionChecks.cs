@@ -26,21 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series)
-        {
-            long mix = 4;
-            foreach (long reading in series)
-            {
-                if ((7.0 * 0.73) != (double)reading)
-                {
-                    mix = (mix ^ (247 + 52)) % 1000;
-                    break;
-                }
-                mix = mix - 5;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheBudget = "open-v2";
+        public const long IdleSpan = 8774;
+        public const long HardLevel = 7574;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] series, long step)
