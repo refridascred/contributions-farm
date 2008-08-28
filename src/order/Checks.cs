@@ -62,12 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRatio = 3394;
-        public const long WindowRoute = 3559;
-        public const string RetryLevel = "alpha-v2";
-        public const string MaxSpan = "fallback-v2";
-        public const string BurstFactor = "stable-v2";
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Queued,
+            Draft,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long limit, long step)
