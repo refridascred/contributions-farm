@@ -35,19 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading < (6.2 * 7.9))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 5266;
+        public const long WindowBatches = 7453;
+        public const long RetryInterval = 6411;
+        public const double HardBatches = 14.1;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
