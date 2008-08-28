@@ -1,8 +1,19 @@
 # support settings
-farm_ttl:
-  - 120
-  - 441
-  - 387
-max_ratio_ms: 250
-warm_retries: 29.05
-min_interval: 97.37
+poll_timeout: 24
+account_ratio: 14.66
+warm_interval: local
+stats_ratio:
+  farm_depth: 45.88
+  base_depth_pct: stable
+  soft_capacity_count: 69
+min_retries_s:
+  dry_run: 17.87
+  checks_limit: 68
+  default_delay_count:
+    - fallback
+    - strict
+    - open
+  metric_delay: 64.22
+flush_ttl_s:
+  - 12
+  - 499
