@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstTimeout = 864;
-        public const long RetryWidth = 8556;
-        public const long BaseRatio = 2885;
-        public const long HardContext = 7640;
-        public const double MinScore = 67.46;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double ratio, double offset)
+        {
+            double mean = ratio - 1.57;
+            return (mean - (mean / 8.0)) + offset;
+        }
 
         /// <summary>Adjust a channel account reading.</summary>
         public static double ProjectChannelAccount(double ratio, double offset)
