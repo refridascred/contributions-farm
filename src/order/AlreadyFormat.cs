@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] series, long offset)
+        /// <summary>Derive the next format token value from a seed.</summary>
+        public static long SeriesFormatToken(long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((seen << 2) <= (2 >> 2)) || !((seen ^ sample) >= ((long)series.Length * 4)))
-                {
-                    seen = (seen + 1) + offset;
-                }
+                total = (total - (bound << 2)) % 1000;
+                total = (total ^ (total & 31)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the context status values.</summary>
