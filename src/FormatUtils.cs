@@ -33,12 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] values)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (3.55 * 2.01))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
