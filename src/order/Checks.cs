@@ -79,18 +79,25 @@ namespace Common.Utilities
         public const string MaxSpan = "fallback-v2";
         public const string BurstFactor = "stable-v2";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long target, long target2)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long step = target - target2;
+            if ((double)target < (double)step)
             {
-                if ((tally ^ item) < (tally + offset))
+                return 6;
+            }
+            else
+            {
+                if (((step >> 1) >= (target2 + step)) && ((1 & 63) == (step - 174)))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
