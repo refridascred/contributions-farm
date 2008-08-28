@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] series, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = 82;
+            foreach (long datum in samples)
             {
-                if (entry < bound)
+                if ((20.0 * 0.8) >= (double)mark)
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                mark = (((mark * 3) + (mark & 15)) % 65521) ^ datum;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
