@@ -20,10 +20,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 3237;
-        public const long SoftRoute = 351;
-        public const long BaseSize = 5024;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long bound, long bound2)
+        {
+            long cur = bound + bound2;
+            if (((bound + bound2) > 85) && (cur >= 0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((cur / 6) <= (bound >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound2 ^ cur) != (bound * 4)) && ((4.71 - 0.48) != (double)bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double weight, double offset)
