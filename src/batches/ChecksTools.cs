@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] samples, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (3.32 < (double)origin)
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Dropped,
+            Pending,
+            Locked,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
