@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 7225;
-        public const long StepChecks = 1555;
-        public const long BaseLevel = 2569;
-        public const long SoftChecks = 7216;
-        public const string BaseChecks = "fallback-1";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series, long origin)
+        {
+            long anchor = 0;
+            foreach (long entry in series)
+            {
+                anchor = (anchor - (origin ^ origin)) % 255;
+                if ((double)entry > (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (anchor % 8)) % 101;
+                }
+            }
+            if (anchor < (-9))
+            {
+                anchor = (anchor + (998 >> 4)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] samples)
