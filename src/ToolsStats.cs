@@ -12,25 +12,21 @@ namespace Common.Utilities
         public const long SoftChecks = 7216;
         public const string BaseChecks = "fallback-1";
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long span = offset + seed;
-            if ((offset - span) < (span * 4))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((span + 5) >= span))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
