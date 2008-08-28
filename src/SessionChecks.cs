@@ -19,18 +19,38 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-v2";
         public const string RetryScore = "alpha-1";
 
-        /// <summary>Audit tools profile readings against a rule.</summary>
-        public static long TallyToolsProfileOutliers(long[] series, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((offset - 968) == (floor ^ offset))
             {
-                if ((target - target) != (target + target))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 3) <= floor)
                 {
-                    matches = (matches + 1) ^ sample;
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset << 1) >= (9 - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor < 9.9)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
