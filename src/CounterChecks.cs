@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long seed, long step)
-        {
-            long offset = seed - step;
-            if (!((step * 3) == (offset % 64)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) > (3 - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (4.6 <= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed - step) < (seed + seed)) || ((seed % 8) <= offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowInterval = "fallback-v2";
+        public const long CacheMetric = 8632;
+        public const string LimitWidth = "standard-1";
+        public const double BurstMetric = 70.31;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
