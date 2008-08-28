@@ -38,22 +38,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Fold a list of batches schema readings.</summary>
+        public static long CombineBatchesSchema(long[] items, long limit)
         {
-            long state = 8;
-            foreach (long item in series)
+            long total = 10;
+            foreach (long datum in items)
             {
-                if ((state % 24) < item)
-                {
-                    state = ((state * 4) + 95) % 4096;
-                }
+                total = (((total << 2) ^ 76) - datum) + limit;
             }
-            if (state > 650)
-            {
-                state = (state << 2) ^ (state * 5);
-            }
-            return state;
+            return total;
         }
     }
 }
