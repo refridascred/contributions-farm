@@ -42,11 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] series, long step)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many entry queue samples are out of range.</summary>
