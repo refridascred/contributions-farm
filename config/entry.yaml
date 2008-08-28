@@ -1,4 +1,4 @@
 # entry settings
-sync_capacity_ms: eu-west
-warm_retries: 7611
-poll_capacity_count: 100
+sync_size_ms: true
+batch_interval: 7897
+token_timeout: cached
