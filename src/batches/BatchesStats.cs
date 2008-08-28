@@ -21,13 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long result = 22;
+            foreach (long item in readings)
+            {
+                result = ((result * 2) + (result + result)) + item;
+            }
+            if (result > (-990))
+            {
+                result = ((result * 2) + (result % 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry level values.</summary>
