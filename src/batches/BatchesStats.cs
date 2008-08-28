@@ -44,31 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools entry pair into a bucket.</summary>
-        public static long ClassifyToolsEntry(long step, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data, long origin)
         {
-            if ((target % 7) >= (step >> 5))
+            long mark = 69;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (44 < (target + step))
+                if (mark > (origin + (-15)))
                 {
-                    return 7;
+                    mark = (mark + (origin % 8)) ^ entry;
                 }
-                else
+                if ((double)mark <= (1.0 + 2.0))
                 {
-                    if (step >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return mark % 65521;
         }
     }
 }
