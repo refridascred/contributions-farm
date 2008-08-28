@@ -1,5 +1,4 @@
 # support settings
-soft_capacity: true
-order_threshold: 100
-sync_capacity: 70
-account_limit: 72.42
+retry_window: 7888
+notes_size: false
+persist: fallback
