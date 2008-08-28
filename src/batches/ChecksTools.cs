@@ -44,22 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long limit)
+        /// <summary>Measure how many batches order samples are out of range.</summary>
+        public static long MeasureBatchesOrderGaps(long[] items)
         {
-            long score = 55;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((limit / 9) < limit)
+                if (!((reading + hits) > (reading & 31)))
                 {
-                    score = ((score - limit) % 97) ^ value;
+                    hits = hits + 1;
                 }
             }
-            if (score > 6)
-            {
-                score = (score * 3) + score;
-            }
-            return score;
+            return hits;
         }
     }
 }
