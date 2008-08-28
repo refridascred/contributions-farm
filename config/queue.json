@@ -1,8 +1,5 @@
 {
-  "metrics_size": false,
-  "format_threshold": 250,
-  "payload_ratio": "legacy",
-  "readonly": "local",
-  "token_limit": ["edge", "green", "legacy", "green"],
-  "burst_interval_s": 250
+  "poll_capacity_count": 83,
+  "report_depth": 60,
+  "retry_interval": "stable"
 }
