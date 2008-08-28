@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long origin)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long bound = seed + origin;
-            if ((5.0 - 8.0) <= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(seed < origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((10.0 - 19.0) < (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
