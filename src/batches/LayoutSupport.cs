@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double ratio, double offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            double mean = (offset * 7.01) + ratio;
-            if (mean <= (ratio - offset))
+            long score = 843;
+            foreach (long sample in samples)
             {
-                mean = mean - (offset * 2.8);
+                if ((score ^ sample) == (score + sample))
+                {
+                    score = (score - (sample % 12)) % 4096;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 8.0);
-            }
-            return mean + 4.9;
+            return score % 1000;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
