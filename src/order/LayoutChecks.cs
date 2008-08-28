@@ -51,16 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits farm counter forward.</summary>
-        public static long SeriesCommitsFarm(long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score ^ (seed + (long)i)) % 255;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public double Offset { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
