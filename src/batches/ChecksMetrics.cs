@@ -59,22 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long anchor = 4;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((anchor & 31) > (149 * 5)) && ((entry << 2) <= (entry % 12)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor * 4) + (entry & 255);
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 48)
-            {
-                anchor = ((anchor * 4) + (target * 2)) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
