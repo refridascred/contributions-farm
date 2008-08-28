@@ -28,19 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] levels, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a context record.</summary>
