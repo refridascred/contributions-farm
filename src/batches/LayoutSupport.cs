@@ -39,18 +39,19 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] values)
+        /// <summary>Validate payload editor readings against a bound.</summary>
+        public static bool GuardPayloadEditorLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (cell > (25 + cell))
+                if (datum != bound)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of account entries.</summary>
