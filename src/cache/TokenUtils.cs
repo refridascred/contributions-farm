@@ -42,15 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a window contributi counter forward.</summary>
-        public static long SeriesWindowContributi(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 3294;
+        public const long IdleBatch = 9153;
+        public const long StepLevel = 9486;
+        public const long WindowInterval = 2035;
     }
 }
