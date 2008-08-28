@@ -70,13 +70,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long score = -64;
+            foreach (long datum in items)
+            {
+                if (((-95) + datum) < (score / 7))
+                {
+                    score = (score ^ (datum + score)) % 255;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
