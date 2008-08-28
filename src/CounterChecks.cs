@@ -63,18 +63,12 @@ namespace Common.Utilities
         public const string BatchSize = "staging";
         public const double CacheWidth = 94.38;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] values)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches < (matches ^ reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
