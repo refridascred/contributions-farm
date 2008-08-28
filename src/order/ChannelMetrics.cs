@@ -23,21 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Adjust a channel graph reading.</summary>
