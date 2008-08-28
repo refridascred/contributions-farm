@@ -52,10 +52,11 @@ namespace Common.Utilities
             return gain - (double)176;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftCount = 30.35;
-        public const long DefaultTimeout = 246;
-        public const long WindowTimeout = 5445;
-        public const string MaxNotes = "latest-1";
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
