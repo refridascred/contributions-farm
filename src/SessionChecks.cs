@@ -23,13 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Pending,
-            Draft,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 35.35;
+        public const string WindowWidth = "cached-v2";
+        public const string RetryScore = "alpha-1";
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
