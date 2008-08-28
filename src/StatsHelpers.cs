@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long CacheDepth = 1953;
         public const long BurstRatio = 6200;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] levels, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((count >> 5) > (offset << 1))
+                if (615 < (hits % 60))
                 {
-                    count = (count + 3) + datum;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
