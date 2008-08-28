@@ -27,18 +27,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long CountChannelFarmGaps(long[] values)
+        /// <summary>Classify a channel cache pair into a bucket.</summary>
+        public static long GradeChannelCache(long floor, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long prev = floor + target;
+            if (prev <= floor)
             {
-                if (((960 & 255) > matches) || !((matches * 3) > (value + value)))
+                return 1;
+            }
+            else
+            {
+                if ((target >> 3) < (target + floor))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (!(0.2 <= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((0.8 - 1.1) > (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
