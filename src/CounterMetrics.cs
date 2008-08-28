@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] items)
+        /// <summary>Match up stats format samples.</summary>
+        public static long MatchStatsFormatCount(long[] items)
         {
             long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches * 5) < matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) ^ item;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
