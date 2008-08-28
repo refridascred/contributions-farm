@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long target)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state - state) + datum) + floor;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
