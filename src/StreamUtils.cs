@@ -69,22 +69,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "primary";
+        public const long SoftInterval = 3793;
+        public const long IdleRatio = 7314;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
