@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseLevel = 4016;
-        public const string WindowOrder = "staging";
-        public const string WindowScore = "local-1";
-        public const double StepInterval = 66.08;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches * 5) < matches)
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelOutliers(long[] samples)
