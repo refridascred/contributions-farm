@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix << 2) ^ (long)i;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "standard-v2";
+        public const string MinFormat = "primary";
+        public const string MaxFormat = "alpha";
+        public const long DefaultScore = 6570;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
