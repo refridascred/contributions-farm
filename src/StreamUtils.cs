@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value >= (1.67 - 5.3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
