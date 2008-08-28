@@ -23,19 +23,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every editor tools entry stays within the limit.</summary>
-        public static bool VerifyEditorToolsRange(long[] series, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (datum < floor)
+                if (entry != seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
