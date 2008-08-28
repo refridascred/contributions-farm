@@ -52,10 +52,18 @@ namespace Common.Utilities
         public const long WindowStats = 1363;
         public const long SoftInterval = 8693;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "primary-1";
-        public const string IdleOrder = "stable-1";
-        public const long MinRatio = 8909;
-        public const double CacheFactor = 68.54;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) != (reading & 63))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
