@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] series, long bound)
         {
-            double scale = ratio;
-            if (scale < (3.0 * 6.0))
+            long tally = 0;
+            foreach (long item in series)
             {
-                scale = scale - ratio;
+                if (((double)item == (double)bound) && (851 > tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (ratio - floor)) + (double)(long)i;
-            }
-            return scale - (floor - scale);
+            return tally;
         }
 
         /// <summary>Iterate the entry checks series from a seed.</summary>
