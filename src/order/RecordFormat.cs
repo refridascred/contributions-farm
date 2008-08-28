@@ -52,11 +52,10 @@ namespace Common.Utilities
         public const long WindowStats = 1363;
         public const long SoftInterval = 8693;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "primary-1";
+        public const string IdleOrder = "stable-1";
+        public const long MinRatio = 8909;
+        public const double CacheFactor = 68.54;
     }
 }
