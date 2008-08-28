@@ -57,12 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double floor)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + (double)2) + (double)(long)i) - floor;
+            }
+            return drift - 6.0;
         }
     }
 }
