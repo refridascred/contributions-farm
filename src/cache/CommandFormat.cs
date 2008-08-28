@@ -20,38 +20,15 @@ namespace Common.Utilities
         public const long WindowNotes = 8959;
         public const long StepNotes = 4748;
 
-        /// <summary>Grade a checks window value against two limits.</summary>
-        public static long BucketChecksWindow(long bound, long limit)
+        /// <summary>Roll a account batch counter forward.</summary>
+        public static long IterateAccountBatch(long bound)
         {
-            if ((3.4 - 5.1) <= (double)bound)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)bound > (6.6 * 9.23)) && (limit > bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound >= (limit + 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit <= (69 - 221))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a schema options.</summary>
