@@ -16,22 +16,10 @@ namespace Common.Utilities
             return drift - 16.0;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 9522;
+        public const long DefaultCommits = 953;
+        public const string WindowLevel = "open";
 
         /// <summary>Project the next record graph value.</summary>
         public static double ProjectRecordGraph(double bias, double bias2)
