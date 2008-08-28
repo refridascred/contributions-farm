@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((floor * 3) > (floor + (long)i))
-                {
-                    carry = (carry << 3) ^ (carry << 1);
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
