@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long target, long target2)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long lane = target + target2;
-            if ((597 << 1) < (target - target2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6 % 100) <= (lane << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Pending,
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
