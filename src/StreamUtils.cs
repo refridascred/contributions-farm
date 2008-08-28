@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] levels, long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double drift = scale;
+            if (drift > offset)
             {
-                if ((origin - tally) <= (origin + (long)levels.Length))
-                {
-                    tally = (tally + 2) + value;
-                }
+                drift = drift + 9.0;
             }
-            return tally;
+            return drift + (offset + offset);
         }
 
         /// <summary>Define order limits and defaults.</summary>
