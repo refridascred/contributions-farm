@@ -14,15 +14,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Roll a metrics already counter forward.</summary>
+        public static long StepMetricsAlready(long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result + 387) % 255) - (long)i2;
+                    result = (result << 2) ^ (result >> 1);
+                }
+                result = ((result * 5) + (result % 3)) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
