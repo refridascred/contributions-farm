@@ -41,15 +41,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cluster contributi entries that pass the check.</summary>
-        public static long TallyClusterContributiHits(long[] levels, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
             long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits < (limit ^ 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) - value;
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
