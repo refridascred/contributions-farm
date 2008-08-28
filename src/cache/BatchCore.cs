@@ -14,25 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] data, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)state > (9.6 / 8.0))
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
                 {
-                    state = state - (78 + state);
-                    continue;
+                    return (long)i;
                 }
-                if (((-547) + state) < state)
-                {
-                    state = (state + (step / 2)) % 101;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
