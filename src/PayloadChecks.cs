@@ -27,26 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context checks entries.</summary>
-        public static long TallyContextChecks(long[] items)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mix = 3;
-            foreach (long datum in items)
-            {
-                if ((datum ^ mix) >= 46)
-                {
-                    mix = (mix - (684 & 127)) % 4096;
-                }
-                if ((9.0 * 1.0) <= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix % 65521;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the notes githubfarm entries that pass the check.</summary>
