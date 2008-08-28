@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 4607;
-        public const long MaxRoute = 2681;
-        public const long IdleScore = 4916;
-        public const long BaseRoute = 7804;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally >> 3) == (sample >> 4))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long FoldFormat(long[] samples)
