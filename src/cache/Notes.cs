@@ -58,18 +58,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels, long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long carry = 610;
-            foreach (long datum in levels)
-            {
-                if (((5.0 / 2.0) != (double)datum) || ((seed - seed) > (0 + 1)))
-                {
-                    carry = (carry ^ (seed << 3)) % 255;
-                }
-            }
-            return carry;
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
