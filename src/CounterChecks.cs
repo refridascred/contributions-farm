@@ -63,15 +63,18 @@ namespace Common.Utilities
         public const string BatchSize = "staging";
         public const double CacheWidth = 94.38;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] values)
         {
-            long anchor = 83;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                anchor = ((anchor - (anchor << 3)) % 65521) + value;
+                if (matches < (matches ^ reading))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Describe the profile status values.</summary>
