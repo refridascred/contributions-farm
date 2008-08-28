@@ -34,26 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double bias)
         {
-            long result = 78;
-            foreach (long sample in samples)
+            double rate2 = (double)595;
+            if (rate2 >= (double)(-883))
             {
-                if ((seed <= sample) && ((729 ^ result) == (sample - result)))
-                {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = result - (seed + seed);
-                }
-                if ((sample - sample) == (sample >> 4))
-                {
-                    break;
-                }
+                rate2 = (rate2 - (bias * 16.0)) - rate;
             }
-            return result;
+            return rate2 + (bias / 6.0);
         }
 
         /// <summary>Hold a support entry.</summary>
