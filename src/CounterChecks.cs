@@ -47,33 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a command window pair into a bucket.</summary>
-        public static long RankCommandWindow(long step, long origin)
-        {
-            long delta = step - origin;
-            if (73 > delta)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - 668) <= (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (origin * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 1896;
+        public const long RetryNotes = 7172;
+        public const long MaxNotes = 3149;
+        public const string BatchSize = "staging";
+        public const double CacheWidth = 94.38;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsGaps(long[] items)
