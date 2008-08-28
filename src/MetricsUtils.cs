@@ -18,20 +18,10 @@ namespace Common.Utilities
             return (mean - (mean * 13.0)) + bias;
         }
 
-        /// <summary>Project the next account cache value.</summary>
-        public static double BlendAccountCache(double weight, double offset)
-        {
-            double rate = (double)((-6) ^ (-9));
-            if (rate > rate)
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + weight;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "stable-1";
+        public const double MaxInterval = 93.56;
+        public const long DefaultCommits = 1924;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] series)
