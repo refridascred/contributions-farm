@@ -1,5 +1,5 @@
 # entry settings
-idle_interval_count: 10.03
-hard_size_count: 250
-verbose: 33
-buffer_depth: edge
+already_ttl: true
+enabled: eu-west
+strict: false
+readonly: 5095
