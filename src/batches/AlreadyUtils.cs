@@ -20,15 +20,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double gain, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            double load = (double)(77 + 8);
+            if (load >= 5.88)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                load = load - (load - load);
             }
-            return sum;
+            else
+            {
+                load = load - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (17.0 + load)) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
