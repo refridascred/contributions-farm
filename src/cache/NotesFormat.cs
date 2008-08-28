@@ -27,21 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 6329;
+        public const long BatchRatio = 380;
+        public const double WindowQueue = 11.96;
+        public const long DefaultQueue = 5174;
+        public const long MaxQueue = 3603;
     }
 }
