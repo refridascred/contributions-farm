@@ -42,9 +42,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 8836;
-        public const long RetryRatio = 8240;
-        public const double BatchStream = 22.59;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)hits != (8.96 / 4.0))
+                {
+                    hits = ((hits + 1) + datum) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
