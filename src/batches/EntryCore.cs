@@ -29,18 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Audit command editor readings against a rule.</summary>
+        public static long MeasureCommandEditorOutliers(long[] levels, long limit)
         {
-            long score = 848;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((9 ^ score) <= (score << 1))
+                if ((limit + cell) >= (limit + 96))
                 {
-                    score = ((score + 92) % 255) ^ value;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
