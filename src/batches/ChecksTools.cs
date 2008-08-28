@@ -42,18 +42,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor entry readings against a rule.</summary>
-        public static long AuditEditorEntryHits(long[] levels)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)hits < 7.9)
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Paused,
+            Retry,
         }
     }
 }
