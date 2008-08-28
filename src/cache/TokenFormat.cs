@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleLevel = 31.16;
-        public const long RetryDepth = 3566;
-        public const long BatchBudget = 3962;
-        public const long MaxAccount = 7993;
+        /// <summary>Audit batches profile readings against a rule.</summary>
+        public static long TallyBatchesProfileGaps(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + step) == (9 << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many commits contributi samples are out of range.</summary>
         public static long TallyCommitsContributiGaps(long[] samples, long bound)
