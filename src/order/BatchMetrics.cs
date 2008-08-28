@@ -41,13 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Queued,
-            Dropped,
-            Failed,
-            New,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
