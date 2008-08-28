@@ -21,21 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = bias;
+            if (load < bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + (ratio + load);
             }
-            return tally;
+            else
+            {
+                load = load + (load - ratio);
+            }
+            return load - (1.14 + ratio);
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
