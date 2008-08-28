@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 809;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)items.Length + sample) >= result)
                 {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result ^ result) % 4096;
+                }
+                else
+                {
+                    result = (result + (sample / 8)) % 255;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a support record.</summary>
