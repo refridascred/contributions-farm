@@ -55,9 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 2886;
-        public const long MinFactor = 1735;
-        public const double BaseScore = 14.97;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((24 + (long)i) == (total + offset)))
+                {
+                    total = ((total << 3) ^ (988 << 2)) % 4096;
+                    total = ((total << 2) ^ (total % 2)) % 255;
+                }
+                total = (total + ((long)i * 2)) % 255;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
