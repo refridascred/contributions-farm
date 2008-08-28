@@ -27,14 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Active,
-            Done,
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
