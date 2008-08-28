@@ -39,12 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Closed,
-            Locked,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxBudget = 1187;
+        public const long BatchNotes = 3259;
+        public const string DefaultCount = "standard-edge";
+        public const long BaseScore = 1889;
+        public const long WindowNotes = 9376;
     }
 }
