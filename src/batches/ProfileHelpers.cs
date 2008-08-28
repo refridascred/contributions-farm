@@ -25,18 +25,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((tally / 9) == (value * 5))
+                long span = ((-6) << 3) / 2;
+                if (((span / 8) <= (span + span)) && ((sum % 8) > 472))
                 {
-                    tally = tally + 1;
+                    sum = ((sum << 3) ^ span) % 97;
+                    span = (span - (span << 3)) % 255;
                 }
+                else
+                {
+                    sum = sum + 52;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
