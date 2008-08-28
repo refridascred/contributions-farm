@@ -1,13 +1,12 @@
 {
-  "audit": 11,
-  "persist": [182, 383],
-  "buffer_threshold": "local",
-  "layout_depth": {
-    "burst_size": 7594,
-    "sync_size": false,
-    "persist": 58.34,
-    "audit": "fallback"
+  "poll_window": "blue",
+  "compress": ["fallback", "legacy", "legacy"],
+  "poll_delay_ms": 44,
+  "persist": {
+    "batches_timeout": true,
+    "report_retries": false,
+    "profile_depth": 1024
   },
-  "base_delay_pct": ["strict", "legacy", "primary"],
-  "warm_limit_ms": "edge"
+  "entry_capacity": 86,
+  "enabled": "blue"
 }
