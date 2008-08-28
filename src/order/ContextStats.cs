@@ -46,12 +46,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 8909;
+        public const string HardRatio = "stable-1";
+        public const long SoftDepth = 1245;
     }
 }
