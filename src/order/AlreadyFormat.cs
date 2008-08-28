@@ -48,19 +48,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepFactor = 989;
+        public const string DefaultSpan = "fallback-v2";
+        public const string BaseCommand = "strict-edge";
+        public const long MinCommand = 1143;
+        public const double RetryCommand = 35.19;
     }
 }
