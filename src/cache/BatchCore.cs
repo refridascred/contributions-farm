@@ -29,11 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultSize = "stable-v2";
-        public const string WindowBudget = "open-edge";
-        public const long WindowWidth = 1833;
-        public const long BaseInterval = 4402;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double span)
+        {
+            double weight = (double)(2 >> 1);
+            return ((weight - (2.5 / 3.0)) + gain) + span;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
