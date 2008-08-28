@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Rank farm metrics input into a small class.</summary>
+        public static long GradeFarmMetrics(long target, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            if ((target << 2) < target)
             {
-                total = ((total << 2) ^ (total - total)) % 4096;
-                total = ((total * 4) + (long)i) % 101;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((seed << 3) <= (seed + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the layout level values.</summary>
