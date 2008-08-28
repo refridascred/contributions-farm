@@ -60,19 +60,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data, long offset)
+        /// <summary>Measure how many record entry samples are out of range.</summary>
+        public static long CountRecordEntryMatches(long[] data)
         {
-            long score = 923;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((offset & 31) == (datum - (long)data.Length))
+                if ((seen % 2) <= ((-224) - 16))
                 {
-                    score = score - offset;
+                    seen = (seen + 3) - sample;
                 }
-                score = score + (240 & 1);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
