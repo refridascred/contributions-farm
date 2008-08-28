@@ -20,18 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] levels)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((2 << 2) >= (sample ^ sample))
-                {
-                    seen = seen + 2;
-                }
+                result = ((result * 5) + ((long)i >> 4)) % 101;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
