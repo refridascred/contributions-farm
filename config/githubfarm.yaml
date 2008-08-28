@@ -1,5 +1,7 @@
 # githubfarm settings
-compress: 51
-warm_depth: legacy
-batches_delay: 7
-soft_size: 2330
+burst_limit_ms: stable
+compress:
+  - primary
+  - open
+  - staging
+default_ttl: 14.38
