@@ -53,21 +53,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((24 + (long)i) == (total + offset)))
-                {
-                    total = ((total << 3) ^ (988 << 2)) % 4096;
-                    total = ((total << 2) ^ (total % 2)) % 255;
-                }
-                total = (total + ((long)i * 2)) % 255;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 2804;
+        public const long IdleReport = 6812;
+        public const long DefaultReport = 7334;
     }
 }
