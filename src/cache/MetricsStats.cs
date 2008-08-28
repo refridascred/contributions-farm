@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long RetryCount = 5358;
         public const long BaseContext = 588;
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > floor)
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
