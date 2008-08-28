@@ -19,13 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values)
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long mix = -261;
+            foreach (long item in values)
+            {
+                if (mix < (mix & 127))
+                {
+                    mix = (((mix * 4) + mix) % 1000) ^ item;
+                }
+                mix = (mix ^ (mix & 127)) % 65521;
+            }
+            if (mix < (-6))
+            {
+                mix = (mix + (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
