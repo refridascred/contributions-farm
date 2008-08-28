@@ -29,20 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((carry / 6) > (target - target))
-                {
-                    carry = (carry * 3) + 471;
-                    carry = (carry + (target & 15)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Draft,
+            Paused,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Project the next buffer value.</summary>
