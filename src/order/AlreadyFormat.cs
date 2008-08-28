@@ -51,18 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches - entry) > (73 / 3))
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
