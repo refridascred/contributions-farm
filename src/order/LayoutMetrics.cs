@@ -32,15 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings, long step)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long acc = 5;
-            foreach (long datum in readings)
-            {
-                acc = ((acc - (0 + 21)) - datum) - step;
-            }
-            return acc;
+            Active,
+            Failed,
+            Retry,
+            Queued,
+            Idle,
         }
     }
 }
