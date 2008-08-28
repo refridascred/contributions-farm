@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "cached-edge";
-        public const long MaxInterval = 9178;
-        public const long BurstSchema = 8540;
-        public const string DefaultSchema = "standard-edge";
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Draft,
+            Stale,
+            Queued,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] levels, long step)
