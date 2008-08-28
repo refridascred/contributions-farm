@@ -33,11 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double load = 15.0;
-            return (load + (offset - 7.48)) + bias;
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
     }
 }
