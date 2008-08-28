@@ -11,27 +11,11 @@ namespace Common.Utilities
         public const double MaxInterval = 4.79;
         public const long DefaultInterval = 6318;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples, long bound)
-        {
-            long state = 56;
-            foreach (long datum in samples)
-            {
-                if (((bound % 60) < (datum >> 1)) && ((state + datum) <= ((long)samples.Length & 63)))
-                {
-                    state = ((state * 5) + (state & 127)) % 255;
-                }
-                else
-                {
-                    state = state - (bound % 97);
-                }
-            }
-            if (state > 8)
-            {
-                state = (state + ((-427) + bound)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 9261;
+        public const long BurstOrder = 5427;
+        public const double DefaultOrder = 46.53;
+        public const long IdleWidth = 2499;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
