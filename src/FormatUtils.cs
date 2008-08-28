@@ -40,12 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items)
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
+            long anchor = -2;
+            foreach (long entry in items)
+            {
+                anchor = (anchor ^ (entry % 64)) % 101;
+                if ((4.0 * 5.0) != (double)anchor)
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
