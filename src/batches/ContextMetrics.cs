@@ -63,14 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the cluster contributi entries that pass the check.</summary>
+        public static long TallyClusterContributiHits(long[] levels, long limit)
         {
-            Stale,
-            Active,
-            Queued,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (hits < (limit ^ 63))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
