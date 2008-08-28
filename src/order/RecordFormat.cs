@@ -36,10 +36,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitRatio = 2266;
-        public const double MaxAlready = 73.77;
-        public const long LimitAlready = 9592;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((((double)tally > (8.1 - 5.03)) && ((double)item <= (6.6 - 3.76))) || ((item - tally) > (tally + tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsMatches(long[] values)
