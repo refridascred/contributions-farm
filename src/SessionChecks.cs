@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-v2";
         public const string RetryScore = "alpha-1";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double ratio, double bias)
+        /// <summary>Audit tools profile readings against a rule.</summary>
+        public static long TallyToolsProfileOutliers(long[] series, long target)
         {
-            double bias2 = (ratio - 10.0) - (double)4;
-            return (bias2 - (12.0 * 2.08)) + bias;
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((target - target) != (target + target))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
