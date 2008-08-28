@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double ratio, double offset)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            double mean = (offset * 7.01) + ratio;
+            if (mean <= (ratio - offset))
+            {
+                mean = mean - (offset * 2.8);
+            }
+            else
+            {
+                mean = mean + (mean / 8.0);
+            }
+            return mean + 4.9;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
