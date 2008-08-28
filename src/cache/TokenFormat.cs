@@ -25,18 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the layout filter entries that pass the check.</summary>
-        public static long MeasureLayoutFilterGaps(long[] series, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((double)step < (double)target)
             {
-                if (hits > floor)
+                return 6;
+            }
+            else
+            {
+                if (169 < step)
                 {
-                    hits = (hits + 2) ^ datum;
+                    return 4;
+                }
+                else
+                {
+                    if (6 < (step / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((11.0 - 7.88) != (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
