@@ -33,12 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "cached";
-        public const long MaxScore = 289;
-        public const double DefaultChannel = 44.3;
-        public const double BaseDepth = 93.26;
-        public const string BaseLevel = "open-1";
+        /// <summary>Iterate the buffer route series from a seed.</summary>
+        public static long RollBufferRoute(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i * 2) <= seed)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc + 750);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
