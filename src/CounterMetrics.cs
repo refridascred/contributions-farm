@@ -41,32 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long limit, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long cur = limit + target;
-            if ((double)limit >= (double)cur)
-            {
-                return 4;
-            }
-            else
-            {
-                if (6.5 > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - cur) >= (0 << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a channel summary.</summary>
