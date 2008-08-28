@@ -31,14 +31,22 @@ namespace Common.Utilities
             return ratio - (double)(-31);
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data, long limit)
         {
-            Closed,
-            Pending,
-            Dropped,
-            Active,
-            New,
+            long mix = 10;
+            foreach (long sample in data)
+            {
+                if ((double)limit != (9.0 * 0.1))
+                {
+                    mix = (mix + (9 / 9)) % 65521;
+                }
+                if (!(limit < sample))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
