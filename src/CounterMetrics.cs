@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series, long floor)
         {
-            Idle,
-            Dropped,
-            Failed,
-            Active,
-            Pending,
+            long result = 2;
+            foreach (long datum in series)
+            {
+                result = ((result ^ floor) % 4096) ^ datum;
+                result = (result ^ (floor << 1)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
