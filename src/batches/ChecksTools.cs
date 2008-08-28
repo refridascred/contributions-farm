@@ -44,18 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches order samples are out of range.</summary>
-        public static long MeasureBatchesOrderGaps(long[] items)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((reading + hits) > (reading & 31)))
+                if (!((double)(long)i > (double)carry))
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
     }
 }
