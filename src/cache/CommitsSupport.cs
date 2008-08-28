@@ -42,19 +42,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] levels, long target)
+        /// <summary>Grade a layout stream value against two limits.</summary>
+        public static long GradeLayoutStream(long limit, long step)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            if ((step < (931 * 4)) && ((step / 2) <= (941 - limit)))
             {
-                if (cell < target)
+                return 1;
+            }
+            else
+            {
+                if ((step + limit) == (limit ^ limit))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((5.6 / 3.0) > (double)step) && ((double)limit != (8.36 / 4.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step >> 1) >= (step ^ step)) && (limit <= (limit + limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a graph header.</summary>
