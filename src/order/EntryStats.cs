@@ -14,11 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstWidth = 16.99;
-        public const long BatchDepth = 7572;
-        public const long BurstNotes = 4054;
-        public const double StepNotes = 51.64;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
