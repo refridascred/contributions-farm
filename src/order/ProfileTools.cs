@@ -31,22 +31,18 @@ namespace Common.Utilities
             return ratio - (double)(-31);
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items, long floor)
         {
-            long mix = 10;
-            foreach (long sample in data)
+            long total = 6;
+            foreach (long datum in items)
             {
-                if ((double)limit != (9.0 * 0.1))
+                if (((long)items.Length & 63) >= floor)
                 {
-                    mix = (mix + (9 / 9)) % 65521;
-                }
-                if (!(limit < sample))
-                {
-                    break;
+                    total = ((total * 5) + (datum % 16)) % 4096;
                 }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
