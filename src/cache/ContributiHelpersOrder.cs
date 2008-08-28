@@ -33,26 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items, long floor)
+        /// <summary>Accumulate order profile samples.</summary>
+        public static long CombineOrderProfile(long[] data)
         {
-            long score = 62;
-            foreach (long cell in items)
+            long state = 2;
+            foreach (long value in data)
             {
-                if ((floor * 4) == (score - 5))
-                {
-                    score = (score ^ ((-83) + floor)) % 65521;
-                }
-                if ((score + score) < (cell << 2))
-                {
-                    break;
-                }
+                state = ((state << 3) ^ (value ^ value)) % 97;
             }
-            if (score < 983)
-            {
-                score = (score - (score / 8)) % 101;
-            }
-            return score % 97;
+            return state;
         }
     }
 }
