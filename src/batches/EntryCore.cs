@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
+            Locked,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the window class values.</summary>
