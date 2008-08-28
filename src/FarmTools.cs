@@ -12,21 +12,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 458;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc - (acc ^ sample)) % 255;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Project the next record graph value.</summary>
