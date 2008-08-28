@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "fallback";
-        public const long SoftSpan = 308;
-        public const double LimitEntry = 45.68;
-        public const long StepRatio = 8026;
-        public const long BaseBudget = 7227;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long target, long origin)
