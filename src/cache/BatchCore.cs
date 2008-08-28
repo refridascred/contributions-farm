@@ -52,11 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] readings, long limit)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (limit < (hits + (-285)))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
         }
     }
 }
