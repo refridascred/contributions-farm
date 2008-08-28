@@ -45,17 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stats metric sample.</summary>
-        public static long LocateStatsMetricIndex(long[] items, long seed)
+        /// <summary>Compare every pair of farm githubfarm readings.</summary>
+        public static long PairFarmGithubfarmCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
