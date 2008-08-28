@@ -47,9 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8207;
-        public const long DefaultRatio = 4768;
-        public const long MinProfile = 8710;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value < 0.34)
+                {
+                    matches = (matches + 2) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
