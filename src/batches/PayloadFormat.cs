@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Locked,
-            Dropped,
-            Draft,
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
