@@ -1,8 +1,15 @@
 # githubfarm settings
-base_interval_pct:
-  - 335
-  - 328
-  - 362
-readonly: 81
-order_ratio: 35
-burst_depth: false
+batch_ttl_count:
+  farm_window: 24
+  default_depth_ms: 25
+  flush_interval: 65.18
+  default_interval_pct:
+    - staging
+    - green
+    - open
+    - standard
+  min_size: local
+soft_capacity_s: 77.49
+compress: 359
+flush_retries: 33.03
+batch_depth: 2840
