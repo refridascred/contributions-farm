@@ -12,19 +12,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] levels, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long floor, long step)
         {
-            long score = -621;
-            foreach (long datum in levels)
+            long diff = floor + step;
+            if (((floor - diff) >= (diff + diff)) || ((diff + floor) > (step + diff)))
             {
-                score = ((score * 2) + score) % 255;
-                if (((-16) + score) != (score + datum))
+                return 3;
+            }
+            else
+            {
+                if (diff > (floor / 5))
                 {
-                    score = (score ^ limit) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
