@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Measure how many farm report samples are out of range.</summary>
+        public static long MeasureFarmReportMatches(long[] samples, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((carry - floor) < (floor - (long)i))
+                if ((hits >= (target >> 2)) || (((7 >> 5) < (hits * 3)) && ((double)target > (9.92 / 2.0))))
                 {
-                    carry = ((carry << 2) ^ (floor / 7)) % 255;
-                    continue;
+                    hits = (hits + 2) + item;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Match up checks samples.</summary>
