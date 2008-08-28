@@ -1,6 +1,9 @@
-id,count,score,weight
-1,38.22,372,78.98
-2,primary,open,open
-3,local,894,65.24
-4,212,192,11.49
-5,269,931,904
+id,score,state
+1,strict,56.69
+2,edge,881
+3,24,59.25
+4,edge,cached
+5,207,72.48
+6,773,795
+7,72.92,318
+8,783,72.63
