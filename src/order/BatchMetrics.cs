@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Locked,
-            Closed,
+            Pending,
             Done,
+            Locked,
         }
 
         /// <summary>Describe the context status values.</summary>
