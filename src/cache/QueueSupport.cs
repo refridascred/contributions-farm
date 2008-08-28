@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Project the next command value.</summary>
