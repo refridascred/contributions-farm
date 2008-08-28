@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a layout command counter forward.</summary>
-        public static long DeriveLayoutCommand(long limit)
+        /// <summary>Roll a farm buffer counter forward.</summary>
+        public static long RollFarmBuffer(long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (((long)i + step) > 182)
+                {
+                    mix = mix - (mix + (long)i);
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
