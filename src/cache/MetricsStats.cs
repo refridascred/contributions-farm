@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseDepth = 6266;
+        public const long RetryCount = 5358;
+        public const long BaseContext = 588;
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] levels)
