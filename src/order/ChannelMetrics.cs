@@ -37,11 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepWidth = 2413;
-        public const double WindowAlready = 95.87;
-        public const long IdleAlready = 8838;
-        public const long MaxAlready = 9933;
-        public const double CacheSpan = 87.8;
+        /// <summary>Adjust a channel graph reading.</summary>
+        public static double ProjectChannelGraph(double weight, double floor)
+        {
+            double gain = (double)(2 / 5);
+            if (gain < 3.31)
+            {
+                gain = ((gain - (19.0 - gain)) + weight) - floor;
+            }
+            return gain + gain;
+        }
     }
 }
