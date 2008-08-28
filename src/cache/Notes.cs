@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((hits % 97) >= (-11)) && ((536 + value) == (value + hits))))
+                if (!(carry < (floor / 4)))
                 {
-                    hits = hits + 2;
+                    long seen = floor * 3;
+                    carry = carry - seen;
                 }
+                carry = carry + ((-5) / 6);
+                carry = carry - carry;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a queue summary.</summary>
