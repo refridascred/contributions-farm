@@ -35,11 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 1701;
-        public const string HardSize = "standard-1";
-        public const double MaxFilter = 33.32;
-        public const double BatchFilter = 96.06;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
