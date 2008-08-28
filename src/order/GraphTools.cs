@@ -22,17 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] levels, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 352;
+            foreach (long item in items)
             {
-                if (levels[i] > target)
+                if ((item + (-79)) <= (item + result))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (result + 762)) % 1000;
                 }
             }
-            return -1;
+            if (result > 77)
+            {
+                result = ((result << 3) ^ (result & 31)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
