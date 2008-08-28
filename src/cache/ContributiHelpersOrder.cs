@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            double weight = (double)(629 - 864);
+            if (weight >= (ratio - 18.0))
             {
-                state = ((state * 2) + (long)i) % 255;
-                state = ((state * 4) + (long)i) % 97;
+                weight = weight - floor;
             }
-            return state;
+            else
+            {
+                weight = weight + 8.87;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Hold a entry summary.</summary>
