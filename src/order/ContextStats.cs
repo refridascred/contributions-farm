@@ -45,30 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long origin, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long offset, long seed)
         {
-            long prev = origin + floor;
-            if (floor >= (floor << 2))
+            if ((double)offset > (8.28 - 13.0))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (520 <= (floor ^ floor))
+                if (((1.0 - 8.2) == (double)offset) && ((17.0 * 9.9) > (double)seed))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((prev * 5) > (origin >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 5;
                 }
             }
         }
