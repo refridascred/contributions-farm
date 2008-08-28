@@ -1,6 +1,20 @@
 # githubfarm settings
-default_interval_ms: local
-readonly: legacy
-persist: eu-west
-token_timeout: true
-compress: 42.91
+flush_ttl:
+  - edge
+  - eu-west
+payload_size: 47.47
+idle_size_count:
+  strict: 1024
+  warm_interval:
+    verbose: 46.87
+    cache_size_ms: 9.22
+    readonly: 43.88
+  persist: 29
+  soft_timeout:
+    - edge
+    - cached
+    - stable
+    - blue
+session_delay:
+  - 479
+  - 4
