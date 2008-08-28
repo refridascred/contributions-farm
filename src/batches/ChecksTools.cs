@@ -65,21 +65,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (121 < (bound + (long)i))
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - mark) % 255;
+                    mark = (mark ^ (6 ^ mark)) % 101;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
     }
 }
