@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] levels, long floor)
         {
-            if (seed < (step % 60))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed ^ step) <= (3 & 31))
+                if ((5 - sample) > tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 3) - floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
