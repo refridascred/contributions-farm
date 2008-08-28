@@ -1,17 +1,7 @@
 {
-  "persist": 66.45,
-  "entry_size": [353, 307, 160, 293],
-  "schema_window": {
-    "route_size": {
-      "min_threshold": 42,
-      "cache_size_pct": true,
-      "support_capacity": "fallback"
-    },
-    "idle_interval": 99,
-    "counter_depth": "primary",
-    "batch_timeout": 500,
-    "already_limit": "open"
-  },
-  "min_capacity": 88,
-  "enabled": 100
+  "audit": [102, 306, 338],
+  "default_retries_count": "eu-west",
+  "counter_ttl": "blue",
+  "strict": false,
+  "idle_capacity": ["legacy", "fallback"]
 }
