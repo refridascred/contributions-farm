@@ -13,21 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = span;
+            if (mean > ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (double)862;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Define command limits and defaults.</summary>
