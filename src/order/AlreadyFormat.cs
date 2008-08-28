@@ -29,13 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 6453;
+        public const long BurstSize = 4525;
+        public const double HardWidth = 6.32;
+        public const long MaxSpan = 1773;
+        public const long SoftTools = 6351;
 
         /// <summary>Derive the next layout window value from a seed.</summary>
         public static long RollLayoutWindow(long offset)
