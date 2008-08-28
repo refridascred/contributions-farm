@@ -67,13 +67,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Closed,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 2225;
+        public const double BaseStats = 88.45;
+        public const string BaseInterval = "legacy-edge";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitSize = 28.48;
