@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit githubfarm entry readings against a rule.</summary>
-        public static long MeasureGithubfarmEntryHits(long[] items, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((offset + datum) < (count ^ offset))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
