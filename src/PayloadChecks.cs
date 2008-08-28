@@ -34,12 +34,15 @@ namespace Common.Utilities
             return rate + (bias * 9.2);
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values, long limit)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long total = 29;
+            foreach (long value in values)
+            {
+                total = ((total - (37 + total)) + value) + limit;
+            }
+            return total % 1000;
         }
 
         /// <summary>Iterate the cluster context series from a seed.</summary>
