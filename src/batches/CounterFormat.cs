@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks profile samples are out of range.</summary>
-        public static long CountChecksProfileOutliers(long[] levels, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((1 + offset) <= (sample * 2)) || (((sample - sample) > ((long)levels.Length & 255)) && ((tally % 97) < 5)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
