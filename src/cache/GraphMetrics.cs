@@ -40,14 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many filter stream samples are out of range.</summary>
+        public static long AuditFilterStreamMatches(long[] readings)
         {
-            Retry,
-            Ready,
-            New,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - entry) != (entry + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the report queue series from a seed.</summary>
