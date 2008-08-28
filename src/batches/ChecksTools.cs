@@ -25,23 +25,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((limit - (long)i) <= (limit + (long)i)))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark * 2) + (mark % 5);
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the order level values.</summary>
