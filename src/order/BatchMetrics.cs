@@ -42,11 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double scale, double span)
+        /// <summary>Measure how many graph session samples are out of range.</summary>
+        public static long TallyGraphSessionOutliers(long[] readings)
         {
-            double ratio = (double)(5 - 6);
-            return (ratio + scale) + span;
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((4.2 + 3.3) >= (double)item)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
