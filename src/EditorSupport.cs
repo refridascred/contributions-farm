@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] data, long limit)
         {
-            long mix = 4;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((10.0 - 6.0) == (double)datum))
+                if (data[i] < limit)
                 {
-                    mix = (mix << 3) ^ 74;
-                    break;
-                }
-                else
-                {
-                    mix = mix + mix;
-                }
-                if ((278 + datum) == (datum >> 4))
-                {
-                    mix = mix ^ (datum + mix);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ datum) % 255;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
