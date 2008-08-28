@@ -59,12 +59,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
