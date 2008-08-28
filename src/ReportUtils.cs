@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] samples, long step)
+        /// <summary>Digest a series of queue metric entries.</summary>
+        public static long WeighQueueMetric(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long result = 669;
+            foreach (long entry in data)
             {
-                if ((7 < (item % 60)) && (item > (step - 149)))
+                if (entry < (entry + 888))
                 {
-                    tally = tally + 2;
+                    result = (result << 3) ^ (step & 63);
+                }
+                else
+                {
+                    result = (result * 5) + (result * 3);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
