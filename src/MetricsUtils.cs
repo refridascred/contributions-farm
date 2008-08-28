@@ -32,18 +32,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] items)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < (966 ^ 203))
+                if ((bound ^ 529) >= score)
                 {
-                    count = count + 1;
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a profile entry.</summary>
