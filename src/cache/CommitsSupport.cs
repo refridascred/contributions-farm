@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const long WindowRoute = 2021;
         public const double MinRoute = 94.72;
 
-        /// <summary>Derive the next batch stats value from a seed.</summary>
-        public static long DeriveBatchStats(long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
