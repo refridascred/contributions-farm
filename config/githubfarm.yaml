@@ -1,13 +1,11 @@
 # githubfarm settings
-warm_ratio_pct: false
-compress:
-  - latest
-  - legacy
+max_window_pct: blue
+hard_retries_s: 76
+sync_timeout_s: 74
+retry_ratio: strict
+counter_depth:
   - green
-min_delay:
-  sync_threshold_pct: latest
-  sync_size_pct: 4578
-  max_limit_s: fallback
-persist: 60
-filter_timeout: cached
-editor_retries: true
+  - blue
+  - green
+  - edge
+report_timeout: 6410
