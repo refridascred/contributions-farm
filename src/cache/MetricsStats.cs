@@ -55,17 +55,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first tools stream entry that matches the target.</summary>
-        public static long SeekToolsStreamIndex(long[] data, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset + offset) <= (floor >> 5))
             {
-                if (data[i] <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((floor + 424) >= (46 >> 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset >= (7.9 + 0.5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor > (4.3 + 4.6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
