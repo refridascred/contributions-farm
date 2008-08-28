@@ -22,11 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of report filter entries.</summary>
