@@ -84,14 +84,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Locate a record tools reading by value.</summary>
+        public static long LocateRecordToolsIndex(long[] values, long bound)
         {
-            Queued,
-            Pending,
-            Dropped,
-            Locked,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
