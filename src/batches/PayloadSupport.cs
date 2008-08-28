@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data, long floor)
+        /// <summary>Compare every pair of entry notes readings.</summary>
+        public static long CompareEntryNotesCount(long[] samples)
         {
-            long total = 42;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total + total) < (20 + datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total * 5) + (12 - total);
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 5)
-            {
-                total = (total * 4) + (floor / 6);
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
