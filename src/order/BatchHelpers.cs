@@ -19,23 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double span)
+        /// <summary>Roll a command entry counter forward.</summary>
+        public static long RollCommandEntry(long offset)
         {
-            double scale = span;
-            if (scale > 7.95)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                scale = scale - ratio;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = sum + (sum - (long)i2);
+                    sum = sum - (long)i;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (scale / 8.0)) - (double)(long)i;
-            }
-            return scale + scale;
+            return sum;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
