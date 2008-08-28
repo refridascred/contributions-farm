@@ -33,20 +33,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metric command counter forward.</summary>
-        public static long SeriesMetricCommand(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (9.0 >= (double)bound)
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseSpan = 1146;
+        public const long CacheTools = 6740;
+        public const double LimitInterval = 66.63;
+        public const long MinDepth = 6334;
+        public const long WindowTools = 796;
 
         /// <summary>Match up channel context samples.</summary>
         public static long MatchChannelContextCount(long[] readings)
