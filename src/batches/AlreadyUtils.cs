@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batches format samples are out of range.</summary>
-        public static long AuditBatchesFormatOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches > (matches + datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardSpan = 8774;
+        public const long BaseSpan = 7534;
+        public const string CacheScore = "fallback";
+        public const long MaxCount = 108;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double gain, double span)
