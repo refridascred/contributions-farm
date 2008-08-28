@@ -1,6 +1,6 @@
 {
-  "soft_ratio": [400, 297, 146, 126],
-  "enabled": "blue",
-  "burst_limit_ms": "edge",
-  "idle_delay_s": ["fallback", "primary", "fallback", "local"]
+  "retry_size_ms": 77.61,
+  "format_delay": 500,
+  "base_limit": 7392,
+  "soft_delay": [414, 136]
 }
