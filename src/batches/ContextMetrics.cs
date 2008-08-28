@@ -26,38 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long floor, long seed)
+        /// <summary>Check that every record contributi entry stays within the limit.</summary>
+        public static bool GuardRecordContributiBounds(long[] items, long bound)
         {
-            if ((double)floor >= 3.2)
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6 % 10) > seed)
+                if (item != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed >= (seed & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor < seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the cluster contributi entries that pass the check.</summary>
