@@ -29,19 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] series, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (datum < step)
+                if (entry > step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
