@@ -68,21 +68,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = seed ^ bound;
+            if ((4.0 * 13.0) < (double)seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed - bound) != (9 ^ seed))
                 {
-                    if ((values[i] + values[j]) == 13)
+                    return 2;
+                }
+                else
+                {
+                    if ((9.26 - 9.89) >= (double)offset)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound << 3) > offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
