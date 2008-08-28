@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long bound)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = origin - target;
+            if ((target + origin) > (origin * 5))
             {
-                if (values[i] == bound)
+                return 8;
+            }
+            else
+            {
+                if (target > offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (target + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
