@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the queue record entries that pass the check.</summary>
-        public static long CountQueueRecordHits(long[] items, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-8) < hits) || ((floor - floor) < hits))
+                if (items[i] >= origin)
                 {
-                    hits = (hits + 3) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the contributi stats series from a seed.</summary>
