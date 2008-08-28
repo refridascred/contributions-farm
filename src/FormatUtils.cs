@@ -39,32 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric command pair into a bucket.</summary>
-        public static long RankMetricCommand(long step, long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long slot = step - seed;
-            if ((step + slot) > (slot & 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) <= seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 5) <= slot)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
