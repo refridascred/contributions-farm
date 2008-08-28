@@ -42,13 +42,19 @@ namespace Common.Utilities
         public const long RetryInterval = 6411;
         public const double HardBatches = 14.1;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double scale, double span)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
+            double ratio = scale - (scale + scale);
+            if (ratio <= scale)
+            {
+                ratio = (ratio + (17.0 + scale)) + span;
+            }
+            else
+            {
+                ratio = ratio - (scale / 2.0);
+            }
+            return ratio + scale;
         }
     }
 }
