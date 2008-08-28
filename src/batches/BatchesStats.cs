@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many farm report samples are out of range.</summary>
-        public static long MeasureFarmReportMatches(long[] samples, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (((4 - offset) == (target - offset)) && ((13 ^ 704) > (428 + target)))
             {
-                if ((hits >= (target >> 2)) || (((7 >> 5) < (hits * 3)) && ((double)target > (9.92 / 2.0))))
+                return 1;
+            }
+            else
+            {
+                if (!((0.5 - 0.51) != (double)offset))
                 {
-                    hits = (hits + 2) + item;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)target > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (20.0 < (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up checks samples.</summary>
