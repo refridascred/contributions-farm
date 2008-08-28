@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long MaxRatio = 5648;
         public const long WindowFarm = 835;
 
-        /// <summary>Compare every pair of profile channel readings.</summary>
-        public static long MatchProfileChannelCount(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum > floor)
                 {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
