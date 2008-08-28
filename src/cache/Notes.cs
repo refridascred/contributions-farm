@@ -52,11 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
+            Failed,
+            Active,
+            New,
+            Synced,
         }
     }
 }
