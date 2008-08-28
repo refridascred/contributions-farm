@@ -40,15 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
