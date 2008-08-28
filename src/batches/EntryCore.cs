@@ -70,18 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] values, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > (hits ^ (long)values.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) - target;
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
