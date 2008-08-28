@@ -56,14 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - sample) == (sample + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
