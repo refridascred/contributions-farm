@@ -92,18 +92,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token record values into a single score.</summary>
-        public static long FoldTokenRecord(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = 6;
-            foreach (long reading in items)
-            {
-                if ((8 >> 4) == (reading + 380))
-                {
-                    mark = (mark * 3) + 62;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
