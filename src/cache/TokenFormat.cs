@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit batches profile readings against a rule.</summary>
-        public static long TallyBatchesProfileGaps(long[] items, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + step) == (9 << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many commits contributi samples are out of range.</summary>
