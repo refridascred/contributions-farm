@@ -88,11 +88,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitSize = 28.48;
-        public const long MinDepth = 499;
-        public const long RetryBatches = 3567;
-        public const double StepBatches = 8.28;
-        public const double SoftWidth = 14.68;
+        /// <summary>Count context schema pairs that satisfy a relation.</summary>
+        public static long MatchContextSchemaCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
