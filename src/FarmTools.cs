@@ -25,12 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            Idle,
-            New,
-            Locked,
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc << 3) ^ ((long)i >> 3);
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
