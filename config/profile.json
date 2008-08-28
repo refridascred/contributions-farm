@@ -1,8 +1,8 @@
 {
-  "audit": false,
-  "stream_size": ["strict", "legacy", "blue"],
-  "default_window": 97.02,
-  "soft_capacity_s": 9335,
-  "contributi_ratio": "edge",
-  "dry_run": false
+  "idle_threshold_pct": 2,
+  "soft_window_s": 57,
+  "poll_size_count": 99,
+  "dry_run": 60,
+  "checks_ttl": [152, 415],
+  "base_size": ["fallback", "local", "latest", "edge"]
 }
