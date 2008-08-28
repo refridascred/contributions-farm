@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a record cluster sample.</summary>
-        public static long LookupRecordClusterIndex(long[] items, long target)
+        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
+        public static long MeasureFilterGithubfarmMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
+                if (4.9 <= (double)value)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
