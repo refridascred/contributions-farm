@@ -16,13 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Idle,
-            Active,
             Ready,
             Pending,
+            Closed,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
