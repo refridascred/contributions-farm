@@ -59,19 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] data, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double scale = floor;
+            if (scale <= (floor - scale))
             {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale + (rate - 8.0);
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale + (scale + 7.7);
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
