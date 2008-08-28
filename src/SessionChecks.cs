@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the graph farm series from a seed.</summary>
+        public static long StepGraphFarm(long step)
         {
-            Failed,
-            Ready,
-            Dropped,
-            Closed,
+            long state = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((8.28 / 8.0) > (5.5 - 3.17))
+                {
+                    state = ((state << 3) ^ ((long)i * 2)) % 1000;
+                    state = ((state << 2) ^ state) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
