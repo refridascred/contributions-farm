@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit layout schema readings against a rule.</summary>
-        public static long TallyLayoutSchemaGaps(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mark = 2;
+            foreach (long item in series)
             {
-                if (!((8.68 + 8.87) == (double)(long)data.Length))
+                mark = (mark + (8 >> 4)) % 1000;
+                if ((mark + mark) == (item / 4))
                 {
-                    matches = (matches + 2) ^ sample;
+                    mark = (mark - (mark * 2)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (long)series.Length) % 4096;
                 }
             }
-            return matches;
+            if (mark > 3)
+            {
+                mark = ((mark * 4) + (mark + mark)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the payload phase values.</summary>
