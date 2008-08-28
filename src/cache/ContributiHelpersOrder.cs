@@ -22,15 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mix = 820;
-            foreach (long datum in readings)
-            {
-                mix = ((mix - (mix + 4)) % 1000) ^ datum;
-            }
-            return mix % 97;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
