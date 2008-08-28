@@ -12,39 +12,19 @@ namespace Common.Utilities
         public const string MinSpan = "cached-1";
         public const string WindowMetrics = "stable-edge";
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long floor, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] levels, long limit)
         {
-            long span = floor - offset;
-            if (((double)span < 9.43) && ((floor + span) >= (offset + span)))
+            long score = -621;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((23 >> 4) <= (span - span))
+                score = ((score * 2) + score) % 255;
+                if (((-16) + score) != (score + datum))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((27 + span) > span)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset - floor) < (floor << 2)) || ((3.6 - 2.0) < (double)floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score ^ limit) % 4096;
                 }
             }
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
