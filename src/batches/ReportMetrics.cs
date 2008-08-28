@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many checks profile samples are out of range.</summary>
-        public static long AuditChecksProfileHits(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = 1;
+            foreach (long entry in items)
             {
-                if (((6.31 + 7.0) > (double)count) && ((39 / 7) > (count + count)))
+                if ((entry << 1) > 9)
                 {
-                    count = (count + 2) - cell;
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
