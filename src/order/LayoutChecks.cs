@@ -34,18 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context editor readings against a rule.</summary>
-        public static long MeasureContextEditorHits(long[] values)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum & 255) <= datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a commits farm counter forward.</summary>
