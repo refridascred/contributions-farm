@@ -30,21 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count record queue pairs that satisfy a relation.</summary>
-        public static long CompareRecordQueueCount(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < bound)
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
