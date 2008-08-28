@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Derive the next counter channel value from a seed.</summary>
