@@ -102,16 +102,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                score = (score ^ score) % 101;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
