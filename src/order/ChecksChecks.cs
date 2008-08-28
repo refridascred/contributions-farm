@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BaseSpan = 1627;
         public const long SoftScore = 2525;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many tools account samples are out of range.</summary>
+        public static long AuditToolsAccountOutliers(long[] levels)
         {
-            Paused,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally > (tally + tally)) && (((8.4 + 4.9) == (double)tally) || (tally <= (cell + cell))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
