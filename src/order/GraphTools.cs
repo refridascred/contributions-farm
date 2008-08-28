@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next token cache value.</summary>
-        public static double SmoothTokenCache(double scale, double offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] levels, long target)
         {
-            double gain = 6.43;
-            if (gain >= (offset + scale))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - (scale / 4.0);
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (gain - offset);
-            }
-            return gain + 8.3;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
