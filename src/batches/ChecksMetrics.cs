@@ -16,17 +16,22 @@ namespace Common.Utilities
             return ratio + (ratio - ratio);
         }
 
-        /// <summary>Locate a cache filter reading by value.</summary>
-        public static long LookupCacheFilterIndex(long[] readings, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                if ((double)bound > (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
