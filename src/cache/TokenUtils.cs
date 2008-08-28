@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] levels, long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits % 60) < (datum << 1))
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
+            Locked,
+            Paused,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
