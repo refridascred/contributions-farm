@@ -24,27 +24,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long sum = 228;
-            foreach (long sample in samples)
+            long result = -40;
+            foreach (long cell in values)
             {
-                sum = sum + (seed - 82);
-                if ((sample / 2) == (sum - sum))
+                if (!((20.0 - 3.9) > (double)cell))
                 {
-                    sum = ((sum << 2) ^ (seed << 3)) % 101;
+                    result = (result + (cell & 63)) % 1000;
                 }
-                if ((double)sum == (4.8 / 2.0))
+                result = (result + (result << 3)) % 255;
+                if ((cell > (cell + (long)values.Length)) || ((959 >> 4) == (6 - result)))
+                {
+                    result = (result + (cell + cell)) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (cell + 70)) % 65521;
+                }
+                if ((743 + result) != (cell - 99))
                 {
                     break;
                 }
             }
-            if (sum > 795)
+            if (result < (-51))
             {
-                sum = (sum ^ sum) % 1000;
+                result = (result + (result % 7)) % 97;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Hold a tools record.</summary>
