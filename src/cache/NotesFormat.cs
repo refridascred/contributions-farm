@@ -35,22 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples, long limit)
         {
-            long state = 30;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((offset >> 2) != (3 + entry)) || ((double)state < (0.35 / 3.0)))
+                if ((((536 << 2) >= (limit - limit)) && ((limit + limit) > (limit >> 5))) || (9 > tally))
                 {
-                    state = ((state << 3) ^ (entry % 7)) % 255;
-                }
-                if (((offset - entry) >= (state >> 2)) || ((offset ^ state) != (entry & 15)))
-                {
-                    break;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return state % 65521;
+            return tally;
         }
     }
 }
