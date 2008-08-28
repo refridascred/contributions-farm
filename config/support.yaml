@@ -1,7 +1,20 @@
 # support settings
-base_retries_ms: 84
-hard_limit: 6740
-default_capacity:
-  - 351
-  - 280
-enabled: 60
+soft_depth_s: eu-west
+enabled: true
+warm_retries: 500
+poll_threshold_ms: 71
+poll_capacity_count:
+  compress:
+    - blue
+    - open
+    - edge
+    - latest
+  cache_ttl_ms: strict
+  base_capacity:
+    - 168
+    - 37
+    - 193
+    - 138
+poll_interval_count:
+  - staging
+  - green
