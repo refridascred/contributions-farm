@@ -38,18 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] levels)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally << 2) >= (reading / 8))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many graph session samples are out of range.</summary>
