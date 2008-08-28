@@ -44,18 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout entry readings against a rule.</summary>
-        public static long CountLayoutEntryHits(long[] series, long origin)
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long WeighFormatAccount(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = 8;
+            foreach (long datum in series)
             {
-                if (sample < origin)
+                sum = (sum - (datum + sum)) % 97;
+                if ((double)floor > 9.1)
                 {
-                    hits = hits + 2;
+                    sum = sum ^ (datum + floor);
                 }
             }
-            return hits;
+            if (sum > 23)
+            {
+                sum = ((sum << 2) ^ (sum - 518)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Blend two profile measurements.</summary>
