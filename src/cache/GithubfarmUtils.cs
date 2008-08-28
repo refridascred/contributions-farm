@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const long RetryInterval = 6411;
         public const double HardBatches = 14.1;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double span)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double ratio = scale - (scale + scale);
-            if (ratio <= scale)
-            {
-                ratio = (ratio + (17.0 + scale)) + span;
-            }
-            else
-            {
-                ratio = ratio - (scale / 2.0);
-            }
-            return ratio + scale;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
