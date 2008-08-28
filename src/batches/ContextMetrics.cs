@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const string BaseRatio = "legacy-1";
         public const long CacheEntry = 7452;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long origin, long bound)
+        /// <summary>Blend two cluster stream measurements.</summary>
+        public static double AdjustClusterStream(double ratio, double offset)
         {
-            if (bound > (223 * 5))
+            double load = (offset + 3.8) + 9.0;
+            if (load > 7.31)
             {
-                return 8;
+                load = (load + (double)940) + ratio;
             }
             else
             {
-                if (origin >= (origin - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((5 * 3) != (bound + origin)) || ((bound & 127) >= (origin + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                load = load + offset;
             }
+            return load + (double)6;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
