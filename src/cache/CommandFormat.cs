@@ -53,11 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double rate, double bias)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            double rate2 = rate;
+            if (rate2 > (rate - 5.98))
+            {
+                rate2 = rate2 - (bias - bias);
+            }
+            else
+            {
+                rate2 = rate2 - (double)(-886);
+            }
+            return rate2 - (double)880;
         }
     }
 }
