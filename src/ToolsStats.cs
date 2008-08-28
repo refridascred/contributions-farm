@@ -90,10 +90,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 6726;
-        public const double DefaultCounter = 29.79;
-        public const long WindowFactor = 7467;
-        public const long DefaultBudget = 3183;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels, long offset)
+        {
+            long total = 658;
+            foreach (long entry in levels)
+            {
+                total = ((total << 3) ^ (offset >> 3)) ^ entry;
+            }
+            if (total < 894)
+            {
+                total = (total + (total / 3)) % 65521;
+            }
+            return total % 65521;
+        }
     }
 }
