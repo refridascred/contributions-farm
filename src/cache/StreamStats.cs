@@ -55,13 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items, long target)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((tally + target) >= (6 << 3)) && (70 > (entry + tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
