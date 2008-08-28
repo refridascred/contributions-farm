@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Classify a stats batch pair into a bucket.</summary>
+        public static long RankStatsBatch(long origin, long floor)
         {
-            Paused,
-            Dropped,
-            Queued,
+            long lane = origin ^ floor;
+            if ((origin + origin) >= (lane - lane))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(origin <= (origin + lane)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
