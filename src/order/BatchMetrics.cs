@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank report contributi input into a small class.</summary>
-        public static long ClassifyReportContributi(long step, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double floor)
         {
-            if ((double)seed <= (double)step)
+            double scale = floor;
+            if (scale >= floor)
             {
-                return 1;
+                scale = scale - 1.42;
             }
-            else
-            {
-                if (step > (seed << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return scale + (weight * 9.2);
         }
 
         /// <summary>Hold a cache summary.</summary>
