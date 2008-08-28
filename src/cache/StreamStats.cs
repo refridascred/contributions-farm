@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long step)
+        /// <summary>Audit layout schema readings against a rule.</summary>
+        public static long TallyLayoutSchemaGaps(long[] data)
         {
-            long bound = target - step;
-            if ((step / 7) > (bound / 6))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + step) == (step - step))
+                if (!((8.68 + 8.87) == (double)(long)data.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 2) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the schema order series from a seed.</summary>
