@@ -45,22 +45,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long AuditStreamRecordMatches(long[] items, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((floor - datum) >= datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Rank context input into a small class.</summary>
