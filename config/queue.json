@@ -1,7 +1,8 @@
 {
-  "audit": [102, 306, 338],
-  "default_retries_count": "eu-west",
-  "counter_ttl": "blue",
-  "strict": false,
-  "idle_capacity": ["legacy", "fallback"]
+  "audit": "cached",
+  "poll_threshold_pct": 1154,
+  "retry_delay_ms": [351, 207, 485, 328],
+  "enabled": 11.45,
+  "max_delay": 2201,
+  "contributi_size": 89.84
 }
