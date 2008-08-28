@@ -30,22 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long bound, long floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long seed)
         {
-            if (((bound + 662) > floor) && ((4.32 + 0.6) == (double)floor))
+            if ((limit + seed) < seed)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((double)608 <= (double)floor)
+                if (limit > ((-3) >> 1))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    return 7;
                 }
             }
         }
