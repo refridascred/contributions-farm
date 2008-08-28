@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the metric filter entries that pass the check.</summary>
-        public static long TallyMetricFilterHits(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (5.2 < (double)seen)
-                {
-                    seen = ((seen + 2) ^ cell) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "local-v2";
+        public const string BaseSize = "strict-1";
+        public const long RetryTimeout = 587;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long SeriesStats(long floor)
