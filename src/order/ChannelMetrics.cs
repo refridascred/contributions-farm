@@ -39,16 +39,12 @@ namespace Common.Utilities
             return mean + (6.0 / 8.0);
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result ^ (target << 3);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
     }
 }
