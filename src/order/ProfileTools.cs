@@ -36,19 +36,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] items, long limit)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count report payload pairs that satisfy a relation.</summary>
