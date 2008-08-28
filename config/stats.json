@@ -1,8 +1,6 @@
 {
-  "order_retries": "latest",
-  "metric_interval": "open",
-  "soft_delay_ms": [378, 160],
-  "idle_interval_ms": 78,
-  "compress": 84.82,
-  "default_threshold": 21
+  "sync_threshold": 88.75,
+  "already_capacity": "latest",
+  "buffer_capacity": [164, 145, 123, 394],
+  "metrics_interval": [279, 204]
 }
