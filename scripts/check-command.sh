@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging standard; do
+for item in latest primary; do
     log "checking ${item}"
 done
