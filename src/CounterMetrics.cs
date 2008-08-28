@@ -19,18 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long state = 8;
+            foreach (long item in readings)
             {
-                if ((3 % 64) != (reading - count))
+                state = ((state << 2) ^ limit) + item;
+                if ((state % 10) > state)
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (state > 25)
+            {
+                state = state ^ (state / 8);
+            }
+            return state;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
