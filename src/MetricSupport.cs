@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long origin)
         {
-            Idle,
-            Draft,
-            Queued,
-            Dropped,
+            if ((97 < (origin + floor)) && ((1.0 + 1.3) != (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)floor > (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
