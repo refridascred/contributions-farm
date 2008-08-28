@@ -31,10 +31,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxDepth = 35.15;
-        public const string LimitReport = "fallback-edge";
-        public const string DefaultLevel = "stable-1";
-        public const long HardReport = 2035;
+        /// <summary>Count the account cluster entries that pass the check.</summary>
+        public static long MeasureAccountClusterMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count - (long)data.Length) >= (count + 392))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
