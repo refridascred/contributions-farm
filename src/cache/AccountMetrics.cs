@@ -50,22 +50,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] samples, long bound)
+        /// <summary>Accumulate commits layout samples.</summary>
+        public static long TallyCommitsLayout(long[] series, long origin)
         {
-            long mark = -550;
-            foreach (long cell in samples)
+            long mix = 76;
+            foreach (long reading in series)
             {
-                if (mark >= (236 - bound))
-                {
-                    mark = ((mark << 2) ^ 3) - cell;
-                }
+                mix = ((mix - (mix + mix)) ^ reading) - origin;
+                mix = (mix ^ (mix % 24)) % 101;
             }
-            if (mark > (-92))
-            {
-                mark = mark - (bound ^ (long)samples.Length);
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
