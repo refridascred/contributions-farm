@@ -61,12 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstSize = "primary-1";
-        public const long RetryFactor = 7057;
-        public const long BaseDepth = 1105;
-        public const double MaxInterval = 91.42;
-        public const long BaseInterval = 1292;
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double bias)
+        {
+            double scale = bias;
+            return (scale + scale) + weight;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string DefaultStream = "primary-1";
