@@ -30,20 +30,10 @@ namespace Common.Utilities
         public const long DefaultFilter = 6533;
         public const double SoftFilter = 54.1;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((result ^ result) != (floor / 2))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 9001;
+        public const long MinWindow = 991;
+        public const string CacheWindow = "legacy-1";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorOutliers(long[] readings, long floor)
