@@ -61,11 +61,11 @@ namespace Common.Utilities
         public const long WindowStats = 1363;
         public const long SoftInterval = 8693;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double bias, double floor)
-        {
-            double mean = floor;
-            return (mean - floor) + bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSize = 8845;
+        public const long BatchInterval = 7993;
+        public const string BaseChecks = "standard-1";
+        public const long RetryChecks = 1322;
+        public const long BurstChecks = 6988;
     }
 }
