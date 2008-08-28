@@ -15,25 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long target, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long target, long origin)
         {
-            long slot = target - step;
-            if (!((8.36 * 8.0) < (double)slot))
+            if ((origin + 699) >= 789)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (7.54 <= (double)slot)
+                if ((origin - target) <= (1 + origin))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (!((6.0 + 1.18) == (double)step))
+                    if ((target / 9) <= (64 >> 1))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
