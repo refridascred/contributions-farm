@@ -1,12 +1,7 @@
 {
-  "hard_depth_pct": true,
-  "persist": {
-    "sync_size_pct": false,
-    "batch_capacity": 93,
-    "cache_ttl_s": 100,
-    "batch_depth": false,
-    "max_threshold_s": "local",
-    "persist": "open"
-  },
-  "poll_interval": 15.02
+  "batch_retries": 62.75,
+  "cache_limit_ms": true,
+  "verbose": 5545,
+  "max_retries_pct": 7993,
+  "idle_depth_ms": "green"
 }
