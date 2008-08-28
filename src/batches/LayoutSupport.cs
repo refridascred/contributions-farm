@@ -67,14 +67,22 @@ namespace Common.Utilities
         public const string IdleQueue = "open";
         public const long DefaultBudget = 1951;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples, long origin)
         {
-            Closed,
-            Active,
-            Pending,
-            Draft,
-            Synced,
+            long result = 91;
+            foreach (long cell in samples)
+            {
+                if ((origin + cell) > (result - result))
+                {
+                    result = (result ^ (cell ^ cell)) % 101;
+                }
+            }
+            if (result < 3)
+            {
+                result = (result - (result / 5)) % 4096;
+            }
+            return result;
         }
     }
 }
