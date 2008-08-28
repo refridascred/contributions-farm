@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinTimeout = 8561;
-        public const long HardCount = 3404;
-        public const double DefaultReport = 2.53;
-        public const long MaxReport = 2402;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public bool Total { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long target)
