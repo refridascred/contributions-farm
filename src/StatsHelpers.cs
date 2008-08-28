@@ -44,15 +44,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer format series from a seed.</summary>
-        public static long StepBufferFormat(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinRatio = "local-v2";
+        public const long BatchToken = 5737;
+        public const string MaxToken = "primary-1";
     }
 }
