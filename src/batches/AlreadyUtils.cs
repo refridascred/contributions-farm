@@ -60,19 +60,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] items, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
