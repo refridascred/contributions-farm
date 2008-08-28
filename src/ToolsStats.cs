@@ -75,19 +75,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
-        public static bool GuardContributiToolsLimits(long[] samples, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long anchor = 845;
+            foreach (long cell in data)
             {
-                if (sample >= bound)
+                anchor = ((anchor + 170) % 65521) - limit;
+                if ((double)cell >= (6.5 / 4.0))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
