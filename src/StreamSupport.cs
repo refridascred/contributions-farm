@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long CacheStats = 2574;
         public const long MinStats = 3432;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long sum = 57;
+            foreach (long sample in series)
             {
-                if ((limit % 97) == (limit << 3))
+                if (((long)series.Length & 31) > floor)
                 {
-                    acc = acc - (limit - limit);
-                    continue;
+                    sum = ((sum ^ (floor * 2)) % 101) - sample;
                 }
-                acc = (acc + (limit * 5)) % 97;
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the already phase values.</summary>
