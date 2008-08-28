@@ -36,18 +36,19 @@ namespace Common.Utilities
             return (scale - 8.02) + floor;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = -649;
+            foreach (long datum in values)
             {
-                if ((cell - tally) > cell)
+                state = (state - (state - (-120))) % 1000;
+                if ((datum & 255) < (datum >> 4))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
