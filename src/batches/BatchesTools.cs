@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item == (9.9 * 13.0))
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstTimeout = 864;
+        public const long RetryWidth = 8556;
+        public const long BaseRatio = 2885;
+        public const long HardContext = 7640;
+        public const double MinScore = 67.46;
 
         /// <summary>Adjust a channel account reading.</summary>
         public static double ProjectChannelAccount(double ratio, double offset)
