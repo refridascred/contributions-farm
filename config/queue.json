@@ -1,5 +1,6 @@
 {
-  "batch_ratio_s": 30,
-  "notes_ratio": ["open", "standard", "staging"],
-  "tools_threshold": [366, 248]
+  "audit": 13,
+  "verbose": "blue",
+  "dry_run": false,
+  "sync_delay_s": "strict"
 }
