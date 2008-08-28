@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultInterval = 4468;
-        public const long BatchInterval = 6953;
-        public const string RetrySize = "staging-edge";
-        public const string CacheMetric = "stable-edge";
+        /// <summary>Look up the position of a token session sample.</summary>
+        public static long SeekTokenSessionIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
