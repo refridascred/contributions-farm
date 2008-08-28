@@ -43,22 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] readings, long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (limit > (entry & 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
