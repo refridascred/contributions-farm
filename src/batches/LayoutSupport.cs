@@ -43,21 +43,18 @@ namespace Common.Utilities
             return ratio - 9.9;
         }
 
-        /// <summary>Count stream account pairs that satisfy a relation.</summary>
-        public static long MatchStreamAccountCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > (25 + cell))
                 {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
