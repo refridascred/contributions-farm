@@ -43,13 +43,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate metrics contributi readings against a bound.</summary>
+        public static bool VerifyMetricsContributiBounds(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
