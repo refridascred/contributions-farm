@@ -41,14 +41,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            Pending,
-            Ready,
-            Stale,
-            Dropped,
-            Failed,
+            double scale = 9.04;
+            if (scale >= (double)569)
+            {
+                scale = ((scale - (double)451) + rate) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale - 8.84)) + (double)(long)i;
+            }
+            return scale - (double)450;
         }
 
         /// <summary>Hold a graph header.</summary>
