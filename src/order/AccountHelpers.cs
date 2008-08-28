@@ -57,22 +57,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine cluster schema values into a single score.</summary>
-        public static long FoldClusterSchema(long[] samples)
+        /// <summary>Grade a cluster editor value against two limits.</summary>
+        public static long SortClusterEditor(long floor, long offset)
         {
-            long carry = 3;
-            foreach (long reading in samples)
+            long diff = floor ^ offset;
+            if (diff < offset)
             {
-                if ((9.0 / 7.0) <= (double)carry)
+                return 2;
+            }
+            else
+            {
+                if ((double)diff < (14.0 * 5.53))
                 {
-                    carry = ((carry * 5) + (reading % 8)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - floor) == (offset * 4)) && ((offset % 3) < offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry > 7)
-            {
-                carry = ((carry << 2) ^ (carry >> 3)) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Describe the profile class values.</summary>
