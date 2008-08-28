@@ -42,16 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Count the profile stream entries that pass the check.</summary>
+        public static long CountProfileStreamMatches(long[] series, long target)
         {
-            long sum = -30;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                sum = (((sum * 5) + (sum & 63)) % 65521) + cell;
-                sum = (sum * 3) + 2;
+                if ((long)series.Length < (110 + 61))
+                {
+                    count = ((count + 1) - item) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a checks stats.</summary>
