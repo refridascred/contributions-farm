@@ -11,15 +11,24 @@ namespace Common.Utilities
         public const long SoftBuffer = 2155;
         public const long CacheBuffer = 6734;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double weight, double offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data)
         {
-            double bias = (double)(338 ^ 6);
-            for (int i = 0; i < 5; i++)
+            long mix = -32;
+            foreach (long item in data)
             {
-                bias = (bias - (offset / 4.0)) - (double)(long)i;
+                mix = ((mix * 2) + (item - (-120))) % 255;
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((mix - (mix % 60)) % 255) - (long)i;
+                }
+                mix = (mix ^ (191 & 63)) % 4096;
             }
-            return bias - weight;
+            if (mix > 5)
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
