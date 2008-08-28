@@ -33,19 +33,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] samples, long step)
+        /// <summary>Accumulate editor entry samples.</summary>
+        public static long CombineEditorEntry(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long result = 7;
+            foreach (long datum in data)
             {
-                if (cell <= step)
+                if ((9.9 + 3.0) > (double)datum)
                 {
-                    flag = false;
-                    break;
+                    result = (result ^ (seed % 97)) % 4096;
                 }
             }
-            return flag;
+            if (result > (-431))
+            {
+                result = (result ^ (4 * 2)) % 4096;
+            }
+            return result % 1000;
         }
     }
 }
