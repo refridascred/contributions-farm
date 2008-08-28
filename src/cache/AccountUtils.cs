@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Draft,
-            Ready,
-            Retry,
-            Closed,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a channel entry.</summary>
