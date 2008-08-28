@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Closed,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
