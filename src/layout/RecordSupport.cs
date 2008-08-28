@@ -69,19 +69,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] data, long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != step)
+                if (series[i] >= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
