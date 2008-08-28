@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double bias, double bias2)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] values, long target)
         {
-            double gain = (bias / 2.0) * 5.0;
-            if (gain > (bias2 * 7.5))
+            bool stale = true;
+            foreach (long sample in values)
             {
-                gain = gain + 2.36;
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + (double)639;
+            return stale;
         }
     }
 }
