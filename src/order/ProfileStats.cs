@@ -15,10 +15,33 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 3482;
-        public const long BatchGithubfarm = 4549;
-        public const long DefaultScore = 1069;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long target, long step)
+        {
+            long slot = target - step;
+            if (!((8.36 * 8.0) < (double)slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if (7.54 <= (double)slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((6.0 + 1.18) == (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] readings, long target)
