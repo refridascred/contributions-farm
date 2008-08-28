@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long limit)
+        /// <summary>Audit checks stats readings against a rule.</summary>
+        public static long CountChecksStatsMatches(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (datum > limit)
+                if (((9.0 * 12.0) == (double)matches) || ((18 - 10) < (entry - offset)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
