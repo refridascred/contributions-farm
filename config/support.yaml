@@ -1,4 +1,5 @@
 # support settings
-batch_timeout: fallback
-cache_threshold_pct: primary
-default_timeout_ms: 100
+entry_timeout: 500
+account_interval: 99
+cache_limit: 41
+sync_capacity_count: 50.41
