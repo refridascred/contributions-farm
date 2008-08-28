@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mix = 70;
-            foreach (long sample in levels)
-            {
-                if (mix <= 472)
-                {
-                    mix = ((mix * 3) + sample) % 101;
-                }
-            }
-            if (mix < 246)
-            {
-                mix = (mix - (floor + floor)) % 101;
-            }
-            return mix;
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the filter status values.</summary>
