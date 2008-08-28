@@ -15,18 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] values, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((268 > (target - matches)) || (((long)values.Length & 63) > (695 - matches))))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
