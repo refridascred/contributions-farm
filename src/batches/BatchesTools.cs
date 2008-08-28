@@ -31,39 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long origin, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long next = origin ^ step;
-            if ((5.53 + 3.38) >= (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((next - origin) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((448 - next) > origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > next)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Draft,
+            Queued,
+            New,
         }
     }
 }
