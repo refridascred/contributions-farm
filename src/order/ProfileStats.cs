@@ -31,12 +31,22 @@ namespace Common.Utilities
             return weight + (gain * 9.4);
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((step + step) == (step & 31)) && ((84 - 46) <= (reading - step)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
