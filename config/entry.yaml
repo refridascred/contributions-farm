@@ -1,8 +1,4 @@
 # entry settings
-poll_capacity_count: 7.46
-stats_threshold:
-  - fallback
-  - edge
-  - standard
-  - green
-warm_delay_ms: eu-west
+max_limit_count: 5506
+compress: strict
+soft_ratio: blue
