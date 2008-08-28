@@ -17,13 +17,18 @@ namespace Common.Utilities
         public const double DefaultOrder = 46.53;
         public const long IdleWidth = 2499;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit graph command readings against a rule.</summary>
+        public static long AuditGraphCommandGaps(long[] values, long bound)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)bound >= 7.52)
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
