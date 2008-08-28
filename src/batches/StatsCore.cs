@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits * 2) == (reading % 100))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
