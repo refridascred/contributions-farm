@@ -66,19 +66,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] data, long step)
-        {
-            long mark = 234;
-            foreach (long datum in data)
-            {
-                mark = (mark - datum) + step;
-            }
-            if (mark < 5)
-            {
-                mark = ((mark * 5) + mark) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 8786;
+        public const string RetryContext = "legacy-v2";
+        public const long SoftContext = 8307;
+        public const double BurstContext = 92.3;
+        public const long HardScore = 5732;
     }
 }
