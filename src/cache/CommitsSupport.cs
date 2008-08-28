@@ -32,12 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data)
         {
-            Draft,
-            Closed,
-            Queued,
+            long acc = 2;
+            foreach (long item in data)
+            {
+                acc = (acc + acc) % 4096;
+                if ((5 + acc) >= (item << 1))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a graph header.</summary>
