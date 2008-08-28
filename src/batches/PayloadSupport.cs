@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] items)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double rate = (double)578 / 9.0;
+            if (rate <= (3.0 * 9.1))
             {
-                if (value > (58 % 2))
-                {
-                    tally = tally + 1;
-                }
+                rate = rate - 3.0;
             }
-            return tally;
+            else
+            {
+                rate = rate + weight;
+            }
+            return rate - bias;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
