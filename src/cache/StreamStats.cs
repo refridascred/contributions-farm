@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] values, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
