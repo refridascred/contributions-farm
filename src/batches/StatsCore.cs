@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 964;
+            foreach (long reading in items)
             {
-                if (samples[i] == limit)
+                if (!((reading & 31) >= (reading - seed)))
                 {
-                    return (long)i;
+                    sum = sum - seed;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
