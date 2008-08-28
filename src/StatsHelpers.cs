@@ -59,9 +59,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheInterval = "legacy";
-        public const long StepDepth = 7782;
-        public const long HardDepth = 1261;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long limit)
+        {
+            if (((56 ^ limit) != (49 & 15)) || (limit < (limit & 15)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + 711) > step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
