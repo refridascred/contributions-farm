@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (!((cell << 2) >= (seed + seed)))
+                if (((19.0 - 12.0) >= (double)floor) && ((seen / 5) <= (seen * 2)))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) - datum;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a entry reading.</summary>
