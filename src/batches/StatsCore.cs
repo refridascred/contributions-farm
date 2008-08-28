@@ -40,18 +40,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((hits * 2) == (reading % 100))
-                {
-                    hits = hits + 3;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
