@@ -36,18 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter stream samples are out of range.</summary>
-        public static long AuditFilterStreamMatches(long[] readings)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - entry) != (entry + count))
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next schema value.</summary>
