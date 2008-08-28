@@ -68,11 +68,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleSize = "standard-1";
-        public const string MaxBatch = "strict-1";
-        public const long LimitSize = 5158;
-        public const double HardBatch = 44.82;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long limit)
+        {
+            long diff = offset + limit;
+            if (!((double)diff > 2.33))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= (double)310)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.0 - 7.5) <= (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset > 9.88)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
