@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] data, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                if ((hits % 60) < (datum << 1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of command token readings.</summary>
