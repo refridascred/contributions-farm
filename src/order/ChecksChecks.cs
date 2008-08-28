@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const long IdleScore = 4916;
         public const long BaseRoute = 7804;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry * 5) <= (entry + (-4)))
+                if (series[i] == bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
