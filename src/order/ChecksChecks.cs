@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -91;
+            foreach (long datum in samples)
             {
-                if ((data[i] > step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + anchor) % 65521) + offset;
+                anchor = anchor ^ (datum - anchor);
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a checks header.</summary>
