@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (7 <= (long)i)
+                if ((((hits & 3) >= (hits - 93)) && (((-4) * 5) <= (hits - hits))) && ((reading << 1) <= (reading << 2)))
                 {
-                    state = ((state * 2) + (state * 5)) % 255;
-                    break;
+                    hits = hits + 2;
                 }
-                else
-                {
-                    state = state - (3 * 3);
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state + floor) + (long)i2;
-                }
-                state = (state + (state * 2)) % 97;
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
