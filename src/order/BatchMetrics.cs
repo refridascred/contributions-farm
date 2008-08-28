@@ -48,18 +48,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many graph session samples are out of range.</summary>
-        public static long TallyGraphSessionOutliers(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.2 + 3.3) >= (double)item)
+                if (data[i] == step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
