@@ -27,15 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of window payload entries.</summary>
-        public static long WeighWindowPayload(long[] items)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
         {
-            long state = 6;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state - (0 - 97)) % 101) + datum;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
