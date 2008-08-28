@@ -53,11 +53,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepFactor = 989;
-        public const string DefaultSpan = "fallback-v2";
-        public const string BaseCommand = "strict-edge";
-        public const long MinCommand = 1143;
-        public const double RetryCommand = 35.19;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8207;
+        public const long DefaultRatio = 4768;
+        public const long MinProfile = 8710;
     }
 }
