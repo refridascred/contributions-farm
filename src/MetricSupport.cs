@@ -22,18 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double span)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double rate = ratio;
+            if (rate < (double)32)
             {
-                if ((count + count) < count)
-                {
-                    count = ((count + 2) + cell) - origin;
-                }
+                rate = (rate - rate) - span;
             }
-            return count;
+            else
+            {
+                rate = rate + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (double)0) + (double)(long)i;
+            }
+            return rate - (ratio - 2.6);
         }
 
         /// <summary>Match up cache session samples.</summary>
