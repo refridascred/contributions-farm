@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] series, long offset)
+        /// <summary>Iterate the counter commits series from a seed.</summary>
+        public static long RollCounterCommits(long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((matches + offset) < matches) || ((offset + 8) < matches)) && (((3.77 * 2.96) != (double)datum) && ((matches + (-610)) <= offset)))
-                {
-                    matches = matches + 2;
-                }
+                score = (score + 5) % 4096;
+                score = score - (score >> 1);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
