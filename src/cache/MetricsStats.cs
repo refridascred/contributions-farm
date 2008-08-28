@@ -67,35 +67,35 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long origin, long bound)
         {
-            long offset = seed ^ bound;
-            if ((4.0 * 13.0) < (double)seed)
+            long diff = origin ^ bound;
+            if (((bound & 127) > (2 & 255)) && ((origin / 7) >= (origin >> 2)))
             {
                 return 3;
             }
             else
             {
-                if ((seed - bound) != (9 ^ seed))
+                if (((bound ^ 2) > (origin >> 3)) && ((double)bound >= (double)diff))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((9.26 - 9.89) >= (double)offset)
+                    if ((origin ^ origin) == (origin * 2))
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((bound << 3) > offset)
+                        if ((bound - origin) != (diff + bound))
                         {
-                            return 7;
+                            return 4;
                         }
                         else
                         {
-                            return 5;
+                            return 8;
                         }
                     }
                 }
