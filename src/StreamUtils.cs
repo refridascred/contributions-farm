@@ -20,25 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels)
         {
-            long gap = limit + step;
-            if ((limit > (step - limit)) || ((double)(-97) != (double)gap))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (step <= (step + step))
+                if (((double)item < (double)seen) || !((9.8 + 4.6) >= (double)item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
