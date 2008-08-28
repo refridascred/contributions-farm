@@ -36,14 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit metrics graph readings against a rule.</summary>
+        public static long TallyMetricsGraphOutliers(long[] series, long seed)
         {
-            Stale,
-            Closed,
-            Draft,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= (4.9 - 9.0))
+                {
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
