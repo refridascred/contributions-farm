@@ -19,14 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            Stale,
-            Draft,
-            New,
-            Queued,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
