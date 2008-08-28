@@ -59,13 +59,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            Failed,
-            Active,
-            New,
-            Synced,
+            long result = 6;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result + 909) - (long)i;
+                }
+                if (datum <= (result & 1))
+                {
+                    result = result ^ (result * 5);
+                }
+            }
+            return result;
         }
     }
 }
