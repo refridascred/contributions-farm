@@ -106,31 +106,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long bound2)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            if ((double)bound == (double)bound2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0 ^ (-4)) != (bound & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 << 1) <= (bound2 % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
