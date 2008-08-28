@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                long offset = acc;
-                if ((double)offset < 1.0)
-                {
-                    acc = acc - offset;
-                }
-                else
-                {
-                    offset = (offset - acc) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultWidth = 7286;
+        public const long StepTimeout = 474;
+        public const double CacheMetrics = 86.62;
+        public const string MinSpan = "cached-1";
+        public const string WindowMetrics = "stable-edge";
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long StepCluster(long floor)
