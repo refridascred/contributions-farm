@@ -40,12 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long target)
         {
-            Ready,
-            Queued,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
