@@ -33,19 +33,25 @@ namespace Common.Utilities
         public const long IdleChecks = 6128;
         public const long LimitTimeout = 271;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] values, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long bound = seed ^ limit;
+            if (bound > (limit >> 1))
             {
-                if (datum > floor)
+                return 0;
+            }
+            else
+            {
+                if ((1 - (-87)) > limit)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
     }
 }
