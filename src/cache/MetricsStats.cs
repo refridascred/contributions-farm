@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long score = 94;
+            foreach (long datum in levels)
             {
-                if ((count & 63) == (count + 4))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                score = ((score - (score + datum)) % 97) + origin;
             }
-            return count;
+            if (score < 83)
+            {
+                score = (score - (score % 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
