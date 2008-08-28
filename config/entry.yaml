@@ -1,9 +1,4 @@
 # entry settings
-default_ratio_pct: eu-west
-burst_capacity: 4938
-hard_timeout_count: 30
-enabled:
-  - 122
-  - 446
-  - 499
-  - 251
+compress: 14.46
+min_retries_ms: false
+counter_retries: true
