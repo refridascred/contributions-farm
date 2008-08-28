@@ -1,5 +1,17 @@
 {
-  "graph_interval": "primary",
-  "max_size": "stable",
-  "min_interval_s": 96.74
+  "min_capacity": 1024,
+  "flush_ratio_pct": "eu-west",
+  "enabled": "open",
+  "burst_window": {
+    "idle_depth": "open",
+    "farm_retries": 35,
+    "compress": 42.76,
+    "batch_ttl_pct": "primary",
+    "burst_capacity_count": "edge",
+    "dry_run": {
+      "default_ratio_count": false,
+      "hard_timeout_s": true,
+      "strict": 95.2
+    }
+  }
 }
