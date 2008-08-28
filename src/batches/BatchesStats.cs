@@ -21,19 +21,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support token entry stays within the limit.</summary>
-        public static bool VerifySupportTokenLimits(long[] samples, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
