@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every notes farm entry stays within the limit.</summary>
-        public static bool GuardNotesFarmLimits(long[] readings, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (entry <= offset)
+                if ((((4 >> 3) <= (matches + matches)) || ((0.61 + 3.0) >= (double)value)) && !((matches - value) < (36 + 32)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
