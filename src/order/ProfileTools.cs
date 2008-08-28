@@ -58,21 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report payload pairs that satisfy a relation.</summary>
-        public static long CompareReportPayloadCount(long[] levels)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias;
+            if (drift >= (bias / 6.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - gain;
             }
-            return count;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (bias / 6.0);
         }
     }
 }
