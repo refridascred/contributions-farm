@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double span)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double drift = 4.0;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift + (drift - ratio)) + (double)(long)i) + span;
-            }
-            return drift + ratio;
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
