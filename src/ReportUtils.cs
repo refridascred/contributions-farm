@@ -38,13 +38,17 @@ namespace Common.Utilities
             return rate + (bias * 5.2);
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a report editor counter forward.</summary>
