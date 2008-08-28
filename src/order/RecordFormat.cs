@@ -53,18 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) != (reading & 63))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Closed,
+            Queued,
+            Active,
         }
     }
 }
