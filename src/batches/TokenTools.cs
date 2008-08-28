@@ -23,15 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double bias)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long target)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                bias2 = (bias2 + (double)29) + (double)(long)i;
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 - rate;
+            return ok;
         }
     }
 }
