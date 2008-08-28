@@ -31,22 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen >> 2) >= (78 + entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
