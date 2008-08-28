@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the tools notes entries that pass the check.</summary>
-        public static long MeasureToolsNotesGaps(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((750 / 6) < matches)
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix << 2) ^ (long)i;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
