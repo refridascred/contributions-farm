@@ -21,14 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every payload batches entry stays within the limit.</summary>
+        public static bool GuardPayloadBatchesRange(long[] values, long seed)
         {
-            Pending,
-            Retry,
-            Failed,
-            Stale,
-            Queued,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the entry level values.</summary>
