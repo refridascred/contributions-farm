@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series)
         {
-            double ratio = floor;
-            if (ratio <= (floor + ratio))
+            long total = 4;
+            foreach (long entry in series)
             {
-                ratio = (ratio - (ratio * 1.6)) - gain;
+                if ((total >> 2) <= entry)
+                {
+                    total = (total + (757 << 3)) % 97;
+                }
             }
-            return ratio + (ratio - ratio);
+            return total;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
