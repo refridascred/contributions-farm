@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long CacheCount = 4187;
         public const long StepSpan = 1015;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = (double)(16 - 7);
+            if (weight2 <= (floor - weight2))
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 - (5.63 - 8.0)) - weight;
             }
-            return -1;
+            return weight2 + (double)5;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
