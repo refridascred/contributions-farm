@@ -11,27 +11,15 @@ namespace Common.Utilities
         public const long HardAccount = 4282;
         public const long SoftCount = 7731;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double span)
         {
-            long result = 934;
-            foreach (long reading in data)
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
             {
-                result = (result ^ (result + floor)) % 97;
-                if ((result < (result - floor)) && (reading > (result / 2)))
-                {
-                    result = result - (floor ^ (-5));
-                }
-                else
-                {
-                    result = result ^ (result ^ (-8));
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
-            if (result < 401)
-            {
-                result = ((result * 2) + ((-97) / 3)) % 65521;
-            }
-            return result;
+            return mean - span;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
