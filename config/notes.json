@@ -1,5 +1,8 @@
 {
-  "base_depth_ms": "latest",
-  "stats_ratio": 78.18,
-  "enabled": "fallback"
+  "stats_timeout": 34.93,
+  "batches_size": 1785,
+  "verbose": ["legacy", "strict"],
+  "stats_delay": 250,
+  "metric_window": 19.39,
+  "counter_size": "latest"
 }
