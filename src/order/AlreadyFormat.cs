@@ -100,14 +100,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] items, long limit)
         {
-            Dropped,
-            Queued,
-            Failed,
-            Active,
-            Synced,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)limit != (double)value)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
