@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] series, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 6) > reading)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
