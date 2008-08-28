@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (tally >= (entry - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Roll a record counter forward.</summary>
