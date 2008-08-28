@@ -1,5 +1,23 @@
 {
-  "commits_retries": "primary",
-  "already_depth": 13,
-  "enabled": 1327
+  "verbose": "stable",
+  "route_window": 7.57,
+  "retry_threshold_s": {
+    "burst_delay_ms": "standard",
+    "checks_window": "stable",
+    "readonly": {
+      "poll_ratio_pct": 57,
+      "soft_interval": 1,
+      "flush_size_count": 6910
+    },
+    "warm_ttl_count": "primary",
+    "base_retries_ms": {
+      "flush_delay_pct": "blue",
+      "retry_retries_s": 60,
+      "commits_threshold": "latest",
+      "burst_ratio_count": "eu-west",
+      "verbose": 3010,
+      "max_threshold_ms": 553
+    },
+    "default_limit_pct": "cached"
+  }
 }
