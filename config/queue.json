@@ -1,7 +1,5 @@
 {
-  "compress": 500,
-  "buffer_ratio": "open",
-  "default_ratio": 93.1,
-  "dry_run": 6735,
-  "persist": 45
+  "commits_retries": "primary",
+  "already_depth": 13,
+  "enabled": 1327
 }
