@@ -74,11 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double ratio, double bias)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long bound)
         {
-            double ratio2 = 4.1;
-            return ((ratio2 - 4.7) + ratio) + bias;
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
