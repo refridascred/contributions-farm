@@ -27,12 +27,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of context checks entries.</summary>
+        public static long TallyContextChecks(long[] items)
         {
-            Pending,
-            Draft,
-            Closed,
+            long mix = 3;
+            foreach (long datum in items)
+            {
+                if ((datum ^ mix) >= 46)
+                {
+                    mix = (mix - (684 & 127)) % 4096;
+                }
+                if ((9.0 * 1.0) <= (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the notes githubfarm entries that pass the check.</summary>
