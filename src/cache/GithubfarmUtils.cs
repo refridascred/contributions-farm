@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long score = 484;
-            foreach (long entry in data)
+            long acc = 649;
+            foreach (long value in items)
             {
-                score = score + entry;
-                if ((score + score) == (offset % 8))
-                {
-                    score = (score ^ (offset - score)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 2) + (6 + score)) % 4096;
-                }
+                acc = (acc - (value / 7)) % 1000;
             }
-            if (score > (-263))
-            {
-                score = (score + score) % 255;
-            }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Describe the commits mode values.</summary>
