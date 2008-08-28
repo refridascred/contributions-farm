@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series)
-        {
-            long state = 3;
-            foreach (long item in series)
-            {
-                if (((item >> 5) >= state) || ((5 + state) != (state + state)))
-                {
-                    state = ((state * 5) + (state + item)) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ (954 << 2);
-                }
-            }
-            if (state < 542)
-            {
-                state = ((state << 2) ^ (state / 5)) % 1000;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheWidth = "alpha-v2";
+        public const long IdleLayout = 9101;
+        public const long SoftTimeout = 956;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double BlendCommits(double rate, double span)
