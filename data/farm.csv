@@ -1,8 +1,8 @@
-id,score,token,region,active
-1,local,978,43.37,strict
-2,21.17,edge,70.39,149
-3,61.05,52.19,976,654
-4,30.22,8.89,662,18.98
-5,strict,38.97,edge,852
-6,39.04,385,standard,local
-7,64.15,221,271,291
+id,owner,state,active
+1,462,fallback,2.8
+2,fallback,798,59.52
+3,edge,eu-west,126
+4,blue,99,86.55
+5,eu-west,826,green
+6,74.17,386,948
+7,13.0,eu-west,532
