@@ -50,21 +50,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
