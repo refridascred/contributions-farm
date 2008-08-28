@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Done,
-            Synced,
-            Pending,
-            Stale,
+            Queued,
+            Closed,
+            Dropped,
             Failed,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
