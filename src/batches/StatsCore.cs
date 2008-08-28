@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
