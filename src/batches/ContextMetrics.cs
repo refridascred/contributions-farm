@@ -54,18 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] items)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((((item + 27) != (item - seen)) && (3.24 < (double)item)) && ((double)seen != (double)35))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
