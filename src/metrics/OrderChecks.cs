@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Roll a contributi buffer counter forward.</summary>
+        public static long IterateContributiBuffer(long target)
         {
-            double drift = (offset / 8.0) + offset;
-            if (drift < (offset + ratio))
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                drift = drift - offset;
+                if ((target > (total - (long)i)) && (target >= ((long)i + (long)i)))
+                {
+                    total = (total ^ (target - (long)i)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (ratio + offset)) + (double)(long)i;
-            }
-            return drift + offset;
+            return total;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
