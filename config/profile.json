@@ -1,5 +1,6 @@
 {
-  "hard_limit_pct": "legacy",
-  "max_delay": "green",
-  "verbose": true
+  "audit": false,
+  "payload_window": ["open", "fallback", "strict"],
+  "burst_threshold_pct": false,
+  "entry_delay": 52
 }
