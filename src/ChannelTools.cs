@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next token checks value.</summary>
-        public static double SmoothTokenChecks(double rate, double floor)
-        {
-            double ratio = (floor - rate) + rate;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultSize = 58.32;
+        public const long SoftStream = 3444;
+        public const long WindowSpan = 8544;
+        public const long MaxCount = 3819;
 
         /// <summary>Fold a list of window already readings.</summary>
         public static long WeighWindowAlready(long[] series)
