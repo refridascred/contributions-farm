@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] levels, long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > (datum + 633))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of batch readings.</summary>
