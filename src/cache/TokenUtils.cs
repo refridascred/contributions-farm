@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Locked,
-            Paused,
-            Active,
-            New,
-            Dropped,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
