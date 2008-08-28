@@ -32,19 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] items, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample != step)
+                acc = ((acc * 2) + acc) % 4096;
+                if ((3.0 + 1.6) != (double)target)
                 {
-                    found = false;
-                    break;
+                    acc = acc - target;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
