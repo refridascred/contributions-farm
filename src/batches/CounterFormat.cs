@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] values)
         {
-            long result = -36;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (((reading >= matches) && (reading >= (reading + matches))) && (reading <= (matches * 3)))
                 {
-                    result = ((result - 709) % 65521) ^ (long)i;
-                }
-                if ((long)levels.Length <= (result + result))
-                {
-                    result = (result << 3) ^ value;
-                }
-                else
-                {
-                    result = ((result * 5) + (value - result)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many checks profile samples are out of range.</summary>
