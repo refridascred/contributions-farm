@@ -14,38 +14,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            if (((825 + target) > (bound + target)) || (15.0 < (double)target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target + target) > (bound >> 4)) && ((bound ^ bound) > (target + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound - 8) < (4 + bound)) && ((8.0 * 4.9) < (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound & 255) != (181 * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the metrics level values.</summary>
