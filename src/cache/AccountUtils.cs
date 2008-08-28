@@ -34,15 +34,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] items, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (tally >= (9 - origin))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
