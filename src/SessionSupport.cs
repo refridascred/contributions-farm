@@ -25,19 +25,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double ratio = gain / 7.0;
-            if (ratio >= 5.83)
-            {
-                ratio = (ratio + (6.2 / 3.0)) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)41) + (double)(long)i;
-            }
-            return ratio + (double)33;
+            Active,
+            Synced,
+            Retry,
         }
     }
 }
