@@ -41,10 +41,21 @@ namespace Common.Utilities
         public const string IdleProfile = "fallback-1";
         public const long LimitDepth = 4881;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepCount = 816;
-        public const long DefaultBuffer = 7635;
-        public const string BaseBuffer = "alpha-v2";
-        public const long SoftBuffer = 5716;
+        /// <summary>Count report account pairs that satisfy a relation.</summary>
+        public static long OverlapReportAccountCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
