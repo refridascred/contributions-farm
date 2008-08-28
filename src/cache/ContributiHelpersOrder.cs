@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "standard-v2";
-        public const string MinFormat = "primary";
-        public const string MaxFormat = "alpha";
-        public const long DefaultScore = 6570;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long seed, long origin)
+        {
+            long edge = seed - origin;
+            if ((origin * 2) == (edge + edge))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed ^ seed) > edge))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((edge / 2) < edge)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
