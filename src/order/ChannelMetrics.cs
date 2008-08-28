@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 4774;
-        public const string SoftFactor = "latest-edge";
-        public const long BaseProfile = 4097;
-        public const double BatchCount = 34.1;
-        public const long LimitSize = 2659;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] samples)
