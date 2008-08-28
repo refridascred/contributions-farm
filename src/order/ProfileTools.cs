@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long RetryLevel = 6251;
         public const long BaseDepth = 1175;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] samples)
         {
-            double ratio = (double)(67 << 3);
-            if (ratio >= (ratio - bias))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                ratio = (ratio + (double)628) - bias2;
+                if ((9 >> 2) <= tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio - (bias * 9.9);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (double)(-31);
+            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
