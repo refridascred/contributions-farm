@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = 431;
-            foreach (long reading in data)
-            {
-                sum = (((sum << 2) ^ (sum & 1)) % 4096) - reading;
-            }
-            return sum % 97;
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
