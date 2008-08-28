@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 124;
-        public const long DefaultLevel = 2634;
-        public const long WindowCluster = 2978;
-        public const double DefaultTimeout = 36.13;
-        public const double BaseCluster = 87.78;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Paused,
+            New,
+            Stale,
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] levels)
