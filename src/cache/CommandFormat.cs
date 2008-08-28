@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryWidth = 5657;
         public const long WindowSize = 2787;
 
-        /// <summary>Audit schema context readings against a rule.</summary>
-        public static long MeasureSchemaContextOutliers(long[] series)
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long MeasureFarmAlreadyOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((4.0 <= (double)tally) && ((tally & 15) <= (tally - tally))) || ((tally - tally) == (tally + tally)))
+                if ((double)hits <= (double)cell)
                 {
-                    tally = (tally + 2) - entry;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
