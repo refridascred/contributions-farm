@@ -34,22 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] levels, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + 9) < (step - step))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the context command entries that pass the check.</summary>
