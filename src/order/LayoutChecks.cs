@@ -21,21 +21,13 @@ namespace Common.Utilities
         public const long BatchCommits = 9660;
         public const long WindowSize = 4058;
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
