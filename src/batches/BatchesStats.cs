@@ -30,18 +30,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] items, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((target > hits) && ((target + target) >= hits))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Combine context values into a single score.</summary>
