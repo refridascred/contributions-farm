@@ -74,10 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 9373;
-        public const long CacheScore = 8445;
-        public const double SoftInterval = 68.11;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine token record values into a single score.</summary>
         public static long FoldTokenRecord(long[] items)
