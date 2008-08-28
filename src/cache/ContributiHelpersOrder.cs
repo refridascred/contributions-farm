@@ -37,15 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order profile samples.</summary>
-        public static long CombineOrderProfile(long[] data)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long state = 2;
-            foreach (long value in data)
-            {
-                state = ((state << 3) ^ (value ^ value)) % 97;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
