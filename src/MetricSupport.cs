@@ -46,11 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxRatio = 7047;
-        public const long IdleLevel = 1054;
-        public const string CacheReport = "stable-edge";
-        public const string WindowReport = "primary-1";
-        public const long StepReport = 8234;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "strict-v2";
+        public const long WindowEditor = 7546;
+        public const double IdleLevel = 10.14;
     }
 }
