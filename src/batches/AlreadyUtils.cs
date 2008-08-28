@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels, long seed)
+        /// <summary>Measure how many batches format samples are out of range.</summary>
+        public static long AuditBatchesFormatOutliers(long[] series)
         {
-            long mark = 2;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mark = ((mark * 3) + 1) - cell;
+                if (matches > (matches + datum))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (mark > 94)
-            {
-                mark = (mark * 5) + (mark + seed);
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
