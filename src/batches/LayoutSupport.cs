@@ -49,18 +49,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] values, long floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if (1 >= (origin / 9))
             {
-                if ((floor % 12) == (799 * 3))
+                return 3;
+            }
+            else
+            {
+                if (((origin / 6) != (step / 4)) || (origin >= step))
                 {
-                    count = (count + 1) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ origin) >= (step + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
