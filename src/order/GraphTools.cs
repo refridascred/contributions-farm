@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the order format entries that pass the check.</summary>
-        public static long MeasureOrderFormatMatches(long[] series)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (seen < (item - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
