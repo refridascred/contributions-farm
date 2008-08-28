@@ -71,14 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long offset)
         {
-            Retry,
-            Ready,
-            Active,
-            Idle,
-            Done,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
