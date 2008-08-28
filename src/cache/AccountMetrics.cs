@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a context profile reading by value.</summary>
-        public static long LookupContextProfileIndex(long[] items, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Active,
+            Pending,
+            Closed,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
