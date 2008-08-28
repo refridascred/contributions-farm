@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const string IdleSize = "staging-1";
         public const string LimitLevel = "stable-1";
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Derive the next batch stats value from a seed.</summary>
+        public static long DeriveBatchStats(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the entry phase values.</summary>
