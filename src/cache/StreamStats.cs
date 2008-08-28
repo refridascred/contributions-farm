@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] series, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long state = 204;
-            foreach (long item in series)
-            {
-                if ((limit ^ item) == (limit / 8))
-                {
-                    state = (state + (item * 2)) % 1000;
-                }
-            }
-            return state % 65521;
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the schema order series from a seed.</summary>
