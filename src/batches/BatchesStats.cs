@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Synced,
-            Stale,
-            Idle,
-            Paused,
-            Draft,
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
