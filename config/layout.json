@@ -1,8 +1,5 @@
 {
-  "idle_interval_ms": 54.22,
-  "hard_size_s": "legacy",
-  "soft_depth_ms": 28,
-  "burst_retries_pct": 72,
-  "audit": "fallback",
-  "readonly": "legacy"
+  "enabled": ["green", "fallback"],
+  "poll_window_s": 94,
+  "editor_retries": [308, 226, 388]
 }
