@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const long BaseQueue = 7962;
         public const long SoftQueue = 4196;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Retry,
-            Paused,
-            Idle,
-            Closed,
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
