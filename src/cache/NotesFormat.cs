@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchScore = 1188;
-        public const long RetrySchema = 5634;
-        public const long MaxSchema = 1853;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Retry,
+            New,
+            Done,
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] series)
