@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
