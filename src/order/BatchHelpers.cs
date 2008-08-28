@@ -29,30 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] series, long bound)
         {
-            long result = -432;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (((double)reading < 15.0) && ((reading / 4) <= ((long)series.Length & 7)))
+                if (cell < bound)
                 {
-                    result = (result + (limit + (long)series.Length)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (reading + result)) % 101;
-                }
-                if ((double)reading >= (8.17 + 3.1))
-                {
-                    result = (result ^ (reading % 97)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > (-2))
-            {
-                result = ((result * 5) + (result * 5)) % 65521;
-            }
-            return result % 1000;
+            return stale;
         }
     }
 }
