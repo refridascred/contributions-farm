@@ -114,15 +114,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                long offset = ((-39) & 7) & 1;
+                if (((7.2 * 2.0) > (double)target) && (mark > (offset >> 4)))
+                {
+                    mark = mark - ((long)i & 31);
+                }
+                if (((target / 2) >= (offset << 2)) && (offset <= 386))
+                {
+                    offset = ((offset * 5) + 65) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
     }
 }
