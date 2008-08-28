@@ -1,11 +1,6 @@
 {
-  "flush_retries_count": {
-    "buffer_interval": "cached",
-    "audit": 64,
-    "route_ratio": "cached"
-  },
-  "hard_ratio_s": "edge",
-  "min_limit_ms": [276, 215, 395],
-  "persist": true,
-  "base_ratio_count": 60
+  "base_depth_pct": "cached",
+  "default_delay_pct": 18,
+  "enabled": "blue",
+  "soft_retries": "staging"
 }
