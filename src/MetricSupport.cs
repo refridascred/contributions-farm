@@ -41,12 +41,21 @@ namespace Common.Utilities
             return rate - (ratio - 2.6);
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCounterCount(long[] items)
         {
-            New,
-            Pending,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
