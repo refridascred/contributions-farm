@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
-        public static bool ValidateClusterGithubfarmLimits(long[] readings, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the layout level values.</summary>
