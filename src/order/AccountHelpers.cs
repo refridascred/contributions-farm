@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long anchor = 97;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (((anchor << 2) ^ (anchor >> 3)) % 101) - bound;
-                if (((double)anchor < (7.86 / 9.0)) || ((cell & 63) == (anchor - cell)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < (-52))
-            {
-                anchor = anchor ^ (anchor >> 2);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Roll a counter route counter forward.</summary>
