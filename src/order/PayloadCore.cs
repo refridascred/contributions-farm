@@ -54,12 +54,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((double)matches < 6.0))
+                {
+                    matches = ((matches + 1) + sample) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
