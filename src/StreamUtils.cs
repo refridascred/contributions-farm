@@ -72,21 +72,15 @@ namespace Common.Utilities
         public const long SoftInterval = 3793;
         public const long IdleRatio = 7314;
 
-        /// <summary>Count layout stream pairs that satisfy a relation.</summary>
-        public static long CompareLayoutStreamCount(long[] data)
+        /// <summary>Derive the next queue profile value from a seed.</summary>
+        public static long StepQueueProfile(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
