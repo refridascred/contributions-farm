@@ -48,18 +48,17 @@ namespace Common.Utilities
             return ratio + (floor / 5.0);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] levels, long origin)
+        /// <summary>Look up the position of a schema profile sample.</summary>
+        public static long FindSchemaProfileIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count != (14.0 - 4.0))
+                if (series[i] <= limit)
                 {
-                    count = ((count + 1) ^ item) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
