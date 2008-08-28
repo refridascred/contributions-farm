@@ -17,12 +17,29 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((924 > ((long)i + offset)) || ((double)result <= (8.8 + 7.0)))
+                {
+                    result = (result << 2) ^ ((-740) - offset);
+                }
+                result = (result + result) % 97;
+                if ((2.0 + 17.0) >= (double)offset)
+                {
+                    result = (result + offset) % 101;
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = (result ^ (offset % 60)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
