@@ -1,5 +1,23 @@
 {
-  "format_window": 96.88,
-  "contributi_ttl": ["standard", "latest", "legacy"],
-  "queue_interval": 2.84
+  "default_timeout_pct": 76.31,
+  "batch_size_ms": {
+    "poll_timeout_count": {
+      "schema_ratio": ["standard", "legacy", "stable", "standard"],
+      "min_delay": 63,
+      "retry_timeout_pct": 57
+    },
+    "compress": "standard",
+    "persist": 11.12,
+    "enabled": 662,
+    "idle_retries_s": 92,
+    "min_ttl_pct": {
+      "poll_ttl_count": 70.85,
+      "default_interval": 56,
+      "commits_size": true
+    }
+  },
+  "soft_timeout_ms": [252, 78, 169],
+  "burst_window_count": 7273,
+  "dry_run": "latest",
+  "default_capacity_count": 89.71
 }
