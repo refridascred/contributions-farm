@@ -46,14 +46,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            Idle,
-            Ready,
-            Closed,
-            Draft,
-            Stale,
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (((sum << 2) ^ sum) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
