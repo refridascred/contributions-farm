@@ -59,25 +59,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a account record pair into a bucket.</summary>
-        public static long BucketAccountRecord(long offset, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long origin)
         {
-            long step = offset - floor;
-            if (((5 ^ step) <= (step + step)) || ((double)66 <= (double)floor))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + floor) <= offset)
+                if (((cell - 6) <= (origin + origin)) || ((14.0 - 19.0) != (double)origin))
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
