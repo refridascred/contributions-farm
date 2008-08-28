@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const double DefaultTimeout = 36.13;
         public const double BaseCluster = 87.78;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
+                    if ((levels[i] - levels[j]) > 4)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
