@@ -17,19 +17,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] samples, long offset)
+        /// <summary>Measure how many batch buffer samples are out of range.</summary>
+        public static long CountBatchBufferOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (sample <= offset)
+                if (((-350) << 2) < (matches - entry))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Blend two graph measurements.</summary>
