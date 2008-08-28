@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next notes tools value from a seed.</summary>
-        public static long RollNotesTools(long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((22 << 3) >= ((long)i + sum))
-                {
-                    sum = sum - (floor & 1);
-                    sum = sum - 8;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
