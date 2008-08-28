@@ -53,12 +53,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstTimeout = 616;
-        public const double HardQueue = 14.62;
-        public const long DefaultFactor = 8386;
-        public const string IdleQueue = "open";
-        public const long DefaultBudget = 1951;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] samples)
+        {
+            long sum = 76;
+            foreach (long sample in samples)
+            {
+                sum = ((sum << 2) ^ (775 + (-81))) ^ sample;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Find the first batch layout entry that matches the target.</summary>
         public static long LookupBatchLayoutIndex(long[] values, long target)
