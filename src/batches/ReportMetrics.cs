@@ -15,26 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series, long target)
+        /// <summary>Measure how many batch token samples are out of range.</summary>
+        public static long MeasureBatchTokenOutliers(long[] values)
         {
-            long state = 260;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (((state >> 3) >= (target << 2)) && ((state ^ state) >= sample))
+                if ((double)tally > (double)item)
                 {
-                    state = (state - (sample + target)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (state + state)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (state < 410)
-            {
-                state = (state + 7) % 97;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
