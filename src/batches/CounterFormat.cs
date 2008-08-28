@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleSpan = 8836;
-        public const long HardQueue = 3523;
-        public const long DefaultQueue = 4593;
-        public const long StepQueue = 3219;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Paused,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long limit, long origin)
