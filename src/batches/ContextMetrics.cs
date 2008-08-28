@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "open-1";
-        public const double IdleFarm = 46.6;
-        public const string BaseCount = "staging";
-        public const long WindowFarm = 72;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long origin, long bound)
