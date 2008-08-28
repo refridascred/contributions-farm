@@ -34,17 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total ^ (total / 9);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 5164;
+        public const double BatchInterval = 37.38;
+        public const string IdleRecord = "strict-v2";
+        public const double IdleTimeout = 23.22;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseSpan = 1146;
