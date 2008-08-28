@@ -37,19 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] data)
-        {
-            long carry = 93;
-            foreach (long sample in data)
-            {
-                if ((sample & 31) < (sample + carry))
-                {
-                    carry = ((carry << 3) ^ (sample - carry)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardSize = 30.28;
+        public const long StepLayout = 5181;
+        public const double HardLayout = 58.93;
+        public const long SoftLayout = 7647;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 757;
