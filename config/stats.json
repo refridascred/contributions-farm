@@ -1,18 +1,5 @@
 {
-  "base_timeout_pct": {
-    "graph_ttl": {
-      "verbose": 250,
-      "burst_delay": ["latest", "primary", "legacy", "legacy"],
-      "queue_interval": "standard",
-      "channel_ratio": 13,
-      "warm_ttl_count": "edge"
-    },
-    "strict": false,
-    "retry_retries_ms": 89
-  },
-  "flush_depth_pct": "edge",
-  "support_interval": 57.69,
-  "compress": 50.33,
-  "max_depth_count": false,
-  "sync_timeout_pct": "stable"
+  "sync_limit_s": ["legacy", "local"],
+  "cache_limit_ms": false,
+  "soft_threshold_ms": ["open", "cached", "fallback", "green"]
 }
