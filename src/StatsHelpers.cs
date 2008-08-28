@@ -13,21 +13,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((2.54 / 4.0) > (3.64 - 1.6))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((2.9 - 7.0) > (double)floor)
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
