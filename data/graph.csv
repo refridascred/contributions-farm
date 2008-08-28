@@ -1,9 +1,8 @@
-id,score,weight,active,region
-1,959,primary,64,66.62
-2,646,783,662,472
-3,62.41,fallback,57.03,60.75
-4,strict,106,763,primary
-5,9.16,14.52,local,stable
-6,222,936,legacy,33.75
-7,local,197,359,fallback
-8,54.28,94,19.66,851
+id,owner,count,state
+1,primary,37.52,legacy
+2,674,3.56,56.11
+3,300,61.86,93.5
+4,51.13,645,803
+5,285,standard,green
+6,62,latest,edge
+7,994,158,686
