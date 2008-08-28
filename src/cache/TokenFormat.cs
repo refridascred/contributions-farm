@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 79;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)entry <= (double)sum)
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - ((-64) >> 1);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
