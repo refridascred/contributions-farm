@@ -35,12 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            Draft,
-            Active,
-            Idle,
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((anchor << 3) <= ((long)i >> 3))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor << 2) ^ (anchor - (long)i)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
