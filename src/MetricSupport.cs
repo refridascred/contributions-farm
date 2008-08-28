@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] readings, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (datum < limit)
+                if ((count + count) < count)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 2) + cell) - origin;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Match up cache session samples.</summary>
