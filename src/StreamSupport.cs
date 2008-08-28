@@ -46,11 +46,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultTimeout = 6474;
-        public const double MaxRatio = 44.54;
-        public const double WindowTimeout = 51.29;
-        public const double MaxWidth = 54.0;
-        public const long RetryFilter = 7097;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((acc >= ((long)i + acc)) && ((6.82 - 0.89) >= (2.49 * 2.7)))
+                {
+                    acc = (acc + 43) % 97;
+                    acc = acc + (acc / 8);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
