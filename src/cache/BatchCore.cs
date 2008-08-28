@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            New,
-            Active,
-            Locked,
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
