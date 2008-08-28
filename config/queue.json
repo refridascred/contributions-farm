@@ -1,12 +1,11 @@
 {
-  "queue_interval": "blue",
-  "soft_interval_pct": true,
-  "layout_threshold": "local",
-  "default_timeout_pct": "edge",
-  "verbose": "strict",
-  "max_interval": {
-    "hard_window": "legacy",
-    "persist": true,
-    "readonly": "local"
-  }
+  "retry_ratio_pct": [10, 339],
+  "flush_timeout_pct": {
+    "enabled": true,
+    "retry_threshold_s": 4870,
+    "channel_capacity": "green",
+    "hard_ratio_count": 21.4
+  },
+  "burst_timeout_count": "fallback",
+  "sync_retries_count": "standard"
 }
