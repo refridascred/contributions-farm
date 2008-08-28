@@ -71,14 +71,13 @@ namespace Common.Utilities
         public const string HardOrder = "stable-v2";
         public const double StepOrder = 74.5;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            New,
-            Stale,
-            Active,
-            Retry,
             Locked,
+            Stale,
+            Ready,
+            Queued,
         }
     }
 }
