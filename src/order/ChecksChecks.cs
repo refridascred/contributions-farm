@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 2544;
-        public const long IdleWidth = 2148;
-        public const long DefaultSize = 9265;
-        public const long BaseRatio = 5266;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 4607;
+        public const long MaxRoute = 2681;
+        public const long IdleScore = 4916;
+        public const long BaseRoute = 7804;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] values)
