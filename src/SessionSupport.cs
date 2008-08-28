@@ -14,18 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long state = 0;
-            foreach (long datum in values)
-            {
-                if (((7 << 2) >= (floor % 12)) && ((double)datum < (1.0 - 14.0)))
-                {
-                    state = state - datum;
-                }
-            }
-            return state % 4096;
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of cluster profile entries.</summary>
