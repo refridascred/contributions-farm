@@ -49,24 +49,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double scale, double span)
         {
-            if (((origin >> 1) > seed) && ((double)origin != (3.0 / 9.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed < (origin - seed)) || ((origin * 5) < (seed * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double ratio = (double)(5 - 6);
+            return (ratio + scale) + span;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
