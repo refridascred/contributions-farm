@@ -41,20 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = total - (total - (long)i2);
-                    total = (total << 3) ^ (bound - 77);
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
