@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double bias, double floor)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
+            double rate = bias - 6.33;
+            if (rate >= 2.0)
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (bias * 9.2);
         }
 
         /// <summary>Hold a stream snapshot.</summary>
