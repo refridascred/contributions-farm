@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command entry counter forward.</summary>
-        public static long RollCommandEntry(long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = sum + (sum - (long)i2);
-                    sum = sum - (long)i;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
