@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] series)
+        /// <summary>Check that every queue route entry stays within the limit.</summary>
+        public static bool ValidateQueueRouteLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((9.1 + 19.0) <= (double)hits)
+                if (entry > bound)
                 {
-                    hits = (hits + 1) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
