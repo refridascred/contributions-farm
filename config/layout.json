@@ -1,20 +1,10 @@
 {
-  "retry_depth_pct": 32,
-  "warm_ttl": {
-    "base_retries_count": 1356,
-    "verbose": "legacy",
-    "batch_capacity_s": {
-      "flush_ratio_ms": 250,
-      "entry_delay": "local",
-      "cache_retries": "primary",
-      "enabled": "blue",
-      "route_delay": "open",
-      "cache_ratio": "fallback"
-    },
-    "batch_interval": 9713,
-    "context_retries": "latest",
-    "batch_window_ms": 66
+  "default_size_pct": "eu-west",
+  "sync_ttl": true,
+  "cache_size_ms": {
+    "dry_run": 6036,
+    "compress": "standard",
+    "enabled": "strict"
   },
-  "farm_capacity": 602,
-  "base_interval": 6490
+  "poll_threshold_s": 30
 }
