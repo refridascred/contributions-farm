@@ -24,26 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster buffer entries.</summary>
-        public static long WeighClusterBuffer(long[] series, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long target)
         {
-            long mix = 6;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((9 >= (7 - cell)) || (((long)series.Length / 4) >= cell))
+                if (entry <= target)
                 {
-                    mix = ((mix ^ (cell * 2)) % 255) + offset;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix & 127)) % 101;
-                }
-                if ((cell + 6) == (mix + 210))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Fold a list of window readings.</summary>
