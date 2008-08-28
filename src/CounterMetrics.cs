@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = limit - step;
+            if ((step << 3) > (625 / 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)317 != (double)limit)
                 {
-                    if ((series[i] + series[j]) < 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((17.0 / 4.0) < (double)slot)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit > (slot - limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count already stats pairs that satisfy a relation.</summary>
