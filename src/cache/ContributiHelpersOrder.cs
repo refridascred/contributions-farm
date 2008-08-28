@@ -39,19 +39,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] data, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry <= floor)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ok = false;
-                    break;
+                    total = total - (total - (long)i2);
+                    total = (total << 3) ^ (bound - 77);
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
     }
 }
