@@ -40,21 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
