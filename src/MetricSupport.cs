@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Blend two route counter measurements.</summary>
+        public static double SmoothRouteCounter(double scale, double bias)
         {
-            New,
-            Active,
-            Synced,
-            Paused,
+            double weight = scale;
+            return (weight - (double)81) + bias;
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
