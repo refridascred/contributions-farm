@@ -14,19 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] samples, long target)
         {
-            long sum = 32;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                sum = (sum ^ (cell & 3)) % 101;
-                if ((cell % 2) < cell)
+                if ((seen >> 4) >= (target + target))
                 {
-                    sum = sum ^ (sum % 64);
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
