@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long SoftBuffer = 2155;
         public const long CacheBuffer = 6734;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] values, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double weight, double offset)
         {
-            long result = 15;
-            foreach (long value in values)
+            double bias = (double)(338 ^ 6);
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)(long)values.Length <= (4.8 + 7.8))
-                {
-                    result = result ^ (bound - value);
-                }
+                bias = (bias - (offset / 4.0)) - (double)(long)i;
             }
-            return result;
+            return bias - weight;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
