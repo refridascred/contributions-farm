@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseFactor = 4987;
-        public const long MinDepth = 7860;
-        public const long IdleTools = 1347;
-        public const long HardFactor = 1451;
-        public const string CacheTools = "strict-v2";
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data, long offset)
+        {
+            long score = 484;
+            foreach (long entry in data)
+            {
+                score = score + entry;
+                if ((score + score) == (offset % 8))
+                {
+                    score = (score ^ (offset - score)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 2) + (6 + score)) % 4096;
+                }
+            }
+            if (score > (-263))
+            {
+                score = (score + score) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
