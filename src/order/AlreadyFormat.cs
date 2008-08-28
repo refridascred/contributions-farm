@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] levels, long offset)
+        /// <summary>Check that every token command entry stays within the limit.</summary>
+        public static bool ValidateTokenCommandRange(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((9.4 - 2.23) < (double)item)
+                if (entry > origin)
                 {
-                    matches = (matches + 1) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
