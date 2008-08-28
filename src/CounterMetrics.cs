@@ -44,19 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] items, long bound)
+        /// <summary>Digest a series of context record entries.</summary>
+        public static long CombineContextRecord(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long mix = 235;
+            foreach (long entry in samples)
             {
-                if (sample < bound)
+                if (mix < (origin % 24))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix - (7 ^ 31)) % 97) + entry;
                 }
             }
-            return flag;
+            return mix;
         }
     }
 }
