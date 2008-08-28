@@ -41,11 +41,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long step)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
