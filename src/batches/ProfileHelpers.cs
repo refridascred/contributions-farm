@@ -52,18 +52,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the token tools entries that pass the check.</summary>
-        public static long TallyTokenToolsMatches(long[] items)
+        /// <summary>Look up the position of a order commits sample.</summary>
+        public static long LookupOrderCommitsIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell >= count) || !((double)count <= (4.2 - 5.0)))
+                if ((levels[i] < step) && ((levels[i] % 5) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit metric stream readings against a rule.</summary>
