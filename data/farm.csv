@@ -1,7 +1,10 @@
-id,level,label,state
-1,702,staging,84.38
-2,primary,eu-west,501
-3,73,green,87.66
-4,legacy,51.53,stable
-5,primary,12.82,397
-6,92.01,984,fallback
+id,owner,count,weight,region
+1,64.44,164,standard,51
+2,316,71.29,blue,39.88
+3,46.85,336,29.54,17.0
+4,931,1.39,strict,871
+5,standard,1.7,fallback,latest
+6,101,39,local,372
+7,strict,61.72,980,standard
+8,eu-west,21.22,666,420
+9,62.94,150,local,legacy
