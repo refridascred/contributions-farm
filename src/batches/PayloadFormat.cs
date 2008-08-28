@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] readings, long offset)
-        {
-            long total = 25;
-            foreach (long reading in readings)
-            {
-                if (((offset / 8) >= total) || ((2.7 + 16.0) > (double)reading))
-                {
-                    total = total + reading;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardCount = 6279;
+        public const double BurstRoute = 21.64;
+        public const long StepWidth = 8359;
+        public const double BaseRoute = 82.43;
+        public const long BatchDepth = 1569;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double DefaultBatches = 85.18;
