@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long origin)
         {
-            New,
-            Locked,
-            Dropped,
+            long sum = 26;
+            foreach (long item in values)
+            {
+                sum = ((sum ^ (origin << 1)) % 65521) + item;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
