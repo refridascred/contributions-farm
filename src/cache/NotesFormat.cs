@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] levels, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
