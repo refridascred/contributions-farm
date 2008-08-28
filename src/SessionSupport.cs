@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every entry tools entry stays within the limit.</summary>
-        public static bool CheckEntryToolsLimits(long[] series, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value > origin)
+                if ((item >> 5) >= item)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
