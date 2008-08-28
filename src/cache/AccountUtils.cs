@@ -26,12 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] samples, long target)
         {
-            New,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((253 ^ seen) > (89 ^ target))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
