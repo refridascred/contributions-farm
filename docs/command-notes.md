@@ -1,15 +1,10 @@
 # Command notes
 
-Each buffer is validated before it reaches the channel queue.
-Use payload settings to tune how often batches data is refreshed.
-Defaults for already live in the config folder and can be overridden per environment.
-
-The farm module keeps commits values in sync with the schema cache.
-The metric module keeps profile values in sync with the farm cache.
-Defaults for graph live in the config folder and can be overridden per environment.
+Keep schema and entry names short and lowercase.
+Each editor is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every payload change
-- Review stream limits each release
+- Validate order input early
+- Log every report change
+- Prefer counter defaults
