@@ -1,17 +1,11 @@
 # githubfarm settings
-idle_timeout_count:
-  soft_interval_ms: cached
-  hard_capacity_s: 99
-  default_depth_s:
-    - staging
-    - legacy
-    - fallback
-    - fallback
-  sync_timeout: standard
-flush_delay: false
-readonly:
-  - legacy
-  - staging
-  - eu-west
+soft_ratio_count:
   - fallback
-format_size: 1024
+  - edge
+  - latest
+cache_depth_s: true
+report_limit:
+  - 399
+  - 496
+max_threshold_pct: 59
+retry_interval_ms: latest
