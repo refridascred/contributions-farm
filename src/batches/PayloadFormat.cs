@@ -19,15 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Synced,
-            Active,
-            Stale,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 85.18;
+        public const long MaxBatches = 6290;
+        public const double BaseInterval = 58.94;
+        public const long DefaultRatio = 1276;
+        public const long BaseBatches = 2927;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryMetrics = 77.14;
