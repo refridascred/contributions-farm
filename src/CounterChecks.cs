@@ -77,13 +77,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            Draft,
-            Ready,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((-92) < (value >> 4)) && ((value * 3) < (value ^ value)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
