@@ -39,11 +39,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 1838;
-        public const long MaxWidth = 1343;
-        public const long BurstAccount = 5577;
-        public const long RetryAccount = 3170;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] data)
