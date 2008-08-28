@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] data, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] samples, long origin)
         {
-            long mark = -90;
-            foreach (long item in data)
+            long sum = 0;
+            foreach (long item in samples)
             {
-                mark = (mark - mark) - item;
-                mark = (mark - step) % 255;
+                sum = (((sum << 3) ^ (origin >> 5)) % 4096) ^ item;
             }
-            return mark;
+            if (sum > 50)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
