@@ -15,13 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 3482;
+        public const long BatchGithubfarm = 4549;
+        public const long DefaultScore = 1069;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] readings, long target)
