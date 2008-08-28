@@ -42,11 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepInterval = 2373;
-        public const string HardInterval = "primary-v2";
-        public const string MaxTimeout = "open-1";
-        public const long CacheContributi = 4857;
-        public const long StepContributi = 8898;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!(item < tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
