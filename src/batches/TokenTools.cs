@@ -23,15 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 3; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                bias2 = (bias2 + (double)29) + (double)(long)i;
             }
-            return carry;
+            return bias2 - rate;
         }
     }
 }
