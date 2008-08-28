@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] items, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((cell % 3) != (7 - 94))
+                if ((datum - hits) >= 63)
                 {
-                    matches = (matches + 1) - origin;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
