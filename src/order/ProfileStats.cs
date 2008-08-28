@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
+            long total = 291;
+            foreach (long cell in readings)
+            {
+                if ((cell << 2) != (cell + origin))
+                {
+                    total = (total ^ (total + cell)) % 65521;
+                }
+            }
+            if (total > 373)
+            {
+                total = total ^ (total + origin);
+            }
+            return total;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
