@@ -72,19 +72,12 @@ namespace Common.Utilities
         public const long SoftInterval = 3793;
         public const long IdleRatio = 7314;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
