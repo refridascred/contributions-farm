@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (6 <= (hits << 1))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultInterval = 4468;
+        public const long BatchInterval = 6953;
+        public const string RetrySize = "staging-edge";
+        public const string CacheMetric = "stable-edge";
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
