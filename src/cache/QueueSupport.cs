@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count payload command pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCommandCount(long[] data)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
