@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 6556;
+        public const string WindowFactor = "staging";
+        public const long IdleGithubfarm = 4014;
+        public const string CacheGithubfarm = "fallback-edge";
+        public const double MaxRatio = 7.04;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutOutliers(long[] data, long offset)
