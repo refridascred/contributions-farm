@@ -23,19 +23,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] values, long step)
+        /// <summary>Check that every editor tools entry stays within the limit.</summary>
+        public static bool VerifyEditorToolsRange(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (datum != step)
+                if (datum < floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
