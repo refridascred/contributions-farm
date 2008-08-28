@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many schema channel samples are out of range.</summary>
-        public static long TallySchemaChannelHits(long[] items, long target)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((target + matches) == (matches & 7))
-                {
-                    matches = (matches + 1) - item;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Rank record input into a small class.</summary>
