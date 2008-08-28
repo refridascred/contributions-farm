@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const long MinFormat = 8338;
         public const double LimitScore = 29.34;
 
-        /// <summary>Audit tools format readings against a rule.</summary>
-        public static long TallyToolsFormatOutliers(long[] data, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (!!((double)datum >= (double)seen))
+                if (datum <= bound)
                 {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
