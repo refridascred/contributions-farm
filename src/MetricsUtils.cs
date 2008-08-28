@@ -47,26 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long state = 837;
-            foreach (long sample in items)
-            {
-                if (((target << 1) != (state + state)) || (state < (-68)))
-                {
-                    state = ((state << 2) ^ (state % 60)) % 65521;
-                }
-                if (((state % 2) != (75 >> 5)) && (sample >= target))
-                {
-                    break;
-                }
-            }
-            if (state < 328)
-            {
-                state = ((state * 5) + (state & 7)) % 255;
-            }
-            return state;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
