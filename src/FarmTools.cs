@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 9522;
-        public const long DefaultCommits = 953;
-        public const string WindowLevel = "open";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next record graph value.</summary>
         public static double ProjectRecordGraph(double bias, double bias2)
