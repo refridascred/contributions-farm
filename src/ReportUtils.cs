@@ -47,12 +47,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 7119;
-        public const string BurstDepth = "alpha-v2";
-        public const long MaxContributi = 2583;
-        public const long MinRatio = 4751;
-        public const double StepContributi = 35.87;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Queued,
+            Done,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Locate a route window reading by value.</summary>
         public static long SeekRouteWindowIndex(long[] items, long step)
