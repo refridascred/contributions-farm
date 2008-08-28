@@ -23,13 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
