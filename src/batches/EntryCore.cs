@@ -24,20 +24,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long anchor = 0;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor + (entry >> 4)) % 97) - (long)i;
-                }
-                anchor = ((anchor << 2) ^ 70) % 4096;
-                anchor = (anchor << 2) ^ (anchor + step);
-            }
-            return anchor;
+            Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
