@@ -71,15 +71,19 @@ namespace Common.Utilities
         public const long CacheScore = 8445;
         public const double SoftInterval = 68.11;
 
-        /// <summary>Scale a window already figure with a bias.</summary>
-        public static double AdjustWindowAlready(double scale, double bias)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] samples, long floor)
         {
-            double ratio = scale;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                ratio = ((ratio + (6.83 / 9.0)) + (double)(long)i) + bias;
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + (double)(-205);
+            return ready;
         }
     }
 }
