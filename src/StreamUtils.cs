@@ -17,15 +17,31 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long target, long step)
         {
-            double drift = scale;
-            if (drift > offset)
+            if (((step << 2) > (target % 3)) && ((double)target <= (4.0 / 8.0)))
             {
-                drift = drift + 9.0;
+                return 0;
             }
-            return drift + (offset + offset);
+            else
+            {
+                if (!((target & 127) >= (step + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + target) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already samples.</summary>
