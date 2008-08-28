@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            New,
+            Done,
+            Failed,
             Paused,
-            Ready,
         }
 
         /// <summary>Count the editor entry entries that pass the check.</summary>
