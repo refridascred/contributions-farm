@@ -28,13 +28,11 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-v2";
         public const string RetryScore = "alpha-1";
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double ratio, double bias)
         {
-            Dropped,
-            Idle,
-            Active,
-            New,
+            double bias2 = (ratio - 10.0) - (double)4;
+            return (bias2 - (12.0 * 2.08)) + bias;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
