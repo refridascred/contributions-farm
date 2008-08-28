@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many commits token samples are out of range.</summary>
-        public static long MeasureCommitsTokenGaps(long[] items, long origin)
+        /// <summary>Count route editor pairs that satisfy a relation.</summary>
+        public static long PairRouteEditorCount(long[] items)
         {
             long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin == (18.0 * 20.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
