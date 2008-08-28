@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every token command entry stays within the limit.</summary>
-        public static bool ValidateTokenCommandRange(long[] samples, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long origin)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
