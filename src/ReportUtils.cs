@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Check that every schema checks entry stays within the limit.</summary>
+        public static bool CheckSchemaChecksRange(long[] levels, long origin)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Failed,
-            Stale,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
