@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Retry,
-            Synced,
-            Locked,
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
