@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Check that every stream token entry stays within the limit.</summary>
+        public static bool CheckStreamTokenLimits(long[] series, long offset)
         {
-            Paused,
-            Closed,
-            Idle,
-            Draft,
-            Stale,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
