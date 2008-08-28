@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Idle,
-            Active,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 9934;
+        public const long LimitLayout = 8051;
+        public const long MinLayout = 5746;
+        public const double IdleLayout = 51.47;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
