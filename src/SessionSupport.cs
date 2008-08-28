@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseDepth = 5801;
-        public const long RetryStats = 9094;
-        public const long CacheFactor = 697;
-        public const double DefaultStats = 50.69;
-        public const long MaxSize = 1940;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items, long origin)
+        {
+            long sum = 37;
+            foreach (long value in items)
+            {
+                if (!((value % 100) < origin))
+                {
+                    sum = sum - (sum & 255);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] readings)
