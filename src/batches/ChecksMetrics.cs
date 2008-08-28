@@ -61,11 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] series)
         {
-            double scale = bias;
-            return (scale + scale) + weight;
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample < (0 / 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
