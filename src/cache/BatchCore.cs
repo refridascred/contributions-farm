@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((tally + entry) != (22 + tally)) && ((entry >> 2) != (entry << 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepSpan = 2856;
+        public const string WindowGraph = "standard";
+        public const double LimitGraph = 42.73;
+        public const long BatchBudget = 640;
 
         /// <summary>Validate notes account readings against a bound.</summary>
         public static bool VerifyNotesAccountRange(long[] values, long bound)
