@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a graph payload reading.</summary>
-        public static double ProjectGraphPayload(double rate, double offset)
+        /// <summary>Check that every cluster session entry stays within the limit.</summary>
+        public static bool ValidateClusterSessionBounds(long[] items, long origin)
         {
-            double rate2 = offset;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                rate2 = ((rate2 - 8.0) - (double)(long)i) - rate;
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate2 - (double)6;
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
