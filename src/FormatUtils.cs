@@ -15,18 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many report filter samples are out of range.</summary>
-        public static long TallyReportFilterMatches(long[] readings, long step)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + step) == (count - 600))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count payload notes pairs that satisfy a relation.</summary>
