@@ -73,13 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] samples)
         {
-            Closed,
-            Active,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum & 3) <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
