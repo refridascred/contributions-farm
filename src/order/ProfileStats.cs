@@ -23,31 +23,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if ((origin + 699) >= 789)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin - target) <= (1 + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target / 9) <= (64 >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define order limits and defaults.</summary>
