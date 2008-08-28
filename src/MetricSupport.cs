@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double bias = scale - 7.0;
+            if (bias <= (double)0)
             {
-                if ((41 > (entry ^ seen)) || ((seen >= 704) || ((seen / 7) < seen)))
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias - scale) + floor;
             }
-            return seen;
+            return bias - scale;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
