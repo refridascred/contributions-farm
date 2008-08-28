@@ -42,22 +42,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] samples, long bound)
         {
-            long mix = 50;
-            foreach (long reading in levels)
+            long mark = -550;
+            foreach (long cell in samples)
             {
-                if ((mix - mix) > (reading + mix))
+                if (mark >= (236 - bound))
                 {
-                    mix = ((mix << 3) ^ (reading ^ 657)) % 101;
-                }
-                if ((reading + reading) > (mix >> 3))
-                {
-                    mix = ((mix * 5) + ((-786) + mix)) % 1000;
+                    mark = ((mark << 2) ^ 3) - cell;
                 }
             }
-            return mix;
+            if (mark > (-92))
+            {
+                mark = mark - (bound ^ (long)samples.Length);
+            }
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
