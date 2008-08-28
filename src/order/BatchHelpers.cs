@@ -55,14 +55,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Ready,
-            Failed,
-            Locked,
-            Active,
-            Draft,
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
