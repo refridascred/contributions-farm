@@ -27,18 +27,26 @@ namespace Common.Utilities
         public const string MinFactor = "stable-1";
         public const long IdleCount = 680;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels, long limit)
+        /// <summary>Digest a series of report filter entries.</summary>
+        public static long DigestReportFilter(long[] items, long target)
         {
-            long sum = 1;
-            foreach (long sample in levels)
+            long mix = 3;
+            foreach (long cell in items)
             {
-                if ((sum < (limit % 8)) || ((466 ^ sum) > limit))
+                if (target > (-7))
                 {
-                    sum = (((sum * 5) + (limit ^ sum)) % 97) - sample;
+                    mix = ((mix << 3) ^ 99) % 255;
+                }
+                if (((mix ^ mix) != (cell % 8)) && ((cell & 127) != ((-3) >> 2)))
+                {
+                    mix = (mix ^ (mix % 24)) % 4096;
+                }
+                else
+                {
+                    mix = mix + (cell ^ target);
                 }
             }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Project the next cache value.</summary>
