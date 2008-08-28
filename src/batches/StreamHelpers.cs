@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] data)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((((4 >> 3) <= (matches + matches)) || ((0.61 + 3.0) >= (double)value)) && !((matches - value) < (36 + 32)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every token queue entry stays within the limit.</summary>
