@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((2.2 / 7.0) <= (double)matches)
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
