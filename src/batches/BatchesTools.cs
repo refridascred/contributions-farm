@@ -11,25 +11,19 @@ namespace Common.Utilities
         public const double MaxInterval = 4.79;
         public const long DefaultInterval = 6318;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long target)
+        /// <summary>Adjust a channel account reading.</summary>
+        public static double ProjectChannelAccount(double ratio, double offset)
         {
-            long lane = step - target;
-            if (lane <= (step + step))
+            double ratio2 = ratio;
+            if (ratio2 <= (offset / 6.0))
             {
-                return 1;
+                ratio2 = ratio2 + (ratio * 1.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((target ^ lane) < (step / 7)) || ((step * 4) > (step >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                ratio2 = (ratio2 - (ratio2 + offset)) - (double)(long)i;
             }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Audit graph command readings against a rule.</summary>
