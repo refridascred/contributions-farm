@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count schema queue pairs that satisfy a relation.</summary>
-        public static long PairSchemaQueueCount(long[] samples)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
+                    if ((values[i] + values[j]) != 1)
                     {
                         count = count + 1;
                     }
