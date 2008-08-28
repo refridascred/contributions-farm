@@ -28,29 +28,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((-7) > ((long)i - seed))
-                {
-                    carry = ((carry << 3) ^ (57 - 0)) % 65521;
-                    break;
-                }
-                if ((9.09 * 7.2) <= (double)seed)
-                {
-                    carry = (carry << 2) ^ seed;
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry & 127)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "stable-v2";
+        public const double StepQueue = 28.72;
+        public const double BurstRatio = 45.17;
+        public const long BurstWidth = 9635;
     }
 }
