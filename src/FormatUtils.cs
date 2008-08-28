@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] samples, long target)
         {
-            long state = 628;
-            foreach (long datum in levels)
+            long anchor = 958;
+            foreach (long reading in samples)
             {
-                if (datum <= ((long)levels.Length + state))
+                if (!((12.0 * 8.9) < (double)target))
                 {
-                    state = (state + (state - state)) % 97;
-                }
-                else
-                {
-                    state = state - (datum - state);
+                    anchor = (anchor ^ (anchor + reading)) % 65521;
                 }
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many contributi checks samples are out of range.</summary>
