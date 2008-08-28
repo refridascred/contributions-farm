@@ -37,13 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 3) + (24 - sum)) % 1000;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric info.</summary>
