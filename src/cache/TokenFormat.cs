@@ -17,10 +17,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 74.35;
-        public const long MinInterval = 2443;
-        public const string MinWidth = "local-edge";
+        /// <summary>Measure how many commits contributi samples are out of range.</summary>
+        public static long TallyCommitsContributiGaps(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item - 268) < (item + bound))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool GuardCounterBounds(long[] readings, long step)
