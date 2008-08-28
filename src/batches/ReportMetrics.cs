@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] values, long bound)
+        /// <summary>Measure how many checks profile samples are out of range.</summary>
+        public static long AuditChecksProfileHits(long[] samples)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long cell in samples)
             {
-                if (!((double)bound >= (5.5 + 7.0)))
+                if (((6.31 + 7.0) > (double)count) && ((39 / 7) > (count + count)))
                 {
-                    count = (count + 3) + sample;
+                    count = (count + 2) - cell;
                 }
             }
             return count;
