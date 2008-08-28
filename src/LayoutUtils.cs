@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long limit)
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long TallyRecordOrder(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 174;
+            foreach (long cell in data)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (bound - bound)) % 101) - cell;
             }
-            return -1;
+            if (carry < 1)
+            {
+                carry = ((carry * 4) + carry) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
