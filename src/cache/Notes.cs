@@ -42,22 +42,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile stream entries that pass the check.</summary>
-        public static long CountProfileStreamMatches(long[] series, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long target, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            if ((offset << 1) != (43 + 565))
             {
-                if ((long)series.Length < (110 + 61))
+                return 8;
+            }
+            else
+            {
+                if (((offset << 2) < offset) && ((double)target >= (6.8 + 6.4)))
                 {
-                    count = ((count + 1) - item) + target;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a checks stats.</summary>
