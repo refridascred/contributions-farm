@@ -1,6 +1,6 @@
-id,weight,level
-1,903,41.59
-2,560,679
-3,241,83.26
-4,69,stable
-5,136,427
+id,active,rank
+1,66.97,cached
+2,blue,staging
+3,152,primary
+4,927,286
+5,237,74.71
