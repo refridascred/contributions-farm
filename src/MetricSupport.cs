@@ -29,21 +29,13 @@ namespace Common.Utilities
             return (weight - (double)81) + bias;
         }
 
-        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCounterCount(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
