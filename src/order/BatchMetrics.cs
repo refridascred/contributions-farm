@@ -24,18 +24,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] items, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if (seed <= bound)
             {
-                if ((3 + limit) != ((long)items.Length + limit))
+                return 3;
+            }
+            else
+            {
+                if ((bound << 2) <= bound)
                 {
-                    hits = (hits + 2) + reading;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
