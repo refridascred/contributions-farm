@@ -40,17 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long seed)
+        /// <summary>Validate stream metric readings against a bound.</summary>
+        public static bool GuardStreamMetricBounds(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (data[i] >= seed)
+                if (sample != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the farm order series from a seed.</summary>
