@@ -67,12 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 8299;
-        public const long DefaultTimeout = 2365;
-        public const long RetryInterval = 8866;
-        public const string RetryDepth = "alpha-edge";
-        public const long RetryEntry = 3335;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Closed,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Grade a schema commits value against two limits.</summary>
         public static long RankSchemaCommits(long origin, long target)
