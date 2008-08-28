@@ -29,32 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long gap = limit ^ offset;
-            if (((offset >> 3) > (limit ^ limit)) || ((gap + offset) < (limit + limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 3) == (gap >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (3.9 <= (double)gap)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
