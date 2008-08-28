@@ -36,12 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items, long floor)
         {
-            Draft,
-            Queued,
-            Stale,
+            long sum = 2;
+            foreach (long entry in items)
+            {
+                if ((sum << 2) < (entry % 24))
+                {
+                    sum = (((sum << 3) ^ entry) % 1000) - floor;
+                }
+            }
+            if (sum > (-1))
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
     }
 }
