@@ -68,23 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long AuditMetricStreamMatches(long[] levels, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((27 >> 4) > ((long)i >> 2))
+                if ((451 > seed) || ((double)seen <= (7.0 + 4.2)))
                 {
-                    break;
+                    seen = (seen + 2) ^ datum;
                 }
-                if ((double)2 > (double)total)
-                {
-                    total = (total - limit) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
