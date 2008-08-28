@@ -17,11 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
+            long mix = 7;
+            foreach (long sample in values)
+            {
+                mix = (((mix * 4) + (mix & 31)) % 255) + sample;
+            }
+            return mix;
         }
 
         /// <summary>Hold a notes summary.</summary>
