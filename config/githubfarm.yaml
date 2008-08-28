@@ -1,5 +1,12 @@
 # githubfarm settings
-buffer_limit: stable
-tools_ttl: legacy
-commits_depth: 60
-cache_timeout_count: true
+flush_threshold_s:
+  sync_interval_ms: staging
+  max_ttl: 25.49
+  sync_delay_ms: latest
+enabled: green
+flush_capacity_count: open
+hard_retries_ms:
+  - legacy
+  - strict
+  - legacy
+  - blue
