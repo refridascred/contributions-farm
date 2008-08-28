@@ -27,21 +27,9 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 8836;
+        public const long WindowChecks = 8884;
+        public const long DefaultChecks = 6421;
     }
 }
