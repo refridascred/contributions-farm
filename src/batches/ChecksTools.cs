@@ -47,17 +47,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] levels, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 55;
+            foreach (long value in items)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                if ((limit / 9) < limit)
                 {
-                    return (long)i;
+                    score = ((score - limit) % 97) ^ value;
                 }
             }
-            return -1;
+            if (score > 6)
+            {
+                score = (score * 3) + score;
+            }
+            return score;
         }
     }
 }
