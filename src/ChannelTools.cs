@@ -31,17 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] series, long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
