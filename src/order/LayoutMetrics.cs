@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] series, long limit)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
