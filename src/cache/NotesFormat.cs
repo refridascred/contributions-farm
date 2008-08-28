@@ -23,12 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 2816;
-        public const string DefaultFactor = "primary-1";
-        public const long BaseContributi = 1854;
-        public const long WindowContributi = 960;
-        public const double BurstContributi = 90.39;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
