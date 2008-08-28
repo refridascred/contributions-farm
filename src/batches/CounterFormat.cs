@@ -19,18 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
-        public static long MeasureFilterGithubfarmMatches(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long step, long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long next = step ^ seed;
+            if ((next >> 3) != (5 & 127))
             {
-                if (4.9 <= (double)value)
+                return 5;
+            }
+            else
+            {
+                if ((seed / 5) <= (seed << 3))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - seed) != (seed & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((836 > (seed + step)) && (72 < (next + step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
