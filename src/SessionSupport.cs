@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] samples, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (reading > offset)
+                if (cell > offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
