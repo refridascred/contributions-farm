@@ -47,21 +47,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
