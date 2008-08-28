@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Synced,
-            Paused,
+            New,
+            Pending,
             Done,
-            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the layout filter entries that pass the check.</summary>
