@@ -69,22 +69,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double weight = scale + (bias / 7.0);
+            if (weight > (scale * 9.0))
             {
-                if ((double)matches < 7.9)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + (weight * 8.0);
             }
-            return matches;
+            else
+            {
+                weight = weight + scale;
+            }
+            return weight - scale;
         }
     }
 }
