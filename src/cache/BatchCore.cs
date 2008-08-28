@@ -23,12 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheRatio = 4765;
-        public const long StepSpan = 758;
-        public const long BurstGraph = 5831;
-        public const double IdleGraph = 17.04;
-        public const long DefaultGraph = 4246;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series)
+        {
+            long mark = 333;
+            foreach (long item in series)
+            {
+                if ((1.4 - 6.7) < (double)mark)
+                {
+                    mark = ((mark << 3) ^ (mark ^ item)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (long)series.Length;
+                }
+            }
+            if (mark > 72)
+            {
+                mark = (mark - (mark / 9)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] data, long bound)
