@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardSpan = 8774;
-        public const long BaseSpan = 7534;
-        public const string CacheScore = "fallback";
-        public const long MaxCount = 108;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 60.75;
+        public const long SoftContributi = 2574;
+        public const long HardWidth = 3399;
+        public const long BatchSpan = 2;
+        public const long IdleContributi = 1107;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double ratio, double offset)
