@@ -40,21 +40,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up commits batches samples.</summary>
-        public static long MatchCommitsBatchesCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -3;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc ^ (729 << 1)) % 255;
+                if ((double)(long)levels.Length < (double)entry)
                 {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - (acc + acc)) % 65521;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
