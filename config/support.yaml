@@ -1,25 +1,5 @@
 # support settings
-session_ttl: 34
-poll_threshold_pct:
-  - 315
-  - 401
-entry_retries: 250
-tools_ratio: 100
-batches_ratio: 82.03
-stream_ratio:
-  schema_window: 3.7
-  cache_limit_pct:
-    - 91
-    - 227
-  enabled:
-    - 344
-    - 443
-    - 41
-    - 216
-  route_window:
-    - 134
-    - 112
-    - 461
-    - 408
-  hard_threshold: true
-  sync_interval_ms: 61
+soft_capacity: true
+order_threshold: 100
+sync_capacity: 70
+account_limit: 72.42
