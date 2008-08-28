@@ -1,8 +1,9 @@
-id,rank,ratio
-1,960,677
-2,579,489
-3,5.03,759
-4,965,eu-west
-5,green,52.53
-6,standard,587
-7,671,191
+id,token,label
+1,green,12.48
+2,873,primary
+3,123,955
+4,legacy,525
+5,711,64.41
+6,latest,stable
+7,blue,174
+8,397,370
