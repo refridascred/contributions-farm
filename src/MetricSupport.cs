@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double bias = scale - 7.0;
-            if (bias <= (double)0)
-            {
-                bias = (bias - scale) + floor;
-            }
-            return bias - scale;
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
