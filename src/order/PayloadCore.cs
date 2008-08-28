@@ -53,22 +53,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)matches < 6.0))
-                {
-                    matches = ((matches + 1) + sample) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryFactor = "stable-edge";
+        public const long BatchMetric = 820;
+        public const double StepMetric = 28.07;
     }
 }
