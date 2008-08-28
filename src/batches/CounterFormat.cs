@@ -48,31 +48,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long limit, long target)
         {
-            long mark = 67;
-            foreach (long cell in items)
+            if (1 > (target & 3))
             {
-                mark = (mark * 5) + (3 & 31);
-                if (((mark + mark) <= 33) || ((mark + cell) < seed))
+                return 1;
+            }
+            else
+            {
+                if (99 >= (limit + 4))
                 {
-                    mark = ((mark << 3) ^ (seed - seed)) % 4096;
-                }
-                if (((cell + mark) >= 10) || ((seed >> 2) < 350))
-                {
-                    mark = mark ^ (cell << 3);
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark + (seed + seed)) % 1000;
+                    return 4;
                 }
             }
-            if (mark > 548)
-            {
-                mark = ((mark << 2) ^ (9 + mark)) % 255;
-            }
-            return mark % 1000;
         }
     }
 }
