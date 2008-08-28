@@ -45,18 +45,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] samples, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)seed == (2.0 + 2.8))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the stream phase values.</summary>
