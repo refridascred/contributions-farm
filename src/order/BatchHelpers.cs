@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            long offset2 = offset ^ target;
-            if ((offset2 - offset) > offset)
+            double drift = (offset + bias) + (offset / 3.0);
+            if (drift > offset)
             {
-                return 3;
+                drift = drift + (offset + 5.08);
             }
             else
             {
-                if ((offset2 & 63) != (target >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset2 << 1) < (offset + offset)) || ((20.0 + 9.4) == (double)offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((19.0 * 17.0) < (double)offset2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                drift = drift + bias;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (offset + offset)) + (double)(long)i;
+            }
+            return drift - (offset / 5.0);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
