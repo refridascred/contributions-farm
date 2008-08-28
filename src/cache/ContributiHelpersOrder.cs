@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data)
         {
-            if ((9.27 + 4.29) <= (double)target)
+            long anchor = 386;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - target) >= (limit & 255))
+                if (((8.32 - 3.7) == (double)anchor) && ((entry + anchor) > (anchor - anchor)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(limit < target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (anchor + ((-329) & 127)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
