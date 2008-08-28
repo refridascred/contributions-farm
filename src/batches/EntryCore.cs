@@ -14,11 +14,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            Stale,
+            Draft,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
