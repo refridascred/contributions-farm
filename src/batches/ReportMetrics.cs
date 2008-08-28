@@ -32,9 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 9484;
-        public const double SoftBudget = 87.48;
-        public const string RetryRecord = "strict-edge";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 16.92;
+        public const long LimitTools = 3121;
+        public const long BaseScore = 4804;
+        public const string IdleSpan = "legacy-1";
+        public const long IdleTools = 8917;
     }
 }
