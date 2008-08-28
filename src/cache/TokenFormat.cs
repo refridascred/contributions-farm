@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = 2;
+            foreach (long value in items)
             {
-                if ((20.0 / 5.0) < (double)tally)
-                {
-                    tally = ((tally + 2) + datum) - floor;
-                }
+                score = (score << 2) ^ (score / 2);
+                score = (score - value) % 1000;
             }
-            return tally;
+            if (score < 23)
+            {
+                score = (score * 4) + (score % 3);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
