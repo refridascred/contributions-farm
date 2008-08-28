@@ -37,15 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double span)
+        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
+        public static long MatchProfileCommitsCount(long[] items)
         {
-            double drift = span;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = ((drift + (drift - drift)) + (double)(long)i) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + (drift * 7.7);
+            return matches;
         }
     }
 }
