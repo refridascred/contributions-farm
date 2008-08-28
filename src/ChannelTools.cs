@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long offset)
+        /// <summary>Rank window farm input into a small class.</summary>
+        public static long RankWindowFarm(long step, long origin)
         {
-            if ((step * 5) > (offset & 3))
+            if ((origin + origin) == (origin + step))
             {
                 return 3;
             }
             else
             {
-                if ((double)offset == (double)step)
+                if (!((double)origin <= (3.0 + 4.8)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    if (((2.6 * 20.0) != (double)origin) || ((origin << 2) < 821))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin & 3) <= (step % 5)) && (step < origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
