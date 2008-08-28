@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((8 ^ sample) < hits)
+                if (cell <= bound)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
