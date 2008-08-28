@@ -81,12 +81,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] samples, long seed)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < seed)
+                if ((values[i] > target) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
