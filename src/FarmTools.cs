@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long origin)
         {
-            long result = 809;
-            foreach (long sample in items)
+            long bound = seed + origin;
+            if ((5.0 - 8.0) <= (double)origin)
             {
-                if (((long)items.Length + sample) >= result)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (double)origin)
                 {
-                    result = (result ^ result) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    result = (result + (sample / 8)) % 255;
+                    if (!(seed < origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((10.0 - 19.0) < (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a session header.</summary>
