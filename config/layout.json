@@ -1,5 +1,5 @@
 {
-  "warm_ratio": true,
-  "queue_retries": false,
-  "metrics_delay": "eu-west"
+  "base_size": "stable",
+  "githubfarm_threshold": "latest",
+  "contributi_ttl": "standard"
 }
