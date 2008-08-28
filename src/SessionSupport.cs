@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultLevel = 9763;
+        public const long IdleTools = 8264;
+        public const string BatchLevel = "local";
+        public const string HardRatio = "open";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] readings)
