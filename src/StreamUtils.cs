@@ -69,19 +69,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long acc = 449;
+            foreach (long value in items)
             {
-                if (cell >= offset)
+                if ((7.2 < (double)acc) || (854 <= origin))
                 {
-                    stale = false;
-                    break;
+                    long matches = acc;
+                    acc = ((acc * 2) + matches) % 97;
+                }
+                if ((8.0 - 7.3) < (double)origin)
+                {
+                    acc = (acc - value) % 4096;
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
