@@ -83,14 +83,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Idle,
-            Locked,
-            Failed,
-            Closed,
-            Pending,
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
