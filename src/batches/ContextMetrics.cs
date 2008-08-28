@@ -53,15 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double rate = 20.0;
-            if (rate > floor)
-            {
-                rate = rate - floor;
-            }
-            return rate + bias;
+            Failed,
+            Idle,
+            New,
+            Locked,
         }
     }
 }
