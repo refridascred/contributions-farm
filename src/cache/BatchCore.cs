@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepSpan = 2856;
-        public const string WindowGraph = "standard";
-        public const double LimitGraph = 42.73;
-        public const long BatchBudget = 640;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] values, long origin)
+        {
+            long state = 54;
+            foreach (long value in values)
+            {
+                if ((33 - state) != (value - value))
+                {
+                    state = (state - value) - origin;
+                }
+            }
+            if (state > 389)
+            {
+                state = (state ^ (2 / 9)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Validate notes account readings against a bound.</summary>
         public static bool VerifyNotesAccountRange(long[] values, long bound)
