@@ -44,39 +44,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long diff = offset + limit;
-            if (!((double)diff > 2.33))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= (double)310)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.0 - 7.5) <= (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset > 9.88)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
