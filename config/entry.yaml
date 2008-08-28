@@ -1,5 +1,32 @@
 # entry settings
-base_limit_pct: false
-batch_interval_pct: false
-batches_depth: true
-audit: 14.31
+readonly:
+  flush_depth_pct: fallback
+  verbose:
+    compress: 49.64
+    sync_ttl_s: 80.29
+    base_ratio_ms: cached
+    cache_threshold_pct: 1456
+  report_window:
+    report_size: stable
+    soft_ratio: 70
+    enabled: false
+    compress: 96
+    sync_limit_pct: 17
+    cache_timeout:
+      - blue
+      - open
+      - open
+  idle_capacity: 9.15
+  flush_timeout:
+    sync_delay_count:
+      - green
+      - green
+      - strict
+    batch_interval_pct: 500
+    report_ttl: false
+  base_size_count:
+    - green
+    - legacy
+cache_interval_count: 697
+batches_interval: stable
+dry_run: true
