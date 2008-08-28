@@ -25,11 +25,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 853;
-        public const string BurstEntry = "staging-1";
-        public const long RetryEntry = 9306;
-        public const long IdleEntry = 5923;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long floor)
