@@ -15,10 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 9822;
-        public const long WindowNotes = 8959;
-        public const long StepNotes = 4748;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((1.7 / 5.0) < (double)entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a account batch counter forward.</summary>
         public static long IterateAccountBatch(long bound)
