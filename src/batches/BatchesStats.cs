@@ -36,14 +36,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] items, long target)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Paused,
-            Pending,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((target > hits) && ((target + target) >= hits))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a tools entry pair into a bucket.</summary>
