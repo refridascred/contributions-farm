@@ -20,31 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] samples, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            long sum = 96;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - 195;
-                if ((9.0 / 8.0) < (double)sum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - (cell & 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 2) + (floor + 18);
-                }
-                if (sum < ((-633) + 655))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 18)
-            {
-                sum = sum + (floor - sum);
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
