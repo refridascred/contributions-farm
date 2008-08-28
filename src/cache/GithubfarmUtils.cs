@@ -16,12 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            Ready,
-            Pending,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
