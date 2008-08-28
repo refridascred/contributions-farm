@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long floor, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] readings)
         {
-            long edge = floor ^ seed;
-            if ((floor + floor) > (floor / 3))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge * 3) < 845)
+                if (sample > (1 + sample))
                 {
-                    return 7;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
