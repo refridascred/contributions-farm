@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] items, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
