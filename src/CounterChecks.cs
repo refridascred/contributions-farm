@@ -77,24 +77,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double ratio, double span)
         {
-            long total = -5;
-            foreach (long item in values)
+            double ratio2 = 5.6;
+            if (ratio2 > (double)2)
             {
-                total = total ^ (total ^ item);
-                total = (total + (308 / 4)) % 97;
-                if ((limit + item) >= limit)
-                {
-                    break;
-                }
+                ratio2 = (ratio2 - (ratio2 + ratio)) - span;
             }
-            if (total > 6)
+            else
             {
-                total = ((total << 3) ^ (limit + limit)) % 97;
+                ratio2 = ratio2 + ratio;
             }
-            return total % 97;
+            return ratio2 + ratio2;
         }
     }
 }
