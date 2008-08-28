@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((offset ^ target) >= (target / 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target + target) == (target % 5))
                 {
-                    if ((series[i] ^ series[j]) < 4)
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= 27)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
