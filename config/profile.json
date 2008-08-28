@@ -1,6 +1,6 @@
 {
-  "default_window_s": 3557,
-  "verbose": "edge",
-  "retry_ttl_s": false,
-  "sync_window_pct": 30
+  "burst_retries": 9596,
+  "soft_interval": "green",
+  "contributi_window": [407, 231],
+  "enabled": ["standard", "blue"]
 }
