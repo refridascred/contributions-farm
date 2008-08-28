@@ -36,12 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Failed,
-            Stale,
-            Closed,
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
