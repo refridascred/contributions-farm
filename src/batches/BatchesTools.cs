@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long bound2)
+        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
+        public static long CompareEditorChannelCount(long[] levels)
         {
-            if ((16 + bound) == (bound2 + bound))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((8.7 / 4.0) == (double)bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a channel account reading.</summary>
