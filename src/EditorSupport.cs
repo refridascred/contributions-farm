@@ -16,23 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double rate, double span)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values)
         {
-            double ratio = rate;
-            if (ratio <= 9.7)
+            long mark = 680;
+            foreach (long datum in values)
             {
-                ratio = ratio + (double)1;
+                if (mark < (datum >> 5))
+                {
+                    mark = mark + 9;
+                }
             }
-            else
-            {
-                ratio = ratio + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (rate + ratio)) + (double)(long)i;
-            }
-            return ratio + (5.59 + span);
+            return mark % 4096;
         }
 
         /// <summary>Hold a report info.</summary>
