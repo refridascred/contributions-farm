@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 410;
-        public const long CacheDepth = 1953;
-        public const long BurstRatio = 6200;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardBudget = 4.82;
+        public const long SoftMetrics = 5351;
+        public const double StepWidth = 73.42;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsGaps(long[] items)
