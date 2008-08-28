@@ -37,11 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
+            long score = 261;
+            foreach (long entry in series)
+            {
+                if (((-323) << 1) == (entry - entry))
+                {
+                    score = ((score << 3) ^ (entry ^ score)) % 65521;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
