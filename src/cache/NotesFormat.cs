@@ -34,17 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long seed)
+        /// <summary>Adjust a payload token reading.</summary>
+        public static double AdjustPayloadToken(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = (double)381 - gain;
+            if (gain2 <= (gain / 7.0))
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (gain2 * 20.0);
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 - (double)141;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + floor) - (double)(long)i;
+            }
+            return gain2 - (17.0 / 9.0);
         }
     }
 }
