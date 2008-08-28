@@ -71,16 +71,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix + (target + target)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Retry,
+            Ready,
+            Active,
+            Idle,
+            Done,
         }
     }
 }
