@@ -23,11 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            double scale = weight / 8.0;
-            return (scale - 8.02) + floor;
+            double scale2 = (scale + floor) / 2.0;
+            if (scale2 > (double)95)
+            {
+                scale2 = scale2 + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = scale2 + (double)(long)i;
+            }
+            return scale2 + (double)81;
         }
 
         /// <summary>Combine context values into a single score.</summary>
