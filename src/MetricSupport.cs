@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            if ((seed % 12) > (665 ^ floor))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (5.0 >= (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (9 < (seed + floor))
+                    if ((items[i] - items[j]) > 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor * 2) > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
