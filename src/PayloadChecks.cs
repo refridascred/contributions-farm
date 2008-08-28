@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally >> 2) > 763)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
