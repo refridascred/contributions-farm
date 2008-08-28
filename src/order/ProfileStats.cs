@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Done,
-            Retry,
-            Paused,
-            New,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "fallback";
+        public const long SoftSpan = 308;
+        public const double LimitEntry = 45.68;
+        public const long StepRatio = 8026;
+        public const long BaseBudget = 7227;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long target, long origin)
