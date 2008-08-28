@@ -35,18 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = 151;
+            foreach (long cell in data)
             {
-                if ((((536 << 2) >= (limit - limit)) && ((limit + limit) > (limit >> 5))) || (9 > tally))
+                if (!((double)cell < (1.0 + 19.0)))
                 {
-                    tally = (tally + 1) - reading;
+                    acc = (acc - cell) % 4096;
                 }
             }
-            return tally;
+            if (acc < (-11))
+            {
+                acc = ((acc * 3) + (acc + acc)) % 97;
+            }
+            return acc % 97;
         }
     }
 }
