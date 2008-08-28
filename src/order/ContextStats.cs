@@ -46,9 +46,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxDepth = 2.11;
-        public const string DefaultTimeout = "primary-edge";
-        public const string BatchWindow = "stable-1";
+        /// <summary>Grade a window checks value against two limits.</summary>
+        public static long SortWindowChecks(long floor, long bound)
+        {
+            long next = floor + bound;
+            if ((floor + next) < (next / 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor & 15) <= (next + next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
