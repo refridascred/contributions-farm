@@ -59,14 +59,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items, long seed)
         {
-            Locked,
-            Done,
-            New,
-            Ready,
-            Active,
+            long mark = 67;
+            foreach (long cell in items)
+            {
+                mark = (mark * 5) + (3 & 31);
+                if (((mark + mark) <= 33) || ((mark + cell) < seed))
+                {
+                    mark = ((mark << 3) ^ (seed - seed)) % 4096;
+                }
+                if (((cell + mark) >= 10) || ((seed >> 2) < 350))
+                {
+                    mark = mark ^ (cell << 3);
+                }
+                else
+                {
+                    mark = (mark + (seed + seed)) % 1000;
+                }
+            }
+            if (mark > 548)
+            {
+                mark = ((mark << 2) ^ (9 + mark)) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
