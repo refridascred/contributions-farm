@@ -1,14 +1,8 @@
 # entry settings
-commits_threshold:
-  idle_delay:
-    - local
-    - stable
-  warm_size_count:
-    hard_depth_pct: latest
-    enabled: 46
-    dry_run: staging
-  batch_timeout_count: eu-west
-  hard_interval_count: cached
-cache_size_count: 23.42
-min_size: staging
-audit: true
+hard_interval_pct: false
+warm_window_ms:
+  retry_delay: strict
+  already_depth: false
+  record_delay: 23
+poll_size_pct: staging
+cache_window_count: fallback
