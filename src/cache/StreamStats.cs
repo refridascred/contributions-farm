@@ -39,11 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxBudget = 1187;
-        public const long BatchNotes = 3259;
-        public const string DefaultCount = "standard-edge";
-        public const long BaseScore = 1889;
-        public const long WindowNotes = 9376;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
