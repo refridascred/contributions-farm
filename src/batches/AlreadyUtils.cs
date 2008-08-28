@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 60.75;
-        public const long SoftContributi = 2574;
-        public const long HardWidth = 3399;
-        public const long BatchSpan = 2;
-        public const long IdleContributi = 1107;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Stale,
+            Closed,
+            Draft,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutOutliers(long[] data, long offset)
