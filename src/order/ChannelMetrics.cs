@@ -20,23 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            double mean = scale;
-            if (mean >= (double)62)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (floor - floor);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean * 3.25)) + (double)(long)i;
-            }
-            return mean + (6.0 / 8.0);
+            return tally;
         }
 
         /// <summary>Hold a metric info.</summary>
