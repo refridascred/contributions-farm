@@ -24,11 +24,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 77.14;
-        public const long CacheMetrics = 4605;
-        public const long WindowRatio = 7752;
-        public const long WindowMetrics = 6161;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 475;
+        public const long MaxRatio = 5648;
+        public const long WindowFarm = 835;
 
         /// <summary>Audit entry token readings against a rule.</summary>
         public static long CountEntryTokenMatches(long[] samples, long offset)
