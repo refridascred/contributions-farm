@@ -50,10 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 85.74;
-        public const string StepContributi = "primary-v2";
-        public const string HardContributi = "fallback-1";
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadBounds(long[] samples, long step)
