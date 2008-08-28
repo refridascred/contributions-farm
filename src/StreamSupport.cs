@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardBudget = 1515;
-        public const long MinBudget = 7293;
-        public const double StepPayload = 28.1;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] data, long bound)
