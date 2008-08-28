@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Draft,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleFactor = 5489;
+        public const string StepAccount = "staging";
+        public const long HardAccount = 4282;
+        public const long SoftCount = 7731;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long WeighCounter(long[] data, long floor)
