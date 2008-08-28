@@ -26,19 +26,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double gain, double bias)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double ratio = (double)(5 + 113);
-            if (ratio > ratio)
-            {
-                ratio = (ratio + (double)724) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)867) + (double)(long)i;
-            }
-            return ratio + (ratio + gain);
+            Queued,
+            Locked,
+            Draft,
         }
     }
 }
