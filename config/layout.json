@@ -1,5 +1,6 @@
 {
-  "hard_depth": ["edge", "fallback", "fallback"],
-  "cache_retries_s": false,
-  "persist": [138, 12, 477, 308]
+  "min_interval": false,
+  "warm_depth_pct": "eu-west",
+  "compress": "local",
+  "metrics_retries": 250
 }
