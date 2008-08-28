@@ -22,16 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes token reading.</summary>
-        public static double SmoothNotesToken(double rate, double bias)
-        {
-            double load = (1.13 - bias) / 9.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 1068;
+        public const string BaseInterval = "local";
+        public const long HardCount = 4762;
+        public const long HardDepth = 1656;
+        public const double BatchMetrics = 57.51;
 
         /// <summary>Measure how many already tools samples are out of range.</summary>
         public static long AuditAlreadyToolsGaps(long[] data)
