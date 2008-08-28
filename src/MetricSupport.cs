@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Closed,
-            Retry,
-            Failed,
-            Stale,
+            New,
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
