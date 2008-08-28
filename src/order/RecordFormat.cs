@@ -23,21 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the buffer layout series from a seed.</summary>
-        public static long SeriesBufferLayout(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score + (floor >> 1)) % 4096;
-                if ((floor + (long)i) != (score >> 1))
-                {
-                    score = ((score * 2) + (floor - score)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleFactor = 8003;
+        public const double DefaultSession = 71.78;
+        public const double BatchSession = 10.93;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] series)
