@@ -33,17 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -241;
+            foreach (long value in data)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (score & 63)) + value;
+                score = ((score * 2) + (42 + score)) % 4096;
             }
-            return -1;
+            if (score < 6)
+            {
+                score = score + score;
+            }
+            return score;
         }
     }
 }
