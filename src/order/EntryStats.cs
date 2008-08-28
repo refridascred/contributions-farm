@@ -29,11 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 5164;
-        public const double BatchInterval = 37.38;
-        public const string IdleRecord = "strict-v2";
-        public const double IdleTimeout = 23.22;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((-4) - tally) == (entry & 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long step, long limit)
