@@ -42,18 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)count > (5.73 * 1.17))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
