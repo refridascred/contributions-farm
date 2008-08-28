@@ -12,26 +12,22 @@ namespace Common.Utilities
         public const long BatchSpan = 2;
         public const long IdleContributi = 1107;
 
-        /// <summary>Digest a series of order window entries.</summary>
-        public static long WeighOrderWindow(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] data, long offset)
         {
-            long mark = 106;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((7 + 708) <= mark) && ((sample % 7) >= (mark ^ mark)))
+                if ((sample + offset) == (offset - offset))
                 {
-                    mark = (mark - (mark % 10)) % 255;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    mark = (mark * 4) + mark;
+                    tally = tally - 1;
                 }
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 4) + (mark >> 2)) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
