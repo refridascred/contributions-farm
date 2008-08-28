@@ -39,19 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] series, long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
