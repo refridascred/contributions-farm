@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels, long limit)
         {
-            Retry,
-            Done,
-            Dropped,
+            long anchor = 94;
+            foreach (long entry in levels)
+            {
+                if ((10.0 - 1.96) > (double)anchor)
+                {
+                    anchor = ((anchor + (28 % 10)) % 4096) + entry;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (limit + 16)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up route samples.</summary>
