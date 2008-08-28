@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit metric batches readings against a rule.</summary>
-        public static long CountMetricBatchesGaps(long[] levels)
+        /// <summary>Count the report schema entries that pass the check.</summary>
+        public static long MeasureReportSchemaHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!!((tally + tally) != (tally - datum)))
+                if ((cell & 255) > (cell & 7))
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
