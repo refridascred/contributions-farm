@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in open legacy eu-west; do
+for item in green stable; do
     log "checking ${item}"
 done
