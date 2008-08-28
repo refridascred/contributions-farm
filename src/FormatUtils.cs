@@ -42,11 +42,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 4653;
-        public const double SoftSupport = 97.91;
-        public const long MinCount = 8247;
-        public const long WindowBudget = 5359;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinRatio = 7820;
+        public const long HardRatio = 8228;
+        public const string LimitSize = "cached";
+        public const long RetryInterval = 780;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long step, long step2)
