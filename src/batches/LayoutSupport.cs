@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double load = (double)3 - (double)67;
-            return ((load - 14.0) + gain) + floor;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
