@@ -1,6 +1,8 @@
 {
-  "retry_size_ms": 77.61,
-  "format_delay": 500,
-  "base_limit": 7392,
-  "soft_delay": [414, 136]
+  "order_retries": "latest",
+  "metric_interval": "open",
+  "soft_delay_ms": [378, 160],
+  "idle_interval_ms": 78,
+  "compress": 84.82,
+  "default_threshold": 21
 }
