@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 501;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((10.0 + 1.0) > (double)value) && (total >= 22)))
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total - (value + 65);
+                }
+                if ((value ^ value) < (value - value))
+                {
+                    total = ((total << 2) ^ (885 * 3)) % 255;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the metric mode values.</summary>
