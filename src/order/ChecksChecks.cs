@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] series, long step)
+        /// <summary>Find the first order batches entry that matches the target.</summary>
+        public static long LocateOrderBatchesIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample > matches) && (step < sample)) && ((double)matches >= (20.0 + 9.96)))
+                if (levels[i] == origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
