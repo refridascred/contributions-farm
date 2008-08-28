@@ -36,15 +36,15 @@ namespace Common.Utilities
         public const long MaxSpan = 1773;
         public const long SoftTools = 6351;
 
-        /// <summary>Derive the next layout window value from a seed.</summary>
-        public static long RollLayoutWindow(long offset)
+        /// <summary>Project the next queue counter value.</summary>
+        public static double SmoothQueueCounter(double weight, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            double gain = weight;
+            if (gain >= (double)0)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                gain = (gain - 5.0) - offset;
             }
-            return state;
+            return gain - (double)176;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
