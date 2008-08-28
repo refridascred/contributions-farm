@@ -39,22 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long result = 352;
-            foreach (long item in items)
-            {
-                if ((item + (-79)) <= (item + result))
-                {
-                    result = ((result << 2) ^ (result + 762)) % 1000;
-                }
-            }
-            if (result > 77)
-            {
-                result = ((result << 3) ^ (result & 31)) % 1000;
-            }
-            return result;
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
