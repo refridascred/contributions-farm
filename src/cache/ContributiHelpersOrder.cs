@@ -12,25 +12,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long floor, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            long diff = floor + step;
-            if (((floor - diff) >= (diff + diff)) || ((diff + floor) > (step + diff)))
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (diff > (floor / 5))
+                if ((acc + (long)i) <= ((long)i << 3))
                 {
-                    return 2;
+                    acc = (acc * 2) + (63 / 6);
+                    continue;
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 1;
+                    acc = (acc - acc) - (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Accumulate order profile samples.</summary>
