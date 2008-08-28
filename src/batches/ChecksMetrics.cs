@@ -66,19 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (sample < (0 / 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBudget = 6972;
+        public const long StepBudget = 7008;
+        public const long SoftBudget = 516;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string DefaultStream = "primary-1";
