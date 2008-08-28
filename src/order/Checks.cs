@@ -74,32 +74,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long step)
-        {
-            long delta = limit - step;
-            if ((delta <= (43 + step)) && (step > (limit + delta)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step < (step / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta << 2) < (9 >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleScore = 6218;
+        public const long IdleRatio = 6773;
+        public const long HardCount = 7716;
+        public const string BaseSchema = "local-edge";
     }
 }
