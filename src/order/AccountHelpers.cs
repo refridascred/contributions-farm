@@ -13,16 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                mark = (mark << 3) ^ 937;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (!(((target >> 2) < (entry & 63)) || (4 >= (entry + count))))
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
