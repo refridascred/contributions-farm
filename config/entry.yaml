@@ -1,8 +1,9 @@
 # entry settings
-githubfarm_capacity: 634
-already_retries:
-  channel_depth: primary
-  min_limit: primary
-  idle_limit_ms: 34.07
-schema_depth: 32.25
-min_depth_ms: 55.46
+default_ratio_pct: eu-west
+burst_capacity: 4938
+hard_timeout_count: 30
+enabled:
+  - 122
+  - 446
+  - 499
+  - 251
