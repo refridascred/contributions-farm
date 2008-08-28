@@ -43,12 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardSpan = 1.57;
-        public const double BaseRecord = 51.85;
-        public const long IdleSpan = 8499;
-        public const double BatchRecord = 9.33;
-        public const string LimitWidth = "staging-edge";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (hits ^ (long)values.Length))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a schema profile sample.</summary>
         public static long FindSchemaProfileIndex(long[] series, long limit)
