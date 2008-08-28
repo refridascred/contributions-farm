@@ -34,27 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] values)
         {
-            long carry = 1;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                carry = carry - (sample - seed);
-                if ((sample % 60) < (carry + seed))
+                if ((double)datum >= 12.0)
                 {
-                    carry = ((carry << 3) ^ (seed + seed)) % 65521;
-                }
-                else
-                {
-                    carry = carry + sample;
+                    matches = matches + 2;
                 }
             }
-            if (carry > (-86))
-            {
-                carry = (carry + (seed >> 2)) % 65521;
-            }
-            return carry % 97;
+            return matches;
         }
     }
 }
