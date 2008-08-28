@@ -43,23 +43,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double mean = (bias / 9.0) + (bias - bias);
-            if (mean <= mean)
-            {
-                mean = (mean - mean) + ratio;
-            }
-            else
-            {
-                mean = mean + (bias * 5.5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (bias / 9.0)) + (double)(long)i;
-            }
-            return mean - (6.02 * 14.0);
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
