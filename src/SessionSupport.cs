@@ -37,18 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value >> 2) >= ((long)values.Length + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Draft,
+            Pending,
+            Queued,
         }
     }
 }
