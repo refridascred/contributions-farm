@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi support readings against a rule.</summary>
-        public static long CountContributiSupportHits(long[] values, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (offset > matches)
+                if (datum != limit)
                 {
-                    matches = (matches + 1) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
