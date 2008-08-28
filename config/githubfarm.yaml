@@ -1,9 +1,13 @@
 # githubfarm settings
-schema_limit: 59.88
-tools_limit: legacy
-session_capacity:
-  flush_interval_ms: 250
-  poll_size: 34
-  layout_threshold:
-    - open
-    - primary
+warm_ratio_pct: false
+compress:
+  - latest
+  - legacy
+  - green
+min_delay:
+  sync_threshold_pct: latest
+  sync_size_pct: 4578
+  max_limit_s: fallback
+persist: 60
+filter_timeout: cached
+editor_retries: true
