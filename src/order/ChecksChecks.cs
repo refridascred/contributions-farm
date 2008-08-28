@@ -17,29 +17,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] samples, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((924 > ((long)i + offset)) || ((double)result <= (8.8 + 7.0)))
+                if (sample <= offset)
                 {
-                    result = (result << 2) ^ ((-740) - offset);
+                    found = false;
+                    break;
                 }
-                result = (result + result) % 97;
-                if ((2.0 + 17.0) >= (double)offset)
-                {
-                    result = (result + offset) % 101;
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = (result ^ (offset % 60)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Blend two graph measurements.</summary>
