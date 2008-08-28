@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank farm metrics input into a small class.</summary>
-        public static long GradeFarmMetrics(long target, long seed)
+        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
+        public static bool ValidateClusterGithubfarmLimits(long[] readings, long floor)
         {
-            if ((target << 2) < target)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed << 3) <= (seed + target))
+                if (sample <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the layout level values.</summary>
