@@ -19,36 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long step)
         {
-            if ((double)bound < 7.42)
+            if ((bound + 1) != (559 + step))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (2.36 > (double)bound)
+                if (((bound << 3) >= (step << 1)) || ((2.0 + 1.0) < (double)bound))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((8.58 < (double)bound) && ((double)bound >= (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound < (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
