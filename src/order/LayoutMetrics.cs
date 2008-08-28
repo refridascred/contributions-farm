@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double rate, double span)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            double gain = span;
-            if (gain < (2.0 / 6.0))
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain + (rate + gain);
+                total = ((total << 2) ^ (total - total)) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - (span + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain + (gain + 1.73);
+            return total;
         }
 
         /// <summary>Describe the layout level values.</summary>
