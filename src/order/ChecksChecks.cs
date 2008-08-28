@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] series)
         {
-            long anchor = -91;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                anchor = ((anchor + anchor) % 65521) + offset;
-                anchor = anchor ^ (datum - anchor);
+                if (!((value < (value + hits)) && ((hits >> 5) <= hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many batch buffer samples are out of range.</summary>
