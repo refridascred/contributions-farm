@@ -33,22 +33,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 78;
+            foreach (long item in items)
             {
-                if ((218 + hits) > (cell % 10))
+                if ((mix & 15) <= (587 + item))
                 {
-                    hits = hits + 1;
+                    mix = ((mix << 3) ^ (mix + item)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = ((mix * 4) + (item * 2)) % 65521;
                 }
             }
-            return hits;
+            if (mix < 694)
+            {
+                mix = ((mix * 2) + (8 - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many stream record samples are out of range.</summary>
