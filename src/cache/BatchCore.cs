@@ -13,11 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double span)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long origin)
         {
-            double weight = (double)(2 >> 1);
-            return ((weight - (2.5 / 3.0)) + gain) + span;
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
