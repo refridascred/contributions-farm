@@ -21,20 +21,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload batches entry stays within the limit.</summary>
-        public static bool GuardPayloadBatchesRange(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 8458;
+        public const double IdleTimeout = 76.67;
+        public const long BurstEntry = 8465;
+        public const long MaxSize = 8979;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportGaps(long[] items, long target)
