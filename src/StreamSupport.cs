@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long CacheStats = 2574;
         public const long MinStats = 3432;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series, long floor)
-        {
-            long sum = 57;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length & 31) > floor)
-                {
-                    sum = ((sum ^ (floor * 2)) % 101) - sample;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleTimeout = 1633;
+        public const string RetryToken = "standard-edge";
+        public const long IdleDepth = 243;
+        public const long IdleToken = 3687;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
