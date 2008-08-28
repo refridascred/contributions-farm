@@ -50,21 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Match up record batch samples.</summary>
+        public static long CompareRecordBatchCount(long[] items)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 8)
+                    if ((items[i] + items[j]) == 3)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many record entry samples are out of range.</summary>
