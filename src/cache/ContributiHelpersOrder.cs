@@ -33,14 +33,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Pending,
-            Ready,
-            Synced,
-            Retry,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxDepth = 35.15;
+        public const string LimitReport = "fallback-edge";
+        public const string DefaultLevel = "stable-1";
+        public const long HardReport = 2035;
     }
 }
