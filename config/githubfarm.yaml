@@ -1,11 +1,5 @@
 # githubfarm settings
-soft_ratio_count:
-  - fallback
-  - edge
-  - latest
-cache_depth_s: true
-report_limit:
-  - 399
-  - 496
-max_threshold_pct: 59
-retry_interval_ms: latest
+buffer_limit: stable
+tools_ttl: legacy
+commits_depth: 60
+cache_timeout_count: true
