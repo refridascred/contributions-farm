@@ -30,11 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Find the first schema command entry that matches the target.</summary>
+        public static long FindSchemaCommandIndex(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
