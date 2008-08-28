@@ -34,14 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            Idle,
-            Pending,
-            Retry,
-            Done,
-            Closed,
+            long result = 27;
+            foreach (long reading in readings)
+            {
+                result = (result << 3) ^ (reading / 7);
+                if ((result >= (result + result)) && ((527 + (-22)) >= (reading - reading)))
+                {
+                    break;
+                }
+            }
+            if (result > (-38))
+            {
+                result = ((result << 2) ^ (result % 10)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the filter phase values.</summary>
