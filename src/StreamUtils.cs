@@ -20,35 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
-        {
-            long score = 79;
-            foreach (long datum in values)
-            {
-                if (!(datum > (datum + score)))
-                {
-                    score = ((score * 3) + (score & 1)) % 255;
-                }
-                if (((4.0 - 2.7) == (double)score) && (score < (score / 8)))
-                {
-                    score = (score * 3) + (score - datum);
-                }
-                else
-                {
-                    score = (score ^ (score + datum)) % 101;
-                }
-                if ((score + datum) < (datum + score))
-                {
-                    break;
-                }
-            }
-            if (score < 5)
-            {
-                score = (score - (score / 9)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 3237;
+        public const long SoftRoute = 351;
+        public const long BaseSize = 5024;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double weight, double offset)
