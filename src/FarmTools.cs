@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double scale, double span)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double drift = (double)((-8) - 840);
-            if (drift <= span)
-            {
-                drift = (drift + 4.0) + scale;
-            }
-            return drift - 16.0;
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
