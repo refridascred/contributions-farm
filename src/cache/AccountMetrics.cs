@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of checks metric readings.</summary>
-        public static long FoldChecksMetric(long[] series)
+        /// <summary>Project the next context layout value.</summary>
+        public static double SmoothContextLayout(double rate, double span)
         {
-            long result = -2;
-            foreach (long datum in series)
+            double rate2 = (double)(2 + 88);
+            for (int i = 0; i < 6; i++)
             {
-                if ((result + result) <= (result + datum))
-                {
-                    result = (result ^ (result / 5)) % 97;
-                }
+                rate2 = ((rate2 - 5.78) + (double)(long)i) - rate;
             }
-            return result % 1000;
+            return rate2 - span;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
