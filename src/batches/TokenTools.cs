@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double weight, double span)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long seed)
         {
-            double load = weight;
-            if (load < (span - load))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (double)86;
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)44;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
