@@ -67,32 +67,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cluster editor value against two limits.</summary>
-        public static long SortClusterEditor(long floor, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long diff = floor ^ offset;
-            if (diff < offset)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)diff < (14.0 * 5.53))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset - floor) == (offset * 4)) && ((offset % 3) < offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
