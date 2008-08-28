@@ -31,15 +31,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of stats farm entries.</summary>
-        public static long ScoreStatsFarm(long[] samples)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long mix = 54;
-            foreach (long cell in samples)
-            {
-                mix = (mix << 2) ^ cell;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
