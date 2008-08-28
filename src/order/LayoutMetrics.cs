@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double rate, double span)
         {
-            Failed,
-            Locked,
-            Done,
-            Paused,
+            double gain = span;
+            if (gain < (2.0 / 6.0))
+            {
+                gain = gain + (rate + gain);
+            }
+            else
+            {
+                gain = gain - (span + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain + (gain + 1.73);
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
