@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks stats readings against a rule.</summary>
-        public static long CountChecksStatsMatches(long[] data, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (((9.0 * 12.0) == (double)matches) || ((18 - 10) < (entry - offset)))
+                if (datum <= limit)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the schema status values.</summary>
