@@ -1,13 +1,15 @@
 # Command notes
 
-Keep buffer and layout names short and lowercase.
-The record module keeps checks values in sync with the schema cache.
+Each githubfarm is validated before it reaches the cluster queue.
+The metrics module keeps metric values in sync with the channel cache.
 
-Run the commits check before changing any format limits.
-A order that stays idle for too long is moved to the counter list.
+The batches report groups every payload by payload.
+When a layout fails, the schema handler retries a few times before giving up.
+Each stats is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new command fields
-- Log every metric change
-- Keep profile values small
+- Review notes limits each release
+- Keep buffer values small
+- Log every layout change
+- Validate batch input early
