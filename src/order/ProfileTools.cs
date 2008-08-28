@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 39.74;
-        public const long CacheBudget = 4772;
-        public const long MaxFarm = 5942;
-        public const long BurstFarm = 2193;
-        public const double BatchTimeout = 67.28;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Limit { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double bias, double bias2)
