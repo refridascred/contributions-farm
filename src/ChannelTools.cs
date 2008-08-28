@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 71.16;
-        public const string DefaultLayout = "primary-v2";
-        public const double MinLevel = 34.06;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long seed, long floor)
+        {
+            long cur = seed ^ floor;
+            if (((floor % 3) <= (floor ^ seed)) && ((seed - 3) <= cur))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor > (459 - 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((91 ^ seed) >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] levels)
