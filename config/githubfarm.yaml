@@ -1,25 +1,8 @@
 # githubfarm settings
-enabled: cached
-poll_threshold_pct: open
-cache_window_count: 4121
-poll_depth_ms:
-  warm_limit_s: 100
-  audit: 9275
-  hard_timeout_s:
-    base_capacity: 7.14
-    cache_retries_pct: false
-    burst_ratio_s: false
-  default_depth_pct: 86.35
-min_depth_count:
-  sync_capacity:
-    persist: false
-    poll_capacity_s: 1
-    layout_ttl: 5799
-  readonly: cached
-  flush_interval_s: 2191
-  soft_depth_count: strict
-  report_window: latest
-  compress: 51
-checks_ratio:
-  - 237
-  - 123
+base_interval_pct:
+  - 335
+  - 328
+  - 362
+readonly: 81
+order_ratio: 35
+burst_depth: false
