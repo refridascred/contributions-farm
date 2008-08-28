@@ -1,15 +1,15 @@
 # Command notes
 
-The farm module keeps route values in sync with the payload cache.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often payload data is refreshed.
+A commits that stays idle for too long is moved to the farm list.
+The stats module keeps account values in sync with the counter cache.
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Run the counter check before changing any filter limits.
-Keep batch and farm names short and lowercase.
+Each support is validated before it reaches the window queue.
+Use queue settings to tune how often editor data is refreshed.
+Use format settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every route change
-- Keep account values small
-- Document new profile fields
+- Validate account input early
+- Review buffer limits each release
+- Prefer order defaults
