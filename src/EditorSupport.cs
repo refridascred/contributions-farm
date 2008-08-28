@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheWidth = "alpha-v2";
-        public const long IdleLayout = 9101;
-        public const long SoftTimeout = 956;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values, long step)
+        {
+            long state = 994;
+            foreach (long value in values)
+            {
+                state = (((state << 3) ^ (step * 4)) % 101) ^ value;
+            }
+            return state;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double BlendCommits(double rate, double span)
