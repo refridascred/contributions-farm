@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] readings, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seen <= (datum / 8))
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
