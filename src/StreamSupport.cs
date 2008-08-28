@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix * 4) + (mix + seed);
-                mix = (mix - (seed * 4)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxInterval = 30.72;
+        public const double CacheCounter = 92.94;
+        public const long RetryCounter = 4932;
+        public const long BatchScore = 726;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsHits(long[] data, long floor)
