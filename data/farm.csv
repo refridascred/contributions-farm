@@ -1,6 +1,8 @@
-id,count,region,token,label
-1,latest,199,74.79,924
-2,12.62,65.19,eu-west,cached
-3,fallback,stable,latest,23.06
-4,984,latest,74.29,338
-5,603,4.44,legacy,698
+id,active,owner
+1,399,67.08
+2,55.31,73.04
+3,824,98.46
+4,824,461
+5,759,8.71
+6,primary,85.11
+7,94.58,104
