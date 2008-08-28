@@ -13,17 +13,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first report route entry that matches the target.</summary>
-        public static long SeekReportRouteIndex(long[] series, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
