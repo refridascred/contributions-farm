@@ -17,24 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((acc + (long)i) <= ((long)i << 3))
-                {
-                    acc = (acc * 2) + (63 / 6);
-                    continue;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc - acc) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
