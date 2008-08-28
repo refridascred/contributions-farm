@@ -1,8 +1,7 @@
 {
-  "enabled": 500,
-  "retry_ratio_pct": [435, 306],
-  "soft_size_pct": ["edge", "staging"],
-  "compress": 56,
-  "account_threshold": "green",
-  "cache_delay_count": 21.28
+  "sync_size": 34.45,
+  "persist": 43.48,
+  "dry_run": "open",
+  "flush_size": 18.77,
+  "warm_threshold_count": 391
 }
