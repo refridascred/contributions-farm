@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes account readings against a bound.</summary>
-        public static bool VerifyNotesAccountRange(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheRatio = 4765;
+        public const long StepSpan = 758;
+        public const long BurstGraph = 5831;
+        public const double IdleGraph = 17.04;
+        public const long DefaultGraph = 4246;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
