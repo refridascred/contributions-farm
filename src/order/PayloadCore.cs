@@ -23,35 +23,32 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long limit)
         {
-            long result = -40;
-            foreach (long cell in values)
+            long span = step + limit;
+            if (((limit / 3) > (step % 2)) || ((limit - 370) == (span - limit)))
             {
-                if (!((20.0 - 3.9) > (double)cell))
+                return 4;
+            }
+            else
+            {
+                if (!((8 << 2) < (step + step)))
                 {
-                    result = (result + (cell & 63)) % 1000;
-                }
-                result = (result + (result << 3)) % 255;
-                if ((cell > (cell + (long)values.Length)) || ((959 >> 4) == (6 - result)))
-                {
-                    result = (result + (cell + cell)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (cell + 70)) % 65521;
-                }
-                if ((743 + result) != (cell - 99))
-                {
-                    break;
+                    if (19.0 > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (result < (-51))
-            {
-                result = (result + (result % 7)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
