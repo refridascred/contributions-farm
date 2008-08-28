@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Iterate the queue route series from a seed.</summary>
+        public static long SeriesQueueRoute(long offset)
         {
-            long acc = 488;
-            foreach (long entry in data)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (acc ^ (entry + acc)) % 97;
-                acc = (acc ^ (7 % 3)) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
