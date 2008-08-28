@@ -26,17 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 3) + (24 - sum)) % 1000;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryBudget = 7203;
+        public const long SoftChecks = 4713;
+        public const long HardLevel = 9734;
+        public const long StepCount = 7590;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
