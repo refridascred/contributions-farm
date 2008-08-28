@@ -24,21 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Derive the next commits cache value from a seed.</summary>
+        public static long RollCommitsCache(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (total <= 328)
                 {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (total >> 5)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
