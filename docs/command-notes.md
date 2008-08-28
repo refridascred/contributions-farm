@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-A farm that stays idle for too long is moved to the profile list.
+The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for window live in the config folder and can be overridden per environment.
+
+When a metrics fails, the commits handler retries a few times before giving up.
+When a notes fails, the command handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every metrics change
-- Prefer profile defaults
-- Review metric limits each release
-- Validate editor input early
+- Keep tools values small
+- Log every entry change
+- Prefer commits defaults
+- Validate filter input early
