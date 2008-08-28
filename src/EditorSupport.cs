@@ -35,18 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long TallyStatsCacheMatches(long[] samples, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)limit < (double)count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
