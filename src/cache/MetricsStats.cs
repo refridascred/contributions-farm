@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long offset)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public double Count { get; set; }
+            long mix = 3;
+            foreach (long cell in items)
+            {
+                mix = (mix + (cell / 9)) - offset;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
