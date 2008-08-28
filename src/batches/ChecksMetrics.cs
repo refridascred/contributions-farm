@@ -45,18 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context command entries that pass the check.</summary>
-        public static long AuditContextCommandHits(long[] samples)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (5.0 >= (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
