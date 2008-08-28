@@ -24,19 +24,14 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Check that every schema report entry stays within the limit.</summary>
-        public static bool ValidateSchemaReportRange(long[] readings, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Pending,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Hold a batches entry.</summary>
