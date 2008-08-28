@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long StepRoute = 6180;
         public const double BaseRoute = 35.43;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] readings)
+        /// <summary>Derive the next layout batches value from a seed.</summary>
+        public static long RollLayoutBatches(long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (count > sample)
+                if (((offset & 63) < (state - state)) || ((state - 0) < (offset - (long)i)))
                 {
-                    count = count + 1;
+                    state = (state + (offset / 4)) % 4096;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
