@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Adjust a stream already reading.</summary>
+        public static double SmoothStreamAlready(double rate, double bias)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            double load = (double)239 + (double)469;
+            if (load > (double)940)
             {
-                if (!(((long)i == (total ^ floor)) || ((floor * 4) > (total - total))))
-                {
-                    total = (total << 2) ^ (floor ^ (long)i);
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                load = ((load - 4.7) - rate) + bias;
             }
-            return total;
+            else
+            {
+                load = load + 1.6;
+            }
+            return load - load;
         }
 
         /// <summary>Combine githubfarm metrics values into a single score.</summary>
