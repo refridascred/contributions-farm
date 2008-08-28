@@ -42,22 +42,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] samples)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen ^ seen) != (sample ^ seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Locked,
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate token window readings against a bound.</summary>
