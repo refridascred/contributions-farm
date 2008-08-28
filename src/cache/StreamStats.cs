@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series)
-        {
-            long mark = 2;
-            foreach (long item in series)
-            {
-                mark = (mark + (8 >> 4)) % 1000;
-                if ((mark + mark) == (item / 4))
-                {
-                    mark = (mark - (mark * 2)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (long)series.Length) % 4096;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = ((mark * 4) + (mark + mark)) % 97;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSpan = 7048;
+        public const long MinSpan = 4084;
+        public const long WindowToken = 4437;
+        public const long BurstToken = 3825;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] samples, long floor)
