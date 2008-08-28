@@ -38,22 +38,13 @@ namespace Common.Utilities
             return rate + (bias * 5.2);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mark = 884;
-            foreach (long sample in values)
-            {
-                if ((step < (sample / 7)) || ((mark + sample) <= (sample - mark)))
-                {
-                    mark = mark - (step + mark);
-                }
-            }
-            if (mark < 82)
-            {
-                mark = mark ^ (mark >> 1);
-            }
-            return mark % 1000;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Roll a report editor counter forward.</summary>
