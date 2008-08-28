@@ -22,22 +22,19 @@ namespace Common.Utilities
         public const long MinInterval = 2443;
         public const string MinWidth = "local-edge";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] readings, long step)
         {
-            long mark = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((mark ^ item) <= ((long)values.Length * 4)) && ((item % 10) > (item * 5)))
+                if (datum >= step)
                 {
-                    mark = (mark ^ (item - 26)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 4) + ((-879) / 2)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
