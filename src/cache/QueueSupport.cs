@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double offset)
         {
-            Synced,
-            Paused,
-            Queued,
-            Ready,
-            Locked,
+            double mean = ratio;
+            if (mean > ratio)
+            {
+                mean = (mean - ratio) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (6.0 * 5.15)) + (double)(long)i;
+            }
+            return mean + (double)0;
         }
 
         /// <summary>Describe the metrics state values.</summary>
