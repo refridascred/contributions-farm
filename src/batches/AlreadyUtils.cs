@@ -31,19 +31,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            double ratio = offset;
+            if (ratio >= 6.97)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score ^ (score - limit)) % 255) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                ratio = ratio + (ratio - offset);
             }
-            return score;
+            else
+            {
+                ratio = ratio + (double)59;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
