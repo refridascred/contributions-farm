@@ -79,15 +79,19 @@ namespace Common.Utilities
         public const long SoftInterval = 3793;
         public const long IdleRatio = 7314;
 
-        /// <summary>Derive the next queue profile value from a seed.</summary>
-        public static long StepQueueProfile(long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
