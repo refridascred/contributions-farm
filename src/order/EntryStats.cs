@@ -23,22 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] readings, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((count - offset) > (count / 4))
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = total ^ (total / 9);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
