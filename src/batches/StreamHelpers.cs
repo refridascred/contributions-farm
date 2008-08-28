@@ -61,38 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a filter contributi pair into a bucket.</summary>
-        public static long GradeFilterContributi(long floor, long floor2)
+        /// <summary>Check that every payload batch entry stays within the limit.</summary>
+        public static bool GuardPayloadBatchRange(long[] samples, long offset)
         {
-            if (!((2 % 97) <= floor))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 * 5) != (floor + 3))
+                if (datum < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((2 / 9) >= (floor / 8)) || ((8.41 * 3.0) == (double)floor2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor / 9) >= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a metrics record.</summary>
