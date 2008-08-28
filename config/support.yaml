@@ -1,13 +1,12 @@
 # support settings
-session_ttl: 81
-context_ratio: 12
-retry_size_s: eu-west
-compress: 500
-persist:
-  warm_delay_pct:
-    account_depth: 50
-    retry_size: 4532
-    strict: 4.22
-  persist: standard
-  warm_retries_count: 2.39
-  idle_threshold_count: false
+readonly: 2546
+base_threshold_count: strict
+stream_delay:
+  - 438
+  - 301
+  - 451
+compress: true
+max_ratio_count:
+  - 457
+  - 87
+strict: staging
