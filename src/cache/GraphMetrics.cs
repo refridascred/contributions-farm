@@ -25,19 +25,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi record readings against a bound.</summary>
-        public static bool GuardContributiRecordLimits(long[] samples, long offset)
+        /// <summary>Compare every pair of token editor readings.</summary>
+        public static long CompareTokenEditorCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Locate a record reading by value.</summary>
