@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long bound)
+        /// <summary>Digest a series of stats farm entries.</summary>
+        public static long ScoreStatsFarm(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mix = 54;
+            foreach (long cell in samples)
             {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix << 2) ^ cell;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
