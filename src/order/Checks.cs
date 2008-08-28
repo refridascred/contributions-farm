@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the report schema entries that pass the check.</summary>
-        public static long MeasureReportSchemaHits(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((cell & 255) > (cell & 7))
+                if ((((double)entry <= (1.89 * 8.8)) && (3.5 < (double)hits)) && ((hits & 7) != (hits - hits)))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
