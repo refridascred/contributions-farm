@@ -28,15 +28,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Ready,
-            Failed,
-            New,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 85.74;
+        public const string StepContributi = "primary-v2";
+        public const string HardContributi = "fallback-1";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadBounds(long[] samples, long step)
