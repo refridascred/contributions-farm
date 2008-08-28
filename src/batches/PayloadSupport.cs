@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data, long origin)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            long carry = 4;
-            foreach (long sample in data)
+            double mean = (double)(99 + 2);
+            if (mean >= mean)
             {
-                if (((origin + origin) > (sample + origin)) && ((sample % 7) >= sample))
-                {
-                    carry = ((carry * 4) + origin) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ ((-4) + carry)) % 65521;
-                }
+                mean = (mean + (17.0 * 9.9)) - span;
             }
-            return carry;
+            else
+            {
+                mean = mean + (rate * 3.83);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - (mean * 2.4);
         }
 
         /// <summary>Roll a context counter forward.</summary>
