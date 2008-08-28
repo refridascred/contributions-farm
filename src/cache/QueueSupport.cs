@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftDepth = 5831;
-        public const double SoftCounter = 35.9;
-        public const long BurstFactor = 8271;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((floor * 3) > (floor + (long)i))
+                {
+                    carry = (carry << 3) ^ (carry << 1);
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] samples)
