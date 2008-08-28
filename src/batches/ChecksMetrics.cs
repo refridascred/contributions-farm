@@ -34,26 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long acc = 775;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item - acc) < acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc << 2) ^ item;
-                }
-                else
-                {
-                    acc = (acc - (acc >> 3)) % 65521;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 888)
-            {
-                acc = ((acc * 5) + acc) % 101;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
