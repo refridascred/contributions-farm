@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long step)
         {
-            if ((double)origin == (3.72 + 16.0))
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 3) > (origin + seed))
+                if (datum < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed >> 4) >= (origin - seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.77 * 5.55) <= (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Project the next command value.</summary>
