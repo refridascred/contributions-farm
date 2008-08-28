@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Fold a list of channel notes readings.</summary>
+        public static long TotalChannelNotes(long[] values, long bound)
         {
-            Pending,
-            Locked,
-            Queued,
+            long mix = 40;
+            foreach (long cell in values)
+            {
+                mix = (mix - bound) % 1000;
+                if ((bound / 7) < (cell % 5))
+                {
+                    mix = mix ^ (mix << 2);
+                }
+                else
+                {
+                    mix = (mix - bound) % 255;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
