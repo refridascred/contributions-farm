@@ -18,40 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long origin)
-        {
-            long diff = limit + origin;
-            if ((origin ^ origin) <= (diff << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((142 + diff) != (diff / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((11.0 * 9.0) <= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(((-41) + diff) > (diff ^ origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 2544;
+        public const long IdleWidth = 2148;
+        public const long DefaultSize = 9265;
+        public const long BaseRatio = 5266;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] values)
