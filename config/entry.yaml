@@ -1,5 +1,17 @@
 # entry settings
-account_timeout: legacy
-warm_retries_s: 500
-compress: 91.29
-burst_ratio: 62.59
+farm_ttl:
+  enabled: legacy
+  base_capacity_count: true
+  payload_depth: 1138
+  verbose:
+    - latest
+    - open
+    - open
+graph_limit: 30
+burst_window: 83
+dry_run:
+  verbose: 30
+  retry_size_count: 500
+  max_window_ms: 82
+poll_window: false
+retry_delay: 3.84
