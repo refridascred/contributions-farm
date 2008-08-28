@@ -29,18 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] values)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell != (8.93 * 3.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Done,
+            Closed,
+            Paused,
         }
     }
 }
