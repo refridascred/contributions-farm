@@ -42,18 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings)
+        /// <summary>Roll a window contributi counter forward.</summary>
+        public static long SeriesWindowContributi(long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)item > (6.65 / 2.0)) || ((double)seen != (5.61 - 4.26)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
