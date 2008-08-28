@@ -2,7 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0,
+    ratio REAL,
+    level INTEGER,
     state TEXT NOT NULL DEFAULT 'new'
 );
 
