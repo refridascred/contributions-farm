@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 4;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((10.0 - 6.0) == (double)datum))
                 {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 3) ^ 74;
+                    break;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+                if ((278 + datum) == (datum >> 4))
+                {
+                    mix = mix ^ (datum + mix);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ datum) % 255;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
