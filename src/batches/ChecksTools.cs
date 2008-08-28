@@ -16,11 +16,16 @@ namespace Common.Utilities
             return gain2 + (double)0;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 1419;
-        public const double IdleSchema = 66.36;
-        public const long CacheBudget = 1646;
-        public const long LimitSchema = 8751;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data)
+        {
+            long sum = 431;
+            foreach (long reading in data)
+            {
+                sum = (((sum << 2) ^ (sum & 1)) % 4096) - reading;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long IterateRecord(long limit)
