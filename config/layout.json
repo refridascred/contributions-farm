@@ -1,5 +1,8 @@
 {
-  "soft_depth_ms": "strict",
-  "burst_limit_count": 250,
-  "cluster_timeout": [158, 83, 380]
+  "payload_capacity": ["stable", "blue", "fallback"],
+  "poll_threshold": "standard",
+  "idle_delay": true,
+  "idle_limit_ms": "open",
+  "enabled": 65,
+  "readonly": "edge"
 }
