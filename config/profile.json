@@ -1,6 +1,7 @@
 {
-  "audit": false,
-  "payload_window": ["open", "fallback", "strict"],
-  "burst_threshold_pct": false,
-  "entry_delay": 52
+  "max_limit": [435, 374],
+  "hard_ttl": 8861,
+  "sync_size": 55,
+  "audit": 100,
+  "enabled": [241, 220]
 }
