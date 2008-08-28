@@ -51,11 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long origin)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            if (((origin >> 1) > seed) && ((double)origin != (3.0 / 9.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed < (origin - seed)) || ((origin * 5) < (seed * 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
