@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
