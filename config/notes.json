@@ -1,11 +1,18 @@
 {
-  "hard_capacity": {
-    "burst_window_ms": 0.1,
-    "cache_size_s": [483, 237, 467],
-    "profile_interval": 14,
-    "base_interval_pct": false
+  "sync_depth": 250,
+  "verbose": "blue",
+  "poll_window": false,
+  "hard_timeout_ms": "latest",
+  "graph_retries": {
+    "compress": ["cached", "local"],
+    "context_threshold": [21, 184, 454, 116],
+    "idle_ratio_count": false,
+    "dry_run": {
+      "verbose": true,
+      "token_retries": 500,
+      "default_limit_s": 250,
+      "default_limit": 500
+    }
   },
-  "hard_ratio": 57.09,
-  "farm_capacity": [345, 287],
-  "max_window": "primary"
+  "base_size_s": 14
 }
