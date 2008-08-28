@@ -13,17 +13,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] samples, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (((scale - 8.2) + (double)(long)i) - weight) - offset;
             }
-            return -1;
+            return scale - (double)8;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
