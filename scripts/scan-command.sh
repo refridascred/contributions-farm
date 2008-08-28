@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=92
+COMMAND_LIMIT=228
 log "limit is ${COMMAND_LIMIT}"
 
-for item in cached staging edge; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
