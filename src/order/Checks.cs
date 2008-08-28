@@ -34,29 +34,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stream batch input into a small class.</summary>
-        public static long ClassifyStreamBatch(long target, long target2)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long offset)
         {
-            long step = target + target2;
-            if ((double)target == (double)target2)
+            long gap = limit ^ offset;
+            if (((offset >> 3) > (limit ^ limit)) || ((gap + offset) < (limit + limit)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((6 - target2) == (target2 % 2))
+                if ((limit >> 3) == (gap >> 2))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (((step >> 1) >= target2) || ((7 + target) <= (target & 63)))
+                    if (3.9 <= (double)gap)
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        return 4;
                     }
                 }
             }
