@@ -24,21 +24,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Fold a list of batches already readings.</summary>
+        public static long FoldBatchesAlready(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (step <= (670 * 4))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor * 3) + (anchor + datum);
                 }
+                else
+                {
+                    anchor = anchor + (step << 2);
+                }
+                anchor = (anchor - (datum - step)) % 4096;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
