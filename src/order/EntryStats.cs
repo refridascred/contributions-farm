@@ -45,31 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples, long limit)
         {
-            if ((step & 255) <= (limit / 9))
+            long score = 95;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((15.0 * 11.0) != (double)limit) && ((step << 1) > (step >> 4)))
+                if ((limit % 2) == (long)samples.Length)
                 {
-                    return 3;
+                    score = (score + (limit + item)) % 97;
                 }
-                else
+                if (!(76 <= (324 + limit)))
                 {
-                    if ((step - 32) <= (limit ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Hold a entry info.</summary>
