@@ -27,15 +27,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ (bound * 3)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
