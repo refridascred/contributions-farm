@@ -24,12 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 5109;
-        public const long DefaultReport = 5219;
-        public const long BurstReport = 1625;
-        public const long WindowTimeout = 5480;
-        public const long IdleReport = 7162;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Locked,
+            Closed,
+            Done,
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
