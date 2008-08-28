@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] levels, long origin)
         {
-            long anchor = -354;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                anchor = (anchor << 2) ^ (anchor & 15);
-                if ((sample & 1) <= (sample + anchor))
+                if (datum > (datum + 633))
                 {
-                    break;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
