@@ -68,26 +68,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] data, long step)
         {
-            long total = 49;
-            foreach (long reading in series)
+            long mark = 234;
+            foreach (long datum in data)
             {
-                if ((total - total) == (total << 1))
-                {
-                    total = total ^ (long)series.Length;
-                }
-                else
-                {
-                    total = (total - (total + total)) % 4096;
-                }
-                if (reading >= (total - 327))
-                {
-                    break;
-                }
+                mark = (mark - datum) + step;
             }
-            return total % 97;
+            if (mark < 5)
+            {
+                mark = ((mark * 5) + mark) % 255;
+            }
+            return mark;
         }
     }
 }
