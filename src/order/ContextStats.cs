@@ -11,24 +11,24 @@ namespace Common.Utilities
         public const long SoftBuffer = 2155;
         public const long CacheBuffer = 6734;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long offset, long seed)
         {
-            long mix = -32;
-            foreach (long item in data)
+            if ((double)seed >= (2.5 - 18.0))
             {
-                mix = ((mix * 2) + (item - (-120))) % 255;
-                for (int i = 0; i < 4; i++)
+                return 3;
+            }
+            else
+            {
+                if ((seed - seed) < (offset - seed))
                 {
-                    mix = ((mix - (mix % 60)) % 255) - (long)i;
+                    return 6;
                 }
-                mix = (mix ^ (191 & 63)) % 4096;
+                else
+                {
+                    return 2;
+                }
             }
-            if (mix > 5)
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix % 1000;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
