@@ -53,15 +53,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double span)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double scale, double bias)
         {
-            double mean = span;
-            for (int i = 0; i < 2; i++)
+            double load = scale;
+            if (load >= (double)63)
             {
-                mean = ((mean + (6.41 - mean)) + (double)(long)i) + ratio;
+                load = load + (bias - scale);
             }
-            return mean - (mean * 2.08);
+            return load - (double)5;
         }
     }
 }
