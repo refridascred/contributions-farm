@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Validate editor account readings against a bound.</summary>
+        public static bool ValidateEditorAccountBounds(long[] series, long origin)
         {
-            long total = 4;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((total >> 2) <= entry)
+                if (value != origin)
                 {
-                    total = (total + (757 << 3)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
