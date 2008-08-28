@@ -14,12 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 43.08;
-        public const long CacheCount = 5908;
-        public const double DefaultSpan = 4.71;
-        public const string IdleSize = "staging-1";
-        public const string LimitLevel = "stable-1";
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double floor)
+        {
+            double rate = (double)(415 >> 4);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - weight) - (double)(long)i;
+            }
+            return rate - (floor * 7.49);
+        }
 
         /// <summary>Derive the next batch stats value from a seed.</summary>
         public static long DeriveBatchStats(long origin)
