@@ -55,21 +55,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile queue pairs that satisfy a relation.</summary>
-        public static long MatchProfileQueueCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 2886;
+        public const long MinFactor = 1735;
+        public const double BaseScore = 14.97;
     }
 }
