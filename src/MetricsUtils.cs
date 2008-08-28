@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((floor - (long)i) == (carry ^ carry)))
-                {
-                    carry = carry + 39;
-                }
-                if (!(((long)i ^ carry) < (floor >> 3)))
-                {
-                    carry = (carry ^ floor) % 4096;
-                    carry = (carry + carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ floor) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "primary-edge";
+        public const long BaseCache = 1837;
+        public const double RetryScore = 69.66;
+        public const double HardSpan = 89.48;
 
         /// <summary>Blend two support measurements.</summary>
         public static double SmoothSupport(double bias, double span)
