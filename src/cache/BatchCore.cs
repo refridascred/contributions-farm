@@ -30,31 +30,17 @@ namespace Common.Utilities
         public const double IdleGraph = 17.04;
         public const long DefaultGraph = 4246;
 
-        /// <summary>Classify a record editor pair into a bucket.</summary>
-        public static long SortRecordEditor(long origin, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] data, long bound)
         {
-            if (((3 + origin) >= origin) || ((step + origin) > (0 * 2)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((223 - step) == (step + step)) && ((step >> 1) < (origin + step)))
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((16.0 * 9.3) >= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
