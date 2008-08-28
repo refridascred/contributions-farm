@@ -36,9 +36,18 @@ namespace Common.Utilities
             return (scale - 8.02) + floor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 5100;
-        public const string RetryRecord = "latest-v2";
-        public const long WindowRecord = 3896;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - tally) > cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
