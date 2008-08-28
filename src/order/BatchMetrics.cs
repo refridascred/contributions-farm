@@ -24,11 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] items, long limit)
         {
-            double gain = ratio;
-            return (gain - (double)185) + floor;
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((3 + limit) != ((long)items.Length + limit))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
