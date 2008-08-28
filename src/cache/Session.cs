@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] data)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count > (6.3 / 9.0))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            Stale,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
