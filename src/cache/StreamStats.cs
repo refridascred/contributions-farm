@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long WindowToken = 4437;
         public const long BurstToken = 3825;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 28.43;
+        public const double MinWidth = 34.75;
+        public const long StepRoute = 6180;
+        public const double BaseRoute = 35.43;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] readings)
