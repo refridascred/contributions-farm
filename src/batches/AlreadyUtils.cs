@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels, long seed)
         {
-            long score = 93;
-            foreach (long item in readings)
+            long mark = 2;
+            foreach (long cell in levels)
             {
-                if (item >= score)
-                {
-                    score = ((score << 2) ^ (score % 12)) % 1000;
-                }
+                mark = ((mark * 3) + 1) - cell;
             }
-            return score;
+            if (mark > 94)
+            {
+                mark = (mark * 5) + (mark + seed);
+            }
+            return mark % 97;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
