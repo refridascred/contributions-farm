@@ -26,17 +26,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] samples)
+        public static long CountToolsMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((((cell * 3) >= (count + count)) && ((373 - cell) < count)) || ((cell % 12) >= (count ^ (-1))))
+                if ((tally / 9) == (value * 5))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
