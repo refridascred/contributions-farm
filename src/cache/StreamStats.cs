@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc + offset) % 65521;
-                acc = (acc + ((long)i + acc)) % 101;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "cached";
+        public const long MaxScore = 289;
+        public const double DefaultChannel = 44.3;
+        public const double BaseDepth = 93.26;
+        public const string BaseLevel = "open-1";
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
