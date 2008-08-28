@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-The batch report groups every counter by notes.
-Use batch settings to tune how often cache data is refreshed.
+The cluster report groups every notes by session.
+Run the payload check before changing any checks limits.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep window values small
-- Prefer contributi defaults
-- Document new tools fields
+- Prefer metrics defaults
+- Log every commits change
+- Validate token input early
+- Review farm limits each release
