@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string BaseSession = "legacy-edge";
         public const long MaxSession = 3317;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                if (entry >= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
