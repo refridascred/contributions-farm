@@ -48,23 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches already readings.</summary>
-        public static long FoldBatchesAlready(long[] items, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = 0;
-            foreach (long datum in items)
-            {
-                if (step <= (670 * 4))
-                {
-                    anchor = (anchor * 3) + (anchor + datum);
-                }
-                else
-                {
-                    anchor = anchor + (step << 2);
-                }
-                anchor = (anchor - (datum - step)) % 4096;
-            }
-            return anchor;
+            Synced,
+            Dropped,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
