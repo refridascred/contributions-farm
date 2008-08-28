@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long WindowSpan = 8544;
         public const long MaxCount = 3819;
 
-        /// <summary>Fold a list of window already readings.</summary>
-        public static long WeighWindowAlready(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long mix = 807;
-            foreach (long item in series)
+            long anchor = 213;
+            foreach (long value in items)
             {
-                if (mix >= (194 ^ 842))
+                bool ready = !((16.0 - 9.0) < (double)value);
+                if (ready && ready)
                 {
-                    mix = mix - (mix ^ item);
+                    anchor = ((anchor << 3) ^ (value << 2)) % 4096;
                 }
-                mix = mix + (item - 3);
+                if (!((anchor + anchor) == (value + (-492))))
+                {
+                    anchor = ((anchor * 4) + 0) % 255;
+                }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a profile stats.</summary>
