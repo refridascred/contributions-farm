@@ -1,22 +1,7 @@
 # githubfarm settings
-retry_size: stable
-verbose:
-  token_window:
-    cache_depth_ms: 500
-    flush_retries: 996
-    flush_depth_ms:
-      - 159
-      - 285
-      - 322
-      - 129
-    hard_size_ms: 1493
-    channel_ratio: 43.75
-    window_retries: 9.63
-  sync_size_s: 54
-  cache_interval: edge
-graph_delay: 30
-readonly:
-  - fallback
-  - blue
-min_limit_pct: blue
-profile_timeout: cached
+burst_limit_s:
+  - 101
+  - 193
+  - 452
+poll_depth_ms: 4330
+idle_ttl_ms: standard
