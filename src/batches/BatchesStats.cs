@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every contributi editor entry stays within the limit.</summary>
+        public static bool VerifyContributiEditorLimits(long[] samples, long floor)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the batches phase values.</summary>
