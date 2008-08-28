@@ -33,15 +33,19 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double bias, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            double scale = 3.6 / 2.0;
+            if (scale <= (double)67)
             {
-                result = ((result * 3) + (long)i) % 101;
+                scale = ((scale - (scale / 2.0)) - bias) + offset;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (scale - 9.06);
         }
     }
 }
