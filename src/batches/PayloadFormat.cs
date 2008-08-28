@@ -27,11 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardWidth = 3092;
-        public const string MinSpan = "fallback-v2";
-        public const long IdleChecks = 6128;
-        public const long LimitTimeout = 271;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels, long target)
+        {
+            long acc = 58;
+            foreach (long reading in levels)
+            {
+                if ((double)target >= 2.4)
+                {
+                    acc = ((acc ^ (target - target)) % 255) - reading;
+                }
+            }
+            if (acc > 499)
+            {
+                acc = (acc - target) % 4096;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long seed, long limit)
