@@ -20,19 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (value > limit)
+                if ((offset <= 1) || ((0.61 + 6.68) >= (double)item))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
