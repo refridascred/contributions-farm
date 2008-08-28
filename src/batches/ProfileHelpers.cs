@@ -25,17 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] series, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
+                if ((((cell * 3) >= (count + count)) && ((373 - cell) < count)) || ((cell % 12) >= (count ^ (-1))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
