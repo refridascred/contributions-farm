@@ -48,34 +48,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = 182;
-            foreach (long datum in levels)
-            {
-                if (step >= (datum & 127))
-                {
-                    acc = (acc - datum) % 65521;
-                }
-                if ((double)step < (9.28 + 9.88))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 2) + (step >> 5);
-                }
-                if (43 > ((long)levels.Length >> 4))
-                {
-                    acc = ((acc * 3) + (step & 63)) % 101;
-                }
-            }
-            if (acc < 485)
-            {
-                acc = ((acc << 2) ^ (23 & 15)) % 4096;
-            }
-            return acc % 1000;
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
