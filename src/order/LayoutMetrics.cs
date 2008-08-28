@@ -37,9 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSize = 4649;
-        public const string IdleAccount = "stable-v2";
-        public const long SoftSpan = 2801;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Draft,
+            Dropped,
+            Done,
+            Pending,
+        }
     }
 }
