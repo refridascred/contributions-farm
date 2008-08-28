@@ -54,25 +54,17 @@ namespace Common.Utilities
         public const long MinRatio = 4751;
         public const double StepContributi = 35.87;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long floor, long bound)
+        /// <summary>Locate a route window reading by value.</summary>
+        public static long SeekRouteWindowIndex(long[] items, long step)
         {
-            long next = floor - bound;
-            if ((next << 1) != (7 ^ floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((17.0 / 5.0) < (double)next)
+                if ((items[i] == step) && ((items[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
