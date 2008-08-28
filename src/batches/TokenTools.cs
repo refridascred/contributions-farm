@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const long MinTimeout = 2450;
         public const long BurstRecord = 215;
 
-        /// <summary>Classify a queue payload pair into a bucket.</summary>
-        public static long ClassifyQueuePayload(long target, long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] readings, long bound)
         {
-            if (((floor & 15) > (target << 1)) && (26 > (floor * 5)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target / 2) < floor)
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
