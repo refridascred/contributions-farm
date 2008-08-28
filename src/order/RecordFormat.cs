@@ -39,18 +39,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] series)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((item <= (tally - tally)) || ((7.46 * 0.18) != (double)item)) && (item <= (tally - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
