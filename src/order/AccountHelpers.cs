@@ -13,19 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            double mean = span;
-            if (mean > ratio)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean - (double)862;
+                mark = (mark << 3) ^ 937;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean - ratio;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
