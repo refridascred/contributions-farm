@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Done,
-            Idle,
-            Dropped,
-            Pending,
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up context editor samples.</summary>
