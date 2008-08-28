@@ -40,25 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                long span = ((-6) << 3) / 2;
-                if (((span / 8) <= (span + span)) && ((sum % 8) > 472))
-                {
-                    sum = ((sum << 3) ^ span) % 97;
-                    span = (span - (span << 3)) % 255;
-                }
-                else
-                {
-                    sum = sum + 52;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Closed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
