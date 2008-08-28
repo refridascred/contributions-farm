@@ -1,5 +1,4 @@
 # githubfarm settings
-sync_size: 21
-batch_depth: true
-min_ttl_pct: legacy
-metrics_window: 84.91
+readonly: standard
+enabled: open
+entry_ttl: 9037
