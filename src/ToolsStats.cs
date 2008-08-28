@@ -76,15 +76,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format tools figure with a bias.</summary>
-        public static double AdjustFormatTools(double rate, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] values)
         {
-            double drift = 12.0;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                drift = (((drift + 3.24) + (double)(long)i) + rate) - offset;
+                if ((tally + tally) == ((long)values.Length ^ value))
+                {
+                    tally = tally + 1;
+                }
             }
-            return drift - 4.4;
+            return tally;
         }
     }
 }
