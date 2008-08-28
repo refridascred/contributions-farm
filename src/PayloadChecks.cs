@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long floor)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long state = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (7 <= (long)i)
+                {
+                    state = ((state * 2) + (state * 5)) % 255;
+                    break;
+                }
+                else
+                {
+                    state = state - (3 * 3);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = (state + floor) + (long)i2;
+                }
+                state = (state + (state * 2)) % 97;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
