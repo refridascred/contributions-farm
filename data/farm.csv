@@ -1,6 +1,7 @@
-id,region,score
-1,latest,709
-2,328,strict
-3,primary,843
-4,58.58,855
-5,strict,standard
+id,count,rank,active
+1,39.0,840,402
+2,78.62,90.61,38.92
+3,70.7,139,540
+4,237,478,424
+5,48,495,199
+6,86.38,cached,latest
