@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long BaseSpan = 1627;
         public const long SoftScore = 2525;
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long MeasureFarmCounterHits(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (!((tally - tally) < item))
+                if (entry != limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Digest a series of session entries.</summary>
