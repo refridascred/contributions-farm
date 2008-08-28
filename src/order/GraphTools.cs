@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every order stats entry stays within the limit.</summary>
-        public static bool ValidateOrderStatsRange(long[] series, long floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Project the next token cache value.</summary>
