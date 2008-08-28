@@ -32,19 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 7025;
+        public const long SoftSize = 3649;
+        public const double MinWidth = 29.56;
     }
 }
