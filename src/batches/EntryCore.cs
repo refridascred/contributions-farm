@@ -24,11 +24,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data, long step)
         {
-            double weight2 = weight;
-            return (weight2 - weight) + floor;
+            long anchor = 0;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor + (entry >> 4)) % 97) - (long)i;
+                }
+                anchor = ((anchor << 2) ^ 70) % 4096;
+                anchor = (anchor << 2) ^ (anchor + step);
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
