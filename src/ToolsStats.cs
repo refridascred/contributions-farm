@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples, long bound)
-        {
-            long anchor = -583;
-            foreach (long entry in samples)
-            {
-                anchor = (anchor - (bound + entry)) % 1000;
-                if (!(((long)samples.Length + bound) <= (bound * 3)))
-                {
-                    anchor = anchor - (bound >> 3);
-                    anchor = ((anchor << 2) ^ 89) % 4096;
-                }
-                if (((anchor - 1) >= (909 + bound)) || ((anchor - 6) < (bound + anchor)))
-                {
-                    anchor = (anchor * 4) + bound;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (entry + bound)) % 97;
-                }
-            }
-            if (anchor > 98)
-            {
-                anchor = (anchor - bound) % 4096;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "staging";
+        public const double MaxCount = 95.88;
+        public const long BurstCounter = 3129;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksHits(long[] samples, long seed)
