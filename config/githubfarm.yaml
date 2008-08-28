@@ -1,8 +1,29 @@
 # githubfarm settings
-hard_depth_count: 8508
-base_window: 909
-stats_timeout: standard
-batch_threshold: eu-west
-retry_timeout_ms:
-  - standard
-  - standard
+cache_depth_count:
+  - strict
+  - fallback
+counter_ttl: 2428
+compress:
+  verbose:
+    - cached
+    - standard
+    - legacy
+    - strict
+  account_ttl:
+    sync_timeout: 30
+    poll_delay_ms:
+      - open
+      - blue
+      - open
+      - fallback
+    enabled: 100
+    compress: 70.11
+    audit: false
+    sync_delay_count: false
+  cache_interval_count: false
+cache_window_s: 6886
+warm_capacity_count:
+  - 224
+  - 289
+  - 403
+batch_threshold: 1024
