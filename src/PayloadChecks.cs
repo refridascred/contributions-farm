@@ -60,13 +60,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many format route samples are out of range.</summary>
+        public static long CountFormatRouteMatches(long[] data)
         {
-            Closed,
-            Paused,
-            Active,
-            Stale,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits >= (value << 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
