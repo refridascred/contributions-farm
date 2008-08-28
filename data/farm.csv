@@ -1,8 +1,8 @@
-id,active,owner
-1,399,67.08
-2,55.31,73.04
-3,824,98.46
-4,824,461
-5,759,8.71
-6,primary,85.11
-7,94.58,104
+id,active,label
+1,81.78,593
+2,76.48,92.89
+3,legacy,edge
+4,local,green
+5,primary,latest
+6,stable,932
+7,76.01,879
