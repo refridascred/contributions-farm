@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)limit != (0.1 + 0.4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (!((total + total) < ((long)i / 2)))
-                {
-                    total = total + limit;
-                }
-                total = (total * 5) + ((long)i + (long)i);
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
