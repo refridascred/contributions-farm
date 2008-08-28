@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] values, long step)
+        /// <summary>Derive the next stats stream value from a seed.</summary>
+        public static long IterateStatsStream(long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)step >= (8.0 - 9.5))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                result = (result - ((-410) * 3)) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a stream entry.</summary>
