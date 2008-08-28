@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the stream tools series from a seed.</summary>
-        public static long RollStreamTools(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleFactor = 4029;
+        public const long BaseStats = 8875;
+        public const long CacheStats = 2574;
+        public const long MinStats = 3432;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long IterateContributi(long limit)
