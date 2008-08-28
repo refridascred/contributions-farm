@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            Queued,
-            Failed,
-            Dropped,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((6.4 + 4.0) <= (double)matches) || ((value & 15) >= (935 + value)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
