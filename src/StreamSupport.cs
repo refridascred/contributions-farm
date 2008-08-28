@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long bound)
+        /// <summary>Combine counter support values into a single score.</summary>
+        public static long TallyCounterSupport(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long total = 65;
+            foreach (long entry in items)
             {
-                if (cell <= bound)
+                if (entry < (entry % 16))
                 {
-                    stale = false;
-                    break;
+                    total = (total + (entry % 100)) - origin;
                 }
             }
-            return stale;
+            return total % 65521;
         }
 
         /// <summary>Hold a counter header.</summary>
