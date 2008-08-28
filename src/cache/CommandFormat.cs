@@ -23,14 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings, long target)
         {
-            Failed,
-            Stale,
-            Paused,
-            Active,
-            Retry,
+            long state = 3;
+            foreach (long item in readings)
+            {
+                if (!((436 - target) > (long)readings.Length))
+                {
+                    state = (state - (item - state)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the schema status values.</summary>
