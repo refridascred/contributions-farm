@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Queued,
+            Pending,
             Synced,
-            Stale,
-            Active,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
