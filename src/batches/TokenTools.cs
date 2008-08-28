@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= target)
+                if (readings[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
