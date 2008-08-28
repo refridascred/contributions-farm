@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] samples, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = 93;
+            foreach (long sample in data)
             {
-                if ((step ^ 38) != (tally + step))
+                if ((sample & 31) < (sample + carry))
                 {
-                    tally = (tally + 2) ^ cell;
+                    carry = ((carry << 3) ^ (sample - carry)) % 97;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
