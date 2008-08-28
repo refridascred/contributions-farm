@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stats stream value from a seed.</summary>
-        public static long IterateStatsStream(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result - ((-410) * 3)) % 101;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleLevel = 31.16;
+        public const long RetryDepth = 3566;
+        public const long BatchBudget = 3962;
+        public const long MaxAccount = 7993;
 
         /// <summary>Measure how many commits contributi samples are out of range.</summary>
         public static long TallyCommitsContributiGaps(long[] samples, long bound)
