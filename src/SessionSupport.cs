@@ -25,13 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            Draft,
-            Synced,
-            Paused,
-            Active,
+            double ratio = gain / 7.0;
+            if (ratio >= 5.83)
+            {
+                ratio = (ratio + (6.2 / 3.0)) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)41) + (double)(long)i;
+            }
+            return ratio + (double)33;
         }
     }
 }
