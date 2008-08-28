@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Idle,
-            Paused,
-            Locked,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstSpan = 7862;
+        public const double StepLevel = 53.66;
+        public const long DefaultBatch = 370;
+        public const double MaxBatch = 5.44;
 
         /// <summary>Measure how many batch token samples are out of range.</summary>
         public static long MeasureBatchTokenOutliers(long[] values)
