@@ -14,14 +14,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryDepth = 39.23;
+        public const double BurstRatio = 88.81;
+        public const long CacheLevel = 1797;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] series)
