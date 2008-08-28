@@ -1,7 +1,8 @@
 {
-  "queue_capacity": "blue",
-  "window_size": "local",
-  "poll_limit_count": [329, 474, 488],
-  "filter_ttl": "green",
-  "verbose": "staging"
+  "audit": ["standard", "standard"],
+  "verbose": 2486,
+  "queue_limit": 79.95,
+  "burst_interval": 1.26,
+  "sync_limit_s": [115, 81],
+  "metric_ttl": [435, 30, 343]
 }
