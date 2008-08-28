@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "primary";
-        public const string WindowBuffer = "alpha-1";
-        public const long SoftBuffer = 2155;
-        public const long CacheBuffer = 6734;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 77.64;
+        public const long CacheSupport = 9959;
+        public const long RetryWidth = 3806;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] series, long seed)
