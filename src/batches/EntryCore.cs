@@ -29,22 +29,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit command editor readings against a rule.</summary>
-        public static long MeasureCommandEditorOutliers(long[] levels, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long step, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (990 <= origin)
             {
-                if ((limit + cell) >= (limit + 96))
+                return 1;
+            }
+            else
+            {
+                if (((step + origin) >= origin) || (step <= (origin - 887)))
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((origin + step) <= 1) || ((double)step == (4.19 / 3.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)244 >= (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
