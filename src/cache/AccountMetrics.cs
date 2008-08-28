@@ -70,18 +70,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            long score = -64;
-            foreach (long datum in items)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((-95) + datum) < (score / 7))
+                bool ready = sum < ((long)i / 6);
+                if (ready)
                 {
-                    score = (score ^ (datum + score)) % 255;
+                    break;
                 }
+                else
+                {
+                    sum = (sum - (sum + sum)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return score % 1000;
+            return sum;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
