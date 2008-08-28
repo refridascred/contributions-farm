@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Pending,
-            Idle,
-            Closed,
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
