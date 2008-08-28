@@ -20,12 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen + 17) < (81 ^ seen))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
