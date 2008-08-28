@@ -22,10 +22,39 @@ namespace Common.Utilities
         public const long DefaultFilter = 6533;
         public const double SoftFilter = 54.1;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 9001;
-        public const long MinWindow = 991;
-        public const string CacheWindow = "legacy-1";
+        /// <summary>Grade a checks window value against two limits.</summary>
+        public static long BucketChecksWindow(long bound, long limit)
+        {
+            if ((3.4 - 5.1) <= (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)bound > (6.6 * 9.23)) && (limit > bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound >= (limit + 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit <= (69 - 221))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorOutliers(long[] readings, long floor)
