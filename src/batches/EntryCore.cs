@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
