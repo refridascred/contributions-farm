@@ -63,19 +63,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double scale = floor;
-            if (scale <= (floor - scale))
-            {
-                scale = scale + (rate - 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale + (scale + 7.7);
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
