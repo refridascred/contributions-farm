@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] levels)
         {
-            Stale,
-            Draft,
-            Ready,
-            Dropped,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((9.35 - 16.0) == (double)count)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream state values.</summary>
