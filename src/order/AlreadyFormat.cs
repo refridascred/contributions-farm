@@ -29,38 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples, long step)
         {
-            if ((double)limit > (10.0 / 5.0))
+            long result = -101;
+            foreach (long sample in samples)
             {
-                return 8;
+                result = ((result << 2) ^ (step - sample)) % 65521;
             }
-            else
-            {
-                if (limit <= (offset >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((9.0 / 6.0) == (double)offset) && ((double)limit <= (1.82 * 12.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((12.0 + 20.0) < (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a format entry.</summary>
