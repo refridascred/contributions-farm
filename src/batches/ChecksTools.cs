@@ -65,20 +65,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (121 < (bound + (long)i))
+                if (seen < (item % 24))
                 {
-                    mark = (mark - mark) % 255;
-                    mark = (mark ^ (6 ^ mark)) % 101;
+                    seen = seen + 1;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
     }
 }
