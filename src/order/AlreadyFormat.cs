@@ -23,10 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 9727;
-        public const long RetryCounter = 2609;
-        public const long IdleFactor = 4099;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((seen << 2) <= (2 >> 2)) || !((seen ^ sample) >= ((long)series.Length * 4)))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
