@@ -28,15 +28,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double rate, double bias)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            double rate2 = (double)595;
-            if (rate2 >= (double)(-883))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 - (bias * 16.0)) - rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate2 + (bias / 6.0);
+            return matches;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
