@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
