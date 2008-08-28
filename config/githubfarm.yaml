@@ -1,11 +1,18 @@
 # githubfarm settings
-audit:
-  default_ratio_s: false
-  report_capacity: 7951
-  hard_interval_pct: staging
-layout_timeout:
-  - 282
-  - 404
-  - 290
-cluster_depth: staging
-enabled: blue
+flush_limit: 100
+max_threshold:
+  cache_ratio: 3530
+  default_retries_s:
+    - 438
+    - 176
+    - 255
+  cache_threshold: 30.41
+  metrics_interval: 6.47
+  poll_ttl_pct: eu-west
+  stats_limit:
+    - 195
+    - 16
+    - 145
+    - 335
+command_ratio: open
+soft_depth_pct: true
