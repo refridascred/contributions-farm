@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 153;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = (acc ^ origin) % 4096;
+                if ((double)entry > (double)acc)
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (acc < (-3))
+            {
+                acc = ((acc * 4) + origin) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Project the next schema value.</summary>
