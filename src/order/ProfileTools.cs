@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] series, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading / 6) > reading)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
