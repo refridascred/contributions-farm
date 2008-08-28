@@ -58,18 +58,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many format route samples are out of range.</summary>
-        public static long CountFormatRouteMatches(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = 406;
+            foreach (long datum in data)
             {
-                if (hits >= (value << 2))
+                if ((sum + sum) != (0 + datum))
                 {
-                    hits = hits + 2;
+                    sum = (sum * 2) + (sum >> 5);
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
