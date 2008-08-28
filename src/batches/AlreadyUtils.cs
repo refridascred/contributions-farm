@@ -48,19 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] samples, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long acc = 318;
+            foreach (long entry in series)
             {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc * 5) + (entry - entry);
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Blend two profile measurements.</summary>
