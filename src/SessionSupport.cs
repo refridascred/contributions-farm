@@ -32,21 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record metrics readings.</summary>
-        public static long OverlapRecordMetricsCount(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < bound)
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
