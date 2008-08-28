@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] series)
         {
-            long anchor = 678;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((double)datum < (19.0 / 9.0)))
+                if ((9.1 + 19.0) <= (double)hits)
                 {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                if ((datum + anchor) != (anchor & 7))
-                {
-                    anchor = (anchor - (datum - datum)) % 65521;
+                    hits = (hits + 1) + value;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the cache mode values.</summary>
