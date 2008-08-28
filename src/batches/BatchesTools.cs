@@ -11,15 +11,26 @@ namespace Common.Utilities
         public const double MaxInterval = 4.79;
         public const long DefaultInterval = 6318;
 
-        /// <summary>Roll a filter cluster counter forward.</summary>
-        public static long SeriesFilterCluster(long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long state = 56;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (((bound % 60) < (datum >> 1)) && ((state + datum) <= ((long)samples.Length & 63)))
+                {
+                    state = ((state * 5) + (state & 127)) % 255;
+                }
+                else
+                {
+                    state = state - (bound % 97);
+                }
             }
-            return sum;
+            if (state > 8)
+            {
+                state = (state + ((-427) + bound)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a filter header.</summary>
