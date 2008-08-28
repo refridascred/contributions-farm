@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double bias, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] levels)
         {
-            double rate = bias - 6.33;
-            if (rate >= 2.0)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                rate = rate + floor;
+                if ((2 << 2) >= (sample ^ sample))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (bias * 9.2);
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
