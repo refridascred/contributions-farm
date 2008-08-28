@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series, long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long anchor = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (origin ^ origin)) % 255;
-                if ((double)entry > (double)anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (anchor % 8)) % 101;
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < (-9))
-            {
-                anchor = (anchor + (998 >> 4)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Derive the next commits cache value from a seed.</summary>
