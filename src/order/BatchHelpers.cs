@@ -20,22 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double scale = span;
+            if (scale > 7.95)
             {
-                if ((double)hits <= 19.0)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = scale - ratio;
             }
-            return hits;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (scale / 8.0)) - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
