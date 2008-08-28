@@ -19,12 +19,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first schema command entry that matches the target.</summary>
-        public static long FindSchemaCommandIndex(long[] samples, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > bound)
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
