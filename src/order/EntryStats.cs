@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstTimeout = 593;
-        public const double BurstSession = 43.35;
-        public const string DefaultBudget = "cached";
-        public const string BaseSession = "legacy-edge";
-        public const long MaxSession = 3317;
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double rate, double span)
+        {
+            double drift = rate;
+            if (drift < (rate / 3.0))
+            {
+                drift = drift + (4.1 + span);
+            }
+            return drift + 8.2;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long StepSchema(long step)
