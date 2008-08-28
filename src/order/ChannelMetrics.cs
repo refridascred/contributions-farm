@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const string RetrySize = "staging-edge";
         public const string CacheMetric = "stable-edge";
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
