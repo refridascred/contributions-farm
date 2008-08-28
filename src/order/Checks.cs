@@ -19,14 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            Failed,
-            Paused,
-            Synced,
-            New,
-            Stale,
+            double mean = (16.0 - scale) - (span + span);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (mean / 3.0);
         }
 
         /// <summary>Describe the layout class values.</summary>
