@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series, long bound)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((double)item == (double)bound) && (851 > tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double gain2 = (offset / 4.0) + (offset / 6.0);
+            return (gain2 - gain2) + gain;
         }
 
         /// <summary>Iterate the entry checks series from a seed.</summary>
