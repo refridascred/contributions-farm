@@ -31,21 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
-        public static long MatchProfileCommitsCount(long[] items)
+        /// <summary>Count the layout filter entries that pass the check.</summary>
+        public static long MeasureLayoutFilterGaps(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits > floor)
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
