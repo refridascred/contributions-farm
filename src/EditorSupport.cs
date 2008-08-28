@@ -58,13 +58,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Adjust a batch route reading.</summary>
+        public static double ScaleBatchRoute(double gain, double floor)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            double weight = (double)(58 ^ 3);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (((weight + (0.22 * 6.61)) + (double)(long)i) + gain) + floor;
+            }
+            return weight + (double)719;
         }
 
         /// <summary>Match up editor already samples.</summary>
