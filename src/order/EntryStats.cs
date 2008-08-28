@@ -43,12 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowTimeout = 8262;
-        public const long BurstBudget = 8942;
-        public const long SoftReport = 7979;
-        public const string BurstCount = "primary-edge";
-        public const long HardDepth = 4551;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((1.0 + 7.7) >= (double)value) && (((value >> 4) <= tally) || ((tally * 3) > 265)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count support metric pairs that satisfy a relation.</summary>
         public static long CompareSupportMetricCount(long[] data)
