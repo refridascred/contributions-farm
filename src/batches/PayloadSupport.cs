@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] items)
         {
-            double scale = 18.0;
-            if (scale >= (gain * 4.85))
+            long tally = 0;
+            foreach (long value in items)
             {
-                scale = (scale + (gain * 13.0)) - span;
+                if (value > (58 % 2))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                scale = scale + (gain / 7.0);
-            }
-            return scale + (0.4 - gain);
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
