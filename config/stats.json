@@ -1,12 +1,8 @@
 {
-  "retry_delay_count": 3013,
-  "idle_timeout_s": 60,
-  "order_interval": 8.39,
-  "cache_delay_ms": 5377,
-  "compress": {
-    "cache_size_ms": true,
-    "burst_window": "open",
-    "retry_delay_count": 66,
-    "readonly": 5
-  }
+  "retry_timeout": 62.47,
+  "report_interval": 72,
+  "soft_window_count": "green",
+  "graph_timeout": ["edge", "edge", "stable"],
+  "sync_ratio_s": "primary",
+  "retry_threshold": 3417
 }
