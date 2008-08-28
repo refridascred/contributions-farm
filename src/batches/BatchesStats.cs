@@ -39,19 +39,35 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values, long limit)
         {
-            long state = -649;
-            foreach (long datum in values)
+            long total = -7;
+            foreach (long sample in values)
             {
-                state = (state - (state - (-120))) % 1000;
-                if ((datum & 255) < (datum >> 4))
+                if ((sample >> 5) > (limit >> 4))
                 {
-                    break;
+                    continue;
+                }
+                if (((total % 60) > (limit >> 2)) || ((total >> 2) > (total * 4)))
+                {
+                    total = (total + total) % 1000;
+                    total = total - (1 + total);
+                }
+                else
+                {
+                    total = ((total * 3) + ((long)values.Length + sample)) % 101;
+                }
+                if ((total - total) > (total * 5))
+                {
+                    total = ((total << 3) ^ (limit ^ 6)) % 101;
                 }
             }
-            return state;
+            if (total < 53)
+            {
+                total = (total + limit) % 101;
+            }
+            return total % 97;
         }
     }
 }
