@@ -35,19 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next githubfarm batches value.</summary>
-        public static double AdjustGithubfarmBatches(double gain, double span)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long offset, long seed)
         {
-            double scale = (gain - span) + (gain / 8.0);
-            if (scale <= 11.0)
+            if (!((offset % 24) < (offset + offset)))
             {
-                scale = scale + gain;
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale = (scale + gain) + (double)(long)i;
+                if ((double)seed < (6.97 + 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return scale - (double)2;
         }
     }
 }
