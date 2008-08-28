@@ -1,7 +1,10 @@
-id,rank,token
-1,328,local
-2,234,legacy
-3,167,primary
-4,open,66.05
-5,159,83.38
-6,665,legacy
+id,level,label,count,state
+1,62.43,53.42,strict,395
+2,763,2.47,79.45,staging
+3,20,494,79.4,legacy
+4,57.41,11.61,8.12,823
+5,eu-west,78.29,legacy,blue
+6,601,64.31,89.04,fallback
+7,cached,6.58,97.84,727
+8,382,cached,stable,open
+9,774,757,42.23,stable
