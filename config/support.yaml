@@ -1,17 +1,11 @@
 # support settings
-burst_threshold_pct:
-  default_timeout: latest
-  stats_depth:
-    verbose: 1024
-    strict: true
-    hard_capacity_s: staging
-  verbose: 7242
-  retry_threshold: 60
-max_ratio_count: false
-dry_run:
-  default_delay: 9815
-  cache_limit_s: 88.29
-  enabled: 93
-  hard_timeout_pct: 3666
-  flush_threshold: green
-idle_size_count: 5748
+graph_window:
+  - local
+  - eu-west
+burst_size_pct: false
+soft_interval_count: stable
+hard_capacity:
+  - 370
+  - 400
+context_threshold: 96.17
+audit: 1644
