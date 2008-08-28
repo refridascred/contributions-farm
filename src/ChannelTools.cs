@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long offset)
         {
-            double drift = floor / 3.0;
-            if (drift <= (9.4 * 4.0))
+            if ((step * 5) > (offset & 3))
             {
-                drift = (drift + (0.68 / 7.0)) - bias;
+                return 3;
             }
-            return drift - 6.58;
+            else
+            {
+                if ((double)offset == (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the stats class values.</summary>
