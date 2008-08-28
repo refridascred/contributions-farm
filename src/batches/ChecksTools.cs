@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next order editor value.</summary>
-        public static double SmoothOrderEditor(double gain, double bias)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double gain2 = gain + (5.6 + bias);
-            if (gain2 < bias)
-            {
-                gain2 = gain2 + (4.3 * 2.3);
-            }
-            return gain2 + (double)0;
+            Idle,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
