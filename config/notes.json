@@ -1,5 +1,17 @@
 {
-  "editor_window": ["blue", "cached", "fallback"],
-  "poll_delay_pct": "standard",
-  "counter_timeout": ["legacy", "green", "stable"]
+  "metric_interval": ["local", "strict", "cached", "stable"],
+  "idle_size": [172, 209, 359],
+  "default_ttl_ms": 43,
+  "burst_timeout_s": "open",
+  "readonly": {
+    "idle_ttl": {
+      "idle_interval_count": 79,
+      "notes_delay": 7070,
+      "flush_delay_s": 31.68
+    },
+    "batch_retries_s": ["edge", "stable", "primary"],
+    "batches_ratio": false,
+    "max_delay_ms": 79.75
+  },
+  "verbose": 60
 }
