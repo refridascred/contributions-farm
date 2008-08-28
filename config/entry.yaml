@@ -1,4 +1,13 @@
 # entry settings
-base_capacity_ms: 85.91
-report_depth: 8976
-flush_ratio: edge
+cache_retries_count:
+  layout_ratio: 72.56
+  retry_capacity_count: 6443
+  hard_ttl_ms: 2806
+  verbose: 81
+  idle_capacity_s: false
+soft_depth_ms: legacy
+idle_timeout_s: false
+default_threshold_ms:
+  - eu-west
+  - fallback
+compress: 58.06
