@@ -27,39 +27,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long floor, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long step = floor - seed;
-            if (((0 ^ seed) > seed) || ((double)floor == (double)step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed >> 1) <= floor) && ((step % 2) > seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) >= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step + floor) > (seed / 5)) || ((floor & 15) <= step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a cluster githubfarm reading.</summary>
