@@ -20,17 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a token session sample.</summary>
-        public static long SeekTokenSessionIndex(long[] values, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = scale;
+            if (mean >= (double)62)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mean = mean + (floor - floor);
             }
-            return -1;
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean * 3.25)) + (double)(long)i;
+            }
+            return mean + (6.0 / 8.0);
         }
 
         /// <summary>Hold a editor record.</summary>
