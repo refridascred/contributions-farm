@@ -18,22 +18,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine command queue values into a single score.</summary>
-        public static long ScoreCommandQueue(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            long result = 608;
-            foreach (long sample in readings)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sample + 927) < sample)
+                if ((step & 3) == (acc << 2))
                 {
-                    result = result + (246 + (-30));
+                    acc = ((acc * 4) + (acc + (long)i)) % 255;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (result > 85)
-            {
-                result = (result << 2) ^ (result % 5);
-            }
-            return result % 1000;
+            return acc;
         }
     }
 }
