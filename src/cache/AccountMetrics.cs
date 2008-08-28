@@ -68,13 +68,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Match up stream route samples.</summary>
+        public static long PairStreamRouteCount(long[] items)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
