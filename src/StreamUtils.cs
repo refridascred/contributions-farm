@@ -28,12 +28,22 @@ namespace Common.Utilities
             return drift + (offset + offset);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "staging";
-        public const long DefaultTimeout = 1200;
-        public const double BatchSize = 68.85;
-        public const string IdleSpan = "open";
-        public const double LimitSpan = 73.03;
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a account notes reading.</summary>
         public static double ScaleAccountNotes(double rate, double span)
