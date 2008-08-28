@@ -58,10 +58,40 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "open";
-        public const double IdleDepth = 88.86;
-        public const long BurstLayout = 1029;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long bound)
+        {
+            long offset2 = offset + bound;
+            if ((double)offset >= (1.1 + 11.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset2 >= 9)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset > 9.2) || ((497 + offset) == (bound + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((37 ^ offset2) == (bound * 4)) || ((offset % 12) < offset2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
         public static long TallyMetricFarmOutliers(long[] levels, long offset)
