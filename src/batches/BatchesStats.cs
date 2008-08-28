@@ -23,11 +23,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double scale, double offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double weight = (offset - scale) - scale;
-            return weight + 5.45;
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
