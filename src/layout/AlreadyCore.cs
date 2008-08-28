@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
