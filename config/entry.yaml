@@ -1,11 +1,11 @@
 # entry settings
-strict: 39
-enabled: 60
-flush_limit_s: 6458
-order_capacity: 57
-account_ratio:
-  soft_delay_s: 46.03
-  burst_timeout_pct: true
-  queue_limit: 27
-  readonly: 30.3
-sync_ratio_pct: open
+order_capacity: 1360
+default_threshold_ms: standard
+verbose: edge
+batch_threshold_s: open
+audit: 58.82
+default_retries_pct:
+  - open
+  - cached
+  - strict
+  - open
