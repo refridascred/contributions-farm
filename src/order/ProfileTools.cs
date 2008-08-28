@@ -43,12 +43,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 2452;
-        public const long HardTimeout = 6282;
-        public const long HardLevel = 6444;
-        public const long DefaultDepth = 7211;
-        public const long BatchStats = 6397;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a schema cluster reading by value.</summary>
         public static long LookupSchemaClusterIndex(long[] levels, long floor)
