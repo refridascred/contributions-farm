@@ -23,8 +23,9 @@ namespace Common.Utilities
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
