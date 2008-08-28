@@ -28,28 +28,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Locate a metrics token reading by value.</summary>
+        public static long SeekMetricsTokenIndex(long[] samples, long offset)
         {
-            long mix = -445;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (2.6 < (double)value)
+                if (samples[i] == offset)
                 {
-                    mix = (mix + (value % 5)) % 1000;
+                    return (long)i;
                 }
-                if ((mix ^ value) > (mix & 255))
-                {
-                    mix = (mix * 3) + mix;
-                    mix = (mix + (mix + value)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (87 - value)) % 255;
-                }
-                mix = (mix ^ value) % 101;
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Match up metrics buffer samples.</summary>
