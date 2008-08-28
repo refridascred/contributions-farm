@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if ((entry / 2) < (entry % 5))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of graph metrics entries.</summary>
