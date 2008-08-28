@@ -34,22 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long seed)
         {
-            long acc = 151;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)cell < (1.0 + 19.0)))
+                if (samples[i] == seed)
                 {
-                    acc = (acc - cell) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc < (-11))
-            {
-                acc = ((acc * 3) + (acc + acc)) % 97;
-            }
-            return acc % 97;
+            return -1;
         }
     }
 }
