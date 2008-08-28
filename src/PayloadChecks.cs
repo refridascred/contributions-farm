@@ -45,21 +45,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the cluster context series from a seed.</summary>
-        public static long RollClusterContext(long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] series, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((score + offset) < score)
+                if (reading <= step)
                 {
-                    score = score + score;
-                    score = (score * 4) + (score << 3);
-                    continue;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Describe the report state values.</summary>
