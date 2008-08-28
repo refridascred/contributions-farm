@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Scale a format batch figure with a bias.</summary>
+        public static double ScaleFormatBatch(double rate, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            double bias = rate;
+            if (bias > (span + span))
             {
-                if ((step + step) <= 9)
-                {
-                    mark = (mark + (mark - mark)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                bias = bias + (span * 1.0);
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)(-75)) + (double)(long)i;
+            }
+            return bias - (span + bias);
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
