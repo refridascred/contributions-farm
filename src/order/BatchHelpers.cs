@@ -19,14 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            New,
-            Pending,
-            Active,
-            Dropped,
-            Locked,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
