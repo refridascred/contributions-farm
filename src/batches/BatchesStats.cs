@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long CountRecordSessionGaps(long[] samples)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally - datum) == (626 - datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
