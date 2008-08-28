@@ -27,20 +27,9 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data)
-        {
-            long score = -241;
-            foreach (long value in data)
-            {
-                score = ((score * 5) + (score & 63)) + value;
-                score = ((score * 2) + (42 + score)) % 4096;
-            }
-            if (score < 6)
-            {
-                score = score + score;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxLevel = "primary-1";
+        public const long LimitProfile = 7616;
+        public const long MaxProfile = 1001;
     }
 }
