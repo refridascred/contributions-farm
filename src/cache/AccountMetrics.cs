@@ -82,21 +82,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stream route samples.</summary>
-        public static long PairStreamRouteCount(long[] items)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 2)
+                    if ((items[i] - items[j]) != 5)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
