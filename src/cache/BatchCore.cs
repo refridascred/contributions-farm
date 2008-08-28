@@ -26,22 +26,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = 30;
-            foreach (long cell in items)
-            {
-                if (cell <= (state * 4))
-                {
-                    state = (state << 2) ^ (cell + 887);
-                }
-                else
-                {
-                    state = ((state * 3) + (814 << 1)) % 101;
-                }
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
