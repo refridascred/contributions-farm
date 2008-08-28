@@ -46,16 +46,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the farm order series from a seed.</summary>
-        public static long RollFarmOrder(long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = carry + (carry >> 3);
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many record entry samples are out of range.</summary>
