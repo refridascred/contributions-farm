@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] levels, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (limit >= (bound / 5))
             {
-                if (matches < floor)
+                return 4;
+            }
+            else
+            {
+                if ((bound + limit) >= (bound + bound))
                 {
-                    matches = (matches + 1) + item;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
