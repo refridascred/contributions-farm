@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
