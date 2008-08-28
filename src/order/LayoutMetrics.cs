@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 15.07;
-        public const long BatchSpan = 4463;
-        public const long BatchFactor = 2293;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 3) != (seen - entry))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] values, long offset)
