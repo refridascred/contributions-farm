@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] series, long offset)
+        /// <summary>Validate order stream readings against a bound.</summary>
+        public static bool VerifyOrderStreamBounds(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (!((double)matches <= (double)1))
+                if (item <= floor)
                 {
-                    matches = ((matches + 3) - reading) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
