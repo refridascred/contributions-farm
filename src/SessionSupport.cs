@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a session entry.</summary>
