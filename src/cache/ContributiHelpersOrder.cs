@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long WindowGraph = 869;
         public const long LimitGraph = 5422;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLevel = 6846;
-        public const long BurstLayout = 4195;
-        public const long SoftCount = 7497;
-        public const long HardLayout = 4320;
+        /// <summary>Accumulate metric payload samples.</summary>
+        public static long TallyMetricPayload(long[] values, long bound)
+        {
+            long mark = 831;
+            foreach (long value in values)
+            {
+                if ((mark <= (911 * 4)) || ((double)bound != (11.0 - 4.0)))
+                {
+                    mark = ((mark << 2) ^ 121) ^ value;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] series)
