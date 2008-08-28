@@ -27,19 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long acc = 775;
+            foreach (long item in values)
             {
-                if (entry > step)
+                if ((item - acc) < acc)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 2) ^ item;
+                }
+                else
+                {
+                    acc = (acc - (acc >> 3)) % 65521;
                 }
             }
-            return ok;
+            if (acc < 888)
+            {
+                acc = ((acc * 5) + acc) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
