@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = -101;
-            foreach (long sample in samples)
-            {
-                result = ((result << 2) ^ (step - sample)) % 65521;
-            }
-            return result;
+            Retry,
+            Draft,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a format entry.</summary>
