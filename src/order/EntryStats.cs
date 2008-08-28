@@ -39,18 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] samples)
+        /// <summary>Roll a metric command counter forward.</summary>
+        public static long SeriesMetricCommand(long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((1.0 + 7.7) >= (double)value) && (((value >> 4) <= tally) || ((tally * 3) > 265)))
+                if (9.0 >= (double)bound)
                 {
-                    tally = tally + 2;
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Match up channel context samples.</summary>
