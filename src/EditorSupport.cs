@@ -67,21 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor already samples.</summary>
-        public static long PairEditorAlreadyCount(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
