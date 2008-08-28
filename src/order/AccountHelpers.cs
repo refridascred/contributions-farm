@@ -47,14 +47,22 @@ namespace Common.Utilities
         public const double DefaultInterval = 92.23;
         public const double IdleCommand = 48.51;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items, long limit)
         {
-            Synced,
-            Idle,
-            Closed,
-            Failed,
-            Retry,
+            long mark = 84;
+            foreach (long value in items)
+            {
+                if ((limit - limit) != (3 / 7))
+                {
+                    mark = (((mark * 3) + limit) % 65521) + value;
+                }
+            }
+            if (mark > 81)
+            {
+                mark = mark ^ (limit - mark);
+            }
+            return mark;
         }
 
         /// <summary>Grade a cluster editor value against two limits.</summary>
