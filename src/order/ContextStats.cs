@@ -30,12 +30,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long target)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long score = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((long)i == (57 % 2)))
+                {
+                    score = ((score << 3) ^ (score << 3)) % 255;
+                }
+                score = (score ^ (target - target)) % 97;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of batches schema readings.</summary>
