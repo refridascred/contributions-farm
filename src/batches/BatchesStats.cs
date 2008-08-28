@@ -46,10 +46,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 6147;
-        public const long RetryFactor = 8905;
-        public const long CacheNotes = 5727;
-        public const double BurstScore = 36.54;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
