@@ -1,16 +1,11 @@
 {
-  "persist": ["cached", "stable"],
-  "poll_limit": 39,
-  "queue_limit": {
-    "verbose": false,
-    "cache_timeout_pct": true,
-    "flush_ratio_count": {
-      "max_timeout": "edge",
-      "base_window_count": "legacy",
-      "cache_ttl": 9.84,
-      "compress": 81,
-      "strict": 60
-    },
-    "readonly": "staging"
+  "audit": "cached",
+  "burst_ratio": [161, 77, 266],
+  "base_ratio_ms": [484, 275, 165, 369],
+  "dry_run": 79,
+  "retry_threshold_count": {
+    "base_capacity_pct": 20.5,
+    "poll_timeout_ms": true,
+    "account_ttl": "cached"
   }
 }
