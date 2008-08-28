@@ -36,22 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long target, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long prev = target + origin;
+            if ((1.0 <= (double)prev) || ((2.35 + 6.0) <= (double)prev))
             {
-                if ((15.0 / 3.0) != (double)sample)
+                return 6;
+            }
+            else
+            {
+                if ((87 << 1) >= (origin ^ prev))
                 {
-                    count = count + 3;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
