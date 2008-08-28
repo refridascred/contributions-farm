@@ -50,18 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] values)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 7) == (matches * 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
