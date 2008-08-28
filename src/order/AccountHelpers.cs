@@ -86,17 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record tools reading by value.</summary>
-        public static long LocateRecordToolsIndex(long[] values, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (values[i] >= bound)
+                if (cell != seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
