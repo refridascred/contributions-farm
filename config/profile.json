@@ -1,6 +1,10 @@
 {
-  "audit": 70.72,
-  "persist": false,
-  "readonly": false,
-  "checks_window": "primary"
+  "readonly": [390, 214],
+  "editor_size": 100,
+  "warm_limit": "eu-west",
+  "context_timeout": {
+    "record_size": "standard",
+    "poll_capacity": ["standard", "primary", "edge", "open"],
+    "queue_size": "open"
+  }
 }
