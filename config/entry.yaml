@@ -1,27 +1,5 @@
 # entry settings
-min_limit: 6.07
-soft_limit: true
-verbose: 87
-warm_limit_count: 37.64
-soft_threshold: primary
-hard_window:
-  flush_size_s:
-    warm_delay_s: cached
-    retry_window_pct: false
-    min_retries_pct: 6854
-    base_threshold: strict
-    audit: legacy
-  base_ttl:
-    - open
-    - open
-    - edge
-  base_interval: false
-  persist:
-    base_ttl_count:
-      - stable
-      - standard
-      - legacy
-    token_ratio: 30
-    account_limit: 74.01
-    hard_ttl_s: 39.74
-  flush_threshold_pct: blue
+base_limit_pct: false
+batch_interval_pct: false
+batches_depth: true
+audit: 14.31
