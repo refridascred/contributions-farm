@@ -93,15 +93,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long CountFarmProfileGaps(long[] values, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (446 > count)
+                {
+                    count = ((count + 2) + datum) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
