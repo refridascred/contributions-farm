@@ -19,17 +19,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] items, long target)
+        /// <summary>Digest a series of batches metrics entries.</summary>
+        public static long TallyBatchesMetrics(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 2;
+            foreach (long datum in items)
             {
-                if (items[i] <= target)
+                if ((score << 2) > (step * 2))
                 {
-                    return (long)i;
+                    score = (score + step) - datum;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
