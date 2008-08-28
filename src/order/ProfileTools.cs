@@ -24,22 +24,19 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] levels, long offset)
+        /// <summary>Check that every schema report entry stays within the limit.</summary>
+        public static bool ValidateSchemaReportRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((offset + offset) > (count - count))
+                if (datum > step)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a batches entry.</summary>
