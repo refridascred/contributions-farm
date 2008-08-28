@@ -32,21 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= step)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
