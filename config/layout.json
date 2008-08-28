@@ -1,7 +1,8 @@
 {
-  "queue_interval": 59,
-  "idle_size": "primary",
-  "warm_delay_s": 5.05,
-  "persist": "latest",
-  "readonly": ["open", "stable"]
+  "idle_interval_ms": 54.22,
+  "hard_size_s": "legacy",
+  "soft_depth_ms": 28,
+  "burst_retries_pct": 72,
+  "audit": "fallback",
+  "readonly": "legacy"
 }
