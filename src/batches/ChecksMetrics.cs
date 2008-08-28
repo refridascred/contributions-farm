@@ -70,21 +70,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batch channel series from a seed.</summary>
-        public static long DeriveBatchChannel(long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 4) + (bound % 24)) % 4096;
-                anchor = (anchor ^ (anchor % 2)) % 4096;
-                if (((6.57 - 5.02) < (double)bound) && ((7.5 * 2.7) > (double)bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor + (bound * 3)) % 97;
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
     }
 }
