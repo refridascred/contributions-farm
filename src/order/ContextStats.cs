@@ -59,11 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstCount = 1952;
-        public const double MaxRatio = 62.84;
-        public const double MinSpan = 6.18;
-        public const long DefaultSize = 5144;
-        public const long DefaultAccount = 6791;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series)
+        {
+            long state = 8;
+            foreach (long item in series)
+            {
+                if ((state % 24) < item)
+                {
+                    state = ((state * 4) + 95) % 4096;
+                }
+            }
+            if (state > 650)
+            {
+                state = (state << 2) ^ (state * 5);
+            }
+            return state;
+        }
     }
 }
