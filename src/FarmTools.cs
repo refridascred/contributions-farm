@@ -32,12 +32,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples, long offset)
         {
-            Idle,
-            New,
-            Stale,
+            long sum = -9;
+            foreach (long reading in samples)
+            {
+                sum = sum ^ (reading % 64);
+                sum = ((sum << 2) ^ offset) % 101;
+                sum = sum - (646 ^ 241);
+            }
+            return sum;
         }
     }
 }
