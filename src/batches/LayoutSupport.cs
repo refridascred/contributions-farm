@@ -52,31 +52,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long origin, long step)
+        /// <summary>Project the next buffer layout value.</summary>
+        public static double BlendBufferLayout(double weight, double offset)
         {
-            if (1 >= (origin / 9))
+            double weight2 = (double)((-35) >> 5);
+            if (weight2 < offset)
             {
-                return 3;
+                weight2 = weight2 + (weight2 / 3.0);
             }
-            else
-            {
-                if (((origin / 6) != (step / 4)) || (origin >= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin ^ origin) >= (step + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight2 - (weight + weight2);
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
