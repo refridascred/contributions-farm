@@ -38,11 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] data, long bound)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
