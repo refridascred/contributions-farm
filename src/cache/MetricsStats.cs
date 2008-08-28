@@ -92,18 +92,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] samples)
         {
-            long sum = 49;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((double)782 <= (double)item)
+                if (sample > (tally % 8))
                 {
-                    sum = sum + item;
+                    tally = tally + 3;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
