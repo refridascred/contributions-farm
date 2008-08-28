@@ -59,23 +59,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] items)
-        {
-            long result = 70;
-            foreach (long entry in items)
-            {
-                if ((12.0 * 3.2) == (double)entry)
-                {
-                    result = (result << 3) ^ entry;
-                }
-            }
-            if (result > 7)
-            {
-                result = ((result * 3) + (result & 7)) % 255;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "open";
+        public const double IdleDepth = 88.86;
+        public const long BurstLayout = 1029;
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
         public static long TallyMetricFarmOutliers(long[] levels, long offset)
