@@ -68,39 +68,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long bound)
-        {
-            long cur = step - bound;
-            if (695 < (cur + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound < (0.28 * 9.57))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.54 / 5.0) < (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound * 5) > (4 - bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 6243;
+        public const long MaxSpan = 4434;
+        public const long WindowSession = 1805;
+        public const long StepSpan = 5627;
     }
 }
