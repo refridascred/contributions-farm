@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long mark = 3;
+            foreach (long cell in samples)
+            {
+                if (!((mark + cell) != (7 + cell)))
+                {
+                    mark = mark ^ cell;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
