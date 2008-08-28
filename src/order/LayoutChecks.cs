@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long BatchCommits = 9660;
         public const long WindowSize = 4058;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] readings, long seed)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
