@@ -57,22 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] levels, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long offset)
         {
-            long mix = 898;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)origin < (2.0 - 4.0))
+                if (series[i] < offset)
                 {
-                    mix = mix - (cell + mix);
-                }
-                else
-                {
-                    mix = (mix ^ (494 & 1)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm notes counter forward.</summary>
