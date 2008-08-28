@@ -1,19 +1,14 @@
 # support settings
-poll_timeout: 24
-account_ratio: 14.66
-warm_interval: local
-stats_ratio:
-  farm_depth: 45.88
-  base_depth_pct: stable
-  soft_capacity_count: 69
-min_retries_s:
-  dry_run: 17.87
-  checks_limit: 68
-  default_delay_count:
-    - fallback
-    - strict
-    - open
-  metric_delay: 64.22
-flush_ttl_s:
-  - 12
-  - 499
+persist: 250
+cache_threshold_count: true
+warm_retries_pct:
+  retry_size: 9345
+  batch_threshold: 17
+  soft_delay_s:
+    persist: eu-west
+    poll_threshold: 60
+    flush_ttl_count: 47
+    report_threshold: 60
+    buffer_threshold: primary
+    window_depth: 60
+  hard_depth_s: 58.65
