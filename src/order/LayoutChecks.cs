@@ -58,23 +58,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] data, long step)
         {
-            long result = 7;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in data)
             {
-                result = ((result + result) % 1000) + floor;
-                if ((47 - sample) >= 5)
+                if (item <= step)
                 {
-                    result = (result - (sample & 3)) % 101;
-                }
-                else
-                {
-                    result = (result ^ 8) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
