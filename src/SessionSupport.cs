@@ -40,19 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] series, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (datum > origin)
+                if ((value >> 2) >= ((long)values.Length + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
