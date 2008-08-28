@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBudget = 16.4;
-        public const string LimitFactor = "latest";
-        public const long BaseBatches = 6948;
-        public const string LimitInterval = "cached";
-        public const long RetryInterval = 6118;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLevel = 6846;
+        public const long BurstLayout = 4195;
+        public const long SoftCount = 7497;
+        public const long HardLayout = 4320;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] series)
