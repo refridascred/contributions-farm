@@ -32,30 +32,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mark = 62;
-            foreach (long reading in samples)
-            {
-                if (!((long)samples.Length > (reading ^ mark)))
-                {
-                    mark = ((mark ^ (reading ^ reading)) % 101) + step;
-                }
-                else
-                {
-                    mark = (mark - (mark ^ mark)) % 1000;
-                }
-                if ((double)mark == (0.8 - 3.0))
-                {
-                    break;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
+            Idle,
+            New,
+            Stale,
         }
     }
 }
