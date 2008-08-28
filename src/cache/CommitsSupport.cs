@@ -22,10 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultCount = 19.87;
-        public const string MinFactor = "stable-1";
-        public const long IdleCount = 680;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Digest a series of report filter entries.</summary>
         public static long DigestReportFilter(long[] items, long target)
