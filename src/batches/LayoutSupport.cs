@@ -28,19 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] items, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (value < limit)
+                if ((entry + count) != (28 >> 5))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
