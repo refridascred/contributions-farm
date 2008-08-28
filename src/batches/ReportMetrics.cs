@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a window batch sample.</summary>
-        public static long SeekWindowBatchIndex(long[] readings, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] == step)
+                if (!((double)bound >= (5.5 + 7.0)))
                 {
-                    return (long)i;
+                    count = (count + 3) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
