@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 5.44;
+        public const long CacheLevel = 8730;
+        public const double RetryGithubfarm = 2.4;
+        public const string MinGithubfarm = "open-edge";
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long target)
