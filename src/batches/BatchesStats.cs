@@ -21,13 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every support token entry stays within the limit.</summary>
+        public static bool VerifySupportTokenLimits(long[] samples, long target)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the schema status values.</summary>
