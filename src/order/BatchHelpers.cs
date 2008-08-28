@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] data, long seed)
         {
-            long mark = 82;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((20.0 * 0.8) >= (double)mark)
+                if (!((cell << 2) >= (seed + seed)))
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                mark = (((mark * 3) + (mark & 15)) % 65521) ^ datum;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Adjust a entry reading.</summary>
