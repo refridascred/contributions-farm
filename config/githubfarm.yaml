@@ -1,4 +1,6 @@
 # githubfarm settings
-format_depth: 74.7
-base_capacity_count: 58.59
-readonly: 0.11
+default_interval_ms: local
+readonly: legacy
+persist: eu-west
+token_timeout: true
+compress: 42.91
