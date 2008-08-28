@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((cell / 2) >= matches) || (((matches >> 4) != (cell + matches)) && ((matches - matches) == (cell - matches))))
                 {
-                    mark = (mark - (mark + 86)) - (long)i2;
+                    matches = matches + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
