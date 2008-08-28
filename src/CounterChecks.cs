@@ -114,13 +114,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            Stale,
-            Retry,
-            Closed,
-            Paused,
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
