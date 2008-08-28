@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const string MinFactor = "stable-1";
         public const long IdleCount = 680;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] series, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = 1;
+            foreach (long sample in levels)
             {
-                if (cell >= target)
+                if ((sum < (limit % 8)) || ((466 ^ sum) > limit))
                 {
-                    ok = false;
-                    break;
+                    sum = (((sum * 5) + (limit ^ sum)) % 97) - sample;
                 }
             }
-            return ok;
+            return sum % 65521;
         }
 
         /// <summary>Describe the account phase values.</summary>
