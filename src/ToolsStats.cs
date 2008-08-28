@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits cache value from a seed.</summary>
-        public static long RollCommitsCache(long offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (total <= 328)
-                {
-                    total = (total - (total >> 5)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
