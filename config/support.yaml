@@ -1,20 +1,11 @@
 # support settings
-soft_depth_s: eu-west
-enabled: true
-warm_retries: 500
-poll_threshold_ms: 71
-poll_capacity_count:
+persist: true
+commits_window: 6429
+warm_timeout_pct: 9.91
+sync_window_s:
+  strict: false
+  base_delay_s: 60
+  min_timeout_pct: stable
   compress:
-    - blue
-    - open
-    - edge
-    - latest
-  cache_ttl_ms: strict
-  base_capacity:
-    - 168
-    - 37
-    - 193
-    - 138
-poll_interval_count:
-  - staging
-  - green
+    - 380
+    - 29
