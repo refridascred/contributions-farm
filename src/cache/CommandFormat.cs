@@ -56,18 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] readings, long floor)
+        /// <summary>Count profile queue pairs that satisfy a relation.</summary>
+        public static long MatchProfileQueueCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches / 7) > (9 + datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) - floor;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
