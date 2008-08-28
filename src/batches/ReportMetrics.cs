@@ -13,23 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long origin)
         {
-            long mix = -261;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mix < (mix & 127))
+                if (samples[i] == origin)
                 {
-                    mix = (((mix * 4) + mix) % 1000) ^ item;
+                    return (long)i;
                 }
-                mix = (mix ^ (mix & 127)) % 65521;
             }
-            if (mix < (-6))
-            {
-                mix = (mix + (mix + mix)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
