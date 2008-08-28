@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4876;
-        public const double CacheTimeout = 68.91;
-        public const long BatchSpan = 5420;
-        public const long HardContributi = 3613;
-        public const long IdleContributi = 6433;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
