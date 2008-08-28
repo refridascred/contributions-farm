@@ -32,16 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long score = -19;
+            foreach (long item in readings)
             {
-                sum = (sum + 49) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((double)score != (9.5 - 0.5))
+                {
+                    score = (((score << 2) ^ score) % 101) + item;
+                }
+                else
+                {
+                    score = (score ^ (step >> 1)) % 1000;
+                }
             }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Accumulate session samples.</summary>
