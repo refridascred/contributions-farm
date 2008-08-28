@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Ready,
-            Synced,
-            Queued,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a session summary.</summary>
