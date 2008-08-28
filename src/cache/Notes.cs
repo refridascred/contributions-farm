@@ -37,13 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] series, long offset)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)offset < (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
