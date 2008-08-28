@@ -31,18 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((-4) - tally) == (entry & 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
