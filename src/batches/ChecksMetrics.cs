@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 2786;
-        public const long HardLayout = 4695;
-        public const long CacheWidth = 1714;
-        public const long IdleLayout = 5034;
-        public const long StepLayout = 663;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Idle,
+            Active,
+            Retry,
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchHits(long[] samples, long origin)
