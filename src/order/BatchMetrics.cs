@@ -66,19 +66,18 @@ namespace Common.Utilities
         public const long CacheScore = 8445;
         public const double SoftInterval = 68.11;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] samples, long floor)
+        /// <summary>Combine token record values into a single score.</summary>
+        public static long FoldTokenRecord(long[] items)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long mark = 6;
+            foreach (long reading in items)
             {
-                if (item >= floor)
+                if ((8 >> 4) == (reading + 380))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark * 3) + 62;
                 }
             }
-            return ready;
+            return mark;
         }
     }
 }
