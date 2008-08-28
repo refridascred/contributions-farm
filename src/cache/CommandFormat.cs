@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading >> 4) == (seen - reading)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "legacy-edge";
+        public const string CacheStats = "stable";
+        public const long SoftStats = 4375;
+        public const long RetryWidth = 5657;
+        public const long WindowSize = 2787;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterGaps(long[] readings)
