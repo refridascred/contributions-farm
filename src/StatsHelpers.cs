@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleFactor = 174;
-        public const double WindowDepth = 2.2;
-        public const string DefaultSpan = "primary";
-        public const long MaxChecks = 7779;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 124;
+        public const long DefaultLevel = 2634;
+        public const long WindowCluster = 2978;
+        public const double DefaultTimeout = 36.13;
+        public const double BaseCluster = 87.78;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] readings)
