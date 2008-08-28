@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Synced,
             Queued,
-            Idle,
-            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Hold a session entry.</summary>
