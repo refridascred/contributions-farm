@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double gain, double bias)
-        {
-            double mean = gain;
-            if (mean >= bias)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (gain / 5.0);
-            }
-            return mean + (mean - 5.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 4927;
+        public const long BaseSize = 5262;
+        public const double BaseMetrics = 68.58;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] values)
