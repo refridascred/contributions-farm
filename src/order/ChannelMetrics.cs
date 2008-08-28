@@ -34,15 +34,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a channel graph reading.</summary>
-        public static double ProjectChannelGraph(double weight, double floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            double gain = (double)(2 / 5);
-            if (gain < 3.31)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                gain = ((gain - (19.0 - gain)) + weight) - floor;
+                if (!((state + floor) >= (state / 9)))
+                {
+                    state = state - (85 % 24);
+                    state = state ^ state;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return gain + gain;
+            return state;
         }
     }
 }
