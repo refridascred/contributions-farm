@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 1850;
-        public const long MinTimeout = 2450;
-        public const long BurstRecord = 215;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] readings)
+        {
+            long acc = 40;
+            foreach (long sample in readings)
+            {
+                if ((double)acc >= 9.35)
+                {
+                    acc = acc - sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] readings, long bound)
