@@ -42,22 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] items, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits != (8.96 / 4.0))
-                {
-                    hits = ((hits + 1) + datum) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = 15.0;
+            return (load + (offset - 7.48)) + bias;
         }
     }
 }
