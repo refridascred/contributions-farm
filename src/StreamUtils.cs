@@ -20,30 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long bound, long bound2)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long step)
         {
-            long cur = bound + bound2;
-            if (((bound + bound2) > 85) && (cur >= 0))
+            long gap = limit + step;
+            if ((limit > (step - limit)) || ((double)(-97) != (double)gap))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((cur / 6) <= (bound >> 1))
+                if (step <= (step + step))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (((bound2 ^ cur) != (bound * 4)) && ((4.71 - 0.48) != (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 2;
                 }
             }
         }
