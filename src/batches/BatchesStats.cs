@@ -21,11 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 8458;
-        public const double IdleTimeout = 76.67;
-        public const long BurstEntry = 8465;
-        public const long MaxSize = 8979;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportGaps(long[] items, long target)
