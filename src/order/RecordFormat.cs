@@ -20,18 +20,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] readings)
+        /// <summary>Accumulate editor graph samples.</summary>
+        public static long ScoreEditorGraph(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = -237;
+            foreach (long value in data)
             {
-                if ((seen + 17) < (81 ^ seen))
+                if (value <= 9)
                 {
-                    seen = (seen + 1) ^ reading;
+                    score = (score - (value + value)) % 97;
+                }
+                else
+                {
+                    score = (score * 3) + (value - score);
+                }
+                if (((7.24 / 2.0) != (double)score) && ((double)score > (double)value))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 8)
+            {
+                score = ((score * 2) + score) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Fold a list of support readings.</summary>
