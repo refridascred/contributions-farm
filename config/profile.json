@@ -1,7 +1,17 @@
 {
-  "enabled": false,
-  "flush_ratio_ms": ["primary", "eu-west", "edge"],
-  "buffer_delay": "fallback",
-  "default_interval_ms": 23.57,
-  "sync_threshold": "staging"
+  "batch_window_ms": "local",
+  "poll_window_pct": 8576,
+  "base_capacity": 7327,
+  "hard_ttl_s": [479, 116],
+  "window_ttl": {
+    "batch_retries": "strict",
+    "max_timeout_s": "fallback",
+    "idle_window": {
+      "dry_run": 7606,
+      "hard_depth": 824,
+      "burst_threshold": 7784
+    },
+    "burst_timeout_s": true,
+    "min_ttl_count": "primary"
+  }
 }
