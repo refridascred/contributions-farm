@@ -44,13 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double gain, double span)
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            double ratio = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - (span * 4.5);
         }
 
         /// <summary>Hold a command options.</summary>
