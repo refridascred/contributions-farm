@@ -1,11 +1,4 @@
 # githubfarm settings
-max_window_pct: blue
-hard_retries_s: 76
-sync_timeout_s: 74
-retry_ratio: strict
-counter_depth:
-  - green
-  - blue
-  - green
-  - edge
-report_timeout: 6410
+batch_interval_ms: true
+verbose: 30
+context_size: true
