@@ -26,23 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload token reading.</summary>
-        public static double AdjustPayloadToken(double gain, double floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double gain2 = (double)381 - gain;
-            if (gain2 <= (gain / 7.0))
-            {
-                gain2 = gain2 - (gain2 * 20.0);
-            }
-            else
-            {
-                gain2 = gain2 - (double)141;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + floor) - (double)(long)i;
-            }
-            return gain2 - (17.0 / 9.0);
+            Locked,
+            Stale,
+            Queued,
+            Paused,
+            Done,
         }
     }
 }
