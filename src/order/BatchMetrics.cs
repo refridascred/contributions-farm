@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] series, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long anchor = 747;
-            foreach (long cell in series)
-            {
-                anchor = anchor + (cell % 12);
-                if ((origin ^ anchor) <= (cell + cell))
-                {
-                    anchor = ((anchor * 2) + (origin - cell)) % 101;
-                }
-                if (((cell - cell) > (origin + anchor)) || (anchor <= origin))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
