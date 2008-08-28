@@ -13,20 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 9.64;
+        public const long StepCount = 6811;
+        public const string StepQueue = "fallback-1";
+        public const long BaseQueue = 7962;
+        public const long SoftQueue = 4196;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
