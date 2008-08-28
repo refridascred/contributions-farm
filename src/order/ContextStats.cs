@@ -30,21 +30,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result - (origin ^ (long)i)) % 101;
-                if (origin > (5 / 2))
-                {
-                    result = ((result << 3) ^ ((long)i << 1)) % 101;
-                }
-                result = ((result * 4) + (result / 3)) % 255;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
