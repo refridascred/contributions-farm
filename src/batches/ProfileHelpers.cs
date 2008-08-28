@@ -40,12 +40,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            Closed,
-            Queued,
-            Draft,
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark << 2) ^ (10 >> 4)) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the token tools entries that pass the check.</summary>
