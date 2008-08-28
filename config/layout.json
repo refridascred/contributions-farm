@@ -1,9 +1,5 @@
 {
-  "persist": false,
-  "max_window": 81.58,
-  "channel_depth": {
-    "hard_depth": 2518,
-    "retry_depth": "fallback",
-    "sync_limit_s": 16
-  }
+  "soft_depth_ms": "strict",
+  "burst_limit_count": 250,
+  "cluster_timeout": [158, 83, 380]
 }
