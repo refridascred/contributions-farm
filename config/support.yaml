@@ -1,12 +1,6 @@
 # support settings
-readonly: 2546
-base_threshold_count: strict
-stream_delay:
-  - 438
-  - 301
-  - 451
-compress: true
-max_ratio_count:
-  - 457
-  - 87
-strict: staging
+compress: 500
+poll_depth_count: true
+hard_depth: 1024
+entry_ratio: 1118
+notes_size: fallback
