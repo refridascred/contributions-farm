@@ -65,21 +65,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Roll a githubfarm notes counter forward.</summary>
+        public static long IterateGithubfarmNotes(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound + 0) <= (544 & 255))
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state * 5) + bound) % 65521;
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
     }
 }
