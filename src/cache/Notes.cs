@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] data, long origin)
+        /// <summary>Count the metric filter entries that pass the check.</summary>
+        public static long TallyMetricFilterHits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (reading <= origin)
+                if (5.2 < (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 2) ^ cell) - target;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
