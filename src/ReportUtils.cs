@@ -15,18 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next layout payload value from a seed.</summary>
-        public static long RollLayoutPayload(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark + (mark << 1)) % 65521;
-                mark = ((mark * 5) + mark) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "primary-1";
+        public const string DefaultLevel = "cached-v2";
+        public const long WindowDepth = 7581;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
