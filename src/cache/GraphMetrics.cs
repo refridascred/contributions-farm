@@ -25,19 +25,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool ValidateWindowBatchRange(long[] items, long target)
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long CombineMetricAccount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long anchor = 83;
+            foreach (long entry in series)
             {
-                if (reading != target)
+                if (((anchor + anchor) != (anchor - anchor)) && ((348 * 5) <= (anchor + anchor)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (entry & 1)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor ^ 59)) % 65521;
                 }
             }
-            return found;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many filter stream samples are out of range.</summary>
