@@ -50,21 +50,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record batch samples.</summary>
-        public static long CompareRecordBatchCount(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)step > (12.0 / 8.0)) || ((step & 127) < limit))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((823 << 2) >= (limit << 2))
                 {
-                    if ((items[i] + items[j]) == 3)
+                    return 1;
+                }
+                else
+                {
+                    if (23 >= step)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many record entry samples are out of range.</summary>
