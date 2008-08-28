@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Locate a githubfarm counter reading by value.</summary>
+        public static long SeekGithubfarmCounterIndex(long[] data, long seed)
         {
-            Failed,
-            New,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
