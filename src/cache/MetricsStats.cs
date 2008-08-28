@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseDepth = 6266;
-        public const long RetryCount = 5358;
-        public const long BaseContext = 588;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadHits(long[] series)
