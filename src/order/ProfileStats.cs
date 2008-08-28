@@ -49,11 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "cached";
-        public const long BurstTimeout = 6876;
-        public const double IdleTimeout = 35.47;
-        public const long LimitChecks = 4186;
-        public const string RetryChecks = "strict-1";
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
