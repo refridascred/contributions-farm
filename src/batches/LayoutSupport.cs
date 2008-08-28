@@ -45,21 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (((total << 3) ^ ((long)i ^ total)) % 101) - (long)i2;
-                }
-                total = ((total << 3) ^ (86 + bound)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepRatio = 8533;
+        public const double SoftMetrics = 39.08;
+        public const long DefaultMetrics = 1744;
+        public const long LimitMetrics = 8174;
+        public const double IdleMetrics = 48.7;
 
         /// <summary>Fold a list of payload layout readings.</summary>
         public static long DigestPayloadLayout(long[] values, long offset)
