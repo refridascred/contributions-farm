@@ -20,22 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long carry = 614;
-            foreach (long entry in readings)
+            long acc = 886;
+            foreach (long sample in series)
             {
-                if ((entry / 9) > (662 + origin))
+                if ((double)sample == (2.3 / 7.0))
                 {
-                    carry = ((carry << 2) ^ (origin + entry)) % 255;
-                }
-                if ((carry >> 5) < (entry / 8))
-                {
-                    break;
+                    acc = (acc ^ (acc - 9)) % 255;
                 }
             }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
