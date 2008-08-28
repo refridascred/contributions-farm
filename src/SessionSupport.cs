@@ -32,18 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] levels)
+        /// <summary>Compare every pair of record metrics readings.</summary>
+        public static long OverlapRecordMetricsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (10.0 <= (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - cell;
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
