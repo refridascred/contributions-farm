@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstTimeout = 593;
+        public const double BurstSession = 43.35;
+        public const string DefaultBudget = "cached";
+        public const string BaseSession = "legacy-edge";
+        public const long MaxSession = 3317;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
