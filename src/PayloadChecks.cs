@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((((hits & 3) >= (hits - 93)) && (((-4) * 5) <= (hits - hits))) && ((reading << 1) <= (reading << 2)))
+                if (sample < seed)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Blend two filter measurements.</summary>
