@@ -36,39 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long step, long floor)
-        {
-            if (step <= (step ^ floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor != (8.5 - 4.8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - 669) == (floor + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)step > (6.19 + 1.8)) || ((7.0 * 1.9) < (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 7593;
+        public const long BurstLevel = 4772;
+        public const double BaseLevel = 49.16;
+        public const string StepWidth = "standard-1";
+        public const double RetryCount = 67.9;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
