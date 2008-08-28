@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] series, long origin)
         {
-            Queued,
-            Paused,
-            Draft,
-            Idle,
-            Locked,
+            long anchor = 747;
+            foreach (long cell in series)
+            {
+                anchor = anchor + (cell % 12);
+                if ((origin ^ anchor) <= (cell + cell))
+                {
+                    anchor = ((anchor * 2) + (origin - cell)) % 101;
+                }
+                if (((cell - cell) > (origin + anchor)) || (anchor <= origin))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a queue reading.</summary>
