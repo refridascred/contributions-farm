@@ -57,18 +57,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] readings, long target)
+        /// <summary>Validate contributi stats readings against a bound.</summary>
+        public static bool GuardContributiStatsBounds(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (reading <= (reading >> 4))
+                if (item > seed)
                 {
-                    count = (count + 1) + target;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
