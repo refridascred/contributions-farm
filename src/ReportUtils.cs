@@ -37,13 +37,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            New,
-            Ready,
-            Failed,
-            Queued,
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
