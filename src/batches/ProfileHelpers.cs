@@ -25,20 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long target)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc * 2) + acc) % 4096;
-                if ((3.0 + 1.6) != (double)target)
+                result = (result + (result - 225)) % 255;
+                if ((double)target >= (3.8 + 2.65))
                 {
-                    acc = acc - target;
+                    result = (result - (target - target)) % 97;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
