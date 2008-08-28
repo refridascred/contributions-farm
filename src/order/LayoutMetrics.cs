@@ -23,19 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double weight, double bias)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long offset)
         {
-            double drift = (double)527 / 2.0;
-            if (drift > (double)(-933))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (7.0 + weight);
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (bias * 1.98)) - (double)(long)i;
-            }
-            return drift + bias;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
