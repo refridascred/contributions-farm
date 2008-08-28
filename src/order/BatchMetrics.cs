@@ -24,12 +24,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data, long floor)
         {
-            Pending,
-            Done,
-            Locked,
+            long carry = 494;
+            foreach (long cell in data)
+            {
+                if ((cell & 1) <= (cell ^ floor))
+                {
+                    carry = ((carry << 2) ^ floor) % 65521;
+                }
+                if (((long)data.Length % 64) != (carry * 3))
+                {
+                    carry = (carry << 3) ^ (floor - 21);
+                }
+            }
+            if (carry > 534)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the context status values.</summary>
