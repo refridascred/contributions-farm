@@ -1,7 +1,5 @@
 # entry settings
-persist: true
-min_delay_s: 8531
-burst_ratio_count:
-  - standard
-  - stable
-  - open
+account_timeout: legacy
+warm_retries_s: 500
+compress: 91.29
+burst_ratio: 62.59
