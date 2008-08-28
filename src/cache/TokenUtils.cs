@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items, long bound)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long score = 57;
-            foreach (long item in items)
-            {
-                score = (score + (score ^ bound)) % 97;
-                if ((double)bound == (double)score)
-                {
-                    score = (score - ((long)items.Length * 5)) % 97;
-                }
-                else
-                {
-                    score = score ^ item;
-                }
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
