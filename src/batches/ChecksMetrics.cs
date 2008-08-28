@@ -19,15 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] samples, long origin)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long cell in samples)
             {
-                if ((double)bound > (double)tally)
+                if (!((double)cell != (1.12 - 7.68)))
                 {
-                    tally = (tally + 1) + datum;
+                    tally = (tally + 3) + origin;
                 }
                 else
                 {
