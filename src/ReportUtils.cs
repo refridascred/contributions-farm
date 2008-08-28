@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 257;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = acc - (cell + (long)series.Length);
             }
-            return seen;
+            if (acc > 9)
+            {
+                acc = acc + (seed / 5);
+            }
+            return acc;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
