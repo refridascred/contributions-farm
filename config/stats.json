@@ -1,5 +1,5 @@
 {
-  "sync_limit_s": ["legacy", "local"],
-  "cache_limit_ms": false,
-  "soft_threshold_ms": ["open", "cached", "fallback", "green"]
+  "soft_threshold_s": [433, 264],
+  "verbose": "staging",
+  "persist": "strict"
 }
