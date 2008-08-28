@@ -1,5 +1,18 @@
 {
-  "poll_capacity_pct": 33,
-  "flush_ttl": 7043,
-  "batch_window": 63
+  "hard_depth_count": false,
+  "idle_retries_count": "staging",
+  "queue_ratio": {
+    "default_delay": 29.14,
+    "already_interval": "green",
+    "batch_limit_pct": 82.39,
+    "poll_size": true,
+    "account_ttl": 63.79,
+    "max_retries_ms": "edge"
+  },
+  "min_size_ms": {
+    "strict": 5878,
+    "base_ttl_count": 30,
+    "commits_threshold": [429, 351, 471, 59],
+    "retry_threshold_s": 44.95
+  }
 }
