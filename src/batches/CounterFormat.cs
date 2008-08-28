@@ -14,23 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((577 - 26) < total))
-                {
-                    total = ((total * 4) + total) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
