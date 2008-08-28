@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate buffer batches readings against a bound.</summary>
-        public static bool ValidateBufferBatchesLimits(long[] items, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum >= limit)
+                if ((carry - floor) < (floor - (long)i))
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry << 2) ^ (floor / 7)) % 255;
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a command header.</summary>
