@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] values, long offset)
+        /// <summary>Audit githubfarm entry readings against a rule.</summary>
+        public static long MeasureGithubfarmEntryHits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((4.26 + 5.05) >= (double)offset)
+                if ((offset + datum) < (count ^ offset))
                 {
-                    seen = (seen + 1) + reading;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
