@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every contributi editor entry stays within the limit.</summary>
-        public static bool VerifyContributiEditorLimits(long[] samples, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long mark = 301;
+            foreach (long datum in items)
             {
-                if (item < floor)
+                mark = ((mark + datum) % 255) - origin;
+                if ((long)items.Length >= mark)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mark > 0)
+            {
+                mark = (mark << 3) ^ 86;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batches summary.</summary>
