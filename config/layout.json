@@ -1,16 +1,7 @@
 {
-  "strict": 80.31,
-  "audit": false,
-  "idle_interval_ms": "local",
-  "schema_capacity": {
-    "compress": {
-      "audit": 5750,
-      "base_ratio_s": 7692,
-      "persist": 7915
-    },
-    "batch_delay": ["latest", "local", "standard"],
-    "idle_delay_count": ["open", "standard"],
-    "retry_window": "stable",
-    "strict": 1081
-  }
+  "queue_interval": 59,
+  "idle_size": "primary",
+  "warm_delay_s": 5.05,
+  "persist": "latest",
+  "readonly": ["open", "stable"]
 }
