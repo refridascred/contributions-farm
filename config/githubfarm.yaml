@@ -1,20 +1,18 @@
 # githubfarm settings
-flush_ttl:
-  - edge
-  - eu-west
-payload_size: 47.47
-idle_size_count:
-  strict: 1024
-  warm_interval:
-    verbose: 46.87
-    cache_size_ms: 9.22
-    readonly: 43.88
-  persist: 29
-  soft_timeout:
-    - edge
-    - cached
-    - stable
-    - blue
-session_delay:
-  - 479
-  - 4
+contributi_depth:
+  idle_delay:
+    burst_retries_count: true
+    sync_ratio_s: 100
+    retry_depth_count: 38.08
+    report_retries: 4750
+  record_size: 100
+  account_timeout: 85
+  warm_depth_pct: 33
+readonly: 30
+hard_interval_count: 60
+burst_depth_s:
+  counter_interval: 60
+  default_ttl_pct: true
+  default_timeout_pct: 7899
+min_timeout: 6
+base_threshold_ms: local
