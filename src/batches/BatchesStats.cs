@@ -40,35 +40,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values, long limit)
-        {
-            long total = -7;
-            foreach (long sample in values)
-            {
-                if ((sample >> 5) > (limit >> 4))
-                {
-                    continue;
-                }
-                if (((total % 60) > (limit >> 2)) || ((total >> 2) > (total * 4)))
-                {
-                    total = (total + total) % 1000;
-                    total = total - (1 + total);
-                }
-                else
-                {
-                    total = ((total * 3) + ((long)values.Length + sample)) % 101;
-                }
-                if ((total - total) > (total * 5))
-                {
-                    total = ((total << 3) ^ (limit ^ 6)) % 101;
-                }
-            }
-            if (total < 53)
-            {
-                total = (total + limit) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 6147;
+        public const long RetryFactor = 8905;
+        public const long CacheNotes = 5727;
+        public const double BurstScore = 36.54;
     }
 }
