@@ -36,28 +36,29 @@ namespace Common.Utilities
             return weight2 - (floor - weight);
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long offset, long step)
+        /// <summary>Classify a command window pair into a bucket.</summary>
+        public static long RankCommandWindow(long step, long origin)
         {
-            if ((offset <= (43 % 8)) || ((47 + offset) <= step))
+            long delta = step - origin;
+            if (73 > delta)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((offset + offset) == (offset >> 5)) && ((6 >> 4) < offset))
+                if ((step - 668) <= (origin + origin))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((offset % 16) != (9 + step))
+                    if (step <= (origin * 3))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        return 0;
+                        return 7;
                     }
                 }
             }
