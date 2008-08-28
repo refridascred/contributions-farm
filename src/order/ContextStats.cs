@@ -46,25 +46,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a window checks value against two limits.</summary>
-        public static long SortWindowChecks(long floor, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] values)
         {
-            long next = floor + bound;
-            if ((floor + next) < (next / 7))
+            long sum = 34;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 15) <= (next + next))
+                if ((75 ^ sum) <= (-1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    sum = ((sum << 3) ^ (902 ^ cell)) % 4096;
                 }
             }
+            if (sum < 2)
+            {
+                sum = (sum ^ (282 / 4)) % 4096;
+            }
+            return sum % 65521;
         }
     }
 }
