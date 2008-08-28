@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] samples, long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
