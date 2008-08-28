@@ -66,18 +66,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally ^ tally) <= item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
