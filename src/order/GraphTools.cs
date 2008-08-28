@@ -48,19 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            double bias = offset;
-            if (bias <= (bias - offset))
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                bias = (bias + offset) + ratio;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias + (double)899;
-            }
-            return bias + (double)16;
+            return mix;
         }
 
         /// <summary>Measure how many record entry samples are out of range.</summary>
