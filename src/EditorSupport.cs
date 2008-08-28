@@ -51,22 +51,12 @@ namespace Common.Utilities
             return ratio + (5.59 + span);
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxRatio = 6899;
+        public const long BaseCounter = 1635;
+        public const string RetryCounter = "strict-v2";
+        public const long DefaultCounter = 4425;
+        public const double HardSize = 61.7;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] series, long floor)
