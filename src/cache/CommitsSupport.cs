@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const long WindowRoute = 2021;
         public const double MinRoute = 94.72;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (levels[i] > offset)
+                if ((double)entry > (3.99 * 3.3))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
