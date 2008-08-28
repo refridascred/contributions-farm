@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheInterval = 4785;
-        public const long DefaultChannel = 4063;
-        public const long HardRatio = 7147;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((7 < (item % 60)) && (item > (step - 149)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double scale, double bias)
