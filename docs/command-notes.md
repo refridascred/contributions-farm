@@ -1,14 +1,15 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the editor list.
-When a batches fails, the batches handler retries a few times before giving up.
+Run the schema check before changing any counter limits.
+A graph that stays idle for too long is moved to the editor list.
 
-The support report groups every window by commits.
-When a batch fails, the token handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
+Keep queue and account names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new graph fields
-- Review command limits each release
-- Validate counter input early
-- Prefer githubfarm defaults
+- Prefer buffer defaults
+- Log every githubfarm change
+- Document new queue fields
+- Validate entry input early
