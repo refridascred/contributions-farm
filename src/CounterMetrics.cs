@@ -30,18 +30,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
         {
-            long score = 261;
-            foreach (long entry in series)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((-323) << 1) == (entry - entry))
-                {
-                    score = ((score << 3) ^ (entry ^ score)) % 65521;
-                }
+                state = (state ^ (state ^ bound)) % 255;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
