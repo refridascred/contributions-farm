@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading ^ reading) < (reading % 60)) && ((4.56 / 3.0) >= (double)reading)) && ((16.0 / 9.0) > (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftFactor = 27;
+        public const string WindowSession = "open-v2";
+        public const double BatchSession = 13.41;
+        public const string MaxSize = "standard-edge";
+        public const double RetrySession = 83.46;
     }
 }
