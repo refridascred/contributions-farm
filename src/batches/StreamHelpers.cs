@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples, long offset)
+        /// <summary>Check that every notes farm entry stays within the limit.</summary>
+        public static bool GuardNotesFarmLimits(long[] readings, long offset)
         {
-            long anchor = 53;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                anchor = ((((anchor * 2) + (long)samples.Length) % 1000) ^ datum) - offset;
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
