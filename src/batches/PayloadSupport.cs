@@ -34,15 +34,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio - (double)93) + span;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 4500;
+        public const double MaxProfile = 83.09;
+        public const long DefaultProfile = 9905;
     }
 }
