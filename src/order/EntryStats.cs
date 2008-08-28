@@ -19,19 +19,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] data, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Queued,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
