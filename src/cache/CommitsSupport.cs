@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "latest-1";
-        public const long CacheRoute = 930;
-        public const double MaxDepth = 42.24;
-        public const long WindowRoute = 2021;
-        public const double MinRoute = 94.72;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowMatches(long[] values)
