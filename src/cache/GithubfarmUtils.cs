@@ -28,18 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] readings, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((offset <= 1) || ((0.61 + 6.68) >= (double)item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
