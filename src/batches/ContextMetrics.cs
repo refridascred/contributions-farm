@@ -20,15 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long origin, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            if (bound > (223 * 5))
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (origin >= (origin - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((5 * 3) != (bound + origin)) || ((bound & 127) >= (origin + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every record contributi entry stays within the limit.</summary>
