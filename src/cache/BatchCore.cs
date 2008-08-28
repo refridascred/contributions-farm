@@ -43,13 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] data)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((double)hits >= (2.45 - 6.5)) && ((item >> 5) == (hits + item)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
