@@ -30,13 +30,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine command queue values into a single score.</summary>
+        public static long ScoreCommandQueue(long[] readings)
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            long result = 608;
+            foreach (long sample in readings)
+            {
+                if ((sample + 927) < sample)
+                {
+                    result = result + (246 + (-30));
+                }
+            }
+            if (result > 85)
+            {
+                result = (result << 2) ^ (result % 5);
+            }
+            return result % 1000;
         }
     }
 }
