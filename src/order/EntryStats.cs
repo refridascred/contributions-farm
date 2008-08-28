@@ -27,16 +27,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor << 3) ^ (bound * 3)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Dropped,
+            Idle,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Roll a metric command counter forward.</summary>
