@@ -1,9 +1,17 @@
 # support settings
-max_interval: 39.99
-batch_depth: 22.85
-route_depth: 3240
-compress:
-  - cached
-  - local
-  - standard
-burst_interval: 250
+burst_threshold_pct:
+  default_timeout: latest
+  stats_depth:
+    verbose: 1024
+    strict: true
+    hard_capacity_s: staging
+  verbose: 7242
+  retry_threshold: 60
+max_ratio_count: false
+dry_run:
+  default_delay: 9815
+  cache_limit_s: 88.29
+  enabled: 93
+  hard_timeout_pct: 3666
+  flush_threshold: green
+idle_size_count: 5748
