@@ -11,18 +11,38 @@ namespace Common.Utilities
         public const string WindowChannel = "alpha-edge";
         public const double BatchBudget = 33.13;
 
-        /// <summary>Measure how many tools format samples are out of range.</summary>
-        public static long TallyToolsFormatGaps(long[] series)
+        /// <summary>Rank profile tools input into a small class.</summary>
+        public static long ClassifyProfileTools(long seed, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((target & 255) <= target)
             {
-                if (seen > (463 + reading))
+                return 4;
+            }
+            else
+            {
+                if (seed < (seed * 2))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (seed > (target + (-13)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed << 2) >= (515 & 15))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a format snapshot.</summary>
