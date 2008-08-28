@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] items, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Retry,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Hold a session record.</summary>
