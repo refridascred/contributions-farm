@@ -53,19 +53,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items, long offset)
+        /// <summary>Count stream filter pairs that satisfy a relation.</summary>
+        public static long CompareStreamFilterCount(long[] values)
         {
-            long state = 3;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 3) ^ (value << 2)) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 90)
-            {
-                state = (state * 5) + state;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a format tools figure with a bias.</summary>
