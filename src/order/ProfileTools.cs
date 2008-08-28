@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ratio - (double)(-31);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] series, long origin)
         {
-            long total = 6;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((long)items.Length & 63) >= floor)
+                if (!((double)origin >= (2.1 / 5.0)))
                 {
-                    total = ((total * 5) + (datum % 16)) % 4096;
+                    count = (count + 3) + datum;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
