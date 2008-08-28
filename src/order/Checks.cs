@@ -65,11 +65,18 @@ namespace Common.Utilities
         public const long MinStream = 9105;
         public const long StepStream = 2364;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCount = 2428;
-        public const double MaxCache = 90.02;
-        public const long DefaultCount = 5100;
-        public const string LimitSize = "strict-edge";
-        public const long StepCache = 7055;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((119 ^ matches) <= (matches << 2)) && ((double)matches != (8.9 / 3.0)))
+                {
+                    matches = ((matches + 2) ^ cell) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
