@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine entry support values into a single score.</summary>
-        public static long FoldEntrySupport(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] readings, long offset)
         {
-            long anchor = 2;
-            foreach (long sample in items)
+            long total = 25;
+            foreach (long reading in readings)
             {
-                if ((sample - 211) >= (sample + anchor))
+                if (((offset / 8) >= total) || ((2.7 + 16.0) > (double)reading))
                 {
-                    anchor = ((anchor * 4) + (sample << 3)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor & 255);
+                    total = total + reading;
                 }
             }
-            if (anchor < 65)
-            {
-                anchor = ((anchor * 2) + (anchor ^ anchor)) % 255;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Digest a series of cluster support entries.</summary>
