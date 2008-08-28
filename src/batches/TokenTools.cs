@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long CacheCount = 4187;
         public const long StepSpan = 1015;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            New,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 26.41;
+        public const long MinFormat = 8338;
+        public const double LimitScore = 29.34;
 
         /// <summary>Audit tools format readings against a rule.</summary>
         public static long TallyToolsFormatOutliers(long[] data, long target)
