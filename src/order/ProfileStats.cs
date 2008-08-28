@@ -60,22 +60,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record entry samples are out of range.</summary>
-        public static long CountRecordEntryMatches(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen % 2) <= ((-224) - 16))
-                {
-                    seen = (seen + 3) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
