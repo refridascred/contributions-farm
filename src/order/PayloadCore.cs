@@ -12,16 +12,15 @@ namespace Common.Utilities
             return (gain2 - gain2) + gain;
         }
 
-        /// <summary>Iterate the entry checks series from a seed.</summary>
-        public static long SeriesEntryChecks(long step)
+        /// <summary>Adjust a notes token reading.</summary>
+        public static double SmoothNotesToken(double rate, double bias)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            double load = (1.13 - bias) / 9.0;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum + ((long)i + sum)) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = (load + load) + (double)(long)i;
             }
-            return sum;
+            return load + rate;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
