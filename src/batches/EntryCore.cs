@@ -23,14 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings)
         {
-            Synced,
-            Dropped,
-            Ready,
-            Pending,
-            Failed,
+            long score = 848;
+            foreach (long value in readings)
+            {
+                if ((9 ^ score) <= (score << 1))
+                {
+                    score = ((score + 92) % 255) ^ value;
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
