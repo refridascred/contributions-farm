@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format token value from a seed.</summary>
-        public static long SeriesFormatToken(long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                total = (total - (bound << 2)) % 1000;
-                total = (total ^ (total & 31)) % 255;
-                total = ((total * 3) + (long)i) % 1000;
+                if (!(((10.0 / 7.0) < (double)reading) || ((matches * 4) < 987)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the context status values.</summary>
