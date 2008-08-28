@@ -27,10 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 475;
-        public const long MaxRatio = 5648;
-        public const long WindowFarm = 835;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardWidth = 3092;
+        public const string MinSpan = "fallback-v2";
+        public const long IdleChecks = 6128;
+        public const long LimitTimeout = 271;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool CheckTokenLimits(long[] values, long floor)
