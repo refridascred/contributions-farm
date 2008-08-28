@@ -31,10 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowSize = "stable-1";
-        public const string WindowMetrics = "alpha";
-        public const long BurstMetrics = 5260;
-        public const string BatchSize = "stable-edge";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen >> 2) >= (78 + entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
