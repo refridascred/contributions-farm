@@ -53,21 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count support metric pairs that satisfy a relation.</summary>
-        public static long CompareSupportMetricCount(long[] data)
+        /// <summary>Match up channel context samples.</summary>
+        public static long MatchChannelContextCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 19)
+                    if ((readings[i] + readings[j]) < 3)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
