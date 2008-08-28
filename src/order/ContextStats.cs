@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (((-337) >> 2) >= (cell ^ 0))
+                if (datum < offset)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a context record.</summary>
