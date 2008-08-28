@@ -1,18 +1,9 @@
 # support settings
-poll_capacity_pct: 358
-max_window_pct:
-  burst_delay_pct:
-    readonly: 250
-    tools_retries: 60
-    batch_retries: true
-    report_size: primary
-    poll_ttl: 9
-    contributi_interval: local
-  burst_timeout_pct: 1024
-  sync_limit_pct:
-    - 46
-    - 443
-    - 311
-    - 20
-flush_timeout_s: false
-soft_ratio: 4
+persist: 7.2
+readonly: 12.52
+idle_retries_s: stable
+flush_capacity:
+  - strict
+  - stable
+  - standard
+  - fallback
