@@ -41,18 +41,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] data, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = 453;
+            foreach (long item in readings)
             {
-                if ((sample - matches) >= (sample + matches))
+                carry = carry + (seed & 63);
+                if (!((double)seed <= (2.0 * 17.0)))
                 {
-                    matches = (matches + 2) + floor;
+                    carry = (carry - seed) % 1000;
+                }
+                if (((seed - 15) >= (387 / 8)) && ((item + item) == (seed % 100)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
