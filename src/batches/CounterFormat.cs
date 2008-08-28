@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 4413;
+        public const long SoftDepth = 3412;
+        public const long MaxCache = 4032;
+        public const double BaseCache = 61.1;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long limit, long target)
