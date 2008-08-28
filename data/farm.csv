@@ -1,6 +1,6 @@
-id,weight,region
-1,910,457
-2,475,938
-3,42.77,46.51
-4,410,520
-5,legacy,latest
+id,count,score,weight
+1,38.22,372,78.98
+2,primary,open,open
+3,local,894,65.24
+4,212,192,11.49
+5,269,931,904
