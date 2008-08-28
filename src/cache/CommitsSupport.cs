@@ -22,16 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double floor)
-        {
-            double rate = (double)(415 >> 4);
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - weight) - (double)(long)i;
-            }
-            return rate - (floor * 7.49);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "latest-1";
+        public const long CacheRoute = 930;
+        public const double MaxDepth = 42.24;
+        public const long WindowRoute = 2021;
+        public const double MinRoute = 94.72;
 
         /// <summary>Derive the next batch stats value from a seed.</summary>
         public static long DeriveBatchStats(long origin)
