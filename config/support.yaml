@@ -1,9 +1,13 @@
 # support settings
-persist: 7.2
-readonly: 12.52
-idle_retries_s: stable
-flush_capacity:
+compress: 94.69
+burst_delay_ms:
   - strict
-  - stable
   - standard
-  - fallback
+  - strict
+soft_threshold_count: 54.67
+batch_depth_pct:
+  - 16
+  - 247
+  - 7
+  - 83
+verbose: true
