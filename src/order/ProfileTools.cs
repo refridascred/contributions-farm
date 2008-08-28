@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            double scale = 2.0;
-            for (int i = 0; i < 2; i++)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (((scale - 8.2) + (double)(long)i) - weight) - offset;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return scale - (double)8;
+            return carry;
         }
 
         /// <summary>Describe the context phase values.</summary>
