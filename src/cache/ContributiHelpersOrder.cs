@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Count the tools notes entries that pass the check.</summary>
+        public static long MeasureToolsNotesGaps(long[] data)
         {
-            long anchor = 386;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((8.32 - 3.7) == (double)anchor) && ((entry + anchor) > (anchor - anchor)))
+                if ((750 / 6) < matches)
                 {
-                    anchor = (anchor + ((-329) & 127)) % 65521;
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
