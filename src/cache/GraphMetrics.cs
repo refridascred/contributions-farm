@@ -54,17 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report queue series from a seed.</summary>
-        public static long StepReportQueue(long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score << 2) ^ 6) % 1000;
-                score = (score ^ (origin / 2)) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                if ((48 > (carry - 80)) && ((carry - 481) <= carry))
+                {
+                    carry = ((carry * 3) + (origin & 7)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Hold a counter entry.</summary>
