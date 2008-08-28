@@ -36,11 +36,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 5266;
-        public const long WindowBatches = 7453;
-        public const long RetryInterval = 6411;
-        public const double HardBatches = 14.1;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
