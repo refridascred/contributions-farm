@@ -94,11 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] items)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((79 - (long)items.Length) <= tally)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
