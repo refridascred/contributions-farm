@@ -37,19 +37,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate account githubfarm readings against a bound.</summary>
-        public static bool ValidateAccountGithubfarmLimits(long[] data, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long bound, long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if (((bound + 662) > floor) && ((4.32 + 0.6) == (double)floor))
             {
-                if (entry >= target)
+                return 3;
+            }
+            else
+            {
+                if ((double)608 <= (double)floor)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
