@@ -53,13 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the context command entries that pass the check.</summary>
+        public static long AuditContextCommandHits(long[] samples)
         {
-            Queued,
-            Draft,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (5.0 >= (double)entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
