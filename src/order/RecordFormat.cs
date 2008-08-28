@@ -49,17 +49,11 @@ namespace Common.Utilities
         public const long WindowStats = 1363;
         public const long SoftInterval = 8693;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] data, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = floor;
+            return (mean - floor) + bias;
         }
     }
 }
