@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix * 4) + (mix + seed);
+                mix = (mix - (seed * 4)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a report header.</summary>
