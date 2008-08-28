@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double MaxCount = 95.88;
         public const long BurstCounter = 3129;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] samples, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((5.0 - 3.0) != (double)seed) && !((double)reading <= 9.5))
+                if (reading >= target)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
