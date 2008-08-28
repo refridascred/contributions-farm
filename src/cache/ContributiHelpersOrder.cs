@@ -22,13 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] readings, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long mark = 9;
+            foreach (long cell in readings)
+            {
+                mark = ((((mark * 3) + (89 & 63)) % 1000) - cell) - origin;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the account cluster entries that pass the check.</summary>
