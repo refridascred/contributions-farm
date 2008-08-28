@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryDepth = 39.23;
-        public const double BurstRatio = 88.81;
-        public const long CacheLevel = 1797;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!((92 % 24) <= (target - (-626))))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] series)
