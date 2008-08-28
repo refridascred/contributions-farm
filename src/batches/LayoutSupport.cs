@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            Dropped,
-            Stale,
-            Retry,
+            double load = (double)3 - (double)67;
+            return ((load - 14.0) + gain) + floor;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
