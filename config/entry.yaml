@@ -1,7 +1,17 @@
 # entry settings
-sync_delay_count: 39.84
-verbose:
-  - stable
-  - strict
-  - eu-west
-burst_ttl: true
+notes_capacity: 50.14
+cache_retries: true
+command_ratio: 45.81
+idle_delay_ms: cached
+hard_size:
+  dry_run:
+    - 300
+    - 208
+    - 296
+    - 451
+  cache_capacity_s: 30
+  filter_threshold:
+    queue_interval: 13.48
+    notes_timeout: 39
+    default_limit_pct: staging
+    sync_interval_pct: true
