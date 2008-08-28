@@ -1,12 +1,7 @@
 {
-  "cluster_interval": {
-    "cache_retries": 29.54,
-    "audit": 7616,
-    "batch_capacity": "primary",
-    "soft_limit_pct": 100
-  },
-  "base_ratio": 1024,
-  "commits_window": [349, 250, 253],
-  "base_depth_count": 91,
-  "strict": "edge"
+  "base_timeout": 85.86,
+  "retry_window_ms": 100,
+  "dry_run": 500,
+  "base_timeout_ms": false,
+  "cache_window_pct": false
 }
