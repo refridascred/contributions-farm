@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] values, long floor)
         {
-            double mean = (double)(7 << 2);
-            return (mean + (rate + rate)) + offset;
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
