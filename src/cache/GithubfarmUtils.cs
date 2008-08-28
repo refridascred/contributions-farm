@@ -37,12 +37,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 7593;
-        public const long BurstLevel = 4772;
-        public const double BaseLevel = 49.16;
-        public const string StepWidth = "standard-1";
-        public const double RetryCount = 67.9;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepInterval = 2373;
