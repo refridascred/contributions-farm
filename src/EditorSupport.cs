@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long TallyStatsCacheMatches(long[] samples, long limit)
         {
-            Stale,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (!((double)limit < (double)count))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
