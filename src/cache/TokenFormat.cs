@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits contributi samples are out of range.</summary>
-        public static long TallyCommitsContributiGaps(long[] samples, long bound)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item - 268) < (item + bound))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
