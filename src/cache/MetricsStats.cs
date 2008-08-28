@@ -44,19 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools record readings against a bound.</summary>
-        public static bool ValidateToolsRecordRange(long[] values, long offset)
+        /// <summary>Find the first stats channel entry that matches the target.</summary>
+        public static long LookupStatsChannelIndex(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > offset)
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
