@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 4800;
-        public const long DefaultFactor = 7427;
-        public const long SoftAlready = 7720;
-        public const long BaseSize = 9897;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long offset)
+        {
+            long gap = origin ^ offset;
+            if ((gap >= offset) || ((double)offset >= (7.9 + 0.2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (gap < (9 + gap))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
