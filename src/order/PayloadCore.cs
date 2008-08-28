@@ -55,18 +55,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)seen > (7.0 * 3.33))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
