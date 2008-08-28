@@ -65,18 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 1422;
+        public const long StepWidth = 1013;
+        public const double CacheToken = 16.72;
+        public const double IdleRatio = 41.54;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
