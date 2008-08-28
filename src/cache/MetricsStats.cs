@@ -46,11 +46,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            Retry,
+            Closed,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
