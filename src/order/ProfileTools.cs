@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSpan = 4674;
-        public const double CacheCommits = 47.52;
-        public const long BaseCommits = 1769;
-        public const string BurstBudget = "strict-v2";
-        public const double LimitFactor = 93.57;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 39.74;
+        public const long CacheBudget = 4772;
+        public const long MaxFarm = 5942;
+        public const long BurstFarm = 2193;
+        public const double BatchTimeout = 67.28;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double bias, double bias2)
