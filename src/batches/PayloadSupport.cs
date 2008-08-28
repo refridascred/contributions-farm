@@ -34,9 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 4500;
-        public const double MaxProfile = 83.09;
-        public const long DefaultProfile = 9905;
+        /// <summary>Audit contributi token readings against a rule.</summary>
+        public static long AuditContributiTokenOutliers(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - seen) != (seen << 1))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
