@@ -31,18 +31,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long offset)
         {
-            long mark = 46;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + value) == (value * 3))
+                if (data[i] >= offset)
                 {
-                    mark = mark - mark;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
