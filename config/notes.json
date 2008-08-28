@@ -1,5 +1,16 @@
 {
-  "window_interval": 7061,
-  "poll_depth": 49,
-  "burst_ttl": 19
+  "soft_depth": {
+    "dry_run": 275,
+    "verbose": 500,
+    "burst_window": 79,
+    "buffer_timeout": 500,
+    "idle_capacity_s": {
+      "min_ratio": 6042,
+      "persist": 500,
+      "buffer_capacity": "blue"
+    },
+    "poll_size_count": ["green", "eu-west", "stable", "open"]
+  },
+  "verbose": 23,
+  "base_ratio": 80.61
 }
