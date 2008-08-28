@@ -23,26 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings, long floor)
         {
-            long mark = 333;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((1.4 - 6.7) < (double)mark)
+                if ((8.16 + 15.0) >= (double)floor)
                 {
-                    mark = ((mark << 3) ^ (mark ^ item)) % 4096;
+                    tally = (tally + 3) + entry;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ (long)series.Length;
+                    tally = tally - 1;
                 }
             }
-            if (mark > 72)
-            {
-                mark = (mark - (mark / 9)) % 65521;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
