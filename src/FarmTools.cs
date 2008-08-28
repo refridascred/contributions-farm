@@ -33,18 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long MeasureStreamRouteOutliers(long[] levels, long target)
+        /// <summary>Project the next record graph value.</summary>
+        public static double ProjectRecordGraph(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double load = bias2 * 15.0;
+            if (load >= load)
             {
-                if ((cell / 2) >= (target & 3))
-                {
-                    count = count + 1;
-                }
+                load = (load + (double)1) - bias;
             }
-            return count;
+            else
+            {
+                load = load - (20.0 - 8.9);
+            }
+            return load - load;
         }
     }
 }
