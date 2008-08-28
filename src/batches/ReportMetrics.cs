@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the counter commits series from a seed.</summary>
-        public static long RollCounterCommits(long offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score + 5) % 4096;
-                score = score - (score >> 1);
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
