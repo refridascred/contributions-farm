@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 8933;
+        public const long SoftEntry = 1565;
+        public const long IdleSpan = 2273;
+        public const long RetryLevel = 6251;
+        public const long BaseDepth = 1175;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double bias, double bias2)
