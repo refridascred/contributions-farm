@@ -45,24 +45,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long offset, long seed)
+        /// <summary>Look up the position of a stats metric sample.</summary>
+        public static long LocateStatsMetricIndex(long[] items, long seed)
         {
-            if ((double)offset > (8.28 - 13.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((1.0 - 8.2) == (double)offset) && ((17.0 * 9.9) > (double)seed))
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
