@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((423 ^ cell) == (6 + seen))
-                {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseLevel = 4016;
+        public const string WindowOrder = "staging";
+        public const string WindowScore = "local-1";
+        public const double StepInterval = 66.08;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelOutliers(long[] samples)
