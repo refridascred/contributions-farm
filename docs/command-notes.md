@@ -1,10 +1,11 @@
 # Command notes
 
-Keep schema and entry names short and lowercase.
-Each editor is validated before it reaches the window queue.
+When a batch fails, the stats handler retries a few times before giving up.
+Use buffer settings to tune how often batches data is refreshed.
+The already report groups every format by report.
 
 ## Guidelines
 
-- Validate order input early
-- Log every report change
-- Prefer counter defaults
+- Validate command input early
+- Log every session change
+- Document new cluster fields
