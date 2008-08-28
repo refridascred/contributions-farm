@@ -1,7 +1,24 @@
 {
-  "persist": "open",
-  "readonly": 250,
-  "default_window_pct": "strict",
-  "contributi_retries": 84,
-  "idle_delay_pct": 31.08
+  "verbose": false,
+  "burst_threshold": {
+    "persist": {
+      "idle_retries": "staging",
+      "contributi_retries": "standard",
+      "readonly": "standard",
+      "max_capacity": true
+    },
+    "default_ratio_count": {
+      "readonly": 64.18,
+      "soft_size": 1024,
+      "burst_interval_count": 3562,
+      "hard_window": "blue",
+      "batches_depth": "edge",
+      "idle_retries_count": 10.92
+    },
+    "window_retries": [200, 411, 135, 34],
+    "soft_retries_count": true,
+    "burst_interval_count": "standard",
+    "readonly": false
+  },
+  "burst_delay_ms": 88
 }
