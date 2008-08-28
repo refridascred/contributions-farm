@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 28.43;
-        public const double MinWidth = 34.75;
-        public const long StepRoute = 6180;
-        public const double BaseRoute = 35.43;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
         public static long RollLayoutBatches(long offset)
