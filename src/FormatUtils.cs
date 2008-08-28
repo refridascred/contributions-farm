@@ -34,16 +34,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry + 155) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
