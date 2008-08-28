@@ -30,13 +30,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            Dropped,
+            Retry,
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
