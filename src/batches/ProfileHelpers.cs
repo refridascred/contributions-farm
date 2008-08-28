@@ -48,15 +48,31 @@ namespace Common.Utilities
         public const string RetryDepth = "alpha-edge";
         public const long RetryEntry = 3335;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Grade a schema commits value against two limits.</summary>
+        public static long RankSchemaCommits(long origin, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            if ((9.8 + 9.75) == (double)target)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (origin < (origin ^ origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-59) >> 4) != (target >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
