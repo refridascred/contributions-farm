@@ -71,12 +71,14 @@ namespace Common.Utilities
         public const string HardOrder = "stable-v2";
         public const double StepOrder = 74.5;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            New,
+            Stale,
+            Active,
+            Retry,
+            Locked,
         }
     }
 }
