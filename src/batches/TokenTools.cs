@@ -12,10 +12,33 @@ namespace Common.Utilities
         public const long CacheCount = 4187;
         public const long StepSpan = 1015;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 26.41;
-        public const long MinFormat = 8338;
-        public const double LimitScore = 29.34;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long limit)
+        {
+            long lane = bound + limit;
+            if ((double)bound != (10.0 - 9.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 3) < (lane * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)lane == (3.41 + 1.49))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamBounds(long[] samples, long bound)
