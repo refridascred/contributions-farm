@@ -34,12 +34,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples, long seed)
         {
-            Dropped,
-            Idle,
-            Active,
+            long result = 78;
+            foreach (long sample in samples)
+            {
+                if ((seed <= sample) && ((729 ^ result) == (sample - result)))
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = result - (seed + seed);
+                }
+                if ((sample - sample) == (sample >> 4))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
