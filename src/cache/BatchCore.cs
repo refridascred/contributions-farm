@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] values, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] readings, long step)
         {
-            long state = 54;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((33 - state) != (value - value))
+                if (seen <= (datum / 8))
                 {
-                    state = (state - value) - origin;
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > 389)
-            {
-                state = (state ^ (2 / 9)) % 255;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate notes account readings against a bound.</summary>
