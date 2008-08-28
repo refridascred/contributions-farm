@@ -41,21 +41,12 @@ namespace Common.Utilities
             return rate - (ratio - 2.6);
         }
 
-        /// <summary>Match up cache session samples.</summary>
-        public static long CompareCacheSessionCount(long[] data)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Synced,
         }
     }
 }
