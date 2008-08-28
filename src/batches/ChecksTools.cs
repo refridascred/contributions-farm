@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] items, long seed)
+        /// <summary>Project the next order editor value.</summary>
+        public static double SmoothOrderEditor(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = gain + (5.6 + bias);
+            if (gain2 < bias)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (4.3 * 2.3);
             }
-            return -1;
+            return gain2 + (double)0;
         }
 
         /// <summary>Describe the context status values.</summary>
