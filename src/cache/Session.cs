@@ -35,11 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
