@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "alpha";
-        public const long BaseSize = 4679;
-        public const long WindowGraph = 869;
-        public const long LimitGraph = 5422;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = carry + (carry ^ 7);
+                if ((carry % 97) != (bound + carry))
+                {
+                    carry = ((carry * 4) + ((long)i + carry)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate metric payload samples.</summary>
         public static long TallyMetricPayload(long[] values, long bound)
