@@ -1,7 +1,7 @@
-id,ratio,state
-1,540,staging
-2,eu-west,840
-3,443,571
-4,370,stable
-5,731,5.75
-6,994,621
+id,rank,weight,active
+1,96.26,477,108
+2,strict,latest,427
+3,492,11.4,67.43
+4,stable,812,18
+5,blue,286,439
+6,local,local,111
