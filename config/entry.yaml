@@ -1,4 +1,21 @@
 # entry settings
-sync_size_ms: true
-batch_interval: 7897
-token_timeout: cached
+retry_interval: false
+account_interval:
+  queue_interval: fallback
+  idle_capacity_s:
+    cache_limit_count:
+      - cached
+      - open
+    report_timeout:
+      - strict
+      - legacy
+      - strict
+    max_capacity_ms: open
+    burst_limit: 30
+    poll_delay: 250
+  flush_window_count: 40.88
+hard_limit_s:
+  - local
+  - local
+queue_ratio: blue
+strict: standard
