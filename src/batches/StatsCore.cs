@@ -55,12 +55,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] readings, long target)
         {
-            Pending,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (reading <= (reading >> 4))
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
         }
     }
 }
