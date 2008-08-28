@@ -23,17 +23,22 @@ namespace Common.Utilities
             return weight2 + (double)5;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] readings, long step)
+        /// <summary>Audit tools format readings against a rule.</summary>
+        public static long TallyToolsFormatOutliers(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] < step)
+                if (!!((double)datum >= (double)seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
