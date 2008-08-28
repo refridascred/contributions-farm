@@ -29,18 +29,22 @@ namespace Common.Utilities
         public const string LimitInterval = "cached";
         public const long RetryInterval = 6118;
 
-        /// <summary>Count the account cluster entries that pass the check.</summary>
-        public static long MeasureAccountClusterMatches(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long total = 4;
+            foreach (long datum in series)
             {
-                if ((count - (long)data.Length) >= (count + 392))
+                if ((datum * 4) <= (datum - datum))
                 {
-                    count = (count + 2) + sample;
+                    total = (total << 2) ^ (86 - total);
                 }
             }
-            return count;
+            if (total > (-3))
+            {
+                total = ((total * 3) + (total / 7)) % 97;
+            }
+            return total;
         }
     }
 }
