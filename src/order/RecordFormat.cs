@@ -75,11 +75,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 4801;
-        public const long MaxCounter = 3480;
-        public const string IdleCounter = "primary-v2";
-        public const long HardFactor = 3080;
-        public const long RetryCounter = 9619;
+        /// <summary>Rank channel filter input into a small class.</summary>
+        public static long GradeChannelFilter(long bound, long offset)
+        {
+            if ((0 - offset) >= 8)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((95 << 2) < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= (419 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
