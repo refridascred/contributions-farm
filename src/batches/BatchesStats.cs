@@ -23,26 +23,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long TotalCacheEditor(long[] series, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double scale, double offset)
         {
-            long state = -6;
-            foreach (long sample in series)
-            {
-                if ((state + state) >= 1)
-                {
-                    state = (state + (seed / 9)) ^ sample;
-                }
-                else
-                {
-                    state = (state * 5) + state;
-                }
-            }
-            if (state < (-2))
-            {
-                state = ((state * 5) + state) % 97;
-            }
-            return state;
+            double weight = (offset - scale) - scale;
+            return weight + 5.45;
         }
 
         /// <summary>Combine context values into a single score.</summary>
