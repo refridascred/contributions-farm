@@ -90,25 +90,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long origin, long step)
-        {
-            if ((0.62 - 7.5) <= (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step + origin) <= (origin ^ step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitDepth = 2.18;
+        public const long SoftEntry = 8061;
+        public const double MinSpan = 87.02;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string SoftCommand = "fallback-v2";
