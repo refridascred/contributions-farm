@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items, long step)
         {
-            long slot = limit - step;
-            if ((step << 3) > (625 / 5))
+            long anchor = 1;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)317 != (double)limit)
+                if ((841 - 73) != (reading + anchor))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((17.0 / 4.0) < (double)slot)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit > (slot - limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor - (reading - anchor)) + step;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Count already stats pairs that satisfy a relation.</summary>
