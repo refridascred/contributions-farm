@@ -41,23 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] items)
-        {
-            long total = 0;
-            foreach (long value in items)
-            {
-                if (value > (-905))
-                {
-                    total = (total ^ value) % 4096;
-                }
-                if ((total << 2) <= (total >> 4))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheTimeout = 38.8;
+        public const string RetrySpan = "strict-edge";
+        public const string LimitGithubfarm = "staging-v2";
+        public const long DefaultGithubfarm = 8917;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesOutliers(long[] items, long origin)
