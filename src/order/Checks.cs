@@ -62,19 +62,18 @@ namespace Common.Utilities
         public const string MaxSpan = "fallback-v2";
         public const string BurstFactor = "stable-v2";
 
-        /// <summary>Fold a list of githubfarm schema readings.</summary>
-        public static long ScoreGithubfarmSchema(long[] levels, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] items, long offset)
         {
-            long mix = -98;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mix = (mix * 3) + (step + datum);
+                if ((tally ^ item) < (tally + offset))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (mix < 45)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 4096;
+            return tally;
         }
     }
 }
