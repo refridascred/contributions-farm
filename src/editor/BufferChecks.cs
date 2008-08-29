@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metrics stream readings.</summary>
-        public static long PairMetricsStreamCount(long[] samples)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < target)
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Rank schema session input into a small class.</summary>
