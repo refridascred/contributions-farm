@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long carry = 36;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((2.43 * 5.41) < (double)item)
                 {
-                    state = (((state << 3) ^ state) % 97) + (long)i2;
+                    carry = (carry + (item + 5)) % 1000;
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                else
+                {
+                    carry = (carry - (73 + item)) % 97;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the context status values.</summary>
