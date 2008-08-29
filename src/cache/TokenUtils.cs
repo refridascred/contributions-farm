@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batch token value against two limits.</summary>
-        public static long BucketBatchToken(long offset, long floor)
-        {
-            if ((double)offset != (3.3 - 3.3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (8.8 + 5.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset <= (1.57 - 5.7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 5662;
+        public const long StepRoute = 2852;
+        public const long SoftRoute = 4818;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] series, long offset)
