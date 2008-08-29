@@ -27,12 +27,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 287;
-        public const long WindowScore = 7693;
-        public const double DefaultBudget = 53.82;
-        public const double DefaultInterval = 92.23;
-        public const double IdleCommand = 48.51;
+        /// <summary>Check that every stream farm entry stays within the limit.</summary>
+        public static bool ValidateStreamFarmRange(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
