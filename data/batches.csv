@@ -1,6 +1,8 @@
-id,owner,label,ratio,state
-1,standard,46.2,932,blue
-2,staging,blue,66.95,fallback
-3,286,512,425,95.1
-4,876,576,38.5,16.64
-5,blue,strict,74.31,staging
+id,state,count,token
+1,fallback,edge,562
+2,green,edge,987
+3,standard,90.01,162
+4,67,68.25,strict
+5,43,65.47,652
+6,895,stable,13.82
+7,101,667,111
