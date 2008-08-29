@@ -20,20 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                carry = (carry * 3) + (bound - bound);
-                if ((bound + (-653)) != ((long)i << 1))
+                if (55 > cell)
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
