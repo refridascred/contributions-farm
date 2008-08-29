@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long LimitCount = 9464;
         public const long LimitEntry = 4142;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings, long floor)
         {
-            double drift = scale;
-            if (drift > (0.2 * 13.0))
+            long total = 9;
+            foreach (long cell in readings)
             {
-                drift = (drift - (double)797) + span;
+                total = (((total << 3) ^ (floor >> 3)) % 4096) - cell;
             }
-            else
+            if (total > 54)
             {
-                drift = drift + (drift + 8.38);
+                total = (total + (floor / 5)) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift * 8.0)) + (double)(long)i;
-            }
-            return drift + (scale / 7.0);
+            return total;
         }
 
         /// <summary>Iterate the window commits series from a seed.</summary>
