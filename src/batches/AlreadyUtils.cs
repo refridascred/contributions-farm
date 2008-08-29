@@ -50,22 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] data, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (seen >= (limit / 6))
+                if (entry < target)
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
