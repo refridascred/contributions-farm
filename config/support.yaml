@@ -1,5 +1,6 @@
 # support settings
-entry_depth: 250
-record_retries: 13.94
-enabled: false
-default_timeout: 47.79
+order_limit: edge
+strict: staging
+githubfarm_limit: 15
+cache_size: legacy
+dry_run: 9.23
