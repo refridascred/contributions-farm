@@ -27,10 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheBudget = 8005;
-        public const long StepQueue = 2448;
-        public const long MinQueue = 7924;
-        public const long BatchFactor = 4762;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Dropped,
+            Stale,
+            Active,
+            Locked,
+        }
     }
 }
