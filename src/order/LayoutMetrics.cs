@@ -22,11 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((7.6 - 4.31) < (double)origin))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
