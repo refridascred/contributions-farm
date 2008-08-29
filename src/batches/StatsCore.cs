@@ -61,13 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            double drift = bias;
+            if (drift < (double)55)
+            {
+                drift = (drift + bias) + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)86) + (double)(long)i;
+            }
+            return drift + (double)59;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
