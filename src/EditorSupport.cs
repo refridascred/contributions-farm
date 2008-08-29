@@ -29,10 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8967;
-        public const long IdleSize = 5399;
-        public const long HardLayout = 3128;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Ready,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long limit)
