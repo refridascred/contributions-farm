@@ -57,12 +57,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long origin, long limit)
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            if ((origin - origin) >= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin >> 2) <= ((-9) - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
