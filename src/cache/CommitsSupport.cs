@@ -61,13 +61,14 @@ namespace Common.Utilities
             return gain + (gain * 18.0);
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
+            Done,
+            New,
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
