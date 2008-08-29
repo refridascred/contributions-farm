@@ -44,25 +44,10 @@ namespace Common.Utilities
         public const long StepInterval = 6845;
         public const long LimitDepth = 1079;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] levels, long floor)
-        {
-            long total = 942;
-            foreach (long entry in levels)
-            {
-                total = (total ^ (total + floor)) % 255;
-                total = (total << 3) ^ (floor >> 5);
-                if ((total % 8) > entry)
-                {
-                    total = (total - total) % 255;
-                }
-                if ((total - floor) == (640 + (-892)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 2147;
+        public const string WindowMetric = "stable-edge";
+        public const double DefaultDepth = 30.51;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
