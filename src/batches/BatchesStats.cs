@@ -19,18 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] data)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = 923;
+            foreach (long cell in items)
             {
-                if ((double)datum > (5.06 + 10.0))
+                if (((mix >> 5) <= (cell >> 2)) || (0.1 <= (8.13 * 1.0)))
                 {
-                    seen = seen + 1;
+                    mix = mix ^ (5 << 1);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
