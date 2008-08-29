@@ -23,19 +23,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((double)item < (double)seen) || !((9.8 + 4.6) >= (double)item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchInterval = 88.28;
+        public const double BatchAccount = 5.3;
+        public const long HardWidth = 3977;
+        public const long DefaultCount = 8078;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordOutliers(long[] levels, long origin)
