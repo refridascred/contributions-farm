@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate report window readings against a bound.</summary>
-        public static bool CheckReportWindowRange(long[] levels, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            double weight = (scale - 12.0) * 1.86;
+            if (weight < (double)8)
             {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + (double)4) + bias;
             }
-            return ok;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - 1.03) - (double)(long)i;
+            }
+            return weight - (17.0 + scale);
         }
 
         /// <summary>Define window limits and defaults.</summary>
