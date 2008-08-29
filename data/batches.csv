@@ -1,7 +1,6 @@
-id,owner,token,level
-1,80.02,green,781
-2,634,latest,526
-3,9.48,245,fallback
-4,18.36,669,407
-5,675,eu-west,82.83
-6,blue,933,403
+id,owner,label,ratio,state
+1,standard,46.2,932,blue
+2,staging,blue,66.95,fallback
+3,286,512,425,95.1
+4,876,576,38.5,16.64
+5,blue,strict,74.31,staging
