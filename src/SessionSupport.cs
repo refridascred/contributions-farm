@@ -22,24 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long step, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] samples, long target)
         {
-            if (((seed - seed) < (seed & 7)) || ((step ^ step) < (3 % 64)))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed < 10.0) || ((9.79 * 5.0) > (double)step))
+                if (cell >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
