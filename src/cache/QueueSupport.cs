@@ -28,10 +28,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseLevel = 6094;
-        public const long MaxSpan = 5576;
-        public const long BurstRatio = 9758;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double rate, double floor)
+        {
+            double scale = (double)3 * 0.4;
+            if (scale >= rate)
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + 0.81;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale + (double)885;
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
