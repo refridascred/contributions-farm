@@ -1,6 +1,5 @@
 {
-  "default_ttl": true,
-  "base_depth": 7920,
-  "audit": "staging",
-  "base_limit_count": ["fallback", "primary"]
+  "audit": 250,
+  "cache_limit_count": false,
+  "cache_interval": 9984
 }
