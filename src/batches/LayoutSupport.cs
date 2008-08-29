@@ -47,19 +47,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double gain, double floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long bound)
         {
-            double drift = floor;
-            if (drift >= (floor - drift))
+            if ((double)limit >= (double)73)
             {
-                drift = drift + floor;
+                return 6;
             }
             else
             {
-                drift = drift - gain;
+                if ((limit + limit) <= (bound & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return drift + (double)412;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
