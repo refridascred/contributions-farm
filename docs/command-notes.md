@@ -1,11 +1,15 @@
 # Command notes
 
-The cache report groups every batch by tools.
-Use account settings to tune how often checks data is refreshed.
-Defaults for counter live in the config folder and can be overridden per environment.
+Each channel is validated before it reaches the tools queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+
+The checks report groups every batches by layout.
+Run the format check before changing any buffer limits.
+Each metric is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every editor change
-- Validate layout input early
+- Log every queue change
+- Validate contributi input early
+- Document new layout fields
+- Review token limits each release
