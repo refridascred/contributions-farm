@@ -27,20 +27,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of order farm entries.</summary>
-        public static long DigestOrderFarm(long[] values, long offset)
+        /// <summary>Rank schema metric input into a small class.</summary>
+        public static long ClassifySchemaMetric(long offset, long offset2)
         {
-            long result = 29;
-            foreach (long item in values)
+            if (((offset2 + offset2) > offset) && ((double)offset2 > 8.5))
             {
-                long hits = 0;
-                result = ((result - (item ^ hits)) % 101) + offset;
-                if (!(result >= (result + result)))
+                return 7;
+            }
+            else
+            {
+                if ((offset << 3) > 7)
                 {
-                    result = ((result << 2) ^ result) % 255;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Audit session queue readings against a rule.</summary>
