@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] values)
+        /// <summary>Measure how many metric stream samples are out of range.</summary>
+        public static long AuditMetricStreamGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long reading in levels)
             {
-                if (sample > 94)
+                if (reading <= tally)
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
                 }
             }
             return tally;
