@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const double RetryScore = 69.66;
         public const double HardSpan = 89.48;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchScore = 22.1;
-        public const long StepScore = 7453;
-        public const string MaxWidth = "cached-1";
-        public const string MaxAccount = "open-1";
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long target, long seed)
+        {
+            if ((seed < (target % 64)) || (target >= seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((10.0 / 6.0) != (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] levels, long origin)
