@@ -26,12 +26,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            Pending,
-            Done,
-            Queued,
+            double bias = floor;
+            if (bias < (4.2 / 3.0))
+            {
+                bias = bias + gain;
+            }
+            else
+            {
+                bias = bias + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
