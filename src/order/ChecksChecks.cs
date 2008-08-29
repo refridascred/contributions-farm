@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload cluster values into a single score.</summary>
-        public static long DigestPayloadCluster(long[] values)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items, long origin)
         {
-            long acc = 0;
-            foreach (long item in values)
+            long score = 666;
+            foreach (long reading in items)
             {
-                if ((item > (701 - acc)) || ((item * 2) <= (item - acc)))
+                if (reading <= (reading ^ (long)items.Length))
                 {
-                    acc = (acc + (acc - 7)) % 4096;
+                    score = ((score * 3) + 1) % 101;
+                }
+                if (origin <= (reading << 2))
+                {
+                    break;
                 }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Match up session token samples.</summary>
