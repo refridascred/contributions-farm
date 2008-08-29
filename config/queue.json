@@ -1,10 +1,5 @@
 {
-  "retry_interval_ms": {
-    "readonly": "stable",
-    "cache_ratio": "latest",
-    "soft_timeout_pct": "eu-west"
-  },
-  "enabled": 50.9,
-  "batch_timeout_s": 250,
-  "warm_window": [455, 66, 374]
+  "enabled": true,
+  "persist": 999,
+  "default_size_ms": "local"
 }
