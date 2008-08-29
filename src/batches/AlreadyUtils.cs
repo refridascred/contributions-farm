@@ -40,12 +40,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Stale,
             Active,
-            New,
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
