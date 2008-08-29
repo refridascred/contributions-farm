@@ -32,24 +32,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a route metric pair into a bucket.</summary>
-        public static long ClassifyRouteMetric(long bound, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if ((1.55 * 1.29) < (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2.03 + 8.69) < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
