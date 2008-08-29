@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mean + (mean / 3.0);
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!((5.5 / 5.0) <= (double)reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
