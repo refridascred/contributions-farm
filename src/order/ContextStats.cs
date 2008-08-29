@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Retry,
-            Pending,
+            New,
             Paused,
-            Failed,
-            Idle,
+            Dropped,
         }
 
         /// <summary>Check that every channel editor entry stays within the limit.</summary>
