@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 38.69;
         public const long MaxAlready = 8163;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 6850;
+        public const string HardFilter = "standard";
+        public const double BurstCount = 70.62;
+        public const double DefaultLevel = 27.97;
+        public const string DefaultFilter = "strict-1";
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] levels)
