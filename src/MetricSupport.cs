@@ -16,13 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = ((carry + 20) % 255) ^ (long)i2;
+                }
+                carry = (carry - 8) % 255;
+                carry = carry ^ (carry * 5);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
