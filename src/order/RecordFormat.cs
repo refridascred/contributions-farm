@@ -57,13 +57,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
