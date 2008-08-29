@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many command format samples are out of range.</summary>
-        public static long AuditCommandFormatHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((-95) - datum) >= (datum + datum))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 528;
+        public const long WindowRatio = 4517;
+        public const double BurstBudget = 51.1;
+        public const long MinSpan = 523;
+        public const string HardCount = "cached-v2";
 
         /// <summary>Grade a editor batches value against two limits.</summary>
         public static long ClassifyEditorBatches(long seed, long limit)
