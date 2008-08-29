@@ -1,26 +1,15 @@
 # githubfarm settings
-dry_run: 60
-min_size:
-  warm_interval: 250
-  tools_size:
-    default_timeout_s: 80.02
-    idle_ratio: eu-west
-    idle_ratio_ms: legacy
-    support_window: 8917
-    base_threshold_pct: 47
-    audit: true
-  layout_ratio:
-    - 273
-    - 424
-  batch_threshold: edge
-  min_retries:
-    - eu-west
-    - legacy
-hard_interval_ms: 53.8
-warm_timeout_pct: green
-max_limit_s:
-  sync_threshold_count: green
-  editor_retries: false
-  channel_depth: 67
-  min_delay: 94.21
-burst_interval_count: 30
+retry_ttl_ms: 11.48
+flush_limit_ms:
+  - 323
+  - 322
+  - 198
+retry_capacity_s:
+  - 106
+  - 63
+  - 143
+farm_ttl: 73.54
+format_size:
+  - 472
+  - 268
+  - 204
