@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
-        public static long PairCounterToolsCount(long[] readings)
+        /// <summary>Derive the next context checks value from a seed.</summary>
+        public static long RollContextChecks(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = (sum + seed) % 1000;
+                if ((10.0 * 1.31) >= (double)sum)
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 2) ^ seed;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
