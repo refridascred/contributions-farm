@@ -65,18 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long step)
         {
-            long sum = 406;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum + sum) != (0 + datum))
+                if ((series[i] > step) && ((series[i] % 2) != 0))
                 {
-                    sum = (sum * 2) + (sum >> 5);
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
