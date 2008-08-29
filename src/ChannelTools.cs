@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] samples, long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
