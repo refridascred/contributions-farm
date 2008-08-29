@@ -1,16 +1,14 @@
 # support settings
-persist: 1024
-warm_threshold: 29
-sync_window_count: 93.74
-idle_timeout_count: 77
-retry_depth_pct: 75.15
-compress:
-  persist: local
-  profile_threshold: false
-  cache_limit_pct: false
-  sync_timeout:
-    - legacy
-    - standard
-    - eu-west
-    - green
-  flush_ratio_ms: stable
+poll_size_ms: 16.44
+strict: local
+warm_timeout_ms: false
+audit: 38.11
+counter_capacity:
+  support_window: false
+  strict:
+    order_retries: green
+    warm_ttl_ms: standard
+    base_ttl_count: true
+    flush_interval_count: true
+  retry_depth: blue
+flush_capacity: latest
