@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a command batch reading.</summary>
-        public static double ProjectCommandBatch(double rate, double floor)
-        {
-            double bias = rate / 3.0;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (floor * 19.0)) - (double)(long)i;
-            }
-            return bias + (floor * 7.09);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstDepth = 33.49;
+        public const long RetryLayout = 8226;
+        public const string WindowCount = "fallback-1";
+        public const long MaxSpan = 8807;
+        public const long BaseWidth = 2277;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
