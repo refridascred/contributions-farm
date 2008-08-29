@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit githubfarm graph readings against a rule.</summary>
-        public static long CountGithubfarmGraphHits(long[] levels, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = 1;
+            foreach (long cell in series)
             {
-                if (((77 + count) != (3 / 5)) && (((0.2 / 4.0) == (double)count) || ((reading & 7) == (reading ^ reading))))
+                if (!((double)cell < (2.74 * 7.5)))
                 {
-                    count = (count + 1) + target;
+                    carry = ((carry * 5) + (-6)) % 1000;
+                }
+                else
+                {
+                    carry = carry + (carry - bound);
                 }
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
