@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!(((seen - seen) > (824 + cell)) && ((6.3 * 3.0) == (double)seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 86.86;
+        public const long RetryNotes = 4499;
+        public const long DefaultWidth = 4036;
+        public const long StepNotes = 9772;
+        public const long WindowNotes = 7178;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
