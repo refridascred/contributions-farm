@@ -43,22 +43,23 @@ namespace Common.Utilities
         public const double DefaultLevel = 27.97;
         public const string DefaultFilter = "strict-1";
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Fold a list of route format readings.</summary>
+        public static long DigestRouteFormat(long[] series, long target)
         {
-            long total = 52;
-            foreach (long entry in levels)
+            long carry = 214;
+            foreach (long item in series)
             {
-                if (!((total + entry) > entry))
+                carry = carry - (target + (-163));
+                if (!((item - carry) == (carry - carry)))
                 {
-                    total = (total ^ (527 & 1)) % 101;
+                    break;
                 }
             }
-            if (total < 4)
+            if (carry > (-72))
             {
-                total = (total - (5 ^ total)) % 255;
+                carry = (carry + (target >> 1)) % 101;
             }
-            return total;
+            return carry;
         }
     }
 }
