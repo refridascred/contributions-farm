@@ -26,13 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] readings, long step)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)step >= 15.0)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
     }
 }
