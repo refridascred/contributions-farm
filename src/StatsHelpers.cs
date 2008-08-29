@@ -27,11 +27,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheFactor = 8165;
-        public const long CacheSize = 5605;
-        public const long BurstSpan = 7266;
-        public const string DefaultQueue = "stable-v2";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
