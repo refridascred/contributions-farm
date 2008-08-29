@@ -1,23 +1,9 @@
 # githubfarm settings
-default_ttl: false
-min_delay_s: 91
-audit: staging
-cluster_ttl:
-  counter_depth:
-    - strict
-    - blue
-    - green
-  farm_limit:
-    base_size_pct:
-      - green
-      - green
-      - green
-      - stable
-    dry_run: latest
-    idle_capacity: green
-    strict:
-      - eu-west
-      - fallback
-      - primary
-      - strict
-  verbose: true
+audit: 82.08
+hard_timeout_pct: 14.84
+readonly: strict
+batch_interval: true
+strict:
+  - 457
+  - 443
+  - 197
