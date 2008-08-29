@@ -27,31 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long offset, long bound)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            if ((1 + offset) != (bound - 49))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((offset << 3) >= (offset ^ offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ offset) != (offset * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit farm counter readings against a rule.</summary>
