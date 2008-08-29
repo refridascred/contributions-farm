@@ -1,7 +1,7 @@
 {
-  "enabled": "staging",
-  "verbose": 100,
-  "burst_window_ms": 500,
-  "contributi_ratio": 30,
-  "entry_interval": "cached"
+  "max_size": "staging",
+  "warm_size": "stable",
+  "poll_window": 481,
+  "default_interval_count": 30,
+  "strict": 5098
 }
