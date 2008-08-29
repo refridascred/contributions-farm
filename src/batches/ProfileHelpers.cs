@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long origin, long seed)
+        /// <summary>Validate report window readings against a bound.</summary>
+        public static bool CheckReportWindowRange(long[] levels, long step)
         {
-            if (((-30) + seed) >= (467 ^ seed))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((39 >> 1) != (seed + origin)) && ((seed + seed) < (35 + 1)))
+                if (item < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
