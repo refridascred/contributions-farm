@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every metrics token entry stays within the limit.</summary>
-        public static bool VerifyMetricsTokenLimits(long[] data, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry >= floor)
+                long offset = (bound + acc) + (-124);
+                if (!((acc - acc) == (offset / 8)))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc << 2) ^ (acc / 8);
                 }
+                offset = (offset * 3) + (acc >> 3);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Look up the position of a format metrics sample.</summary>
