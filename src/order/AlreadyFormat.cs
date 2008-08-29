@@ -44,12 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 244;
-        public const long DefaultStats = 4016;
-        public const long StepScore = 4848;
-        public const long HardStats = 6807;
-        public const long MaxStats = 8373;
+        /// <summary>Measure how many batches already samples are out of range.</summary>
+        public static long TallyBatchesAlreadyHits(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (seen <= (target + target))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the layout report series from a seed.</summary>
         public static long DeriveLayoutReport(long bound)
