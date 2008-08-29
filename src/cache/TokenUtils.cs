@@ -24,15 +24,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Check that every window record entry stays within the limit.</summary>
+        public static bool VerifyWindowRecordRange(long[] data, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
