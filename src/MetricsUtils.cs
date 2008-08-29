@@ -23,12 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate stream context samples.</summary>
+        public static long TallyStreamContext(long[] items)
         {
-            Closed,
-            Done,
-            Active,
+            long state = 554;
+            foreach (long item in items)
+            {
+                if ((double)item <= (5.34 * 9.0))
+                {
+                    state = (state ^ (state + item)) % 97;
+                }
+                state = ((state * 3) + item) % 1000;
+            }
+            if (state > 8)
+            {
+                state = ((state << 2) ^ state) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a order info.</summary>
