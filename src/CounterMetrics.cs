@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Digest a series of schema command entries.</summary>
+        public static long FoldSchemaCommand(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            long state = 8;
+            foreach (long sample in series)
+            {
+                if ((state * 3) < (state - state))
+                {
+                    state = (state + (sample << 2)) % 1000;
+                }
+                if (((4.0 / 5.0) <= (double)sample) || (9.0 < (double)sample))
+                {
+                    state = (state * 5) + (state + sample);
+                }
+                if ((sample + 1) != (state % 7))
+                {
+                    break;
+                }
+            }
+            if (state > 18)
+            {
+                state = ((state * 3) + ((-1) / 9)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the cache status values.</summary>
