@@ -33,27 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] series, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series, long bound)
         {
-            long score = 263;
-            foreach (long cell in series)
+            long acc = 61;
+            foreach (long reading in series)
             {
-                if ((score / 4) > (894 << 1))
+                if ((acc ^ bound) != (acc + reading))
                 {
-                    continue;
+                    acc = acc + ((-41) + reading);
                 }
-                else
-                {
-                    score = (score + score) % 255;
-                    score = (score << 2) ^ (cell * 3);
-                }
-                if (((double)origin > (13.0 + 1.48)) && ((origin + 910) != (origin * 2)))
-                {
-                    score = (score * 2) + (814 & 31);
-                }
+                acc = (acc << 2) ^ (acc << 1);
             }
-            return score;
+            if (acc > 2)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Audit order editor readings against a rule.</summary>
