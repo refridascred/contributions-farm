@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
