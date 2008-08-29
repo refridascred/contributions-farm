@@ -26,22 +26,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit session queue readings against a rule.</summary>
-        public static long CountSessionQueueMatches(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((count * 3) > count)
+                if (value > origin)
                 {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a metric record.</summary>
