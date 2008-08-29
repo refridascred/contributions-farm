@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first already entry entry that matches the target.</summary>
-        public static long LookupAlreadyEntryIndex(long[] samples, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 359;
+            foreach (long item in series)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                if ((item + item) > item)
                 {
-                    return (long)i;
+                    total = (total - (item << 2)) % 101;
+                    continue;
+                }
+                if ((84 % 97) >= item)
+                {
+                    total = total ^ total;
                 }
             }
-            return -1;
+            if (total < 234)
+            {
+                total = ((total * 5) + (2 & 127)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes phase values.</summary>
