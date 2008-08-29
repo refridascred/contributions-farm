@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=16
-log "limit is ${COMMAND_LIMIT}"
+for item in staging legacy edge strict; do
+    log "checking ${item}"
+done
