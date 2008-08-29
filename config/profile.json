@@ -1,13 +1,7 @@
 {
-  "base_limit_pct": true,
-  "hard_ratio": 75.34,
-  "max_ratio_pct": 100,
-  "window_ratio": {
-    "route_ratio": ["stable", "open", "standard"],
-    "flush_interval_s": "legacy",
-    "checks_size": true,
-    "contributi_timeout": false,
-    "burst_interval_pct": 100,
-    "order_capacity": 36
-  }
+  "min_capacity_ms": 26,
+  "record_limit": 21,
+  "idle_limit": "local",
+  "soft_ratio_pct": "local",
+  "base_retries_ms": 250
 }
