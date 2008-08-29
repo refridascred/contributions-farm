@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long RetryWidth = 5657;
         public const long WindowSize = 2787;
 
-        /// <summary>Count the farm already entries that pass the check.</summary>
-        public static long MeasureFarmAlreadyOutliers(long[] readings)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)hits <= (double)cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
