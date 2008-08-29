@@ -20,39 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank buffer schema input into a small class.</summary>
-        public static long ClassifyBufferSchema(long origin, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long next = origin + step;
-            if ((origin - next) == (step / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)next == (12.0 * 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin ^ origin) <= (origin ^ step)) && ((origin >> 4) != (92 - next)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin >= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
