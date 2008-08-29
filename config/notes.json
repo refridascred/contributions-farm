@@ -1,11 +1,16 @@
 {
-  "strict": 9587,
-  "metric_ttl": {
-    "soft_retries_s": "open",
-    "flush_retries_s": 1024,
-    "already_depth": true
+  "warm_timeout_pct": {
+    "session_delay": "green",
+    "schema_ttl": {
+      "githubfarm_size": "local",
+      "min_size": "standard",
+      "strict": 60,
+      "filter_threshold": "cached",
+      "stream_interval": 43.75,
+      "burst_window_ms": "eu-west"
+    },
+    "tools_ratio": 500
   },
-  "poll_depth": 100,
-  "retry_limit_count": 64,
-  "retry_threshold_count": 5.41
+  "retry_retries": "stable",
+  "audit": 24.18
 }
