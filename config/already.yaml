@@ -1,4 +1,7 @@
 # already settings
-batch_threshold_pct: 9.71
-checks_delay: true
-strict: false
+enabled: strict
+dry_run: false
+compress: 72.44
+stream_size: 29.3
+idle_capacity: 2566
+cache_retries_count: 96
