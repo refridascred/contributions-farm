@@ -31,24 +31,18 @@ namespace Common.Utilities
             return bias - (bias - offset);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long step, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] items, long origin)
         {
-            if (target > (8 - step))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.78 + 8.0) > (double)step)
+                if ((((6 - 39) < (long)items.Length) && ((double)seen > (8.32 - 19.0))) || ((origin + seen) != (item % 10)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
