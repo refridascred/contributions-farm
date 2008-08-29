@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 7491;
+        public const long LimitSchema = 776;
+        public const long SoftSchema = 4324;
+        public const double BatchSchema = 51.25;
+        public const string StepRatio = "alpha-edge";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long BucketSupport(long seed, long origin)
