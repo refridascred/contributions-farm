@@ -1,23 +1,10 @@
 # githubfarm settings
-burst_retries_pct:
-  - 92
-  - 213
-  - 10
-  - 309
-cache_window_count:
-  - latest
-  - legacy
-retry_ratio: 44.92
-commits_ratio: false
-compress:
-  metrics_limit: 60
-  default_depth: 5479
-  cache_ttl_s: open
-  default_delay: false
-  min_depth:
-    strict: 80
-    readonly: green
-    editor_size: 95
-    batch_limit_pct: false
-    context_ttl: 1024
-    githubfarm_retries: legacy
+persist: 51.11
+editor_window: strict
+readonly: staging
+audit:
+  - edge
+  - staging
+  - standard
+hard_interval_count: primary
+metric_ratio: 82.59
