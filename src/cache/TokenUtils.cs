@@ -27,31 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter order value against two limits.</summary>
-        public static long BucketCounterOrder(long target, long seed)
-        {
-            if ((double)target >= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.0 > (double)seed) || (target >= (target - 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed & 3) > (target + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheBudget = 8005;
+        public const long StepQueue = 2448;
+        public const long MinQueue = 7924;
+        public const long BatchFactor = 4762;
     }
 }
