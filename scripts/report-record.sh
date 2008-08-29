@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in local blue staging cached; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-stable}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
