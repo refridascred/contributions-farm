@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCount = 1514;
-        public const string WindowRatio = "latest-1";
-        public const string RetryCounter = "legacy";
-        public const long BatchBudget = 7462;
+        /// <summary>Roll a counter buffer counter forward.</summary>
+        public static long SeriesCounterBuffer(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = acc ^ (acc ^ acc);
+                acc = ((acc << 2) ^ (seed - seed)) % 255;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
