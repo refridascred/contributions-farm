@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] readings)
         {
-            Idle,
-            Pending,
-            Dropped,
+            long sum = 52;
+            foreach (long item in readings)
+            {
+                if (item >= (sum << 2))
+                {
+                    sum = ((sum * 2) + (sum - (long)readings.Length)) % 101;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
