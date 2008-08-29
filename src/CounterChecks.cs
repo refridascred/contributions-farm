@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of schema session readings.</summary>
-        public static long TallySchemaSession(long[] items, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] samples, long limit)
         {
-            long acc = 26;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                acc = (acc - (sample * 3)) % 4096;
-                if ((3 * 3) >= (acc & 63))
+                if (!((double)limit == (double)230))
                 {
-                    acc = ((acc * 4) + target) % 97;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the already status values.</summary>
