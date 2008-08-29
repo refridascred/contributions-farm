@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const long MinLevel = 4797;
         public const long CacheWidth = 8087;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] readings, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (origin <= (9 + floor))
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor == (double)85))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
