@@ -23,12 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheSpan = 41.99;
-        public const long IdleEntry = 8075;
-        public const double DefaultEntry = 48.96;
-        public const long MinScore = 612;
-        public const long LimitScore = 2725;
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] series, long step)
