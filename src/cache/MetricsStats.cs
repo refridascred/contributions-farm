@@ -43,16 +43,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            if (44 > seed)
             {
-                anchor = (anchor << 3) ^ origin;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (seed >= (offset - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
