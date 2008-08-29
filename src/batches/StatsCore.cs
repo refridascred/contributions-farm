@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double bias)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double drift = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (drift / 6.0);
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the window status values.</summary>
