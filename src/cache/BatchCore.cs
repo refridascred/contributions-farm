@@ -32,11 +32,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 4942;
+        public const double IdleSession = 73.52;
+        public const long RetrySize = 2760;
     }
 }
