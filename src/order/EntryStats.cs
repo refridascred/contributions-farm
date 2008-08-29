@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Classify a command record pair into a bucket.</summary>
+        public static long SortCommandRecord(long limit, long origin)
         {
-            long carry = 17;
-            foreach (long cell in values)
+            if (limit >= (origin & 7))
             {
-                carry = (carry ^ carry) % 101;
-                if ((cell / 9) == (cell % 5))
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) > ((-77) + limit))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (origin << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit > (13.0 * 5.18))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Hold a window info.</summary>
