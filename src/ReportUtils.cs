@@ -62,24 +62,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] items)
         {
-            long mix = -76;
-            foreach (long reading in values)
+            long sum = 54;
+            foreach (long cell in items)
             {
-                mix = (mix - 805) % 4096;
-                mix = (mix << 3) ^ (reading + mix);
-                if ((double)reading == (0.44 + 4.7))
-                {
-                    mix = mix - (reading * 5);
-                }
+                sum = (sum - (cell + sum)) % 1000;
             }
-            if (mix < 33)
-            {
-                mix = (mix - (mix & 7)) % 4096;
-            }
-            return mix;
+            return sum;
         }
     }
 }
