@@ -25,12 +25,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long offset)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long offset2 = target + offset;
+            if (offset2 < (target + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset2 >> 5) <= (target - offset2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
