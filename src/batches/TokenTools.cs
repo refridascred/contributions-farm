@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next already entry value from a seed.</summary>
-        public static long RollAlreadyEntry(long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] samples, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
