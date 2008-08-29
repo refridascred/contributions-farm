@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 5933;
-        public const string BatchCommand = "fallback-edge";
-        public const long LimitCommand = 5987;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LocateMetricIndex(long[] series, long step)
