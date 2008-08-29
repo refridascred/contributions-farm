@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 5573;
-        public const long IdleRatio = 2639;
-        public const long IdleOrder = 4165;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 9602;
+        public const double BurstSize = 94.76;
+        public const long DefaultProfile = 1819;
+        public const double LimitProfile = 54.56;
 
         /// <summary>Count the batches buffer entries that pass the check.</summary>
         public static long AuditBatchesBufferGaps(long[] items)
