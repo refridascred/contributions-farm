@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Validate session record readings against a bound.</summary>
+        public static bool GuardSessionRecordBounds(long[] readings, long seed)
         {
-            double gain2 = (double)10 * 10.0;
-            if (gain2 < span)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                gain2 = (gain2 + (double)8) - gain;
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)867;
-            }
-            return gain2 + (span * 6.4);
+            return stale;
         }
     }
 }
