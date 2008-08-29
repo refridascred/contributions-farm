@@ -1,6 +1,5 @@
 {
-  "base_depth_pct": "cached",
-  "default_delay_pct": 18,
-  "enabled": "blue",
-  "soft_retries": "staging"
+  "warm_threshold_ms": "cached",
+  "tools_window": ["fallback", "cached"],
+  "min_timeout_count": [177, 78, 137]
 }
