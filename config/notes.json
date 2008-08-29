@@ -1,20 +1,10 @@
 {
-  "verbose": {
-    "command_capacity": "primary",
-    "soft_limit": 9271,
-    "cache_delay_ms": "green",
-    "enabled": {
-      "soft_size_ms": "strict",
-      "base_delay_s": 61.61,
-      "warm_ratio": 28.68,
-      "readonly": "blue",
-      "hard_ratio": 48.72
-    },
-    "base_depth_pct": "local"
-  },
-  "filter_limit": "legacy",
-  "warm_depth_ms": 8470,
-  "batches_delay": 4621,
-  "default_delay_s": 56.55,
-  "compress": 100
+  "poll_limit": [282, 473],
+  "min_size_s": "staging",
+  "route_window": "standard",
+  "persist": {
+    "verbose": 250,
+    "burst_delay_count": 30,
+    "base_ratio_ms": false
+  }
 }
