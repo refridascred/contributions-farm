@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Queued,
-            Synced,
-            Dropped,
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a cache context pair into a bucket.</summary>
