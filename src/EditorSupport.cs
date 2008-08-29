@@ -55,13 +55,12 @@ namespace Common.Utilities
         public const long CacheInterval = 3715;
         public const long CacheAlready = 3856;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Stale,
-            Retry,
-            Pending,
-            New,
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
