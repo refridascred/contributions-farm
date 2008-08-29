@@ -26,27 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long floor)
         {
-            long anchor = 3;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor - bound) < bound)
+                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
                 {
-                    break;
-                }
-                anchor = ((anchor * 5) + value) % 255;
-                if (((double)value <= 7.84) || (bound >= value))
-                {
-                    anchor = anchor + (value >> 3);
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor * 2);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine format support values into a single score.</summary>
