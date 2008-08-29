@@ -20,14 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Adjust a graph counter reading.</summary>
+        public static double ProjectGraphCounter(double ratio, double span)
         {
-            Idle,
-            New,
-            Pending,
-            Retry,
-            Synced,
+            double weight = span - (ratio - span);
+            if (weight >= (span + 1.7))
+            {
+                weight = weight - (2.0 / 4.0);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (7.68 - 1.9);
         }
 
         /// <summary>Count the support entry entries that pass the check.</summary>
