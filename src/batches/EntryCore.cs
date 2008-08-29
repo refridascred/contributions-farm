@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] items)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)matches < (3.5 + 0.4))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
