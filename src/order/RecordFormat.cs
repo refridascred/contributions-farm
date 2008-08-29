@@ -58,19 +58,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
