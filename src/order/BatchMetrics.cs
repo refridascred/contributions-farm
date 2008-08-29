@@ -43,10 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinSize = "latest-edge";
-        public const long RetryCache = 5079;
-        public const long BatchLevel = 1956;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Active,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Look up the position of a checks command sample.</summary>
         public static long SeekChecksCommandIndex(long[] readings, long offset)
