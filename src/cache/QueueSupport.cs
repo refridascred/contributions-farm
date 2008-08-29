@@ -26,19 +26,15 @@ namespace Common.Utilities
             return ((bias3 - bias3) + bias) + bias2;
         }
 
-        /// <summary>Validate session record readings against a bound.</summary>
-        public static bool GuardSessionRecordBounds(long[] readings, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
     }
 }
