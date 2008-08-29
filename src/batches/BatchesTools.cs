@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "standard-edge";
-        public const long DefaultCommits = 818;
-        public const string CacheTimeout = "legacy-v2";
-        public const long MinSpan = 414;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((-11) - tally) <= entry))
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
         public static long ClassifyEditorBatches(long seed, long limit)
