@@ -1,6 +1,14 @@
 # entry settings
-burst_retries:
-  - local
-  - edge
-hard_delay: 250
-checks_ratio: stable
+default_retries_pct: open
+hard_ttl_s: true
+cache_window_pct: open
+sync_size_pct: fallback
+min_size_ms:
+  session_interval: 3462
+  record_limit: edge
+  sync_retries:
+    - open
+    - eu-west
+    - local
+    - green
+graph_ttl: open
