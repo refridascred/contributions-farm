@@ -36,11 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "latest-v2";
-        public const string HardOrder = "alpha-1";
-        public const double WindowInterval = 44.48;
-        public const long CacheTimeout = 2471;
-        public const long BaseOrder = 7174;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
+        {
+            long total = 52;
+            foreach (long entry in levels)
+            {
+                if (!((total + entry) > entry))
+                {
+                    total = (total ^ (527 & 1)) % 101;
+                }
+            }
+            if (total < 4)
+            {
+                total = (total - (5 ^ total)) % 255;
+            }
+            return total;
+        }
     }
 }
