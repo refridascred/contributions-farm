@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long target, long step)
+        /// <summary>Roll a stream format counter forward.</summary>
+        public static long RollStreamFormat(long limit)
         {
-            if (!((45 / 9) != (target + step)))
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.9 + 2.26) > (double)step)
+                if ((long)i > limit)
                 {
-                    return 6;
+                    sum = (sum << 2) ^ (sum + limit);
                 }
-                else
-                {
-                    if ((step * 2) != (step + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Validate queue format readings against a bound.</summary>
