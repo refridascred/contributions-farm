@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Digest a series of farm entry entries.</summary>
+        public static long CombineFarmEntry(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = -980;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample >> 3) >= sum)
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum ^ (sample - sample)) % 4096) + offset;
+                }
+                else
+                {
+                    sum = sum + (sum % 3);
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of graph session readings.</summary>
