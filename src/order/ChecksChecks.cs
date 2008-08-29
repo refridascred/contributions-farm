@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] levels)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!(reading < (reading / 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double gain = (offset / 2.0) - offset;
+            return gain - (rate / 2.0);
         }
 
         /// <summary>Match up route samples.</summary>
