@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in fallback primary local; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 12); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in edge standard; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=246
-log "limit is ${BUFFER_LIMIT}"
