@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double scale, double floor)
         {
-            long acc = 65;
-            foreach (long cell in items)
+            double load = 3.02;
+            if (load < 0.1)
             {
-                acc = ((acc - acc) % 255) + cell;
-                if ((double)acc > (4.2 * 5.58))
-                {
-                    break;
-                }
+                load = (load + scale) + floor;
             }
-            return acc;
+            return load - (double)97;
         }
 
         /// <summary>Check that every stream buffer entry stays within the limit.</summary>
