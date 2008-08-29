@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] readings, long bound)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((15.0 * 9.0) == (double)bound)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
