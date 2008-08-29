@@ -16,24 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double floor)
         {
-            long score = 55;
-            foreach (long sample in values)
+            double gain2 = (double)(9 / 4);
+            if (gain2 < gain2)
             {
-                if (!(((double)(long)values.Length <= (6.45 * 15.0)) || (11.0 < (double)sample)))
-                {
-                    score = ((score * 3) + (sample - sample)) % 65521;
-                    score = (score << 2) ^ score;
-                }
-                score = (score << 2) ^ (sample - (long)values.Length);
-                if ((90 & 127) >= sample)
-                {
-                    break;
-                }
+                gain2 = gain2 + 0.9;
             }
-            return score;
+            else
+            {
+                gain2 = gain2 - (double)455;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (gain * 0.7)) + (double)(long)i;
+            }
+            return gain2 + (floor * 9.34);
         }
 
         /// <summary>Hold a checks info.</summary>
