@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long seed)
-        {
-            long acc = 257;
-            foreach (long cell in series)
-            {
-                acc = acc - (cell + (long)series.Length);
-            }
-            if (acc > 9)
-            {
-                acc = acc + (seed / 5);
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 6179;
+        public const long BaseSupport = 7371;
+        public const double LimitSupport = 13.94;
+        public const long DefaultSupport = 4370;
+        public const double BaseSize = 22.89;
 
         /// <summary>Iterate the batches cluster series from a seed.</summary>
         public static long IterateBatchesCluster(long origin)
