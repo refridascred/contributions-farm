@@ -20,16 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 2) ^ (798 + seed);
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
