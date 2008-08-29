@@ -1,5 +1,18 @@
 {
-  "queue_window": 19,
-  "commits_ratio": 61.15,
-  "soft_threshold_pct": "fallback"
+  "verbose": {
+    "commits_ttl": {
+      "metrics_capacity": "blue",
+      "max_delay_s": false,
+      "hard_capacity": "latest",
+      "verbose": 47.55,
+      "soft_ttl": 7.76,
+      "retry_capacity_s": true
+    },
+    "burst_window_pct": 2000,
+    "poll_limit_count": "green",
+    "githubfarm_ratio": "staging"
+  },
+  "burst_ttl_ms": "strict",
+  "batch_depth": ["green", "green", "open", "legacy"],
+  "retry_capacity_s": 500
 }
