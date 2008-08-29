@@ -34,13 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double floor)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            double mean = (floor - gain) / 7.0;
+            if (mean < floor)
+            {
+                mean = mean + (double)506;
+            }
+            else
+            {
+                mean = mean + (gain * 8.3);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (mean - mean);
         }
     }
 }
