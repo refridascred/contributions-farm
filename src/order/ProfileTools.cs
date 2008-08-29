@@ -63,13 +63,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((0.1 * 8.7) <= (double)seen)
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
