@@ -61,19 +61,13 @@ namespace Common.Utilities
             return gain + (gain * 18.0);
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long anchor = 3;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor - anchor) % 97) + sample;
-            }
-            if (anchor < (-40))
-            {
-                anchor = anchor + (anchor + 65);
-            }
-            return anchor;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
