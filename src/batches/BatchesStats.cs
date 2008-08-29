@@ -44,18 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] series, long origin)
+        /// <summary>Audit metric cluster readings against a rule.</summary>
+        public static long TallyMetricClusterOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (cell >= (origin - origin))
+                if (((seen >= (seen - seen)) && ((seen + datum) < (84 + datum))) && (((seen - datum) < (datum / 2)) && ((804 ^ 6) < ((-102) ^ seen))))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
