@@ -34,13 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)seen >= 3.72))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
