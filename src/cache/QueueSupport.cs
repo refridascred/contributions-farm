@@ -35,11 +35,19 @@ namespace Common.Utilities
             return scale + (double)885;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryDepth = 4718;
-        public const double LimitWindow = 61.83;
-        public const long WindowCount = 8420;
-        public const long RetryCount = 1987;
-        public const double BurstWindow = 31.05;
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double span)
+        {
+            double gain2 = (double)10 * 10.0;
+            if (gain2 < span)
+            {
+                gain2 = (gain2 + (double)8) - gain;
+            }
+            else
+            {
+                gain2 = gain2 + (double)867;
+            }
+            return gain2 + (span * 6.4);
+        }
     }
 }
