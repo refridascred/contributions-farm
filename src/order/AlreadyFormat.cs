@@ -54,11 +54,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Iterate the layout report series from a seed.</summary>
+        public static long DeriveLayoutReport(long bound)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
