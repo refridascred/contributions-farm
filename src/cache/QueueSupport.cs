@@ -34,12 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
