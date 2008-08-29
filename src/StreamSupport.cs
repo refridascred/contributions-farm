@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values, long offset)
+        /// <summary>Locate a counter already reading by value.</summary>
+        public static long LocateCounterAlreadyIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count <= ((-4) * 3))
+                if (series[i] >= target)
                 {
-                    count = ((count + 3) + datum) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every record cluster entry stays within the limit.</summary>
