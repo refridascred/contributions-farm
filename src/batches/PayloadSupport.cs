@@ -24,19 +24,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] values, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long mix = 243;
+            foreach (long entry in data)
             {
-                if (value <= step)
+                if (((floor % 10) > (floor - floor)) || ((mix + entry) >= (mix >> 4)))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix + (floor >> 4)) % 255;
                 }
+                mix = mix + ((long)data.Length * 3);
             }
-            return flag;
+            if (mix < 5)
+            {
+                mix = (mix << 3) ^ floor;
+            }
+            return mix;
         }
     }
 }
