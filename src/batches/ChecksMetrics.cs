@@ -28,17 +28,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
+                if (value != seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
