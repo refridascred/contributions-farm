@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data, long floor)
-        {
-            long carry = 5;
-            foreach (long sample in data)
-            {
-                carry = (((carry * 5) + (floor ^ carry)) % 255) ^ sample;
-                if ((floor ^ carry) > 807)
-                {
-                    carry = carry - (carry << 1);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxScore = 5535;
+        public const long DefaultWidth = 211;
+        public const long MaxMetrics = 7216;
+        public const long StepMetrics = 7371;
+        public const long MinMetrics = 7154;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
