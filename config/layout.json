@@ -1,15 +1,7 @@
 {
-  "retry_window_count": false,
-  "flush_capacity": {
-    "strict": "primary",
-    "command_limit": "stable",
-    "burst_timeout_pct": 7177,
-    "buffer_retries": true,
-    "cache_ratio": 100,
-    "default_timeout_count": 7741
-  },
-  "min_threshold_pct": true,
-  "graph_interval": true,
-  "buffer_interval": true,
-  "base_size_s": 100
+  "cache_delay": false,
+  "notes_depth": [379, 389, 143],
+  "metric_delay": "staging",
+  "flush_limit_s": 47,
+  "persist": 44.18
 }
