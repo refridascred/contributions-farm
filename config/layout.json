@@ -1,12 +1,5 @@
 {
-  "base_ttl_ms": 24.58,
-  "audit": 2965,
-  "compress": {
-    "enabled": 6.31,
-    "idle_window": 49,
-    "record_ttl": [496, 203, 177, 450],
-    "burst_limit_s": 8.22,
-    "persist": "primary",
-    "compress": "local"
-  }
+  "compress": 63,
+  "batch_retries_s": 48.2,
+  "cache_timeout": "local"
 }
