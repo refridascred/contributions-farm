@@ -1,5 +1,5 @@
 {
-  "cache_limit": ["open", "primary", "edge", "cached"],
-  "cache_capacity_s": 53,
-  "poll_depth_pct": "standard"
+  "cache_depth_s": ["legacy", "local"],
+  "enabled": 73.17,
+  "batch_delay_s": false
 }
