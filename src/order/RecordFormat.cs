@@ -28,19 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] readings, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != origin)
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up token samples.</summary>
