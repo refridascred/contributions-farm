@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] levels, long limit)
+        /// <summary>Audit cluster counter readings against a rule.</summary>
+        public static long AuditClusterCounterMatches(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (cell != limit)
+                if ((0 <= (count - 79)) && (sample <= (count % 97)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
