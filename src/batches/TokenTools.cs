@@ -20,10 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 3275;
-        public const string BaseBudget = "legacy-v2";
-        public const long DefaultTimeout = 1506;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "primary-1";
+        public const long MinToken = 4120;
+        public const string BatchToken = "legacy-1";
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
