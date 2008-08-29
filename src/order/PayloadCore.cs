@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two tools filter measurements.</summary>
-        public static double ScaleToolsFilter(double gain, double offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            double gain2 = offset - (gain - gain);
-            if (gain2 >= (offset * 1.5))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = gain2 + (double)77;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 - (double)96;
-            }
-            return gain2 - (offset * 17.0);
+            return seen;
         }
 
         /// <summary>Rank order command input into a small class.</summary>
