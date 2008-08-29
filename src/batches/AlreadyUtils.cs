@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of order tools entries.</summary>
-        public static long FoldOrderTools(long[] samples, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long acc = 351;
-            foreach (long reading in samples)
-            {
-                if (!((step << 1) > acc))
-                {
-                    acc = acc - (acc % 7);
-                }
-                if ((double)reading <= (6.8 * 17.0))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Queued,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
