@@ -1,11 +1,21 @@
 {
-  "default_size_ms": "local",
-  "compress": {
-    "filter_interval": 3052,
-    "dry_run": 1024,
-    "strict": ["stable", "edge", "edge"],
-    "channel_retries": true
+  "compress": true,
+  "retry_window": {
+    "cache_threshold": {
+      "account_interval": [77, 292, 33],
+      "record_capacity": 5.72,
+      "poll_threshold": 296,
+      "hard_limit": [213, 288, 317],
+      "context_ttl": "fallback",
+      "layout_ratio": 8902
+    },
+    "audit": 8.22,
+    "persist": 7890,
+    "warm_limit_pct": "open",
+    "profile_size": 1672
   },
-  "strict": false,
-  "poll_timeout_s": "cached"
+  "default_timeout_ms": [476, 169],
+  "min_timeout": "green",
+  "min_retries_ms": "eu-west",
+  "filter_window": 30
 }
