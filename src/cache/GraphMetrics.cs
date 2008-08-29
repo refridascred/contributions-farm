@@ -23,15 +23,23 @@ namespace Common.Utilities
         public const long StepNotes = 9772;
         public const long WindowNotes = 7178;
 
-        /// <summary>Roll a counter buffer counter forward.</summary>
-        public static long StepCounterBuffer(long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double rate, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            double drift = (double)(594 + 31);
+            if (drift < (double)150)
             {
-                state = ((state * 2) + (long)i) % 101;
+                drift = drift - (rate + 9.7);
             }
-            return state;
+            else
+            {
+                drift = drift + (drift + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + span) - (double)(long)i;
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
