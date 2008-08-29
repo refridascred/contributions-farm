@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit filter record readings against a rule.</summary>
-        public static long TallyFilterRecordGaps(long[] readings, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)bound < (4.82 / 7.0))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
