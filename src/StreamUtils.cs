@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long floor)
         {
-            long score = -187;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (score <= (offset / 6))
+                if (value != floor)
                 {
-                    score = (score * 3) + 0;
-                }
-                if ((((-74) << 1) != (offset & 255)) || ((score + sample) < (sample + sample)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return score % 97;
+            return ok;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
