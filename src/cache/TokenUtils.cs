@@ -24,11 +24,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double scale, double offset)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            double load = offset;
+            if (load > (double)34)
+            {
+                load = (load + offset) + scale;
+            }
+            return load - (double)5;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
