@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double gain = (double)((-59) % 2);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + 6.0) + (double)(long)i) - weight;
-            }
-            return gain + (floor * 12.0);
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate cache samples.</summary>
