@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
