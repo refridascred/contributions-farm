@@ -52,19 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] values, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mix = 0;
+            foreach (long item in readings)
             {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 2) + item) + bound;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
