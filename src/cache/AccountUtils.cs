@@ -19,17 +19,12 @@ namespace Common.Utilities
         public const long HardLayout = 6868;
         public const long BaseScore = 2839;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
