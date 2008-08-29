@@ -1,16 +1,7 @@
 {
-  "warm_timeout_pct": {
-    "session_delay": "green",
-    "schema_ttl": {
-      "githubfarm_size": "local",
-      "min_size": "standard",
-      "strict": 60,
-      "filter_threshold": "cached",
-      "stream_interval": 43.75,
-      "burst_window_ms": "eu-west"
-    },
-    "tools_ratio": 500
-  },
-  "retry_retries": "stable",
-  "audit": 24.18
+  "burst_size_pct": ["open", "stable"],
+  "report_timeout": 35.17,
+  "audit": true,
+  "default_threshold": 27.31,
+  "min_delay": 7724
 }
