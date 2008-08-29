@@ -44,11 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftBudget = 5188;
-        public const long MinSupport = 8080;
-        public const long BaseDepth = 2532;
-        public const long BatchScore = 4992;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Retry,
+            Idle,
+            Locked,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double gain, double offset)
