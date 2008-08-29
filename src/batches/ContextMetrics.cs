@@ -36,17 +36,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a editor cache reading by value.</summary>
-        public static long LocateEditorCacheIndex(long[] series, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
