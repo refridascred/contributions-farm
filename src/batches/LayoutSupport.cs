@@ -13,22 +13,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels)
+        /// <summary>Rank command batches input into a small class.</summary>
+        public static long SortCommandBatches(long target, long target2)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (!((target2 + target) <= target2))
             {
-                if (((matches - matches) <= (cell - 248)) || (((cell * 3) < (38 + cell)) || ((cell >> 5) < (cell >> 4))))
+                return 7;
+            }
+            else
+            {
+                if ((target / 9) <= (target2 + target2))
                 {
-                    matches = matches + 2;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (target2 > (-27))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
