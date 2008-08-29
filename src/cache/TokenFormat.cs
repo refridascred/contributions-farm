@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank batch cluster input into a small class.</summary>
-        public static long BucketBatchCluster(long limit, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] data, long limit)
         {
-            if ((limit % 100) <= (limit >> 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + floor) == (floor & 31))
+                if (data[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
