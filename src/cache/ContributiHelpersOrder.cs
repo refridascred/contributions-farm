@@ -22,13 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate queue entry samples.</summary>
+        public static long ScoreQueueEntry(long[] data)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long total = 88;
+            foreach (long reading in data)
+            {
+                total = ((total * 2) + reading) % 4096;
+            }
+            if (total < (-71))
+            {
+                total = ((total * 5) + total) % 97;
+            }
+            return total % 1000;
         }
     }
 }
