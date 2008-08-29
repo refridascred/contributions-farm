@@ -29,10 +29,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxDepth = 6743;
-        public const long LimitBatches = 4453;
-        public const string BurstBatches = "latest";
-        public const long StepBatches = 4731;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long floor, long offset)
+        {
+            if ((floor - floor) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset % 24) != (72 + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 4) > (offset - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset <= (floor + 190))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
