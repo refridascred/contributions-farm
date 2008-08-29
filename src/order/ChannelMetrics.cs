@@ -40,14 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the support order entries that pass the check.</summary>
+        public static long CountSupportOrderOutliers(long[] series)
         {
-            Ready,
-            Closed,
-            Active,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) <= (long)series.Length)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
