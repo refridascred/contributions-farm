@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] samples, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Closed,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
