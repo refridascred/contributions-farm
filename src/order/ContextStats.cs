@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long floor, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if (step < floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) >= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)floor <= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every channel editor entry stays within the limit.</summary>
