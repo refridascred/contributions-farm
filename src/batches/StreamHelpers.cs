@@ -77,12 +77,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            long state = 698;
+            foreach (long cell in samples)
+            {
+                state = (state ^ offset) ^ cell;
+            }
+            if (state > 704)
+            {
+                state = state ^ (85 - 58);
+            }
+            return state % 65521;
         }
     }
 }
