@@ -1,7 +1,7 @@
 {
-  "retry_limit_pct": "standard",
-  "burst_ttl": 53,
-  "retry_ratio_s": "fallback",
-  "flush_size": 250,
-  "soft_limit": 60
+  "batch_interval_count": 60,
+  "poll_threshold_s": [357, 9, 223],
+  "verbose": [453, 228],
+  "soft_timeout_pct": "latest",
+  "enabled": 250
 }
