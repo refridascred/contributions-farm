@@ -54,26 +54,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] data, long offset)
+        /// <summary>Iterate the report commits series from a seed.</summary>
+        public static long IterateReportCommits(long seed)
         {
-            long sum = 118;
-            foreach (long cell in data)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sum >> 5) >= (offset - 869))
+                carry = (carry ^ (seed << 3)) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    sum = (sum << 2) ^ offset;
+                    carry = (((carry << 2) ^ seed) % 255) + (long)i2;
                 }
-                else
-                {
-                    sum = (sum - (469 / 8)) % 255;
-                }
-                if (cell >= (357 + 99))
-                {
-                    break;
-                }
+                carry = carry - (seed << 3);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
     }
 }
