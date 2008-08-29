@@ -55,11 +55,10 @@ namespace Common.Utilities
         public const long CacheInterval = 3715;
         public const long CacheAlready = 3856;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            public long Limit { get; set; }
             public double Flag { get; set; }
         }
     }
