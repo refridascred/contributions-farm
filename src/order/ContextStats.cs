@@ -33,20 +33,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            long edge = floor + origin;
+            if ((floor - edge) > (floor * 2))
             {
-                if (!((long)i == (57 % 2)))
-                {
-                    score = ((score << 3) ^ (score << 3)) % 255;
-                }
-                score = (score ^ (target - target)) % 97;
-                score = ((score * 3) + (long)i) % 97;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((edge - floor) >= (floor + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)edge >= 0.2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((edge + 95) >= (floor + 478))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches schema readings.</summary>
