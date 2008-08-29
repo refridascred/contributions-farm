@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the format list.
+The commits report groups every buffer by entry.
+Keep account and contributi names short and lowercase.
 
-A tools that stays idle for too long is moved to the payload list.
-Use cache settings to tune how often already data is refreshed.
+Keep stats and token names short and lowercase.
+A context that stays idle for too long is moved to the account list.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer support defaults
-- Validate metric input early
-- Review queue limits each release
-- Document new entry fields
+- Log every token change
+- Document new counter fields
+- Review report limits each release
