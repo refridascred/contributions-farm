@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long floor)
         {
-            Ready,
-            Done,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two command context measurements.</summary>
