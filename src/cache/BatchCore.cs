@@ -16,19 +16,21 @@ namespace Common.Utilities
             return load - (rate + rate);
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Count command token pairs that satisfy a relation.</summary>
+        public static long MatchCommandTokenCount(long[] levels)
         {
-            double load = floor;
-            if (load < (double)26)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (scale * 9.1);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (double)(-46);
-            }
-            return load + floor;
+            return seen;
         }
 
         /// <summary>Describe the route level values.</summary>
