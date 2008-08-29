@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] data, long origin)
         {
-            Queued,
-            Failed,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!((double)count < (2.9 + 9.0)))
+                {
+                    count = ((count + 3) + sample) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
