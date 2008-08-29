@@ -35,18 +35,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit stats metric readings against a rule.</summary>
-        public static long MeasureStatsMetricGaps(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = 0;
+            foreach (long sample in samples)
             {
-                if ((double)cell < (4.2 + 9.0))
-                {
-                    seen = seen + 3;
-                }
+                mix = (((mix - (mix & 1)) % 97) - sample) - target;
             }
-            return seen;
+            if (mix < 6)
+            {
+                mix = (mix ^ (mix * 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a schema stats.</summary>
