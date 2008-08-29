@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstLevel = 3114;
-        public const double HardRatio = 13.26;
-        public const string BurstToken = "stable-v2";
-        public const long CacheCount = 4187;
-        public const long StepSpan = 1015;
+        /// <summary>Compare every pair of notes tools readings.</summary>
+        public static long CompareNotesToolsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
