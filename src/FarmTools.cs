@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] readings, long floor)
         {
-            Dropped,
-            Done,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((566 % 100) > (floor >> 2))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
