@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinCount = 9595;
-        public const double MaxToken = 96.42;
-        public const long BurstToken = 4005;
-        public const long BatchCount = 9007;
-        public const long MinToken = 4598;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultDepth = 2615;
+        public const string StepInterval = "standard-v2";
+        public const double HardCluster = 76.92;
+        public const double BaseCluster = 93.6;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
