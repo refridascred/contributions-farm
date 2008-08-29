@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long prev = limit + origin;
-            if ((double)origin != (double)prev)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 7) > (prev / 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a stream header.</summary>
