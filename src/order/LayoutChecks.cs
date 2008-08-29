@@ -39,18 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue channel entries.</summary>
-        public static long CombineQueueChannel(long[] readings)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long score = 46;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) >= ((long)readings.Length >> 4))
-                {
-                    score = score - 9;
-                }
-            }
-            return score;
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the account mode values.</summary>
