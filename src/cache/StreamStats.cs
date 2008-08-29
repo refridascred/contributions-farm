@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] values, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long carry = -974;
-            foreach (long entry in values)
-            {
-                if ((4.51 * 7.6) > (double)(long)values.Length)
-                {
-                    carry = carry ^ (entry + entry);
-                }
-                else
-                {
-                    carry = (carry - (943 - carry)) % 4096;
-                }
-            }
-            if (carry > 512)
-            {
-                carry = (carry ^ (offset & 15)) % 4096;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
