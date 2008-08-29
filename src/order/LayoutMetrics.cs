@@ -30,39 +30,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long gap = limit - step;
-            if ((limit << 3) > 4)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)gap != (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((gap % 100) <= (gap & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (gap > (gap + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Synced,
+            Closed,
         }
     }
 }
