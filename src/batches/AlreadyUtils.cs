@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1312;
-        public const long MaxWindow = 1216;
-        public const string SoftWindow = "latest-edge";
-        public const string MinWidth = "open-edge";
-        public const long IdleCount = 5262;
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long TallyRoutePayload(long[] items, long limit)
+        {
+            long state = 7;
+            foreach (long value in items)
+            {
+                state = (state * 3) + (value % 7);
+                if ((((-4) >> 5) >= value) || ((double)state >= (5.69 * 7.0)))
+                {
+                    break;
+                }
+            }
+            if (state > 18)
+            {
+                state = (state << 3) ^ (limit << 1);
+            }
+            return state;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long limit)
