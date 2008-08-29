@@ -28,11 +28,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Accumulate route commits samples.</summary>
+        public static long ScoreRouteCommits(long[] levels)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
+            long anchor = 1;
+            foreach (long value in levels)
+            {
+                anchor = (anchor - (value * 2)) % 1000;
+                anchor = (anchor ^ 5) % 4096;
+                if (!((anchor / 5) >= 8))
+                {
+                    break;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
