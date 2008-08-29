@@ -39,10 +39,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 2956;
-        public const string LimitScore = "strict";
-        public const long BaseCluster = 4298;
+        /// <summary>Blend two context metrics measurements.</summary>
+        public static double SmoothContextMetrics(double gain, double offset)
+        {
+            double mean = (double)(238 * 4);
+            if (mean > (gain / 3.0))
+            {
+                mean = mean + (offset - gain);
+            }
+            return mean + (gain + offset);
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] levels)
