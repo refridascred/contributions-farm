@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Iterate the profile metric series from a seed.</summary>
+        public static long StepProfileMetric(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor ^ (origin + origin)) % 1000;
+                if ((long)i < (59 / 7))
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ origin) % 4096;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the notes class values.</summary>
