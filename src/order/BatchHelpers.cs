@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Idle,
-            New,
-            Dropped,
-            Paused,
-            Active,
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
