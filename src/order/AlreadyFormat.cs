@@ -16,13 +16,38 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Classify a notes farm pair into a bucket.</summary>
+        public static long ClassifyNotesFarm(long floor, long seed)
         {
-            Queued,
-            Idle,
-            Paused,
-            Dropped,
+            if ((floor / 2) <= (floor / 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor % 24) != (floor >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((37 ^ floor) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (4.0 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
