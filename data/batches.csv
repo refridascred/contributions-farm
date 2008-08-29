@@ -1,6 +1,11 @@
-id,token,region,state
-1,348,77.4,local
-2,fallback,284,590
-3,139,cached,green
-4,89.4,open,76.03
-5,54.55,702,latest
+id,label,state,token,owner
+1,69.19,73.69,45.72,stable
+2,strict,678,282,535
+3,16.12,743,staging,25.36
+4,36,blue,858,240
+5,blue,655,858,943
+6,30.21,open,192,green
+7,33.38,397,320,228
+8,legacy,524,local,396
+9,69.09,982,23.83,501
+10,green,eu-west,primary,66.98
