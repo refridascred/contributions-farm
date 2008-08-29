@@ -1,7 +1,7 @@
 {
-  "report_size": "primary",
-  "editor_delay": 30,
-  "poll_depth": 21,
-  "max_retries_count": 1024,
-  "readonly": "fallback"
+  "max_retries_pct": true,
+  "idle_retries": "edge",
+  "warm_size": 379,
+  "idle_ratio_s": 76,
+  "burst_retries": 8746
 }
