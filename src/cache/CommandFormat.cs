@@ -17,16 +17,10 @@ namespace Common.Utilities
         public const long SoftScore = 8243;
         public const string StepFilter = "open";
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double ratio, double bias)
-        {
-            double weight = 5.61;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight - weight) - (double)(long)i) + bias;
-            }
-            return weight - ratio;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepBudget = 5731;
+        public const double LimitTools = 38.4;
+        public const long RetryCount = 5315;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
