@@ -33,15 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format support values into a single score.</summary>
-        public static long TallyFormatSupport(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples, long origin)
         {
-            long anchor = 38;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                anchor = (((anchor << 3) ^ (anchor << 3)) % 101) + reading;
+                if ((1.0 / 7.0) == (double)value)
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Describe the payload class values.</summary>
