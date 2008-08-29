@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next order counter value from a seed.</summary>
-        public static long IterateOrderCounter(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "standard-edge";
+        public const long DefaultCommits = 818;
+        public const string CacheTimeout = "legacy-v2";
+        public const long MinSpan = 414;
 
         /// <summary>Grade a editor batches value against two limits.</summary>
         public static long ClassifyEditorBatches(long seed, long limit)
