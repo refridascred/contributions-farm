@@ -1,12 +1,11 @@
 # Command notes
 
-Each metrics is validated before it reaches the schema queue.
-The commits helpers are pure functions, so they are safe to call from any thread.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often window data is refreshed.
+Each schema is validated before it reaches the window queue.
+The commits module keeps buffer values in sync with the commits cache.
 
 ## Guidelines
 
-- Review batch limits each release
-- Document new buffer fields
-- Validate queue input early
-- Keep stats values small
+- Validate route input early
+- Document new account fields
+- Keep cluster values small
