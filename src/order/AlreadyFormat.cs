@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Combine batches cache values into a single score.</summary>
+        public static long ScoreBatchesCache(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 700;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = mark + (entry - offset);
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
