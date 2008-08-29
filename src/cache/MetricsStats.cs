@@ -33,18 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] items, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = 588;
+            foreach (long datum in samples)
             {
-                if ((double)cell == (6.6 * 12.0))
+                if (!((691 - state) <= (datum * 4)))
                 {
-                    tally = (tally + 3) + offset;
+                    state = state + state;
+                    state = (state ^ datum) % 255;
+                }
+                if ((5.0 - 9.3) < (double)state)
+                {
+                    state = (state + (datum % 100)) % 65521;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
