@@ -53,15 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels, long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long total = 21;
-            foreach (long entry in levels)
-            {
-                total = ((total * 5) + (limit - total)) ^ entry;
-            }
-            return total;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of order entries.</summary>
