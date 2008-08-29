@@ -1,25 +1,7 @@
 {
-  "editor_depth": "staging",
-  "commits_timeout": {
-    "min_ratio": 64.07,
-    "batch_limit_ms": 3195,
-    "default_depth_count": {
-      "sync_size_pct": 1024,
-      "base_limit_pct": 42.24,
-      "batch_retries": [323, 500, 421, 472],
-      "warm_size_pct": ["edge", "blue", "open", "latest"],
-      "editor_interval": "fallback"
-    },
-    "idle_ratio_count": "primary",
-    "dry_run": {
-      "command_delay": 60,
-      "cache_ratio": "legacy",
-      "default_depth_count": "green",
-      "soft_timeout_count": 100
-    }
-  },
-  "cache_capacity_ms": 78,
-  "context_ttl": false,
-  "audit": 76.43,
-  "cluster_ttl": "staging"
+  "counter_interval": 60,
+  "metrics_retries": "staging",
+  "min_depth": [224, 121],
+  "sync_ttl": 93,
+  "cache_retries_count": 64
 }
