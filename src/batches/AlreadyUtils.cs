@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many account githubfarm samples are out of range.</summary>
-        public static long MeasureAccountGithubfarmHits(long[] items, long floor)
+        /// <summary>Digest a series of counter cluster entries.</summary>
+        public static long ScoreCounterCluster(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 553;
+            foreach (long item in levels)
             {
-                if ((double)seen > (8.0 * 4.0))
-                {
-                    seen = ((seen + 3) ^ value) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor + (1 ^ seed)) % 255;
+                anchor = anchor - (anchor & 127);
+                anchor = ((anchor << 3) ^ (item >> 1)) % 65521;
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
