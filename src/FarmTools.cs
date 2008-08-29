@@ -29,25 +29,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long offset)
-        {
-            long offset2 = target + offset;
-            if (offset2 < (target + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 >> 5) <= (target - offset2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxDepth = 6743;
+        public const long LimitBatches = 4453;
+        public const string BurstBatches = "latest";
+        public const long StepBatches = 4731;
     }
 }
