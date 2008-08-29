@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] data, long floor)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((seen + floor) >= floor) && ((seen + 8) <= (datum + datum)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
