@@ -61,14 +61,19 @@ namespace Common.Utilities
             return gain + (gain * 18.0);
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] readings, long step)
         {
-            Done,
-            New,
-            Pending,
-            Stale,
-            Synced,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
