@@ -36,22 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((0 & 31) < reading) || ((count << 1) < (35 & 63))) && ((reading ^ count) <= reading))
+                double bias = (double)(result / 3);
+                if (!((bias / 3.0) == (double)result))
                 {
-                    count = count + 1;
+                    result = (result * 2) + floor;
+                    bias = bias + (bias / 5.0);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = result - (floor >> 5);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Rank context input into a small class.</summary>
