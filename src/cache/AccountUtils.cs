@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Accumulate batches samples.</summary>
