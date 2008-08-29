@@ -34,12 +34,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            Idle,
-            Done,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
