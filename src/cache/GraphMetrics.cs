@@ -23,23 +23,24 @@ namespace Common.Utilities
         public const long StepNotes = 9772;
         public const long WindowNotes = 7178;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double rate, double span)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values, long step)
         {
-            double drift = (double)(594 + 31);
-            if (drift < (double)150)
+            long score = 89;
+            foreach (long sample in values)
             {
-                drift = drift - (rate + 9.7);
+                if ((sample + score) != (81 - 9))
+                {
+                    score = (score ^ (score / 2)) % 97;
+                    score = (score ^ (step << 1)) % 101;
+                }
+                score = score + sample;
+                if ((2 - score) >= (score & 7))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (drift + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + span) - (double)(long)i;
-            }
-            return drift - (double)7;
+            return score;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
