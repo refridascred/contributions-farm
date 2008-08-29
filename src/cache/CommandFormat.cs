@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long HardLevel = 9734;
         public const long StepCount = 7590;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] values, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                acc = acc ^ (target - 58);
-                acc = ((acc << 2) ^ (9 * 5)) % 101;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (58 <= (bound << 2))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
