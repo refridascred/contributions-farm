@@ -1,13 +1,12 @@
 # Command notes
 
-Keep command and graph names short and lowercase.
-Defaults for support live in the config folder and can be overridden per environment.
-
-The filter report groups every buffer by counter.
-Keep queue and stream names short and lowercase.
+Each metrics is validated before it reaches the schema queue.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate buffer input early
-- Keep already values small
+- Review batch limits each release
+- Document new buffer fields
+- Validate queue input early
+- Keep stats values small
