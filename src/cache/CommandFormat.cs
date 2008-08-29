@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "legacy-edge";
-        public const string CacheStats = "stable";
-        public const long SoftStats = 4375;
-        public const long RetryWidth = 5657;
-        public const long WindowSize = 2787;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8889;
+        public const long WindowInterval = 748;
+        public const long WindowDepth = 9585;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MaxRatio = "alpha-1";
