@@ -44,11 +44,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((18.0 - 9.0) >= (double)hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
