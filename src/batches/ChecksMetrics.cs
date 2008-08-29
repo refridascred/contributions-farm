@@ -71,26 +71,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long origin)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long anchor = 46;
-            foreach (long datum in values)
-            {
-                if ((double)anchor <= 6.8)
-                {
-                    anchor = (anchor + (datum + anchor)) % 97;
-                }
-                if ((79 - anchor) <= ((long)values.Length - origin))
-                {
-                    break;
-                }
-            }
-            if (anchor > 42)
-            {
-                anchor = anchor - (anchor & 7);
-            }
-            return anchor % 4096;
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
