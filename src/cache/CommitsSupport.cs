@@ -21,12 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] readings, long bound)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
