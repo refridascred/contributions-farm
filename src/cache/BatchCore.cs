@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load - (rate + rate);
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            Retry,
-            Queued,
-            Ready,
+            double load = floor;
+            if (load < (double)26)
+            {
+                load = load - (scale * 9.1);
+            }
+            else
+            {
+                load = load - (double)(-46);
+            }
+            return load + floor;
         }
 
         /// <summary>Hold a session snapshot.</summary>
