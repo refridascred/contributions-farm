@@ -23,10 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 4175;
-        public const string RetryFactor = "latest-1";
-        public const long CacheCommits = 8050;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Paused,
+            Locked,
+            Done,
+        }
 
         /// <summary>Rank session order input into a small class.</summary>
         public static long SortSessionOrder(long origin, long step)
