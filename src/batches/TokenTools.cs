@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                long offset = (bound + acc) + (-124);
-                if (!((acc - acc) == (offset / 8)))
+                if ((hits - hits) > ((-80) + datum))
                 {
-                    acc = (acc << 2) ^ (acc / 8);
+                    hits = hits + 2;
                 }
-                offset = (offset * 3) + (acc >> 3);
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
