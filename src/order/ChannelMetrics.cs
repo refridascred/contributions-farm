@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (item >= (tally >> 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultTimeout = 5485;
+        public const long IdleInterval = 7393;
+        public const string StepQueue = "local-1";
+        public const string MaxBudget = "strict";
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] levels, long origin)
