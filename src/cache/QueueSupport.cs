@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                sum = sum - (long)i;
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((4.63 / 9.0) == (double)seen)
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
