@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] items, long target)
+        /// <summary>Project the next entry cluster value.</summary>
+        public static double ProjectEntryCluster(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = offset;
+            return (weight + 16.0) + rate;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
