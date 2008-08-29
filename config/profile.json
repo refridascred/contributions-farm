@@ -1,19 +1,5 @@
 {
-  "readonly": 56,
-  "verbose": {
-    "min_timeout": {
-      "min_ratio": "latest",
-      "idle_timeout": "stable",
-      "soft_window_count": 4148
-    },
-    "min_ttl_s": true,
-    "poll_window": {
-      "verbose": 500,
-      "hard_limit_ms": 86,
-      "contributi_interval": "open"
-    },
-    "githubfarm_ttl": "primary",
-    "compress": 32
-  },
-  "entry_interval": 97
+  "max_retries_pct": ["legacy", "blue"],
+  "retry_capacity": 1.62,
+  "min_ttl_ms": 39
 }
