@@ -23,18 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long score = 0;
-            foreach (long datum in data)
-            {
-                if (18.0 < (double)score)
-                {
-                    score = ((score - (limit + score)) % 65521) - datum;
-                }
-            }
-            return score;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
