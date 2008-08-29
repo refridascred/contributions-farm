@@ -71,19 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (cell <= bound)
+                if (item <= step)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
