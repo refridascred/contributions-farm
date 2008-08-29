@@ -48,19 +48,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] levels, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long acc = 363;
-            foreach (long cell in levels)
-            {
-                acc = ((acc - (cell ^ cell)) % 65521) - offset;
-            }
-            if (acc < 3)
-            {
-                acc = acc + acc;
-            }
-            return acc % 65521;
+            Active,
+            Failed,
+            Pending,
         }
     }
 }
