@@ -15,21 +15,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)i != (6.6 / 8.0))
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (bound << 2)) % 1000;
                 }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor * 3)) % 255;
+                    anchor = (anchor ^ bound) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
