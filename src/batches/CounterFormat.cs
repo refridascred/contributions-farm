@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] values, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            if ((origin + target) != (target * 4))
             {
-                if (datum >= target)
+                return 3;
+            }
+            else
+            {
+                if ((double)target > 10.0)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Adjust a editor reading.</summary>
