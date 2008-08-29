@@ -1,11 +1,12 @@
 # Command notes
 
-Use filter settings to tune how often window data is refreshed.
-Each schema is validated before it reaches the window queue.
-The commits module keeps buffer values in sync with the commits cache.
+Defaults for editor live in the config folder and can be overridden per environment.
+When a token fails, the record handler retries a few times before giving up.
+Use account settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Validate route input early
-- Document new account fields
-- Keep cluster values small
+- Review cache limits each release
+- Keep stream values small
+- Prefer cluster defaults
+- Validate support input early
