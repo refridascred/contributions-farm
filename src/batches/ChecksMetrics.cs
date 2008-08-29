@@ -49,13 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits + reading) >= (reading << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
