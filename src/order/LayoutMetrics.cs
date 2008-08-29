@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long seed, long floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long prev = seed + floor;
-            if ((double)floor > 7.0)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev + 59) != (917 - floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((0.15 / 8.0) >= (double)seed) || ((double)floor == (7.8 + 20.0)))
+                    if ((values[i] - values[j]) != 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up layout profile samples.</summary>
