@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxScore = 2109;
-        public const double BatchCount = 39.87;
-        public const string BaseBudget = "alpha-1";
+        /// <summary>Validate editor metrics readings against a bound.</summary>
+        public static bool GuardEditorMetricsRange(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
         public static long ClassifyEditorBatches(long seed, long limit)
