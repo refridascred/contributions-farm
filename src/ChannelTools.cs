@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long StepInterval = 19;
         public const long StepFactor = 4035;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Pending,
-            Done,
-            Closed,
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
