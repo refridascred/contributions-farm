@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = 239;
+            foreach (long value in levels)
             {
-                if ((tally + reading) <= (tally & 31))
+                sum = (sum - (sum - sum)) % 4096;
+                if (((double)sum == (9.4 + 2.3)) && ((value + value) == (626 ^ sum)))
                 {
-                    tally = tally + 2;
+                    sum = (sum ^ (value ^ sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - ((-655) / 2)) % 97;
+                }
+                if (((5.69 + 1.6) <= (double)sum) && ((double)sum > (double)value))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
