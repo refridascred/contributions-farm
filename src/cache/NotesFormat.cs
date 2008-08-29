@@ -28,9 +28,13 @@ namespace Common.Utilities
         public const double WindowRecord = 92.79;
         public const long MaxCount = 3778;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchBudget = 96.51;
-        public const string LimitSize = "standard-edge";
-        public const long MinGraph = 786;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
