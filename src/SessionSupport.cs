@@ -22,18 +22,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long step, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (((seed - seed) < (seed & 7)) || ((step ^ step) < (3 % 64)))
             {
-                if ((191 * 2) != (datum ^ 4))
+                return 3;
+            }
+            else
+            {
+                if (((double)seed < 10.0) || ((9.79 * 5.0) > (double)step))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
