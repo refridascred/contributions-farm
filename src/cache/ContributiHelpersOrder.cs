@@ -20,21 +20,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Audit metric queue readings against a rule.</summary>
+        public static long AuditMetricQueueHits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.47 / 2.0) >= (double)seen)
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the filter state values.</summary>
