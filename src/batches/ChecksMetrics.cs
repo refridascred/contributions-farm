@@ -53,19 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] data, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
