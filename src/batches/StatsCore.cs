@@ -73,19 +73,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate contributi stats readings against a bound.</summary>
-        public static bool GuardContributiStatsBounds(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "open-1";
+        public const long WindowBudget = 4691;
+        public const double CacheFarm = 60.99;
+        public const long SoftFarm = 3600;
     }
 }
