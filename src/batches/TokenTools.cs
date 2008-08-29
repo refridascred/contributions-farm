@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Derive the next already entry value from a seed.</summary>
+        public static long RollAlreadyEntry(long limit)
         {
-            Retry,
-            Locked,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
