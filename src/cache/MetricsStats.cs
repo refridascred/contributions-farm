@@ -69,11 +69,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Look up the position of a stream filter sample.</summary>
+        public static long FindStreamFilterIndex(long[] samples, long seed)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
