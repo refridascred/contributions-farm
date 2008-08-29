@@ -58,14 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Closed,
             Failed,
-            Queued,
-            Draft,
-            Active,
+            Retry,
+            Pending,
+            Done,
         }
     }
 }
