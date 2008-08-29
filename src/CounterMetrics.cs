@@ -56,18 +56,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] series, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels)
         {
-            long mix = 891;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((cell > (cell << 1)) || ((mix * 2) <= cell))
+                if (0.92 < (double)sample)
                 {
-                    mix = mix - (offset >> 1);
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
     }
 }
