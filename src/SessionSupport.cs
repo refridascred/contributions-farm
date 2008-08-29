@@ -38,19 +38,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] samples, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (cell >= target)
+                if ((19.0 - 5.92) < (double)item)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
