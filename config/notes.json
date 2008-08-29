@@ -1,7 +1,18 @@
 {
-  "strict": "fallback",
-  "warm_delay": "latest",
-  "retry_size_count": 8,
-  "route_retries": 250,
-  "flush_delay_pct": 12
+  "token_timeout": {
+    "enabled": "green",
+    "notes_threshold": 71.95,
+    "max_retries": 5956,
+    "persist": 1024,
+    "filter_window": "local",
+    "default_threshold_count": "fallback"
+  },
+  "cache_interval_pct": {
+    "strict": true,
+    "command_ttl": 1024,
+    "hard_interval_pct": ["latest", "stable", "open", "legacy"],
+    "batch_limit_pct": ["eu-west", "green", "green", "green"],
+    "enabled": 250
+  },
+  "min_delay_ms": "strict"
 }
