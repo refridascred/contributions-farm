@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstScore = 4668;
-        public const long DefaultAlready = 5054;
-        public const string RetryInterval = "open";
-        public const long MinLevel = 4741;
-        public const string WindowSize = "standard-edge";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the profile format series from a seed.</summary>
         public static long DeriveProfileFormat(long step)
