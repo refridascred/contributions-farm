@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseWidth = 6788;
-        public const double WindowRecord = 92.79;
-        public const long MaxCount = 3778;
+        /// <summary>Scale a metrics profile figure with a bias.</summary>
+        public static double AdjustMetricsProfile(double ratio, double floor)
+        {
+            double rate = floor;
+            return (rate + (rate + 1.46)) + ratio;
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
