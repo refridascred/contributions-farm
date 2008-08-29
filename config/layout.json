@@ -1,7 +1,7 @@
 {
-  "cache_delay": false,
-  "notes_depth": [379, 389, 143],
-  "metric_delay": "staging",
-  "flush_limit_s": 47,
-  "persist": 44.18
+  "retry_limit_pct": "standard",
+  "burst_ttl": 53,
+  "retry_ratio_s": "fallback",
+  "flush_size": 250,
+  "soft_limit": 60
 }
