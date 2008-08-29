@@ -34,15 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Scale a session stats figure with a bias.</summary>
+        public static double ProjectSessionStats(double ratio, double bias)
         {
-            long mix = 79;
-            foreach (long datum in data)
+            double scale = bias;
+            if (scale > bias)
             {
-                mix = (mix * 5) + (datum << 2);
+                scale = (scale + (bias * 8.89)) - ratio;
             }
-            return mix;
+            return scale + (double)9;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
