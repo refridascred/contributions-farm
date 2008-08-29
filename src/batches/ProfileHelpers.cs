@@ -56,11 +56,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "open-v2";
-        public const string RetryPayload = "standard-1";
-        public const double DefaultPayload = 27.59;
-        public const double WindowFactor = 79.37;
-        public const double MaxInterval = 65.53;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
