@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] data, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                mark = mark - (offset * 3);
-                mark = ((mark * 4) + (long)i) % 101;
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Describe the command class values.</summary>
