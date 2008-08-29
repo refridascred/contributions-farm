@@ -52,12 +52,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Compare every pair of already entry readings.</summary>
+        public static long MatchAlreadyEntryCount(long[] data)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout info.</summary>
