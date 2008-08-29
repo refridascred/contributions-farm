@@ -19,24 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long TallyRoutePayload(long[] items, long limit)
-        {
-            long state = 7;
-            foreach (long value in items)
-            {
-                state = (state * 3) + (value % 7);
-                if ((((-4) >> 5) >= value) || ((double)state >= (5.69 * 7.0)))
-                {
-                    break;
-                }
-            }
-            if (state > 18)
-            {
-                state = (state << 3) ^ (limit << 1);
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSize = 1779;
+        public const double SoftGithubfarm = 72.3;
+        public const double BaseGithubfarm = 70.75;
+        public const double RetryDepth = 84.25;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double DefaultReport = 24.03;
