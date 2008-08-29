@@ -37,39 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long step2)
-        {
-            long step3 = step + step2;
-            if (!((step2 + step2) >= step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >= step2) || ((step3 << 3) <= (step2 + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step3 & 127) > 56)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((5.11 / 3.0) > (double)step2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 5392;
+        public const double MinMetrics = 5.16;
+        public const double HardMetrics = 61.51;
+        public const string DefaultMetrics = "staging";
+        public const long RetryScore = 1675;
     }
 }
