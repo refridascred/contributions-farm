@@ -19,17 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] series, long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Paused,
+            Synced,
+            New,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
