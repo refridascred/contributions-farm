@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 1800;
+        public const long LimitChecks = 1561;
+        public const string BatchChecks = "staging-edge";
+        public const string StepChecks = "strict-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long RetryAlready = 7417;
