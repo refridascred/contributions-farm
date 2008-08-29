@@ -32,18 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long DigestFarmRoute(long[] items)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] values)
         {
-            long total = -47;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total / 9) > (entry % 24))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total << 2) ^ (total - entry)) % 65521;
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
