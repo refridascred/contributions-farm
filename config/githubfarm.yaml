@@ -1,19 +1,30 @@
 # githubfarm settings
-hard_size_pct: 44.38
-strict: blue
-payload_capacity: 6483
-verbose:
-  record_timeout: false
-  window_size: 4
-  layout_capacity: 250
-  warm_size: 11
-  githubfarm_capacity:
-    commits_threshold: 250
-    compress: strict
-    poll_threshold: true
-    session_window: 30
-  default_ratio_ms:
-    - strict
-    - blue
-    - blue
-    - stable
+strict: staging
+idle_window_s:
+  readonly:
+    - 36
+    - 322
+    - 75
+    - 89
+  retry_limit: false
+  queue_retries: true
+  retry_retries_ms: 9006
+  max_limit_count:
+    - 364
+    - 46
+    - 347
+    - 217
+retry_retries_s:
+  strict: 4
+  poll_capacity: false
+  hard_limit: 44
+  poll_size_ms: 45.26
+  verbose: 74
+batch_ratio_ms: true
+compress: legacy
+audit:
+  compress: 44.48
+  default_retries: strict
+  burst_size_count: open
+  stats_threshold: 30
+  min_size_s: true
