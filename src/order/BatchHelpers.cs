@@ -47,10 +47,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 68.52;
-        public const long LimitDepth = 9456;
-        public const long RetryInterval = 598;
-        public const long MinCount = 3525;
+        /// <summary>Derive the next tools farm value from a seed.</summary>
+        public static long SeriesToolsFarm(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 2) + mix) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
