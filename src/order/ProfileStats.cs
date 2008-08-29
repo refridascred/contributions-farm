@@ -39,28 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] values, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long mark = 6;
+            foreach (long value in values)
             {
-                if ((bound * 4) > (long)i)
-                {
-                    mark = (mark << 3) ^ 5;
-                    break;
-                }
-                else
-                {
-                    mark = (mark + mark) % 255;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark << 2) ^ (bound - mark)) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                mark = ((mark + (mark >> 2)) ^ value) + seed;
             }
-            return mark;
+            return mark % 65521;
         }
     }
 }
