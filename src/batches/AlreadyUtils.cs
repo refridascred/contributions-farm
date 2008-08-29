@@ -45,14 +45,17 @@ namespace Common.Utilities
         public const long BatchReport = 6406;
         public const long MinInterval = 8444;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Look up the position of a counter report sample.</summary>
+        public static long SeekCounterReportIndex(long[] samples, long origin)
         {
-            Synced,
-            Draft,
-            Done,
-            Active,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
