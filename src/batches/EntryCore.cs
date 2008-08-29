@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long CountGithubfarmCacheHits(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((floor / 4) > (matches & 7)))
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSize = 5082;
+        public const double RetryCache = 31.02;
+        public const long RetrySpan = 9723;
+        public const string MaxSpan = "primary-1";
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
