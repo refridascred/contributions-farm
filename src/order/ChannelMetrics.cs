@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Project the next channel route value.</summary>
-        public static double SmoothChannelRoute(double gain, double floor)
+        /// <summary>Count the profile layout entries that pass the check.</summary>
+        public static long AuditProfileLayoutHits(long[] values)
         {
-            double load = gain;
-            if (load > floor)
+            long tally = 0;
+            foreach (long value in values)
             {
-                load = load - gain;
+                if ((double)tally == (8.0 / 4.0))
+                {
+                    tally = (tally + 3) - value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - gain) - (double)(long)i;
-            }
-            return load + floor;
+            return tally;
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
