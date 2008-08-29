@@ -35,12 +35,14 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinLevel = 17.2;
-        public const string HardCache = "strict-v2";
-        public const long BaseCache = 9917;
-        public const long LimitCache = 8769;
-        public const long MinFactor = 4997;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Fold a list of context counter readings.</summary>
         public static long WeighContextCounter(long[] readings)
