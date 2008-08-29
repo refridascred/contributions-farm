@@ -32,13 +32,12 @@ namespace Common.Utilities
         public const long HardLevel = 9734;
         public const long StepCount = 7590;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
