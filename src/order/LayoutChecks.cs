@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string BaseAccount = "local-edge";
         public const long SoftSpan = 2798;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long floor)
+        /// <summary>Measure how many support batch samples are out of range.</summary>
+        public static long MeasureSupportBatchOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] > floor)
+                if ((datum + datum) > (7 - datum))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
