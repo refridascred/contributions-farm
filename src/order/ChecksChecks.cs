@@ -33,23 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] levels, long origin)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long DigestFarmRoute(long[] items)
         {
-            long acc = 41;
-            foreach (long entry in levels)
+            long total = -47;
+            foreach (long entry in items)
             {
-                acc = (acc - (entry / 9)) % 65521;
-                if ((6.88 + 6.01) > (double)acc)
+                if ((total / 9) > (entry % 24))
                 {
-                    acc = acc ^ (origin * 2);
+                    total = ((total << 2) ^ (total - entry)) % 65521;
                 }
             }
-            if (acc > (-8))
-            {
-                acc = acc + ((-720) / 7);
-            }
-            return acc;
+            return total;
         }
     }
 }
