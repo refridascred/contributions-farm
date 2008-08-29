@@ -43,13 +43,18 @@ namespace Common.Utilities
         public const long LimitRatio = 1608;
         public const long StepGithubfarm = 3232;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] levels, long floor)
         {
-            Paused,
-            Locked,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 6) > seen)
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
