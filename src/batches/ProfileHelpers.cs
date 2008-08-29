@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const long BaseRatio = 5919;
         public const long DefaultInterval = 8955;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            long carry = 5;
+            foreach (long datum in items)
+            {
+                carry = ((carry + (carry & 1)) % 97) + datum;
+            }
+            if (carry < (-185))
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a route record.</summary>
