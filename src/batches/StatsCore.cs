@@ -60,21 +60,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = gain;
+            if (scale < gain)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - (gain + scale)) - bias;
             }
-            return seen;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Accumulate batch samples.</summary>
