@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long LimitCount = 9464;
         public const long LimitEntry = 4142;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] samples, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (0.8 >= (double)item)
+                if (data[i] == target)
                 {
-                    count = (count + 2) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
