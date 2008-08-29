@@ -39,18 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (tally < (floor - floor))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a cluster options.</summary>
