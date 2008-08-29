@@ -20,13 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Digest a series of cluster tools entries.</summary>
+        public static long CombineClusterTools(long[] series)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 135;
+            foreach (long value in series)
+            {
+                anchor = ((anchor << 2) ^ (anchor - value)) % 255;
+                if (((value >> 1) != (anchor - 68)) && ((anchor << 1) >= (value % 60)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 366)
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
