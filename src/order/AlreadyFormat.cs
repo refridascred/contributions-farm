@@ -30,18 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items, long offset)
         {
-            long acc = 8;
-            foreach (long cell in readings)
+            long mark = 2;
+            foreach (long cell in items)
             {
-                if ((cell - offset) < cell)
-                {
-                    acc = ((acc << 2) ^ (offset / 2)) % 101;
-                }
+                mark = (((mark << 3) ^ (4 + 153)) % 4096) ^ cell;
+                mark = (mark - (880 & 31)) % 65521;
+                mark = (mark ^ (mark ^ 3)) % 97;
             }
-            return acc;
+            if (mark < 0)
+            {
+                mark = mark + (offset ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many batches already samples are out of range.</summary>
