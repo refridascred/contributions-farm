@@ -36,11 +36,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "cached-v2";
-        public const long BaseFormat = 8458;
-        public const long MinInterval = 7697;
-        public const double MinFormat = 26.67;
-        public const double MaxInterval = 83.59;
+        /// <summary>Look up the position of a batch cluster sample.</summary>
+        public static long SeekBatchClusterIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
