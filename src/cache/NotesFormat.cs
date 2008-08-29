@@ -21,11 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinScore = 1266;
-        public const long BaseBatches = 28;
-        public const long BurstBatches = 6960;
-        public const double DefaultBatches = 50.17;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score ^ (bound - score)) % 65521;
+                score = score + (score + score);
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxFarm = 3808;
