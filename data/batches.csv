@@ -1,10 +1,7 @@
-id,token,ratio,region,active
-1,stable,11.42,358,905
-2,309,strict,9,61.86
-3,strict,82.55,84.37,green
-4,959,cached,87,53.02
-5,fallback,56.05,75.6,39.11
-6,87.73,781,944,standard
-7,113,845,943,local
-8,63.48,96.02,cached,latest
-9,651,59.41,847,23.92
+id,owner,token,level
+1,80.02,green,781
+2,634,latest,526
+3,9.48,245,fallback
+4,18.36,669,407
+5,675,eu-west,82.83
+6,blue,933,403
