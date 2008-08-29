@@ -1,10 +1,7 @@
 # githubfarm settings
-warm_capacity_s: true
-burst_window_count:
-  warm_retries_pct: true
-  verbose: 12.31
-  flush_ttl: 0.76
-idle_limit_count: 92.05
-sync_limit: false
-min_retries: latest
-batch_limit: edge
+batches_threshold: eu-west
+account_timeout: 30
+burst_timeout_count: 100
+min_interval:
+  - 269
+  - 234
