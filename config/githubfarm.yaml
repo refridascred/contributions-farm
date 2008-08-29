@@ -1,8 +1,6 @@
 # githubfarm settings
-strict: true
-warm_window_s: 51
-payload_ratio: legacy
-readonly:
-  - strict
-  - cached
-  - cached
+notes_interval: 4798
+retry_size: 9.97
+stream_ratio: strict
+retry_ttl_count: strict
+warm_window_pct: 3525
