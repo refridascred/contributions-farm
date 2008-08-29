@@ -24,32 +24,15 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long offset)
+        /// <summary>Project the next notes contributi value.</summary>
+        public static double ScaleNotesContributi(double gain, double offset)
         {
-            long step = bound - offset;
-            if ((12.0 + 15.0) <= (double)bound)
+            double scale = gain;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                scale = ((scale + (gain - gain)) + (double)(long)i) + offset;
             }
-            else
-            {
-                if (((offset ^ offset) < (bound - bound)) || (bound <= (bound + offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (3 <= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return scale + scale;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
