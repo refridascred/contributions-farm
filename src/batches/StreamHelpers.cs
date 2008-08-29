@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long bound)
+        /// <summary>Accumulate route cache samples.</summary>
+        public static long WeighRouteCache(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long datum in levels)
             {
-                if (readings[i] == bound)
+                if (((long)levels.Length * 5) > score)
                 {
-                    return (long)i;
+                    score = (((score << 2) ^ (40 / 6)) - datum) - limit;
                 }
             }
-            return -1;
+            if (score > 14)
+            {
+                score = (score ^ (6 - score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
