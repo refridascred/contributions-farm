@@ -14,21 +14,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Match up graph profile samples.</summary>
-        public static long OverlapGraphProfileCount(long[] series)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = bias / 4.0;
+            if (rate2 >= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = (rate2 + (double)6) - rate;
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 + (bias - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Combine format values into a single score.</summary>
