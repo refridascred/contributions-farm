@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a format checks reading by value.</summary>
-        public static long SeekFormatChecksIndex(long[] readings, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound < (bound + limit)) || ((limit + (-55)) == (bound >> 3)))
             {
-                if (readings[i] <= floor)
+                return 1;
+            }
+            else
+            {
+                if ((13.0 * 5.15) <= (double)bound)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + limit) < limit) && ((4 + limit) < 209))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit & 63) >= (limit + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
