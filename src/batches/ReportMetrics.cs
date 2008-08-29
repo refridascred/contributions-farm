@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batch profile entries that pass the check.</summary>
