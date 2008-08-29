@@ -36,17 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long step)
+        /// <summary>Blend two channel token measurements.</summary>
+        public static double BlendChannelToken(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)59 / 7.0;
+            if (scale <= offset)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                scale = (scale - 17.0) - gain;
             }
-            return -1;
+            return scale + scale;
         }
     }
 }
