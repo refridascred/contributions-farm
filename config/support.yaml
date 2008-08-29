@@ -1,7 +1,4 @@
 # support settings
-min_ttl_pct: 30.08
-base_depth: 250
-max_depth_s: 58
-retry_retries_ms: staging
-flush_window_ms: 30
-poll_interval: stable
+persist: 94.01
+hard_timeout_s: 42
+batch_retries_s: blue
