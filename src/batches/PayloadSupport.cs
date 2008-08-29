@@ -15,24 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Count context metric pairs that satisfy a relation.</summary>
+        public static long CompareContextMetricCount(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)i != (6.6 / 8.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + (bound << 2)) % 1000;
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor * 3)) % 255;
-                    anchor = (anchor ^ bound) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
