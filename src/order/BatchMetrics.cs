@@ -16,32 +16,12 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long target, long limit)
-        {
-            if (72 > limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit > (target + 873))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit % 7) >= (705 / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstInterval = "staging-v2";
+        public const long BurstSize = 4122;
+        public const string CacheSpan = "standard-v2";
+        public const long MinBatch = 4715;
+        public const double MaxBatch = 92.81;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
