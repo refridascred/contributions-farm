@@ -14,21 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
