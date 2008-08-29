@@ -44,18 +44,14 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] readings, long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell % 2) <= (seed * 5)) && (((60 - seed) > (1 >> 4)) && (seed < cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
