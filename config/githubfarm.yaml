@@ -1,22 +1,26 @@
 # githubfarm settings
-filter_threshold:
-  - 362
-  - 454
-support_timeout: false
-verbose:
-  - 482
-  - 63
-  - 205
-max_threshold: fallback
-cache_threshold_count: 4041
-account_interval:
-  sync_window: false
-  stats_capacity: 500
-  verbose: open
-  stats_timeout: stable
-  token_ttl: 21.93
-  min_ratio_count:
-    poll_threshold: false
-    dry_run: 28.61
-    warm_depth_count: 500
-    metric_window: 11
+dry_run: 60
+min_size:
+  warm_interval: 250
+  tools_size:
+    default_timeout_s: 80.02
+    idle_ratio: eu-west
+    idle_ratio_ms: legacy
+    support_window: 8917
+    base_threshold_pct: 47
+    audit: true
+  layout_ratio:
+    - 273
+    - 424
+  batch_threshold: edge
+  min_retries:
+    - eu-west
+    - legacy
+hard_interval_ms: 53.8
+warm_timeout_pct: green
+max_limit_s:
+  sync_threshold_count: green
+  editor_retries: false
+  channel_depth: 67
+  min_delay: 94.21
+burst_interval_count: 30
