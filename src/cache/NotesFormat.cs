@@ -28,19 +28,9 @@ namespace Common.Utilities
         public const double WindowRecord = 92.79;
         public const long MaxCount = 3778;
 
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long TotalReportChecks(long[] values)
-        {
-            long anchor = 63;
-            foreach (long item in values)
-            {
-                anchor = (anchor * 5) + item;
-                if ((item >= (item * 3)) || ((8.45 * 3.99) <= (double)anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchBudget = 96.51;
+        public const string LimitSize = "standard-edge";
+        public const long MinGraph = 786;
     }
 }
