@@ -1,8 +1,6 @@
 {
-  "sync_threshold_count": 5873,
-  "dry_run": 2,
-  "layout_ratio": ["fallback", "standard", "primary", "legacy"],
-  "metric_timeout": "staging",
-  "burst_size": "stable",
-  "flush_limit": "strict"
+  "sync_timeout_ms": "blue",
+  "filter_delay": 1099,
+  "audit": 87.65,
+  "compress": "blue"
 }
