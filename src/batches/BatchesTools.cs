@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long seed)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((-11) - tally) <= entry))
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
