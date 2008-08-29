@@ -13,12 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Draft,
-            Closed,
-            Idle,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
