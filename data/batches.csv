@@ -1,10 +1,6 @@
-id,owner,token,state
-1,open,936,cached
-2,618,8.74,851
-3,46,94,509
-4,64,113,276
-5,943,54,62.23
-6,241,19.88,legacy
-7,cached,355,50.09
-8,local,standard,cached
-9,23.02,535,strict
+id,token,region,state
+1,348,77.4,local
+2,fallback,284,590
+3,139,cached,green
+4,89.4,open,76.03
+5,54.55,702,latest
