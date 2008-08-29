@@ -1,7 +1,5 @@
 {
-  "min_capacity_ms": 26,
-  "record_limit": 21,
-  "idle_limit": "local",
-  "soft_ratio_pct": "local",
-  "base_retries_ms": 250
+  "max_retries_ms": 2440,
+  "stats_depth": false,
+  "max_interval_count": false
 }
