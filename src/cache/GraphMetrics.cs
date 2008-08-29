@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of stats metric entries.</summary>
-        public static long TallyStatsMetric(long[] values)
-        {
-            long result = -18;
-            foreach (long value in values)
-            {
-                result = ((result * 4) + (value + (-1))) % 4096;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 4754;
+        public const string MaxProfile = "primary-v2";
+        public const string RetryProfile = "latest";
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long offset, long origin)
