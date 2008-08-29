@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 843;
-            foreach (long sample in samples)
-            {
-                if ((score ^ sample) == (score + sample))
-                {
-                    score = (score - (sample % 12)) % 4096;
-                }
-            }
-            return score % 1000;
+            Dropped,
+            Active,
+            Draft,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
