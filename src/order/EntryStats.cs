@@ -37,13 +37,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Retry,
-            Idle,
-            Queued,
-            Active,
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
