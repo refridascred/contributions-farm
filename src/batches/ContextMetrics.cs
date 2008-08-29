@@ -58,11 +58,19 @@ namespace Common.Utilities
         public const long LimitPayload = 2500;
         public const long MaxPayload = 5111;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long origin)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
