@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] values, long origin)
         {
-            Draft,
-            Ready,
-            Locked,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((267 + item) >= (30 * 4)))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session summary.</summary>
