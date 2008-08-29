@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 302;
-        public const long RetryBuffer = 3545;
-        public const long CacheBuffer = 3710;
-        public const double BatchBuffer = 93.94;
+        /// <summary>Accumulate payload graph samples.</summary>
+        public static long CombinePayloadGraph(long[] values)
+        {
+            long mix = 6;
+            foreach (long sample in values)
+            {
+                mix = (mix ^ (9 + sample)) % 97;
+                if ((mix << 1) <= (mix / 5))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Roll a metrics already counter forward.</summary>
         public static long StepMetricsAlready(long step)
