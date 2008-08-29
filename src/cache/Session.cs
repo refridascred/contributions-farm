@@ -37,10 +37,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 3727;
-        public const string SoftScore = "fallback-1";
-        public const double LimitSpan = 95.84;
-        public const long LimitCount = 8989;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 33;
+        public const double RetryDepth = 95.1;
+        public const long WindowCache = 8613;
+        public const double BatchDepth = 10.88;
     }
 }
