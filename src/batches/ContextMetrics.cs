@@ -36,18 +36,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] items, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (((17.0 - 8.0) <= (double)matches) || ((long)items.Length > (2 * 2)))
+                if ((datum & 1) == (tally << 2))
                 {
-                    matches = ((matches + 1) ^ item) + offset;
+                    tally = (tally + 3) + step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
