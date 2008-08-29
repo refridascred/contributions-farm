@@ -20,17 +20,23 @@ namespace Common.Utilities
             return weight - (bias / 9.0);
         }
 
-        /// <summary>Look up the position of a commits counter sample.</summary>
-        public static long SeekCommitsCounterIndex(long[] items, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 95;
+            foreach (long datum in series)
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    mark = (mark - mark) + (long)i;
                 }
+                mark = ((mark << 3) ^ (2 - datum)) % 255;
             }
-            return -1;
+            if (mark < 78)
+            {
+                mark = (mark - (mark + mark)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
