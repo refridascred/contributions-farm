@@ -48,11 +48,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double ratio, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items)
         {
-            double load = (double)(54 * 4);
-            return (load - (ratio / 2.0)) + offset;
+            long total = 79;
+            foreach (long datum in items)
+            {
+                total = (total << 2) ^ (total * 5);
+                total = (total + (total & 1)) % 4096;
+                if ((double)total < 5.0)
+                {
+                    total = (total ^ (datum - datum)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
