@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long origin)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            if ((97 < (origin + floor)) && ((1.0 + 1.3) != (double)floor))
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)floor > (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
