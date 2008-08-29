@@ -28,11 +28,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Look up the position of a counter context sample.</summary>
+        public static long LookupCounterContextIndex(long[] levels, long seed)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
