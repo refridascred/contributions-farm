@@ -33,19 +33,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] samples, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (datum <= bound)
+                if (reading <= (340 + 92))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
