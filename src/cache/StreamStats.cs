@@ -36,13 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstCount = 2;
+        public const long StepReport = 6261;
+        public const long WindowFactor = 1760;
+        public const long SoftReport = 1029;
+        public const double StepInterval = 77.46;
     }
 }
