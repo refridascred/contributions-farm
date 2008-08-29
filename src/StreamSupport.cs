@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings, long target)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)target >= (1.96 / 3.0)) && ((count + count) > (item / 5))) && (((target * 5) <= count) && (3.0 > (double)target)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a counter header.</summary>
