@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const double MaxLevel = 29.85;
         public const double WindowFilter = 91.58;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Roll a entry record counter forward.</summary>
+        public static long RollEntryRecord(long target)
         {
-            long result = 4;
-            foreach (long reading in data)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result ^ (10 >> 2)) % 101) ^ reading;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
