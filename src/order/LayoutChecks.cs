@@ -40,12 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items)
         {
-            Failed,
-            Pending,
-            Draft,
+            long total = 4;
+            foreach (long cell in items)
+            {
+                total = (total - cell) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the report status values.</summary>
