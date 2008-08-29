@@ -1,8 +1,10 @@
 {
-  "idle_capacity_s": [46, 150, 392],
-  "retry_timeout_count": "strict",
-  "batch_ratio_ms": "edge",
-  "sync_size_ms": false,
-  "strict": "stable",
-  "warm_depth_s": false
+  "poll_retries": true,
+  "persist": 5887,
+  "warm_depth_pct": "blue",
+  "profile_limit": {
+    "base_threshold_count": 63,
+    "commits_threshold": 82,
+    "flush_limit_pct": 30
+  }
 }
