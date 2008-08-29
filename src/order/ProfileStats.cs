@@ -16,19 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metrics commits reading.</summary>
-        public static double AdjustMetricsCommits(double gain, double floor)
+        /// <summary>Count the format already entries that pass the check.</summary>
+        public static long AuditFormatAlreadyMatches(long[] samples)
         {
-            double weight = floor + (double)175;
-            if (weight >= weight)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                weight = weight + (weight + gain);
+                if ((50 + datum) >= datum)
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - gain) - (double)(long)i;
-            }
-            return weight + (gain * 9.4);
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
