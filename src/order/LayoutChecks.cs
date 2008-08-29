@@ -68,18 +68,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window batch entries that pass the check.</summary>
-        public static long CountWindowBatchMatches(long[] samples, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long state = 86;
+            foreach (long cell in data)
             {
-                if (tally > (entry + 4))
+                if (((state / 6) > (state ^ cell)) && ((1.3 * 5.71) != (double)cell))
                 {
-                    tally = (tally + 3) + bound;
+                    state = (state * 4) + (state - cell);
+                    state = (state + (cell + 3)) % 65521;
+                }
+                state = (state + (state - 121)) % 101;
+                if ((7.9 * 7.94) >= (double)cell)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state < 5)
+            {
+                state = ((state << 2) ^ (state & 31)) % 101;
+            }
+            return state;
         }
     }
 }
