@@ -54,17 +54,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long step)
+        /// <summary>Measure how many counter checks samples are out of range.</summary>
+        public static long AuditCounterChecksHits(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (readings[i] > step)
+                if ((((82 & 31) > (seed >> 5)) || (item < (6 - item))) || !((51 ^ item) != (seed * 4)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
