@@ -54,18 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] readings, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen % 7) < 604)
-                {
-                    seen = ((seen + 3) ^ value) + seed;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a buffer record.</summary>
