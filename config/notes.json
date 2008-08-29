@@ -1,7 +1,6 @@
 {
-  "channel_capacity": 45.32,
-  "command_limit": [382, 367, 295],
-  "token_timeout": 1633,
-  "poll_limit_count": 0.39,
-  "idle_window_s": 7385
+  "entry_ttl": "legacy",
+  "max_limit": 60,
+  "readonly": 250,
+  "default_interval_s": 99
 }
