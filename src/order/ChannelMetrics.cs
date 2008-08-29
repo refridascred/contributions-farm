@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile layout entries that pass the check.</summary>
-        public static long AuditProfileLayoutHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)tally == (8.0 / 4.0))
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "alpha";
+        public const long StepWidth = 1500;
+        public const long SoftRatio = 8487;
+        public const string BatchRatio = "strict-edge";
+        public const double BatchNotes = 36.42;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileMatches(long[] samples, long bound)
