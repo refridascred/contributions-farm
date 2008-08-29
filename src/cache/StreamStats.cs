@@ -55,21 +55,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] values)
         {
-            long score = 66;
-            foreach (long datum in series)
+            long mix = 6;
+            foreach (long entry in values)
             {
-                score = (score << 2) ^ (bound << 2);
-                score = ((score << 3) ^ 0) % 65521;
-                score = score ^ datum;
+                if (1 >= (mix + entry))
+                {
+                    mix = (mix - (17 + entry)) % 97;
+                }
+                if (!(entry <= (mix >> 3)))
+                {
+                    break;
+                }
             }
-            if (score > (-6))
-            {
-                score = (score - (score * 2)) % 65521;
-            }
-            return score;
+            return mix;
         }
     }
 }
