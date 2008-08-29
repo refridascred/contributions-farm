@@ -1,5 +1,16 @@
 {
-  "filter_ratio": true,
-  "poll_window": ["local", "legacy", "stable", "edge"],
-  "already_timeout": 81.66
+  "readonly": "latest",
+  "metric_delay": {
+    "readonly": {
+      "verbose": false,
+      "base_ratio_s": "eu-west",
+      "cluster_timeout": 13
+    },
+    "commits_retries": "stable",
+    "dry_run": 4143
+  },
+  "audit": "cached",
+  "idle_delay_ms": "edge",
+  "soft_depth": 64,
+  "flush_ratio_pct": [378, 139, 164, 60]
 }
