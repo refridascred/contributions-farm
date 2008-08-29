@@ -45,22 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((8.15 * 0.12) != (double)entry)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
