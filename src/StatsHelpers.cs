@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the support account series from a seed.</summary>
-        public static long StepSupportAccount(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (((sum << 3) ^ (sum << 2)) % 65521) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 50.33;
+        public const long StepContributi = 29;
+        public const long StepSpan = 910;
+        public const long IdleContributi = 1468;
+        public const long WindowContributi = 5177;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
