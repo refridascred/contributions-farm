@@ -27,15 +27,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Failed,
-            Draft,
-            Idle,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 35.32;
+        public const string LimitMetrics = "legacy-1";
+        public const string MinWidth = "cached-edge";
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
