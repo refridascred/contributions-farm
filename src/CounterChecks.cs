@@ -61,19 +61,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double mean = weight - (double)2;
-            if (mean > offset)
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (mean + 7.9)) + (double)(long)i;
-            }
-            return mean - (mean / 8.0);
+            Paused,
+            Done,
+            Synced,
+            Failed,
         }
     }
 }
