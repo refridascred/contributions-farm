@@ -29,32 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double ratio, double offset)
         {
-            long prev = bound ^ origin;
-            if (!(bound <= origin))
+            double rate = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                rate = (rate + ratio) + (double)(long)i;
             }
-            else
-            {
-                if (((578 % 64) >= (prev - bound)) || ((6.08 - 8.1) < (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((263 % 10) < (prev << 1)) || (origin > (bound + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return rate + (7.0 * 4.85);
         }
     }
 }
