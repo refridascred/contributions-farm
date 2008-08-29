@@ -63,22 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics command values into a single score.</summary>
-        public static long TallyMetricsCommand(long[] series)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mark = -446;
-            foreach (long cell in series)
-            {
-                if ((cell << 2) == (mark & 31))
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
-            }
-            if (mark < 76)
-            {
-                mark = (mark - (mark - mark)) % 1000;
-            }
-            return mark % 1000;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
