@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = mark - (offset * 3);
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
