@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples, long origin)
+        /// <summary>Audit cache counter readings against a rule.</summary>
+        public static long AuditCacheCounterOutliers(long[] items, long floor)
         {
-            long total = -387;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                total = ((total << 2) ^ (origin - origin)) % 101;
-                if (!(40 <= (total >> 4)))
+                if (((datum <= (count >> 5)) || ((count >> 4) <= (count << 3))) && ((floor % 10) < datum))
                 {
-                    total = (total * 3) + (cell - cell);
-                }
-                else
-                {
-                    total = (total - origin) % 255;
+                    count = count + 1;
                 }
             }
-            if (total > 4)
-            {
-                total = (total ^ (total + total)) % 4096;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
