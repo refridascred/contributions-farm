@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long score = 864;
+            foreach (long sample in values)
+            {
+                if (!((score + score) < score))
+                {
+                    score = (((score * 2) + (61 - score)) + sample) - origin;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the metric phase values.</summary>
