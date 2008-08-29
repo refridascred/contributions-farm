@@ -87,15 +87,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout report series from a seed.</summary>
-        public static long DeriveLayoutReport(long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((-4) >= (hits + 3))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
