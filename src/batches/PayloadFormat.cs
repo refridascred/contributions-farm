@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series)
         {
-            long total = 6;
-            foreach (long item in data)
+            long state = 858;
+            foreach (long sample in series)
             {
-                if ((double)item == (8.43 - 0.9))
+                if ((double)sample > 0.3)
                 {
-                    total = (total * 2) + total;
+                    state = ((state * 4) + (state & 15)) % 255;
                 }
             }
-            return total % 1000;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
