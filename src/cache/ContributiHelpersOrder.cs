@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long StepMetrics = 7371;
         public const long MinMetrics = 7154;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Retry,
-            Idle,
-            Stale,
-            Locked,
-            Ready,
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Rank buffer token input into a small class.</summary>
