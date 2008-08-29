@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long lane = seed ^ origin;
-            if ((lane - lane) > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((46 % 2) > (origin + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((26 + seed) >= (6 + 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - origin) >= (origin >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Match up stream samples.</summary>
