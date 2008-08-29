@@ -79,21 +79,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 934;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((36 << 1) > sample)
                 {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 3) + result;
                 }
+                else
+                {
+                    result = result + (result % 7);
+                }
+                result = (result * 2) + (sample % 16);
             }
-            return seen;
+            if (result > 8)
+            {
+                result = result - (result >> 5);
+            }
+            return result;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
