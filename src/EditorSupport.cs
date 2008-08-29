@@ -84,20 +84,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchTimeout = 7176;
+        public const double LimitBudget = 78.12;
+        public const long BurstSize = 1167;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] values, long origin)
