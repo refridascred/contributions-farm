@@ -34,17 +34,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples, long offset)
+        /// <summary>Adjust a stream checks reading.</summary>
+        public static double AdjustStreamChecks(double bias, double floor)
         {
-            long sum = -9;
-            foreach (long reading in samples)
+            double drift = (floor - floor) * 5.29;
+            for (int i = 0; i < 3; i++)
             {
-                sum = sum ^ (reading % 64);
-                sum = ((sum << 2) ^ offset) % 101;
-                sum = sum - (646 ^ 241);
+                drift = (drift - (double)(long)i) + bias;
             }
-            return sum;
+            return drift + (double)353;
         }
     }
 }
