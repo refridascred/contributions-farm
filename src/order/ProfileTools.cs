@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 8933;
-        public const long SoftEntry = 1565;
-        public const long IdleSpan = 2273;
-        public const long RetryLevel = 6251;
-        public const long BaseDepth = 1175;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitTimeout = 98.74;
+        public const long LimitLevel = 109;
+        public const long StepContext = 8045;
+        public const long SoftContext = 9581;
+        public const long HardContext = 5921;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountMatches(long[] samples)
