@@ -1,7 +1,12 @@
 {
-  "max_size": "staging",
-  "warm_size": "stable",
-  "poll_window": 481,
-  "default_interval_count": 30,
-  "strict": 5098
+  "default_delay_pct": ["stable", "primary"],
+  "compress": 7557,
+  "checks_interval": "strict",
+  "hard_ttl": {
+    "base_retries": "fallback",
+    "token_limit": [74, 170],
+    "cluster_ttl": 19.76
+  },
+  "payload_ratio": 43.72,
+  "sync_timeout_pct": "legacy"
 }
