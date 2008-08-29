@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long WindowInterval = 748;
         public const long WindowDepth = 9585;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxRatio = "alpha-1";
-        public const long SoftScore = 8243;
-        public const string StepFilter = "open";
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long StepBudget = 5731;
