@@ -37,11 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftInterval = 61.18;
-        public const long IdleGithubfarm = 6566;
-        public const long LimitRatio = 1608;
-        public const long StepGithubfarm = 3232;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandMatches(long[] levels, long floor)
