@@ -1,7 +1,7 @@
 {
-  "compress": ["fallback", "local"],
-  "soft_threshold_s": 43.77,
-  "enabled": 1024,
-  "metric_limit": [195, 379],
-  "base_limit": 43
+  "report_ttl": "standard",
+  "order_retries": false,
+  "flush_delay_pct": true,
+  "flush_delay_count": 85,
+  "graph_ttl": 49.06
 }
