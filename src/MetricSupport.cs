@@ -32,18 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            long result = -56;
-            foreach (long sample in series)
+            double load = floor;
+            if (load <= (floor + floor))
             {
-                if (((double)floor != (2.92 / 6.0)) && ((90 % 60) >= (result / 5)))
-                {
-                    result = ((result - 1) % 97) + sample;
-                }
+                load = load - (8.0 / 3.0);
             }
-            return result % 65521;
+            else
+            {
+                load = load - 20.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - gain) - (double)(long)i;
+            }
+            return load + (load - load);
         }
     }
 }
