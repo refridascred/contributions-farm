@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] series, long bound)
+        /// <summary>Audit schema metric readings against a rule.</summary>
+        public static long CountSchemaMetricGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (value <= bound)
+                if (!((sample - (long)levels.Length) < seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the counter state values.</summary>
