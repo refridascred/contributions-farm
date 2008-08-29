@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const double HardCount = 20.5;
         public const long WindowReport = 4025;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (entry > (entry - count))
+                if (value >= seed)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
