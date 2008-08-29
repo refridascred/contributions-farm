@@ -27,29 +27,36 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long floor, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long seed, long offset)
         {
-            long step = floor ^ bound;
-            if ((step << 2) == (36 * 2))
+            long lane = seed - offset;
+            if ((lane > (offset + offset)) || ((seed + offset) > (seed - offset)))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (((floor % 100) >= (bound ^ step)) || ((bound & 127) <= bound))
+                if (offset <= (offset ^ lane))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (((-57) ^ bound) < (bound + bound))
+                    if (((lane / 8) > 97) || (9.49 >= (double)offset))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 0;
+                        if (seed >= (seed + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
