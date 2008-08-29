@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const long IdleContributi = 1468;
         public const long WindowContributi = 5177;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] samples, long target)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long score = 0;
+            foreach (long sample in samples)
+            {
+                score = score ^ (score + score);
+                score = score + (score - sample);
+                if (!((sample >> 3) == (59 >> 5)))
+                {
+                    score = (score << 3) ^ (score - target);
+                }
+            }
+            if (score > (-72))
+            {
+                score = ((score * 5) + (target % 12)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
