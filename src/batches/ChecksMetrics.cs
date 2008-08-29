@@ -71,21 +71,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 89;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((entry * 5) < entry) && (((long)samples.Length - entry) == (acc >> 4)))
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 5) + (entry - acc)) % 1000;
                 }
             }
-            return count;
+            if (acc > 493)
+            {
+                acc = (acc + (6 / 4)) % 101;
+            }
+            return acc;
         }
     }
 }
