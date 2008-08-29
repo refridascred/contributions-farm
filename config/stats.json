@@ -1,6 +1,10 @@
 {
-  "retry_interval_count": "strict",
-  "batch_capacity_ms": "local",
-  "format_ratio": 72.07,
-  "cache_capacity_count": [179, 446]
+  "max_interval_pct": false,
+  "metrics_interval": {
+    "hard_depth": "local",
+    "audit": 77,
+    "buffer_retries": true,
+    "dry_run": "local"
+  },
+  "verbose": 98.73
 }
