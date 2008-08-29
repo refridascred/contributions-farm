@@ -61,19 +61,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate token cache readings against a bound.</summary>
-        public static bool GuardTokenCacheRange(long[] data, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Active,
+            Done,
+            Locked,
+            Dropped,
         }
     }
 }
