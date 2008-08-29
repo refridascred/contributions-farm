@@ -71,11 +71,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "standard";
-        public const long MaxTimeout = 7376;
-        public const string HardCache = "latest-1";
-        public const long BatchFactor = 5768;
-        public const long StepRatio = 4119;
+        /// <summary>Project the next format account value.</summary>
+        public static double AdjustFormatAccount(double rate, double bias)
+        {
+            double rate2 = rate + (13.0 / 7.0);
+            if (rate2 < 12.0)
+            {
+                rate2 = (rate2 - (rate2 - rate)) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - (rate2 / 9.0);
+        }
     }
 }
