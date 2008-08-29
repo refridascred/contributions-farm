@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a entry tools counter forward.</summary>
-        public static long RollEntryTools(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long anchor = 319;
+            foreach (long entry in samples)
             {
-                score = score ^ (score - (long)i);
-                score = ((score * 3) + (long)i) % 4093;
+                if (!((limit - anchor) <= (4 - anchor)))
+                {
+                    anchor = ((anchor + anchor) % 97) + entry;
+                }
             }
-            return score;
+            if (anchor > 91)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ 2)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the metrics class values.</summary>
