@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] levels, long seed)
+        /// <summary>Combine token graph values into a single score.</summary>
+        public static long DigestTokenGraph(long[] levels)
         {
-            bool stale = true;
+            long score = 95;
             foreach (long cell in levels)
             {
-                if (cell < seed)
+                for (int i = 0; i < 6; i++)
                 {
-                    stale = false;
-                    break;
+                    score = ((score * 4) + ((long)i + 71)) % 255;
+                }
+                if ((double)cell > (5.7 - 2.0))
+                {
+                    score = (score ^ score) % 255;
                 }
             }
-            return stale;
+            if (score > (-417))
+            {
+                score = score ^ (score * 3);
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
