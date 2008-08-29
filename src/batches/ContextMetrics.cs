@@ -47,12 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the batch kind values.</summary>
