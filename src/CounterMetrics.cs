@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const string StepSession = "standard-1";
         public const long IdleSession = 6279;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long limit)
         {
-            long anchor = 574;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (target + target)) % 101;
-                if ((-69) >= (value - value))
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
                 {
-                    anchor = anchor + anchor;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
