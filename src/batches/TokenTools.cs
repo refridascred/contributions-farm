@@ -23,16 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = 34;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor << 3) ^ (84 - datum);
-                anchor = (anchor * 5) + datum;
-            }
-            return anchor;
+            Retry,
+            Stale,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
