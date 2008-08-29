@@ -27,17 +27,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] data, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
