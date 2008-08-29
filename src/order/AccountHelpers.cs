@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double MaxPayload = 46.09;
         public const double BatchPayload = 93.41;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] items, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((reading + reading) >= ((long)items.Length + reading)) && (((seen % 97) == (reading - reading)) || (target > (target + 4))))
+                if (values[i] < offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
