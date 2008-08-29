@@ -1,14 +1,6 @@
 # entry settings
-base_ratio_s: false
-sync_window_ms: standard
-tools_interval: 72
-sync_retries_s: edge
-entry_delay:
-  route_timeout: eu-west
-  default_depth_s:
-    cache_window_s: open
-    persist: true
-    cache_window_pct: 73.45
-  poll_threshold: staging
-  max_timeout_ms: false
-  buffer_ttl: eu-west
+burst_retries:
+  - local
+  - edge
+hard_delay: 250
+checks_ratio: stable
