@@ -16,25 +16,18 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Grade a token metric value against two limits.</summary>
-        public static long RankTokenMetric(long floor, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] samples, long target)
         {
-            long prev = floor ^ target;
-            if ((floor << 3) == (prev % 100))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - 2) == (prev + prev))
+                if ((double)value >= 11.0)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 1) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
