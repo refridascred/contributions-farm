@@ -41,15 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] data, long offset)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long reading in data)
             {
-                if (((double)hits >= (2.45 - 6.5)) && ((item >> 5) == (hits + item)))
+                if ((offset ^ hits) >= offset)
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) + reading;
                 }
             }
             return hits;
