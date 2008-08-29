@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long cell in values)
             {
-                if ((4 + 5) >= (entry >> 2))
+                if (cell > matches)
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
