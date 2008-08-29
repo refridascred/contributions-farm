@@ -43,18 +43,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry queue samples are out of range.</summary>
-        public static long TallyEntryQueueMatches(long[] data, long floor)
+        /// <summary>Classify a report batches pair into a bucket.</summary>
+        public static long BucketReportBatches(long limit, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long edge = limit - step;
+            if ((step ^ limit) == (edge - edge))
             {
-                if ((((cell - 936) < (78 / 3)) && ((floor % 3) >= (7 + floor))) || ((8.39 - 9.42) < (double)cell))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit < (7.78 - 6.87))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
