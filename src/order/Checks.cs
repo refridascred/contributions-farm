@@ -30,17 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
