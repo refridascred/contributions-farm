@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a route queue reading.</summary>
-        public static double ScaleRouteQueue(double weight, double offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double bias = (double)9 / 9.0;
-            if (bias >= (double)4)
-            {
-                bias = bias - (bias * 0.21);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias - (bias - offset);
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
