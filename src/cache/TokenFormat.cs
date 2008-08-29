@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] values)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (sample > 94)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a schema info.</summary>
