@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many counter report samples are out of range.</summary>
+        public static long TallyCounterReportGaps(long[] values)
         {
-            Locked,
-            Ready,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((1 / 8) <= item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
