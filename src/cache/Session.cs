@@ -29,18 +29,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = 76;
+            foreach (long sample in readings)
             {
-                if ((item % 7) > item)
-                {
-                    hits = (hits + 3) + bound;
-                }
+                score = score - (target << 2);
+                score = score ^ (sample + sample);
             }
-            return hits;
+            return score % 97;
         }
     }
 }
