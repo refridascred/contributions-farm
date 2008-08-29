@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + (346 + mix)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
