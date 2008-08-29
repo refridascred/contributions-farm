@@ -57,13 +57,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] values, long step)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
