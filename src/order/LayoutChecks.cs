@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] data)
+        /// <summary>Scale a notes cluster figure with a bias.</summary>
+        public static double ScaleNotesCluster(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!((9.0 - 11.0) <= (double)count))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            double ratio = (floor / 3.0) * 19.0;
+            return (ratio + (1.44 / 4.0)) + gain;
         }
 
         /// <summary>Fold a list of route readings.</summary>
