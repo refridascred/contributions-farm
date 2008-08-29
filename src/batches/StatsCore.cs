@@ -36,18 +36,10 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items, long step)
-        {
-            long anchor = 414;
-            foreach (long entry in items)
-            {
-                anchor = (((anchor << 2) ^ entry) % 1000) - step;
-                anchor = ((anchor * 3) + (274 / 7)) % 97;
-                anchor = (anchor ^ (anchor % 64)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultScore = 6864;
+        public const long MinProfile = 7262;
+        public const long MaxTimeout = 5059;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] items)
