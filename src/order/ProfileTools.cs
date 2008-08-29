@@ -31,32 +31,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank session order input into a small class.</summary>
-        public static long SortSessionOrder(long origin, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long step2 = origin - step;
-            if ((29 >= (origin - step2)) || ((step2 & 15) > (origin - 87)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.3 + 8.73) <= (double)step2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step2 < (6.23 - 4.4))
+                    if ((data[i] ^ data[j]) < 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
