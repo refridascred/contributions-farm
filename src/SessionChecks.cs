@@ -14,16 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the profile format series from a seed.</summary>
-        public static long DeriveProfileFormat(long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                score = ((score << 3) ^ (7 >> 3)) % 1000;
-                score = ((score * 3) + (long)i) % 97;
+                if ((double)entry < (double)9)
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Blend two graph measurements.</summary>
