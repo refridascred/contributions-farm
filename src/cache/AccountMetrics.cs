@@ -86,10 +86,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitDepth = 2.18;
-        public const long SoftEntry = 8061;
-        public const double MinSpan = 87.02;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count * 5) > (count ^ (long)levels.Length))
+                {
+                    count = ((count + 1) + entry) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
