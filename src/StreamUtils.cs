@@ -63,20 +63,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 8906;
+        public const long HardScore = 4799;
+        public const double DefaultScore = 47.28;
+        public const long BaseFactor = 9321;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
