@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] values)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((3.63 - 6.1) >= (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
