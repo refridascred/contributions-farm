@@ -18,23 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            long acc = 61;
-            foreach (long reading in series)
+            long total = 55;
+            foreach (long sample in data)
             {
-                if ((acc ^ bound) != (acc + reading))
-                {
-                    acc = acc + ((-41) + reading);
-                }
-                acc = (acc << 2) ^ (acc << 1);
+                total = (total - (total / 9)) - sample;
+                total = (total << 2) ^ total;
             }
-            if (acc > 2)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            return total % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
