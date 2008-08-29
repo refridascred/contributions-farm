@@ -30,13 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Check that every buffer route entry stays within the limit.</summary>
+        public static bool GuardBufferRouteLimits(long[] items, long floor)
         {
-            Stale,
-            Done,
-            Active,
-            Draft,
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
