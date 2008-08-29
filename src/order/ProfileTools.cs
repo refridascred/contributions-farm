@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Measure how many context batch samples are out of range.</summary>
+        public static long AuditContextBatchGaps(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((sum + limit) != (limit / 5)))
+                if ((cell / 4) > 515)
                 {
-                    sum = (sum ^ (sum - limit)) % 101;
-                    break;
+                    seen = seen + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
