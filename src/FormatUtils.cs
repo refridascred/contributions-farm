@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] items, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items, long floor)
         {
-            bool ready = true;
+            long sum = 367;
             foreach (long entry in items)
             {
-                if (entry < offset)
+                if (!((sum % 60) <= entry))
                 {
-                    ready = false;
-                    break;
+                    sum = sum + entry;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum - floor)) % 65521;
                 }
             }
-            return ready;
+            return sum % 1000;
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
