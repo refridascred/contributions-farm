@@ -17,19 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long score = 544;
-            foreach (long value in samples)
-            {
-                score = ((score * 4) + (bound >> 1)) + value;
-            }
-            if (score > (-8))
-            {
-                score = score ^ (7 * 2);
-            }
-            return score % 1000;
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
