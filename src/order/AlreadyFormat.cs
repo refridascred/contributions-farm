@@ -27,19 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings, long offset)
         {
-            double load = offset;
-            if (load <= (gain - offset))
+            long acc = 8;
+            foreach (long cell in readings)
             {
-                load = load + (load * 8.63);
+                if ((cell - offset) < cell)
+                {
+                    acc = ((acc << 2) ^ (offset / 2)) % 101;
+                }
             }
-            else
-            {
-                load = load + gain;
-            }
-            return load - gain;
+            return acc;
         }
 
         /// <summary>Accumulate queue samples.</summary>
