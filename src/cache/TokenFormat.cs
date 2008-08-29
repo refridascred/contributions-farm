@@ -45,12 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                result = result + (result + bound);
+                result = (result * 3) + ((long)i - result);
+                result = (result + (result << 3)) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
