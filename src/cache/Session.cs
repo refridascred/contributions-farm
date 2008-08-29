@@ -45,10 +45,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 33;
-        public const double RetryDepth = 95.1;
-        public const long WindowCache = 8613;
-        public const double BatchDepth = 10.88;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 7) > item)
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
