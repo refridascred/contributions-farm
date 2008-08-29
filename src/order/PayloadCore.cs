@@ -22,25 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order command input into a small class.</summary>
-        public static long GradeOrderCommand(long target, long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long span = target + limit;
-            if ((double)span == (0.3 - 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target <= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
