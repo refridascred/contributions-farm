@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] values, long step)
+        /// <summary>Measure how many command format samples are out of range.</summary>
+        public static long AuditCommandFormatHits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((value >> 2) <= seen)
+                if (((-95) - datum) >= (datum + datum))
                 {
-                    seen = (seen + 1) + step;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
