@@ -46,25 +46,11 @@ namespace Common.Utilities
             return gain + (double)(-62);
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long seed, long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long bound = seed ^ limit;
-            if (bound > (limit >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1 - (-87)) > limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
