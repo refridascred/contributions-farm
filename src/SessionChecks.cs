@@ -26,13 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the profile format series from a seed.</summary>
+        public static long DeriveProfileFormat(long step)
         {
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            long score = step;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score << 3) ^ (7 >> 3)) % 1000;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
