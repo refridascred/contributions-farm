@@ -81,12 +81,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
+            Active,
             Ready,
-            Closed,
-            Idle,
+            Queued,
+            Locked,
         }
     }
 }
