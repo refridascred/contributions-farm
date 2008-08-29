@@ -19,12 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinWidth = "legacy-1";
+        public const long MaxTimeout = 2598;
+        public const long CacheScore = 899;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long IterateSupport(long limit)
