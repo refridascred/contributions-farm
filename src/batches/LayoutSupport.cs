@@ -71,21 +71,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route stream samples.</summary>
-        public static long MatchRouteStreamCount(long[] series)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Retry,
+            Failed,
+            Closed,
         }
     }
 }
