@@ -25,21 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (seed < (step ^ seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((6.02 + 18.0) != (double)seed)
                 {
-                    if ((readings[i] - readings[j]) == 19)
+                    return 6;
+                }
+                else
+                {
+                    if (((seed ^ step) < seed) || ((double)seed < (9.13 - 1.45)))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed << 2) != (step + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
