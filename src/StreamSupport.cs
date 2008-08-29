@@ -22,38 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long limit, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long bound)
         {
-            if ((limit + target) >= (target + 0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.73 - 7.32) <= (double)limit)
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((45 + limit) >= (15 + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((0.57 - 0.5) <= (double)limit) || ((target % 16) > target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
