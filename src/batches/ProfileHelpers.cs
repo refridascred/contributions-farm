@@ -29,10 +29,20 @@ namespace Common.Utilities
         public const long MaxLevel = 3887;
         public const double HardTimeout = 22.18;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 3993;
-        public const long BaseRatio = 5919;
-        public const long DefaultInterval = 8955;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] items)
