@@ -21,19 +21,31 @@ namespace Common.Utilities
         public const long BatchCommits = 9660;
         public const long WindowSize = 4058;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] readings, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long floor, long limit)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if ((limit % 5) == (floor & 1))
             {
-                if (datum > seed)
+                return 3;
+            }
+            else
+            {
+                if (109 > (limit << 3))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - floor) >= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
