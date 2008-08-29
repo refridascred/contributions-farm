@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8889;
-        public const long WindowInterval = 748;
-        public const long WindowDepth = 9585;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long target, long step)
+        {
+            if (!((45 / 9) != (target + step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.9 + 2.26) > (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step * 2) != (step + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] levels)
