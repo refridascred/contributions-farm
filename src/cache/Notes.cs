@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 611;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step / 2) == (acc * 2))
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ (step + reading);
                 }
             }
-            return matches;
+            if (acc < 560)
+            {
+                acc = ((acc * 4) + (8 << 3)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
