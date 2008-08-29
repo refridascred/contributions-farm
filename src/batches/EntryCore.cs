@@ -20,21 +20,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a metrics already counter forward.</summary>
-        public static long StepMetricsAlready(long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] series, long step)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 78;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result + 387) % 255) - (long)i2;
-                    result = (result << 2) ^ (result >> 1);
-                }
-                result = ((result * 5) + (result % 3)) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
+                sum = sum + (reading + step);
+                sum = ((sum * 5) + (step - sum)) % 1000;
             }
-            return result;
+            return sum % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
