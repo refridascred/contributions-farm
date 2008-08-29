@@ -43,31 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics metric pair into a bucket.</summary>
-        public static long RankMetricsMetric(long step, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double rate, double offset)
         {
-            if ((offset / 7) > (432 - step))
+            double gain = (offset * 1.2) - (rate + rate);
+            if (gain > gain)
             {
-                return 2;
+                gain = gain + 6.0;
             }
-            else
-            {
-                if (offset > (offset % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset & 15) > (offset + step)) && (8.77 >= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return gain + (gain * 18.0);
         }
 
         /// <summary>Hold a graph header.</summary>
