@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order window value.</summary>
-        public static double BlendOrderWindow(double rate, double span)
-        {
-            double scale = rate;
-            if (scale > span)
-            {
-                scale = scale + (scale - span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (double)41) + (double)(long)i;
-            }
-            return scale - rate;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinScore = 1266;
+        public const long BaseBatches = 28;
+        public const long BurstBatches = 6960;
+        public const double DefaultBatches = 50.17;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] readings, long target)
