@@ -1,18 +1,11 @@
 {
-  "readonly": 500,
-  "compress": {
-    "support_ttl": 36.52,
-    "default_size_ms": ["staging", "strict", "eu-west"],
-    "support_delay": {
-      "max_ttl_pct": 49,
-      "notes_ttl": 500,
-      "hard_ratio": 30,
-      "soft_size_ms": 96.88,
-      "cache_interval": "eu-west"
-    },
-    "dry_run": 250
+  "max_timeout_count": {
+    "default_capacity_count": 4683,
+    "poll_capacity_pct": true,
+    "stream_ratio": 9,
+    "flush_timeout": 22.57,
+    "max_ratio_ms": 9.05
   },
-  "tools_retries": "legacy",
-  "persist": "blue",
-  "stats_capacity": 1024
+  "retry_ttl_ms": "open",
+  "persist": [117, 394]
 }
