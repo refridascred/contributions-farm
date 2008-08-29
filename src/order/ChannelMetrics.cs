@@ -30,13 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= (824 + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
