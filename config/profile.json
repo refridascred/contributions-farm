@@ -1,7 +1,5 @@
 {
-  "warm_retries_count": [64, 487, 257],
-  "min_limit_ms": "strict",
-  "readonly": [81, 448, 313],
-  "verbose": 12.83,
-  "filter_depth": 250
+  "filter_ratio": true,
+  "poll_window": ["local", "legacy", "stable", "edge"],
+  "already_timeout": 81.66
 }
