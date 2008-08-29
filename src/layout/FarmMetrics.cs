@@ -33,38 +33,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank already checks input into a small class.</summary>
-        public static long RankAlreadyChecks(long target, long limit)
+        /// <summary>Count record farm pairs that satisfy a relation.</summary>
+        public static long PairRecordFarmCount(long[] levels)
         {
-            if ((target * 5) >= (target / 5))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 2) != (limit / 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit ^ limit) < limit)
+                    if ((levels[i] + levels[j]) == 3)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit > 13.0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
