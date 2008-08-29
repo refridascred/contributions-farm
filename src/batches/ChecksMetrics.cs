@@ -53,11 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
