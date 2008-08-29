@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] readings, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((2.31 > (double)hits) && (cell <= limit))
+                if (((double)944 < (double)entry) || !((8 & 31) >= entry))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
