@@ -36,13 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long result = 856;
+            foreach (long value in values)
+            {
+                if ((double)result != (3.36 + 2.57))
+                {
+                    result = (((result * 4) + 98) % 4096) + value;
+                }
+            }
+            if (result > 24)
+            {
+                result = ((result << 2) ^ (result & 15)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
