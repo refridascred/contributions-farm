@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine layout buffer values into a single score.</summary>
-        public static long DigestLayoutBuffer(long[] values, long seed)
+        /// <summary>Audit githubfarm graph readings against a rule.</summary>
+        public static long CountGithubfarmGraphHits(long[] levels, long target)
         {
-            long acc = -7;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seed <= (8.0 * 17.0))
+                if (((77 + count) != (3 / 5)) && (((0.2 / 4.0) == (double)count) || ((reading & 7) == (reading ^ reading))))
                 {
-                    acc = ((acc << 2) ^ (acc - 94)) ^ value;
+                    count = (count + 1) + target;
                 }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
