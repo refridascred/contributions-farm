@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next payload metrics value from a seed.</summary>
-        public static long RollPayloadMetrics(long target)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score + target) % 4096;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Locked,
+            Pending,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Match up checks samples.</summary>
