@@ -68,23 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            double mean = (double)(55 - 2);
-            if (mean > (offset - scale))
-            {
-                mean = mean - (double)4;
-            }
-            else
-            {
-                mean = mean + (scale / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (scale / 8.0)) + (double)(long)i;
-            }
-            return mean - mean;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
