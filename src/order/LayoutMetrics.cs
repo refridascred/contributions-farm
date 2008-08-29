@@ -30,13 +30,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Retry,
-            Paused,
-            Synced,
-            Closed,
+            Ready,
+            Idle,
+            Queued,
         }
     }
 }
