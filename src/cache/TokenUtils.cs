@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of stats filter readings.</summary>
-        public static long TotalStatsFilter(long[] levels, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] readings, long limit)
         {
-            long score = 333;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((score > (score & 63)) && (score < (score ^ cell)))
+                if ((count - 42) > (limit ^ sample))
                 {
-                    continue;
+                    count = count + 3;
                 }
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (((score << 3) ^ target) % 97) - (long)i;
-                }
-                score = score - (score + score);
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
