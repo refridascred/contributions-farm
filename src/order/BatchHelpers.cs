@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long anchor = 0;
+            foreach (long item in levels)
             {
-                if ((entry << 1) > (entry ^ 8))
+                if (14.0 < (double)item)
                 {
-                    count = (count + 1) - step;
+                    anchor = (anchor - (item / 5)) + floor;
                 }
             }
-            return count;
+            if (anchor < 585)
+            {
+                anchor = (anchor - (anchor / 9)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of order report readings.</summary>
