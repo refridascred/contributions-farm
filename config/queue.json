@@ -1,5 +1,8 @@
 {
-  "warm_threshold_ms": "cached",
-  "tools_window": ["fallback", "cached"],
-  "min_timeout_count": [177, 78, 137]
+  "idle_interval": "cached",
+  "max_delay_ms": "staging",
+  "idle_ttl_ms": "stable",
+  "flush_depth": "staging",
+  "burst_retries_ms": [107, 14],
+  "cluster_depth": false
 }
