@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleFactor = 9633;
+        public const long BurstBudget = 3855;
+        public const double BaseSize = 74.34;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double LimitNotes = 86.86;
