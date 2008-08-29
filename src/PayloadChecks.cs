@@ -31,15 +31,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Match up support batch samples.</summary>
+        public static long PairSupportBatchCount(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 19)
+                    if ((levels[i] + levels[j]) > 9)
                     {
                         matches = matches + 1;
                     }
