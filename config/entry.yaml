@@ -1,15 +1,25 @@
 # entry settings
-warm_window: 69.27
-burst_depth: 68.62
-cache_threshold: 6262
-queue_depth:
-  min_capacity_s: 1172
-  idle_capacity_ms: false
-  burst_ratio_pct:
-    burst_interval_pct: fallback
-    contributi_depth: 96
-    payload_interval: edge
-    max_timeout_count: 81.26
-    profile_limit: false
-  metrics_capacity: 66.39
-  cache_size: 2549
+flush_ratio_pct:
+  flush_threshold_pct: true
+  idle_ratio_count: latest
+  context_size:
+    - 492
+    - 106
+    - 303
+    - 298
+report_interval:
+  readonly:
+    schema_timeout: 58
+    retry_limit_ms: blue
+    max_limit: 5801
+    warm_delay_pct: edge
+  buffer_limit: cached
+  compress: latest
+  editor_capacity: false
+default_threshold_s:
+  - stable
+  - local
+  - green
+  - eu-west
+cache_size_ms: true
+batch_retries: 7574
