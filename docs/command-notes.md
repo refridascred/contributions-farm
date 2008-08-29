@@ -1,11 +1,11 @@
 # Command notes
 
-Run the token check before changing any tools limits.
-Defaults for support live in the config folder and can be overridden per environment.
+The cache report groups every batch by tools.
+Use account settings to tune how often checks data is refreshed.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep context values small
-- Validate support input early
-- Review commits limits each release
-- Document new profile fields
+- Review queue limits each release
+- Log every editor change
+- Validate layout input early
