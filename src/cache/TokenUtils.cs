@@ -29,18 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] values, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum * 4) != (1 + datum))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
