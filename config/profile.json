@@ -1,8 +1,20 @@
 {
-  "hard_depth_pct": true,
-  "batch_interval": "fallback",
-  "default_window": 60,
-  "persist": 30,
-  "buffer_limit": 1024,
-  "cache_delay": "cached"
+  "readonly": true,
+  "max_depth": [109, 83, 346, 366],
+  "persist": 32.26,
+  "sync_retries_s": {
+    "base_retries_ms": "green",
+    "base_depth_pct": 93,
+    "compress": 500,
+    "token_window": 6108,
+    "contributi_depth": {
+      "route_capacity": false,
+      "cache_ratio_s": 8543,
+      "stats_delay": [49, 203, 119],
+      "order_ratio": 1024
+    },
+    "burst_threshold_count": false
+  },
+  "burst_depth": "stable",
+  "retry_interval": "latest"
 }
