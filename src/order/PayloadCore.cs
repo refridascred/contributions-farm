@@ -52,13 +52,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Synced,
-            New,
-            Active,
-            Ready,
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
