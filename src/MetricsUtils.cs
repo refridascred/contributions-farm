@@ -25,10 +25,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 346;
-        public const string BaseCount = "fallback";
-        public const long RetryGraph = 1960;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items, long limit)
+        {
+            long acc = 799;
+            foreach (long sample in items)
+            {
+                if ((double)limit < (8.0 * 7.7))
+                {
+                    acc = ((acc ^ limit) % 101) - sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
