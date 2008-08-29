@@ -52,18 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((914 >> 3) > (item >> 4))
+                if (datum < origin)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
