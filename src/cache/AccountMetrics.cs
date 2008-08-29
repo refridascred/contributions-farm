@@ -88,13 +88,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
