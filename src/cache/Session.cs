@@ -14,18 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] series, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((reading + hits) >= (limit & 63)) || !((reading / 9) == (reading >> 1)))
+                if ((cell - seen) <= (cell * 2))
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the filter state values.</summary>
