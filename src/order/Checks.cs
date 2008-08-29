@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] items)
         {
-            long total = 9;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                total = ((total ^ 959) % 255) + entry;
-                if (!((double)total <= 1.4))
+                if ((value & 63) <= 7)
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
