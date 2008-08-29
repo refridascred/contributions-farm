@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue format readings against a bound.</summary>
-        public static bool ValidateQueueFormatBounds(long[] samples, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Adjust a support reading.</summary>
