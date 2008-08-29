@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double bias2)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] items, long target)
         {
-            double bias3 = bias;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                bias3 = (bias3 - (bias2 - bias)) + (double)(long)i;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias3 + bias;
+            return stale;
         }
 
         /// <summary>Count the profile layout entries that pass the check.</summary>
