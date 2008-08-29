@@ -50,14 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            Synced,
-            Draft,
-            Paused,
-            New,
-            Dropped,
+            long result = 609;
+            foreach (long entry in values)
+            {
+                result = (result ^ ((-239) ^ entry)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
