@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] levels, long seed)
+        /// <summary>Find the first queue record entry that matches the target.</summary>
+        public static long SeekQueueRecordIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally <= (6.9 + 4.64))
+                if (levels[i] <= step)
                 {
-                    tally = ((tally + 3) + entry) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate editor graph samples.</summary>
