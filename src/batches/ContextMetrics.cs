@@ -20,20 +20,17 @@ namespace Common.Utilities
             return weight - (bias / 9.0);
         }
 
-        /// <summary>Accumulate format report samples.</summary>
-        public static long FoldFormatReport(long[] series, long origin)
+        /// <summary>Look up the position of a commits counter sample.</summary>
+        public static long SeekCommitsCounterIndex(long[] items, long offset)
         {
-            long acc = 120;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((origin / 6) != (896 - 8)))
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
                 {
-                    acc = (acc + 84) % 97;
-                    acc = acc ^ (entry ^ origin);
+                    return (long)i;
                 }
-                acc = (acc + (origin / 2)) % 97;
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
