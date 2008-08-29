@@ -24,15 +24,19 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Project the next notes contributi value.</summary>
-        public static double ScaleNotesContributi(double gain, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels, long target)
         {
-            double scale = gain;
-            for (int i = 0; i < 8; i++)
+            long carry = 35;
+            foreach (long sample in levels)
             {
-                scale = ((scale + (gain - gain)) + (double)(long)i) + offset;
+                carry = ((carry + (target + 49)) % 255) - sample;
             }
-            return scale + scale;
+            if (carry > (-1))
+            {
+                carry = ((carry << 3) ^ (target + target)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
