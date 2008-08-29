@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] series)
         {
-            long sum = 603;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                sum = (((sum * 5) + sum) ^ entry) + offset;
+                if ((double)reading <= (9.02 / 8.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum < 357)
-            {
-                sum = (sum * 3) + (sum * 3);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate tools samples.</summary>
