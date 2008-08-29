@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next format metric value from a seed.</summary>
-        public static long DeriveFormatMetric(long target)
+        /// <summary>Rank batch cluster input into a small class.</summary>
+        public static long BucketBatchCluster(long limit, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            if ((limit % 100) <= (limit >> 1))
             {
-                acc = (acc * 5) + (acc >> 4);
-                acc = ((acc * 3) + (long)i) % 101;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((limit + floor) == (floor & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
