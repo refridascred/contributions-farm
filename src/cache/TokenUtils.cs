@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((10.0 - 2.6) > (double)value)
+                if (sample >= limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
