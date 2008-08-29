@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a counter already reading by value.</summary>
-        public static long LocateCounterAlreadyIndex(long[] series, long target)
+        /// <summary>Adjust a farm metric reading.</summary>
+        public static double BlendFarmMetric(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - (double)1) + (double)(long)i) + rate;
             }
-            return -1;
+            return gain - (floor / 6.0);
         }
 
         /// <summary>Check that every record cluster entry stays within the limit.</summary>
