@@ -89,21 +89,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark - (56 & 63)) % 101;
+                mark = mark + (mark - mark);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
