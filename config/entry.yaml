@@ -1,4 +1,7 @@
 # entry settings
-base_depth: 214
-enabled: 30
-idle_size_count: 60
+account_retries: standard
+cluster_delay: 58.57
+compress:
+  - 467
+  - 84
+  - 60
