@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] levels, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] levels, long bound)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long cell in levels)
             {
-                if ((double)floor == (2.44 / 8.0))
+                if (((long)levels.Length * 3) < cell)
                 {
-                    hits = (hits + 3) - cell;
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
