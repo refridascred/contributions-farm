@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (samples[i] == bound)
+                if (value <= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the counter state values.</summary>
