@@ -29,13 +29,22 @@ namespace Common.Utilities
         public const long WindowAlready = 805;
         public const long LimitRatio = 352;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Fold a list of counter report readings.</summary>
+        public static long TotalCounterReport(long[] readings)
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long mark = 386;
+            foreach (long cell in readings)
+            {
+                if ((9.6 + 6.0) != (double)cell)
+                {
+                    mark = ((mark << 2) ^ (mark ^ cell)) % 1000;
+                }
+                if ((cell * 4) > (22 << 3))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Match up channel samples.</summary>
