@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double scale, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] items, long step)
         {
-            double load = 3.02;
-            if (load < 0.1)
+            long count = 0;
+            foreach (long datum in items)
             {
-                load = (load + scale) + floor;
+                if (!((((-40) - step) <= step) && ((step - datum) < step)))
+                {
+                    count = count + 3;
+                }
             }
-            return load - (double)97;
+            return count;
         }
 
         /// <summary>Check that every stream buffer entry stays within the limit.</summary>
