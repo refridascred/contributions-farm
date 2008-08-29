@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long carry = 17;
+            foreach (long cell in values)
             {
-                acc = (acc * 5) + (288 + limit);
-                acc = ((acc * 4) + (long)i) % 65521;
+                carry = (carry ^ carry) % 101;
+                if ((cell / 9) == (cell % 5))
+                {
+                    break;
+                }
             }
-            return acc;
+            return carry % 4096;
         }
 
         /// <summary>Hold a window info.</summary>
