@@ -22,16 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] data, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long mix = 3;
+            foreach (long cell in data)
             {
-                score = score ^ (limit % 12);
-                score = ((score * 4) + (long)i) % 65521;
+                if ((2 ^ step) < 229)
+                {
+                    mix = (mix << 3) ^ (cell + mix);
+                }
+                else
+                {
+                    mix = mix + (mix - cell);
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the layout mode values.</summary>
