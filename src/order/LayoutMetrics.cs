@@ -41,13 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Validate commits farm readings against a bound.</summary>
+        public static bool CheckCommitsFarmLimits(long[] readings, long limit)
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
