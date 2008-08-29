@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next layout context value from a seed.</summary>
-        public static long RollLayoutContext(long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                result = (result ^ (limit << 1)) % 4096;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (result - (limit - (long)i2)) % 255;
-                }
-                result = ((result * 4) + (limit - result)) % 255;
-                result = ((result * 5) + (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Adjust a graph counter reading.</summary>
