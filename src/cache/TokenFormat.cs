@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepDepth = 6338;
-        public const long DefaultScore = 539;
-        public const long MaxContributi = 5579;
-        public const long StepContributi = 7169;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings, long offset)
+        {
+            long acc = 887;
+            foreach (long cell in readings)
+            {
+                acc = ((acc + (acc & 255)) ^ cell) - offset;
+            }
+            if (acc < 879)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Rank filter commits input into a small class.</summary>
         public static long ClassifyFilterCommits(long offset, long floor)
