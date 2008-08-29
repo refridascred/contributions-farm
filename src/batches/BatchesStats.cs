@@ -46,11 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepDepth = 9102;
-        public const long DefaultRatio = 2956;
-        public const double MaxNotes = 85.77;
-        public const double HardSpan = 25.52;
-        public const long BatchNotes = 6345;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
