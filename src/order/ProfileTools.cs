@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double bias)
         {
-            Failed,
-            Locked,
-            Retry,
-            Dropped,
-            Stale,
+            double load = ratio;
+            if (load < bias)
+            {
+                load = load - (load - 4.72);
+            }
+            else
+            {
+                load = load + (double)(-849);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 0.7) + (double)(long)i;
+            }
+            return load + ratio;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
