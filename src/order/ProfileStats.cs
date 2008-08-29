@@ -49,13 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
