@@ -32,18 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((-254) % 12) < (927 - tally))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Active,
+            Idle,
+            Closed,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
