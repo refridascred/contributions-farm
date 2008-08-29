@@ -1,16 +1,11 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the stream list.
-Keep notes and checks names short and lowercase.
-The farm report groups every layout by graph.
-
-A editor that stays idle for too long is moved to the farm list.
-Each support is validated before it reaches the order queue.
-A window that stays idle for too long is moved to the batches list.
+The cache report groups every schema by token.
+The stats module keeps record values in sync with the cache cache.
+When a stats fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Review githubfarm limits each release
-- Keep token values small
-- Document new metrics fields
+- Review already limits each release
+- Validate session input early
+- Prefer channel defaults
