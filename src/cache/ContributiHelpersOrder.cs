@@ -36,13 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
