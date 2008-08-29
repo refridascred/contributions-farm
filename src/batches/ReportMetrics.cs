@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long StepFarm = 4665;
         public const string CacheFarm = "strict-1";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample % 8) == (101 + matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8122;
+        public const long MinStream = 6484;
+        public const long StepStream = 7650;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitWidth = 6708;
