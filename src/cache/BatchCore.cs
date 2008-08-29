@@ -31,13 +31,13 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
