@@ -1,19 +1,8 @@
 {
-  "batches_depth": "edge",
-  "counter_ratio": {
-    "strict": false,
-    "flush_capacity": 100,
-    "githubfarm_ttl": 8746,
-    "channel_window": "blue",
-    "batch_limit_s": false,
-    "persist": {
-      "audit": 60,
-      "buffer_timeout": false,
-      "batch_size": true,
-      "compress": 30
-    }
-  },
-  "filter_capacity": 85,
-  "entry_delay": false,
-  "metrics_interval": [85, 437]
+  "burst_interval_s": "primary",
+  "readonly": "strict",
+  "strict": "open",
+  "record_ratio": "latest",
+  "flush_depth_ms": ["open", "strict", "eu-west", "cached"],
+  "verbose": 1024
 }
