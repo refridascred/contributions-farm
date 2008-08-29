@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const long StepNotes = 9772;
         public const long WindowNotes = 7178;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((684 ^ 67) > (4 - tally))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Audit session queue readings against a rule.</summary>
