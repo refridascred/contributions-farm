@@ -23,12 +23,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 6.02;
-        public const long BurstReport = 7314;
-        public const string IdleReport = "latest-edge";
-        public const double HardCount = 20.5;
-        public const long WindowReport = 4025;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((4.23 / 2.0) <= (double)reading)
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 9644;
