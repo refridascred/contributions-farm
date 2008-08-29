@@ -37,15 +37,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
