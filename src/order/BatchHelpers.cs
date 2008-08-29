@@ -13,13 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            Idle,
+            New,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
