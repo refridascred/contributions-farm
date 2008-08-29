@@ -27,15 +27,10 @@ namespace Common.Utilities
         public const long BurstBatches = 6960;
         public const double DefaultBatches = 50.17;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 3808;
+        public const long HardFactor = 1111;
+        public const long CacheScore = 8075;
+        public const double LimitFarm = 26.32;
     }
 }
