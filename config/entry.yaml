@@ -1,16 +1,27 @@
 # entry settings
-enabled:
-  - 92
-  - 446
-  - 112
-base_depth_s: staging
-graph_size: false
-batch_capacity_s: 87
-audit:
-  - 201
-  - 262
-readonly:
-  - 57
-  - 50
-  - 278
-  - 458
+soft_depth: 6069
+format_threshold:
+  soft_ratio_pct:
+    idle_delay_count: false
+    audit: eu-west
+    filter_size: green
+    hard_limit_count: stable
+    cluster_depth: latest
+    hard_capacity: 96
+  window_size: open
+  retry_limit_ms:
+    cache_interval: 79.85
+    sync_limit_count: 45
+    entry_limit:
+      - blue
+      - open
+    flush_limit:
+      - standard
+      - staging
+      - latest
+    retry_timeout_pct: eu-west
+    warm_delay_s: 60
+  profile_interval: false
+  default_limit: cached
+warm_depth_count: false
+profile_timeout: 81.92
