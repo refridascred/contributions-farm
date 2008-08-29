@@ -20,11 +20,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            Retry,
+            Idle,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the filter state values.</summary>
