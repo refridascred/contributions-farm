@@ -46,21 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter counter samples.</summary>
-        public static long OverlapFilterCounterCount(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 69;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry - (carry & 15)) - reading) - offset;
             }
-            return count;
+            if (carry > 677)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
