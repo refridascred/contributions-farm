@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (seen <= value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the graph phase values.</summary>
