@@ -54,13 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Retry,
-            Active,
-            Synced,
-            Closed,
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
