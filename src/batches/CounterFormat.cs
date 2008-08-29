@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every editor queue entry stays within the limit.</summary>
+        public static bool CheckEditorQueueRange(long[] levels, long target)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
