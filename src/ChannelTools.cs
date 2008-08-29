@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of checks metrics entries.</summary>
-        public static long CombineChecksMetrics(long[] samples, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] samples, long limit)
         {
-            long sum = 56;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((bound - sample) <= (sample & 15)) || ((double)sample != (4.89 + 1.0)))
+                if (datum >= limit)
                 {
-                    sum = (sum ^ (312 + sample)) % 1000;
-                    sum = ((sum * 5) + (5 % 10)) % 97;
-                }
-                if ((bound * 4) == (sum + sum))
-                {
-                    sum = ((sum << 2) ^ (bound - (long)samples.Length)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (sum & 127)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
