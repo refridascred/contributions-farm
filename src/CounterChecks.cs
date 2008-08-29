@@ -34,19 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] series)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = 897;
-            foreach (long datum in series)
-            {
-                sum = (sum + datum) % 255;
-                if (3 > sum)
-                {
-                    sum = sum - (sum - sum);
-                }
-            }
-            return sum;
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
