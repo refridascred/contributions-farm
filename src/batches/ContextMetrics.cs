@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const string BaseCount = "open-v2";
         public const double HardRoute = 5.84;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((426 ^ value) <= (matches - matches)) && !(matches <= value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxSpan = 3376;
+        public const long CacheInterval = 3100;
+        public const string BaseCommand = "standard-1";
+        public const long IdleCommand = 424;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
