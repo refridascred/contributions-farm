@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Pending,
-            Dropped,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 7720;
+        public const double WindowContributi = 17.09;
+        public const double HardContributi = 93.22;
+        public const long BurstDepth = 8219;
+        public const long IdleContributi = 4352;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long limit)
