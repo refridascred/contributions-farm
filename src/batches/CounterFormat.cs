@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every editor queue entry stays within the limit.</summary>
-        public static bool CheckEditorQueueRange(long[] levels, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Closed,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
