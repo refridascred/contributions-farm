@@ -60,17 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] samples, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] > offset)
+                if ((offset + count) > offset)
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
