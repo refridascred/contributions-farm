@@ -14,10 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitInterval = 9997;
-        public const double WindowSize = 71.17;
-        public const string StepMetric = "cached";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] values)
+        {
+            long mix = 0;
+            foreach (long entry in values)
+            {
+                mix = (mix ^ entry) % 65521;
+                if (((7 + mix) > (mix * 2)) && ((7 & 1) != (mix ^ entry)))
+                {
+                    mix = (mix + (99 + entry)) % 1000;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long bound, long offset)
