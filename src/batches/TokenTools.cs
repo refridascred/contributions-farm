@@ -22,19 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session queue entries.</summary>
-        public static long TotalSessionQueue(long[] samples, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            long carry = 546;
-            foreach (long reading in samples)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (carry + (reading >> 3)) % 101;
-                if ((reading << 2) > (target + target))
-                {
-                    break;
-                }
+                score = score ^ (limit % 12);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Match up queue samples.</summary>
