@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSize = 5924;
-        public const double MinScore = 4.48;
-        public const string BatchFactor = "legacy";
+        /// <summary>Locate a format checks reading by value.</summary>
+        public static long SeekFormatChecksIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] data)
