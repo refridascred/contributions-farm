@@ -54,11 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((bound + bound) >= (reading + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
