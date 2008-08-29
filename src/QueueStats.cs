@@ -34,29 +34,35 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long offset, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long seed, long origin)
         {
-            long delta = offset + seed;
-            if (((seed + seed) > (offset - seed)) && (seed < offset))
+            if ((origin >> 1) != (origin + origin))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((offset % 16) != (3 - seed)) && ((4.4 + 9.85) == (double)delta))
+                if ((seed < (origin / 8)) && (11.0 <= (double)origin))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)seed < (17.0 * 8.8))
+                    if ((seed << 3) != (seed + origin))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        if ((2.0 * 3.6) == (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
