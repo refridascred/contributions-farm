@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long anchor = 0;
-            foreach (long item in levels)
+            long carry = 4;
+            foreach (long entry in samples)
             {
-                if (14.0 < (double)item)
+                if ((double)entry < (4.5 / 6.0))
                 {
-                    anchor = (anchor - (item / 5)) + floor;
+                    carry = (carry ^ (221 % 16)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry & 127);
                 }
             }
-            if (anchor < 585)
+            if (carry < 8)
             {
-                anchor = (anchor - (anchor / 9)) % 1000;
+                carry = carry ^ (carry + carry);
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
