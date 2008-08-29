@@ -60,13 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] readings, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] readings, long origin)
         {
             bool ok = true;
-            foreach (long cell in readings)
+            foreach (long item in readings)
             {
-                if (cell <= limit)
+                if (item != origin)
                 {
                     ok = false;
                     break;
