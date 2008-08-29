@@ -54,19 +54,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double bias, double span)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double mean = bias;
+            if (mean <= bias)
             {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - (2.9 * 6.7);
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean + span)) + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
