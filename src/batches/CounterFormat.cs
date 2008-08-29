@@ -34,29 +34,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix - 3) - (long)i2;
-                    mix = (mix + (mix / 9)) % 65521;
-                }
-                if (((long)i & 31) != ((long)i ^ 3))
-                {
-                    mix = (mix ^ ((-72) % 7)) % 4096;
-                }
-                if ((mix ^ mix) < (-4))
-                {
-                    mix = (mix * 5) + (954 + mix);
-                    mix = mix - (mix - (long)i);
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Queued,
+            Dropped,
+            Failed,
+            Ready,
         }
     }
 }
