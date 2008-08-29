@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] values, long target)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a editor reading.</summary>
