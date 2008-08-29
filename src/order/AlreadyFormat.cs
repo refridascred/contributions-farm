@@ -65,18 +65,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches already samples are out of range.</summary>
-        public static long TallyBatchesAlreadyHits(long[] samples, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen <= (target + target))
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
                 {
-                    seen = (seen + 3) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the layout report series from a seed.</summary>
