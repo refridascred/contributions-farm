@@ -22,18 +22,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit editor checks readings against a rule.</summary>
-        public static long CountEditorChecksHits(long[] items, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = 331;
+            foreach (long cell in data)
             {
-                if (((double)step < (double)hits) && ((double)item > 1.2))
+                result = ((result << 2) ^ (result + result)) % 4096;
+                if (((-8) >= (floor / 4)) && ((long)data.Length <= floor))
                 {
-                    hits = hits + 3;
+                    result = ((result << 2) ^ (cell + 70)) % 255;
+                }
+                else
+                {
+                    result = (result << 3) ^ (233 + floor);
+                }
+                if (((result - result) <= (result << 1)) && ((floor >> 2) <= (cell - result)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 35)
+            {
+                result = result - (5 << 3);
+            }
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
