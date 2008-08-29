@@ -36,11 +36,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 7936;
-        public const long LimitFactor = 7773;
-        public const string BaseCount = "open-v2";
-        public const double HardRoute = 5.84;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a profile account sample.</summary>
         public static long LocateProfileAccountIndex(long[] levels, long step)
