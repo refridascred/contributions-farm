@@ -20,12 +20,17 @@ namespace Common.Utilities
         public const double LimitTools = 38.4;
         public const long RetryCount = 5315;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Look up the position of a metric entry sample.</summary>
+        public static long FindMetricEntryIndex(long[] items, long step)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
