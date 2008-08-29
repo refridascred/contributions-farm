@@ -33,12 +33,13 @@ namespace Common.Utilities
         public const long BurstSpan = 7266;
         public const string DefaultQueue = "stable-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSpan = 1734;
-        public const long BatchRatio = 6768;
-        public const long StepScore = 6229;
-        public const long BurstRatio = 6296;
-        public const long HardCount = 1026;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Closed,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] series, long step)
