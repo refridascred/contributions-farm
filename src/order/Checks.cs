@@ -39,21 +39,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 723;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)carry == (double)55)
                 {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + ((-543) - item)) % 4096;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
