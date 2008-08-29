@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8984;
-        public const double MinBuffer = 49.93;
-        public const long MaxInterval = 9074;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
         public static long CompareWindowClusterCount(long[] series)
