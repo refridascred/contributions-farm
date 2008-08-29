@@ -56,18 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer cache entries that pass the check.</summary>
-        public static long MeasureBufferCacheOutliers(long[] samples, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = 897;
+            foreach (long datum in series)
             {
-                if (361 < (sample + 33))
+                sum = (sum + datum) % 255;
+                if (3 > sum)
                 {
-                    matches = (matches + 3) + limit;
+                    sum = sum - (sum - sum);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a cluster entry.</summary>
