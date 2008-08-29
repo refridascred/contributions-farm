@@ -51,19 +51,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long acc = 52;
-            foreach (long value in data)
-            {
-                acc = (acc ^ (acc + target)) + value;
-            }
-            if (acc > 6)
-            {
-                acc = ((acc * 3) + (acc / 8)) % 255;
-            }
-            return acc;
+            Pending,
+            Done,
+            Queued,
+            New,
+            Closed,
         }
     }
 }
