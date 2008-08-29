@@ -25,38 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session order value against two limits.</summary>
-        public static long BucketSessionOrder(long target, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((double)seed >= (0.79 - 4.3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target ^ seed) >= seed) || ((target - 468) < (target + seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((67 < target) && ((target >> 3) == (7 + target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((662 + target) <= (4 - 0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
