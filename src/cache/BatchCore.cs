@@ -15,10 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 2289;
-        public const long LimitEditor = 3474;
-        public const long DefaultEditor = 516;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
