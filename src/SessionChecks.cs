@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every command report entry stays within the limit.</summary>
-        public static bool GuardCommandReportRange(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSize = 5924;
+        public const double MinScore = 4.48;
+        public const string BatchFactor = "legacy";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] data)
