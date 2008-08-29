@@ -1,4 +1,38 @@
 # support settings
-retry_timeout_count: 76
-notes_ratio: 14
-notes_delay: primary
+warm_ttl_count: 100
+metrics_ttl:
+  persist:
+    burst_capacity_pct: edge
+    soft_ratio_s:
+      - standard
+      - open
+      - legacy
+    min_ttl: true
+    session_ratio: 71
+    burst_capacity_s: open
+    checks_limit:
+      - cached
+      - primary
+      - fallback
+  dry_run:
+    cache_threshold: 74.58
+    poll_threshold_count: 500
+    githubfarm_size: staging
+  cache_interval: 74.92
+default_timeout_pct: local
+warm_timeout_s: 58.92
+hard_interval: 5
+dry_run:
+  channel_ttl: 250
+  compress: blue
+  soft_limit_ms:
+    cache_window: 2143
+    soft_limit:
+      - open
+      - staging
+    max_size:
+      - 191
+      - 144
+    window_delay: 4.14
+    cache_retries: true
+    soft_capacity_pct: 43.29
