@@ -58,17 +58,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a entry token reading by value.</summary>
-        public static long SeekEntryTokenIndex(long[] data, long limit)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
