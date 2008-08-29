@@ -38,22 +38,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long score = 95;
-            foreach (long item in samples)
-            {
-                if ((limit % 2) == (long)samples.Length)
-                {
-                    score = (score + (limit + item)) % 97;
-                }
-                if (!(76 <= (324 + limit)))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            Retry,
+            Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
