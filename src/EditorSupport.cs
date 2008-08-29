@@ -22,23 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double gain, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] values, long floor)
         {
-            double ratio = gain;
-            if (ratio <= (ratio - 5.0))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                ratio = ratio + (offset / 2.0);
+                if (((5 << 3) < (sample % 5)) || ((sample ^ 9) > (sample >> 5)))
+                {
+                    hits = (hits + 2) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (offset * 6.63)) + (double)(long)i;
-            }
-            return ratio - 18.0;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
