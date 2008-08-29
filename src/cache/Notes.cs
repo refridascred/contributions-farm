@@ -61,12 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] items, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] < floor)
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
