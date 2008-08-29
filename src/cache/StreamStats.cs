@@ -27,10 +27,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepDepth = 0.51;
-        public const long MinBuffer = 1724;
-        public const double RetryBudget = 61.37;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series, long origin)
+        {
+            long mix = 32;
+            foreach (long datum in series)
+            {
+                if ((double)mix < (14.0 / 4.0))
+                {
+                    mix = ((mix + mix) % 101) - datum;
+                }
+                mix = mix + ((long)series.Length ^ origin);
+                if (((6 << 1) == (mix & 31)) || (2.0 <= (9.58 * 4.0)))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] values)
