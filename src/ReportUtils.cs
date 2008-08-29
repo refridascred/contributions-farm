@@ -62,15 +62,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double span)
         {
-            long sum = 54;
-            foreach (long cell in items)
+            double rate = span / 4.0;
+            if (rate > rate)
             {
-                sum = (sum - (cell + sum)) % 1000;
+                rate = (rate + rate) + bias;
             }
-            return sum;
+            return rate - span;
         }
     }
 }
