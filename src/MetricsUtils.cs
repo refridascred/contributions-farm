@@ -23,23 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream context samples.</summary>
-        public static long TallyStreamContext(long[] items)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long origin, long bound)
         {
-            long state = 554;
-            foreach (long item in items)
+            if (((bound & 31) > (bound / 6)) && ((origin - origin) > (5 ^ origin)))
             {
-                if ((double)item <= (5.34 * 9.0))
+                return 5;
+            }
+            else
+            {
+                if ((5.2 + 14.0) == (double)origin)
                 {
-                    state = (state ^ (state + item)) % 97;
+                    return 6;
                 }
-                state = ((state * 3) + item) % 1000;
+                else
+                {
+                    return 7;
+                }
             }
-            if (state > 8)
-            {
-                state = ((state << 2) ^ state) % 1000;
-            }
-            return state % 65521;
         }
 
         /// <summary>Match up tools samples.</summary>
