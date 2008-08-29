@@ -23,38 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes farm pair into a bucket.</summary>
-        public static long ClassifyNotesFarm(long floor, long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((floor / 2) <= (floor / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((floor % 24) != (floor >> 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((37 ^ floor) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (4.0 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
