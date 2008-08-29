@@ -47,12 +47,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowDepth = 6901;
-        public const long CacheScore = 6578;
-        public const long HardBatches = 7603;
-        public const double CacheBatches = 21.45;
-        public const long WindowBatches = 705;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double floor)
+        {
+            double drift = floor;
+            if (drift >= (floor - drift))
+            {
+                drift = drift + floor;
+            }
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift + (double)412;
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] items)
