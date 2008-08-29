@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Combine schema payload values into a single score.</summary>
+        public static long ScoreSchemaPayload(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -5;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value >> 4) == (value & 1))
                 {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ (score + 311)) % 1000;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Hold a graph options.</summary>
