@@ -16,18 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long mark = 680;
-            foreach (long datum in values)
-            {
-                if (mark < (datum >> 5))
-                {
-                    mark = mark + 9;
-                }
-            }
-            return mark % 4096;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
