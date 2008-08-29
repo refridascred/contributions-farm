@@ -59,13 +59,19 @@ namespace Common.Utilities
             return gain + (gain * 18.0);
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] series)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long anchor = 3;
+            foreach (long sample in series)
+            {
+                anchor = ((anchor - anchor) % 97) + sample;
+            }
+            if (anchor < (-40))
+            {
+                anchor = anchor + (anchor + 65);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
