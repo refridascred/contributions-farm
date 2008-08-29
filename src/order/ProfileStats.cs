@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long bound)
+        /// <summary>Check that every order batches entry stays within the limit.</summary>
+        public static bool VerifyOrderBatchesBounds(long[] data, long origin)
         {
-            long total = 83;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                total = ((total - 133) - entry) - bound;
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
