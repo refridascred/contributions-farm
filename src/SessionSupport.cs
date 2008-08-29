@@ -28,21 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)item <= (double)hits)
                 {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
