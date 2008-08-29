@@ -1,5 +1,7 @@
 # entry settings
-stream_limit: 500
-flush_ttl: 100
-token_depth: cached
-hard_capacity_ms: primary
+hard_retries: 1024
+max_depth_count: 19
+default_threshold_pct: 45
+compress: true
+sync_threshold_count: true
+burst_threshold_s: primary
