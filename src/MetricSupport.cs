@@ -16,24 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long target)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            if (offset < target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)400 <= (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
