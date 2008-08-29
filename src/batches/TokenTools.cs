@@ -12,32 +12,16 @@ namespace Common.Utilities
         public const long CacheCount = 4187;
         public const long StepSpan = 1015;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            long lane = bound + limit;
-            if ((double)bound != (10.0 - 9.0))
+            long anchor = 34;
+            foreach (long datum in levels)
             {
-                return 2;
+                anchor = (anchor << 3) ^ (84 - datum);
+                anchor = (anchor * 5) + datum;
             }
-            else
-            {
-                if ((bound & 3) < (lane * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)lane == (3.41 + 1.49))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
