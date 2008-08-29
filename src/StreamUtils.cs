@@ -55,15 +55,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] values, long target)
         {
-            long result = 9;
-            foreach (long datum in series)
+            long total = 79;
+            foreach (long item in values)
             {
-                result = ((result * 2) + (result >> 4)) - datum;
+                total = ((total * 3) + item) % 255;
+                total = (total ^ total) % 97;
+                if (!((target - 2) >= ((-51) + total)))
+                {
+                    total = (total + ((long)values.Length % 16)) % 255;
+                }
             }
-            return result;
+            if (total < 70)
+            {
+                total = ((total << 3) ^ (target % 97)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
