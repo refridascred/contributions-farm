@@ -42,18 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            long mix = -68;
-            foreach (long datum in values)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum + mix) >= (1 ^ mix))
-                {
-                    mix = mix - (datum * 2);
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return mix;
+            return score;
         }
     }
 }
