@@ -40,17 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
