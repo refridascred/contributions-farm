@@ -39,18 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 560;
+            foreach (long sample in levels)
             {
-                if ((double)entry < (double)9)
+                mix = (mix - (sample ^ mix)) % 97;
+                if ((floor / 5) <= (mix % 8))
                 {
-                    matches = matches + 3;
+                    mix = mix - 431;
+                }
+                else
+                {
+                    mix = (mix - (sample - floor)) % 101;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of token entries.</summary>
