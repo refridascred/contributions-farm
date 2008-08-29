@@ -1,12 +1,5 @@
 # githubfarm settings
-cache_delay_s:
-  - 140
-  - 279
-  - 372
-  - 69
-hard_threshold_pct: true
-min_depth_s: primary
-persist: 31.02
-strict:
-  - strict
-  - latest
+soft_limit: 7051
+persist: open
+notes_threshold: false
+batch_interval_count: 36.84
