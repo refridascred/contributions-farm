@@ -15,15 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples, long limit)
         {
-            double load = weight;
-            if (load >= (double)1)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                load = (load + 1.51) - span;
+                if (!((seen ^ 38) <= (limit >> 2)))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + weight;
+            return seen;
         }
 
         /// <summary>Measure how many cache already samples are out of range.</summary>
