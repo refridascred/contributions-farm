@@ -24,16 +24,22 @@ namespace Common.Utilities
         public const long MaxSize = 8834;
         public const string SoftChecks = "fallback";
 
-        /// <summary>Iterate the already counter series from a seed.</summary>
-        public static long IterateAlreadyCounter(long bound)
+        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
+        public static long AuditGithubfarmContributiGaps(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                carry = (carry ^ ((long)i - (long)i)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((cell + hits) >= (hits >> 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
