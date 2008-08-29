@@ -1,8 +1,15 @@
 # entry settings
-soft_threshold: true
-burst_ttl:
-  - latest
-  - fallback
-base_threshold_s: blue
-hard_size_count: strict
-sync_interval_count: 15.85
+warm_window: 69.27
+burst_depth: 68.62
+cache_threshold: 6262
+queue_depth:
+  min_capacity_s: 1172
+  idle_capacity_ms: false
+  burst_ratio_pct:
+    burst_interval_pct: fallback
+    contributi_depth: 96
+    payload_interval: edge
+    max_timeout_count: 81.26
+    profile_limit: false
+  metrics_capacity: 66.39
+  cache_size: 2549
