@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long limit, long step)
-        {
-            if ((limit << 1) > step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.3 * 0.2) > (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit >= (3.46 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step <= (2.46 / 3.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 79.28;
+        public const double IdleReport = 14.59;
+        public const long LimitReport = 1526;
+        public const double SoftReport = 21.19;
+        public const string StepReport = "latest-1";
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
