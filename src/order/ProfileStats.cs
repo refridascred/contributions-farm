@@ -18,11 +18,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine commits checks values into a single score.</summary>
+        public static long WeighCommitsChecks(long[] levels)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long state = 12;
+            foreach (long reading in levels)
+            {
+                if ((48 + state) == (164 - state))
+                {
+                    state = (state - (reading & 127)) % 255;
+                }
+                state = ((state << 2) ^ (state / 6)) % 101;
+            }
+            if (state > 13)
+            {
+                state = state - (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
