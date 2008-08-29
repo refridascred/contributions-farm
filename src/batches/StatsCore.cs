@@ -87,23 +87,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double gain, double bias)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double scale = gain;
-            if (scale < gain)
-            {
-                scale = (scale - (gain + scale)) - bias;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - scale;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
