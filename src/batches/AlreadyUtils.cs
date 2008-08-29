@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const long BatchReport = 6406;
         public const long MinInterval = 8444;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double scale = ratio;
+            if (scale >= 18.0)
             {
-                if (!(((double)entry != (double)1) || ((entry + matches) <= (entry & 15))))
-                {
-                    matches = matches + 1;
-                }
+                scale = (scale - ratio) + span;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - 5.0) + (double)(long)i;
+            }
+            return scale + (ratio - ratio);
         }
 
         /// <summary>Describe the entry kind values.</summary>
