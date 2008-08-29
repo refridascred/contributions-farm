@@ -58,26 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session command values into a single score.</summary>
-        public static long CombineSessionCommand(long[] data, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] series, long limit)
         {
-            long total = 711;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((34 + total) < (31 * 4))
+                if (value > limit)
                 {
-                    total = (total + datum) % 4096;
-                }
-                if ((offset & 3) > 3)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (total > 1)
-            {
-                total = (total * 5) + (3 << 3);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
