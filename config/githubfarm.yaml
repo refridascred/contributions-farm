@@ -1,6 +1,4 @@
 # githubfarm settings
-notes_interval: 4798
-retry_size: 9.97
-stream_ratio: strict
-retry_ttl_count: strict
-warm_window_pct: 3525
+idle_timeout: 20.75
+audit: 42
+warm_limit: 30
