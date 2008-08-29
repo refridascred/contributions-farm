@@ -27,11 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 30.01;
-        public const string CacheCount = "fallback";
-        public const long HardLevel = 8852;
-        public const long IdleAlready = 5692;
+        /// <summary>Look up the position of a metric format sample.</summary>
+        public static long LookupMetricFormatIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a entry record counter forward.</summary>
         public static long RollEntryRecord(long target)
