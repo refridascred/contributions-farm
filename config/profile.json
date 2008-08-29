@@ -1,8 +1,7 @@
 {
-  "command_ratio": false,
-  "cache_size": 42.84,
-  "verbose": 1024,
-  "default_retries": 60,
-  "batch_capacity_s": "edge",
-  "poll_limit_pct": 56.46
+  "burst_interval": "legacy",
+  "retry_ratio_count": false,
+  "idle_retries": "legacy",
+  "poll_timeout": [253, 321, 405],
+  "warm_limit": 1531
 }
