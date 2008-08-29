@@ -35,11 +35,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 44.22;
-        public const double HardBudget = 28.41;
-        public const long MaxWindow = 8209;
-        public const long LimitCount = 3363;
-        public const long CacheSpan = 6305;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items)
+        {
+            long score = 391;
+            foreach (long reading in items)
+            {
+                if (reading > (reading + score))
+                {
+                    score = (score ^ reading) % 255;
+                }
+                score = ((score << 2) ^ (score ^ reading)) % 255;
+            }
+            if (score < 104)
+            {
+                score = (score - (score * 3)) % 1000;
+            }
+            return score % 4096;
+        }
     }
 }
