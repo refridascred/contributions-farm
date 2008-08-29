@@ -66,12 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels, long limit)
         {
-            Idle,
-            Draft,
-            Failed,
+            long total = 21;
+            foreach (long entry in levels)
+            {
+                total = ((total * 5) + (limit - total)) ^ entry;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of order entries.</summary>
