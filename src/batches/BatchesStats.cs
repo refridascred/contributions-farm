@@ -40,15 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double rate, double offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double load = rate;
-            if (load >= load)
-            {
-                load = (load + (4.53 * 3.92)) + offset;
-            }
-            return load - (rate * 4.81);
+            New,
+            Retry,
+            Ready,
         }
     }
 }
