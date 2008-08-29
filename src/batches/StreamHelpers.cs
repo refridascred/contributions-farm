@@ -86,15 +86,19 @@ namespace Common.Utilities
             return drift - (drift * 11.0);
         }
 
-        /// <summary>Scale a cluster metric figure with a bias.</summary>
-        public static double AdjustClusterMetric(double rate, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long bound)
         {
-            double drift = (double)((-535) / 7);
-            if (drift <= (9.0 / 5.0))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                drift = (drift - (rate / 3.0)) + span;
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return stale;
         }
     }
 }
