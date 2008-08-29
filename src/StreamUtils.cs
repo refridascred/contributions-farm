@@ -58,15 +58,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            if ((bound & 1) < (bound % 8))
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (8 < bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor << 3) >= (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
