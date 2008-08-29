@@ -29,17 +29,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] values, long seed)
+        /// <summary>Blend two record order measurements.</summary>
+        public static double BlendRecordOrder(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias + ratio;
+            if (drift <= ratio)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                drift = drift - (9.2 / 5.0);
             }
-            return -1;
+            else
+            {
+                drift = drift + 3.6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)8) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Project the next report value.</summary>
