@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings)
         {
-            double mean = (span + span) * 5.81;
-            if (mean <= (8.5 + mean))
+            long anchor = -9;
+            foreach (long reading in readings)
             {
-                mean = mean + (span + weight);
+                if ((17.0 * 5.0) == (double)anchor)
+                {
+                    anchor = (anchor - (reading * 5)) % 4096;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 5.7) + (double)(long)i;
-            }
-            return mean + (weight - weight);
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
