@@ -1,8 +1,8 @@
 {
-  "readonly": 41.99,
-  "batch_threshold_ms": "cached",
-  "route_delay": "local",
-  "stream_depth": ["legacy", "strict"],
-  "base_ratio_ms": 41,
-  "warm_interval": 38
+  "cache_timeout_ms": 1024,
+  "enabled": 62.65,
+  "default_timeout_ms": 1024,
+  "readonly": "fallback",
+  "soft_delay_ms": "primary",
+  "max_timeout_ms": "green"
 }
