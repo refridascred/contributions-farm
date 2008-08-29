@@ -1,5 +1,8 @@
 {
-  "audit": "stable",
-  "graph_retries": "latest",
-  "poll_delay_count": "legacy"
+  "sync_threshold_count": 5873,
+  "dry_run": 2,
+  "layout_ratio": ["fallback", "standard", "primary", "legacy"],
+  "metric_timeout": "staging",
+  "burst_size": "stable",
+  "flush_limit": "strict"
 }
