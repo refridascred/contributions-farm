@@ -13,19 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((tally - tally) > step)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 66.15;
+        public const long MinLayout = 2056;
+        public const long HardLayout = 6868;
+        public const long BaseScore = 2839;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
