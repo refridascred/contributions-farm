@@ -5,20 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples, long origin)
         {
-            long score = 2;
-            foreach (long value in items)
+            long total = -387;
+            foreach (long cell in samples)
             {
-                score = (score << 2) ^ (score / 2);
-                score = (score - value) % 1000;
+                total = ((total << 2) ^ (origin - origin)) % 101;
+                if (!(40 <= (total >> 4)))
+                {
+                    total = (total * 3) + (cell - cell);
+                }
+                else
+                {
+                    total = (total - origin) % 255;
+                }
             }
-            if (score < 23)
+            if (total > 4)
             {
-                score = (score * 4) + (score % 3);
+                total = (total ^ (total + total)) % 4096;
             }
-            return score % 65521;
+            return total % 4096;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
