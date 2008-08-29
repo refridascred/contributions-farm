@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long BatchCount = 9007;
         public const long MinToken = 4598;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)matches < (3.5 + 0.4))
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepLevel = "cached-v2";
+        public const long IdleToken = 1400;
+        public const double BurstSpan = 91.73;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] samples, long limit)
