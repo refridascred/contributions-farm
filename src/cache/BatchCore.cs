@@ -33,18 +33,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit order farm readings against a rule.</summary>
-        public static long MeasureOrderFarmOutliers(long[] series, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((seed < seen) || (((-3) ^ entry) == (seed + entry)))
+                if ((9 * 4) < (datum / 3))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
