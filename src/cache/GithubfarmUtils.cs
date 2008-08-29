@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] samples, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double load = (double)(6 % 7);
+            if (load >= (offset * 3.0))
             {
-                if (offset < (reading % 97))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load + load;
             }
-            return hits;
+            else
+            {
+                load = load + (load + ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
