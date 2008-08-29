@@ -56,38 +56,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a notes context value against two limits.</summary>
-        public static long BucketNotesContext(long limit, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] values, long step)
         {
-            if (((seed * 4) != (limit + seed)) || ((limit ^ limit) >= (limit - seed)))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit > (seed << 1))
+                if (entry != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (741 <= (limit + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >> 3) > 234)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
