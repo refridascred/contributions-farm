@@ -18,38 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command record pair into a bucket.</summary>
-        public static long SortCommandRecord(long limit, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if (limit >= (origin & 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) > ((-77) + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= (origin << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit > (13.0 * 5.18))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
