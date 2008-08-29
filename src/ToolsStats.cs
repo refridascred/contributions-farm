@@ -40,15 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two context metrics measurements.</summary>
-        public static double SmoothContextMetrics(double gain, double offset)
+        /// <summary>Look up the position of a farm notes sample.</summary>
+        public static long FindFarmNotesIndex(long[] series, long offset)
         {
-            double mean = (double)(238 * 4);
-            if (mean > (gain / 3.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + (offset - gain);
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (gain + offset);
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
