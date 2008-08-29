@@ -19,13 +19,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Combine window account values into a single score.</summary>
+        public static long TallyWindowAccount(long[] items)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Ready,
+            long mark = 231;
+            foreach (long value in items)
+            {
+                if ((value >= (value + 8)) || ((value / 4) != (mark + mark)))
+                {
+                    mark = ((mark * 3) + mark) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 5) + 870) % 1000;
+                }
+            }
+            return mark;
         }
     }
 }
