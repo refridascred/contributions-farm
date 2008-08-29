@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample != seed)
+                if (!!((6 + (long)values.Length) < (hits * 4)))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) + reading) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a cluster entry.</summary>
