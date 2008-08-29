@@ -78,24 +78,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = 9;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = ((carry + (74 << 3)) % 101) + (long)i;
-                    carry = (carry - (carry - carry)) % 255;
-                }
-                carry = ((carry << 3) ^ 841) % 255;
-                if ((8 ^ sample) < (carry ^ sample))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
