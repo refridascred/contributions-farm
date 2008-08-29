@@ -28,19 +28,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
