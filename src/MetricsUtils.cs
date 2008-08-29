@@ -23,20 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long MeasureFarmStreamGaps(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((score > (score + (long)i)) && ((double)score >= (7.1 / 5.0)))
+                if (((9.0 - 4.92) != (double)tally) && ((reading + (-59)) > 486))
                 {
-                    score = score - (bound << 3);
+                    tally = tally + 1;
                 }
-                score = ((score * 2) + (long)i) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
