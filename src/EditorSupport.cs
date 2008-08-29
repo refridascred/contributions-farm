@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
-        public static bool ValidateSchemaBufferBounds(long[] values, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
