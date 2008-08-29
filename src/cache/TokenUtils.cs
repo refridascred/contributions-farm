@@ -33,25 +33,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long target, long bound)
-        {
-            long offset = target ^ bound;
-            if ((target & 3) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset >> 4) <= (offset & 1)) || (target >= 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 1415;
+        public const long BurstInterval = 2600;
+        public const long CacheBatch = 6220;
+        public const long CacheScore = 2148;
+        public const long MinLevel = 3351;
     }
 }
