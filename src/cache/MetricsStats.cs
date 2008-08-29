@@ -74,22 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] readings, long seed)
         {
-            long acc = 876;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (9.0 >= (double)reading)
+                if ((seen % 7) < 604)
                 {
-                    acc = (acc + step) % 97;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (reading << 1);
+                    seen = ((seen + 3) ^ value) + seed;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
