@@ -72,26 +72,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long acc = 451;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((step - acc) != (6 ^ sample)) || ((step * 4) == (acc << 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc * 5) + (sample * 2)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - ((-853) << 2)) % 4096;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 84)
-            {
-                acc = ((acc << 2) ^ (841 & 3)) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
