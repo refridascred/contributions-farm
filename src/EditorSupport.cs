@@ -22,17 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] data, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = gain;
+            if (ratio <= (ratio - 5.0))
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (offset / 2.0);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (offset * 6.63)) + (double)(long)i;
+            }
+            return ratio - 18.0;
         }
 
         /// <summary>Describe the context status values.</summary>
