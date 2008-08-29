@@ -35,17 +35,21 @@ namespace Common.Utilities
             return rate - (2.5 - offset);
         }
 
-        /// <summary>Locate a graph contributi reading by value.</summary>
-        public static long FindGraphContributiIndex(long[] samples, long offset)
+        /// <summary>Compare every pair of payload report readings.</summary>
+        public static long MatchPayloadReportCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
