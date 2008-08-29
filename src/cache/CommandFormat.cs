@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long RetryWidth = 5657;
         public const long WindowSize = 2787;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxRatio = "alpha-1";
+        public const long SoftScore = 8243;
+        public const string StepFilter = "open";
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double ratio, double bias)
