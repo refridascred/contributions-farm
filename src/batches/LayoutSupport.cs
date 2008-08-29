@@ -20,21 +20,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of support cache readings.</summary>
-        public static long PairSupportCacheCount(long[] samples)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
