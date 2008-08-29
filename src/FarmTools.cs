@@ -31,11 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSpan = 5034;
-        public const long DefaultContributi = 2204;
-        public const long MinContributi = 8870;
-        public const long StepContributi = 7083;
-        public const long RetryContributi = 1545;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
