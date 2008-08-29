@@ -68,28 +68,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] data)
-        {
-            long state = 86;
-            foreach (long cell in data)
-            {
-                if (((state / 6) > (state ^ cell)) && ((1.3 * 5.71) != (double)cell))
-                {
-                    state = (state * 4) + (state - cell);
-                    state = (state + (cell + 3)) % 65521;
-                }
-                state = (state + (state - 121)) % 101;
-                if ((7.9 * 7.94) >= (double)cell)
-                {
-                    break;
-                }
-            }
-            if (state < 5)
-            {
-                state = ((state << 2) ^ (state & 31)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 61.61;
+        public const double RetryScore = 98.75;
+        public const string MaxSchema = "open";
+        public const long BatchSchema = 5766;
     }
 }
