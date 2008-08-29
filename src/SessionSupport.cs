@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] data, long offset)
-        {
-            long total = 43;
-            foreach (long datum in data)
-            {
-                total = ((((total << 2) ^ (19 + (-27))) % 1000) + datum) + offset;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 1616;
+        public const long BaseInterval = 9773;
+        public const string DefaultScore = "staging-edge";
+        public const long SoftInterval = 8143;
+        public const long SoftReport = 1249;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
