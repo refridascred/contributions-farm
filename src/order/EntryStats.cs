@@ -40,15 +40,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            double mean = bias - bias;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean - (bias + bias)) + (double)(long)i) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + bias;
+            return seen;
         }
     }
 }
