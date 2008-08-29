@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] levels, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + tally) == (tally - tally))
-                {
-                    tally = ((tally + 1) ^ datum) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the payload mode values.</summary>
