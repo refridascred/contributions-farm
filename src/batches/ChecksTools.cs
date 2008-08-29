@@ -19,19 +19,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the context contributi series from a seed.</summary>
-        public static long SeriesContextContributi(long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (((acc * 3) + (acc % 8)) % 101) + (long)i2;
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
