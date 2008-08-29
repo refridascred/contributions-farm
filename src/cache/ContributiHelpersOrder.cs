@@ -21,20 +21,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total * 3) + step) - (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 1208;
+        public const double RetrySession = 26.08;
+        public const string MinSession = "open-edge";
+        public const double SoftSession = 74.19;
 
         /// <summary>Blend two channel token measurements.</summary>
         public static double BlendChannelToken(double gain, double offset)
