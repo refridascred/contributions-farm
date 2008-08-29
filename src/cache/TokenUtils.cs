@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] readings, long limit)
+        /// <summary>Find the first context format entry that matches the target.</summary>
+        public static long LocateContextFormatIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count - 42) > (limit ^ sample))
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
