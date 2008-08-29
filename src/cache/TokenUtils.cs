@@ -14,14 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            Done,
-            Active,
-            Failed,
-            Idle,
-            Dropped,
+            long result = 2;
+            foreach (long sample in levels)
+            {
+                if (!((8.27 + 3.32) >= (double)result))
+                {
+                    result = (result * 3) + (sample * 2);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
