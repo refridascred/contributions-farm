@@ -13,19 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every token queue entry stays within the limit.</summary>
-        public static bool VerifyTokenQueueLimits(long[] data, long floor)
+        /// <summary>Measure how many stream farm samples are out of range.</summary>
+        public static long MeasureStreamFarmMatches(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (cell >= floor)
+                if ((sample * 2) <= floor)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Match up batch samples.</summary>
