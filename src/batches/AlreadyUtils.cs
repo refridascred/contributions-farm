@@ -25,23 +25,23 @@ namespace Common.Utilities
         public const string MinWidth = "open-edge";
         public const long IdleCount = 5262;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            long state = 6;
-            foreach (long sample in series)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if ((score / 2) != (score >> 4))
                 {
-                    state = ((state ^ sample) % 255) ^ (long)i;
+                    continue;
                 }
-                state = (state << 2) ^ (seed << 3);
+                else
+                {
+                    score = (score + limit) % 101;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (state < 570)
-            {
-                state = ((state * 4) + (seed + state)) % 101;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
