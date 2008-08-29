@@ -1,11 +1,10 @@
 # Command notes
 
-When a session fails, the filter handler retries a few times before giving up.
-Keep schema and checks names short and lowercase.
+Use schema settings to tune how often window data is refreshed.
+Each record is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Review route limits each release
-- Document new channel fields
-- Validate farm input early
-- Keep channel values small
+- Validate metric input early
+- Keep layout values small
+- Document new stream fields
