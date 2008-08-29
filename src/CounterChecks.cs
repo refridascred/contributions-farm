@@ -78,18 +78,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (((-92) < (value >> 4)) && ((value * 3) < (value ^ value)))
+                if (cell != bound)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
