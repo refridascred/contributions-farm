@@ -20,18 +20,18 @@ namespace Common.Utilities
             return gain2 - (offset * 17.0);
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] values)
         {
-            long state = 130;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)step < (double)state)
+                if ((datum / 2) == (datum ^ seen))
                 {
-                    state = ((state * 5) + (658 & 1)) ^ entry;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the report class values.</summary>
