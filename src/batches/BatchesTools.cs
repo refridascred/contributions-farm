@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of token githubfarm entries.</summary>
+        public static long FoldTokenGithubfarm(long[] levels, long bound)
         {
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long state = 463;
+            foreach (long item in levels)
+            {
+                state = ((state << 2) ^ (item + 42)) % 4096;
+                if (bound <= item)
+                {
+                    break;
+                }
+            }
+            if (state < 52)
+            {
+                state = ((state << 2) ^ (state % 2)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
