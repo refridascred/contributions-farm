@@ -78,25 +78,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long limit, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] values, long bound)
         {
-            long gap = limit - target;
-            if ((double)target != (8.99 + 6.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >= (limit << 3)) && ((gap ^ limit) <= (gap ^ (-910))))
+                if (values[i] > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
