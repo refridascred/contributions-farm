@@ -1,16 +1,7 @@
 {
-  "cache_delay_ms": {
-    "sync_ratio_s": 86,
-    "retry_limit_pct": {
-      "strict": [15, 356, 359],
-      "batch_ratio": "eu-west",
-      "persist": "green",
-      "base_depth_s": 39,
-      "audit": "legacy"
-    },
-    "poll_depth": "open"
-  },
-  "burst_window": 16.59,
-  "sync_threshold": false,
-  "strict": 48.96
+  "warm_retries_count": [64, 487, 257],
+  "min_limit_ms": "strict",
+  "readonly": [81, 448, 313],
+  "verbose": 12.83,
+  "filter_depth": 250
 }
