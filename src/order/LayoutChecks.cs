@@ -51,21 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cluster record samples.</summary>
-        public static long MatchClusterRecordCount(long[] readings)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
+                    if ((readings[i] - readings[j]) == 20)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
