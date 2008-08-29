@@ -1,8 +1,8 @@
-id,ratio,rank,level
-1,171,260,blue
-2,457,82.95,810
-3,standard,19.05,508
-4,staging,37,628
-5,blue,54.92,86.36
-6,598,87,green
-7,904,416,stable
+id,label,score,ratio
+1,714,201,546
+2,649,726,66.7
+3,10.82,264,64.59
+4,staging,blue,641
+5,679,349,849
+6,146,latest,30.86
+7,45.33,68.52,local
