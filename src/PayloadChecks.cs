@@ -49,22 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long result = 94;
-            foreach (long sample in series)
-            {
-                if ((result - result) != (308 + sample))
-                {
-                    result = (result ^ (result << 1)) % 65521;
-                }
-                else
-                {
-                    result = (result - (sample ^ sample)) % 255;
-                }
-            }
-            return result;
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
