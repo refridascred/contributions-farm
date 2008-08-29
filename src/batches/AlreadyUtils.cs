@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 24.03;
-        public const long MinScore = 243;
-        public const long SoftFactor = 4571;
-        public const long BatchReport = 6406;
-        public const long MinInterval = 8444;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Closed,
+            Ready,
+            Idle,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ProjectGraph(double ratio, double span)
