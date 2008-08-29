@@ -1,15 +1,4 @@
 # entry settings
-poll_capacity_ms:
-  stats_ratio: 6598
-  soft_capacity:
-    - primary
-    - cached
-  filter_timeout: true
-  stats_timeout: true
-  warm_retries:
-    warm_depth: latest
-    enabled: true
-    burst_size_s: true
-    compress: 44.81
-stream_timeout: open
-cache_retries_ms: fallback
+burst_capacity_ms: 71
+order_threshold: local
+base_depth: false
