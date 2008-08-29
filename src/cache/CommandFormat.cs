@@ -37,35 +37,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
-        {
-            long result = 90;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (result - (reading & 7)) - (long)i;
-                    result = ((result * 5) + (result - (-71))) % 65521;
-                }
-                if ((10.0 + 3.75) > (double)reading)
-                {
-                    result = (result - (reading + result)) % 97;
-                }
-                else
-                {
-                    result = (result + (reading << 2)) % 1000;
-                }
-                if (4.7 >= (double)result)
-                {
-                    break;
-                }
-            }
-            if (result > 275)
-            {
-                result = (result + (result & 3)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 3764;
+        public const long WindowCount = 1044;
+        public const long BaseBudget = 9806;
     }
 }
