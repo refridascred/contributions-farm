@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long StepInterval = 6845;
         public const long LimitDepth = 1079;
 
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long MeasureToolsFilterGaps(long[] data, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (!((76 ^ entry) > step))
+                if ((seen * 2) > (limit ^ seen))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the stats class values.</summary>
