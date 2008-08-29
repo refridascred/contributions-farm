@@ -1,5 +1,13 @@
 {
-  "batch_timeout": false,
-  "burst_interval_s": 29.49,
-  "max_threshold_pct": "edge"
+  "command_interval": {
+    "audit": ["standard", "legacy", "standard", "strict"],
+    "idle_interval_s": "primary",
+    "hard_ratio": true,
+    "min_ratio_count": [158, 10, 119],
+    "counter_ratio": [218, 130, 12]
+  },
+  "command_delay": 22.21,
+  "soft_ttl_count": 80,
+  "soft_retries_ms": "standard",
+  "metric_window": ["edge", "open", "cached"]
 }
