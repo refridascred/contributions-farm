@@ -55,13 +55,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Synced,
-            Locked,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "latest-v2";
+        public const double HardTimeout = 70.64;
+        public const long StepInterval = 9841;
+        public const double WindowBatches = 26.65;
     }
 }
