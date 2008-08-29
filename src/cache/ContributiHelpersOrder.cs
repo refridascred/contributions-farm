@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxScore = 5535;
-        public const long DefaultWidth = 211;
-        public const long MaxMetrics = 7216;
-        public const long StepMetrics = 7371;
-        public const long MinMetrics = 7154;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 1647;
+        public const double HardSize = 54.59;
+        public const long MaxBudget = 2420;
+        public const long HardFactor = 2923;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
