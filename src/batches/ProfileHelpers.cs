@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double drift = (double)7 * 2.3;
-            if (drift > drift)
-            {
-                drift = drift + (1.7 / 2.0);
-            }
-            else
-            {
-                drift = drift + (bias + 4.9);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift - (7.4 + drift);
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Blend two command context measurements.</summary>
