@@ -17,24 +17,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values)
         {
-            if ((floor % 3) > 5)
+            long mark = 9;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((13.0 - 12.0) >= (double)offset) || ((offset - offset) >= (offset * 5)))
+                if ((double)datum <= (0.32 + 5.43))
                 {
-                    return 4;
+                    mark = (mark + mark) % 255;
                 }
                 else
                 {
-                    return 2;
+                    mark = mark ^ (datum + datum);
                 }
             }
+            if (mark < 1)
+            {
+                mark = ((mark * 4) + (mark >> 2)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate tools samples.</summary>
