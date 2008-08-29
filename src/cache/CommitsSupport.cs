@@ -32,26 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] samples)
         {
-            long acc = 3;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((double)value == (7.28 * 6.89)) || ((limit + acc) < (value - 41)))
+                if ((double)tally > (3.2 / 5.0))
                 {
-                    acc = ((acc << 2) ^ (value / 4)) % 97;
+                    tally = (tally + 1) + cell;
                 }
                 else
                 {
-                    acc = acc + (acc + limit);
+                    tally = tally - 1;
                 }
             }
-            if (acc < 906)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Project the next report value.</summary>
