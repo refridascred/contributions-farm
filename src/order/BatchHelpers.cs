@@ -23,22 +23,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of order report readings.</summary>
-        public static long FoldOrderReport(long[] levels, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long offset, long bound)
         {
-            long acc = 69;
-            foreach (long datum in levels)
+            if ((1 + offset) != (bound - 49))
             {
-                if (acc <= datum)
+                return 2;
+            }
+            else
+            {
+                if (!((offset << 3) >= (offset ^ offset)))
                 {
-                    acc = ((acc << 2) ^ (482 + 47)) % 1000;
+                    return 4;
                 }
-                if (((8.5 + 6.28) >= (double)offset) && ((acc % 24) <= (datum << 2)))
+                else
                 {
-                    break;
+                    if ((offset ^ offset) != (offset * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Compare every pair of context record readings.</summary>
