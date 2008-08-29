@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 63.66;
+        public const long MinGithubfarm = 7090;
+        public const long LimitGithubfarm = 2116;
+        public const long CacheGithubfarm = 7580;
+        public const string BurstTimeout = "primary-edge";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] levels)
