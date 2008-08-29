@@ -34,21 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Count the account batches entries that pass the check.</summary>
+        public static long AuditAccountBatchesGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading + reading) >= (reading * 3))
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of account profile entries.</summary>
