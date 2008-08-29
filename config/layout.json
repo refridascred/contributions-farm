@@ -1,7 +1,7 @@
 {
-  "burst_threshold_count": false,
-  "hard_depth_ms": false,
-  "burst_ttl_ms": 250,
-  "batch_ttl_ms": "standard",
-  "verbose": false
+  "warm_retries_s": "blue",
+  "sync_ratio_pct": 61,
+  "retry_size_ms": 18.32,
+  "farm_timeout": "primary",
+  "base_window_s": 3169
 }
