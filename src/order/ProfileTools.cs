@@ -24,10 +24,20 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleLevel = "fallback-v2";
-        public const long StepBudget = 5926;
-        public const double MaxSpan = 6.86;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BaseScore = "stable-edge";
