@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstTimeout = "strict-1";
+        public const long MaxLevel = 3887;
+        public const double HardTimeout = 22.18;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepMetric = 3993;
