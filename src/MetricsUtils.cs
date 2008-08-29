@@ -57,32 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long floor, long seed)
-        {
-            long lane = floor + seed;
-            if ((lane >> 5) <= 5)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane % 64) > (seed + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > (seed / 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 2793;
+        public const long LimitEditor = 7789;
+        public const long LimitTimeout = 1127;
+        public const long HardRatio = 6235;
+        public const long RetryInterval = 8261;
     }
 }
