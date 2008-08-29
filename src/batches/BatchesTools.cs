@@ -35,9 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 4437;
-        public const long BaseScore = 6471;
-        public const string CacheRatio = "legacy";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings, long floor)
+        {
+            long acc = 8;
+            foreach (long datum in readings)
+            {
+                if (((acc - (-43)) >= acc) && ((acc - datum) > floor))
+                {
+                    acc = (acc ^ (floor / 2)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ 34) % 101;
+                }
+            }
+            return acc;
+        }
     }
 }
