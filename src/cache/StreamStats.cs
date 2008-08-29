@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheLevel = 11.92;
+        public const double MinCount = 80.44;
+        public const double LimitRoute = 11.14;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long ClassifyCache(long target, long target2)
