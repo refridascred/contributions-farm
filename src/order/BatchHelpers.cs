@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context record readings.</summary>
-        public static long OverlapContextRecordCount(long[] values)
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long TallyFarmCounterHits(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((hits >> 5) <= item) || (hits >= item)))
                 {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
