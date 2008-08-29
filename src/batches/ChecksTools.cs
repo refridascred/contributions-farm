@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] data, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double load = (offset * 11.0) / 5.0;
+            if (load <= rate)
             {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - rate;
             }
-            return ready;
+            return load - 9.5;
         }
 
         /// <summary>Iterate the context contributi series from a seed.</summary>
