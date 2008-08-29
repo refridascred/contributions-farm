@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] readings)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)tally > (14.0 + 4.4))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
