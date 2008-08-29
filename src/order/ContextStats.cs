@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultSpan = 18.38;
+        public const long BatchCommits = 4044;
+        public const long LimitCommits = 6953;
+        public const long HardCommits = 4504;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long floor, long origin)
