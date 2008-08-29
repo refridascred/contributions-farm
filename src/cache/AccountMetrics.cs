@@ -55,24 +55,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                bool ready = sum < ((long)i / 6);
-                if (ready)
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum - (sum + sum)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Queued,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
