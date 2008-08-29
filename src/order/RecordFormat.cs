@@ -65,31 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long limit, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] readings, long limit)
         {
-            if (((double)limit <= (9.2 * 2.58)) && (213 > (limit & 15)))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 1) != (limit ^ limit))
+                if (cell <= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
