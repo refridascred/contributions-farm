@@ -15,17 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((items[i] == target) && ((items[i] % 5) == 0))
+                if ((sample % 60) > (845 << 3))
                 {
-                    return (long)i;
+                    count = (count + 1) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
