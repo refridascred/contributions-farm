@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a graph options.</summary>
