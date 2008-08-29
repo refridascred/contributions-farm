@@ -30,15 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer schema value from a seed.</summary>
-        public static long SeriesBufferSchema(long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
