@@ -36,18 +36,22 @@ namespace Common.Utilities
             return gain + (floor * 12.0);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 3;
+            foreach (long entry in samples)
             {
-                if ((hits + cell) != (cell >> 5))
+                if (!(((-921) & 15) >= bound))
                 {
-                    hits = hits + 2;
+                    acc = ((acc + (acc / 8)) % 65521) - entry;
+                }
+                else
+                {
+                    acc = ((acc * 2) + ((-905) / 7)) % 255;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the profile mode values.</summary>
