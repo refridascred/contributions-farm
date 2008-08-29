@@ -52,18 +52,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order editor readings against a rule.</summary>
-        public static long TallyOrderEditorHits(long[] values, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long step2)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long step3 = step + step2;
+            if (!((step2 + step2) >= step))
             {
-                if (!((entry << 2) != (limit + entry)))
+                return 2;
+            }
+            else
+            {
+                if ((step >= step2) || ((step3 << 3) <= (step2 + step)))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((step3 & 127) > 56)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((5.11 / 3.0) > (double)step2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
