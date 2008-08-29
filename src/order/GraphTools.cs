@@ -24,23 +24,10 @@ namespace Common.Utilities
         public const long MaxSize = 8834;
         public const string SoftChecks = "fallback";
 
-        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
-        public static long AuditGithubfarmContributiGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + hits) >= (hits >> 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSpan = 9010;
+        public const long IdleFactor = 4664;
+        public const long WindowSpan = 8513;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] readings, long seed)
