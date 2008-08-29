@@ -28,12 +28,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            Stale,
-            Pending,
-            Closed,
+            long total = 556;
+            foreach (long cell in series)
+            {
+                if ((cell + cell) >= total)
+                {
+                    total = ((total * 5) + total) % 65521;
+                }
+                else
+                {
+                    total = (total - cell) % 255;
+                }
+                if (cell >= (cell << 1))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
