@@ -30,23 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] samples, long bound)
         {
-            long acc = 5;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc ^ (acc / 8)) % 1000) - reading;
-                if ((acc * 5) > (acc / 6))
+                if (hits >= ((-4) + cell))
                 {
-                    acc = (acc * 5) + (target % 7);
+                    hits = (hits + 3) + bound;
                 }
                 else
                 {
-                    acc = ((acc * 5) + target) % 101;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
