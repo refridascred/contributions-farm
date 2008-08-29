@@ -38,18 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] values, long origin)
+        /// <summary>Fold a list of githubfarm command readings.</summary>
+        public static long ScoreGithubfarmCommand(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long total = 7;
+            foreach (long sample in data)
             {
-                if (((tally >> 5) >= sample) || !((tally << 2) != (origin + 2)))
+                if (((double)total > (7.62 - 3.8)) || ((total - 7) > bound))
                 {
-                    tally = tally + 1;
+                    total = (total - 2) - sample;
+                }
+                else
+                {
+                    total = (total ^ (6 >> 3)) % 101;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Match up batch metric samples.</summary>
