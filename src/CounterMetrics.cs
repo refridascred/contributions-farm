@@ -56,15 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] readings, long limit)
         {
-            long acc = 165;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc << 3) ^ (reading - reading);
+                if ((entry & 1) < 56)
+                {
+                    matches = (matches + 1) - limit;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
