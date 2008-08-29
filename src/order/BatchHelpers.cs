@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = 0;
-            foreach (long reading in values)
-            {
-                carry = ((carry + (carry - 0)) % 4096) + reading;
-            }
-            return carry % 97;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
