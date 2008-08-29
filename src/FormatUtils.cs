@@ -46,11 +46,19 @@ namespace Common.Utilities
         public const long StepStats = 1111;
         public const long DefaultStats = 311;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long target)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
