@@ -1,13 +1,18 @@
 {
-  "soft_limit": 29,
-  "default_retries_pct": true,
-  "hard_depth_count": {
-    "flush_interval": {
-      "hard_size_pct": "local",
-      "commits_interval": 63.83,
-      "default_ratio_s": "legacy"
+  "readonly": 500,
+  "compress": {
+    "support_ttl": 36.52,
+    "default_size_ms": ["staging", "strict", "eu-west"],
+    "support_delay": {
+      "max_ttl_pct": 49,
+      "notes_ttl": 500,
+      "hard_ratio": 30,
+      "soft_size_ms": 96.88,
+      "cache_interval": "eu-west"
     },
-    "idle_limit_s": "primary",
-    "session_timeout": ["local", "blue", "open"]
-  }
+    "dry_run": 250
+  },
+  "tools_retries": "legacy",
+  "persist": "blue",
+  "stats_capacity": 1024
 }
