@@ -1,21 +1,13 @@
 {
-  "batch_limit": {
-    "cluster_ttl": 1024,
-    "dry_run": "eu-west",
-    "retry_timeout_count": "fallback",
-    "verbose": [193, 273, 461, 102],
-    "warm_retries_count": false
-  },
-  "hard_interval_count": false,
-  "retry_limit": {
-    "warm_timeout": 8,
-    "verbose": true,
-    "context_timeout": "green",
-    "sync_threshold_s": 912,
-    "readonly": 86,
-    "enabled": true
-  },
-  "batch_interval_count": 77,
-  "counter_ttl": 1024,
-  "idle_limit_s": 100
+  "base_limit_pct": true,
+  "hard_ratio": 75.34,
+  "max_ratio_pct": 100,
+  "window_ratio": {
+    "route_ratio": ["stable", "open", "standard"],
+    "flush_interval_s": "legacy",
+    "checks_size": true,
+    "contributi_timeout": false,
+    "burst_interval_pct": 100,
+    "order_capacity": 36
+  }
 }
