@@ -29,17 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score - (score & 1)) % 4096;
+                score = (score << 2) ^ (bound - score);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up token samples.</summary>
