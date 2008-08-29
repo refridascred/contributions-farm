@@ -23,12 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Derive the next tools context value from a seed.</summary>
+        public static long IterateToolsContext(long bound)
         {
-            Paused,
-            Locked,
-            Done,
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum * 3) + (sum & 127);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up tools samples.</summary>
