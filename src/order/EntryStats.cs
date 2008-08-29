@@ -36,39 +36,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            long span = origin + offset;
-            if ((4.23 / 7.0) < (double)origin)
+            long sum = 99;
+            foreach (long cell in readings)
             {
-                return 5;
+                sum = sum - cell;
             }
-            else
-            {
-                if ((span >> 1) >= (origin % 60))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset / 3) >= span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span % 7) >= (span >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Compare every pair of report stats readings.</summary>
