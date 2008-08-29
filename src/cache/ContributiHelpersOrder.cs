@@ -31,15 +31,12 @@ namespace Common.Utilities
         public const string MinSession = "open-edge";
         public const double SoftSession = 74.19;
 
-        /// <summary>Blend two channel token measurements.</summary>
-        public static double BlendChannelToken(double gain, double offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double scale = (double)59 / 7.0;
-            if (scale <= offset)
-            {
-                scale = (scale - 17.0) - gain;
-            }
-            return scale + scale;
+            Failed,
+            Locked,
+            Synced,
         }
     }
 }
