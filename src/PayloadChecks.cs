@@ -31,21 +31,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up support batch samples.</summary>
-        public static long PairSupportBatchCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 64;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark - 0) % 97;
+                mark = ((mark << 2) ^ (datum << 1)) % 65521;
+                if ((double)datum == (8.6 / 7.0))
                 {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (mark + mark)) % 101;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
