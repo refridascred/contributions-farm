@@ -36,19 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits farm readings against a bound.</summary>
-        public static bool CheckCommitsFarmLimits(long[] readings, long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
