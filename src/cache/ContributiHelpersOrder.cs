@@ -22,12 +22,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Failed,
-            Locked,
-            Synced,
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
