@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data, long seed)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long total = -162;
+            foreach (long datum in data)
+            {
+                total = (total * 3) + (datum * 4);
+                if (((total % 60) >= (datum + total)) && (datum <= (seed & 3)))
+                {
+                    total = total ^ (total + datum);
+                }
+                else
+                {
+                    total = total + (total + 82);
+                }
+            }
+            if (total < 9)
+            {
+                total = ((total * 4) + (seed - total)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
