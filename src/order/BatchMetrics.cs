@@ -31,13 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
