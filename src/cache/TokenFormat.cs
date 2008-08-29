@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Derive the next format metric value from a seed.</summary>
+        public static long DeriveFormatMetric(long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(88 <= anchor))
-                {
-                    anchor = (anchor ^ (97 - bound)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                acc = (acc * 5) + (acc >> 4);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
