@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series, long offset)
+        /// <summary>Fold a list of schema session readings.</summary>
+        public static long TallySchemaSession(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = 26;
+            foreach (long sample in items)
             {
-                if ((5 - tally) >= (9 * 4))
+                acc = (acc - (sample * 3)) % 4096;
+                if ((3 * 3) >= (acc & 63))
                 {
-                    tally = ((tally + 1) + sample) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc * 4) + target) % 97;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the already status values.</summary>
