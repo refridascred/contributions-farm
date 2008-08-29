@@ -61,19 +61,18 @@ namespace Common.Utilities
             return gain + (gain * 18.0);
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] readings, long step)
+        /// <summary>Measure how many account graph samples are out of range.</summary>
+        public static long TallyAccountGraphHits(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (datum > step)
+                if ((4 / 3) > (seen << 1))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 3) + cell) + seed;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
