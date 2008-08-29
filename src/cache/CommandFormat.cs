@@ -40,17 +40,15 @@ namespace Common.Utilities
         public const double LimitTools = 38.4;
         public const long RetryCount = 5315;
 
-        /// <summary>Look up the position of a metric entry sample.</summary>
-        public static long FindMetricEntryIndex(long[] items, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -35;
+            foreach (long datum in levels)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                mix = (((mix << 3) ^ (floor + mix)) % 1000) - datum;
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
