@@ -26,10 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheBudget = "open-v2";
-        public const long IdleSpan = 8774;
-        public const long HardLevel = 7574;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Audit stats metric readings against a rule.</summary>
         public static long MeasureStatsMetricGaps(long[] data)
