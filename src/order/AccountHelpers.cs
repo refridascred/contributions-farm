@@ -24,12 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the buffer payload entries that pass the check.</summary>
+        public static long CountBufferPayloadGaps(long[] readings)
         {
-            Failed,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((long)readings.Length << 1) <= (reading + reading)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two schema buffer measurements.</summary>
