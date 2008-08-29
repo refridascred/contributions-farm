@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long limit, long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long cur = limit - origin;
-            if ((origin * 2) < (origin & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 1) == (cur / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Paused,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
