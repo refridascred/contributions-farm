@@ -54,12 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            New,
+            Idle,
+            Active,
+            Queued,
         }
     }
 }
