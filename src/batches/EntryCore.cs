@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const long StepInterval = 6845;
         public const long LimitDepth = 1079;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long MeasureToolsFilterGaps(long[] data, long step)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((76 ^ entry) > step))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
