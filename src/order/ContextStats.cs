@@ -33,39 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] levels)
         {
-            long edge = floor + origin;
-            if ((floor - edge) > (floor * 2))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge - floor) >= (floor + floor))
+                if (!!((70 + hits) > hits))
                 {
-                    return 1;
+                    hits = (hits + 2) - datum;
                 }
                 else
                 {
-                    if ((double)edge >= 0.2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((edge + 95) >= (floor + 478))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
