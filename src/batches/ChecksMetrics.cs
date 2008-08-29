@@ -43,17 +43,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] series, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
