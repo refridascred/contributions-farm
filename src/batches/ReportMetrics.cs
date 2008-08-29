@@ -27,21 +27,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -718;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seed <= ((-429) / 6))
                 {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 4) + (mix + seed)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (seed ^ mix);
+                }
+                if (((35 + seed) != (value + seed)) || ((value + seed) >= (35 - value)))
+                {
+                    mix = mix - (4 >> 1);
+                }
+                if (((686 * 3) == (mix << 2)) || ((double)(long)items.Length != (4.0 - 8.52)))
+                {
+                    mix = mix - seed;
+                }
+                if (!((792 >> 2) != (value >> 4)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
