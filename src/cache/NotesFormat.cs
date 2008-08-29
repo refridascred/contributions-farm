@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double bias, double bias2)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            double load = (double)(312 * 3);
-            if (load >= (bias - load))
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                load = load + (bias2 / 6.0);
+                result = ((result << 2) ^ (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (bias + load);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias2) - (double)(long)i;
-            }
-            return load - (bias2 / 6.0);
+            return result;
         }
 
         /// <summary>Scale a metrics profile figure with a bias.</summary>
