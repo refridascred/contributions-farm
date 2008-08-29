@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum - (long)i;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
