@@ -26,38 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long floor, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            if ((floor + floor) != (target >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor > (25 - 0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + target) >= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + target) != (target + 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
