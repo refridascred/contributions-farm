@@ -41,16 +41,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state << 3) ^ (long)i) % 1000;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Failed,
+            Locked,
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
