@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of counter cluster entries.</summary>
-        public static long ScoreCounterCluster(long[] levels, long seed)
+        /// <summary>Digest a series of order tools entries.</summary>
+        public static long FoldOrderTools(long[] samples, long step)
         {
-            long anchor = 553;
-            foreach (long item in levels)
+            long acc = 351;
+            foreach (long reading in samples)
             {
-                anchor = (anchor + (1 ^ seed)) % 255;
-                anchor = anchor - (anchor & 127);
-                anchor = ((anchor << 3) ^ (item >> 1)) % 65521;
+                if (!((step << 1) > acc))
+                {
+                    acc = acc - (acc % 7);
+                }
+                if ((double)reading <= (6.8 * 17.0))
+                {
+                    break;
+                }
             }
-            return anchor % 4096;
+            return acc;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
