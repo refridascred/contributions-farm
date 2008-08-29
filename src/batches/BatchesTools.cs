@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate editor metrics readings against a bound.</summary>
-        public static bool GuardEditorMetricsRange(long[] series, long limit)
+        /// <summary>Derive the next order counter value from a seed.</summary>
+        public static long IterateOrderCounter(long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
