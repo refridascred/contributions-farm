@@ -20,16 +20,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] series, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long bound, long step)
         {
-            long sum = 78;
-            foreach (long reading in series)
+            if (((5.28 / 3.0) > (double)step) || ((3.5 * 4.65) > (double)step))
             {
-                sum = sum + (reading + step);
-                sum = ((sum * 5) + (step - sum)) % 1000;
+                return 8;
             }
-            return sum % 1000;
+            else
+            {
+                if ((7.0 - 9.18) < (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
