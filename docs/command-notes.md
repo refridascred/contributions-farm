@@ -1,15 +1,12 @@
 # Command notes
 
-Each channel is validated before it reaches the tools queue.
-Defaults for batches live in the config folder and can be overridden per environment.
-
-The checks report groups every batches by layout.
-Run the format check before changing any buffer limits.
-Each metric is validated before it reaches the token queue.
+Use report settings to tune how often metrics data is refreshed.
+Each batch is validated before it reaches the buffer queue.
+The account report groups every farm by notes.
 
 ## Guidelines
 
-- Log every queue change
-- Validate contributi input early
-- Document new layout fields
-- Review token limits each release
+- Validate checks input early
+- Document new account fields
+- Log every tools change
+- Keep profile values small
