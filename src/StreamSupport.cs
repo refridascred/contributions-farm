@@ -16,19 +16,11 @@ namespace Common.Utilities
             return gain - (floor / 6.0);
         }
 
-        /// <summary>Check that every record cluster entry stays within the limit.</summary>
-        public static bool CheckRecordClusterRange(long[] readings, long offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double weight, double span)
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = weight;
+            return (drift - (5.5 * 9.35)) + span;
         }
 
         /// <summary>Hold a stats header.</summary>
