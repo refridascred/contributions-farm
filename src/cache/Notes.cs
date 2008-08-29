@@ -52,18 +52,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] readings, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((offset + count) > offset)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
