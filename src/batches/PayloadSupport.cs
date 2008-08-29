@@ -19,10 +19,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "alpha-v2";
-        public const long BurstAlready = 5450;
-        public const long IdleSize = 6565;
-        public const double RetryRatio = 83.03;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((((double)cell < (4.1 - 1.0)) || (cell > (cell - (long)series.Length))) && ((25 ^ 233) != (cell >> 4)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
