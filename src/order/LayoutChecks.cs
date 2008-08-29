@@ -37,31 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long floor, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            if ((limit % 5) == (floor & 1))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (109 > (limit << 3))
+                if ((double)datum != (4.5 - 11.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - floor) >= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
