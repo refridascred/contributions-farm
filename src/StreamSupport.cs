@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseFactor = "latest";
-        public const long BatchWidth = 6482;
-        public const long IdleCount = 9770;
-        public const double MinChannel = 23.48;
-        public const long RetryWidth = 9902;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2604;
+        public const long HardWindow = 4393;
+        public const long LimitScore = 9174;
+        public const long RetryWindow = 6450;
+        public const string StepWindow = "latest-1";
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ScaleSession(double rate, double span)
