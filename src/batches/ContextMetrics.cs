@@ -45,11 +45,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchDepth = 175;
-        public const long LimitReport = 9247;
-        public const long LimitSpan = 6722;
-        public const double StepInterval = 10.31;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
