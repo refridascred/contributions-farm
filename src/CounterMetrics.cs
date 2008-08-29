@@ -77,22 +77,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = 165;
+            foreach (long reading in readings)
             {
-                if (0.92 < (double)sample)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc << 3) ^ (reading - reading);
             }
-            return hits;
+            return acc;
         }
     }
 }
