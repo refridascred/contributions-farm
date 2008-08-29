@@ -20,16 +20,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long total = 917;
+            foreach (long datum in readings)
             {
-                total = ((total << 2) ^ (21 >> 4)) % 4096;
-                total = ((total * 5) + (long)i) % 1000;
+                for (int i = 0; i < 5; i++)
+                {
+                    total = (total * 4) + ((long)i - datum);
+                }
+                if (!((datum - total) > total))
+                {
+                    total = (total + 4) % 97;
+                }
+                else
+                {
+                    total = total - ((long)readings.Length + total);
+                }
             }
-            return total;
+            if (total > 853)
+            {
+                total = ((total * 5) + total) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
