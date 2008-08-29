@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long origin)
+        /// <summary>Audit metrics account readings against a rule.</summary>
+        public static long TallyMetricsAccountMatches(long[] data)
         {
-            long bound = target ^ origin;
-            if (((bound << 1) != (bound + (-79))) || ((87 - target) <= bound))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 5) == (target + 96))
+                if ((seen + value) < seen)
                 {
-                    return 0;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((double)bound > (12.0 * 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the metrics class values.</summary>
