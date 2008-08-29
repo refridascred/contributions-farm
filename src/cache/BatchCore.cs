@@ -27,17 +27,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batch cluster sample.</summary>
-        public static long SeekBatchClusterIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "stable-edge";
+        public const string StepInterval = "local-v2";
+        public const string LimitContext = "latest-1";
+        public const long MinFactor = 1555;
     }
 }
