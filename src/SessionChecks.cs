@@ -32,12 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
