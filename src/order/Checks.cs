@@ -46,18 +46,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many queue entry samples are out of range.</summary>
-        public static long CountQueueEntryHits(long[] series)
+        /// <summary>Derive the next graph buffer value from a seed.</summary>
+        public static long RollGraphBuffer(long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample < (tally ^ tally)) && (((double)tally <= (double)sample) || ((212 - 5) > (sample << 3))))
-                {
-                    tally = tally + 2;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
