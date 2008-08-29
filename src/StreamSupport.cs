@@ -19,10 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinWidth = "legacy-1";
-        public const long MaxTimeout = 2598;
-        public const long CacheScore = 899;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((floor >> 4) <= (long)i))
+                {
+                    acc = (acc + (acc & 7)) % 65521;
+                }
+                if (((double)(long)i == (7.34 / 6.0)) && (floor < (acc - acc)))
+                {
+                    acc = ((acc << 2) ^ (long)i) % 97;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long IterateSupport(long limit)
