@@ -37,21 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Audit profile already readings against a rule.</summary>
+        public static long MeasureProfileAlreadyMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((count + 9) >= count))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) ^ reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a checks command sample.</summary>
