@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-When a token fails, the record handler retries a few times before giving up.
-Use account settings to tune how often already data is refreshed.
+The queue report groups every commits by support.
+The route helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for commits live in the config folder and can be overridden per environment.
+The token report groups every cache by profile.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cache limits each release
-- Keep stream values small
-- Prefer cluster defaults
-- Validate support input early
+- Keep notes values small
+- Log every batches change
+- Document new session fields
