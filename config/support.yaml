@@ -1,14 +1,9 @@
 # support settings
-poll_size_ms: 16.44
-strict: local
-warm_timeout_ms: false
-audit: 38.11
-counter_capacity:
-  support_window: false
-  strict:
-    order_retries: green
-    warm_ttl_ms: standard
-    base_ttl_count: true
-    flush_interval_count: true
-  retry_depth: blue
-flush_capacity: latest
+session_depth: 4966
+warm_window_s: false
+retry_depth: eu-west
+command_ttl: false
+hard_capacity_pct:
+  - edge
+  - edge
+cache_limit: 28.48
