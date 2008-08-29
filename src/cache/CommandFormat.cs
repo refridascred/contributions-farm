@@ -30,11 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepSize = 4494;
-        public const string BurstSpan = "open-v2";
-        public const string BatchCluster = "stable";
-        public const long MinScore = 9038;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] levels)
