@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 56.53;
+        public const string MinFormat = "stable-v2";
+        public const double DefaultTimeout = 40.45;
+        public const double BaseFormat = 17.53;
+        public const long RetryFormat = 8286;
 
         /// <summary>Digest a series of farm filter entries.</summary>
         public static long DigestFarmFilter(long[] series, long limit)
