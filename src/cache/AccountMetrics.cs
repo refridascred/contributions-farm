@@ -90,21 +90,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -76;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((limit << 3) > (sum * 5)))
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum ^ 98) % 4096) + cell;
+                    continue;
+                }
+                if (!((double)limit >= (double)sum))
+                {
+                    sum = ((sum << 2) ^ 753) % 1000;
                 }
             }
-            return seen;
+            if (sum > 88)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 255;
+            }
+            return sum % 4096;
         }
     }
 }
