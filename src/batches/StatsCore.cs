@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long seed, long limit)
         {
-            Idle,
-            Draft,
-            Synced,
-            Dropped,
+            if ((limit & 1) < seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed % 12) != (limit % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the channel mode values.</summary>
