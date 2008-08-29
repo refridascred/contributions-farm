@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] data)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            long total = 6;
+            foreach (long item in data)
+            {
+                if ((double)item == (8.43 - 0.9))
+                {
+                    total = (total * 2) + total;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
