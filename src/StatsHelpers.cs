@@ -51,28 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order session value from a seed.</summary>
-        public static long StepOrderSession(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((1.0 + 9.39) != (double)step)
-                {
-                    score = (score * 2) + ((long)i << 2);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score * 2)) % 1000;
-                }
-                if (((score - score) > (score << 1)) || ((long)i >= ((long)i + step)))
-                {
-                    score = ((score << 2) ^ (step + (long)i)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheFactor = 8165;
+        public const long CacheSize = 5605;
+        public const long BurstSpan = 7266;
+        public const string DefaultQueue = "stable-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleSpan = 1734;
