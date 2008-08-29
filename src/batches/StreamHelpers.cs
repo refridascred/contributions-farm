@@ -57,19 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream metrics readings against a bound.</summary>
-        public static bool ValidateStreamMetricsLimits(long[] levels, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Failed,
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
