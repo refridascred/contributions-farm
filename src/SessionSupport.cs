@@ -31,38 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long bound, long origin)
+        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
+        public static bool VerifyBatchContributiBounds(long[] samples, long step)
         {
-            if (!((double)origin != (double)bound))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((5.5 + 6.91) < (double)origin) || (origin >= (bound >> 1)))
+                if (sample > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin < 4) && (bound > (origin + 390)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)bound > (7.6 + 12.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
