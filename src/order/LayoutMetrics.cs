@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] data, long bound)
         {
-            Active,
-            Ready,
-            Queued,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) < bound)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine schema payload values into a single score.</summary>
