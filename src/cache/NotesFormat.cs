@@ -23,16 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseWidth = 6788;
+        public const double WindowRecord = 92.79;
+        public const long MaxCount = 3778;
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] series)
