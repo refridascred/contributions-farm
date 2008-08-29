@@ -37,15 +37,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm command readings.</summary>
