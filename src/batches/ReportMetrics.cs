@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 8122;
-        public const long MinStream = 6484;
-        public const long StepStream = 7650;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Queued,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Classify a cache context pair into a bucket.</summary>
         public static long GradeCacheContext(long limit, long seed)
