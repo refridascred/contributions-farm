@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long limit, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] data, long offset)
         {
-            long delta = limit - offset;
-            if ((offset + delta) >= (limit % 60))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((delta + delta) > limit) && ((double)limit == (double)offset))
+                if (reading > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
