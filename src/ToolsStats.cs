@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Validate queue githubfarm readings against a bound.</summary>
+        public static bool ValidateQueueGithubfarmBounds(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
