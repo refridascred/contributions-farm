@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)(long)i <= (double)acc)
-                {
-                    acc = ((acc << 3) ^ (bound / 9)) % 97;
-                    acc = (acc + 36) % 4096;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1312;
+        public const long MaxWindow = 1216;
+        public const string SoftWindow = "latest-edge";
+        public const string MinWidth = "open-edge";
+        public const long IdleCount = 5262;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] series, long seed)
