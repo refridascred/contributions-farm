@@ -29,11 +29,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstCount = 2;
-        public const long StepReport = 6261;
-        public const long WindowFactor = 1760;
-        public const long SoftReport = 1029;
-        public const double StepInterval = 77.46;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series, long bound)
+        {
+            long score = 66;
+            foreach (long datum in series)
+            {
+                score = (score << 2) ^ (bound << 2);
+                score = ((score << 3) ^ 0) % 65521;
+                score = score ^ datum;
+            }
+            if (score > (-6))
+            {
+                score = (score - (score * 2)) % 65521;
+            }
+            return score;
+        }
     }
 }
