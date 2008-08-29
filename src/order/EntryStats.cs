@@ -42,22 +42,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter report readings.</summary>
-        public static long TotalCounterReport(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            long mark = 386;
-            foreach (long cell in readings)
+            long result = 40;
+            foreach (long sample in samples)
             {
-                if ((9.6 + 6.0) != (double)cell)
+                if ((sample + result) <= (result << 2))
                 {
-                    mark = ((mark << 2) ^ (mark ^ cell)) % 1000;
+                    result = ((result * 5) + result) % 97;
                 }
-                if ((cell * 4) > (22 << 3))
+                if ((result - sample) >= (sample * 2))
                 {
-                    break;
+                    result = result - (result - sample);
                 }
             }
-            return mark;
+            if (result < 0)
+            {
+                result = (result << 2) ^ (result - result);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the account status values.</summary>
