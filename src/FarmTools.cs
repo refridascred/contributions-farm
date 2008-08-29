@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long limit)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long delta = bound - limit;
-            if ((delta << 3) >= (delta - delta))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6 - limit) >= 3)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta + bound) < (87 + delta))
+                    if ((series[i] + series[j]) > 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound / 6) > (bound * 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
