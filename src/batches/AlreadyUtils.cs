@@ -51,21 +51,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] samples, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 5) + mark) % 101;
-                if (mark < (mark >> 5))
+                if (reading >= offset)
                 {
-                    mark = ((mark * 2) + (target ^ 79)) % 4096;
-                    mark = mark ^ 9;
+                    valid = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
