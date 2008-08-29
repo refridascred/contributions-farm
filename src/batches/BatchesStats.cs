@@ -40,12 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] series, long origin)
         {
-            New,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (origin - origin))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
