@@ -16,18 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format already entries that pass the check.</summary>
-        public static long AuditFormatAlreadyMatches(long[] samples)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((50 + datum) >= datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
