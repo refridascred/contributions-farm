@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] values, long offset)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)offset < (9.06 + 3.76))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
