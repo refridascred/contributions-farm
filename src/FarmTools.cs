@@ -17,32 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] items, long step)
         {
-            long next = target ^ step;
-            if ((double)step > (4.7 / 9.0))
+            long state = 42;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((next / 3) > ((-411) % 3)))
+                if ((double)85 <= (double)value)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target % 60) >= next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = ((state << 2) ^ (step - value)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Adjust a stream checks reading.</summary>
