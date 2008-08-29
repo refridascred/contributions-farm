@@ -1,11 +1,22 @@
 {
-  "min_depth": true,
-  "metric_ttl": 60.83,
-  "enabled": "cached",
-  "graph_capacity": "staging",
-  "idle_delay_ms": {
-    "idle_retries_count": "staging",
-    "dry_run": "green",
-    "retry_retries": 61
+  "warm_ratio": "edge",
+  "burst_ratio_ms": "primary",
+  "filter_capacity": "standard",
+  "default_timeout": 1619,
+  "poll_threshold_pct": 83.03,
+  "compress": {
+    "strict": 93,
+    "hard_capacity": {
+      "record_capacity": 85,
+      "sync_limit_s": 35.12,
+      "flush_ratio_ms": 27.28,
+      "profile_retries": 68,
+      "strict": "fallback",
+      "dry_run": 94.24
+    },
+    "flush_ttl_ms": 60,
+    "compress": 34.12,
+    "token_limit": 30,
+    "poll_ratio_count": 7912
   }
 }
