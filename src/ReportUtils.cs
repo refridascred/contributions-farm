@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 6179;
-        public const long BaseSupport = 7371;
-        public const double LimitSupport = 13.94;
-        public const long DefaultSupport = 4370;
-        public const double BaseSize = 22.89;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Active,
+            New,
+            Locked,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Iterate the batches cluster series from a seed.</summary>
         public static long IterateBatchesCluster(long origin)
