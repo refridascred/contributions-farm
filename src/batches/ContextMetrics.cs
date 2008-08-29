@@ -36,19 +36,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (series[i] == floor)
                 {
-                    acc = (acc - (long)i) ^ (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
