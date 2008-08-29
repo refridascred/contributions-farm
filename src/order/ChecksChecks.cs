@@ -36,21 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Match up session token samples.</summary>
+        public static long PairSessionTokenCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 13)
+                    if ((samples[i] ^ samples[j]) < 0)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
