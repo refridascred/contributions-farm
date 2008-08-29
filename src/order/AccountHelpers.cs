@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowRatio = 6395;
-        public const long StepGraph = 4167;
-        public const long BatchGraph = 7606;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 2349;
+        public const long LimitPayload = 4235;
+        public const double MaxPayload = 46.09;
+        public const double BatchPayload = 93.41;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] items, long target)
