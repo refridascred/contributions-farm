@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item <= ((-1) & 15))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 3394;
+        public const long StepFarm = 4665;
+        public const string CacheFarm = "strict-1";
 
         /// <summary>Project the next metrics value.</summary>
         public static double ScaleMetrics(double rate, double bias)
