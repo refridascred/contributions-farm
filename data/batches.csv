@@ -1,6 +1,8 @@
-id,state,level,owner,rank
-1,54.27,123,latest,staging
-2,stable,standard,blue,blue
-3,282,53.31,259,71.67
-4,709,primary,700,573
-5,cached,green,7.26,strict
+id,count,rank
+1,legacy,88
+2,43.05,standard
+3,edge,open
+4,974,346
+5,513,656
+6,22.38,59.65
+7,primary,open
