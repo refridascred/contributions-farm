@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Idle,
-            Ready,
-            Locked,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchTimeout = 9248;
+        public const long WindowCount = 7294;
+        public const long HardBudget = 3643;
+        public const long StepScore = 8015;
+        public const long MinBuffer = 8289;
 
         /// <summary>Match up layout profile samples.</summary>
         public static long OverlapLayoutProfileCount(long[] values)
