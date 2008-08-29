@@ -1,5 +1,7 @@
 {
-  "max_capacity": false,
-  "strict": "fallback",
-  "persist": 2942
+  "stream_ttl": 17,
+  "cache_retries_pct": true,
+  "dry_run": [242, 152, 454],
+  "base_delay_ms": 69,
+  "poll_timeout": false
 }
