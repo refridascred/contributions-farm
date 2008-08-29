@@ -13,26 +13,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] levels, long seed)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = 90;
-            foreach (long value in levels)
-            {
-                if ((double)seed <= 15.0)
-                {
-                    total = (total * 2) + (total * 4);
-                }
-                else
-                {
-                    total = (total + (value + seed)) % 255;
-                }
-            }
-            if (total < 97)
-            {
-                total = total - (seed << 2);
-            }
-            return total;
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
