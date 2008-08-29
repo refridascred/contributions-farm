@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first queue record entry that matches the target.</summary>
-        public static long SeekQueueRecordIndex(long[] levels, long step)
+        /// <summary>Check that every session stats entry stays within the limit.</summary>
+        public static bool CheckSessionStatsLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (levels[i] <= step)
+                if (sample != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate editor graph samples.</summary>
