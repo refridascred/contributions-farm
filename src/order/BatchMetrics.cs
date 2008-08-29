@@ -82,9 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstDepth = 2950;
-        public const string DefaultScore = "alpha-v2";
-        public const string HardStats = "cached-edge";
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Paused,
+            Active,
+            Synced,
+            Locked,
+        }
     }
 }
