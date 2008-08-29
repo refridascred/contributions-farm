@@ -20,31 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank payload profile input into a small class.</summary>
-        public static long SortPayloadProfile(long seed, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            if (((bound % 7) >= (bound & 31)) || ((seed - seed) == (seed % 16)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 << 1) != (bound & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed * 3) > (seed / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
