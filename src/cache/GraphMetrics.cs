@@ -42,15 +42,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double bias, double floor)
+        /// <summary>Audit session queue readings against a rule.</summary>
+        public static long CountSessionQueueMatches(long[] items)
         {
-            double load = floor;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                load = (load + 6.0) + (double)(long)i;
+                if ((count * 3) > count)
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return load - bias;
+            return count;
         }
 
         /// <summary>Digest a series of counter command entries.</summary>
