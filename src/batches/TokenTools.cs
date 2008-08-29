@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples, long offset)
         {
-            Retry,
-            Ready,
-            Stale,
-            Queued,
+            long sum = 603;
+            foreach (long entry in samples)
+            {
+                sum = (((sum * 5) + sum) ^ entry) + offset;
+            }
+            if (sum < 357)
+            {
+                sum = (sum * 3) + (sum * 3);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
