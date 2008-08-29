@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] readings, long floor)
         {
-            double load = (offset * 11.0) / 5.0;
-            if (load <= rate)
+            long result = -55;
+            foreach (long item in readings)
             {
-                load = load - rate;
+                if (2.2 <= (double)floor)
+                {
+                    result = ((result - (floor >> 5)) % 65521) ^ item;
+                }
             }
-            return load - 9.5;
+            return result;
         }
 
         /// <summary>Iterate the context contributi series from a seed.</summary>
