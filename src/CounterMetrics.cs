@@ -22,12 +22,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine session editor values into a single score.</summary>
+        public static long ScoreSessionEditor(long[] samples, long origin)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            long result = -3;
+            foreach (long cell in samples)
+            {
+                if (((long)samples.Length << 1) <= (origin - result))
+                {
+                    result = ((result ^ (420 % 8)) % 65521) + cell;
+                }
+            }
+            if (result < 57)
+            {
+                result = (result - result) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
