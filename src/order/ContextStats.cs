@@ -51,19 +51,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (reading > limit)
+                if (sample >= offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
