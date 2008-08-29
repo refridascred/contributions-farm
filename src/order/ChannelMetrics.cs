@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + anchor) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first commits metrics entry that matches the target.</summary>
