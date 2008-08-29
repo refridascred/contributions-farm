@@ -1,11 +1,4 @@
 # entry settings
-schema_threshold: eu-west
-warm_delay: cached
-stream_delay:
-  - primary
-  - stable
-  - cached
-warm_ratio_pct:
-  - 147
-  - 248
-notes_capacity: legacy
+hard_interval_pct: 86
+batches_interval: 2363
+audit: false
