@@ -1,15 +1,20 @@
 # entry settings
-compress: 100
-enabled: 26.16
-hard_retries_s:
-  - green
-  - cached
-  - edge
-retry_retries_s: 60
-cache_window_pct:
-  contributi_interval: cached
-  verbose: primary
-  base_size_ms: edge
-  graph_interval: open
-  cache_interval_ms: 1024
-  idle_delay_ms: true
+max_interval_count:
+  idle_ttl_count: latest
+  batch_window_count: 1972
+  batch_window:
+    readonly:
+      - primary
+      - primary
+      - strict
+      - primary
+    schema_retries: false
+    base_size_count: edge
+enabled: 7.53
+report_interval:
+  - 64
+  - 422
+  - 140
+route_size: open
+session_ttl: 64
+poll_threshold: stable
