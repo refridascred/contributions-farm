@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepFactor = 1239;
-        public const long IdleBudget = 3163;
-        public const long LimitLayout = 1924;
-        public const string IdleLayout = "alpha-v2";
-        public const long IdleSpan = 6986;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 955;
+        public const double IdleLevel = 94.43;
+        public const long CacheFactor = 847;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long origin)
