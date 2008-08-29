@@ -14,12 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] series, long limit)
         {
-            Paused,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((reading + hits) >= (limit & 63)) || !((reading / 9) == (reading >> 1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session stats.</summary>
