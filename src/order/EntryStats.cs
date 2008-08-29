@@ -42,26 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] readings, long seed)
         {
-            long result = 40;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((sample + result) <= (result << 2))
+                if (value <= seed)
                 {
-                    result = ((result * 5) + result) % 97;
-                }
-                if ((result - sample) >= (sample * 2))
-                {
-                    result = result - (result - sample);
+                    flag = false;
+                    break;
                 }
             }
-            if (result < 0)
-            {
-                result = (result << 2) ^ (result - result);
-            }
-            return result % 97;
+            return flag;
         }
 
         /// <summary>Describe the account status values.</summary>
