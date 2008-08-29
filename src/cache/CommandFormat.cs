@@ -30,12 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double scale, double bias)
-        {
-            double weight = 6.5;
-            return (weight - (bias / 6.0)) + scale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepSize = 4494;
+        public const string BurstSpan = "open-v2";
+        public const string BatchCluster = "stable";
+        public const long MinScore = 9038;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] levels)
