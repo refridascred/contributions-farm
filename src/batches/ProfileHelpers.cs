@@ -35,17 +35,15 @@ namespace Common.Utilities
         public const long BaseRatio = 5919;
         public const long DefaultInterval = 8955;
 
-        /// <summary>Look up the position of a order commits sample.</summary>
-        public static long LookupOrderCommitsIndex(long[] levels, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a route record.</summary>
