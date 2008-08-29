@@ -14,17 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark ^ (4 - (long)i)) % 101;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 5007;
+        public const long CacheWidth = 8414;
+        public const long MaxSize = 306;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long step, long seed)
