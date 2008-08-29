@@ -54,25 +54,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long offset)
         {
-            long diff = step ^ limit;
-            if ((step + diff) <= (limit ^ diff))
+            bool ready = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((diff - diff) >= (step + step)) && ((step << 1) != (limit * 5)))
+                if (cell < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a buffer record.</summary>
