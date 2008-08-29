@@ -1,7 +1,5 @@
 # entry settings
-stats_size: 55.93
-audit: blue
-strict:
-  - 243
-  - 250
-cache_window: false
+stream_limit: 500
+flush_ttl: 100
+token_depth: cached
+hard_capacity_ms: primary
