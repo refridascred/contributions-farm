@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            New,
-            Ready,
-            Synced,
-            Locked,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry - ((long)i & 7)) % 65521;
+                carry = (carry * 4) + ((long)i % 10);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Check that every entry farm entry stays within the limit.</summary>
