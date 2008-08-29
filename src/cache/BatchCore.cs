@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const long LimitEditor = 3474;
         public const long DefaultEditor = 516;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch cluster sample.</summary>
