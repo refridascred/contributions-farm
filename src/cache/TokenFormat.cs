@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long WindowLevel = 5375;
         public const string RetryCommand = "alpha";
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            New,
+            Queued,
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Blend two editor measurements.</summary>
