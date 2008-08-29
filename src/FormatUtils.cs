@@ -65,18 +65,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] data)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item > (count / 6))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the metrics order entries that pass the check.</summary>
