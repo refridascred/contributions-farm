@@ -13,19 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every channel editor entry stays within the limit.</summary>
-        public static bool CheckChannelEditorLimits(long[] items, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (item > origin)
+                if (entry < count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a notes record.</summary>
