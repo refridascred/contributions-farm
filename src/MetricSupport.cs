@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - hits) <= 535)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxBudget = "staging-v2";
+        public const string MaxFactor = "primary";
+        public const string HardLevel = "staging-v2";
 
         /// <summary>Rank context route input into a small class.</summary>
         public static long ClassifyContextRoute(long bound, long seed)
