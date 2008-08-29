@@ -68,19 +68,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] values, long step)
+        /// <summary>Derive the next counter githubfarm value from a seed.</summary>
+        public static long SeriesCounterGithubfarm(long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry != step)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark ^ (0 >> 3)) % 65521) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
     }
 }
