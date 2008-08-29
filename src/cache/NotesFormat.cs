@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Locked,
-            Dropped,
-            Failed,
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of format stream entries.</summary>
