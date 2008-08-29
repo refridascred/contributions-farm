@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const long StepTimeout = 7535;
         public const string HardBatches = "legacy-1";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 2903;
+        public const double MaxFactor = 5.45;
+        public const string HardEditor = "local-edge";
+        public const long LimitEditor = 9114;
+        public const long SoftEditor = 3031;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] readings)
