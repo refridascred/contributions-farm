@@ -36,22 +36,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of context tools entries.</summary>
-        public static long CombineContextTools(long[] levels)
-        {
-            long sum = 165;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) != (reading >> 1))
-                {
-                    sum = (sum << 3) ^ (reading - sum);
-                }
-            }
-            if (sum > 951)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 3727;
+        public const string SoftScore = "fallback-1";
+        public const double LimitSpan = 95.84;
+        public const long LimitCount = 8989;
     }
 }
