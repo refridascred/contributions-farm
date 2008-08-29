@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double load = (double)(312 * 3);
+            if (load >= (bias - load))
             {
-                if (((double)944 < (double)entry) || !((8 & 31) >= entry))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load + (bias2 / 6.0);
             }
-            return tally;
+            else
+            {
+                load = load - (bias + load);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - bias2) - (double)(long)i;
+            }
+            return load - (bias2 / 6.0);
         }
 
         /// <summary>Scale a metrics profile figure with a bias.</summary>
