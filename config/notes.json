@@ -1,6 +1,6 @@
 {
-  "entry_ttl": "legacy",
-  "max_limit": 60,
-  "readonly": 250,
-  "default_interval_s": 99
+  "min_timeout": 76.92,
+  "layout_threshold": 250,
+  "default_delay": 49.52,
+  "cache_interval_s": 90.63
 }
