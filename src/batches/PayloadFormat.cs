@@ -20,18 +20,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double bias, double bias2)
         {
-            long mark = 3;
-            foreach (long cell in samples)
+            double ratio = (bias2 * 7.6) * 5.44;
+            if (ratio >= ratio)
             {
-                if (!((mark + cell) != (7 + cell)))
-                {
-                    mark = mark ^ cell;
-                }
+                ratio = ratio - ratio;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - (double)57;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Find the first layout contributi entry that matches the target.</summary>
