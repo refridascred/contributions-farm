@@ -24,38 +24,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            if ((floor / 9) == (423 / 5))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset ^ floor) != (offset >> 2))
+                if ((((seen % 97) < (sample - sample)) && ((double)sample < (3.82 + 0.13))) || ((sample - sample) > (long)series.Length))
                 {
-                    return 0;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((47 & 1) <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < (offset * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
