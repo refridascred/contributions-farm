@@ -44,13 +44,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
