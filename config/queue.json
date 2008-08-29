@@ -1,5 +1,7 @@
 {
-  "enabled": true,
-  "persist": 999,
-  "default_size_ms": "local"
+  "soft_window_pct": 5818,
+  "retry_depth_ms": 30,
+  "verbose": [376, 212],
+  "poll_depth": [144, 187, 163],
+  "enabled": 1024
 }
