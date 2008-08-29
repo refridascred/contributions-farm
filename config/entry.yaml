@@ -1,25 +1,6 @@
 # entry settings
-flush_ratio_pct:
-  flush_threshold_pct: true
-  idle_ratio_count: latest
-  context_size:
-    - 492
-    - 106
-    - 303
-    - 298
-report_interval:
-  readonly:
-    schema_timeout: 58
-    retry_limit_ms: blue
-    max_limit: 5801
-    warm_delay_pct: edge
-  buffer_limit: cached
-  compress: latest
-  editor_capacity: false
-default_threshold_s:
-  - stable
-  - local
-  - green
-  - eu-west
-cache_size_ms: true
-batch_retries: 7574
+flush_ttl: false
+already_limit: blue
+retry_limit:
+  - 178
+  - 429
