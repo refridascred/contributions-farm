@@ -31,19 +31,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double floor)
-        {
-            double drift = rate;
-            if (drift >= drift)
-            {
-                drift = drift + (floor / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift - 20.0)) + (double)(long)i;
-            }
-            return drift + (drift / 8.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "cached-v2";
+        public const long BaseFormat = 8458;
+        public const long MinInterval = 7697;
+        public const double MinFormat = 26.67;
+        public const double MaxInterval = 83.59;
     }
 }
