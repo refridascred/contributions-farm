@@ -38,19 +38,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] levels, long target)
+        /// <summary>Project the next farm support value.</summary>
+        public static double BlendFarmSupport(double rate, double offset)
         {
-            long total = 830;
-            foreach (long cell in levels)
-            {
-                total = ((total ^ total) % 4096) ^ cell;
-                if (((long)levels.Length / 7) < (target << 3))
-                {
-                    break;
-                }
-            }
-            return total;
+            double weight = 8.0;
+            return (weight - offset) + rate;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
