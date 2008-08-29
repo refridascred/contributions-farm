@@ -26,13 +26,18 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many cache already samples are out of range.</summary>
+        public static long AuditCacheAlreadyGaps(long[] levels, long bound)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((113 * 3) < (datum / 5))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
