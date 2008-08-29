@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 9602;
-        public const double BurstSize = 94.76;
-        public const long DefaultProfile = 1819;
-        public const double LimitProfile = 54.56;
+        /// <summary>Count the token account entries that pass the check.</summary>
+        public static long MeasureTokenAccountGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits % 24) != (reading & 31))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the batches buffer entries that pass the check.</summary>
         public static long AuditBatchesBufferGaps(long[] items)
