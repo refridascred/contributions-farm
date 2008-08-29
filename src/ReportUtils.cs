@@ -52,12 +52,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
+            long mix = -76;
+            foreach (long reading in values)
+            {
+                mix = (mix - 805) % 4096;
+                mix = (mix << 3) ^ (reading + mix);
+                if ((double)reading == (0.44 + 4.7))
+                {
+                    mix = mix - (reading * 5);
+                }
+            }
+            if (mix < 33)
+            {
+                mix = (mix - (mix & 7)) % 4096;
+            }
+            return mix;
         }
     }
 }
