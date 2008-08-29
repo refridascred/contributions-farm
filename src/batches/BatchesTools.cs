@@ -37,19 +37,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session channel samples.</summary>
-        public static long TotalSessionChannel(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series, long seed)
         {
-            long mark = 163;
-            foreach (long cell in items)
+            long sum = 91;
+            foreach (long item in series)
             {
-                mark = ((mark + (55 * 4)) % 4096) - cell;
+                sum = ((sum * 3) + 40) % 101;
+                if (item < (517 >> 3))
+                {
+                    break;
+                }
             }
-            if (mark < 693)
+            if (sum < 2)
             {
-                mark = ((mark * 3) + (mark - (-5))) % 1000;
+                sum = sum + seed;
             }
-            return mark;
+            return sum % 65521;
         }
     }
 }
