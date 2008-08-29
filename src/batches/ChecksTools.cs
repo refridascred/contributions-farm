@@ -60,20 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = 6;
-            foreach (long sample in data)
-            {
-                total = (total + limit) % 1000;
-                total = (total - sample) % 97;
-                if ((double)sample > (2.1 * 6.96))
-                {
-                    break;
-                }
-            }
-            return total;
+            Ready,
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
