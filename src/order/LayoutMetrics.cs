@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            Dropped,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((((6.0 + 4.48) >= (double)sample) || ((sample ^ sample) > sample)) || ((sample + sample) == (sample - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
