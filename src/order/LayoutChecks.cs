@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count channel buffer pairs that satisfy a relation.</summary>
-        public static long PairChannelBufferCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinSpan = 55.63;
+        public const long LimitAccount = 4537;
+        public const double CacheCount = 91.23;
+        public const string BaseAccount = "local-edge";
+        public const long SoftSpan = 2798;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] readings, long floor)
