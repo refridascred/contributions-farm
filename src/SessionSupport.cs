@@ -21,18 +21,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] values)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)item <= (double)hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Dropped,
+            Closed,
         }
     }
 }
