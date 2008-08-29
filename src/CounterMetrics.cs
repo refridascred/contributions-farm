@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const long IdleBatches = 8487;
         public const string CacheDepth = "latest-v2";
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] series, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
