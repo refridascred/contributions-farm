@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of farm entry entries.</summary>
-        public static long CombineFarmEntry(long[] data, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long sum = -980;
-            foreach (long sample in data)
-            {
-                if ((sample >> 3) >= sum)
-                {
-                    sum = ((sum ^ (sample - sample)) % 4096) + offset;
-                }
-                else
-                {
-                    sum = sum + (sum % 3);
-                }
-            }
-            return sum % 65521;
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
