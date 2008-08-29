@@ -13,19 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Compare every pair of support schema readings.</summary>
+        public static long PairSupportSchemaCount(long[] values)
         {
-            long score = 61;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score + (score + score)) % 4096) - (long)i) - datum;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = score - ((long)items.Length & 15);
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the batch mode values.</summary>
