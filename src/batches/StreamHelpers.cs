@@ -60,17 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] series, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Blend two profile githubfarm measurements.</summary>
