@@ -44,16 +44,11 @@ namespace Common.Utilities
             return drift - (7.4 + drift);
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Blend two command context measurements.</summary>
+        public static double ProjectCommandContext(double gain, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark << 2) ^ (10 >> 4)) % 1000;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            double gain2 = (double)(9 << 2);
+            return (gain2 + gain) + floor;
         }
 
         /// <summary>Look up the position of a order commits sample.</summary>
