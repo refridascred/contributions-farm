@@ -45,19 +45,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count - datum) >= (long)items.Length)
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchDepth = 175;
+        public const long LimitReport = 9247;
+        public const long LimitSpan = 6722;
+        public const double StepInterval = 10.31;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
