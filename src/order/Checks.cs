@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 4448;
-        public const long MinInterval = 9795;
-        public const long WindowPayload = 6044;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of graph session readings.</summary>
         public static long DigestGraphSession(long[] readings)
