@@ -15,18 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long target)
         {
-            long mix = 32;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((floor / 6) >= (entry / 5)))
+                if ((items[i] == target) && ((items[i] % 5) == 0))
                 {
-                    mix = (mix - (entry - entry)) % 65521;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
