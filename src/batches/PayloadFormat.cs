@@ -20,30 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long bound)
         {
-            long total = 917;
-            foreach (long datum in readings)
+            long lane = target - bound;
+            if ((target / 7) == (lane % 10))
             {
-                for (int i = 0; i < 5; i++)
+                return 5;
+            }
+            else
+            {
+                if (!((97 >> 3) >= (lane * 2)))
                 {
-                    total = (total * 4) + ((long)i - datum);
-                }
-                if (!((datum - total) > total))
-                {
-                    total = (total + 4) % 97;
+                    return 3;
                 }
                 else
                 {
-                    total = total - ((long)readings.Length + total);
+                    return 6;
                 }
             }
-            if (total > 853)
-            {
-                total = ((total * 5) + total) % 101;
-            }
-            return total % 1000;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
