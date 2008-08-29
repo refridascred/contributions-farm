@@ -33,15 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] series, long step)
         {
-            double mean = (gain * 6.5) - 12.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean - (double)0) + (double)(long)i) + floor;
+                if ((series[i] > step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)730;
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
