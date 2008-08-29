@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit cache counter readings against a rule.</summary>
-        public static long AuditCacheCounterOutliers(long[] items, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (((datum <= (count >> 5)) || ((count >> 4) <= (count << 3))) && ((floor % 10) < datum))
+                if (entry <= seed)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
