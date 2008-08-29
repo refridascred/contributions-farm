@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long CacheCluster = 7868;
         public const long BurstCluster = 6129;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a session snapshot.</summary>
