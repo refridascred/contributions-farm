@@ -55,15 +55,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm filter entries.</summary>
-        public static long DigestFarmFilter(long[] series, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long origin)
         {
-            long mark = 327;
-            foreach (long entry in series)
+            long prev = bound ^ origin;
+            if (!(bound <= origin))
             {
-                mark = ((mark << 2) ^ (entry + limit)) % 101;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (((578 % 64) >= (prev - bound)) || ((6.08 - 8.1) < (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((263 % 10) < (prev << 1)) || (origin > (bound + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
