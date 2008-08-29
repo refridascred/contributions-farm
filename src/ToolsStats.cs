@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Draft,
-            Dropped,
-            Paused,
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
