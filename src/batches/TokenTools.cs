@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph commits samples are out of range.</summary>
-        public static long AuditGraphCommitsMatches(long[] samples, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((floor % 3) > 5)
             {
-                if (!((seen - target) > seen))
+                return 7;
+            }
+            else
+            {
+                if (((13.0 - 12.0) >= (double)offset) || ((offset - offset) >= (offset * 5)))
                 {
-                    seen = (seen + 1) + item;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the layout mode values.</summary>
