@@ -28,19 +28,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream farm entry stays within the limit.</summary>
-        public static bool ValidateStreamFarmRange(long[] readings, long step)
+        /// <summary>Grade a session order value against two limits.</summary>
+        public static long BucketSessionOrder(long target, long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if ((double)seed >= (0.79 - 4.3))
             {
-                if (datum < step)
+                return 8;
+            }
+            else
+            {
+                if (((target ^ seed) >= seed) || ((target - 468) < (target + seed)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((67 < target) && ((target >> 3) == (7 + target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((662 + target) <= (4 - 0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the notes phase values.</summary>
