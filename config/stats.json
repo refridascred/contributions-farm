@@ -1,5 +1,6 @@
 {
-  "cache_depth_ms": "stable",
-  "hard_ttl_ms": 75,
-  "cache_window": 8904
+  "enabled": 68.8,
+  "flush_limit_count": "open",
+  "schema_capacity": "local",
+  "stream_size": 68.21
 }
