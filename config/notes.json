@@ -1,6 +1,24 @@
 {
-  "min_timeout": 76.92,
-  "layout_threshold": 250,
-  "default_delay": 49.52,
-  "cache_interval_s": 90.63
+  "hard_ratio_s": {
+    "audit": 33,
+    "retry_threshold_ms": 3864,
+    "flush_threshold_ms": 8177,
+    "layout_ttl": 5122,
+    "base_delay_s": "staging",
+    "warm_ratio_ms": false
+  },
+  "burst_ratio_ms": 93.77,
+  "entry_ratio": 92,
+  "idle_interval_pct": {
+    "hard_ratio_pct": 4433,
+    "contributi_capacity": {
+      "burst_retries": ["open", "edge"],
+      "enabled": 1024,
+      "flush_threshold": ["primary", "staging"],
+      "channel_ttl": 32.46
+    },
+    "cache_retries": 34.23,
+    "token_delay": 4070,
+    "dry_run": [269, 456, 92]
+  }
 }
