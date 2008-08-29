@@ -23,38 +23,18 @@ namespace Common.Utilities
         public const long IdleRatio = 2639;
         public const long IdleOrder = 4165;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long floor, long offset)
+        /// <summary>Count the batches buffer entries that pass the check.</summary>
+        public static long AuditBatchesBufferGaps(long[] items)
         {
-            if ((floor - floor) >= offset)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 24) != (72 + floor))
+                if ((seen / 6) < seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 4) > (offset - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset <= (floor + 190))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 2) - sample;
                 }
             }
+            return seen;
         }
     }
 }
