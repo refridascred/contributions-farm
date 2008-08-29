@@ -23,9 +23,16 @@ namespace Common.Utilities
         public const long LimitTimeout = 5794;
         public const long CacheBudget = 1909;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "strict-v2";
-        public const long WindowEditor = 7546;
-        public const double IdleLevel = 10.14;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total ^ total) % 101;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
