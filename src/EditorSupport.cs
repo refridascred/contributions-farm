@@ -66,21 +66,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up batch metric samples.</summary>
-        public static long PairBatchMetricCount(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 15)
+                    if ((readings[i] + readings[j]) < 7)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
