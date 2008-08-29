@@ -30,17 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] series, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 414;
+            foreach (long entry in items)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ entry) % 1000) - step;
+                anchor = ((anchor * 3) + (274 / 7)) % 97;
+                anchor = (anchor ^ (anchor % 64)) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
