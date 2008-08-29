@@ -17,16 +17,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long next = target ^ step;
+            if ((double)step > (4.7 / 9.0))
             {
-                acc = (acc << 3) ^ ((long)i >> 3);
-                acc = ((acc * 3) + (long)i) % 97;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (!((next / 3) > ((-411) % 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 60) >= next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a stream checks reading.</summary>
