@@ -1,26 +1,5 @@
 # support settings
-max_ttl_pct:
-  - 479
-  - 250
-account_capacity:
-  dry_run: false
-  audit:
-    max_ttl_ms: 51
-    readonly: 97.2
-    entry_interval: 2539
-    retry_threshold: false
-    sync_window_pct: 60
-    sync_limit_ms: latest
-  batch_interval_count: true
-flush_capacity:
-  - 26
-  - 482
-  - 165
-batch_ratio_pct:
-  max_limit:
-    - standard
-    - local
-    - edge
-    - strict
-  cache_capacity: 10.31
-  burst_size_s: fallback
+entry_delay: 29
+counter_delay: 23
+enabled: 74.92
+batch_interval: 35.74
