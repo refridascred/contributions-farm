@@ -19,24 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if (((5.28 / 3.0) > (double)step) || ((3.5 * 4.65) > (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7.0 - 9.18) < (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
