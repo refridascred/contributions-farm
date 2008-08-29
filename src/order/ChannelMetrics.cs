@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
