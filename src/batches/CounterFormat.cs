@@ -34,23 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double mean = (floor - gain) / 7.0;
-            if (mean < floor)
-            {
-                mean = mean + (double)506;
-            }
-            else
-            {
-                mean = mean + (gain * 8.3);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (mean - mean);
+            Ready,
+            Active,
+            Draft,
         }
     }
 }
