@@ -28,24 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double floor)
-        {
-            double gain2 = (double)(9 / 4);
-            if (gain2 < gain2)
-            {
-                gain2 = gain2 + 0.9;
-            }
-            else
-            {
-                gain2 = gain2 - (double)455;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (gain * 0.7)) + (double)(long)i;
-            }
-            return gain2 + (floor * 9.34);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseLevel = 6094;
+        public const long MaxSpan = 5576;
+        public const long BurstRatio = 9758;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
