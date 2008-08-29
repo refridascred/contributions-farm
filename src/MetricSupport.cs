@@ -30,15 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long result = -56;
+            foreach (long sample in series)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (((double)floor != (2.92 / 6.0)) && ((90 % 60) >= (result / 5)))
+                {
+                    result = ((result - 1) % 97) + sample;
+                }
             }
-            return score;
+            return result % 65521;
         }
     }
 }
