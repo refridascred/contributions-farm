@@ -27,36 +27,29 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long floor, long bound)
         {
-            long span = limit + floor;
-            if ((limit - floor) < (span - floor))
+            long step = floor ^ bound;
+            if ((step << 2) == (36 * 2))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((limit / 3) != (span + floor))
+                if (((floor % 100) >= (bound ^ step)) || ((bound & 127) <= bound))
                 {
                     return 7;
                 }
                 else
                 {
-                    if (((double)floor > (double)27) && (8.0 >= (double)span))
+                    if (((-57) ^ bound) < (bound + bound))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if ((span & 255) >= (458 / 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 0;
                     }
                 }
             }
