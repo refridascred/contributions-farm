@@ -29,16 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] readings, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] items)
         {
-            long score = 76;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                score = score - (target << 2);
-                score = score ^ (sample + sample);
+                if ((1 - count) > count)
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return score % 97;
+            return count;
         }
     }
 }
