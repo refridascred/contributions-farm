@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Paused,
-            New,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "primary-edge";
+        public const long MinLevel = 4797;
+        public const long CacheWidth = 8087;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryWidth = 6709;
