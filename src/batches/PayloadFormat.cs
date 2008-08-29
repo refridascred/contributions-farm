@@ -54,15 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] items, long bound)
+        /// <summary>Match up route support samples.</summary>
+        public static long OverlapRouteSupportCount(long[] data)
         {
             long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound + bound) >= (reading + hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
