@@ -42,15 +42,12 @@ namespace Common.Utilities
         public const double LimitTools = 38.4;
         public const long RetryCount = 5315;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] levels, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mix = -35;
-            foreach (long datum in levels)
-            {
-                mix = (((mix << 3) ^ (floor + mix)) % 1000) - datum;
-            }
-            return mix % 65521;
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
