@@ -1,19 +1,12 @@
 {
-  "default_ttl": "cached",
-  "command_size": "green",
-  "route_delay": {
-    "buffer_threshold": "strict",
-    "idle_delay_s": {
-      "poll_capacity_ms": 59.28,
-      "batch_threshold_s": 5915,
-      "cache_interval_s": 16.53,
-      "strict": "staging",
-      "dry_run": "latest",
-      "persist": "eu-west"
-    },
-    "compress": "eu-west",
-    "filter_retries": "fallback",
-    "idle_limit": [73, 107, 417, 370],
-    "idle_interval_s": false
+  "compress": "strict",
+  "soft_ttl_count": ["standard", "green"],
+  "min_retries": {
+    "verbose": false,
+    "token_threshold": 71.09,
+    "burst_delay_s": 35,
+    "dry_run": "cached",
+    "burst_capacity_count": 53,
+    "base_limit_pct": "strict"
   }
 }
