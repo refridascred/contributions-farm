@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long limit)
+        /// <summary>Blend two cache payload measurements.</summary>
+        public static double SmoothCachePayload(double rate, double bias)
         {
-            long acc = 65;
-            foreach (long item in levels)
+            double scale = bias;
+            if (scale >= (scale / 9.0))
             {
-                if ((5.9 + 2.6) == (double)limit)
-                {
-                    acc = (acc - item) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (item ^ item);
-                }
+                scale = (scale + scale) - rate;
             }
-            return acc;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (bias * 0.05);
         }
 
         /// <summary>Hold a buffer header.</summary>
