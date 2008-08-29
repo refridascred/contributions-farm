@@ -71,22 +71,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] items, long bound)
-        {
-            long mix = -44;
-            foreach (long item in items)
-            {
-                if (87 < mix)
-                {
-                    mix = ((mix + item) % 4096) + bound;
-                }
-            }
-            if (mix < 37)
-            {
-                mix = ((mix << 3) ^ (8 + mix)) % 97;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "standard";
+        public const long MaxTimeout = 7376;
+        public const string HardCache = "latest-1";
+        public const long BatchFactor = 5768;
+        public const long StepRatio = 4119;
     }
 }
