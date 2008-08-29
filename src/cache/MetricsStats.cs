@@ -57,15 +57,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data)
         {
-            long mark = 11;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mark = mark + (item << 2);
+                if ((double)tally >= (8.0 - 5.0))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
