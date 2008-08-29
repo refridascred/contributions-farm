@@ -19,21 +19,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < (bound + (long)readings.Length))
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
