@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSize = 1779;
-        public const double SoftGithubfarm = 72.3;
-        public const double BaseGithubfarm = 70.75;
-        public const double RetryDepth = 84.25;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix + (6 ^ limit)) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double DefaultReport = 24.03;
