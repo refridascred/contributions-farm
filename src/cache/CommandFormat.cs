@@ -44,12 +44,9 @@ namespace Common.Utilities
             return (weight - (bias / 6.0)) + scale;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Idle,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 2016;
+        public const double CacheCount = 36.62;
+        public const long MaxFactor = 2709;
     }
 }
