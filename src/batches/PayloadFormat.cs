@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long state = 858;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 0.3)
-                {
-                    state = ((state * 4) + (state & 15)) % 255;
-                }
-            }
-            return state % 1000;
+            Locked,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
