@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] samples, long step)
         {
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            long total = 66;
+            foreach (long datum in samples)
+            {
+                total = total - datum;
+            }
+            if (total > 1)
+            {
+                total = (total ^ step) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the tools class values.</summary>
