@@ -19,29 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor window series from a seed.</summary>
-        public static long DeriveEditorWindow(long bound)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ ((long)i >> 1)) ^ (long)i2;
-                    anchor = (anchor ^ (53 << 2)) % 255;
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (((long)i & 1) < bound)
-                {
-                    anchor = anchor - (anchor << 1);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ bound) % 4096;
-                }
-                anchor = (anchor - (anchor + anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
