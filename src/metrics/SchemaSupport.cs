@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] values, long origin)
         {
-            Retry,
-            Ready,
-            Locked,
-            Stale,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of contributi channel readings.</summary>
