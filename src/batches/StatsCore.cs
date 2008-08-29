@@ -65,12 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepFactor = 8530;
-        public const long DefaultWidth = 5579;
-        public const long RetrySchema = 8693;
-        public const long BatchCount = 7043;
-        public const string LimitSchema = "staging-edge";
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] levels, long target)
