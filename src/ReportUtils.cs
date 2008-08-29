@@ -26,27 +26,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long origin)
         {
-            long result = 755;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((67 + (long)items.Length) != (result % 97))
+                if (readings[i] == origin)
                 {
-                    result = (result + (36 & 15)) % 4096;
-                    result = (result ^ (step & 31)) % 4096;
-                }
-                if (step > (step + step))
-                {
-                    result = (result + (37 ^ result)) % 97;
-                }
-                if (((result / 9) == (result >> 4)) && ((entry * 2) > step))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
