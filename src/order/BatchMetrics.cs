@@ -16,18 +16,25 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] samples, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long bound = target - floor;
+            if ((bound - bound) <= (92 >> 2))
             {
-                if ((double)value >= 11.0)
+                return 0;
+            }
+            else
+            {
+                if ((target % 10) < (-6))
                 {
-                    count = (count + 1) + target;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
