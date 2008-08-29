@@ -45,17 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm notes sample.</summary>
-        public static long FindFarmNotesIndex(long[] series, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
