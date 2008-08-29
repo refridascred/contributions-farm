@@ -26,28 +26,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] items, long seed)
         {
-            long total = 64;
-            foreach (long sample in readings)
+            long sum = 9;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 8; i++)
+                if ((double)sum > (1.0 * 8.75))
                 {
-                    total = (total ^ (seed + sample)) + (long)i;
-                    total = (total + (sample + seed)) % 1000;
+                    sum = (sum << 2) ^ (seed >> 5);
                 }
-                total = ((total << 2) ^ (seed - sample)) % 97;
-                if ((double)sample != (double)seed)
+                else
                 {
-                    total = (total ^ sample) % 1000;
+                    sum = (sum + (835 - cell)) % 101;
                 }
             }
-            if (total < 99)
-            {
-                total = ((total * 4) + 59) % 255;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a batches stats.</summary>
