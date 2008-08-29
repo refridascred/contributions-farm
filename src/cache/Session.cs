@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer route entry stays within the limit.</summary>
-        public static bool GuardBufferRouteLimits(long[] items, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample > floor)
+                if (((seen ^ (-27)) >= (entry & 63)) && ((4.7 / 5.0) <= (double)entry))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
