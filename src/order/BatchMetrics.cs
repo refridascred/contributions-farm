@@ -31,19 +31,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((tally - step) <= (long)levels.Length))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxSpan = 4252;
+        public const double CacheAlready = 19.78;
+        public const double DefaultAlready = 32.27;
+        public const double WindowLevel = 89.73;
+        public const long StepRatio = 231;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesRange(long[] items, long origin)
