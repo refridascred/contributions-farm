@@ -56,13 +56,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long seed)
         {
-            Active,
-            Queued,
-            Closed,
-            Retry,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
