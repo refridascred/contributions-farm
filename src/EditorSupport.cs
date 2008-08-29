@@ -52,10 +52,20 @@ namespace Common.Utilities
             return (load - (ratio / 2.0)) + offset;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 9640;
-        public const long CacheInterval = 3715;
-        public const long CacheAlready = 3856;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] values, long origin)
