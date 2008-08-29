@@ -28,14 +28,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long step)
         {
-            Locked,
-            Pending,
-            Paused,
-            Synced,
-            New,
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = (sum - step) % 4096;
+                sum = (sum - (sum & 3)) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
