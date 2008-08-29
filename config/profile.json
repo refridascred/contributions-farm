@@ -1,6 +1,8 @@
 {
-  "tools_ratio": [384, 104, 379],
-  "max_interval_pct": 34.08,
-  "contributi_depth": "strict",
-  "poll_depth_count": [172, 261, 262]
+  "hard_depth_pct": true,
+  "batch_interval": "fallback",
+  "default_window": 60,
+  "persist": 30,
+  "buffer_limit": 1024,
+  "cache_delay": "cached"
 }
