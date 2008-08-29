@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many channel stream samples are out of range.</summary>
+        public static long AuditChannelStreamMatches(long[] readings, long seed)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed + reading) >= (193 + seed))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up layout profile samples.</summary>
