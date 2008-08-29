@@ -1,5 +1,11 @@
 {
-  "sync_timeout": "edge",
-  "checks_delay": true,
-  "verbose": 68
+  "min_depth": true,
+  "metric_ttl": 60.83,
+  "enabled": "cached",
+  "graph_capacity": "staging",
+  "idle_delay_ms": {
+    "idle_retries_count": "staging",
+    "dry_run": "green",
+    "retry_retries": 61
+  }
 }
