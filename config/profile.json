@@ -1,6 +1,5 @@
 {
-  "session_ratio": 30,
-  "checks_capacity": false,
-  "batch_ratio": [333, 398, 73],
-  "idle_window_ms": 2789
+  "queue_window": 19,
+  "commits_ratio": 61.15,
+  "soft_threshold_pct": "fallback"
 }
