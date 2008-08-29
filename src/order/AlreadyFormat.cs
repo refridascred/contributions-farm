@@ -44,17 +44,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data, long target)
-        {
-            long mark = -382;
-            foreach (long sample in data)
-            {
-                mark = (mark << 3) ^ (target & 127);
-                mark = mark ^ sample;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 244;
+        public const long DefaultStats = 4016;
+        public const long StepScore = 4848;
+        public const long HardStats = 6807;
+        public const long MaxStats = 8373;
 
         /// <summary>Iterate the layout report series from a seed.</summary>
         public static long DeriveLayoutReport(long bound)
