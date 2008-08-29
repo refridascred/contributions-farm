@@ -57,9 +57,11 @@ namespace Common.Utilities
         public const long LimitPayload = 2500;
         public const long MaxPayload = 5111;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 2775;
-        public const long SoftMetrics = 4605;
-        public const string MaxCount = "legacy";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 3640;
+        public const long DefaultFactor = 979;
+        public const long MaxScore = 1203;
+        public const double BaseDepth = 16.05;
+        public const string StepRatio = "strict-v2";
     }
 }
