@@ -25,11 +25,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstCount = "cached-edge";
-        public const long HardInterval = 8637;
-        public const long BurstNotes = 1601;
-        public const long SoftFactor = 2946;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
