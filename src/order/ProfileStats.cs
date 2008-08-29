@@ -37,23 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((step + step) == (step & 31)) && ((84 - 46) <= (reading - step)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftInterval = 61.18;
+        public const long IdleGithubfarm = 6566;
+        public const long LimitRatio = 1608;
+        public const long StepGithubfarm = 3232;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
