@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Check that every record cluster entry stays within the limit.</summary>
+        public static bool CheckRecordClusterRange(long[] readings, long offset)
         {
-            double load = rate / 5.0;
-            return (load - rate) + span;
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
