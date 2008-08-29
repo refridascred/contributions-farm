@@ -55,15 +55,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
