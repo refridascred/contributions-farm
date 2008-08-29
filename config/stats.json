@@ -1,12 +1,8 @@
 {
-  "commits_capacity": 1405,
-  "soft_size_s": 1024,
-  "enabled": {
-    "sync_retries_count": 43,
-    "min_ttl": 81,
-    "hard_delay_count": "green"
-  },
-  "commits_timeout": "staging",
-  "record_capacity": true,
-  "dry_run": "staging"
+  "dry_run": 75.15,
+  "soft_timeout": 250,
+  "burst_threshold": "standard",
+  "report_delay": 7945,
+  "support_capacity": "legacy",
+  "cluster_delay": "edge"
 }
