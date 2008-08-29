@@ -1,5 +1,9 @@
 # support settings
-entry_delay: 29
-counter_delay: 23
-enabled: 74.92
-batch_interval: 35.74
+sync_interval_count:
+  - latest
+  - blue
+  - eu-west
+channel_delay: 11.82
+dry_run: 4070
+warm_capacity_pct: stable
+flush_ratio_s: 250
