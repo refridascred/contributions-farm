@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
             long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count < (2 >> 5)) || ((9.0 / 7.0) > (double)count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
