@@ -66,11 +66,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchWidth = 7726;
-        public const long DefaultFilter = 2029;
-        public const string LimitTimeout = "alpha-v2";
-        public const long BurstScore = 6658;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueRange(long[] levels, long seed)
