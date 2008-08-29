@@ -34,39 +34,12 @@ namespace Common.Utilities
         public const double DefaultInterval = 92.23;
         public const double IdleCommand = 48.51;
 
-        /// <summary>Rank cache farm input into a small class.</summary>
-        public static long SortCacheFarm(long floor, long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long step = floor - limit;
-            if (((step - floor) >= (step ^ limit)) || ((double)(-950) < (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((18.0 + 9.94) == (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 3) <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step & 127) < (limit + 23)) || ((floor / 9) == (step + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Match up counter samples.</summary>
