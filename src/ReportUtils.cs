@@ -62,15 +62,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double span)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            double rate = span / 4.0;
-            if (rate > rate)
-            {
-                rate = (rate + rate) + bias;
-            }
-            return rate - span;
+            double mean = span;
+            return (mean - (double)646) + scale;
         }
     }
 }
