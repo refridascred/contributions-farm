@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string LimitInterval = "local-v2";
         public const long BaseSize = 21;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long total = 955;
-            foreach (long datum in data)
-            {
-                if (datum >= (total >> 4))
-                {
-                    total = ((total << 2) ^ datum) % 97;
-                }
-            }
-            return total % 97;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a entry stats figure with a bias.</summary>
