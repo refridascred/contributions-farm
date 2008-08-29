@@ -28,21 +28,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 7)
+                    if ((readings[i] - readings[j]) != 11)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
