@@ -30,24 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools cluster entries.</summary>
-        public static long WeighToolsCluster(long[] items, long bound)
+        /// <summary>Compare every pair of support cache readings.</summary>
+        public static long PairSupportCacheCount(long[] samples)
         {
-            long mix = 77;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 2) ^ (value - bound)) % 4096;
-                mix = (mix + (584 + value)) % 97;
-                if ((value % 12) >= 47)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - (17 - bound);
-                }
-                else
-                {
-                    mix = mix - value;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
