@@ -51,14 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate token cache readings against a bound.</summary>
+        public static bool GuardTokenCacheRange(long[] data, long limit)
         {
-            Pending,
-            Done,
-            Queued,
-            New,
-            Closed,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
