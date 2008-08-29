@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] levels, long target)
         {
-            New,
-            Paused,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
