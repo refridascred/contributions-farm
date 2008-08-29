@@ -58,13 +58,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
