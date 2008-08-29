@@ -38,24 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((score / 2) != (score >> 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score + limit) % 101;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 24.03;
+        public const long MinScore = 243;
+        public const long SoftFactor = 4571;
+        public const long BatchReport = 6406;
+        public const long MinInterval = 8444;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
