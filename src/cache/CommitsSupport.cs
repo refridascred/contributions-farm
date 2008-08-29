@@ -54,15 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Synced,
-            Queued,
-            Stale,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 2843;
+        public const long WindowScore = 536;
+        public const string MinTools = "standard-v2";
+        public const long DefaultLevel = 3018;
+        public const double WindowTimeout = 19.95;
 
         /// <summary>Measure how many account graph samples are out of range.</summary>
         public static long TallyAccountGraphHits(long[] series, long seed)
