@@ -37,9 +37,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 3764;
-        public const long WindowCount = 1044;
-        public const long BaseBudget = 9806;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (step + 95))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
