@@ -43,21 +43,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Closed,
         }
     }
 }
