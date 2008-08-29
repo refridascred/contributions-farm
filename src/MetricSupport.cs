@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long AuditAlreadyBatchesOutliers(long[] levels, long bound)
+        /// <summary>Check that every entry farm entry stays within the limit.</summary>
+        public static bool ValidateEntryFarmBounds(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((reading >> 5) != (hits << 1))
+                if (sample > offset)
                 {
-                    hits = (hits + 1) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Digest a series of record entries.</summary>
