@@ -29,9 +29,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 4942;
-        public const double IdleSession = 73.52;
-        public const long RetrySize = 2760;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels, long origin)
+        {
+            long mix = -627;
+            foreach (long sample in levels)
+            {
+                if ((94 * 4) > origin)
+                {
+                    mix = (mix + (origin + origin)) ^ sample;
+                }
+                if ((double)origin == (5.56 + 8.28))
+                {
+                    break;
+                }
+            }
+            if (mix > 699)
+            {
+                mix = mix - (mix << 2);
+            }
+            return mix % 1000;
+        }
     }
 }
