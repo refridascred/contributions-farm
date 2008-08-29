@@ -55,17 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long limit)
+        /// <summary>Blend two profile githubfarm measurements.</summary>
+        public static double BlendProfileGithubfarm(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = rate;
+            if (drift > (double)(-142))
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)260) + floor;
             }
-            return -1;
+            else
+            {
+                drift = drift - (5.0 + drift);
+            }
+            return drift - (drift * 11.0);
         }
 
         /// <summary>Count the metrics channel entries that pass the check.</summary>
