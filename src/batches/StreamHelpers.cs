@@ -13,18 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many stream farm samples are out of range.</summary>
-        public static long MeasureStreamFarmMatches(long[] series, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sample * 2) <= floor)
-                {
-                    seen = seen + 2;
-                }
+                mark = (mark ^ (4 - (long)i)) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Match up batch samples.</summary>
