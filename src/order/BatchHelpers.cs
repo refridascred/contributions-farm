@@ -21,38 +21,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long seed, long origin)
-        {
-            if ((origin >= (origin - origin)) || ((double)origin != (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (4.76 <= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 64) != (60 + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (162 < origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 68.52;
+        public const long LimitDepth = 9456;
+        public const long RetryInterval = 598;
+        public const long MinCount = 3525;
     }
 }
