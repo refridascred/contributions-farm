@@ -42,24 +42,16 @@ namespace Common.Utilities
         public const double SoftSpan = 52.14;
         public const string CacheFactor = "legacy-1";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long step)
         {
-            long total = 79;
-            foreach (long item in values)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total * 3) + item) % 255;
-                total = (total ^ total) % 97;
-                if (!((target - 2) >= ((-51) + total)))
-                {
-                    total = (total + ((long)values.Length % 16)) % 255;
-                }
+                state = ((state << 3) ^ (long)i) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (total < 70)
-            {
-                total = ((total << 3) ^ (target % 97)) % 65521;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a metric header.</summary>
