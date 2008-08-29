@@ -77,19 +77,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long step)
         {
-            long state = 698;
-            foreach (long cell in samples)
+            long sum = 418;
+            foreach (long value in readings)
             {
-                state = (state ^ offset) ^ cell;
+                sum = (sum << 2) ^ (step + value);
+                if (!!((double)step != (6.2 - 5.8)))
+                {
+                    sum = (sum << 2) ^ (step / 2);
+                }
+                if (459 > value)
+                {
+                    sum = ((sum << 3) ^ (step - 7)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ (step / 2)) % 101;
+                }
+                if ((sum % 12) < (value << 3))
+                {
+                    break;
+                }
             }
-            if (state > 704)
-            {
-                state = state ^ (85 - 58);
-            }
-            return state % 65521;
+            return sum;
         }
     }
 }
