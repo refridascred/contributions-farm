@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Dropped,
-            Ready,
-            New,
-            Done,
-            Active,
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
