@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long acc = 1;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - (acc / 2)) ^ datum;
-                acc = ((acc << 2) ^ (step * 5)) % 65521;
-                acc = ((acc << 2) ^ (step + 663)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Rank context route input into a small class.</summary>
