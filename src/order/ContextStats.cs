@@ -68,15 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches schema readings.</summary>
-        public static long CombineBatchesSchema(long[] items, long limit)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long total = 10;
-            foreach (long datum in items)
-            {
-                total = (((total << 2) ^ 76) - datum) + limit;
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
