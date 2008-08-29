@@ -33,12 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Retry,
             Done,
-            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
