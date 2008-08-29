@@ -1,9 +1,22 @@
 # githubfarm settings
-audit: 82.08
-hard_timeout_pct: 14.84
-readonly: strict
-batch_interval: true
-strict:
-  - 457
-  - 443
-  - 197
+filter_threshold:
+  - 362
+  - 454
+support_timeout: false
+verbose:
+  - 482
+  - 63
+  - 205
+max_threshold: fallback
+cache_threshold_count: 4041
+account_interval:
+  sync_window: false
+  stats_capacity: 500
+  verbose: open
+  stats_timeout: stable
+  token_ttl: 21.93
+  min_ratio_count:
+    poll_threshold: false
+    dry_run: 28.61
+    warm_depth_count: 500
+    metric_window: 11
