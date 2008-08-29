@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first buffer editor entry that matches the target.</summary>
-        public static long LookupBufferEditorIndex(long[] samples, long floor)
+        /// <summary>Project the next githubfarm entry value.</summary>
+        public static double SmoothGithubfarmEntry(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = rate * 5.5;
+            if (bias <= (bias + rate))
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (8.5 + 9.0)) + span;
             }
-            return -1;
+            return bias - bias;
         }
 
         /// <summary>Adjust a route queue reading.</summary>
