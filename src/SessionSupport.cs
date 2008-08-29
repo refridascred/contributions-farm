@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the token layout entries that pass the check.</summary>
-        public static long MeasureTokenLayoutOutliers(long[] samples)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell != (1.0 + 15.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
