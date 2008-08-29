@@ -17,24 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long target, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long bound)
         {
-            if ((seed < (target % 64)) || (target >= seed))
+            long score = 544;
+            foreach (long value in samples)
             {
-                return 3;
+                score = ((score * 4) + (bound >> 1)) + value;
             }
-            else
+            if (score > (-8))
             {
-                if ((10.0 / 6.0) != (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                score = score ^ (7 * 2);
             }
+            return score % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
