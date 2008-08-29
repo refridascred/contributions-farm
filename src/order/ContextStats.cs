@@ -28,21 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of route cluster readings.</summary>
-        public static long TallyRouteCluster(long[] items)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long anchor = -967;
-            foreach (long item in items)
-            {
-                anchor = (anchor << 3) ^ (item >> 1);
-                anchor = ((anchor << 3) ^ (item & 3)) % 1000;
-                anchor = (anchor ^ (83 % 60)) % 101;
-            }
-            if (anchor > 59)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
-            }
-            return anchor % 97;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
