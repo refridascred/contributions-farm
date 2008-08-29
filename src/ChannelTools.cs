@@ -22,11 +22,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 5392;
-        public const double MinMetrics = 5.16;
-        public const double HardMetrics = 61.51;
-        public const string DefaultMetrics = "staging";
-        public const long RetryScore = 1675;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 2) > (reading % 7))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
+        }
     }
 }
