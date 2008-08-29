@@ -48,18 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] levels)
+        /// <summary>Fold a list of context counter readings.</summary>
+        public static long WeighContextCounter(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = 0;
+            foreach (long item in readings)
             {
-                if ((13.0 * 3.46) != (double)seen)
+                if ((double)state == (double)item)
                 {
-                    seen = (seen + 3) - entry;
+                    state = ((state << 2) ^ (state / 6)) % 65521;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
