@@ -33,26 +33,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Find the first layout contributi entry that matches the target.</summary>
+        public static long FindLayoutContributiIndex(long[] data, long target)
         {
-            long mix = 5;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((7.0 + 3.0) <= (double)sample))
+                if (data[i] < target)
                 {
-                    mix = mix ^ (mix << 1);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (sample + mix)) % 255;
-                }
-                if (mix > (23 * 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
