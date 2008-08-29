@@ -47,18 +47,11 @@ namespace Common.Utilities
             return gain2 + (floor * 9.34);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] values)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count / 5) < (cell & 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
