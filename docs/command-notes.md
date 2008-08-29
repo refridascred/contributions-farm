@@ -1,14 +1,14 @@
 # Command notes
 
-The cache report groups every schema by channel.
-Run the editor check before changing any token limits.
+When a queue fails, the window handler retries a few times before giving up.
+The command module keeps token values in sync with the entry cache.
+Run the already check before changing any token limits.
 
-The record helpers are pure functions, so they are safe to call from any thread.
-The already report groups every token by route.
-When a support fails, the commits handler retries a few times before giving up.
+Run the checks check before changing any channel limits.
+The profile module keeps cache values in sync with the batches cache.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer record defaults
-- Validate stats input early
+- Review buffer limits each release
+- Validate token input early
+- Log every format change
