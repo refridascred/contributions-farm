@@ -27,13 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many report batch samples are out of range.</summary>
+        public static long TallyReportBatchMatches(long[] values)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (item <= (item >> 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a channel reading.</summary>
