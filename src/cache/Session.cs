@@ -14,19 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mix = 0;
-            foreach (long entry in values)
-            {
-                mix = (mix ^ entry) % 65521;
-                if (((7 + mix) > (mix * 2)) && ((7 & 1) != (mix ^ entry)))
-                {
-                    mix = (mix + (99 + entry)) % 1000;
-                }
-            }
-            return mix % 65521;
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
