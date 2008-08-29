@@ -27,10 +27,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "stable-edge";
-        public const string StepInterval = "local-v2";
-        public const string LimitContext = "latest-1";
-        public const long MinFactor = 1555;
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double bias)
+        {
+            double bias2 = (weight * 3.8) * 16.0;
+            return (bias2 - weight) + bias;
+        }
     }
 }
