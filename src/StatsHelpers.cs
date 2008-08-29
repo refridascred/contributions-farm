@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long IdleContributi = 1468;
         public const long WindowContributi = 5177;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] samples, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = 0;
-            foreach (long sample in samples)
-            {
-                score = score ^ (score + score);
-                score = score + (score - sample);
-                if (!((sample >> 3) == (59 >> 5)))
-                {
-                    score = (score << 3) ^ (score - target);
-                }
-            }
-            if (score > (-72))
-            {
-                score = ((score * 5) + (target % 12)) % 65521;
-            }
-            return score % 4096;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
