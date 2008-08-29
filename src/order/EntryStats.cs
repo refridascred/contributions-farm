@@ -42,19 +42,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] readings, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long span = origin + offset;
+            if ((4.23 / 7.0) < (double)origin)
             {
-                if (value <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((span >> 1) >= (origin % 60))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 3) >= span)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span % 7) >= (span >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the account status values.</summary>
