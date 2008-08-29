@@ -1,6 +1,7 @@
 {
-  "enabled": 68.8,
-  "flush_limit_count": "open",
-  "schema_capacity": "local",
-  "stream_size": 68.21
+  "retry_depth": "stable",
+  "cache_window_count": 30,
+  "order_size": 9,
+  "entry_window": [4, 45, 208, 75],
+  "base_size": true
 }
