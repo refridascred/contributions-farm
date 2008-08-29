@@ -20,15 +20,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items)
         {
-            double mean = (16.0 - scale) - (span + span);
-            for (int i = 0; i < 4; i++)
+            long acc = 65;
+            foreach (long cell in items)
             {
-                mean = mean - (double)(long)i;
+                acc = ((acc - acc) % 255) + cell;
+                if ((double)acc > (4.2 * 5.58))
+                {
+                    break;
+                }
             }
-            return mean + (mean / 3.0);
+            return acc;
         }
 
         /// <summary>Check that every stream buffer entry stays within the limit.</summary>
