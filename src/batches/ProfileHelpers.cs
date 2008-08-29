@@ -58,18 +58,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((2 - 9) > offset)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "open-v2";
+        public const string RetryPayload = "standard-1";
+        public const double DefaultPayload = 27.59;
+        public const double WindowFactor = 79.37;
+        public const double MaxInterval = 65.53;
     }
 }
