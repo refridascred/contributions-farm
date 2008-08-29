@@ -1,7 +1,7 @@
 {
-  "retry_depth_ms": [202, 84, 24, 152],
-  "format_size": [349, 29],
-  "idle_timeout_count": 7.22,
-  "entry_delay": true,
-  "poll_limit_s": "primary"
+  "compress": ["fallback", "local"],
+  "soft_threshold_s": 43.77,
+  "enabled": 1024,
+  "metric_limit": [195, 379],
+  "base_limit": 43
 }
