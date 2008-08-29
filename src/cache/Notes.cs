@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const double HardCount = 20.5;
         public const long WindowReport = 4025;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (entry > (entry - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
