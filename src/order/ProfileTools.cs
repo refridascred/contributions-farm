@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many context batch samples are out of range.</summary>
-        public static long AuditContextBatchGaps(long[] levels)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 4) > 515)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
