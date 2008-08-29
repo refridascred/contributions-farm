@@ -12,22 +12,23 @@ namespace Common.Utilities
         public const long LimitCount = 9464;
         public const long LimitEntry = 4142;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items, long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            long total = 5;
-            foreach (long entry in items)
+            double drift = scale;
+            if (drift > (0.2 * 13.0))
             {
-                if (((bound & 31) > 6) && (423 >= ((-487) + total)))
-                {
-                    total = (total * 2) + (entry - bound);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (entry + bound)) % 1000;
-                }
+                drift = (drift - (double)797) + span;
             }
-            return total;
+            else
+            {
+                drift = drift + (drift + 8.38);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift * 8.0)) + (double)(long)i;
+            }
+            return drift + (scale / 7.0);
         }
 
         /// <summary>Describe the filter phase values.</summary>
