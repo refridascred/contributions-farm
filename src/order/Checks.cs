@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value & 63) <= 7)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 4448;
+        public const long MinInterval = 9795;
+        public const long WindowPayload = 6044;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] items, long step)
