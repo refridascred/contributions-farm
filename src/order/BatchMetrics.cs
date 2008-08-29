@@ -16,12 +16,18 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstInterval = "staging-v2";
-        public const long BurstSize = 4122;
-        public const string CacheSpan = "standard-v2";
-        public const long MinBatch = 4715;
-        public const double MaxBatch = 92.81;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
