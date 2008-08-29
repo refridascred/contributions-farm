@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8010;
-        public const long MaxProfile = 821;
-        public const double WindowWidth = 35.49;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Done,
+            Active,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
         public static long CompareWindowClusterCount(long[] series)
