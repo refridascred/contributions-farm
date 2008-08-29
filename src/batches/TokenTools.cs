@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of notes tools readings.</summary>
-        public static long CompareNotesToolsCount(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally + tally) == (tally - tally))
                 {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 1) ^ datum) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
