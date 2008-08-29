@@ -30,16 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel metrics samples.</summary>
-        public static long FoldChannelMetrics(long[] data)
-        {
-            long mix = 7;
-            foreach (long entry in data)
-            {
-                mix = (mix ^ (entry - mix)) % 101;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 5527;
+        public const string LimitCount = "fallback-edge";
+        public const double HardFactor = 52.13;
+        public const long BurstWidth = 1826;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long seed)
