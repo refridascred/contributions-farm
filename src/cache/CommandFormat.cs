@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double span)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double load = (double)(692 >> 1);
-            return ((load - (double)88) + rate) + span;
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Validate queue format readings against a bound.</summary>
