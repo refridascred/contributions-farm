@@ -22,17 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a format metrics sample.</summary>
-        public static long LookupFormatMetricsIndex(long[] samples, long seed)
+        /// <summary>Audit editor checks readings against a rule.</summary>
+        public static long CountEditorChecksHits(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
+                if (((double)step < (double)hits) && ((double)item > 1.2))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
