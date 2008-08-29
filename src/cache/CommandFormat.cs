@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Combine record batch values into a single score.</summary>
+        public static long ScoreRecordBatch(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -4;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)floor > (double)item)
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    result = result + (result >> 5);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count checks buffer pairs that satisfy a relation.</summary>
