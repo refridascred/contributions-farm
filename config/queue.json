@@ -1,6 +1,6 @@
 {
-  "min_window_s": 29.16,
-  "stats_timeout": 5334,
-  "burst_limit": 49.62,
-  "cache_delay": [78, 256, 498]
+  "session_delay": "staging",
+  "warm_ratio_pct": 6545,
+  "min_delay_pct": "green",
+  "context_window": "open"
 }
