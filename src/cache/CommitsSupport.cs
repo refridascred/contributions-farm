@@ -21,13 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Active,
-            Ready,
-            Failed,
-            Paused,
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
