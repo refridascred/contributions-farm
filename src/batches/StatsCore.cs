@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long origin, long floor)
         {
-            Synced,
-            Active,
-            Queued,
-            Failed,
-            Paused,
+            long slot = origin ^ floor;
+            if ((3.47 + 1.8) > (double)slot)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin * 5) != ((-51) ^ slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot <= (floor - origin)) || ((double)slot < (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a format reading.</summary>
