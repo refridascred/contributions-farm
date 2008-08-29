@@ -1,7 +1,5 @@
 {
-  "checks_size": "latest",
-  "persist": "local",
-  "sync_delay_s": 100,
-  "stats_depth": 94.76,
-  "context_size": 435
+  "cluster_window": true,
+  "flush_threshold_pct": "open",
+  "queue_timeout": true
 }
