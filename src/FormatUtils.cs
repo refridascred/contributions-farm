@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
+                    if ((data[i] + data[j]) < 18)
                     {
                         tally = tally + 1;
                     }
