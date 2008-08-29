@@ -1,6 +1,9 @@
-id,level,region,count
-1,216,99,626
-2,blue,667,934
-3,401,966,163
-4,green,stable,68.72
-5,latest,518,701
+id,weight,owner
+1,475,33.28
+2,standard,382
+3,18.07,392
+4,186,247
+5,legacy,open
+6,stable,844
+7,19,634
+8,88.31,328
