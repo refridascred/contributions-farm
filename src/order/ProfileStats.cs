@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every order batches entry stays within the limit.</summary>
-        public static bool VerifyOrderBatchesBounds(long[] data, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (datum < origin)
+                if (reading <= bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
