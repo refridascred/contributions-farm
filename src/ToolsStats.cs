@@ -54,21 +54,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = acc - 9;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Blend two tools report measurements.</summary>
