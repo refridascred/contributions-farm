@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values, long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double ratio, double floor)
         {
-            long state = 994;
-            foreach (long value in values)
+            double weight = (double)265 / 7.0;
+            if (weight <= ratio)
             {
-                state = (((state << 3) ^ (step * 4)) % 101) ^ value;
+                weight = (weight - 7.26) - floor;
             }
-            return state;
+            return weight + ratio;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
