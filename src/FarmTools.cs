@@ -31,19 +31,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long floor, long target)
         {
-            bool ok = true;
-            foreach (long value in items)
+            if ((floor + floor) != (target >> 3))
             {
-                if (value >= step)
+                return 8;
+            }
+            else
+            {
+                if (floor > (25 - 0))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + target) >= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + target) != (target + 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
