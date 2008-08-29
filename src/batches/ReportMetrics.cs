@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Count window cluster pairs that satisfy a relation.</summary>
+        public static long CompareWindowClusterCount(long[] series)
         {
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a cache context pair into a bucket.</summary>
