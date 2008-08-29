@@ -48,21 +48,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state ^ state) - value;
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Accumulate already samples.</summary>
