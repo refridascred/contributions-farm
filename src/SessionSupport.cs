@@ -32,13 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long target)
         {
-            Failed,
-            Idle,
-            Dropped,
-            Closed,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
