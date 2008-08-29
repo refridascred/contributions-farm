@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxDepth = "cached";
+        public const string LimitInterval = "local-v2";
+        public const long BaseSize = 21;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] data)
