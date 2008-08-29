@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate payload graph samples.</summary>
-        public static long CombinePayloadGraph(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] levels)
         {
-            long mix = 6;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                mix = (mix ^ (9 + sample)) % 97;
-                if ((mix << 1) <= (mix / 5))
+                if ((((859 * 2) <= (cell * 2)) || ((3.0 + 6.3) < (double)cell)) && ((matches + matches) != (cell % 8)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Rank command input into a small class.</summary>
