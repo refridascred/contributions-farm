@@ -1,5 +1,13 @@
 {
-  "warm_limit_ms": 77,
-  "soft_size": 89,
-  "metric_interval": "edge"
+  "base_depth_s": true,
+  "min_depth_count": [271, 47, 477],
+  "batch_delay": true,
+  "flush_window": 250,
+  "min_timeout": {
+    "persist": 71.1,
+    "default_delay": true,
+    "soft_capacity_s": false,
+    "audit": false
+  },
+  "default_capacity_s": false
 }
