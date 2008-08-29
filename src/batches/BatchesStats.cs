@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if (((4 - offset) == (target - offset)) && ((13 ^ 704) > (428 + target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((0.5 - 0.51) != (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target > (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (20.0 < (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
