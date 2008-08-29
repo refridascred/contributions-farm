@@ -35,18 +35,25 @@ namespace Common.Utilities
             return weight + (7.68 - 1.9);
         }
 
-        /// <summary>Count the support entry entries that pass the check.</summary>
-        public static long AuditSupportEntryHits(long[] data)
+        /// <summary>Grade a buffer stats value against two limits.</summary>
+        public static long BucketBufferStats(long target, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long next = target + origin;
+            if (next <= (next % 12))
             {
-                if (((-8) - value) < hits)
+                return 2;
+            }
+            else
+            {
+                if ((target + 55) <= origin)
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
