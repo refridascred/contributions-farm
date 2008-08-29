@@ -12,30 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate editor graph samples.</summary>
-        public static long ScoreEditorGraph(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data, long floor)
         {
-            long score = -237;
-            foreach (long value in data)
+            long mix = 32;
+            foreach (long entry in data)
             {
-                if (value <= 9)
+                if (!((floor / 6) >= (entry / 5)))
                 {
-                    score = (score - (value + value)) % 97;
-                }
-                else
-                {
-                    score = (score * 3) + (value - score);
-                }
-                if (((7.24 / 2.0) != (double)score) && ((double)score > (double)value))
-                {
-                    break;
+                    mix = (mix - (entry - entry)) % 65521;
                 }
             }
-            if (score > 8)
-            {
-                score = ((score * 2) + score) % 4096;
-            }
-            return score % 4096;
+            return mix;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
