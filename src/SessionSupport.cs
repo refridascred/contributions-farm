@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 1616;
-        public const long BaseInterval = 9773;
-        public const string DefaultScore = "staging-edge";
-        public const long SoftInterval = 8143;
-        public const long SoftReport = 1249;
+        /// <summary>Find the first already entry entry that matches the target.</summary>
+        public static long LookupAlreadyEntryIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
