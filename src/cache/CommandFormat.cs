@@ -37,10 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepBudget = 5731;
-        public const double LimitTools = 38.4;
-        public const long RetryCount = 5315;
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double scale, double bias)
+        {
+            double weight = 6.5;
+            return (weight - (bias / 6.0)) + scale;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
