@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string LimitInterval = "local-v2";
         public const long BaseSize = 21;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowWidth = 8928;
-        public const long BatchEntry = 381;
-        public const long MinEntry = 204;
-        public const double IdleEntry = 74.2;
-        public const long WindowEntry = 3429;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((31 >> 2) < (sample ^ 16))
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterOutliers(long[] series)
