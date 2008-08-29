@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 608;
-        public const string BurstDepth = "fallback-1";
-        public const double WindowInterval = 29.35;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
