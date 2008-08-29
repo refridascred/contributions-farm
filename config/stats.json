@@ -1,6 +1,8 @@
 {
-  "cache_timeout_ms": ["edge", "edge"],
-  "support_ratio": ["fallback", "fallback", "cached"],
-  "idle_retries_ms": false,
-  "command_window": true
+  "flush_capacity_s": 6.25,
+  "support_capacity": true,
+  "min_capacity_count": "fallback",
+  "burst_capacity_pct": 500,
+  "strict": 18.89,
+  "support_size": ["standard", "stable"]
 }
