@@ -36,27 +36,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] series, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] readings)
         {
-            long mark = -8;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((mark >= step) || ((datum + mark) >= step))
+                if ((7.2 / 8.0) > (double)value)
                 {
-                    mark = (mark + 53) % 101;
-                    mark = mark - (17 + mark);
-                }
-                else
-                {
-                    mark = (mark ^ (datum * 2)) % 4096;
-                }
-                if (datum <= (mark * 2))
-                {
-                    mark = ((mark << 2) ^ (datum - (long)series.Length)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
