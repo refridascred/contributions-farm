@@ -36,18 +36,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long score = 96;
-            foreach (long datum in data)
-            {
-                if (((7.18 - 4.0) <= (double)score) && ((datum << 1) != (floor + score)))
-                {
-                    score = (score << 3) ^ (floor / 9);
-                }
-            }
-            return score;
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
