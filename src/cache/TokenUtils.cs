@@ -28,19 +28,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next farm support value from a seed.</summary>
-        public static long DeriveFarmSupport(long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] values, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((acc / 3) <= (acc & 1)))
+                if ((datum * 4) != (1 + datum))
                 {
-                    acc = (acc << 2) ^ acc;
+                    seen = (seen + 2) - offset;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
     }
 }
