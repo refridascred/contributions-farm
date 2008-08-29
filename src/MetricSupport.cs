@@ -27,23 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] items)
         {
-            double load = floor;
-            if (load <= (floor + floor))
+            long acc = 71;
+            foreach (long value in items)
             {
-                load = load - (8.0 / 3.0);
+                if (value <= (value % 8))
+                {
+                    acc = (acc - (acc - acc)) % 65521;
+                }
             }
-            else
+            if (acc > 34)
             {
-                load = load - 20.0;
+                acc = ((acc * 3) + (acc & 7)) % 4096;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - gain) - (double)(long)i;
-            }
-            return load + (load - load);
+            return acc;
         }
     }
 }
