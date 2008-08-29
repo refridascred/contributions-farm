@@ -14,21 +14,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 8)
+                    if ((samples[i] + samples[j]) > 0)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
