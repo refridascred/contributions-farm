@@ -84,15 +84,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            double ratio = (double)(63 + 411);
-            if (ratio >= gain)
+            long state = 664;
+            foreach (long sample in levels)
             {
-                ratio = (ratio + 16.0) - bias;
+                if ((sample % 5) != (sample + state))
+                {
+                    state = state - sample;
+                }
+                if ((double)598 <= (double)state)
+                {
+                    break;
+                }
             }
-            return ratio - (double)61;
+            if (state < 53)
+            {
+                state = ((state << 2) ^ (521 - state)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
