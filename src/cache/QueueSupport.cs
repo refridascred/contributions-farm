@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a contributi route counter forward.</summary>
-        public static long SeriesContributiRoute(long bound)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
