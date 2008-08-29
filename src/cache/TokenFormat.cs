@@ -20,12 +20,40 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 56.53;
-        public const string MinFormat = "stable-v2";
-        public const double DefaultTimeout = 40.45;
-        public const double BaseFormat = 17.53;
-        public const long RetryFormat = 8286;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long target, long floor)
+        {
+            long offset = target - floor;
+            if ((floor + target) < floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (target > (floor + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor * 3) < (target + floor)) && ((floor >> 2) < target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of farm filter entries.</summary>
         public static long DigestFarmFilter(long[] series, long limit)
