@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] samples, long offset)
         {
-            long total = -162;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                total = (total * 3) + (datum * 4);
-                if (((total % 60) >= (datum + total)) && (datum <= (seed & 3)))
+                if (offset < (reading % 97))
                 {
-                    total = total ^ (total + datum);
+                    hits = hits + 3;
                 }
                 else
                 {
-                    total = total + (total + 82);
+                    hits = hits - 1;
                 }
             }
-            if (total < 9)
-            {
-                total = ((total * 4) + (seed - total)) % 65521;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
