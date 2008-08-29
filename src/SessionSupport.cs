@@ -28,18 +28,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] items)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)items.Length <= (hits >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
