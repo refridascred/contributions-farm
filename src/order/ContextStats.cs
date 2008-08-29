@@ -40,19 +40,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (((long)i + origin) <= state)
+                if (reading > limit)
                 {
-                    state = ((state << 3) ^ 430) % 101;
+                    valid = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return valid;
         }
     }
 }
