@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Locked,
-            Stale,
-            Idle,
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a editor summary.</summary>
