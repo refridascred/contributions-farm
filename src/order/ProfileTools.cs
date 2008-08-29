@@ -28,18 +28,24 @@ namespace Common.Utilities
         public const string RetryFactor = "latest-1";
         public const long CacheCommits = 8050;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] series, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((origin % 5) != (target ^ 7))
             {
-                if (!((double)origin >= (2.1 / 5.0)))
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (10.0 / 3.0))
                 {
-                    count = (count + 3) + datum;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
