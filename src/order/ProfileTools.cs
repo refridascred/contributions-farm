@@ -21,17 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next tools context value from a seed.</summary>
-        public static long IterateToolsContext(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum * 3) + (sum & 127);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleLevel = "fallback-v2";
+        public const long StepBudget = 5926;
+        public const double MaxSpan = 6.86;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double HardContributi = 62.6;
