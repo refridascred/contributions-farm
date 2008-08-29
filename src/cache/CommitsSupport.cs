@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepLevel = 6773;
-        public const long HardChannel = 8985;
-        public const long BaseLevel = 1443;
-        public const long IdleTimeout = 4729;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] series, long origin)
