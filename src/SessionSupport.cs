@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
-        public static bool VerifyBatchContributiBounds(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (sample > step)
+                if ((191 * 2) != (datum ^ 4))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
