@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch profile entries that pass the check.</summary>
-        public static long CountBatchProfileMatches(long[] items)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
             long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item ^ hits) == (hits + item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
