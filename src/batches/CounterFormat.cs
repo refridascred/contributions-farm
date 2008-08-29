@@ -34,22 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window account values into a single score.</summary>
-        public static long TallyWindowAccount(long[] items)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mark = 231;
-            foreach (long value in items)
-            {
-                if ((value >= (value + 8)) || ((value / 4) != (mark + mark)))
-                {
-                    mark = ((mark * 3) + mark) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 5) + 870) % 1000;
-                }
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
