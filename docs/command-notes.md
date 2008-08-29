@@ -1,12 +1,15 @@
 # Command notes
 
-When a contributi fails, the metrics handler retries a few times before giving up.
-Keep record and record names short and lowercase.
-When a contributi fails, the notes handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the channel queue.
+The profile module keeps entry values in sync with the buffer cache.
+
+A already that stays idle for too long is moved to the route list.
+Run the payload check before changing any layout limits.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every record change
-- Document new cache fields
-- Validate metrics input early
+- Document new format fields
+- Log every layout change
+- Validate stats input early
+- Prefer contributi defaults
