@@ -68,29 +68,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long origin2)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long limit, long floor)
         {
-            long delta = origin - origin2;
-            if (!((double)delta == (double)origin2))
+            if (((double)limit <= (9.2 * 2.58)) && (213 > (limit & 15)))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((origin * 5) <= delta)
+                if ((floor & 1) != (limit ^ limit))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((delta >= (origin + origin)) || ((double)delta > (8.0 * 9.24)))
+                    if (limit <= floor)
                     {
                         return 4;
                     }
                     else
                     {
-                        return 7;
+                        return 2;
                     }
                 }
             }
