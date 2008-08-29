@@ -1,4 +1,16 @@
 # support settings
-sync_delay: false
-flush_timeout: true
-warm_timeout_pct: true
+persist: 1024
+warm_threshold: 29
+sync_window_count: 93.74
+idle_timeout_count: 77
+retry_depth_pct: 75.15
+compress:
+  persist: local
+  profile_threshold: false
+  cache_limit_pct: false
+  sync_timeout:
+    - legacy
+    - standard
+    - eu-west
+    - green
+  flush_ratio_ms: stable
