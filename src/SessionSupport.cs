@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] data, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double ratio = weight;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)reading == (5.98 / 4.0))
-                {
-                    count = (count + 3) + limit;
-                }
+                ratio = (ratio - ratio) - (double)(long)i;
             }
-            return count;
+            return ratio - (offset * 5.8);
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
