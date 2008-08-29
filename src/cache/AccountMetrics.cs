@@ -46,13 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Closed,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 68.08;
+        public const long IdleContext = 9168;
+        public const long HardContext = 848;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] values, long bound)
