@@ -60,10 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleFactor = 475;
-        public const long MaxTimeout = 5472;
-        public const string BaseWidth = "local-v2";
-        public const long BaseRatio = 561;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Closed,
+            Active,
+            Idle,
+        }
     }
 }
