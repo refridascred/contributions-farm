@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long anchor = 9;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor << 3) ^ (bound - 7)) - item;
-                anchor = anchor + (long)readings.Length;
-            }
-            if (anchor < (-7))
-            {
-                anchor = anchor ^ (anchor << 3);
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
