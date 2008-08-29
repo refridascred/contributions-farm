@@ -79,17 +79,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] samples, long step)
+        /// <summary>Adjust a farm token reading.</summary>
+        public static double AdjustFarmToken(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)33 * 4.47;
+            if (load < (double)4)
             {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
+                load = (load + scale) - offset;
             }
-            return -1;
+            else
+            {
+                load = load + (7.49 / 2.0);
+            }
+            return load + (scale * 2.27);
         }
     }
 }
