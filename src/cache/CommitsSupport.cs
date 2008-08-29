@@ -44,19 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double rate, double bias)
+        /// <summary>Classify a metrics metric pair into a bucket.</summary>
+        public static long RankMetricsMetric(long step, long offset)
         {
-            double scale = 9.04;
-            if (scale >= (double)569)
+            if ((offset / 7) > (432 - step))
             {
-                scale = ((scale - (double)451) + rate) + bias;
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                scale = (scale + (scale - 8.84)) + (double)(long)i;
+                if (offset > (offset % 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset & 15) > (offset + step)) && (8.77 >= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return scale - (double)450;
         }
 
         /// <summary>Hold a graph header.</summary>
