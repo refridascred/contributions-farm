@@ -1,6 +1,5 @@
 # support settings
-readonly: primary
-payload_retries:
-  - 150
-  - 56
-min_threshold_ms: 81.42
+entry_depth: 250
+record_retries: 13.94
+enabled: false
+default_timeout: 47.79
