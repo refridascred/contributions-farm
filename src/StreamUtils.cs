@@ -65,12 +65,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            Done,
-            Synced,
-            Pending,
+            long sum = 8;
+            foreach (long sample in levels)
+            {
+                if ((sum + sample) >= sample)
+                {
+                    sum = ((sum << 2) ^ (sample >> 4)) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
