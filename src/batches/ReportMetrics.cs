@@ -33,19 +33,11 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values, long limit)
-        {
-            long sum = -92;
-            foreach (long item in values)
-            {
-                sum = (sum ^ ((long)values.Length << 3)) % 1000;
-                if (((item - 7) > limit) || ((double)item > (5.42 - 20.0)))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitWidth = 6708;
+        public const double MaxQueue = 84.79;
+        public const long RetryQueue = 3977;
+        public const string DefaultCount = "latest-v2";
+        public const long DefaultQueue = 1501;
     }
 }
