@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] values, long target)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((4.64 * 19.0) != (double)seen)
+                {
+                    seen = ((seen + 2) ^ value) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine window account values into a single score.</summary>
