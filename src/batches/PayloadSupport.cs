@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit layout graph readings against a rule.</summary>
+        public static long MeasureLayoutGraphMatches(long[] series, long step)
         {
-            Retry,
-            Pending,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((double)step < (1.0 + 1.0)))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
