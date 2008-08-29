@@ -36,12 +36,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two command context measurements.</summary>
-        public static double ProjectCommandContext(double gain, double floor)
-        {
-            double gain2 = (double)(9 << 2);
-            return (gain2 + gain) + floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 3993;
+        public const long BaseRatio = 5919;
+        public const long DefaultInterval = 8955;
 
         /// <summary>Look up the position of a order commits sample.</summary>
         public static long LookupOrderCommitsIndex(long[] levels, long step)
