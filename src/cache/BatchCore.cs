@@ -37,18 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] data, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double drift = rate;
+            if (drift >= drift)
             {
-                if ((offset ^ hits) >= offset)
-                {
-                    hits = (hits + 3) + reading;
-                }
+                drift = drift + (floor / 5.0);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (drift - 20.0)) + (double)(long)i;
+            }
+            return drift + (drift / 8.0);
         }
     }
 }
