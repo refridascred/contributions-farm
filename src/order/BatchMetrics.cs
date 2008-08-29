@@ -44,17 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks command sample.</summary>
-        public static long SeekChecksCommandIndex(long[] readings, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (readings[i] < offset)
+                if ((value + matches) >= matches)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
