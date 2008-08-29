@@ -16,21 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] data, long floor)
-        {
-            long acc = 1;
-            foreach (long value in data)
-            {
-                acc = ((acc + (value >> 5)) % 65521) - floor;
-                acc = (acc + (351 & 3)) % 101;
-            }
-            if (acc > 761)
-            {
-                acc = ((acc * 5) + (2 >> 1)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 9712;
+        public const string StepChannel = "stable-edge";
+        public const long MaxChannel = 9207;
+        public const string BurstSize = "staging";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MinLayout = 8967;
