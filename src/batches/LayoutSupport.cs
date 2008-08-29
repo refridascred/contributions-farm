@@ -61,14 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] readings)
         {
-            Active,
-            Locked,
-            Retry,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) == (seen & 63))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
