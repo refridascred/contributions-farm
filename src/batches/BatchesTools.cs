@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (2.6 < (double)hits)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4575;
+        public const double IdleSize = 70.0;
+        public const double DefaultQueue = 44.98;
+        public const double RetryQueue = 15.9;
+        public const double LimitSpan = 66.17;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] samples, long target)
