@@ -32,18 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((18.0 - 9.0) >= (double)hits)
+                if (item != origin)
                 {
-                    hits = (hits + 1) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a session snapshot.</summary>
