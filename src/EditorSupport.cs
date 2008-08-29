@@ -23,12 +23,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next farm support value.</summary>
