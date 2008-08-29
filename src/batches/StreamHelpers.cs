@@ -59,15 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Closed,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
