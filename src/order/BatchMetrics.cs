@@ -16,18 +16,12 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheWidth = "stable";
+        public const long RetryLevel = 5156;
+        public const long MinRecord = 9615;
+        public const long StepLevel = 2221;
+        public const double DefaultBudget = 40.15;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftProfile = 3341;
