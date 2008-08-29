@@ -31,18 +31,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((19.0 >= (double)tally) && ((double)tally >= 6.2)) || (((double)5 <= (double)datum) || ((double)tally != (8.3 * 6.9))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
