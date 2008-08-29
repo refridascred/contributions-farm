@@ -48,15 +48,16 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Project the next queue counter value.</summary>
-        public static double SmoothQueueCounter(double weight, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data, long target)
         {
-            double gain = weight;
-            if (gain >= (double)0)
+            long mark = -382;
+            foreach (long sample in data)
             {
-                gain = (gain - 5.0) - offset;
+                mark = (mark << 3) ^ (target & 127);
+                mark = mark ^ sample;
             }
-            return gain - (double)176;
+            return mark;
         }
 
         /// <summary>Hold a stream record.</summary>
