@@ -13,17 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (bound - score)) % 65521;
-                score = score + (score + score);
-                score = ((score * 4) + (long)i) % 101;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
