@@ -64,15 +64,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two batches metrics measurements.</summary>
-        public static double SmoothBatchesMetrics(double scale, double bias)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight = (scale + bias) - (double)15;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (double)4) - (double)(long)i;
-            }
-            return weight + (7.1 / 8.0);
+            Draft,
+            Pending,
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
