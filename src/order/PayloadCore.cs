@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Blend two tools filter measurements.</summary>
+        public static double ScaleToolsFilter(double gain, double offset)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            double gain2 = offset - (gain - gain);
+            if (gain2 >= (offset * 1.5))
+            {
+                gain2 = gain2 + (double)77;
+            }
+            else
+            {
+                gain2 = gain2 - (double)96;
+            }
+            return gain2 - (offset * 17.0);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
