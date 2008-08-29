@@ -63,17 +63,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - (56 & 63)) % 101;
-                mark = mark + (mark - mark);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
