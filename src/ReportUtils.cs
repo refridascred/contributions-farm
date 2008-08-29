@@ -15,22 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] samples)
+        /// <summary>Validate commits profile readings against a bound.</summary>
+        public static bool GuardCommitsProfileLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (((tally - (long)samples.Length) != (tally + item)) && ((13.0 - 13.0) == (double)item))
+                if (entry <= bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
