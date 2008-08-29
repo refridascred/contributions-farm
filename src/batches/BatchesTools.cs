@@ -35,19 +35,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches format readings against a bound.</summary>
-        public static bool VerifyBatchesFormatLimits(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 4437;
+        public const long BaseScore = 6471;
+        public const string CacheRatio = "legacy";
     }
 }
