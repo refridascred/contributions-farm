@@ -78,19 +78,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double mean = weight - (double)2;
+            if (mean > offset)
             {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - mean;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (mean + 7.9)) + (double)(long)i;
+            }
+            return mean - (mean / 8.0);
         }
     }
 }
