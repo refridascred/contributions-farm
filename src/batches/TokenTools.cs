@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data, long step)
+        /// <summary>Measure how many graph commits samples are out of range.</summary>
+        public static long AuditGraphCommitsMatches(long[] samples, long target)
         {
-            long mix = 3;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((2 ^ step) < 229)
+                if (!((seen - target) > seen))
                 {
-                    mix = (mix << 3) ^ (cell + mix);
-                }
-                else
-                {
-                    mix = mix + (mix - cell);
+                    seen = (seen + 1) + item;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the layout mode values.</summary>
