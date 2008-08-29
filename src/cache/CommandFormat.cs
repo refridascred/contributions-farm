@@ -44,9 +44,18 @@ namespace Common.Utilities
             return (weight - (bias / 6.0)) + scale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 2016;
-        public const double CacheCount = 36.62;
-        public const long MaxFactor = 2709;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((96 % 100) > (value + step))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
