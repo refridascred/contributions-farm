@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a stream batches sample.</summary>
-        public static long LocateStreamBatchesIndex(long[] values, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 16;
+            foreach (long item in levels)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                score = score ^ offset;
+                score = ((score << 2) ^ (item ^ item)) % 255;
             }
-            return -1;
+            if (score > 32)
+            {
+                score = ((score * 2) + (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
