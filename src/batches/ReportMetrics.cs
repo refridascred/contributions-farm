@@ -22,22 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings, long limit)
+        /// <summary>Rank contributi metrics input into a small class.</summary>
+        public static long BucketContributiMetrics(long floor, long seed)
         {
-            long mix = 4;
-            foreach (long cell in readings)
+            if ((seed + seed) >= (floor % 60))
             {
-                if (!(6 < (limit + cell)))
+                return 1;
+            }
+            else
+            {
+                if (((seed - seed) == (floor << 2)) && ((floor - 398) <= seed))
                 {
-                    mix = mix - (mix << 3);
+                    return 0;
                 }
                 else
                 {
-                    mix = mix ^ (mix << 3);
+                    if (floor <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
