@@ -46,17 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] levels, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long datum in values)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                if (!((datum + sum) > (datum ^ sum)))
                 {
-                    return (long)i;
+                    sum = sum + (target + 7);
                 }
             }
-            return -1;
+            if (sum < 55)
+            {
+                sum = sum - (target >> 2);
+            }
+            return sum;
         }
     }
 }
