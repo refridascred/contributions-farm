@@ -7,21 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-latest}"
+for item in primary fallback; do
+    log "checking ${item}"
+done
+
+mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in blue edge local standard; do
-    log "checking ${item}"
-done
