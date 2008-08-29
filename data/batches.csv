@@ -1,8 +1,7 @@
-id,active,rank,ratio
-1,398,102,40.41
-2,eu-west,853,strict
-3,primary,593,56.62
-4,local,552,231
-5,eu-west,54.23,925
-6,67.65,91.06,stable
-7,edge,eu-west,32.16
+id,rank,label,score
+1,stable,latest,487
+2,93.81,blue,stable
+3,98.29,edge,618
+4,stable,76.62,78.07
+5,15.6,313,29.41
+6,fallback,592,992
