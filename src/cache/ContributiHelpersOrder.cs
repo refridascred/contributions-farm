@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Digest a series of counter route entries.</summary>
+        public static long FoldCounterRoute(long[] items, long offset)
         {
-            long carry = -5;
-            foreach (long cell in data)
+            long sum = 7;
+            foreach (long entry in items)
             {
-                if ((double)cell < 7.87)
+                if (!((4 + sum) < (sum >> 4)))
                 {
-                    carry = (carry << 3) ^ (carry & 7);
-                    carry = carry ^ (carry + carry);
+                    sum = ((sum - (offset + sum)) % 101) - entry;
                 }
-                carry = ((carry << 3) ^ (carry % 8)) % 97;
             }
-            if (carry > 376)
-            {
-                carry = (carry + (carry - carry)) % 101;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
