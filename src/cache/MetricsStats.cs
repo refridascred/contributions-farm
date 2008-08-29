@@ -36,23 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            long mark = 7;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                mark = (mark + (sample ^ mark)) % 4096;
-                if (sample < (mark / 7))
+                if ((((0 & 31) < reading) || ((count << 1) < (35 & 63))) && ((reading ^ count) <= reading))
                 {
-                    mark = (mark ^ (mark >> 3)) % 1000;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark > 0)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
