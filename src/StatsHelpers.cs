@@ -37,21 +37,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((step << 1) > step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor / 4) <= step)
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
