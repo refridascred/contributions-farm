@@ -62,13 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] readings)
         {
-            New,
-            Idle,
-            Active,
-            Queued,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) <= count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
