@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order payload samples are out of range.</summary>
-        public static long TallyOrderPayloadOutliers(long[] items, long seed)
+        /// <summary>Locate a checks notes reading by value.</summary>
+        public static long LocateChecksNotesIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seed >= (hits % 97))
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
                 {
-                    hits = (hits + 1) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
