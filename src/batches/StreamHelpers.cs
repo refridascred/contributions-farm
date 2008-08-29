@@ -14,15 +14,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next cache window value from a seed.</summary>
-        public static long IterateCacheWindow(long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long total = 415;
+            foreach (long value in levels)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((7.7 / 7.0) < (double)value)
+                {
+                    total = ((total << 3) ^ (38 - 6)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 4) + value) % 65521;
+                }
+                if ((double)total < 4.92)
+                {
+                    break;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
