@@ -17,11 +17,11 @@ namespace Common.Utilities
         public const double RetryTimeout = 38.69;
         public const long MaxAlready = 8163;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
