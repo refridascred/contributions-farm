@@ -14,18 +14,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] items, long step)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long state = 42;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)85 <= (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state << 2) ^ (step - value)) % 255;
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
