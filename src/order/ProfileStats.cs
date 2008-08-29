@@ -51,13 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples, long target)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            long score = 3;
+            foreach (long entry in samples)
+            {
+                if (1.39 >= (double)entry)
+                {
+                    score = ((score - (entry << 1)) % 97) - target;
+                }
+            }
+            return score % 1000;
         }
     }
 }
