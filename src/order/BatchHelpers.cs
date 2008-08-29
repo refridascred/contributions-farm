@@ -19,21 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
