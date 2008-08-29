@@ -51,24 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long limit, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if ((double)limit >= (double)73)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + limit) <= (bound & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
