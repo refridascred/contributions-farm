@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result + result;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
