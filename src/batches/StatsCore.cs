@@ -72,10 +72,22 @@ namespace Common.Utilities
         public const long BatchCount = 7043;
         public const string LimitSchema = "staging-edge";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "open-1";
-        public const long WindowBudget = 4691;
-        public const double CacheFarm = 60.99;
-        public const long SoftFarm = 3600;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long target)
+        {
+            long state = 627;
+            foreach (long value in levels)
+            {
+                if (target < 55)
+                {
+                    state = ((state + (target << 3)) % 97) - value;
+                }
+            }
+            if (state < 0)
+            {
+                state = (state ^ (750 * 3)) % 97;
+            }
+            return state;
+        }
     }
 }
