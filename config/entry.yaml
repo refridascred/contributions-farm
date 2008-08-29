@@ -1,7 +1,8 @@
 # entry settings
-hard_retries: 1024
-max_depth_count: 19
-default_threshold_pct: 45
-compress: true
-sync_threshold_count: true
-burst_threshold_s: primary
+soft_threshold: true
+burst_ttl:
+  - latest
+  - fallback
+base_threshold_s: blue
+hard_size_count: strict
+sync_interval_count: 15.85
