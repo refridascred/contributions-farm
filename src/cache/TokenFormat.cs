@@ -27,38 +27,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if ((limit - seed) <= (limit % 8))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((seed * 4) == (limit << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 3) <= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit > (seed + 108))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
