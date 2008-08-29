@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
-        public static long LocatePayloadGithubfarmIndex(long[] series, long step)
+        /// <summary>Adjust a metrics already reading.</summary>
+        public static double ProjectMetricsAlready(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = floor;
+            if (scale > gain)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale = scale + (9.72 / 2.0);
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)37;
+            }
+            return scale + gain;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
