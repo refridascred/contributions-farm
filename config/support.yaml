@@ -1,4 +1,7 @@
 # support settings
-persist: 94.01
-hard_timeout_s: 42
-batch_retries_s: blue
+account_ratio: 250
+flush_threshold_pct: true
+record_limit: true
+flush_ratio_ms: standard
+record_depth: 4183
+command_depth: 500
