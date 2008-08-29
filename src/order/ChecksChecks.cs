@@ -40,21 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up session token samples.</summary>
-        public static long PairSessionTokenCount(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Pending,
+            Retry,
         }
     }
 }
