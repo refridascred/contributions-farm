@@ -30,20 +30,10 @@ namespace Common.Utilities
         public const double HardCount = 20.5;
         public const long WindowReport = 4025;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 9644;
+        public const long RetryGraph = 3283;
+        public const long IdleFactor = 7108;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
