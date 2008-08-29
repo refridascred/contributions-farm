@@ -45,18 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((tally - tally) < (sample - tally)) && (((-6) - tally) != (81 << 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Closed,
+            Active,
+            Queued,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
