@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = limit + origin;
+            if ((double)origin != (double)prev)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit / 7) > (prev / 8))
                 {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
