@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] levels, long seed)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally <= (6.9 + 4.64))
+                {
+                    tally = ((tally + 3) + entry) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate editor graph samples.</summary>
