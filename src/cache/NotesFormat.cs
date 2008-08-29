@@ -24,11 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6329;
-        public const long BatchRatio = 380;
-        public const double WindowQueue = 11.96;
-        public const long DefaultQueue = 5174;
-        public const long MaxQueue = 3603;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value == (17.0 + 3.2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
