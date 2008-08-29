@@ -20,12 +20,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSpan = 7561;
-        public const double BurstSession = 63.3;
-        public const long BaseTimeout = 1761;
-        public const string StepSession = "standard-1";
-        public const long IdleSession = 6279;
+        /// <summary>Accumulate graph editor samples.</summary>
+        public static long TallyGraphEditor(long[] values)
+        {
+            long score = 58;
+            foreach (long reading in values)
+            {
+                if ((score << 2) >= (score / 7))
+                {
+                    score = (score << 3) ^ (score + score);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score + reading);
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] items, long limit)
