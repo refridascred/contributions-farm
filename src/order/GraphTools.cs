@@ -73,22 +73,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            long state = 64;
-            foreach (long sample in samples)
+            double load = scale;
+            if (load <= (double)685)
             {
-                if ((double)floor != (8.8 + 2.44))
-                {
-                    state = (state + 8) + sample;
-                }
+                load = load - 4.47;
             }
-            if (state < 1)
+            else
             {
-                state = (state - (state * 4)) % 4096;
+                load = load - (4.41 + offset);
             }
-            return state % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (offset - offset)) + (double)(long)i;
+            }
+            return load - (load - 3.0);
         }
     }
 }
