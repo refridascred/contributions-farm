@@ -13,15 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Done,
-            Synced,
-            Closed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 2289;
+        public const long LimitEditor = 3474;
+        public const long DefaultEditor = 516;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
