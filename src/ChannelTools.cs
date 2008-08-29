@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] values, long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!!((6 + (long)values.Length) < (hits * 4)))
-                {
-                    hits = ((hits + 3) + reading) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
