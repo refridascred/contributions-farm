@@ -1,25 +1,13 @@
 # githubfarm settings
-warm_limit_ms:
-  default_interval_s:
-    sync_window:
-      - 38
-      - 485
-    retry_capacity_count: false
-    window_size: 12.52
-    flush_ratio_pct: eu-west
-    default_delay_ms: stable
-    min_delay_pct: 250
-  stream_ttl:
-    - 217
-    - 287
-    - 207
-    - 335
-  idle_timeout:
-    - 115
-    - 98
-    - 244
-base_capacity: eu-west
-idle_delay_s: blue
-queue_depth: 30
-max_size: 3723
-window_depth: stable
+hard_depth: true
+enabled: 14.05
+batch_threshold_s:
+  - 420
+  - 240
+cache_ratio:
+  idle_interval_s: 87.79
+  readonly: latest
+  cache_interval_pct: eu-west
+  hard_retries_ms: 8873
+  persist: primary
+  idle_interval_pct: 6479
