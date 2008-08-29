@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const string RetryCounter = "legacy";
         public const long BatchBudget = 7462;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 5) + ((long)i >> 4)) % 101;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
