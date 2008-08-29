@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long limit, long origin)
         {
-            Done,
-            Failed,
-            New,
-            Paused,
-            Synced,
+            long cur = limit - origin;
+            if ((origin * 2) < (origin & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit >> 1) == (cur / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
