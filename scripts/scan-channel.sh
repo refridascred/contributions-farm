@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=208
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 7); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=343
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge cached strict; do
+    log "checking ${item}"
+done
