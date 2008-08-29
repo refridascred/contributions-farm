@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine route record values into a single score.</summary>
-        public static long WeighRouteRecord(long[] readings, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long origin)
         {
-            long acc = 77;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (samples[i] >= origin)
                 {
-                    acc = ((acc + entry) % 101) + (long)i;
-                }
-                if ((acc << 1) == (382 - floor))
-                {
-                    acc = acc ^ floor;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
