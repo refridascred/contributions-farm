@@ -13,13 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] samples, long offset)
         {
-            Active,
-            Draft,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (0.8 >= (double)item)
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
