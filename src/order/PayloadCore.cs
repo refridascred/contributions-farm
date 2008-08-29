@@ -20,18 +20,18 @@ namespace Common.Utilities
             return gain2 - (offset * 17.0);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 130;
+            foreach (long entry in data)
             {
-                if ((double)item <= (9.4 * 12.0))
+                if ((double)step < (double)state)
                 {
-                    seen = seen + 1;
+                    state = ((state * 5) + (658 & 1)) ^ entry;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Find the first format channel entry that matches the target.</summary>
