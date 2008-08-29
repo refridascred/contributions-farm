@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const string RetryCounter = "legacy";
         public const long BatchBudget = 7462;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series, long bound)
         {
-            New,
-            Failed,
-            Done,
+            long state = 821;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (state ^ reading) ^ (long)i;
+                    state = (state + (193 - bound)) % 65521;
+                }
+                state = (state - bound) % 65521;
+            }
+            if (state < 4)
+            {
+                state = state ^ bound;
+            }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
