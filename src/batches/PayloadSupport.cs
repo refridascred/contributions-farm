@@ -39,18 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi token readings against a rule.</summary>
-        public static long AuditContributiTokenOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - seen) != (seen << 1))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 44.22;
+        public const double HardBudget = 28.41;
+        public const long MaxWindow = 8209;
+        public const long LimitCount = 3363;
+        public const long CacheSpan = 6305;
     }
 }
