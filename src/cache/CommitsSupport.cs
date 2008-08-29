@@ -50,15 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double rate, double offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double gain = (offset * 1.2) - (rate + rate);
-            if (gain > gain)
-            {
-                gain = gain + 6.0;
-            }
-            return gain + (gain * 18.0);
+            Synced,
+            Queued,
+            Stale,
+            Retry,
+            Pending,
         }
 
         /// <summary>Measure how many account graph samples are out of range.</summary>
