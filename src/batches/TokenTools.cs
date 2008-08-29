@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double rate = (double)(56 >> 5);
+            if (rate >= offset)
             {
-                if ((double)reading <= (9.02 / 8.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - (rate + 3.18)) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)335) + (double)(long)i;
+            }
+            return rate - (2.5 - offset);
         }
 
         /// <summary>Accumulate tools samples.</summary>
