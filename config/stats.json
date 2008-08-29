@@ -1,18 +1,12 @@
 {
-  "retry_delay": {
-    "channel_capacity": [306, 275, 68, 100],
-    "layout_interval": 1024,
-    "compress": "cached",
-    "hard_threshold_ms": {
-      "idle_interval_ms": 19,
-      "record_delay": ["eu-west", "blue", "primary"],
-      "hard_window": "legacy",
-      "retry_ttl": false
-    },
-    "filter_retries": true,
-    "readonly": 71
+  "commits_capacity": 1405,
+  "soft_size_s": 1024,
+  "enabled": {
+    "sync_retries_count": 43,
+    "min_ttl": 81,
+    "hard_delay_count": "green"
   },
-  "contributi_timeout": false,
-  "max_timeout": ["staging", "green"],
-  "base_threshold_count": 82
+  "commits_timeout": "staging",
+  "record_capacity": true,
+  "dry_run": "staging"
 }
