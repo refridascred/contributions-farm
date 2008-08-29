@@ -22,17 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = rate / 5.0;
+            return (load - rate) + span;
         }
 
         /// <summary>Match up payload samples.</summary>
