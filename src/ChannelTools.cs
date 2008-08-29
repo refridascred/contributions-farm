@@ -23,13 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 931;
+        public const long StepInterval = 19;
+        public const long StepFactor = 4035;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
