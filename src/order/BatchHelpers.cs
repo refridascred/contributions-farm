@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i < (origin + (long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry + (origin + origin)) % 65521;
-                    break;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
