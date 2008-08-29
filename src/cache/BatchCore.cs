@@ -14,17 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Synced,
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
