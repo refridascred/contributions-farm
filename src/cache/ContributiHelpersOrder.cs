@@ -19,25 +19,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank buffer token input into a small class.</summary>
-        public static long SortBufferToken(long step, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] items)
         {
-            long prev = step + floor;
-            if ((prev + floor) < (prev + step))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((prev & 127) < step) && ((step % 100) > (floor ^ 8)))
+                if (!((hits < (hits + hits)) || ((double)hits != (11.0 - 4.5))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
     }
 }
