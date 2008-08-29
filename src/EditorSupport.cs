@@ -37,17 +37,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(54 * 4);
+            return (load - (ratio / 2.0)) + offset;
         }
 
         /// <summary>Fold a list of githubfarm command readings.</summary>
