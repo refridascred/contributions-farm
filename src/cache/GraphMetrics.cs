@@ -34,10 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinDepth = 7701;
-        public const string LimitSession = "latest-1";
-        public const double WindowSession = 58.15;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Audit session queue readings against a rule.</summary>
         public static long CountSessionQueueMatches(long[] items)
