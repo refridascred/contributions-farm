@@ -50,13 +50,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] series, long origin)
         {
-            Closed,
-            Active,
-            Draft,
-            Synced,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
