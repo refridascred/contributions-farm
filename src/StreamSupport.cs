@@ -26,11 +26,11 @@ namespace Common.Utilities
             return (load - rate) + span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepBudget = 15.18;
-        public const double BatchFactor = 7.39;
-        public const long BatchContributi = 1392;
-        public const long BaseContributi = 2375;
-        public const long BaseWidth = 4590;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 1081;
+        public const long SoftEntry = 763;
+        public const long IdleWidth = 8831;
+        public const string BaseSpan = "strict";
+        public const long RetryEntry = 8629;
     }
 }
