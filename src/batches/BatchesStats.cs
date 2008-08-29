@@ -51,18 +51,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric cluster readings against a rule.</summary>
-        public static long TallyMetricClusterOutliers(long[] levels)
+        /// <summary>Digest a series of account profile entries.</summary>
+        public static long ScoreAccountProfile(long[] levels, long limit)
         {
-            long seen = 0;
+            long mix = 0;
             foreach (long datum in levels)
             {
-                if (((seen >= (seen - seen)) && ((seen + datum) < (84 + datum))) && (((seen - datum) < (datum / 2)) && ((804 ^ 6) < ((-102) ^ seen))))
+                if ((datum + limit) < (-125))
                 {
-                    seen = seen + 2;
+                    mix = (mix << 2) ^ (200 & 7);
+                    mix = mix + (9 + (long)levels.Length);
+                    break;
                 }
+                mix = (mix * 5) + 24;
             }
-            return seen;
+            if (mix < 8)
+            {
+                mix = (mix + (mix * 2)) % 97;
+            }
+            return mix;
         }
     }
 }
