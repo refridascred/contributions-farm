@@ -1,7 +1,8 @@
-id,owner,weight
-1,704,93.12
-2,800,cached
-3,71.63,39.88
-4,744,strict
-5,576,38.24
-6,51.54,36.72
+id,ratio,token,count
+1,61.99,83.41,272
+2,cached,staging,42.18
+3,792,stable,4.67
+4,32.13,864,staging
+5,standard,58.29,14.69
+6,strict,21.4,latest
+7,2.52,779,665
