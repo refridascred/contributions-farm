@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items)
         {
-            Synced,
-            Paused,
-            Idle,
+            long sum = 16;
+            foreach (long item in items)
+            {
+                if ((long)items.Length == (item % 7))
+                {
+                    sum = (sum + (sum >> 5)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
