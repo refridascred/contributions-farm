@@ -29,26 +29,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels, long origin)
+        /// <summary>Iterate the buffer queue series from a seed.</summary>
+        public static long DeriveBufferQueue(long seed)
         {
-            long mix = -627;
-            foreach (long sample in levels)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((94 * 4) > origin)
-                {
-                    mix = (mix + (origin + origin)) ^ sample;
-                }
-                if ((double)origin == (5.56 + 8.28))
-                {
-                    break;
-                }
+                anchor = (anchor - anchor) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (mix > 699)
-            {
-                mix = mix - (mix << 2);
-            }
-            return mix % 1000;
+            return anchor;
         }
     }
 }
