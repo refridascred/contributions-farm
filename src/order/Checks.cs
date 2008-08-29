@@ -23,27 +23,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of graph session readings.</summary>
-        public static long DigestGraphSession(long[] readings)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long result = 29;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long bound = (9 + result) % 8;
-                if ((cell - bound) != (0 + result))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result - (result >> 2);
-                }
-                if ((cell - cell) >= (result + cell))
-                {
-                    result = ((result << 2) ^ (-559)) % 101;
-                }
-                else
-                {
-                    result = (result + (cell - cell)) % 65521;
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
