@@ -36,10 +36,19 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultScore = 6864;
-        public const long MinProfile = 7262;
-        public const long MaxTimeout = 5059;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell % 2) <= (seed * 5)) && (((60 - seed) > (1 >> 4)) && (seed < cell)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] items)
