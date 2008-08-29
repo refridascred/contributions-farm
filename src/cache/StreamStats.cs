@@ -27,18 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)seen <= (5.22 - 8.7)))
+                result = ((result * 4) + (long)i) % 65521;
+                result = (result + (result % 24)) % 4096;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = (seen + 1) + cell;
+                    result = ((result + result) % 101) - (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
