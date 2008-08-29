@@ -1,10 +1,5 @@
 {
-  "max_interval_pct": false,
-  "metrics_interval": {
-    "hard_depth": "local",
-    "audit": 77,
-    "buffer_retries": true,
-    "dry_run": "local"
-  },
-  "verbose": 98.73
+  "max_capacity": false,
+  "strict": "fallback",
+  "persist": 2942
 }
