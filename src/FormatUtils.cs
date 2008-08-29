@@ -24,19 +24,17 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels, long target)
+        /// <summary>Locate a batches githubfarm reading by value.</summary>
+        public static long SeekBatchesGithubfarmIndex(long[] levels, long bound)
         {
-            long carry = 35;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + (target + 49)) % 255) - sample;
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > (-1))
-            {
-                carry = ((carry << 3) ^ (target + target)) % 101;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
