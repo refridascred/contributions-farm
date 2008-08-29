@@ -39,16 +39,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a entry record counter forward.</summary>
-        public static long RollEntryRecord(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 2956;
+        public const string LimitScore = "strict";
+        public const long BaseCluster = 4298;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] levels)
