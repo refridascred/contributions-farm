@@ -18,19 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry farm entry stays within the limit.</summary>
-        public static bool ValidateEntryFarmBounds(long[] values, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (sample > offset)
+                if ((reading * 3) < (77 << 3))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
