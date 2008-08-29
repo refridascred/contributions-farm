@@ -41,14 +41,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
         {
-            Failed,
-            Locked,
-            Paused,
-            Queued,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
