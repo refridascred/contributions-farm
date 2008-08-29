@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long sum = 506;
-            foreach (long entry in levels)
+            long anchor = 75;
+            foreach (long item in items)
             {
-                if ((entry + 731) < sum)
+                anchor = ((anchor * 2) + (anchor + anchor)) - item;
+                if (((long)items.Length + anchor) < (anchor - anchor))
                 {
-                    sum = (sum ^ entry) % 101;
-                }
-                else
-                {
-                    sum = sum + (entry >> 4);
+                    anchor = anchor - (anchor % 3);
                 }
             }
-            if (sum > (-5))
-            {
-                sum = sum - (-5);
-            }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
