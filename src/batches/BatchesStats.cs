@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
