@@ -20,10 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "primary-1";
-        public const long MinToken = 4120;
-        public const string BatchToken = "legacy-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 6908;
+        public const double BurstChecks = 44.74;
+        public const long LimitSize = 3933;
+        public const long IdleDepth = 2989;
+        public const long BatchScore = 9342;
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] values)
