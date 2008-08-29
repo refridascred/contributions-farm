@@ -69,11 +69,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 8906;
-        public const long HardScore = 4799;
-        public const double DefaultScore = 47.28;
-        public const long BaseFactor = 9321;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
