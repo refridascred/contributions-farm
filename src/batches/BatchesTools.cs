@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] levels, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length * 3) < cell)
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
