@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] samples, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches >> 3) > matches)
-                {
-                    matches = ((matches + 2) - item) - offset;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
