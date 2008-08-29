@@ -46,10 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 514;
-        public const long BaseInterval = 3089;
-        public const string DefaultEditor = "local-v2";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((0.17 / 2.0) < (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long limit)
