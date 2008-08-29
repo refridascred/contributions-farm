@@ -40,12 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] levels, long origin)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            long score = 712;
+            foreach (long cell in levels)
+            {
+                score = ((score - (score >> 1)) % 101) - cell;
+            }
+            if (score > 4)
+            {
+                score = score + (origin + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
