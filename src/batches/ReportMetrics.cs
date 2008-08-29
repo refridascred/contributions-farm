@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels, long offset)
-        {
-            long score = 16;
-            foreach (long item in levels)
-            {
-                score = score ^ offset;
-                score = ((score << 2) ^ (item ^ item)) % 255;
-            }
-            if (score > 32)
-            {
-                score = ((score * 2) + (score + score)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8984;
+        public const double MinBuffer = 49.93;
+        public const long MaxInterval = 9074;
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
         public static long CompareWindowClusterCount(long[] series)
