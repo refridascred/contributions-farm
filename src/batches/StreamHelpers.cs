@@ -67,19 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] data, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Closed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Grade a profile counter value against two limits.</summary>
