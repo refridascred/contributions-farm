@@ -50,12 +50,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            Synced,
+            Draft,
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
