@@ -61,18 +61,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter command entries.</summary>
-        public static long WeighCounterCommand(long[] data)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long state = 7;
-            foreach (long sample in data)
-            {
-                if ((double)(long)data.Length > (double)312)
-                {
-                    state = (state ^ (sample / 3)) % 101;
-                }
-            }
-            return state % 4096;
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
