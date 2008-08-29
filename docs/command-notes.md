@@ -1,14 +1,12 @@
 # Command notes
 
-The window module keeps notes values in sync with the tools cache.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-When a counter fails, the profile handler retries a few times before giving up.
-Each notes is validated before it reaches the cache queue.
+When a contributi fails, the metrics handler retries a few times before giving up.
+Keep record and record names short and lowercase.
+When a contributi fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every cache change
-- Document new order fields
-- Validate tools input early
+- Prefer editor defaults
+- Log every record change
+- Document new cache fields
+- Validate metrics input early
