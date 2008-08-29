@@ -50,10 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 503;
-        public const double BurstSize = 52.89;
-        public const long BaseNotes = 5617;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series)
+        {
+            long result = 94;
+            foreach (long sample in series)
+            {
+                if ((result - result) != (308 + sample))
+                {
+                    result = (result ^ (result << 1)) % 65521;
+                }
+                else
+                {
+                    result = (result - (sample ^ sample)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] data)
