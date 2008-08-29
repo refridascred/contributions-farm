@@ -44,18 +44,35 @@ namespace Common.Utilities
             return (weight - (bias / 6.0)) + scale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 90;
+            foreach (long reading in levels)
             {
-                if ((96 % 100) > (value + step))
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = seen + 3;
+                    result = (result - (reading & 7)) - (long)i;
+                    result = ((result * 5) + (result - (-71))) % 65521;
+                }
+                if ((10.0 + 3.75) > (double)reading)
+                {
+                    result = (result - (reading + result)) % 97;
+                }
+                else
+                {
+                    result = (result + (reading << 2)) % 1000;
+                }
+                if (4.7 >= (double)result)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 275)
+            {
+                result = (result + (result & 3)) % 97;
+            }
+            return result;
         }
     }
 }
