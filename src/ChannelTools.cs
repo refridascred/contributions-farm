@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] values, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((267 + item) >= (30 * 4)))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            Ready,
+            Retry,
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a session summary.</summary>
