@@ -18,14 +18,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
+            Closed,
             Synced,
-            Idle,
-            Retry,
-            New,
-            Draft,
+            Done,
         }
 
         /// <summary>Adjust a queue reading.</summary>
