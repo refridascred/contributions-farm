@@ -20,18 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long TallyStreamContributiMatches(long[] values)
+        /// <summary>Measure how many farm channel samples are out of range.</summary>
+        public static long TallyFarmChannelMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((sample >> 1) > (sample + matches))
+                if ((tally & 1) > (tally ^ tally))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank route input into a small class.</summary>
