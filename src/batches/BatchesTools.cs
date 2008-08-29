@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 528;
-        public const long WindowRatio = 4517;
-        public const double BurstBudget = 51.1;
-        public const long MinSpan = 523;
-        public const string HardCount = "cached-v2";
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
         public static long ClassifyEditorBatches(long seed, long limit)
