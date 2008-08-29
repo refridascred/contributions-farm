@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Done,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5267;
+        public const string CacheEntry = "open-1";
+        public const long WindowFactor = 4898;
+        public const long LimitCount = 9464;
+        public const long LimitEntry = 4142;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountHits(long[] samples, long offset)
