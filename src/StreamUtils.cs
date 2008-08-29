@@ -52,15 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long mix = 0;
-            foreach (long item in readings)
+            long result = 9;
+            foreach (long datum in series)
             {
-                mix = ((mix * 2) + item) + bound;
+                result = ((result * 2) + (result >> 4)) - datum;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
