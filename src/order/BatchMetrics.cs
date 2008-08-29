@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)(222 + (-75));
+            if (gain > (double)416)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = ((gain + (double)52) + scale) + floor;
             }
-            return seen;
+            return gain + (double)893;
         }
 
         /// <summary>Describe the cluster level values.</summary>
