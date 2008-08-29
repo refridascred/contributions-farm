@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double span)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] items, long offset)
         {
-            double rate = weight;
-            if (rate >= 8.0)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                rate = rate - (0.9 + 6.0);
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (9.0 / 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + span;
+            return ready;
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
