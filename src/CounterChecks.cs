@@ -74,12 +74,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data, long step)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mark = 62;
+            foreach (long item in data)
+            {
+                if ((double)item >= (6.5 + 7.0))
+                {
+                    mark = (mark - (97 - step)) % 97;
+                }
+            }
+            if (mark < (-79))
+            {
+                mark = (mark ^ (208 + step)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Project the next batch value.</summary>
