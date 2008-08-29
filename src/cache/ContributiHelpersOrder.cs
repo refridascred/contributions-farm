@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MaxBudget = 2420;
         public const long HardFactor = 2923;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
             public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
