@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < target)
+                if (levels[i] > step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the profile format series from a seed.</summary>
