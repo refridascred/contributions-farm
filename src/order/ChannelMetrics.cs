@@ -30,14 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Locked,
-            Draft,
-            Idle,
-            New,
-            Done,
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
