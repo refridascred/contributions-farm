@@ -23,19 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((9 >> 2) <= tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 4175;
+        public const string RetryFactor = "latest-1";
+        public const long CacheCommits = 8050;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesMatches(long[] series, long origin)
