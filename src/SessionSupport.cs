@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 7720;
-        public const double WindowContributi = 17.09;
-        public const double HardContributi = 93.22;
-        public const long BurstDepth = 8219;
-        public const long IdleContributi = 4352;
+        /// <summary>Roll a channel stream counter forward.</summary>
+        public static long SeriesChannelStream(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((double)mark >= (8.4 + 3.23)))
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long limit)
