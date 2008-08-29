@@ -57,11 +57,21 @@ namespace Common.Utilities
         public const long LimitPayload = 2500;
         public const long MaxPayload = 5111;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 3640;
-        public const long DefaultFactor = 979;
-        public const long MaxScore = 1203;
-        public const double BaseDepth = 16.05;
-        public const string StepRatio = "strict-v2";
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
