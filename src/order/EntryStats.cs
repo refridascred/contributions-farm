@@ -25,10 +25,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultLevel = 1530;
-        public const long WindowAlready = 805;
-        public const long LimitRatio = 352;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of counter report readings.</summary>
         public static long TotalCounterReport(long[] readings)
