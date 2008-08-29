@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long HardLevel = 9734;
         public const long StepCount = 7590;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long target)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc ^ (target - 58);
+                acc = ((acc << 2) ^ (9 * 5)) % 101;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
