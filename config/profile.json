@@ -1,7 +1,7 @@
 {
-  "burst_interval": "legacy",
-  "retry_ratio_count": false,
-  "idle_retries": "legacy",
-  "poll_timeout": [253, 321, 405],
-  "warm_limit": 1531
+  "default_window": 100,
+  "profile_retries": 92,
+  "editor_timeout": [461, 167],
+  "audit": "eu-west",
+  "notes_timeout": ["latest", "strict", "staging"]
 }
