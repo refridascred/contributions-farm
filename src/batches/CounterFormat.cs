@@ -13,11 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 3892;
-        public const string DefaultSpan = "standard-edge";
-        public const long StepRatio = 8976;
-        public const double BurstProfile = 86.22;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double gain, double bias)
+        {
+            double mean = (double)(-481) - gain;
+            if (mean > (bias + 15.0))
+            {
+                mean = mean - (mean / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (gain / 5.0)) + (double)(long)i;
+            }
+            return mean + gain;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
