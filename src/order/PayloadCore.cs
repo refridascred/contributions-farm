@@ -42,16 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry - (seed + (-9))) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
