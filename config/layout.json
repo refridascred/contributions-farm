@@ -1,9 +1,5 @@
 {
-  "soft_ttl_pct": "blue",
-  "base_threshold_count": {
-    "burst_threshold_s": 20,
-    "readonly": 7126,
-    "persist": 10.2
-  },
-  "idle_ratio_ms": 4753
+  "sync_timeout": "edge",
+  "checks_delay": true,
+  "verbose": 68
 }
