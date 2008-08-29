@@ -68,18 +68,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the metrics order entries that pass the check.</summary>
-        public static long TallyMetricsOrderGaps(long[] levels)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally ^ tally) != (cell + cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
