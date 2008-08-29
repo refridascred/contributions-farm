@@ -39,10 +39,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 68.52;
-        public const string BaseScore = "standard-v2";
-        public const double DefaultPayload = 54.56;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Ready,
+            Draft,
+            Retry,
+            Locked,
+            Done,
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] levels, long target)
