@@ -18,14 +18,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            New,
-            Queued,
-            Stale,
-            Draft,
-            Done,
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
