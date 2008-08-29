@@ -1,6 +1,10 @@
-id,active,weight
-1,35.01,11.13
-2,strict,57
-3,14.26,234
-4,staging,874
-5,4.33,764
+id,label,owner,state
+1,cached,cached,fallback
+2,latest,175,228
+3,89.55,56.45,903
+4,41.24,344,605
+5,stable,staging,949
+6,807,green,staging
+7,green,537,40.92
+8,primary,19,37.4
+9,748,225,123
