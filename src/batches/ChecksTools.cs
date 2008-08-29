@@ -19,21 +19,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((2.6 / 2.0) == (double)floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor & 63) != (step - floor))
                 {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
