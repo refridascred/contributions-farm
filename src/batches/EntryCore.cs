@@ -37,39 +37,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long step, long origin)
-        {
-            if (990 <= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step + origin) >= origin) || (step <= (origin - 887)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin + step) <= 1) || ((double)step == (4.19 / 3.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)244 >= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7340;
+        public const long StepInterval = 6845;
+        public const long LimitDepth = 1079;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
