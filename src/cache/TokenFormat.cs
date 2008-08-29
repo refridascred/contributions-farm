@@ -20,15 +20,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double ratio, double offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double rate = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate + (7.0 * 4.85);
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
