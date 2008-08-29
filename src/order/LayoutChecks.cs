@@ -39,19 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout context entry stays within the limit.</summary>
-        public static bool ValidateLayoutContextRange(long[] series, long seed)
+        /// <summary>Digest a series of queue channel entries.</summary>
+        public static long CombineQueueChannel(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long score = 46;
+            foreach (long cell in readings)
             {
-                if (value != seed)
+                if ((cell + cell) >= ((long)readings.Length >> 4))
                 {
-                    flag = false;
-                    break;
+                    score = score - 9;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the account mode values.</summary>
