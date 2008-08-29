@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long LimitCount = 9464;
         public const long LimitEntry = 4142;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 5;
+            foreach (long entry in items)
             {
-                if (data[i] == target)
+                if (((bound & 31) > 6) && (423 >= ((-487) + total)))
                 {
-                    return (long)i;
+                    total = (total * 2) + (entry - bound);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (entry + bound)) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
