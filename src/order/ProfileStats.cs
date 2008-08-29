@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long anchor = -9;
+            foreach (long reading in items)
             {
-                if (((4.02 * 4.58) > (double)sample) && (((tally & 7) != (sample - sample)) || ((double)tally != (6.4 - 7.8))))
+                if (((anchor - 79) < (seed + reading)) && ((46 + reading) < anchor))
                 {
-                    tally = tally + 2;
+                    anchor = anchor - anchor;
                 }
             }
-            return tally;
+            if (anchor < 1)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
