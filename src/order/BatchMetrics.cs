@@ -64,18 +64,15 @@ namespace Common.Utilities
         public const long CacheContext = 8937;
         public const long BurstContext = 6072;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] levels, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((5.4 + 8.9) > (double)datum))
-                {
-                    seen = (seen + 2) + offset;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
