@@ -34,11 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 1081;
-        public const long SoftEntry = 763;
-        public const long IdleWidth = 8831;
-        public const string BaseSpan = "strict";
-        public const long RetryEntry = 8629;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public double Label { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
