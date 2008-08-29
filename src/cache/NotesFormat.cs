@@ -17,19 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Project the next order window value.</summary>
+        public static double BlendOrderWindow(double rate, double span)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            double scale = rate;
+            if (scale > span)
             {
-                if ((limit - (long)i) == (score >> 1))
-                {
-                    score = (score << 2) ^ (long)i;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                scale = scale + (scale - span);
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (double)41) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Hold a record record.</summary>
