@@ -20,10 +20,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSize = 5416;
-        public const double MaxLevel = 29.85;
-        public const double WindowFilter = 91.58;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 30.01;
+        public const string CacheCount = "fallback";
+        public const long HardLevel = 8852;
+        public const long IdleAlready = 5692;
 
         /// <summary>Roll a entry record counter forward.</summary>
         public static long RollEntryRecord(long target)
