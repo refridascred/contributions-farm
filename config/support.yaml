@@ -1,14 +1,9 @@
 # support settings
-cache_interval_count:
-  notes_ttl:
-    - primary
-    - local
-    - blue
-    - stable
-  counter_ttl:
-    batch_delay: 6581
-    readonly: 250
-    batch_window: 250
-  batch_ttl_s: 98.05
-default_size_pct: blue
-audit: 1024
+burst_depth: 88.73
+dry_run:
+  - 445
+  - 401
+  - 154
+  - 441
+burst_ttl_ms: 7227
+max_interval_ms: 4.5
