@@ -49,19 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Check that every layout context entry stays within the limit.</summary>
+        public static bool ValidateLayoutContextRange(long[] series, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (((mix + floor) != ((long)i ^ mix)) && ((6.2 - 8.5) < (double)floor))
+                if (value != seed)
                 {
-                    mix = ((mix * 5) + ((long)i << 3)) % 4096;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the account mode values.</summary>
