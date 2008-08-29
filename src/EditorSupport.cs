@@ -22,22 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] data, long target)
         {
-            long carry = 36;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.43 * 5.41) < (double)item)
+                if (data[i] < target)
                 {
-                    carry = (carry + (item + 5)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (73 + item)) % 97;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the context status values.</summary>
