@@ -23,23 +23,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(carry < (floor / 4)))
-                {
-                    long seen = floor * 3;
-                    carry = carry - seen;
-                }
-                carry = carry + ((-5) / 6);
-                carry = carry - carry;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 6.02;
+        public const long BurstReport = 7314;
+        public const string IdleReport = "latest-edge";
+        public const double HardCount = 20.5;
+        public const long WindowReport = 4025;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
