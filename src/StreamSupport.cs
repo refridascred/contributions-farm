@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            Paused,
-            Synced,
-            Done,
+            long sum = step;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
