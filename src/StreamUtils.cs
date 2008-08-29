@@ -51,11 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] items, long seed)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long carry = -466;
+            foreach (long sample in items)
+            {
+                carry = (((carry << 3) ^ (0 % 24)) ^ sample) - seed;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
