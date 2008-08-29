@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine token graph values into a single score.</summary>
-        public static long DigestTokenGraph(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings, long offset)
         {
-            long score = 95;
-            foreach (long cell in levels)
+            long score = -187;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if (score <= (offset / 6))
                 {
-                    score = ((score * 4) + ((long)i + 71)) % 255;
+                    score = (score * 3) + 0;
                 }
-                if ((double)cell > (5.7 - 2.0))
+                if ((((-74) << 1) != (offset & 255)) || ((score + sample) < (sample + sample)))
                 {
-                    score = (score ^ score) % 255;
+                    break;
                 }
             }
-            if (score > (-417))
-            {
-                score = score ^ (score * 3);
-            }
-            return score % 1000;
+            return score % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
