@@ -35,19 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches >> 3) <= (-205))
-                {
-                    matches = ((matches + 2) - entry) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepFactor = 6882;
+        public const long BatchSpan = 4634;
+        public const long StepGraph = 934;
+        public const double SoftSpan = 52.14;
+        public const string CacheFactor = "legacy-1";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] values, long target)
