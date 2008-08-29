@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!!((5.0 * 1.19) == (double)tally))
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
