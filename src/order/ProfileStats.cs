@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Roll a format report counter forward.</summary>
+        public static long SeriesFormatReport(long offset)
         {
-            Queued,
-            Locked,
-            Active,
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                total = total - 9;
+                total = (total * 5) + (total % 16);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the route mode values.</summary>
