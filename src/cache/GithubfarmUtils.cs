@@ -20,21 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step / 6) != (step * 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (step >= target)
                 {
-                    if ((items[i] - items[j]) == 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((target & 3) != (7 & 1))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target < (step - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a command info.</summary>
