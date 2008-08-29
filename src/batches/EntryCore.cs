@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 1548;
-        public const long LimitRatio = 9652;
-        public const long DefaultContext = 6849;
-        public const long BaseContext = 1000;
-        public const long RetryCount = 1295;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinCount = 9595;
+        public const double MaxToken = 96.42;
+        public const long BurstToken = 4005;
+        public const long BatchCount = 9007;
+        public const long MinToken = 4598;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportOutliers(long[] items)
