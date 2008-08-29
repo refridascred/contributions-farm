@@ -52,11 +52,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings, long seed)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long total = 64;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = (total ^ (seed + sample)) + (long)i;
+                    total = (total + (sample + seed)) % 1000;
+                }
+                total = ((total << 2) ^ (seed - sample)) % 97;
+                if ((double)sample != (double)seed)
+                {
+                    total = (total ^ sample) % 1000;
+                }
+            }
+            if (total < 99)
+            {
+                total = ((total * 4) + 59) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a batches stats.</summary>
