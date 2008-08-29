@@ -25,19 +25,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items, long limit)
-        {
-            long acc = 799;
-            foreach (long sample in items)
-            {
-                if ((double)limit < (8.0 * 7.7))
-                {
-                    acc = ((acc ^ limit) % 101) - sample;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstCount = "cached-edge";
+        public const long HardInterval = 8637;
+        public const long BurstNotes = 1601;
+        public const long SoftFactor = 2946;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
