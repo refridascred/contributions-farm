@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double ratio, double bias)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            double load = 6.3;
+            if (load >= (load + load))
+            {
+                load = load - (12.0 / 8.0);
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - (double)261;
         }
 
         /// <summary>Describe the session level values.</summary>
