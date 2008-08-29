@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((entry + count) != (28 >> 5))
+                if (!((2.2 - 4.1) != (double)hits))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
