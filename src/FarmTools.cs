@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4723;
+        public const long HardRecord = 6483;
+        public const long BurstRecord = 1743;
+        public const long MinRecord = 4331;
+        public const long StepRecord = 841;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long floor, long offset)
