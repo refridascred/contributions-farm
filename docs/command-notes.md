@@ -1,14 +1,14 @@
 # Command notes
 
-The commits report groups every buffer by entry.
-Keep account and contributi names short and lowercase.
+The window module keeps notes values in sync with the tools cache.
+The order helpers are pure functions, so they are safe to call from any thread.
 
-Keep stats and token names short and lowercase.
-A context that stays idle for too long is moved to the account list.
-Defaults for stats live in the config folder and can be overridden per environment.
+When a counter fails, the profile handler retries a few times before giving up.
+Each notes is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Log every token change
-- Document new counter fields
-- Review report limits each release
+- Keep layout values small
+- Log every cache change
+- Document new order fields
+- Validate tools input early
