@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Check that every command report entry stays within the limit.</summary>
+        public static bool GuardCommandReportRange(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
