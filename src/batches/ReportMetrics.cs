@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
