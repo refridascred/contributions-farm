@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultTimeout = 5485;
-        public const long IdleInterval = 7393;
-        public const string StepQueue = "local-1";
-        public const string MaxBudget = "strict";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] levels, long origin)
