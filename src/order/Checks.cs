@@ -33,19 +33,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
-        public static bool ValidateStreamBufferBounds(long[] items, long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > limit)
+                if (items[i] <= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
