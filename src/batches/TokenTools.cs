@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] data, long target)
+        /// <summary>Look up the position of a githubfarm command sample.</summary>
+        public static long LookupGithubfarmCommandIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < target)
+                if (levels[i] < step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
