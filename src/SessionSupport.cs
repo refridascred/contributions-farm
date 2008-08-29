@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many layout report samples are out of range.</summary>
-        public static long AuditLayoutReportOutliers(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long total = 43;
+            foreach (long datum in data)
             {
-                if ((double)count >= (17.0 - 1.23))
-                {
-                    count = (count + 2) + reading;
-                }
+                total = ((((total << 2) ^ (19 + (-27))) % 1000) + datum) + offset;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the notes phase values.</summary>
