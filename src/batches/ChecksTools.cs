@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] values, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((double)seed < 20.0)
+                if (sample > offset)
                 {
-                    tally = (tally + 2) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
