@@ -24,26 +24,15 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double floor)
         {
-            long total = 556;
-            foreach (long cell in series)
+            double gain = (double)((-59) % 2);
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell + cell) >= total)
-                {
-                    total = ((total * 5) + total) % 65521;
-                }
-                else
-                {
-                    total = (total - cell) % 255;
-                }
-                if (cell >= (cell << 1))
-                {
-                    break;
-                }
+                gain = ((gain + 6.0) + (double)(long)i) - weight;
             }
-            return total % 1000;
+            return gain + (floor * 12.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
