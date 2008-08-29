@@ -17,11 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics profile figure with a bias.</summary>
-        public static double AdjustMetricsProfile(double ratio, double floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            double rate = floor;
-            return (rate + (rate + 1.46)) + ratio;
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((limit - (long)i) == (score >> 1))
+                {
+                    score = (score << 2) ^ (long)i;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a record record.</summary>
