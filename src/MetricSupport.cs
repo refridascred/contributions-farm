@@ -18,21 +18,24 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Rank context route input into a small class.</summary>
+        public static long ClassifyContextRoute(long bound, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            if ((seed % 5) <= (bound >> 4))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry + 20) % 255) ^ (long)i2;
-                }
-                carry = (carry - 8) % 255;
-                carry = carry ^ (carry * 5);
-                carry = ((carry * 5) + (long)i) % 97;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((seed >= (18 * 3)) || ((double)seed < (7.6 * 0.8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine support values into a single score.</summary>
