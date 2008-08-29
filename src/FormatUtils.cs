@@ -15,12 +15,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long offset)
         {
-            Stale,
-            Synced,
-            Paused,
+            long step = bound - offset;
+            if ((12.0 + 15.0) <= (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset ^ offset) < (bound - bound)) || (bound <= (bound + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (3 <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
