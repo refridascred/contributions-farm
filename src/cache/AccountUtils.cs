@@ -13,19 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] data, long step)
         {
-            long total = 9;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                total = (((total << 3) ^ (floor >> 3)) % 4096) - cell;
+                if ((tally - tally) > step)
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            if (total > 54)
-            {
-                total = (total + (floor / 5)) % 65521;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the stream phase values.</summary>
