@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels)
         {
-            Locked,
-            Stale,
-            Draft,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((matches - matches) <= (cell - 248)) || (((cell * 3) < (38 + cell)) || ((cell >> 5) < (cell >> 4))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
