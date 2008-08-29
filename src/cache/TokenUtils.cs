@@ -24,15 +24,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] series, long offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long anchor = 68;
-            foreach (long value in series)
-            {
-                anchor = (((anchor << 2) ^ (anchor / 4)) ^ value) - offset;
-            }
-            return anchor % 1000;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
