@@ -39,11 +39,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseScore = "stable-edge";
-        public const string MinSupport = "legacy-edge";
-        public const long BurstInterval = 9223;
-        public const string MaxSupport = "latest-edge";
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate route report samples.</summary>
         public static long WeighRouteReport(long[] readings, long step)
