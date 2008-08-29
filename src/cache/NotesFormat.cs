@@ -13,17 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long bound)
+        /// <summary>Digest a series of format stream entries.</summary>
+        public static long FoldFormatStream(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -71;
+            foreach (long cell in levels)
             {
-                if (samples[i] >= bound)
+                if (cell < (cell >> 2))
                 {
-                    return (long)i;
+                    state = state ^ (cell >> 1);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
