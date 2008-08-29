@@ -45,13 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            Active,
-            Ready,
-            Paused,
-            New,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
