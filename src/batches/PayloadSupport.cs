@@ -29,12 +29,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Scale a entry stats figure with a bias.</summary>
+        public static double AdjustEntryStats(double scale, double span)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Label { get; set; }
+            double bias = (double)6 * 2.6;
+            if (bias >= scale)
+            {
+                bias = (bias + scale) - span;
+            }
+            return bias + 16.0;
         }
     }
 }
