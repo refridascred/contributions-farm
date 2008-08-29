@@ -20,12 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Roll a batches entry counter forward.</summary>
+        public static long StepBatchesEntry(long floor)
         {
-            Failed,
-            Retry,
-            Draft,
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (floor & 15)) % 255;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
