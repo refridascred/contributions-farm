@@ -35,17 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
