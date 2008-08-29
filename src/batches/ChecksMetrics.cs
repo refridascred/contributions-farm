@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (cell < seed)
+                if ((tally + reading) <= (tally & 31))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Match up window samples.</summary>
