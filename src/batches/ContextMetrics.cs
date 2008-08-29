@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double span)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            double weight = 6.8;
+            if (weight > span)
+            {
+                weight = weight - (double)6;
+            }
+            else
+            {
+                weight = weight + 1.0;
+            }
+            return weight - (bias / 9.0);
         }
 
         /// <summary>Accumulate format report samples.</summary>
