@@ -1,20 +1,10 @@
 # entry settings
-max_interval_count:
-  idle_ttl_count: latest
-  batch_window_count: 1972
-  batch_window:
-    readonly:
-      - primary
-      - primary
-      - strict
-      - primary
-    schema_retries: false
-    base_size_count: edge
-enabled: 7.53
-report_interval:
-  - 64
-  - 422
-  - 140
-route_size: open
-session_ttl: 64
-poll_threshold: stable
+idle_capacity: 83.19
+flush_retries: true
+persist: 77.98
+enabled:
+  - 166
+  - 271
+  - 387
+  - 179
+audit: 47.2
