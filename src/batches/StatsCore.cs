@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long seed, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            if ((limit & 1) < seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 12) != (limit % 97))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Active,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Adjust a format reading.</summary>
