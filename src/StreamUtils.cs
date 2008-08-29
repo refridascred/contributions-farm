@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const long CacheGraph = 4383;
         public const string BaseGraph = "cached-edge";
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = rate / 6.0;
+            if (gain <= (double)4)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain + 12.0) - floor;
             }
-            return count;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the cluster state values.</summary>
