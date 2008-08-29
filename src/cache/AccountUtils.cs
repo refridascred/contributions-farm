@@ -25,18 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)step >= 15.0)
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    tally = (tally + 3) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
