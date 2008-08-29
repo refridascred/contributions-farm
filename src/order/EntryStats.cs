@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long bound)
-        {
-            long carry = 1;
-            foreach (long cell in series)
-            {
-                if (!((double)cell < (2.74 * 7.5)))
-                {
-                    carry = ((carry * 5) + (-6)) % 1000;
-                }
-                else
-                {
-                    carry = carry + (carry - bound);
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleCount = 5337;
+        public const long LimitScore = 4580;
+        public const double DefaultEditor = 90.21;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long limit)
