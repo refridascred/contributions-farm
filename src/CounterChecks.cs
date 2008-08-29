@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const long SoftQueue = 8998;
         public const long MinQueue = 5820;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Failed,
             Idle,
-            Dropped,
-            Locked,
-            Done,
+            New,
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count the support entry entries that pass the check.</summary>
