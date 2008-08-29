@@ -1,9 +1,7 @@
 {
-  "stream_interval": {
-    "persist": "stable",
-    "burst_size_s": [495, 174, 480],
-    "commits_depth": 39.05
-  },
-  "dry_run": "standard",
-  "base_retries": [17, 435, 483, 23]
+  "strict": "fallback",
+  "warm_delay": "latest",
+  "retry_size_count": 8,
+  "route_retries": 250,
+  "flush_delay_pct": 12
 }
