@@ -58,15 +58,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            long carry = -466;
-            foreach (long sample in items)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (((carry << 3) ^ (0 % 24)) ^ sample) - seed;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
