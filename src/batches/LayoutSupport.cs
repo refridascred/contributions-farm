@@ -47,13 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowDepth = 6901;
+        public const long CacheScore = 6578;
+        public const long HardBatches = 7603;
+        public const double CacheBatches = 21.45;
+        public const long WindowBatches = 705;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] items)
