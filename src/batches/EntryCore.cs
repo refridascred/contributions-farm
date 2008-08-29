@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "primary-v2";
-        public const string WindowPayload = "standard";
-        public const long CacheWidth = 1849;
-        public const long SoftPayload = 2975;
-        public const long BurstFactor = 2985;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 302;
+        public const long RetryBuffer = 3545;
+        public const long CacheBuffer = 3710;
+        public const double BatchBuffer = 93.94;
 
         /// <summary>Roll a metrics already counter forward.</summary>
         public static long StepMetricsAlready(long step)
