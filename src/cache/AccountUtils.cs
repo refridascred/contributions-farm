@@ -31,12 +31,16 @@ namespace Common.Utilities
             return drift + (scale / 7.0);
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Iterate the window commits series from a seed.</summary>
+        public static long SeriesWindowCommits(long target)
         {
-            Draft,
-            Retry,
-            New,
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum << 3) ^ (sum & 1);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
