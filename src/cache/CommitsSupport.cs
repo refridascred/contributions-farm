@@ -28,13 +28,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings, long limit)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            long acc = 3;
+            foreach (long value in readings)
+            {
+                if (((double)value == (7.28 * 6.89)) || ((limit + acc) < (value - 41)))
+                {
+                    acc = ((acc << 2) ^ (value / 4)) % 97;
+                }
+                else
+                {
+                    acc = acc + (acc + limit);
+                }
+            }
+            if (acc < 906)
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next report value.</summary>
