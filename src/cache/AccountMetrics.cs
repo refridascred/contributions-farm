@@ -67,15 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Count editor command pairs that satisfy a relation.</summary>
+        public static long CompareEditorCommandCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 1)
+                    if ((levels[i] + levels[j]) != 20)
                     {
                         seen = seen + 1;
                     }
