@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches % 10) > (778 * 4))
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
+            double drift = offset;
+            return (drift - (drift * 6.43)) + gain;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
