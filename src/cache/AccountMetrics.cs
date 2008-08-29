@@ -23,39 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long target, long floor)
-        {
-            if ((target + target) >= (target ^ target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor < (target + 403)) || ((81 >> 2) <= floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target & 31) < 63)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.7 / 6.0) != (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 1995;
+        public const long MinStream = 5240;
+        public const long LimitRatio = 8607;
+        public const long BaseDepth = 8447;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
