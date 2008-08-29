@@ -57,15 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Stale,
-            Active,
-            Paused,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheWidth = 1122;
+        public const string StepWidth = "staging-v2";
+        public const long SoftContext = 375;
+        public const long CacheContext = 8937;
+        public const long BurstContext = 6072;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
