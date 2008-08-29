@@ -85,11 +85,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long mix = -63;
+            foreach (long reading in data)
+            {
+                if ((0.2 + 18.0) == (double)mix)
+                {
+                    mix = mix + reading;
+                }
+                if (((3.3 * 8.7) != (double)mix) && ((reading & 63) < (mix - mix)))
+                {
+                    mix = mix - (mix + 41);
+                }
+            }
+            return mix;
         }
     }
 }
