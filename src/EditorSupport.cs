@@ -16,11 +16,18 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 9712;
-        public const string StepChannel = "stable-edge";
-        public const long MaxChannel = 9207;
-        public const string BurstSize = "staging";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MinLayout = 8967;
