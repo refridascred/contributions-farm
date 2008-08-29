@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double bias)
         {
-            Dropped,
-            Ready,
-            New,
-            Retry,
+            double drift = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - (drift / 6.0);
         }
 
         /// <summary>Accumulate token samples.</summary>
