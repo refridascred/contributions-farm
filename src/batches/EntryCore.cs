@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 1548;
+        public const long LimitRatio = 9652;
+        public const long DefaultContext = 6849;
+        public const long BaseContext = 1000;
+        public const long RetryCount = 1295;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportOutliers(long[] items)
