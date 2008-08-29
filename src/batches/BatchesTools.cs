@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] items, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (value < bound)
+                if (((tally + tally) < (794 * 2)) || (value <= (tally ^ offset)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
