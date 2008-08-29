@@ -55,17 +55,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long bound, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = bound - step;
+            if ((cur / 7) < (step >> 4))
             {
-                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((bound << 2) > step)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
