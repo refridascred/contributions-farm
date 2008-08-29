@@ -1,14 +1,10 @@
 # Command notes
 
-Run the counter check before changing any report limits.
-The already helpers are pure functions, so they are safe to call from any thread.
-
-Use stream settings to tune how often stream data is refreshed.
-Keep editor and checks names short and lowercase.
-When a metric fails, the editor handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Each editor is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Log every counter change
-- Validate support input early
+- Validate cache input early
+- Review contributi limits each release
+- Document new format fields
