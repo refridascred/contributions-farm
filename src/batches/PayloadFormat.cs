@@ -20,15 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next metrics support value from a seed.</summary>
-        public static long StepMetricsSupport(long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                carry = (carry * 3) + (bound - bound);
+                if ((bound + (-653)) != ((long)i << 1))
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Hold a window summary.</summary>
