@@ -1,12 +1,23 @@
 {
-  "tools_interval": 5169,
-  "enabled": "edge",
-  "dry_run": {
-    "hard_limit": false,
-    "schema_window": 93.64,
-    "min_retries_s": [205, 289],
-    "max_timeout": [445, 285]
+  "soft_size_count": false,
+  "cache_delay_ms": 1.24,
+  "default_retries_count": {
+    "cache_delay": 85.76,
+    "farm_ratio": {
+      "graph_limit": 500,
+      "compress": 69.25,
+      "burst_depth_pct": false,
+      "base_ratio": 83
+    },
+    "default_depth_ms": 35.93,
+    "idle_limit_ms": {
+      "persist": "legacy",
+      "idle_limit_s": "edge",
+      "route_interval": "eu-west",
+      "cache_timeout_s": 9039,
+      "max_threshold_ms": 13.93,
+      "retry_ttl": true
+    }
   },
-  "token_interval": true,
-  "soft_capacity_ms": "legacy"
+  "buffer_ttl": "local"
 }
