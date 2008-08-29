@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const string BaseCount = "open-v2";
         public const double HardRoute = 5.84;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] values)
+        /// <summary>Look up the position of a profile account sample.</summary>
+        public static long LocateProfileAccountIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= hits)
+                if (levels[i] == step)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
