@@ -1,9 +1,15 @@
 # entry settings
-session_interval:
+compress: 100
+enabled: 26.16
+hard_retries_s:
+  - green
   - cached
-  - local
-commits_size: 3.5
-strict:
-  - fallback
-  - local
-  - legacy
+  - edge
+retry_retries_s: 60
+cache_window_pct:
+  contributi_interval: cached
+  verbose: primary
+  base_size_ms: edge
+  graph_interval: open
+  cache_interval_ms: 1024
+  idle_delay_ms: true
