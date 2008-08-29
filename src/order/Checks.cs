@@ -50,17 +50,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long limit)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (bias * 3.8) + bias;
+            if (bias2 >= (bias * 5.6))
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + bias) - offset;
             }
-            return -1;
+            return bias2 + (double)8;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
