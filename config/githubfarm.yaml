@@ -1,10 +1,20 @@
 # githubfarm settings
-dry_run: staging
-schema_threshold: 500
-hard_limit_count: open
-metrics_ttl:
-  record_threshold: blue
-  strict: 70.47
-  order_ttl: 95.92
-  burst_delay_ms: open
-max_window_s: 16
+idle_ratio_ms: true
+retry_ttl_count: cached
+retry_delay_pct:
+  profile_capacity: 9275
+  base_timeout_count: staging
+  persist:
+    strict: 2065
+    metrics_limit: 9268
+    batch_delay_ms: open
+    stats_window: 30
+    order_delay: local
+    base_depth_ms: strict
+  dry_run: green
+  notes_window:
+    - 161
+    - 97
+    - 273
+    - 484
+  contributi_ratio: 250
