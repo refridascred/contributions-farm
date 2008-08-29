@@ -13,12 +13,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Rank payload profile input into a small class.</summary>
+        public static long SortPayloadProfile(long seed, long bound)
         {
-            New,
-            Synced,
-            Dropped,
+            if (((bound % 7) >= (bound & 31)) || ((seed - seed) == (seed % 16)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2 << 1) != (bound & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed * 3) > (seed / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next order session value from a seed.</summary>
