@@ -47,17 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics window entry that matches the target.</summary>
-        public static long FindMetricsWindowIndex(long[] samples, long origin)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Active,
+            Ready,
         }
     }
 }
