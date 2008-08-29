@@ -44,19 +44,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (sample != offset)
+                if (tally < (floor - floor))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
