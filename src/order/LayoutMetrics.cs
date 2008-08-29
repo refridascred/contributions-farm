@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count already tools pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyToolsCount(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 376;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = ((carry << 3) ^ datum) % 97;
+                if (((double)carry < 4.0) || ((datum + carry) > (datum & 255)))
                 {
-                    if ((values[i] - values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ (carry + datum)) % 65521;
+                }
+                if ((double)carry == (4.0 + 4.1))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the session level values.</summary>
