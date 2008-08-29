@@ -45,23 +45,10 @@ namespace Common.Utilities
             return (load - (ratio / 2.0)) + offset;
         }
 
-        /// <summary>Fold a list of githubfarm command readings.</summary>
-        public static long ScoreGithubfarmCommand(long[] data, long bound)
-        {
-            long total = 7;
-            foreach (long sample in data)
-            {
-                if (((double)total > (7.62 - 3.8)) || ((total - 7) > bound))
-                {
-                    total = (total - 2) - sample;
-                }
-                else
-                {
-                    total = (total ^ (6 >> 3)) % 101;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 9640;
+        public const long CacheInterval = 3715;
+        public const long CacheAlready = 3856;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
