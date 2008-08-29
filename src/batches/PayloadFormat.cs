@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next report editor value.</summary>
-        public static double ProjectReportEditor(double scale, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double gain = (double)(550 >> 5);
-            if (gain >= gain)
-            {
-                gain = (gain + (scale / 8.0)) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain - gain;
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate report token readings against a bound.</summary>
