@@ -32,11 +32,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate channel metrics samples.</summary>
+        public static long FoldChannelMetrics(long[] data)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 7;
+            foreach (long entry in data)
+            {
+                mix = (mix ^ (entry - mix)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
