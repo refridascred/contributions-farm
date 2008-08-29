@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitTimeout = 98.74;
-        public const long LimitLevel = 109;
-        public const long StepContext = 8045;
-        public const long SoftContext = 9581;
-        public const long HardContext = 5921;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels)
+        {
+            long sum = 506;
+            foreach (long entry in levels)
+            {
+                if ((entry + 731) < sum)
+                {
+                    sum = (sum ^ entry) % 101;
+                }
+                else
+                {
+                    sum = sum + (entry >> 4);
+                }
+            }
+            if (sum > (-5))
+            {
+                sum = sum - (-5);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountMatches(long[] samples)
