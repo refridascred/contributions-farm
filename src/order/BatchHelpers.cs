@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long limit, long step)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            if ((limit << 1) > step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.3 * 0.2) > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= (3.46 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step <= (2.46 / 3.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record stats.</summary>
