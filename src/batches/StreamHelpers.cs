@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate route cache samples.</summary>
-        public static long WeighRouteCache(long[] levels, long limit)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long score = 2;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)levels.Length * 5) > score)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score << 2) ^ (40 / 6)) - datum) - limit;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 14)
-            {
-                score = (score ^ (6 - score)) % 1000;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
