@@ -1,12 +1,8 @@
 {
-  "burst_depth_s": 8737,
-  "verbose": "edge",
-  "retry_ratio_count": 7237,
-  "max_window_pct": "staging",
-  "poll_interval_ms": "local",
-  "max_limit_pct": {
-    "soft_ratio_s": 60,
-    "enabled": ["primary", "green", "edge", "standard"],
-    "report_timeout": 4693
-  }
+  "command_ratio": false,
+  "cache_size": 42.84,
+  "verbose": 1024,
+  "default_retries": 60,
+  "batch_capacity_s": "edge",
+  "poll_limit_pct": 56.46
 }
