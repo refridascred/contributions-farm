@@ -1,7 +1,7 @@
 {
-  "sync_retries_s": "fallback",
-  "retry_size": 1024,
-  "stream_ttl": 5636,
-  "sync_threshold_ms": "local",
-  "flush_interval_s": [137, 2, 8, 300]
+  "compress": [45, 331],
+  "soft_window": ["latest", "staging"],
+  "audit": "fallback",
+  "base_capacity_ms": "strict",
+  "cluster_limit": 500
 }
