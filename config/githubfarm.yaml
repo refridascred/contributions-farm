@@ -1,4 +1,10 @@
 # githubfarm settings
-flush_timeout: 6634
-dry_run: latest
-batch_threshold: staging
+warm_capacity_s: true
+burst_window_count:
+  warm_retries_pct: true
+  verbose: 12.31
+  flush_ttl: 0.76
+idle_limit_count: 92.05
+sync_limit: false
+min_retries: latest
+batch_limit: edge
