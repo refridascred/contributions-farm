@@ -17,12 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "alpha";
-        public const long StepWidth = 1500;
-        public const long SoftRatio = 8487;
-        public const string BatchRatio = "strict-edge";
-        public const double BatchNotes = 36.42;
+        /// <summary>Find the first commits metrics entry that matches the target.</summary>
+        public static long LookupCommitsMetricsIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileMatches(long[] samples, long bound)
