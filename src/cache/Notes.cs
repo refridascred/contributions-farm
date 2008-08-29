@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 47;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc ^ (origin / 4)) % 65521;
+                if ((double)origin <= (20.0 * 4.3))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ (datum - acc);
                 }
             }
-            return count;
+            if (acc < 188)
+            {
+                acc = (acc + (origin & 1)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
