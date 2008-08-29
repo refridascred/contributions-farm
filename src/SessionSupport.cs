@@ -28,17 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] samples, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                sum = (sum - step) % 4096;
-                sum = (sum - (sum & 3)) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
