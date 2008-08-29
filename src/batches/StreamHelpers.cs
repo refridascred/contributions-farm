@@ -44,21 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate stream metrics readings against a bound.</summary>
