@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Validate queue githubfarm readings against a bound.</summary>
