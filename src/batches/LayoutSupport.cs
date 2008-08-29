@@ -46,19 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two record batches measurements.</summary>
-        public static double SmoothRecordBatches(double scale, double bias)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double load = bias;
-            if (load > scale)
-            {
-                load = load + scale;
-            }
-            else
-            {
-                load = load - (double)(-839);
-            }
-            return load + bias;
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
