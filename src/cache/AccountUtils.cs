@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5267;
-        public const string CacheEntry = "open-1";
-        public const long WindowFactor = 4898;
-        public const long LimitCount = 9464;
-        public const long LimitEntry = 4142;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data)
+        {
+            long score = 34;
+            foreach (long reading in data)
+            {
+                if (((score / 9) == (reading >> 1)) || ((score % 97) >= score))
+                {
+                    score = score ^ (7 - score);
+                }
+                if ((reading >> 1) <= 60)
+                {
+                    break;
+                }
+            }
+            if (score < 201)
+            {
+                score = (score - (score / 4)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] readings, long floor)
