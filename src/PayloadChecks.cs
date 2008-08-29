@@ -21,20 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Count the graph batches entries that pass the check.</summary>
+        public static long AuditGraphBatchesHits(long[] series)
         {
-            long mark = 64;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mark = (mark - 0) % 97;
-                mark = ((mark << 2) ^ (datum << 1)) % 65521;
-                if ((double)datum == (8.6 / 7.0))
+                if (tally < (tally << 1))
                 {
-                    mark = (mark + (mark + mark)) % 101;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
