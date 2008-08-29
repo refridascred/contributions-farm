@@ -34,23 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            double bias = floor;
-            if (bias < (4.2 / 3.0))
+            double mean = (span + span) * 5.81;
+            if (mean <= (8.5 + mean))
             {
-                bias = bias + gain;
+                mean = mean + (span + weight);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias + gain;
+                mean = (mean + 5.7) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - gain;
+            return mean + (weight - weight);
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
