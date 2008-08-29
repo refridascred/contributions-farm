@@ -22,19 +22,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate queue entry samples.</summary>
-        public static long ScoreQueueEntry(long[] data)
+        /// <summary>Rank buffer token input into a small class.</summary>
+        public static long SortBufferToken(long step, long floor)
         {
-            long total = 88;
-            foreach (long reading in data)
+            long prev = step + floor;
+            if ((prev + floor) < (prev + step))
             {
-                total = ((total * 2) + reading) % 4096;
+                return 8;
             }
-            if (total < (-71))
+            else
             {
-                total = ((total * 5) + total) % 97;
+                if (((prev & 127) < step) && ((step % 100) > (floor ^ 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return total % 1000;
         }
     }
 }
