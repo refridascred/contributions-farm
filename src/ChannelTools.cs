@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Accumulate githubfarm schema samples.</summary>
+        public static long DigestGithubfarmSchema(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long sum = -6;
+            foreach (long sample in series)
             {
-                if (!!((5.0 * 1.19) == (double)tally))
+                if (((sample + limit) > (-636)) && ((-1) >= limit))
                 {
-                    tally = (tally + 1) + reading;
+                    sum = (sum - 4) % 97;
                 }
-                else
+                if (((sum << 1) > limit) && ((limit - sample) > (sum << 3)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (sum > 10)
+            {
+                sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
