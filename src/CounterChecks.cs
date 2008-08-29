@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long TallyContextSessionOutliers(long[] series, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((1.9 + 5.8) < (double)cell)
+                if ((5 - tally) >= (9 * 4))
                 {
-                    hits = (hits + 2) - seed;
+                    tally = ((tally + 1) + sample) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the already status values.</summary>
