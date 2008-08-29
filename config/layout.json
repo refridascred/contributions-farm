@@ -1,8 +1,25 @@
 {
-  "verbose": 24,
-  "batches_ttl": 44,
-  "dry_run": "staging",
-  "min_ttl_count": ["edge", "staging", "cached", "cached"],
-  "retry_size_ms": ["open", "strict"],
-  "already_depth": 98
+  "persist": 61,
+  "verbose": {
+    "batch_limit_pct": {
+      "cache_delay": false,
+      "cache_threshold_pct": 500,
+      "cache_limit_ms": true,
+      "strict": 92.24,
+      "metrics_retries": 3,
+      "retry_ratio_ms": 44
+    },
+    "readonly": {
+      "hard_threshold_ms": 82.46,
+      "audit": ["blue", "green"],
+      "hard_delay_ms": [75, 123, 132],
+      "soft_threshold_ms": "edge",
+      "profile_depth": false
+    },
+    "base_delay_s": false
+  },
+  "burst_size_ms": "local",
+  "payload_limit": false,
+  "audit": "local",
+  "batch_threshold_count": [349, 11, 405, 265]
 }
