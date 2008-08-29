@@ -1,5 +1,4 @@
 # githubfarm settings
-soft_limit: 7051
-persist: open
-notes_threshold: false
-batch_interval_count: 36.84
+sync_delay_pct: 6076
+retry_interval: false
+flush_delay_s: true
