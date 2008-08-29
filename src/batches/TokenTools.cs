@@ -23,18 +23,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] samples, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double scale = 16.0;
+            if (scale < scale)
             {
-                if (reading <= (340 + 92))
-                {
-                    tally = (tally + 3) + offset;
-                }
+                scale = scale + (span * 5.05);
             }
-            return tally;
+            return scale + (bias + span);
         }
     }
 }
