@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a githubfarm command sample.</summary>
-        public static long LookupGithubfarmCommandIndex(long[] levels, long step)
+        /// <summary>Check that every metrics token entry stays within the limit.</summary>
+        public static bool VerifyMetricsTokenLimits(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (levels[i] < step)
+                if (entry >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
