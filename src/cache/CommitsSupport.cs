@@ -68,15 +68,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two entry cluster measurements.</summary>
-        public static double ScaleEntryCluster(double rate, double offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double load = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - (double)80) - (double)(long)i) - offset;
-            }
-            return load - (5.0 * 5.2);
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
