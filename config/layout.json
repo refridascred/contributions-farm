@@ -1,11 +1,5 @@
 {
-  "route_retries": "strict",
-  "audit": {
-    "retry_depth": true,
-    "base_threshold_s": [284, 59, 479],
-    "farm_size": "cached"
-  },
-  "soft_interval": true,
-  "verbose": false,
-  "order_capacity": 1318
+  "warm_limit_ms": 77,
+  "soft_size": 89,
+  "metric_interval": "edge"
 }
