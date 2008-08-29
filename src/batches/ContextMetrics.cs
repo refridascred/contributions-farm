@@ -50,12 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] items, long step)
         {
-            Retry,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count - datum) >= (long)items.Length)
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch kind values.</summary>
