@@ -48,15 +48,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] series, long origin)
         {
-            long state = 2;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ state) - value;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
