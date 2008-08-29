@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long limit)
         {
-            long anchor = 1;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((841 - 73) != (reading + anchor))
+                if (item >= limit)
                 {
-                    anchor = (anchor - (reading - anchor)) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count already stats pairs that satisfy a relation.</summary>
