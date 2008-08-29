@@ -30,12 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Paused,
-            Pending,
-            Queued,
+            Locked,
+            Draft,
+            Idle,
+            New,
+            Done,
         }
     }
 }
