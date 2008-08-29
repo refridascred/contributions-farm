@@ -71,17 +71,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
+                if (item > (count / 6))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
