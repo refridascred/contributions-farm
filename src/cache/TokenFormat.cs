@@ -20,22 +20,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long TallyFarmChannelMatches(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((tally & 1) > (tally ^ tally))
-                {
-                    tally = (tally + 1) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = total ^ (total & 63);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Rank route input into a small class.</summary>
