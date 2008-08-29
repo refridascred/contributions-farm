@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Project the next token format value.</summary>
+        public static double SmoothTokenFormat(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = 5.59;
+            if (ratio2 < (2.5 - 19.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = (ratio2 - (double)66) + ratio;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + span) + (double)(long)i;
+            }
+            return ratio2 + (double)743;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
