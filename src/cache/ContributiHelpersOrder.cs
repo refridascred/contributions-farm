@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of counter route entries.</summary>
-        public static long FoldCounterRoute(long[] items, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data, long floor)
         {
-            long sum = 7;
-            foreach (long entry in items)
+            long carry = 5;
+            foreach (long sample in data)
             {
-                if (!((4 + sum) < (sum >> 4)))
+                carry = (((carry * 5) + (floor ^ carry)) % 255) ^ sample;
+                if ((floor ^ carry) > 807)
                 {
-                    sum = ((sum - (offset + sum)) % 101) - entry;
+                    carry = carry - (carry << 1);
                 }
             }
-            return sum;
+            return carry % 4096;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
