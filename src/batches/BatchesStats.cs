@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples)
         {
-            Synced,
-            Closed,
-            Retry,
+            long sum = 75;
+            foreach (long item in samples)
+            {
+                sum = (sum << 2) ^ item;
+                if ((item + sum) < (10 ^ item))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
