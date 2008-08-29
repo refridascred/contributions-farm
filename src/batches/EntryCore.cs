@@ -28,10 +28,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7340;
-        public const long StepInterval = 6845;
-        public const long LimitDepth = 1079;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)hits == (double)(-4))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long IdleMetric = 2147;
