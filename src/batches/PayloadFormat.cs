@@ -54,19 +54,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
     }
 }
