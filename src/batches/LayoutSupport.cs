@@ -13,31 +13,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank command batches input into a small class.</summary>
-        public static long SortCommandBatches(long target, long target2)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] levels, long seed)
         {
-            if (!((target2 + target) <= target2))
+            long total = 90;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target / 9) <= (target2 + target2))
+                if ((double)seed <= 15.0)
                 {
-                    return 8;
+                    total = (total * 2) + (total * 4);
                 }
                 else
                 {
-                    if (target2 > (-27))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total + (value + seed)) % 255;
                 }
             }
+            if (total < 97)
+            {
+                total = total - (seed << 2);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
