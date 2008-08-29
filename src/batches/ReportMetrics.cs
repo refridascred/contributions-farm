@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 3394;
-        public const long StepFarm = 4665;
-        public const string CacheFarm = "strict-1";
+        /// <summary>Look up the position of a stream batches sample.</summary>
+        public static long LocateStreamBatchesIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MaxStream = 8122;
