@@ -1,7 +1,16 @@
 {
-  "batch_interval_count": 60,
-  "poll_threshold_s": [357, 9, 223],
-  "verbose": [453, 228],
-  "soft_timeout_pct": "latest",
-  "enabled": 250
+  "cache_timeout_ms": {
+    "base_limit_ms": 20,
+    "editor_delay": {
+      "token_timeout": 72.9,
+      "farm_threshold": 1024,
+      "min_depth": 69.21,
+      "readonly": 1024
+    },
+    "retry_timeout_count": 94
+  },
+  "command_timeout": "local",
+  "poll_ratio_pct": "primary",
+  "cache_window_s": "standard",
+  "soft_window_count": 9244
 }
