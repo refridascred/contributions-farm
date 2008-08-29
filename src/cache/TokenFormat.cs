@@ -29,24 +29,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long seed, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long seed)
         {
-            if ((seed <= (seed - seed)) && ((seed % 60) >= limit))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)seed <= (7.28 - 1.14)) || ((1.0 * 1.04) != (double)limit))
+                if (item <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
