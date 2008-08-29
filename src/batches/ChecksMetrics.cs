@@ -80,22 +80,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long acc = 89;
-            foreach (long entry in samples)
-            {
-                if (((entry * 5) < entry) && (((long)samples.Length - entry) == (acc >> 4)))
-                {
-                    acc = ((acc * 5) + (entry - acc)) % 1000;
-                }
-            }
-            if (acc > 493)
-            {
-                acc = (acc + (6 / 4)) % 101;
-            }
-            return acc;
+            Ready,
+            Closed,
+            Idle,
         }
     }
 }
