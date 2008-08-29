@@ -1,12 +1,12 @@
 {
-  "filter_timeout": 5943,
-  "payload_threshold": "stable",
-  "soft_ratio_count": {
-    "stats_limit": 250,
-    "min_interval_ms": 78.3,
-    "retry_threshold_count": "open",
-    "cache_retries_count": 7.15,
-    "audit": 6979
+  "burst_threshold_s": 71.85,
+  "default_limit_s": 65.43,
+  "burst_threshold": 30,
+  "warm_ratio_pct": "strict",
+  "compress": {
+    "channel_limit": 83.51,
+    "retry_interval_pct": 51,
+    "dry_run": false
   },
-  "buffer_timeout": [490, 289]
+  "hard_depth_s": "blue"
 }
