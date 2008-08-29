@@ -1,30 +1,20 @@
 # githubfarm settings
-strict: staging
-idle_window_s:
-  readonly:
-    - 36
-    - 322
-    - 75
-    - 89
-  retry_limit: false
-  queue_retries: true
-  retry_retries_ms: 9006
-  max_limit_count:
-    - 364
-    - 46
-    - 347
-    - 217
-retry_retries_s:
-  strict: 4
-  poll_capacity: false
-  hard_limit: 44
-  poll_size_ms: 45.26
-  verbose: 74
-batch_ratio_ms: true
-compress: legacy
 audit:
-  compress: 44.48
-  default_retries: strict
-  burst_size_count: open
-  stats_threshold: 30
-  min_size_s: true
+  persist:
+    - 99
+    - 469
+  compress: 37.29
+  flush_ratio_pct: 4.46
+  warm_retries: 9825
+  readonly: true
+burst_timeout_s: primary
+default_size_s: local
+compress:
+  - eu-west
+  - open
+  - fallback
+  - fallback
+base_threshold_pct:
+  - 145
+  - 421
+  - 287
