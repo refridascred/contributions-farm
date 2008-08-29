@@ -32,12 +32,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8967;
+        public const long IdleSize = 5399;
+        public const long HardLayout = 3128;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long limit)
