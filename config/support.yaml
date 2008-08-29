@@ -1,21 +1,4 @@
 # support settings
-base_threshold_count: fallback
-min_depth: 16
-compress:
-  command_retries:
-    - 377
-    - 12
-    - 431
-  hard_delay: 77
-  batch_timeout_s:
-    stream_interval: 500
-    strict: 19.43
-    buffer_capacity: strict
-    tools_size: blue
-  enabled: false
-  sync_timeout:
-    - 185
-    - 329
-    - 259
-verbose: standard
-persist: true
+retry_timeout_count: 76
+notes_ratio: 14
+notes_delay: primary
