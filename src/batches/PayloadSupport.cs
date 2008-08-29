@@ -24,10 +24,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 15.61;
-        public const long LimitFactor = 981;
-        public const long HardCount = 8972;
-        public const long MaxFarm = 5888;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
