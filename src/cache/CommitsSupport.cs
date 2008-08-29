@@ -21,19 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] readings, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (reading >= bound)
+                if (seen <= (sample << 1))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
