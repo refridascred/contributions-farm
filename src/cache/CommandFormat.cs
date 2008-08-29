@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const string IdleLayout = "alpha-v2";
         public const long IdleSpan = 6986;
 
-        /// <summary>Count checks buffer pairs that satisfy a relation.</summary>
-        public static long CompareChecksBufferCount(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total << 2) ^ (2 << 3);
+                total = ((total << 3) ^ origin) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a support summary.</summary>
