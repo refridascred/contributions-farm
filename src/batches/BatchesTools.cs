@@ -36,19 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] readings, long seed)
+        /// <summary>Measure how many order payload samples are out of range.</summary>
+        public static long TallyOrderPayloadOutliers(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (value >= seed)
+                if (seed >= (hits % 97))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
