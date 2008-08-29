@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long anchor = 75;
-            foreach (long item in items)
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) - item;
-                if (((long)items.Length + anchor) < (anchor - anchor))
-                {
-                    anchor = anchor - (anchor % 3);
-                }
-            }
-            return anchor;
+            Ready,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
