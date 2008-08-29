@@ -54,19 +54,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mark = 11;
+            foreach (long item in readings)
             {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark + (item << 2);
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
