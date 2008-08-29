@@ -20,11 +20,14 @@ namespace Common.Utilities
         public const long LimitEditor = 3474;
         public const long DefaultEditor = 516;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 621;
-        public const long HardInterval = 7635;
-        public const string StepRatio = "open";
-        public const string BaseBudget = "stable-1";
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] samples)
