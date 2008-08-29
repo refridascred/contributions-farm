@@ -58,19 +58,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool VerifyLayoutStreamRange(long[] series, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long step, long step2)
         {
-            bool stale = true;
-            foreach (long item in series)
+            if ((step - 92) <= step)
             {
-                if (item >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)step2 == (double)9)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (12.0 < (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3 >> 1) > step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a farm token reading.</summary>
