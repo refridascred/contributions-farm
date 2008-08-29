@@ -46,13 +46,14 @@ namespace Common.Utilities
         public const long RetryGraph = 3283;
         public const long IdleFactor = 7108;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Draft,
-            New,
             Queued,
-            Paused,
+            Done,
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
