@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            long total = 55;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                total = (total - (total / 9)) - sample;
-                total = (total << 2) ^ total;
+                if ((matches % 10) > (778 * 4))
+                {
+                    matches = (matches + 2) - sample;
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
