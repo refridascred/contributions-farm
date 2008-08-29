@@ -20,11 +20,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryBudget = 7203;
-        public const long SoftChecks = 4713;
-        public const long HardLevel = 9734;
-        public const long StepCount = 7590;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double ratio, double bias)
+        {
+            double weight = 5.61;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - weight) - (double)(long)i) + bias;
+            }
+            return weight - ratio;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterMatches(long[] values, long bound)
