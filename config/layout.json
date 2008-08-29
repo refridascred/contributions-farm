@@ -1,17 +1,15 @@
 {
-  "sync_capacity_ms": 100,
-  "format_delay": 47,
-  "persist": {
-    "cache_capacity_count": {
-      "min_window": true,
-      "retry_depth": ["strict", "strict"],
-      "hard_size_pct": ["strict", "stable"]
-    },
-    "checks_delay": 74,
-    "readonly": true,
-    "cache_retries_count": false
+  "retry_window_count": false,
+  "flush_capacity": {
+    "strict": "primary",
+    "command_limit": "stable",
+    "burst_timeout_pct": 7177,
+    "buffer_retries": true,
+    "cache_ratio": 100,
+    "default_timeout_count": 7741
   },
-  "cluster_ttl": 6713,
-  "batch_delay": ["legacy", "edge", "primary"],
-  "hard_interval": 91.15
+  "min_threshold_pct": true,
+  "graph_interval": true,
+  "buffer_interval": true,
+  "base_size_s": 100
 }
