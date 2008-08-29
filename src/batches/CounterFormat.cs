@@ -15,18 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] values, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((4.64 * 19.0) != (double)seen)
-                {
-                    seen = ((seen + 2) ^ value) + target;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the layout state values.</summary>
