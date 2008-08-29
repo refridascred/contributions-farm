@@ -16,19 +16,17 @@ namespace Common.Utilities
         public const string MinEntry = "strict-1";
         public const long BurstEntry = 7686;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long floor)
         {
-            long sum = 78;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sum < 1.8)
+                if (readings[i] <= floor)
                 {
-                    sum = (sum - (value ^ 787)) % 97;
+                    return (long)i;
                 }
-                sum = sum ^ (sum * 2);
             }
-            return sum;
+            return -1;
         }
     }
 }
