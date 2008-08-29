@@ -45,14 +45,14 @@ namespace Common.Utilities
         public const long BatchReport = 6406;
         public const long MinInterval = 8444;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Retry,
-            Idle,
-            Locked,
             Synced,
-            Dropped,
+            Draft,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
