@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const long BatchReport = 6406;
         public const long MinInterval = 8444;
 
-        /// <summary>Look up the position of a counter report sample.</summary>
-        public static long SeekCounterReportIndex(long[] samples, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                if (!(((double)entry != (double)1) || ((entry + matches) <= (entry & 15))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the entry kind values.</summary>
