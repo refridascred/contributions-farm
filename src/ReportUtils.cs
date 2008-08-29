@@ -59,15 +59,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double scale, double bias)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long limit, long target)
         {
-            double load = scale;
-            if (load >= (double)63)
+            long cur = limit ^ target;
+            if (((limit * 2) < (target >> 1)) && ((limit % 12) < cur))
             {
-                load = load + (bias - scale);
+                return 5;
             }
-            return load - (double)5;
+            else
+            {
+                if ((cur & 1) >= (target + cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
