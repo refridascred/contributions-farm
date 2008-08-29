@@ -40,18 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] readings, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (2 > (seen >> 1))
-                {
-                    seen = ((seen + 1) + sample) - step;
-                }
-            }
-            return seen;
+            Paused,
+            Locked,
+            Synced,
+            Pending,
         }
     }
 }
