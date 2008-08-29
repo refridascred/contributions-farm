@@ -20,39 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long target, long floor)
+        /// <summary>Count the stream contributi entries that pass the check.</summary>
+        public static long TallyStreamContributiMatches(long[] values)
         {
-            long offset = target - floor;
-            if ((floor + target) < floor)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (target > (floor + offset))
+                if ((sample >> 1) > (sample + matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor * 3) < (target + floor)) && ((floor >> 2) < target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank route input into a small class.</summary>
