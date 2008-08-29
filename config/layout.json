@@ -1,7 +1,12 @@
 {
-  "counter_interval": 60,
-  "metrics_retries": "staging",
-  "min_depth": [224, 121],
-  "sync_ttl": 93,
-  "cache_retries_count": 64
+  "tools_interval": 5169,
+  "enabled": "edge",
+  "dry_run": {
+    "hard_limit": false,
+    "schema_window": 93.64,
+    "min_retries_s": [205, 289],
+    "max_timeout": [445, 285]
+  },
+  "token_interval": true,
+  "soft_capacity_ms": "legacy"
 }
