@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] series, long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit <= (item << 1))
+                if (samples[i] < bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next tools context value from a seed.</summary>
