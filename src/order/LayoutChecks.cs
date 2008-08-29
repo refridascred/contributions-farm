@@ -64,27 +64,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Blend two batches metrics measurements.</summary>
+        public static double SmoothBatchesMetrics(double scale, double bias)
         {
-            long result = 934;
-            foreach (long sample in levels)
+            double weight = (scale + bias) - (double)15;
+            for (int i = 0; i < 9; i++)
             {
-                if ((36 << 1) > sample)
-                {
-                    result = (result * 3) + result;
-                }
-                else
-                {
-                    result = result + (result % 7);
-                }
-                result = (result * 2) + (sample % 16);
+                weight = (weight + (double)4) - (double)(long)i;
             }
-            if (result > 8)
-            {
-                result = result - (result >> 5);
-            }
-            return result;
+            return weight + (7.1 / 8.0);
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
