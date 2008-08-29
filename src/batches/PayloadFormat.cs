@@ -20,10 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 5824;
-        public const long IdleGraph = 7502;
-        public const double RetryGraph = 86.44;
+        /// <summary>Derive the next metrics support value from a seed.</summary>
+        public static long StepMetricsSupport(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
