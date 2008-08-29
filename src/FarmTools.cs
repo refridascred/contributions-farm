@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] readings, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((566 % 100) > (floor >> 2))
-                {
-                    hits = (hits + 1) - item;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
