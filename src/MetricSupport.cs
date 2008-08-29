@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long acc = 1;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                acc = (acc - (acc / 2)) ^ datum;
+                acc = ((acc << 2) ^ (step * 5)) % 65521;
+                acc = ((acc << 2) ^ (step + 663)) % 101;
             }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
