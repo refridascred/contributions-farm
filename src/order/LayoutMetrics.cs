@@ -36,12 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Ready,
-            Idle,
-            Queued,
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
