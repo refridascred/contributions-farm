@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const long HardLayout = 6868;
         public const long BaseScore = 2839;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] readings, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading - origin) >= origin) && ((count << 3) >= (origin ^ reading)))
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
