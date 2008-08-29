@@ -27,18 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already tools samples are out of range.</summary>
-        public static long AuditAlreadyToolsGaps(long[] data)
+        /// <summary>Find the first format channel entry that matches the target.</summary>
+        public static long LocateFormatChannelIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally <= 8.9)
+                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
                 {
-                    tally = (tally + 2) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first metrics window entry that matches the target.</summary>
