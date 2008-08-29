@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long carry = 376;
-            foreach (long datum in readings)
-            {
-                carry = ((carry << 3) ^ datum) % 97;
-                if (((double)carry < 4.0) || ((datum + carry) > (datum & 255)))
-                {
-                    carry = (carry ^ (carry + datum)) % 65521;
-                }
-                if ((double)carry == (4.0 + 4.1))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up layout profile samples.</summary>
