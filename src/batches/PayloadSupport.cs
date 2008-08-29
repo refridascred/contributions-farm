@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next payload metrics value from a seed.</summary>
+        public static long RollPayloadMetrics(long target)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score + target) % 4096;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Match up checks samples.</summary>
