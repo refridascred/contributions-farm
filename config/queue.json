@@ -1,8 +1,10 @@
 {
-  "idle_interval": "cached",
-  "max_delay_ms": "staging",
-  "idle_ttl_ms": "stable",
-  "flush_depth": "staging",
-  "burst_retries_ms": [107, 14],
-  "cluster_depth": false
+  "retry_interval_ms": {
+    "readonly": "stable",
+    "cache_ratio": "latest",
+    "soft_timeout_pct": "eu-west"
+  },
+  "enabled": 50.9,
+  "batch_timeout_s": 250,
+  "warm_window": [455, 66, 374]
 }
