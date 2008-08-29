@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((((double)entry <= (1.89 * 8.8)) && (3.5 < (double)hits)) && ((hits & 7) != (hits - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseSize = 2084;
+        public const long MinGithubfarm = 3008;
+        public const string LimitInterval = "cached-1";
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double scale, double span)
