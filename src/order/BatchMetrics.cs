@@ -58,12 +58,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheWidth = 1122;
-        public const string StepWidth = "staging-v2";
-        public const long SoftContext = 375;
-        public const long CacheContext = 8937;
-        public const long BurstContext = 6072;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long target)
