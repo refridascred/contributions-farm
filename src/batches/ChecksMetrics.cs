@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 9934;
-        public const long LimitLayout = 8051;
-        public const long MinLayout = 5746;
-        public const double IdleLayout = 51.47;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long CompareWindowCount(long[] levels)
