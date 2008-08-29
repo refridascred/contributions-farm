@@ -1,12 +1,6 @@
 {
-  "checks_window": {
-    "audit": 60,
-    "persist": "local",
-    "window_capacity": 250
-  },
-  "dry_run": "strict",
-  "batch_ttl_s": 9185,
-  "cache_retries": 3240,
-  "max_ratio_pct": ["cached", "stable"],
-  "warm_timeout_ms": 5511
+  "cluster_delay": "cached",
+  "burst_timeout_pct": false,
+  "poll_timeout": true,
+  "audit": false
 }
