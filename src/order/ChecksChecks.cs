@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((offset * 3) >= seen)
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 22.05;
+        public const long IdleDepth = 7375;
+        public const long LimitStream = 6093;
+        public const double RetryStream = 78.55;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] levels)
