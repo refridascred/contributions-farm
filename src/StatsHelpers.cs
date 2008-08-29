@@ -42,15 +42,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] series, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
             long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item & 1) <= step) || ((double)7 > (double)step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
