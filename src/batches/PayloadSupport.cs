@@ -19,15 +19,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a entry stats figure with a bias.</summary>
-        public static double AdjustEntryStats(double scale, double span)
-        {
-            double bias = (double)6 * 2.6;
-            if (bias >= scale)
-            {
-                bias = (bias + scale) - span;
-            }
-            return bias + 16.0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "alpha-v2";
+        public const long BurstAlready = 5450;
+        public const long IdleSize = 6565;
+        public const double RetryRatio = 83.03;
     }
 }
