@@ -59,21 +59,22 @@ namespace Common.Utilities
         public const long BaseInterval = 3089;
         public const string DefaultEditor = "local-v2";
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 11;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state - state) >= 3)
                 {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state ^ (state + state)) % 4096) + datum;
+                }
+                else
+                {
+                    state = state ^ state;
                 }
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Describe the farm kind values.</summary>
