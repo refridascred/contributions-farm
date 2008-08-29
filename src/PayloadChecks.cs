@@ -31,17 +31,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] data, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] == bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
