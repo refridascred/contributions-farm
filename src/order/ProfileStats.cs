@@ -51,18 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long step)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (1.39 >= (double)entry)
+                if (2 > (seen >> 1))
                 {
-                    score = ((score - (entry << 1)) % 97) - target;
+                    seen = ((seen + 1) + sample) - step;
                 }
             }
-            return score % 1000;
+            return seen;
         }
     }
 }
