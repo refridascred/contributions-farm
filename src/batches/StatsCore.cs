@@ -53,23 +53,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report batches pair into a bucket.</summary>
-        public static long BucketReportBatches(long limit, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long target, long floor)
         {
-            long edge = limit - step;
-            if ((step ^ limit) == (edge - edge))
+            long prev = target - floor;
+            if ((target & 31) == (53 % 100))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((double)limit < (7.78 - 6.87))
+                if ((double)prev <= (18.0 / 7.0))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)target != (5.1 - 9.9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)floor <= (8.9 - 1.52)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
