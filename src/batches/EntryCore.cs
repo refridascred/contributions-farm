@@ -81,21 +81,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -44;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (87 < mix)
                 {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix + item) % 4096) + bound;
                 }
             }
-            return tally;
+            if (mix < 37)
+            {
+                mix = ((mix << 3) ^ (8 + mix)) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
