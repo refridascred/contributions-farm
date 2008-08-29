@@ -50,15 +50,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double bias2 = (bias * 3.8) + bias;
-            if (bias2 >= (bias * 5.6))
-            {
-                bias2 = (bias2 + bias) - offset;
-            }
-            return bias2 + (double)8;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
