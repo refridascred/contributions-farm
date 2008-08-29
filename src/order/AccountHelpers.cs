@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Draft,
-            Queued,
-            Locked,
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
