@@ -36,18 +36,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples, long step)
+        /// <summary>Locate a editor cache reading by value.</summary>
+        public static long LocateEditorCacheIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum & 1) == (tally << 2))
+                if (series[i] == step)
                 {
-                    tally = (tally + 3) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
