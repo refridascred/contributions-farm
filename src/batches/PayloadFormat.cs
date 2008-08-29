@@ -20,18 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (55 > cell)
-                {
-                    tally = tally + 1;
-                }
+                total = ((total << 2) ^ (21 >> 4)) % 4096;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Accumulate stream samples.</summary>
