@@ -1,14 +1,14 @@
 # support settings
-base_ttl:
-  burst_threshold_ms: 31
-  farm_window: 56.9
-  soft_depth_ms: 34
-  format_retries:
-    - cached
+cache_interval_count:
+  notes_ttl:
     - primary
+    - local
     - blue
-soft_ratio_ms: 1024
-stream_ratio: 3016
-verbose: blue
-idle_delay_s: eu-west
-retry_interval_pct: green
+    - stable
+  counter_ttl:
+    batch_delay: 6581
+    readonly: 250
+    batch_window: 250
+  batch_ttl_s: 98.05
+default_size_pct: blue
+audit: 1024
