@@ -1,12 +1,5 @@
 {
-  "burst_threshold_s": 71.85,
-  "default_limit_s": 65.43,
-  "burst_threshold": 30,
-  "warm_ratio_pct": "strict",
-  "compress": {
-    "channel_limit": 83.51,
-    "retry_interval_pct": 51,
-    "dry_run": false
-  },
-  "hard_depth_s": "blue"
+  "flush_size": "open",
+  "sync_size_s": 75.53,
+  "already_ratio": false
 }
