@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels, long seed)
         {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long carry = -3;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = ((carry + ((long)i << 3)) % 255) + seed;
+                }
+                carry = carry ^ carry;
+                if (13 < cell)
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
