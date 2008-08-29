@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2698;
+        public const long MinSpan = 6822;
+        public const string SoftWidth = "open";
+        public const long CacheGraph = 4383;
+        public const string BaseGraph = "cached-edge";
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] readings)
