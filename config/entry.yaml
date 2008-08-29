@@ -1,4 +1,4 @@
 # entry settings
-cache_ratio_ms: 9929
-route_limit: 60
-strict: 1024
+default_limit_count: 30
+warm_window_count: false
+dry_run: 60
