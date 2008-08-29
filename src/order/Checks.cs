@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mean + (mean / 3.0);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values)
+        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
+        public static bool ValidateStreamBufferBounds(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (!((5.5 / 5.0) <= (double)reading))
+                if (item > limit)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Measure how many queue entry samples are out of range.</summary>
