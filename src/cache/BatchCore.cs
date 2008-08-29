@@ -33,16 +33,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the buffer queue series from a seed.</summary>
-        public static long DeriveBufferQueue(long seed)
+        /// <summary>Audit order farm readings against a rule.</summary>
+        public static long MeasureOrderFarmOutliers(long[] series, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                anchor = (anchor - anchor) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((seed < seen) || (((-3) ^ entry) == (seed + entry)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
