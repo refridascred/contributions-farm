@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge primary latest; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=443
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
