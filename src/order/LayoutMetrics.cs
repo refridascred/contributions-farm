@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema payload values into a single score.</summary>
-        public static long ScoreSchemaPayload(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            long score = -5;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((value >> 4) == (value & 1))
+                if ((count < (2 >> 5)) || ((9.0 / 7.0) > (double)count))
                 {
-                    score = (score ^ (score + 311)) % 1000;
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Hold a graph options.</summary>
