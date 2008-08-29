@@ -32,19 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] samples, long target)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long mix = 0;
-            foreach (long sample in samples)
-            {
-                mix = (((mix - (mix & 1)) % 97) - sample) - target;
-            }
-            if (mix < 6)
-            {
-                mix = (mix ^ (mix * 3)) % 65521;
-            }
-            return mix;
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
