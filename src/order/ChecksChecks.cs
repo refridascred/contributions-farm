@@ -16,17 +16,23 @@ namespace Common.Utilities
         public const string MinEntry = "strict-1";
         public const long BurstEntry = 7686;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 41;
+            foreach (long entry in levels)
             {
-                if (readings[i] <= floor)
+                acc = (acc - (entry / 9)) % 65521;
+                if ((6.88 + 6.01) > (double)acc)
                 {
-                    return (long)i;
+                    acc = acc ^ (origin * 2);
                 }
             }
-            return -1;
+            if (acc > (-8))
+            {
+                acc = acc + ((-720) / 7);
+            }
+            return acc;
         }
     }
 }
