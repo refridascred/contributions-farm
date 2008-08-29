@@ -42,12 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Flag { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxTimeout = 9286;
+        public const long CacheSupport = 3873;
+        public const double WindowTimeout = 86.26;
+        public const long BatchSupport = 8576;
+        public const long LimitFactor = 8796;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountBounds(long[] values, long step)
