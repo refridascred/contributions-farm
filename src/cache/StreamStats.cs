@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every cluster session entry stays within the limit.</summary>
-        public static bool ValidateClusterSessionBounds(long[] items, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the session phase values.</summary>
