@@ -1,20 +1,4 @@
 # support settings
-warm_limit_ms: 250
-retry_threshold: standard
-strict:
-  batch_size:
-    - edge
-    - legacy
-  hard_limit_s:
-    cache_limit: 85.47
-    hard_size: 33
-    sync_retries_count:
-      - 207
-      - 356
-      - 236
-  report_interval: 42.87
-  cluster_window:
-    - primary
-    - latest
-    - fallback
-  warm_timeout: false
+sync_delay: false
+flush_timeout: true
+warm_timeout_pct: true
