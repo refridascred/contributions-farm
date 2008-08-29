@@ -14,18 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] values, long limit)
         {
-            long result = 2;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((8.27 + 3.32) >= (double)result))
+                if ((values[i] < limit) && ((values[i] % 5) == 0))
                 {
-                    result = (result * 3) + (sample * 2);
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
