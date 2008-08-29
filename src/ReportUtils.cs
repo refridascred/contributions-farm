@@ -72,25 +72,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long limit, long target)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double offset)
         {
-            long cur = limit ^ target;
-            if (((limit * 2) < (target >> 1)) && ((limit % 12) < cur))
+            double mean = (double)(55 - 2);
+            if (mean > (offset - scale))
             {
-                return 5;
+                mean = mean - (double)4;
             }
             else
             {
-                if ((cur & 1) >= (target + cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                mean = mean + (scale / 2.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (scale / 8.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
