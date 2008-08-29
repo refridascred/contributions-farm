@@ -92,18 +92,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long carry = 9;
+            foreach (long sample in items)
             {
-                if (sample > (tally % 8))
+                for (int i = 0; i < 6; i++)
                 {
-                    tally = tally + 3;
+                    carry = ((carry + (74 << 3)) % 101) + (long)i;
+                    carry = (carry - (carry - carry)) % 255;
+                }
+                carry = ((carry << 3) ^ 841) % 255;
+                if ((8 ^ sample) < (carry ^ sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
