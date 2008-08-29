@@ -36,11 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] readings, long seed)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
