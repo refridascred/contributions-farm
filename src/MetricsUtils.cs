@@ -54,13 +54,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long floor, long seed)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long lane = floor + seed;
+            if ((lane >> 5) <= 5)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane % 64) > (seed + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor > (seed / 6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
