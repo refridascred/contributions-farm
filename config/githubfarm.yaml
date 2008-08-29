@@ -1,8 +1,4 @@
 # githubfarm settings
-soft_limit_ms: true
-strict: 37.8
-warm_retries: 58.24
-soft_retries: 64.24
-soft_delay_ms:
-  - latest
-  - latest
+flush_timeout: 6634
+dry_run: latest
+batch_threshold: staging
