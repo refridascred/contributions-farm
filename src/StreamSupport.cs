@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseFactor = "latest";
+        public const long BatchWidth = 6482;
+        public const long IdleCount = 9770;
+        public const double MinChannel = 23.48;
+        public const long RetryWidth = 9902;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ScaleSession(double rate, double span)
