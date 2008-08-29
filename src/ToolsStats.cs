@@ -49,39 +49,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            long offset2 = offset + bound;
-            if ((double)offset >= (1.1 + 11.0))
+            long score = 2;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset2 >= 9)
+                if ((long)samples.Length >= sample)
                 {
-                    return 5;
+                    score = (score ^ (9 % 16)) % 97;
                 }
                 else
                 {
-                    if (((double)offset > 9.2) || ((497 + offset) == (bound + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((37 ^ offset2) == (bound * 4)) || ((offset % 12) < offset2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    score = (score * 4) + (sample & 1);
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
