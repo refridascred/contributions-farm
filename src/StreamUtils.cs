@@ -66,18 +66,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] levels)
         {
-            long sum = 8;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((sum + sample) >= sample)
+                if (((43 + hits) < 4) && ((hits + value) > (long)levels.Length))
                 {
-                    sum = ((sum << 2) ^ (sample >> 4)) % 97;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
