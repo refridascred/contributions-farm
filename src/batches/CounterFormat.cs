@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
