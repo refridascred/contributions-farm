@@ -31,22 +31,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series, long target)
+        /// <summary>Count the batch profile entries that pass the check.</summary>
+        public static long CountBatchProfileMatches(long[] items)
         {
-            long result = 5;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((target + target) < (target & 15))
+                if ((item ^ hits) == (hits + item))
                 {
-                    result = (result + (target ^ target)) + sample;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result > 27)
-            {
-                result = (result - (target << 2)) % 255;
-            }
-            return result;
+            return hits;
         }
     }
 }
