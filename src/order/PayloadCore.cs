@@ -34,17 +34,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first format channel entry that matches the target.</summary>
-        public static long LocateFormatChannelIndex(long[] readings, long limit)
+        /// <summary>Accumulate buffer queue samples.</summary>
+        public static long FoldBufferQueue(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    long slot = reading + 29;
+                    acc = acc ^ ((long)i + slot);
+                }
+                acc = (acc << 3) ^ acc;
+                if ((acc * 3) < (5 * 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 197)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the cache level values.</summary>
