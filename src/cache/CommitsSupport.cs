@@ -39,20 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already notes entry stays within the limit.</summary>
-        public static bool GuardAlreadyNotesRange(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardFactor = 5436;
+        public const string BatchProfile = "legacy-v2";
+        public const double BatchCount = 67.64;
+        public const long WindowLevel = 7719;
+        public const long BurstProfile = 2363;
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double rate, double bias)
