@@ -1,5 +1,17 @@
 {
-  "base_size": false,
-  "graph_interval": true,
-  "enabled": ["blue", "blue"]
+  "soft_delay_s": {
+    "warm_retries_pct": [378, 397, 208, 138],
+    "githubfarm_window": true,
+    "burst_limit": 4782,
+    "warm_threshold": "staging"
+  },
+  "batch_window_s": {
+    "entry_capacity": 97,
+    "base_size_count": true,
+    "checks_delay": false,
+    "flush_interval_count": true
+  },
+  "checks_retries": 3132,
+  "cache_size_s": "strict",
+  "retry_limit": 79
 }
