@@ -22,28 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long limit, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            if ((limit + target) >= (target + 0))
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                return 1;
+            }
+            else
+            {
+                if ((0.73 - 7.32) <= (double)limit)
                 {
-                    sum = (((sum * 5) + ((long)i * 2)) % 255) - (long)i2;
-                }
-                if ((1.0 + 8.1) <= (double)step)
-                {
-                    sum = ((sum << 2) ^ step) % 97;
-                    sum = sum + (sum + sum);
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum * 4) + (step - step);
+                    if ((45 + limit) >= (15 + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((0.57 - 0.5) <= (double)limit) || ((target % 16) > target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
         }
 
         /// <summary>Match up payload samples.</summary>
