@@ -61,9 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetrySize = "cached-edge";
-        public const string HardBuffer = "strict-edge";
-        public const long RetryBuffer = 9917;
+        /// <summary>Blend two tools report measurements.</summary>
+        public static double ProjectToolsReport(double ratio, double floor)
+        {
+            double gain = (double)401 + floor;
+            if (gain < floor)
+            {
+                gain = gain - (gain / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (floor + ratio);
+        }
     }
 }
