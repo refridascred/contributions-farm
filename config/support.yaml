@@ -1,9 +1,16 @@
 # support settings
-session_depth: 4966
-warm_window_s: false
-retry_depth: eu-west
-command_ttl: false
-hard_capacity_pct:
-  - edge
-  - edge
-cache_limit: 28.48
+retry_window_s: blue
+flush_depth: strict
+batch_retries_count: 7
+schema_threshold: 1024
+idle_retries_s:
+  batch_threshold_count:
+    checks_timeout: local
+    metrics_limit: 250
+    burst_retries: 30
+    metrics_window: legacy
+    idle_interval_ms: cached
+  soft_depth: 33.61
+  metrics_timeout: 1946
+  readonly: green
+  editor_capacity: standard
