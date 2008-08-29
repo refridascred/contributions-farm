@@ -59,22 +59,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] data, long limit)
         {
-            long result = 6;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 2; i++)
+                if ((cell & 63) >= (cell - limit))
                 {
-                    result = (result + 909) - (long)i;
-                }
-                if (datum <= (result & 1))
-                {
-                    result = result ^ (result * 5);
+                    count = count + 3;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
