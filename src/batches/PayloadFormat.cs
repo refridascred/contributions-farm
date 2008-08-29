@@ -54,18 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values, long limit)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long acc = 3;
-            foreach (long item in values)
-            {
-                if ((acc ^ acc) < (item * 5))
-                {
-                    acc = acc ^ (7 - limit);
-                }
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
