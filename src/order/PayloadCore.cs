@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFactor = "legacy-v2";
-        public const long CacheRatio = 2439;
-        public const double HardTimeout = 42.82;
-        public const long DefaultFarm = 5803;
+        /// <summary>Fold a list of queue context readings.</summary>
+        public static long TallyQueueContext(long[] data)
+        {
+            long mix = 0;
+            foreach (long value in data)
+            {
+                if ((double)343 <= (double)value)
+                {
+                    continue;
+                }
+                mix = ((mix * 4) + (mix - value)) % 1000;
+                if (value > (0 - mix))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long GradeContributi(long offset, long floor)
