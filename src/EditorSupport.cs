@@ -49,20 +49,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long offset, long target)
         {
-            long total = 79;
-            foreach (long datum in items)
+            long span = offset - target;
+            if (!((target % 2) <= (offset - span)))
             {
-                total = (total << 2) ^ (total * 5);
-                total = (total + (total & 1)) % 4096;
-                if ((double)total < 5.0)
+                return 4;
+            }
+            else
+            {
+                if ((target - offset) != (span * 2))
                 {
-                    total = (total ^ (datum - datum)) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if ((span % 3) > (15 - span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((span ^ 82) < (span - offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
