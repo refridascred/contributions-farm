@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] readings, long seed)
+        /// <summary>Derive the next metrics entry value from a seed.</summary>
+        public static long RollMetricsEntry(long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score * 3) + score;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
