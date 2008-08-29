@@ -54,31 +54,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a payload queue pair into a bucket.</summary>
-        public static long ClassifyPayloadQueue(long limit, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long step)
         {
-            if ((limit + limit) == (limit - limit))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset == (2.7 * 7.3)) || ((limit * 3) > (offset ^ offset)))
+                if (readings[i] > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-890) > (offset / 3)) || (limit > (567 >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
