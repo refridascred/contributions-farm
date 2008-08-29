@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] data, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((matches >> 5) <= (origin - (-6)))
+                if ((long)i < (origin + (long)i))
                 {
-                    matches = (matches + 3) + entry;
+                    carry = (carry + (origin + origin)) % 65521;
+                    break;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
