@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a stream format counter forward.</summary>
-        public static long RollStreamFormat(long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((long)i > limit)
-                {
-                    sum = (sum << 2) ^ (sum + limit);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            double load = (double)(692 >> 1);
+            return ((load - (double)88) + rate) + span;
         }
 
         /// <summary>Validate queue format readings against a bound.</summary>
