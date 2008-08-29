@@ -44,12 +44,20 @@ namespace Common.Utilities
         public const string WindowMetric = "stable-edge";
         public const double DefaultDepth = 30.51;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a window cache counter forward.</summary>
+        public static long DeriveWindowCache(long origin)
         {
-            Pending,
-            Done,
-            Locked,
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((double)origin <= (8.0 / 8.0)))
+                {
+                    anchor = ((anchor * 4) + ((long)i >> 5)) % 1000;
+                    anchor = (anchor + origin) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
