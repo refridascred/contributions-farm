@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            long state = 6;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell / 4) >= (state - state))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state + (state % 2)) % 97) - step;
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < (-580))
-            {
-                state = state + (state / 2);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
