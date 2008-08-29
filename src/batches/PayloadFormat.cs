@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Project the next report editor value.</summary>
+        public static double ProjectReportEditor(double scale, double span)
         {
-            Locked,
-            Active,
-            New,
-            Dropped,
+            double gain = (double)(550 >> 5);
+            if (gain >= gain)
+            {
+                gain = (gain + (scale / 8.0)) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
