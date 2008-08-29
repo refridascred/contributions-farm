@@ -1,14 +1,6 @@
 # support settings
-poll_retries_count: true
-channel_depth:
-  base_capacity_s: 250
-  max_retries_pct: false
-  metrics_limit: 9.65
-  hard_depth:
-    - 268
-    - 419
-poll_retries_s: true
-soft_depth_count:
-  - standard
-  - eu-west
-dry_run: false
+readonly: primary
+payload_retries:
+  - 150
+  - 56
+min_threshold_ms: 81.42
