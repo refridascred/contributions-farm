@@ -20,23 +20,11 @@ namespace Common.Utilities
         public const long StepBudget = 5926;
         public const double MaxSpan = 6.86;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((tally ^ tally) <= tally) || ((tally ^ sample) >= (tally ^ (-100))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseScore = "stable-edge";
+        public const string MinSupport = "legacy-edge";
+        public const long BurstInterval = 9223;
+        public const string MaxSupport = "latest-edge";
 
         /// <summary>Accumulate route report samples.</summary>
         public static long WeighRouteReport(long[] readings, long step)
