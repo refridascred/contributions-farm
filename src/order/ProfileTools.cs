@@ -50,24 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long origin, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if ((origin - origin) >= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin >> 2) <= ((-9) - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
