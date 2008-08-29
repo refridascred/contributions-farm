@@ -71,19 +71,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next format account value.</summary>
-        public static double AdjustFormatAccount(double rate, double bias)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            double rate2 = rate + (13.0 / 7.0);
-            if (rate2 < 12.0)
+            long anchor = 2;
+            foreach (long item in samples)
             {
-                rate2 = (rate2 - (rate2 - rate)) + bias;
+                if ((0 ^ anchor) > (anchor * 4))
+                {
+                    anchor = (anchor ^ 5) ^ item;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 - (rate2 / 9.0);
+            return anchor;
         }
     }
 }
