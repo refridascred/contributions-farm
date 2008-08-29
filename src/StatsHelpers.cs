@@ -13,24 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long floor, long bound)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if ((2.54 / 4.0) > (3.64 - 1.6))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.9 - 7.0) > (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Derive the next order session value from a seed.</summary>
