@@ -1,16 +1,11 @@
 # Command notes
 
-Each batches is validated before it reaches the counter queue.
-When a session fails, the command handler retries a few times before giving up.
-Each graph is validated before it reaches the graph queue.
-
-Run the format check before changing any metric limits.
-Use farm settings to tune how often entry data is refreshed.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+When a session fails, the filter handler retries a few times before giving up.
+Keep schema and checks names short and lowercase.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Log every stats change
-- Validate counter input early
-- Prefer queue defaults
+- Review route limits each release
+- Document new channel fields
+- Validate farm input early
+- Keep channel values small
