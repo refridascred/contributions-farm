@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseSize = "strict-1";
+        public const long WindowScore = 3175;
+        public const long StepInterval = 178;
+        public const long MaxTimeout = 8642;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] readings, long origin)
