@@ -34,19 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] series, long origin)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > origin)
+                if (series[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
