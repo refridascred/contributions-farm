@@ -24,12 +24,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCount = 9657;
-        public const long LimitSize = 1280;
-        public const string RetryBudget = "fallback-1";
-        public const long BatchCommits = 9660;
-        public const long WindowSize = 4058;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long floor, long limit)
