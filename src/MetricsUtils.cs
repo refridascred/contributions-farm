@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long origin)
         {
-            long anchor = 319;
-            foreach (long entry in samples)
+            long bound = target ^ origin;
+            if (((bound << 1) != (bound + (-79))) || ((87 - target) <= bound))
             {
-                if (!((limit - anchor) <= (4 - anchor)))
+                return 2;
+            }
+            else
+            {
+                if ((origin * 5) == (target + 96))
                 {
-                    anchor = ((anchor + anchor) % 97) + entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound > (12.0 * 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (anchor > 91)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ 2)) % 97;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Describe the metrics class values.</summary>
