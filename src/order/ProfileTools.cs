@@ -24,11 +24,23 @@ namespace Common.Utilities
         public const long StepBudget = 5926;
         public const double MaxSpan = 6.86;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 62.6;
-        public const double DefaultContributi = 60.44;
-        public const double BurstContributi = 55.01;
-        public const long CacheSize = 8496;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((tally ^ tally) <= tally) || ((tally ^ sample) >= (tally ^ (-100))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate route report samples.</summary>
         public static long WeighRouteReport(long[] readings, long step)
