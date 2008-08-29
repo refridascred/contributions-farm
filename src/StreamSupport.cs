@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)target >= (1.96 / 3.0)) && ((count + count) > (item / 5))) && (((target * 5) <= count) && (3.0 > (double)target)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
