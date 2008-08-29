@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
