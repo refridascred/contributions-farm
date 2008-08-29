@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepFactor = 1239;
+        public const long IdleBudget = 3163;
+        public const long LimitLayout = 1924;
+        public const string IdleLayout = "alpha-v2";
+        public const long IdleSpan = 6986;
 
         /// <summary>Count checks buffer pairs that satisfy a relation.</summary>
         public static long CompareChecksBufferCount(long[] items)
