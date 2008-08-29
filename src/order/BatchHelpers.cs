@@ -37,39 +37,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long seed, long offset)
+        /// <summary>Measure how many cluster window samples are out of range.</summary>
+        public static long CountClusterWindowGaps(long[] values)
         {
-            long lane = seed - offset;
-            if ((lane > (offset + offset)) || ((seed + offset) > (seed - offset)))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (offset ^ lane))
+                if (cell <= count)
                 {
-                    return 2;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (((lane / 8) > 97) || (9.49 >= (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed >= (seed + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
