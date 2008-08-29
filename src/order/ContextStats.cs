@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultSpan = 18.38;
-        public const long BatchCommits = 4044;
-        public const long LimitCommits = 6953;
-        public const long HardCommits = 4504;
+        /// <summary>Roll a format session counter forward.</summary>
+        public static long SeriesFormatSession(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((state & 15) < state)
+                {
+                    state = state ^ (state << 3);
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long floor, long origin)
