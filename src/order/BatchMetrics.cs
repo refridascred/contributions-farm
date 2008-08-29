@@ -31,11 +31,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] levels, long step)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((tally - step) <= (long)levels.Length))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
