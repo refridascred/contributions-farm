@@ -15,19 +15,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate commits profile readings against a bound.</summary>
-        public static bool GuardCommitsProfileLimits(long[] values, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long offset, long target)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            if ((double)target >= 9.1)
             {
-                if (entry <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((target < offset) || ((double)5 == (double)offset))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
