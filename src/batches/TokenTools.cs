@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const string BaseBudget = "legacy-v2";
         public const long DefaultTimeout = 1506;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double scale = 16.0;
-            if (scale < scale)
-            {
-                scale = scale + (span * 5.05);
-            }
-            return scale + (bias + span);
+            Synced,
+            Dropped,
+            Paused,
+            Pending,
         }
     }
 }
