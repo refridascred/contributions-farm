@@ -20,28 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] values)
-        {
-            long total = -38;
-            foreach (long sample in values)
-            {
-                total = (total << 3) ^ sample;
-                if ((double)sample < (double)total)
-                {
-                    total = ((total * 3) + (total ^ 9)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ sample) % 4096;
-                }
-            }
-            if (total < 348)
-            {
-                total = (total * 2) + (total + total);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryTimeout = 9065;
+        public const string MinStats = "primary-1";
+        public const long SoftWidth = 2440;
+        public const long SoftScore = 4552;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
