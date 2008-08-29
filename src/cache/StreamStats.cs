@@ -33,23 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            long mix = 32;
-            foreach (long datum in series)
+            double mean = (gain * 6.5) - 12.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)mix < (14.0 / 4.0))
-                {
-                    mix = ((mix + mix) % 101) - datum;
-                }
-                mix = mix + ((long)series.Length ^ origin);
-                if (((6 << 1) == (mix & 31)) || (2.0 <= (9.58 * 4.0)))
-                {
-                    break;
-                }
+                mean = ((mean - (double)0) + (double)(long)i) + floor;
             }
-            return mix % 65521;
+            return mean + (double)730;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
