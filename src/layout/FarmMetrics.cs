@@ -33,13 +33,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Rank already checks input into a small class.</summary>
+        public static long RankAlreadyChecks(long target, long limit)
         {
-            Dropped,
-            Retry,
-            Stale,
-            Pending,
+            if ((target * 5) >= (target / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit / 2) != (limit / 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ limit) < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit > 13.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
