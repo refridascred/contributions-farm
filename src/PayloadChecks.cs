@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a counter buffer counter forward.</summary>
-        public static long SeriesCounterBuffer(long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc ^ (acc ^ acc);
-                acc = ((acc << 2) ^ (seed - seed)) % 255;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
