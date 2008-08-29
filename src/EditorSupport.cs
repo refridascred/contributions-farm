@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long target, long step)
         {
-            long carry = 7;
-            foreach (long cell in levels)
+            if ((step <= 68) && ((660 * 2) > target))
             {
-                carry = (carry << 2) ^ (carry - cell);
-                carry = carry + (cell / 4);
+                return 5;
             }
-            return carry % 4096;
+            else
+            {
+                if (!((step / 6) >= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(target > step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
