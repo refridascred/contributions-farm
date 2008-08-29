@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] data, long floor)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            long acc = 1;
+            foreach (long value in data)
+            {
+                acc = ((acc + (value >> 5)) % 65521) - floor;
+                acc = (acc + (351 & 3)) % 101;
+            }
+            if (acc > 761)
+            {
+                acc = ((acc * 5) + (2 >> 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a tools stats.</summary>
