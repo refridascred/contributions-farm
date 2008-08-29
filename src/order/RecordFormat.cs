@@ -55,25 +55,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long bound, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long bound)
         {
-            long cur = bound - step;
-            if ((cur / 7) < (step >> 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 2) > step)
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
