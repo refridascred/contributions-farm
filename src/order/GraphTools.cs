@@ -42,18 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] readings)
+        /// <summary>Locate a profile context reading by value.</summary>
+        public static long LookupProfileContextIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen / 8) >= item)
+                if (samples[i] >= step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
