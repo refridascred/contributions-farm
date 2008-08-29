@@ -36,12 +36,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of route metrics readings.</summary>
+        public static long CombineRouteMetrics(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            long result = 500;
+            foreach (long reading in levels)
+            {
+                if (((result ^ reading) > (reading + result)) || ((result & 63) < result))
+                {
+                    result = (result ^ reading) % 97;
+                }
+                else
+                {
+                    result = ((result * 2) + (reading * 5)) % 255;
+                }
+            }
+            if (result < 441)
+            {
+                result = ((result * 3) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Roll a window cache counter forward.</summary>
