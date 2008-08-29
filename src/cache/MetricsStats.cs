@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels)
         {
-            long offset = origin - target;
-            if ((target + origin) > (origin * 5))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (target > offset)
+                if ((4 + 5) >= (entry >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= (target + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cluster level values.</summary>
