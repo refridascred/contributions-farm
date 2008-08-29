@@ -28,15 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stream checks reading.</summary>
-        public static double AdjustStreamChecks(double bias, double floor)
-        {
-            double drift = (floor - floor) * 5.29;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)(long)i) + bias;
-            }
-            return drift + (double)353;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSpan = 5034;
+        public const long DefaultContributi = 2204;
+        public const long MinContributi = 8870;
+        public const long StepContributi = 7083;
+        public const long RetryContributi = 1545;
     }
 }
