@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Paused,
-            Failed,
-            Draft,
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
