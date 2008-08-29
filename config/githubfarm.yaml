@@ -1,20 +1,13 @@
 # githubfarm settings
-audit:
-  persist:
-    - 99
-    - 469
-  compress: 37.29
-  flush_ratio_pct: 4.46
-  warm_retries: 9825
-  readonly: true
-burst_timeout_s: primary
-default_size_s: local
-compress:
-  - eu-west
-  - open
-  - fallback
-  - fallback
-base_threshold_pct:
-  - 145
-  - 421
-  - 287
+flush_retries_count:
+  - strict
+  - blue
+  - standard
+  - green
+hard_interval_pct: 19
+cache_delay_count: local
+support_window:
+  - 227
+  - 185
+cache_threshold: 2164
+batch_limit_pct: 1024
