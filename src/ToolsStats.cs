@@ -21,21 +21,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up context editor samples.</summary>
-        public static long CompareContextEditorCount(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 81;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step ^ step) >= step)
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor * 5) + (148 - 500)) % 4096) ^ reading;
                 }
             }
-            return seen;
+            if (anchor < 296)
+            {
+                anchor = ((anchor << 3) ^ ((long)readings.Length << 2)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of record readings.</summary>
