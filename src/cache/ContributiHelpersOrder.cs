@@ -21,18 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric payload samples.</summary>
-        public static long TallyMetricPayload(long[] values, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long step)
         {
-            long mark = 831;
-            foreach (long value in values)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((mark <= (911 * 4)) || ((double)bound != (11.0 - 4.0)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mark = ((mark << 2) ^ 121) ^ value;
+                    total = ((total * 3) + step) - (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
