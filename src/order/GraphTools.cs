@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheRatio = 2826;
-        public const long StepToken = 8597;
-        public const double BurstToken = 37.12;
+        /// <summary>Match up filter channel samples.</summary>
+        public static long OverlapFilterChannelCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a route queue reading.</summary>
         public static double ScaleRouteQueue(double weight, double offset)
