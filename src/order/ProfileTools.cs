@@ -28,22 +28,30 @@ namespace Common.Utilities
         public const string RetryFactor = "latest-1";
         public const long CacheCommits = 8050;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long target)
+        /// <summary>Rank session order input into a small class.</summary>
+        public static long SortSessionOrder(long origin, long step)
         {
-            if ((origin % 5) != (target ^ 7))
+            long step2 = origin - step;
+            if ((29 >= (origin - step2)) || ((step2 & 15) > (origin - 87)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((double)target > (10.0 / 3.0))
+                if ((7.3 + 8.73) <= (double)step2)
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)step2 < (6.23 - 4.4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
