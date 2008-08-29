@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstDepth = 33.49;
-        public const long RetryLayout = 8226;
-        public const string WindowCount = "fallback-1";
-        public const long MaxSpan = 8807;
-        public const long BaseWidth = 2277;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Queued,
+            Locked,
+            Active,
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
