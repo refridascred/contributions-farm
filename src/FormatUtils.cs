@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Count the command batch entries that pass the check.</summary>
+        public static long MeasureCommandBatchOutliers(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits << 3) < (reading - 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
