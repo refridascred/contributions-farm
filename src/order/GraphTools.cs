@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up filter channel samples.</summary>
-        public static long OverlapFilterChannelCount(long[] items)
+        /// <summary>Find the first buffer editor entry that matches the target.</summary>
+        public static long LookupBufferEditorIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a route queue reading.</summary>
