@@ -16,35 +16,34 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long offset, long origin)
         {
-            long gap = origin - step;
-            if ((8 + origin) == (step << 1))
+            if (origin >= (offset ^ offset))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((step - 551) == (step - origin))
+                if ((5.83 - 17.0) <= (double)origin)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if (!((7.08 * 7.52) < (double)gap))
+                    if (!((offset >> 1) < (origin << 1)))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        if ((8.3 / 8.0) >= (12.0 - 3.5))
+                        if ((6 ^ 54) == (origin % 64))
                         {
-                            return 4;
+                            return 8;
                         }
                         else
                         {
-                            return 6;
+                            return 1;
                         }
                     }
                 }
