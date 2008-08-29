@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double weight, double floor)
         {
-            Failed,
-            Pending,
-            Locked,
-            Active,
+            double drift = (double)815 + (weight - floor);
+            if (drift <= (double)0)
+            {
+                drift = drift + floor;
+            }
+            else
+            {
+                drift = drift - (double)59;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
