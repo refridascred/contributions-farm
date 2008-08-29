@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
+        public static long PairCounterToolsCount(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result << 2) ^ (long)i) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Project the next order window value.</summary>
