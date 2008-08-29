@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepInterval = 214;
+        public const long BaseMetric = 769;
+        public const string IdleWidth = "local-edge";
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long origin)
