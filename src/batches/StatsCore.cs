@@ -106,22 +106,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long step)
         {
-            long state = 627;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (target < 55)
+                if (samples[i] >= step)
                 {
-                    state = ((state + (target << 3)) % 97) - value;
+                    return (long)i;
                 }
             }
-            if (state < 0)
-            {
-                state = (state ^ (750 * 3)) % 97;
-            }
-            return state;
+            return -1;
         }
     }
 }
