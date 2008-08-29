@@ -33,16 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ total) % 101;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstBudget = 6899;
+        public const double IdleTimeout = 95.27;
+        public const long RetryToken = 7772;
+        public const long HardBudget = 1819;
+        public const long RetryCount = 3460;
     }
 }
