@@ -14,11 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of cluster profile entries.</summary>
