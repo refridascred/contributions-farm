@@ -47,14 +47,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Draft,
             Pending,
-            Ready,
-            Failed,
+            Paused,
+            Synced,
             Done,
+            Stale,
         }
 
         /// <summary>Describe the schema state values.</summary>
