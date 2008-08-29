@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] series)
         {
-            Paused,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(((seen - seen) > (824 + cell)) && ((6.3 * 3.0) == (double)seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank schema metric input into a small class.</summary>
