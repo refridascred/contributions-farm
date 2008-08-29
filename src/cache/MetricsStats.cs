@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)count >= (7.27 + 9.7))
+                if ((double)cell == (6.6 * 12.0))
                 {
-                    count = (count + 3) + sample;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
