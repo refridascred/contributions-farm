@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double bias)
+        /// <summary>Find the first payload cluster entry that matches the target.</summary>
+        public static long LookupPayloadClusterIndex(long[] items, long target)
         {
-            double rate2 = (rate / 5.0) * 4.53;
-            if (rate2 >= bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + bias;
+                if ((items[i] == target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 + bias;
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
