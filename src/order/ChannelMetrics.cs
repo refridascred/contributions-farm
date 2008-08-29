@@ -20,21 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)target >= (14.0 + 1.53)) || ((double)5 == (double)target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((4.0 - 5.77) < (double)target) && ((582 >> 3) >= (origin * 4)))
                 {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
