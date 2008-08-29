@@ -84,26 +84,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long limit)
         {
-            long state = 664;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample % 5) != (sample + state))
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
                 {
-                    state = state - sample;
-                }
-                if ((double)598 <= (double)state)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 53)
-            {
-                state = ((state << 2) ^ (521 - state)) % 4096;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
