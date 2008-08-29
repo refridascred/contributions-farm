@@ -28,11 +28,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 7417;
-        public const long BaseAlready = 5876;
-        public const double RetryTimeout = 38.69;
-        public const long MaxAlready = 8163;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Stale,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 6850;
