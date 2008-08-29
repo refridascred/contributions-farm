@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Queued,
-            Pending,
-            Synced,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCount = "legacy-1";
+        public const long CacheDepth = 6452;
+        public const string DefaultRatio = "staging-1";
+        public const long CacheCluster = 7868;
+        public const long BurstCluster = 6129;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
