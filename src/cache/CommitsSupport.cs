@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the profile metric series from a seed.</summary>
-        public static long StepProfileMetric(long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor ^ (origin + origin)) % 1000;
-                if ((long)i < (59 / 7))
-                {
-                    anchor = (anchor ^ origin) % 4096;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
