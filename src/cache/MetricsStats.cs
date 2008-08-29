@@ -36,39 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long gap = limit + bound;
-            if (gap >= bound)
+            long mark = 7;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)gap >= (double)limit))
+                mark = (mark + (sample ^ mark)) % 4096;
+                if (sample < (mark / 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((6.69 - 3.9) > (double)bound) && ((double)gap < (9.66 - 9.2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((limit >> 2) > (bound + gap)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = (mark ^ (mark >> 3)) % 1000;
                 }
             }
+            if (mark > 0)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
