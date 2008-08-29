@@ -29,11 +29,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long seed, long limit)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            if ((seed <= (seed - seed)) && ((seed % 60) >= limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)seed <= (7.28 - 1.14)) || ((1.0 * 1.04) != (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
