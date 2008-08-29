@@ -24,19 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] levels, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Classify a route metric pair into a bucket.</summary>
