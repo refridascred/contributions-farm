@@ -1,33 +1,22 @@
 # support settings
-default_interval: 98
-warm_threshold_pct: 100
-audit:
-  - 293
-  - 306
-  - 276
-soft_ratio: latest
+max_window_s:
+  - 110
+  - 248
+report_ttl:
+  enabled:
+    - 182
+    - 387
+  warm_size_ms: fallback
+  soft_interval_pct: 48
+hard_threshold_pct: 59.13
 readonly:
-  editor_retries:
-    - legacy
-    - blue
-    - eu-west
-    - blue
-  max_size_count: 33.31
-  metrics_threshold:
-    - primary
-    - blue
-  graph_limit:
-    - latest
-    - standard
-    - open
-  retry_delay:
-    editor_threshold: eu-west
-    default_interval_pct:
-      - 277
-      - 150
-      - 50
-      - 438
-    metrics_interval:
-      - staging
-      - staging
-      - cached
+  - 429
+  - 225
+  - 50
+buffer_size:
+  poll_window: standard
+  min_delay_s: 31
+  idle_capacity_count: false
+  hard_ratio_count: 85.08
+  channel_interval: 4534
+  base_retries_count: staging
