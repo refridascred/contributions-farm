@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate batches stats readings against a bound.</summary>
-        public static bool VerifyBatchesStatsLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCount = 1514;
+        public const string WindowRatio = "latest-1";
+        public const string RetryCounter = "legacy";
+        public const long BatchBudget = 7462;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long IterateCommits(long origin)
