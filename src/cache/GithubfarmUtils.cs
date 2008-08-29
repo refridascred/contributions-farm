@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long step, long target)
         {
-            double load = (double)(6 % 7);
-            if (load >= (offset * 3.0))
+            if (((step + 292) != (target * 5)) || ((step / 3) < target))
             {
-                load = load + load;
+                return 8;
             }
             else
             {
-                load = load + (load + ratio);
+                if (!((target - step) >= (step / 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + offset;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
