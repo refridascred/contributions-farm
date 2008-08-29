@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next context checks value from a seed.</summary>
-        public static long RollContextChecks(long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                sum = (sum + seed) % 1000;
-                if ((10.0 * 1.31) >= (double)sum)
+                if ((((double)count >= 13.0) || ((count - item) >= 4)) || ((10.0 * 5.13) != (double)count))
                 {
-                    sum = (sum << 2) ^ seed;
+                    count = count + 3;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
