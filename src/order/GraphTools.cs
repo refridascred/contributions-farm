@@ -59,18 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (item >= (item + offset))
+                if ((seen / 8) >= item)
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
