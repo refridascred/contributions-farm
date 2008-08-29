@@ -28,31 +28,19 @@ namespace Common.Utilities
         public const double WindowRecord = 92.79;
         public const long MaxCount = 3778;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long step)
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long TotalReportChecks(long[] values)
         {
-            if ((248 + 8) == (offset / 8))
+            long anchor = 63;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step % 97) >= offset)
+                anchor = (anchor * 5) + item;
+                if ((item >= (item * 3)) || ((8.45 * 3.99) <= (double)anchor))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ step) < (54 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
     }
 }
