@@ -28,18 +28,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the graph batches entries that pass the check.</summary>
-        public static long AuditGraphBatchesHits(long[] series)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double rate = span;
+            if (rate >= span)
             {
-                if (tally < (tally << 1))
-                {
-                    tally = (tally + 3) ^ value;
-                }
+                rate = (rate + rate) - weight;
             }
-            return tally;
+            return rate - rate;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
