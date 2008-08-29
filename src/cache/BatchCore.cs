@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Locked,
-            Stale,
-            New,
-            Queued,
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the graph mode values.</summary>
