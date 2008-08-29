@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            New,
-            Active,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8010;
+        public const long MaxProfile = 821;
+        public const double WindowWidth = 35.49;
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
         public static long CompareWindowClusterCount(long[] series)
