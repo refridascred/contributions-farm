@@ -29,22 +29,37 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long bound)
         {
-            if (44 > seed)
+            long gap = limit + bound;
+            if (gap >= bound)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (seed >= (offset - offset))
+                if (!((double)gap >= (double)limit))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    if (((6.69 - 3.9) > (double)bound) && ((double)gap < (9.66 - 9.2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((limit >> 2) > (bound + gap)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
