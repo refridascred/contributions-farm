@@ -59,18 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = 2;
-            foreach (long item in samples)
-            {
-                if ((0 ^ anchor) > (anchor * 4))
-                {
-                    anchor = (anchor ^ 5) ^ item;
-                }
-            }
-            return anchor;
+            Pending,
+            Done,
+            Locked,
         }
     }
 }
