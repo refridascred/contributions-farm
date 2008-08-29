@@ -30,22 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] samples, long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits >= ((-4) + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
