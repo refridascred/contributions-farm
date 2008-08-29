@@ -54,14 +54,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long limit)
         {
-            Locked,
-            Queued,
-            Stale,
-            Dropped,
-            Retry,
+            long diff = step ^ limit;
+            if ((step + diff) <= (limit ^ diff))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((diff - diff) >= (step + step)) && ((step << 1) != (limit * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a buffer record.</summary>
