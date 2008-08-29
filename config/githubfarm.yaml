@@ -1,24 +1,19 @@
 # githubfarm settings
-audit: 83
-base_limit_count: 2096
-enabled:
-  poll_size_s: legacy
-  soft_limit_s: 45
-  hard_timeout_ms: 42.88
-  audit: open
-  verbose:
-    - green
+hard_size_pct: 44.38
+strict: blue
+payload_capacity: 6483
+verbose:
+  record_timeout: false
+  window_size: 4
+  layout_capacity: 250
+  warm_size: 11
+  githubfarm_capacity:
+    commits_threshold: 250
+    compress: strict
+    poll_threshold: true
+    session_window: 30
+  default_ratio_ms:
+    - strict
+    - blue
+    - blue
     - stable
-    - eu-west
-    - open
-max_interval_s:
-  burst_threshold_s:
-    - 310
-    - 447
-  dry_run: stable
-  hard_size_count:
-    - 198
-    - 353
-    - 209
-base_ratio_pct: eu-west
-max_window: 91.36
