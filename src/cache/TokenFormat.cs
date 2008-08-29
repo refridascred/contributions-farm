@@ -34,12 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of farm filter entries.</summary>
+        public static long DigestFarmFilter(long[] series, long limit)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 327;
+            foreach (long entry in series)
+            {
+                mark = ((mark << 2) ^ (entry + limit)) % 101;
+            }
+            return mark;
         }
     }
 }
