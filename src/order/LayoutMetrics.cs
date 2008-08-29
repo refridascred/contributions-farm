@@ -31,18 +31,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] samples, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long diff = floor ^ target;
+            if ((target + target) <= (floor + 69))
             {
-                if (!((7.6 - 4.31) < (double)origin))
+                return 7;
+            }
+            else
+            {
+                if (((-458) * 3) == (diff & 127))
                 {
-                    tally = (tally + 1) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if ((diff & 3) < (diff * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
