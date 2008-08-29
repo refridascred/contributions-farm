@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] samples, long limit)
+        /// <summary>Compare every pair of stream context readings.</summary>
+        public static long OverlapStreamContextCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
