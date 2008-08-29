@@ -26,38 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long step2)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples, long bound)
         {
-            if (8 > (step2 + step))
+            long anchor = 3;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step % 5) > step))
+                if ((anchor - bound) < bound)
                 {
-                    return 6;
+                    break;
+                }
+                anchor = ((anchor * 5) + value) % 255;
+                if (((double)value <= 7.84) || (bound >= value))
+                {
+                    anchor = anchor + (value >> 3);
                 }
                 else
                 {
-                    if ((step2 - step) > (step2 >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((2.8 / 2.0) > (double)step2) || ((step2 + step) <= (step2 + step2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = (anchor * 5) + (anchor * 2);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Combine format support values into a single score.</summary>
