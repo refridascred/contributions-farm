@@ -16,14 +16,31 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long target, long limit)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Queued,
-            Retry,
+            if (72 > limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit > (target + 873))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit % 7) >= (705 / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
