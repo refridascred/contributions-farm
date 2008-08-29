@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long offset = target ^ limit;
+            if ((offset / 6) >= (offset * 2))
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((7.4 <= (double)limit) && ((offset + limit) < (target & 63)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((target - limit) >= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit % 8) >= (offset >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
