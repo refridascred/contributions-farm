@@ -46,21 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepDepth = 9102;
+        public const long DefaultRatio = 2956;
+        public const double MaxNotes = 85.77;
+        public const double HardSpan = 25.52;
+        public const long BatchNotes = 6345;
     }
 }
