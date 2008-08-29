@@ -64,11 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 2793;
-        public const long LimitEditor = 7789;
-        public const long LimitTimeout = 1127;
-        public const long HardRatio = 6235;
-        public const long RetryInterval = 8261;
+        /// <summary>Digest a series of session context entries.</summary>
+        public static long DigestSessionContext(long[] items)
+        {
+            long sum = 505;
+            foreach (long sample in items)
+            {
+                sum = (sum - (sample + sum)) % 97;
+            }
+            return sum % 97;
+        }
     }
 }
