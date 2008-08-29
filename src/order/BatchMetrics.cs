@@ -29,13 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Active,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3341;
+        public const long IdleProfile = 5820;
+        public const string WindowTimeout = "local-v2";
+        public const long MinProfile = 810;
 
         /// <summary>Look up the position of a checks command sample.</summary>
         public static long SeekChecksCommandIndex(long[] readings, long offset)
