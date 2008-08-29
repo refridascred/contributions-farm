@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] series, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
