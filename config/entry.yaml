@@ -1,10 +1,8 @@
 # entry settings
-idle_capacity: 83.19
-flush_retries: true
-persist: 77.98
-enabled:
-  - 166
-  - 271
-  - 387
-  - 179
-audit: 47.2
+base_depth_ms:
+  - open
+  - open
+  - strict
+poll_delay_s: 6
+batch_depth: blue
+token_depth: blue
