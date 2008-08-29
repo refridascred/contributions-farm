@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long target, long step)
+        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
+        public static bool ValidateSchemaBufferBounds(long[] values, long seed)
         {
-            if ((step <= 68) && ((660 * 2) > target))
+            bool valid = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step / 6) >= step))
+                if (datum <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(target > step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
