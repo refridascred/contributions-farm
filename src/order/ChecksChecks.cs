@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const long BaseSpan = 1627;
         public const long SoftScore = 2525;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] samples, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long score = 79;
+            foreach (long cell in readings)
             {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score << 3) ^ (295 & 7)) % 97;
+                score = (score + (score + cell)) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Digest a series of session entries.</summary>
