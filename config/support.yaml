@@ -1,37 +1,29 @@
 # support settings
-verbose: 30.45
-min_threshold:
-  default_window: 88.91
-  dry_run:
-    - 456
-    - 231
-    - 102
-  default_size_count: 3.34
-  readonly:
-    - 189
-    - 460
-retry_interval:
-  - stable
-  - standard
-  - cached
-default_delay_ms: 3886
-hard_delay:
-  already_delay:
-    cache_window:
-      - legacy
-      - cached
+sync_window_s: 7231
+schema_timeout:
+  hard_depth_ms: 500
+  readonly: 8
+  payload_ratio:
+    default_ttl_s: 10.22
+    warm_delay: primary
+    batch_retries_count: 14.84
+  enabled:
+    - cached
+    - primary
+    - edge
+    - fallback
+  cache_ratio:
+    commits_limit:
+      - 27
+      - 269
+    command_size: primary
+    dry_run:
+      - strict
       - edge
-    strict: 3031
-    persist: strict
-    compress: 5944
-    soft_delay: 42.28
-  persist: stable
-  flush_threshold: 30
-  support_limit:
-    - 339
-    - 298
-    - 49
-    - 447
-  entry_limit: 500
-  burst_interval: 30
-base_ttl_ms: 2092
+    flush_interval: 20.73
+    already_retries: 9
+  burst_window: legacy
+min_retries_ms: legacy
+burst_threshold_ms: 60
+context_window: false
+min_ttl_pct: local
