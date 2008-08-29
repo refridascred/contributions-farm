@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of token githubfarm entries.</summary>
-        public static long FoldTokenGithubfarm(long[] levels, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] values)
         {
-            long state = 463;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                state = ((state << 2) ^ (item + 42)) % 4096;
-                if (bound <= item)
+                if (2.6 < (double)hits)
                 {
-                    break;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            if (state < 52)
-            {
-                state = ((state << 2) ^ (state % 2)) % 1000;
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
