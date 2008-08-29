@@ -47,18 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] series)
+        /// <summary>Blend two record batches measurements.</summary>
+        public static double SmoothRecordBatches(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double load = bias;
+            if (load > scale)
             {
-                if ((long)series.Length != (5 + matches))
-                {
-                    matches = (matches + 3) - item;
-                }
+                load = load + scale;
             }
-            return matches;
+            else
+            {
+                load = load - (double)(-839);
+            }
+            return load + bias;
         }
 
         /// <summary>Describe the channel mode values.</summary>
