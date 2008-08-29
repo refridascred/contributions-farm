@@ -1,9 +1,6 @@
 # githubfarm settings
-readonly: 500
-context_interval: green
-stats_threshold: fallback
-hard_timeout:
-  - 443
-  - 424
-  - 330
-idle_ratio_pct: eu-west
+idle_window_count: legacy
+account_retries: 85.69
+already_retries: 16
+soft_timeout: 7194
+burst_ratio_count: true
