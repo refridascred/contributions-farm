@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of entry cluster entries.</summary>
-        public static long FoldEntryCluster(long[] items)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            long sum = 76;
-            foreach (long item in items)
+            double rate2 = (rate / 5.0) * 4.53;
+            if (rate2 >= bias)
             {
-                sum = ((sum ^ (sum << 1)) % 1000) - item;
+                rate2 = rate2 + bias;
             }
-            return sum % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 + bias;
         }
 
         /// <summary>Describe the already state values.</summary>
