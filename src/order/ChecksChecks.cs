@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a metrics already reading.</summary>
-        public static double ProjectMetricsAlready(double gain, double floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double scale = floor;
-            if (scale > gain)
-            {
-                scale = scale + (9.72 / 2.0);
-            }
-            else
-            {
-                scale = scale - (double)37;
-            }
-            return scale + gain;
+            Pending,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
