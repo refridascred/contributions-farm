@@ -1,10 +1,5 @@
 {
-  "max_timeout_pct": {
-    "stream_capacity": false,
-    "order_interval": 45.07,
-    "idle_capacity": "primary",
-    "verbose": ["open", "eu-west"]
-  },
-  "persist": false,
-  "dry_run": 250
+  "base_size": false,
+  "graph_interval": true,
+  "enabled": ["blue", "blue"]
 }
