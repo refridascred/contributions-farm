@@ -41,15 +41,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            long acc = 318;
-            foreach (long entry in series)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc * 5) + (entry - entry);
+                mark = ((mark * 5) + mark) % 101;
+                if (mark < (mark >> 5))
+                {
+                    mark = ((mark * 2) + (target ^ 79)) % 4096;
+                    mark = mark ^ 9;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a stream header.</summary>
