@@ -1,12 +1,7 @@
 {
-  "compress": "strict",
-  "soft_ttl_count": ["standard", "green"],
-  "min_retries": {
-    "verbose": false,
-    "token_threshold": 71.09,
-    "burst_delay_s": 35,
-    "dry_run": "cached",
-    "burst_capacity_count": 53,
-    "base_limit_pct": "strict"
-  }
+  "report_size": "primary",
+  "editor_delay": 30,
+  "poll_depth": 21,
+  "max_retries_count": 1024,
+  "readonly": "fallback"
 }
