@@ -17,11 +17,22 @@ namespace Common.Utilities
         public const string MaxWidth = "cached-1";
         public const string MaxAccount = "open-1";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels, long origin)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally + tally) == (entry - entry))
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
