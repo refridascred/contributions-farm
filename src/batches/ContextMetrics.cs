@@ -20,18 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stream cache readings against a rule.</summary>
-        public static long MeasureStreamCacheGaps(long[] items, long seed)
+        /// <summary>Accumulate format report samples.</summary>
+        public static long FoldFormatReport(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 120;
+            foreach (long entry in series)
             {
-                if ((double)seed >= (2.47 / 3.0))
+                if (!((origin / 6) != (896 - 8)))
                 {
-                    count = (count + 2) + entry;
+                    acc = (acc + 84) % 97;
+                    acc = acc ^ (entry ^ origin);
                 }
+                acc = (acc + (origin / 2)) % 97;
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
