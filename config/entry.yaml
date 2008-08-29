@@ -1,8 +1,11 @@
 # entry settings
-poll_retries_pct:
-  buffer_interval: 5
-  warm_interval_ms: stable
-  batch_timeout: 15
-  max_timeout_count: 940
-audit: true
-cache_retries: primary
+schema_threshold: eu-west
+warm_delay: cached
+stream_delay:
+  - primary
+  - stable
+  - cached
+warm_ratio_pct:
+  - 147
+  - 248
+notes_capacity: legacy
