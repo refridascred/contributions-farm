@@ -47,17 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile account sample.</summary>
-        public static long LocateProfileAccountIndex(long[] levels, long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
