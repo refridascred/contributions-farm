@@ -1,8 +1,24 @@
 {
-  "flush_capacity_s": 6.25,
-  "support_capacity": true,
-  "min_capacity_count": "fallback",
-  "burst_capacity_pct": 500,
-  "strict": 18.89,
-  "support_size": ["standard", "stable"]
+  "record_ratio": {
+    "buffer_threshold": true,
+    "idle_depth": 15.7,
+    "soft_interval_ms": {
+      "cache_ttl": 81,
+      "graph_timeout": 10,
+      "account_window": 9702,
+      "max_ratio_s": true,
+      "stats_timeout": 98.28,
+      "contributi_interval": 4133
+    },
+    "poll_capacity": "cached",
+    "max_retries": {
+      "route_limit": "cached",
+      "readonly": "eu-west",
+      "idle_size_count": "stable",
+      "enabled": true
+    },
+    "batch_delay_pct": true
+  },
+  "context_ttl": "cached",
+  "burst_capacity_count": 250
 }
