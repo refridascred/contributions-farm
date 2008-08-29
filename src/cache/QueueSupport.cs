@@ -35,11 +35,11 @@ namespace Common.Utilities
             return scale + (double)885;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryDepth = 4718;
+        public const double LimitWindow = 61.83;
+        public const long WindowCount = 8420;
+        public const long RetryCount = 1987;
+        public const double BurstWindow = 31.05;
     }
 }
