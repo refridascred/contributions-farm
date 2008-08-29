@@ -22,32 +22,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long bound, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long slot = bound - offset;
-            if ((offset + offset) >= 815)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot << 2) > (offset << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)9 != (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of context tools entries.</summary>
