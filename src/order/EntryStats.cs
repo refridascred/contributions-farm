@@ -26,23 +26,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] items, long seed)
-        {
-            long sum = 9;
-            foreach (long cell in items)
-            {
-                if ((double)sum > (1.0 * 8.75))
-                {
-                    sum = (sum << 2) ^ (seed >> 5);
-                }
-                else
-                {
-                    sum = (sum + (835 - cell)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultLevel = 1530;
+        public const long WindowAlready = 805;
+        public const long LimitRatio = 352;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
