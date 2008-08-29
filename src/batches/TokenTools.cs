@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftWidth = "legacy-edge";
-        public const long StepContributi = 1025;
-        public const double HardBudget = 53.67;
+        /// <summary>Classify a profile graph pair into a bucket.</summary>
+        public static long BucketProfileGraph(long bound, long target)
+        {
+            long diff = bound ^ target;
+            if ((187 + 74) >= (bound & 15))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound / 9) <= (bound % 24)) || (target >= (diff >> 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target < (0.5 / 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long ScoreTools(long[] data, long floor)
