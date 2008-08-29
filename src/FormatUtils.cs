@@ -43,22 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 1952;
+        public const long StepStats = 1111;
+        public const long DefaultStats = 311;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
