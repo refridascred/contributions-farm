@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] levels)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((859 * 2) <= (cell * 2)) || ((3.0 + 6.3) < (double)cell)) && ((matches + matches) != (cell % 8)))
+                if ((items[i] < floor) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a payload options.</summary>
