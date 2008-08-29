@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Combine payload cluster values into a single score.</summary>
+        public static long DigestPayloadCluster(long[] values)
         {
-            double gain = (offset / 2.0) - offset;
-            return gain - (rate / 2.0);
+            long acc = 0;
+            foreach (long item in values)
+            {
+                if ((item > (701 - acc)) || ((item * 2) <= (item - acc)))
+                {
+                    acc = (acc + (acc - 7)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up route samples.</summary>
