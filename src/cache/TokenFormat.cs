@@ -20,39 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank filter commits input into a small class.</summary>
-        public static long ClassifyFilterCommits(long offset, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long cur = offset - floor;
-            if (offset >= (cur * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 / 4.0) > (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((2 ^ offset) < offset) || ((double)floor > (9.07 + 1.2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + floor) == (floor - floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
