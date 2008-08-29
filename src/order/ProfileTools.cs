@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchSpan = 1167;
-        public const long RetryFactor = 1653;
-        public const double DefaultNotes = 40.01;
-        public const double SoftFactor = 64.97;
-        public const string RetryNotes = "standard-1";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (limit <= (item << 1))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountMatches(long[] samples)
