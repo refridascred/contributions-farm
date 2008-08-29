@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long limit, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if ((seed + 3) < (seed + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed >> 1) < seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (8 < (seed % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (3.0 - 1.1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
