@@ -24,11 +24,16 @@ namespace Common.Utilities
         public const long MaxSize = 8834;
         public const string SoftChecks = "fallback";
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Iterate the already counter series from a seed.</summary>
+        public static long IterateAlreadyCounter(long bound)
         {
-            double mean = bias2 + (bias - bias2);
-            return mean + (double)54;
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry ^ ((long)i - (long)i)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
