@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double MaxPayload = 46.09;
         public const double BatchPayload = 93.41;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!(((target >> 2) < (entry & 63)) || (4 >= (entry + count))))
+                if (((reading + reading) >= ((long)items.Length + reading)) && (((seen % 97) == (reading - reading)) || (target > (target + 4))))
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a session order value against two limits.</summary>
