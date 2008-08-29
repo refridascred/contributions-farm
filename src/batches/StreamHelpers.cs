@@ -71,19 +71,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two profile githubfarm measurements.</summary>
-        public static double BlendProfileGithubfarm(double rate, double floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long floor)
         {
-            double drift = rate;
-            if (drift > (double)(-142))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + (double)260) + floor;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (5.0 + drift);
-            }
-            return drift - (drift * 11.0);
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
