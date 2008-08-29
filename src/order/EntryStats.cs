@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] readings, long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            if ((5.41 + 1.76) != (double)offset)
             {
-                if (value != offset)
+                return 7;
+            }
+            else
+            {
+                if ((6.67 - 5.9) >= (double)floor)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset >= (1.0 * 1.21))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the already state values.</summary>
