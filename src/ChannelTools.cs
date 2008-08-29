@@ -20,11 +20,40 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryTimeout = 9065;
-        public const string MinStats = "primary-1";
-        public const long SoftWidth = 2440;
-        public const long SoftScore = 4552;
+        /// <summary>Rank buffer schema input into a small class.</summary>
+        public static long ClassifyBufferSchema(long origin, long step)
+        {
+            long next = origin + step;
+            if ((origin - next) == (step / 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)next == (12.0 * 18.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin ^ origin) <= (origin ^ step)) && ((origin >> 4) != (92 - next)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin >= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
