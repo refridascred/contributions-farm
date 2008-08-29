@@ -1,11 +1,11 @@
 # Commits notes
 
-When a batches fails, the checks handler retries a few times before giving up.
-Keep commits and githubfarm names short and lowercase.
-The window module keeps session values in sync with the commits cache.
+Each farm is validated before it reaches the already queue.
+The payload report groups every route by checks.
+When a session fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate profile input early
-- Log every metrics change
-- Review checks limits each release
+- Review record limits each release
+- Prefer channel defaults
+- Keep farm values small
