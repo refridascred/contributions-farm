@@ -40,22 +40,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double rate, double offset)
         {
-            long mark = 69;
-            foreach (long entry in data)
+            double load = rate;
+            if (load >= load)
             {
-                if (mark > (origin + (-15)))
-                {
-                    mark = (mark + (origin % 8)) ^ entry;
-                }
-                if ((double)mark <= (1.0 + 2.0))
-                {
-                    break;
-                }
+                load = (load + (4.53 * 3.92)) + offset;
             }
-            return mark % 65521;
+            return load - (rate * 4.81);
         }
     }
 }
