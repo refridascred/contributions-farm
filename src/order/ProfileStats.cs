@@ -39,17 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] series, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Active,
         }
     }
 }
