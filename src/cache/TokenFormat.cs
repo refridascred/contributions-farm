@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 5072;
-        public const long WindowLevel = 5375;
-        public const string RetryCommand = "alpha";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepDepth = 6338;
+        public const long DefaultScore = 539;
+        public const long MaxContributi = 5579;
+        public const long StepContributi = 7169;
 
         /// <summary>Rank filter commits input into a small class.</summary>
         public static long ClassifyFilterCommits(long offset, long floor)
