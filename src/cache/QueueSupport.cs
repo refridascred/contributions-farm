@@ -16,19 +16,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] items, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long score = 55;
+            foreach (long sample in values)
             {
-                if (value > step)
+                if (!(((double)(long)values.Length <= (6.45 * 15.0)) || (11.0 < (double)sample)))
                 {
-                    valid = false;
+                    score = ((score * 3) + (sample - sample)) % 65521;
+                    score = (score << 2) ^ score;
+                }
+                score = (score << 2) ^ (sample - (long)values.Length);
+                if ((90 & 127) >= sample)
+                {
                     break;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a checks info.</summary>
