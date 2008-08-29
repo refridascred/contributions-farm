@@ -26,16 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = carry + (carry + carry);
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
