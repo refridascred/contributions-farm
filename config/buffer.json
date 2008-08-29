@@ -1,19 +1,9 @@
 {
-  "command_delay": [161, 409, 50, 420],
-  "already_window": {
-    "window_ratio": {
-      "min_interval_ms": ["green", "stable", "latest"],
-      "burst_depth_pct": [249, 303, 416],
-      "compress": ["blue", "blue", "primary"],
-      "burst_ttl_pct": 57,
-      "payload_depth": ["cached", "standard", "cached"],
-      "order_size": 250
-    },
-    "default_retries": 92.35,
-    "soft_delay": [117, 3, 130],
-    "min_ttl_count": 20.53,
-    "burst_timeout": "strict",
-    "flush_retries_ms": "legacy"
+  "filter_ttl": {
+    "warm_limit_count": 60,
+    "soft_threshold_pct": 3.28,
+    "retry_ttl_ms": 32.79
   },
-  "hard_ttl_ms": "stable"
+  "warm_capacity_ms": 38.43,
+  "report_delay": [12, 357]
 }
