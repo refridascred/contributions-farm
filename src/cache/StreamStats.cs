@@ -12,22 +12,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-                result = (result + (result % 24)) % 4096;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result + result) % 101) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 5933;
+        public const string BatchCommand = "fallback-edge";
+        public const long LimitCommand = 5987;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LocateMetricIndex(long[] series, long step)
