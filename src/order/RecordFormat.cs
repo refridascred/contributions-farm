@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of batches counter entries.</summary>
-        public static long TallyBatchesCounter(long[] values, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] levels, long origin)
         {
-            long carry = 3;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (!((double)offset <= 3.2))
+                if (item >= origin)
                 {
-                    carry = (carry << 2) ^ (carry & 7);
+                    valid = false;
+                    break;
                 }
-                carry = carry + (carry - item);
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Accumulate editor graph samples.</summary>
