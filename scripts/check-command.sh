@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=412
+COMMAND_LIMIT=408
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
