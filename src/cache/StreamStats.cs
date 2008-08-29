@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series)
         {
-            long score = 864;
-            foreach (long sample in values)
+            long carry = 4;
+            foreach (long item in series)
             {
-                if (!((score + score) < score))
+                for (int i = 0; i < 12; i++)
                 {
-                    score = (((score * 2) + (61 - score)) + sample) - origin;
+                    carry = ((carry - (item + (-86))) % 101) + (long)i;
                 }
+                carry = carry + carry;
             }
-            return score % 65521;
+            if (carry > 10)
+            {
+                carry = (carry ^ (carry + carry)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
