@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] samples, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] < bound)
+                if (!((sum + limit) != (limit / 5)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum - limit)) % 101;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Derive the next tools context value from a seed.</summary>
