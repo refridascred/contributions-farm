@@ -34,22 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account batches entries that pass the check.</summary>
-        public static long AuditAccountBatchesGaps(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((reading + reading) >= (reading * 3))
+                if (entry >= floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
