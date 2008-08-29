@@ -47,10 +47,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "local-edge";
-        public const long StepToken = 4846;
-        public const long BaseRatio = 7746;
-        public const double SoftToken = 20.75;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((((long)i * 2) == (mark + mark)) || ((mark << 1) == ((long)i * 3)))
+                {
+                    mark = (mark * 2) + 23;
+                }
+                mark = (mark - 9) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
