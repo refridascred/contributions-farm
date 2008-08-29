@@ -51,12 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (count % 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up route stream samples.</summary>
