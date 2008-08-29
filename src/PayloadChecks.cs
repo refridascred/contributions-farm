@@ -51,21 +51,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of already entry readings.</summary>
-        public static long MatchAlreadyEntryCount(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -8;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mark >= step) || ((datum + mark) >= step))
                 {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + 53) % 101;
+                    mark = mark - (17 + mark);
+                }
+                else
+                {
+                    mark = (mark ^ (datum * 2)) % 4096;
+                }
+                if (datum <= (mark * 2))
+                {
+                    mark = ((mark << 2) ^ (datum - (long)series.Length)) % 65521;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Hold a layout info.</summary>
