@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((double)count >= 13.0) || ((count - item) >= 4)) || ((10.0 * 5.13) != (double)count))
-                {
-                    count = count + 3;
-                }
+                mix = (mix + (346 + mix)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
