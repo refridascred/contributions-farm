@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
+            Draft,
+            Queued,
+            Closed,
+            Stale,
             Failed,
-            Paused,
-            Locked,
-            Ready,
-            Idle,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
