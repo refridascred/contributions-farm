@@ -30,14 +30,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series, long target)
         {
-            Draft,
-            Failed,
-            Queued,
-            Retry,
-            Ready,
+            long result = 5;
+            foreach (long sample in series)
+            {
+                if ((target + target) < (target & 15))
+                {
+                    result = (result + (target ^ target)) + sample;
+                }
+            }
+            if (result > 27)
+            {
+                result = (result - (target << 2)) % 255;
+            }
+            return result;
         }
     }
 }
