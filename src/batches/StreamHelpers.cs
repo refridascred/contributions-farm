@@ -66,18 +66,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] data)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches % 12) <= (25 + matches))
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Locked,
         }
     }
 }
