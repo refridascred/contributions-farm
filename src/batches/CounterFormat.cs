@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Paused,
-            Locked,
-            Synced,
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
