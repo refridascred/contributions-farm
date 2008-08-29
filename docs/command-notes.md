@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Defaults for payload live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the format list.
+
+A tools that stays idle for too long is moved to the payload list.
+Use cache settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer graph defaults
-- Log every schema change
+- Prefer support defaults
+- Validate metric input early
+- Review queue limits each release
+- Document new entry fields
