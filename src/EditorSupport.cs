@@ -55,11 +55,20 @@ namespace Common.Utilities
         public const long CacheInterval = 3715;
         public const long CacheAlready = 3856;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values, long origin)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            long mark = -615;
+            foreach (long sample in values)
+            {
+                mark = (((mark << 3) ^ (0 / 6)) % 255) - origin;
+                mark = mark + (sample - sample);
+            }
+            if (mark > 37)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 97;
         }
     }
 }
