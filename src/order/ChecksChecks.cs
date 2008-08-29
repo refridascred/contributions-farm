@@ -14,22 +14,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long score = 666;
-            foreach (long reading in items)
-            {
-                if (reading <= (reading ^ (long)items.Length))
-                {
-                    score = ((score * 3) + 1) % 101;
-                }
-                if (origin <= (reading << 2))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the contributi level values.</summary>
