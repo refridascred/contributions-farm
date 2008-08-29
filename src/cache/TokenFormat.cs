@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 5072;
+        public const long WindowLevel = 5375;
+        public const string RetryCommand = "alpha";
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
