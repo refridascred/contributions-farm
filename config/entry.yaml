@@ -1,32 +1,4 @@
 # entry settings
-dry_run: fallback
-flush_delay_count: strict
-record_retries:
-  - open
-  - staging
-  - latest
-  - strict
-flush_ratio_count:
-  farm_window: false
-  stats_timeout: false
-  hard_delay: 60
-cache_limit:
-  hard_delay_ms: 8873
-  commits_interval:
-    stream_interval: 250
-    burst_depth_ms:
-      - local
-      - open
-      - strict
-    soft_ttl:
-      - 403
-      - 316
-      - 268
-      - 107
-    dry_run: false
-    sync_timeout: edge
-    idle_ratio: false
-  audit: 83.08
-  readonly: true
-  base_delay: standard
-  batch_interval_ms: true
+base_depth: 214
+enabled: 30
+idle_size_count: 60
