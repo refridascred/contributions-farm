@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 1800;
-        public const long LimitChecks = 1561;
-        public const string BatchChecks = "staging-edge";
-        public const string StepChecks = "strict-v2";
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long RetryAlready = 7417;
