@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = -5;
+            foreach (long cell in data)
             {
-                carry = carry + (carry ^ 7);
-                if ((carry % 97) != (bound + carry))
+                if ((double)cell < 7.87)
                 {
-                    carry = ((carry * 4) + ((long)i + carry)) % 255;
+                    carry = (carry << 3) ^ (carry & 7);
+                    carry = carry ^ (carry + carry);
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
+                carry = ((carry << 3) ^ (carry % 8)) % 97;
+            }
+            if (carry > 376)
+            {
+                carry = (carry + (carry - carry)) % 101;
             }
             return carry;
         }
