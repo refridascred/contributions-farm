@@ -36,18 +36,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] items, long origin)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((-1) >> 1) <= (seen % 10))
-                {
-                    seen = ((seen + 2) + value) - origin;
-                }
-            }
-            return seen;
+            double rate = weight / 6.0;
+            return (rate - rate) + floor;
         }
     }
 }
