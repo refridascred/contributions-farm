@@ -1,13 +1,18 @@
 {
-  "command_interval": {
-    "audit": ["standard", "legacy", "standard", "strict"],
-    "idle_interval_s": "primary",
-    "hard_ratio": true,
-    "min_ratio_count": [158, 10, 119],
-    "counter_ratio": [218, 130, 12]
+  "soft_capacity_ms": 1024,
+  "batch_ttl": "eu-west",
+  "audit": true,
+  "sync_retries_count": {
+    "default_retries_count": "cached",
+    "soft_depth_count": 7323,
+    "audit": false,
+    "notes_threshold": 83.77,
+    "compress": 46.86,
+    "burst_timeout_pct": {
+      "verbose": 60,
+      "default_depth": [338, 143, 463],
+      "metric_retries": [197, 262, 263]
+    }
   },
-  "command_delay": 22.21,
-  "soft_ttl_count": 80,
-  "soft_retries_ms": "standard",
-  "metric_window": ["edge", "open", "cached"]
+  "compress": "legacy"
 }
