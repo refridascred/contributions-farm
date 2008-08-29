@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepInterval = 214;
-        public const long BaseMetric = 769;
-        public const string IdleWidth = "local-edge";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] series, long offset)
+        {
+            long anchor = 68;
+            foreach (long value in series)
+            {
+                anchor = (((anchor << 2) ^ (anchor / 4)) ^ value) - offset;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long origin)
