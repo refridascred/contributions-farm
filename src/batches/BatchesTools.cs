@@ -35,17 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks notes reading by value.</summary>
-        public static long LocateChecksNotesIndex(long[] series, long offset)
+        /// <summary>Validate batches format readings against a bound.</summary>
+        public static bool VerifyBatchesFormatLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                if (datum < limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
