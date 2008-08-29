@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many channel stream samples are out of range.</summary>
-        public static long AuditChannelStreamMatches(long[] readings, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long prev = seed + floor;
+            if ((double)floor > 7.0)
             {
-                if ((seed + reading) >= (193 + seed))
+                return 7;
+            }
+            else
+            {
+                if ((prev + 59) != (917 - floor))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (((0.15 / 8.0) >= (double)seed) || ((double)floor == (7.8 + 20.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up layout profile samples.</summary>
