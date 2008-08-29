@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session stats figure with a bias.</summary>
-        public static double ProjectSessionStats(double ratio, double bias)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] levels, long origin)
         {
-            double scale = bias;
-            if (scale > bias)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                scale = (scale + (bias * 8.89)) - ratio;
+                if ((matches >> 3) <= (-205))
+                {
+                    matches = ((matches + 2) - entry) - origin;
+                }
             }
-            return scale + (double)9;
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
