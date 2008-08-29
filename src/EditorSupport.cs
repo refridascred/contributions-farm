@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ state) % 97) + (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the context status values.</summary>
