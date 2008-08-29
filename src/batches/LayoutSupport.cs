@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] levels, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!((92 % 24) <= (target - (-626))))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
