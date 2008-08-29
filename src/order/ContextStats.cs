@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] items, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (step < floor)
             {
-                if (items[i] <= offset)
+                return 6;
+            }
+            else
+            {
+                if ((step + step) >= floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)floor <= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every channel editor entry stays within the limit.</summary>
