@@ -1,7 +1,10 @@
 # entry settings
-cache_ratio_ms: 44.63
-already_timeout: 90
-hard_delay: true
-strict: green
-burst_size_ms: fallback
-soft_ttl: fallback
+enabled: strict
+schema_timeout:
+  - 52
+  - 119
+  - 266
+min_delay: 8208
+batch_delay_s: 30
+farm_limit: 2422
+cache_limit: false
