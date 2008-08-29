@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 22.05;
-        public const long IdleDepth = 7375;
-        public const long LimitStream = 6093;
-        public const double RetryStream = 78.55;
+        /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
+        public static long LocatePayloadGithubfarmIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] levels)
