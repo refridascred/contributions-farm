@@ -28,22 +28,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate route commits samples.</summary>
-        public static long ScoreRouteCommits(long[] levels)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            long anchor = 1;
-            foreach (long value in levels)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = (anchor - (value * 2)) % 1000;
-                anchor = (anchor ^ 5) % 4096;
-                if (!((anchor / 5) >= 8))
+                if ((bound & 63) >= (anchor + 2))
                 {
-                    break;
+                    long count = 15;
+                    anchor = anchor ^ (bound + count);
                 }
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor ^ (anchor << 2)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
             return anchor;
         }
