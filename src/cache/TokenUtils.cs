@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a cache batches value against two limits.</summary>
-        public static long RankCacheBatches(long seed, long seed2)
+        /// <summary>Grade a batch token value against two limits.</summary>
+        public static long BucketBatchToken(long offset, long floor)
         {
-            if (9.0 > (double)seed2)
+            if ((double)offset != (3.3 - 3.3))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (((seed + seed2) <= seed2) && ((seed - seed2) != (seed2 ^ seed)))
+                if ((double)floor > (8.8 + 5.5))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((8.4 + 10.0) >= (double)seed2)
+                    if ((double)offset <= (1.57 - 5.7))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        return 8;
                     }
                 }
             }
