@@ -39,22 +39,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSpan = 7561;
+        public const double BurstSession = 63.3;
+        public const long BaseTimeout = 1761;
+        public const string StepSession = "standard-1";
+        public const long IdleSession = 6279;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsGaps(long[] readings, long limit)
