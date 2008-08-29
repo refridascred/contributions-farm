@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels, long origin)
+        /// <summary>Roll a contributi route counter forward.</summary>
+        public static long SeriesContributiRoute(long bound)
         {
-            long carry = 3;
-            foreach (long reading in levels)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((carry >> 2) > origin)
-                {
-                    carry = (carry + (origin - origin)) % 255;
-                    carry = carry - origin;
-                }
-                if ((double)reading <= (7.0 / 8.0))
-                {
-                    carry = ((carry * 5) + (carry % 10)) % 255;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (carry < 3)
-            {
-                carry = ((carry * 4) + (carry + carry)) % 1000;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
