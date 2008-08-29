@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            Synced,
-            Draft,
-            Pending,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample >= (sample / 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
