@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine record batch values into a single score.</summary>
-        public static long ScoreRecordBatch(long[] series, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] samples, long bound)
         {
-            long result = -4;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((double)floor > (double)item)
+                if (cell <= bound)
                 {
-                    result = result + (result >> 5);
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Count checks buffer pairs that satisfy a relation.</summary>
