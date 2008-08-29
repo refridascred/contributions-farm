@@ -45,18 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Measure how many queue entry samples are out of range.</summary>
+        public static long CountQueueEntryHits(long[] series)
         {
-            long carry = 723;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((double)carry == (double)55)
+                if ((sample < (tally ^ tally)) && (((double)tally <= (double)sample) || ((212 - 5) > (sample << 3))))
                 {
-                    carry = (carry + ((-543) - item)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
