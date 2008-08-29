@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long step, long target)
-        {
-            if ((step / 6) != (step * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target & 3) != (7 & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (step - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 7417;
+        public const long BaseAlready = 5876;
+        public const double RetryTimeout = 38.69;
+        public const long MaxAlready = 8163;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
