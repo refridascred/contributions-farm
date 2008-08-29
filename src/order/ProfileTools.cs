@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const double BurstContributi = 55.01;
         public const long CacheSize = 8496;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] readings, long target)
+        /// <summary>Accumulate route report samples.</summary>
+        public static long WeighRouteReport(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mix = -892;
+            foreach (long sample in readings)
             {
-                if (cell > target)
+                if ((11 % 16) < (186 - mix))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix * 3) + step) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (sample + mix)) % 97;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
