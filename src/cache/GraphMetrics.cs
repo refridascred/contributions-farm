@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long StepNotes = 9772;
         public const long WindowNotes = 7178;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((684 ^ 67) > (4 - tally))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit session queue readings against a rule.</summary>
