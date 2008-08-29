@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] values, long step)
         {
-            Paused,
-            Idle,
-            Pending,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 2) <= seen)
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a editor batches value against two limits.</summary>
