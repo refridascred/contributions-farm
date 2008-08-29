@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the entry account series from a seed.</summary>
-        public static long DeriveEntryAccount(long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] items, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
