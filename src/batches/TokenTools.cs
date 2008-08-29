@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits - hits) > ((-80) + datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftWidth = "legacy-edge";
+        public const long StepContributi = 1025;
+        public const double HardBudget = 53.67;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long ScoreTools(long[] data, long floor)
