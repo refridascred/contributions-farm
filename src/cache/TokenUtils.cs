@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] values)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((10.0 - 2.6) > (double)value)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
