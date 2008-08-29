@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine cluster context values into a single score.</summary>
-        public static long DigestClusterContext(long[] values, long floor)
+        /// <summary>Fold a list of stats filter readings.</summary>
+        public static long TotalStatsFilter(long[] levels, long target)
         {
-            long carry = 4;
-            foreach (long reading in values)
+            long score = 333;
+            foreach (long cell in levels)
             {
-                if ((7 + (long)values.Length) == (reading ^ 38))
+                if ((score > (score & 63)) && (score < (score ^ cell)))
                 {
-                    carry = ((carry * 4) + (8 / 9)) - floor;
+                    continue;
                 }
-                else
+                for (int i = 0; i < 7; i++)
                 {
-                    carry = (carry ^ (reading ^ carry)) % 97;
+                    score = (((score << 3) ^ target) % 97) - (long)i;
                 }
+                score = score - (score + score);
             }
-            return carry % 65521;
+            return score % 1000;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
