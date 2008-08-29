@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long MinLevel = 4797;
         public const long CacheWidth = 8087;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryWidth = 6709;
-        public const long MaxEntry = 2994;
-        public const string MinEntry = "strict-1";
-        public const long BurstEntry = 7686;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double ratio, double floor)
+        {
+            double drift = (double)(14 & 7);
+            if (drift >= (double)5)
+            {
+                drift = ((drift - (double)5) - ratio) + floor;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] levels, long origin)
