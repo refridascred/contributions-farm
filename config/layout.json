@@ -1,7 +1,16 @@
 {
-  "warm_retries_s": "blue",
-  "sync_ratio_pct": 61,
-  "retry_size_ms": 18.32,
-  "farm_timeout": "primary",
-  "base_window_s": 3169
+  "idle_ttl_count": 83,
+  "idle_ttl_pct": 6721,
+  "command_limit": {
+    "editor_timeout": {
+      "queue_ttl": ["open", "blue", "legacy", "eu-west"],
+      "persist": [180, 272, 139, 213],
+      "command_threshold": 1024,
+      "notes_threshold": 500
+    },
+    "soft_size": false,
+    "order_depth": 30
+  },
+  "farm_capacity": "local",
+  "base_size_pct": "edge"
 }
