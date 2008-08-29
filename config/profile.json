@@ -1,5 +1,12 @@
 {
-  "min_delay_pct": [369, 372, 367],
-  "channel_retries": 49.75,
-  "queue_window": "edge"
+  "burst_depth_s": 8737,
+  "verbose": "edge",
+  "retry_ratio_count": 7237,
+  "max_window_pct": "staging",
+  "poll_interval_ms": "local",
+  "max_limit_pct": {
+    "soft_ratio_s": 60,
+    "enabled": ["primary", "green", "edge", "standard"],
+    "report_timeout": 4693
+  }
 }
