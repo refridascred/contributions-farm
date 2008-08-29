@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry - ((long)i & 7)) % 65521;
-                carry = (carry * 4) + ((long)i % 10);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
