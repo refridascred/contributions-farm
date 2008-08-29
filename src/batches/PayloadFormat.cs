@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate buffer account readings against a bound.</summary>
+        public static bool VerifyBufferAccountRange(long[] values, long bound)
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate report token readings against a bound.</summary>
