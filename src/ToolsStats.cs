@@ -41,18 +41,9 @@ namespace Common.Utilities
         public const string IdleBuffer = "open";
         public const string WindowSpan = "standard-v2";
 
-        /// <summary>Measure how many metric farm samples are out of range.</summary>
-        public static long TallyMetricFarmOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((offset ^ (long)levels.Length) == (hits ^ 859))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetrySize = "cached-edge";
+        public const string HardBuffer = "strict-edge";
+        public const long RetryBuffer = 9917;
     }
 }
