@@ -28,21 +28,31 @@ namespace Common.Utilities
         public const double WindowRecord = 92.79;
         public const long MaxCount = 3778;
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((248 + 8) == (offset / 8))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step % 97) >= offset)
                 {
-                    if ((series[i] + series[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((offset ^ step) < (54 << 1))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
