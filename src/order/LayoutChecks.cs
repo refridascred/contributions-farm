@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((double)datum != (4.5 - 11.0))
+                if (!((9.0 - 11.0) <= (double)count))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) + sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of queue channel entries.</summary>
