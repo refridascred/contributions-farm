@@ -1,12 +1,16 @@
 # Command notes
 
-A context that stays idle for too long is moved to the farm list.
-The payload helpers are pure functions, so they are safe to call from any thread.
-The counter report groups every metric by batches.
+A batch that stays idle for too long is moved to the stream list.
+Keep notes and checks names short and lowercase.
+The farm report groups every layout by graph.
+
+A editor that stays idle for too long is moved to the farm list.
+Each support is validated before it reaches the order queue.
+A window that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Validate contributi input early
-- Keep buffer values small
-- Log every record change
-- Document new layout fields
+- Prefer schema defaults
+- Review githubfarm limits each release
+- Keep token values small
+- Document new metrics fields
