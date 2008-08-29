@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] values, long step)
+        /// <summary>Audit context session readings against a rule.</summary>
+        public static long TallyContextSessionOutliers(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (entry < step)
+                if ((1.9 + 5.8) < (double)cell)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the already status values.</summary>
