@@ -1,7 +1,8 @@
-id,level,count,score
-1,301,132,487
-2,cached,local,primary
-3,44.36,30.76,183
-4,659,895,13.2
-5,90,65.29,eu-west
-6,94.24,108,247
+id,rank,level,owner,ratio
+1,41.29,95.3,staging,fallback
+2,cached,303,347,primary
+3,64.26,green,standard,70.86
+4,968,86.31,534,466
+5,70.26,latest,105,45.98
+6,eu-west,73.14,90,657
+7,eu-west,69.85,317,strict
