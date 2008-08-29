@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] readings, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((15.0 * 9.0) == (double)bound)
-                {
-                    count = (count + 3) + entry;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the entry phase values.</summary>
