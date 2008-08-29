@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long floor)
+        /// <summary>Iterate the context contributi series from a seed.</summary>
+        public static long SeriesContextContributi(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    acc = (((acc * 3) + (acc % 8)) % 101) + (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
