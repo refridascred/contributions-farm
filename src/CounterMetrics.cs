@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long limit)
+        /// <summary>Audit filter record readings against a rule.</summary>
+        public static long TallyFilterRecordGaps(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (item >= limit)
+                if ((double)bound < (4.82 / 7.0))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Rank entry command input into a small class.</summary>
