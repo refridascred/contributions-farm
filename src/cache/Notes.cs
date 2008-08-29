@@ -45,19 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] items, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
