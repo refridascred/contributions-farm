@@ -55,37 +55,23 @@ namespace Common.Utilities
         public const double WindowLevel = 89.73;
         public const long StepRatio = 231;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long origin, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long step, long bound)
         {
-            long step = origin + limit;
-            if ((8 + 88) <= (step * 2))
+            long offset = step + bound;
+            if ((396 ^ 9) < (bound ^ bound))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((limit ^ limit) != (step - (-304)))
+                if ((bound > offset) && (offset > 737))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (!((origin ^ step) < (587 & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((step << 1) > (limit & 63)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
