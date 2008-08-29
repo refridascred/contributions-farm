@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                result = result + (result + bound);
-                result = (result * 3) + ((long)i - result);
-                result = (result + (result << 3)) % 65521;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
