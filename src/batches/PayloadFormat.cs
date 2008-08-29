@@ -32,25 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a command route value against two limits.</summary>
-        public static long ClassifyCommandRoute(long floor, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
-            long cur = floor + origin;
-            if (!((floor << 2) == (floor * 3)))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur >= (double)floor)
+                if (hits <= (cell + cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
