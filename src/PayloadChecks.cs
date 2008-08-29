@@ -68,18 +68,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((reading + reading) != ((-5) % 2)) && ((19.0 * 1.24) != (double)reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
