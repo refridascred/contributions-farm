@@ -89,12 +89,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= floor)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
