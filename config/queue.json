@@ -1,5 +1,6 @@
 {
-  "cluster_window": true,
-  "flush_threshold_pct": "open",
-  "queue_timeout": true
+  "min_window_s": 29.16,
+  "stats_timeout": 5334,
+  "burst_limit": 49.62,
+  "cache_delay": [78, 256, 498]
 }
