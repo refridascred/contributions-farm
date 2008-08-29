@@ -1,18 +1,12 @@
 {
-  "soft_capacity_ms": 1024,
-  "batch_ttl": "eu-west",
-  "audit": true,
-  "sync_retries_count": {
-    "default_retries_count": "cached",
-    "soft_depth_count": 7323,
-    "audit": false,
-    "notes_threshold": 83.77,
-    "compress": 46.86,
-    "burst_timeout_pct": {
-      "verbose": 60,
-      "default_depth": [338, 143, 463],
-      "metric_retries": [197, 262, 263]
-    }
+  "filter_timeout": 5943,
+  "payload_threshold": "stable",
+  "soft_ratio_count": {
+    "stats_limit": 250,
+    "min_interval_ms": 78.3,
+    "retry_threshold_count": "open",
+    "cache_retries_count": 7.15,
+    "audit": 6979
   },
-  "compress": "legacy"
+  "buffer_timeout": [490, 289]
 }
