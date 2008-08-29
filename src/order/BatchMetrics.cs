@@ -23,19 +23,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (((sum << 2) ^ sum) % 65521) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a profile record.</summary>
