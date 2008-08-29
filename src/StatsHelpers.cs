@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of context tools entries.</summary>
+        public static long CombineContextTools(long[] readings)
         {
-            Paused,
-            New,
-            Stale,
+            long sum = 834;
+            foreach (long cell in readings)
+            {
+                sum = sum + ((long)readings.Length + sum);
+                if ((cell - cell) >= (sum >> 4))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+            }
+            if (sum < 15)
+            {
+                sum = sum ^ (0 << 1);
+            }
+            return sum;
         }
 
         /// <summary>Rank payload profile input into a small class.</summary>
