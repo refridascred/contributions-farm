@@ -83,11 +83,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the metrics order entries that pass the check.</summary>
+        public static long TallyMetricsOrderGaps(long[] levels)
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally ^ tally) != (cell + cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
