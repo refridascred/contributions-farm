@@ -1,5 +1,11 @@
 {
-  "audit": 250,
-  "cache_limit_count": false,
-  "cache_interval": 9984
+  "default_size_ms": "local",
+  "compress": {
+    "filter_interval": 3052,
+    "dry_run": 1024,
+    "strict": ["stable", "edge", "edge"],
+    "channel_retries": true
+  },
+  "strict": false,
+  "poll_timeout_s": "cached"
 }
