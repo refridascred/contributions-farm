@@ -55,13 +55,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data, long floor)
         {
-            Queued,
-            Idle,
-            New,
-            Done,
+            long score = 96;
+            foreach (long datum in data)
+            {
+                if (((7.18 - 4.0) <= (double)score) && ((datum << 1) != (floor + score)))
+                {
+                    score = (score << 3) ^ (floor / 9);
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
