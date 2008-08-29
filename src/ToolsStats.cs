@@ -27,17 +27,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a metric format sample.</summary>
-        public static long LookupMetricFormatIndex(long[] levels, long limit)
+        /// <summary>Digest a series of tools profile entries.</summary>
+        public static long ScoreToolsProfile(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 30;
+            foreach (long cell in samples)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - limit) - cell;
+                anchor = (anchor + limit) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a entry record counter forward.</summary>
