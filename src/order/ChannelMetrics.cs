@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] items, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (item > origin)
+                if (item >= (tally >> 5))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
