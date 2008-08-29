@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long origin, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long target)
         {
-            long gap = origin ^ offset;
-            if ((gap >= offset) || ((double)offset >= (7.9 + 0.2)))
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (gap < (9 + gap))
+                if (item < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the profile format series from a seed.</summary>
