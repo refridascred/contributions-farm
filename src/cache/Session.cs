@@ -28,11 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Digest a series of context tools entries.</summary>
