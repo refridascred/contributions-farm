@@ -50,25 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long step, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long offset = step + bound;
-            if ((396 ^ 9) < (bound ^ bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound > offset) && (offset > 737))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Active,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the cluster level values.</summary>
