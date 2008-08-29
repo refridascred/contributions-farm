@@ -31,22 +31,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] values, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long mix = 6;
-            foreach (long reading in values)
-            {
-                if (2.0 < (double)reading)
-                {
-                    mix = ((mix - (mix * 4)) % 4096) + step;
-                }
-                else
-                {
-                    mix = (mix + mix) % 101;
-                }
-            }
-            return mix;
+            Active,
+            Stale,
+            New,
+            Ready,
         }
     }
 }
