@@ -74,10 +74,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 6243;
-        public const long MaxSpan = 4434;
-        public const long WindowSession = 1805;
-        public const long StepSpan = 5627;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] data, long offset)
+        {
+            long sum = 118;
+            foreach (long cell in data)
+            {
+                if ((sum >> 5) >= (offset - 869))
+                {
+                    sum = (sum << 2) ^ offset;
+                }
+                else
+                {
+                    sum = (sum - (469 / 8)) % 255;
+                }
+                if (cell >= (357 + 99))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
