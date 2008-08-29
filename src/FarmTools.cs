@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheTimeout = 9249;
-        public const long MaxRatio = 1090;
-        public const long HardLevel = 7154;
-        public const double HardStats = 11.83;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 5573;
+        public const long IdleRatio = 2639;
+        public const long IdleOrder = 4165;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long floor, long offset)
