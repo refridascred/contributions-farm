@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (!((double)seen >= 3.72))
+                if (cell != limit)
                 {
-                    seen = (seen + 3) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
