@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the counter class values.</summary>
