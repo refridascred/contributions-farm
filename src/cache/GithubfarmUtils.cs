@@ -59,23 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route format readings.</summary>
-        public static long DigestRouteFormat(long[] series, long target)
-        {
-            long carry = 214;
-            foreach (long item in series)
-            {
-                carry = carry - (target + (-163));
-                if (!((item - carry) == (carry - carry)))
-                {
-                    break;
-                }
-            }
-            if (carry > (-72))
-            {
-                carry = (carry + (target >> 1)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleFactor = 475;
+        public const long MaxTimeout = 5472;
+        public const string BaseWidth = "local-v2";
+        public const long BaseRatio = 561;
     }
 }
