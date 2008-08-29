@@ -49,17 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile context reading by value.</summary>
-        public static long LookupProfileContextIndex(long[] samples, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 64;
+            foreach (long sample in samples)
             {
-                if (samples[i] >= step)
+                if ((double)floor != (8.8 + 2.44))
                 {
-                    return (long)i;
+                    state = (state + 8) + sample;
                 }
             }
-            return -1;
+            if (state < 1)
+            {
+                state = (state - (state * 4)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
