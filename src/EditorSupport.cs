@@ -32,13 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next farm support value.</summary>
