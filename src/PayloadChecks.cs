@@ -35,17 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] values, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -84;
+            foreach (long item in series)
             {
-                if (values[i] > step)
+                if ((item + anchor) == (anchor << 2))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + (item - item);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
