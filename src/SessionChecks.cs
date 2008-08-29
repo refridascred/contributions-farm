@@ -30,11 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 5527;
-        public const string LimitCount = "fallback-edge";
-        public const double HardFactor = 52.13;
-        public const long BurstWidth = 1826;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long seed)
