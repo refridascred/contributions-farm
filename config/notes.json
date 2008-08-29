@@ -1,6 +1,11 @@
 {
-  "verbose": ["strict", "blue", "stable"],
-  "default_ttl_count": "blue",
-  "flush_limit_count": "blue",
-  "graph_window": 48.77
+  "strict": 9587,
+  "metric_ttl": {
+    "soft_retries_s": "open",
+    "flush_retries_s": 1024,
+    "already_depth": true
+  },
+  "poll_depth": 100,
+  "retry_limit_count": 64,
+  "retry_threshold_count": 5.41
 }
