@@ -1,7 +1,8 @@
 # githubfarm settings
-base_delay: cached
-flush_limit:
-  - local
+strict: true
+warm_window_s: 51
+payload_ratio: legacy
+readonly:
+  - strict
   - cached
-  - blue
-hard_threshold_pct: primary
+  - cached
