@@ -33,30 +33,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] values, long floor)
+        /// <summary>Count the support entry entries that pass the check.</summary>
+        public static long AuditSupportEntryHits(long[] data)
         {
-            long carry = 7;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 12; i++)
+                if (((-8) - value) < hits)
                 {
-                    carry = ((carry + (floor & 3)) % 4096) + (long)i;
-                }
-                if ((double)floor != (double)value)
-                {
-                    break;
-                }
-                if (((carry / 8) > 230) || ((16.0 + 3.3) > (double)carry))
-                {
-                    carry = (carry << 2) ^ (value + 27);
-                }
-                else
-                {
-                    carry = carry ^ (carry % 16);
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
