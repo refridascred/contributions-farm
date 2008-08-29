@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit layout graph readings against a rule.</summary>
-        public static long MeasureLayoutGraphMatches(long[] series, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
             long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)step < (1.0 + 1.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
