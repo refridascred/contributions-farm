@@ -35,20 +35,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long target, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long offset = target ^ bound;
+            if ((target & 3) <= bound)
             {
-                if ((((long)i * 2) == (mark + mark)) || ((mark << 1) == ((long)i * 3)))
-                {
-                    mark = (mark * 2) + 23;
-                }
-                mark = (mark - 9) % 97;
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (((offset >> 4) <= (offset & 1)) || (target >= 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
