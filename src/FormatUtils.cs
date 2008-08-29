@@ -53,20 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultScore = "primary-edge";
+        public const double StepSpan = 58.0;
+        public const double IdleRatio = 18.56;
+        public const long StepTimeout = 9929;
+        public const double HardCount = 42.78;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
