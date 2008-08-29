@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long IdleSpan = 8774;
         public const long HardLevel = 7574;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series, long step)
+        /// <summary>Audit stats metric readings against a rule.</summary>
+        public static long MeasureStatsMetricGaps(long[] data)
         {
-            long result = 1;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)cell < (4.2 + 9.0))
                 {
-                    result = (((result ^ ((long)i >> 4)) % 255) + item) + step;
+                    seen = seen + 3;
                 }
-                result = ((result << 2) ^ (result >> 2)) % 255;
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Hold a schema stats.</summary>
