@@ -44,18 +44,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of context counter readings.</summary>
-        public static long WeighContextCounter(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items, long limit)
         {
-            long state = 0;
-            foreach (long item in readings)
+            long carry = 54;
+            foreach (long cell in items)
             {
-                if ((double)state == (double)item)
+                carry = (carry - limit) ^ cell;
+                for (int i = 0; i < 10; i++)
                 {
-                    state = ((state << 2) ^ (state / 6)) % 65521;
+                    carry = ((carry << 3) ^ ((long)i * 4)) % 101;
                 }
+                carry = (carry + (carry % 3)) % 97;
             }
-            return state;
+            return carry;
         }
     }
 }
