@@ -1,14 +1,4 @@
 # entry settings
-default_retries_pct: open
-hard_ttl_s: true
-cache_window_pct: open
-sync_size_pct: fallback
-min_size_ms:
-  session_interval: 3462
-  record_limit: edge
-  sync_retries:
-    - open
-    - eu-west
-    - local
-    - green
-graph_ttl: open
+cache_ratio_ms: 9929
+route_limit: 60
+strict: 1024
