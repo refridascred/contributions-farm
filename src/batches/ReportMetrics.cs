@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = -92;
+            foreach (long item in values)
             {
-                if ((seen - sample) != ((long)samples.Length * 3))
+                sum = (sum ^ ((long)values.Length << 3)) % 1000;
+                if (((item - 7) > limit) || ((double)item > (5.42 - 20.0)))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return sum % 97;
         }
     }
 }
