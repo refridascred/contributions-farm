@@ -39,23 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mix = 560;
-            foreach (long sample in levels)
-            {
-                mix = (mix - (sample ^ mix)) % 97;
-                if ((floor / 5) <= (mix % 8))
-                {
-                    mix = mix - 431;
-                }
-                else
-                {
-                    mix = (mix - (sample - floor)) % 101;
-                }
-            }
-            return mix % 4096;
+            Stale,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Digest a series of token entries.</summary>
