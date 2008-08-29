@@ -1,4 +1,9 @@
 # entry settings
-hard_capacity_count: 51
-token_timeout: legacy
-base_ttl_ms: 4475
+session_interval:
+  - cached
+  - local
+commits_size: 3.5
+strict:
+  - fallback
+  - local
+  - legacy
