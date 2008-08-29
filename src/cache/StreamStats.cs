@@ -46,22 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Match up filter counter samples.</summary>
+        public static long OverlapFilterCounterCount(long[] readings)
         {
-            long mix = 6;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (1 >= (mix + entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix - (17 + entry)) % 97;
-                }
-                if (!(entry <= (mix >> 3)))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
