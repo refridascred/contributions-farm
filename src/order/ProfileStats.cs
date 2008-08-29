@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a format report counter forward.</summary>
-        public static long SeriesFormatReport(long offset)
+        /// <summary>Count the cache support entries that pass the check.</summary>
+        public static long MeasureCacheSupportHits(long[] samples, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                total = total - 9;
-                total = (total * 5) + (total % 16);
-                total = ((total * 4) + (long)i) % 1000;
+                if ((sample ^ step) == (step + 2))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a window options.</summary>
