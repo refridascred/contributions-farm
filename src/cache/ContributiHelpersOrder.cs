@@ -19,18 +19,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((hits < (hits + hits)) || ((double)hits != (11.0 - 4.5))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + datum;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
