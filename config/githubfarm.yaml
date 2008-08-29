@@ -1,13 +1,9 @@
 # githubfarm settings
-hard_depth: true
-enabled: 14.05
-batch_threshold_s:
-  - 420
-  - 240
-cache_ratio:
-  idle_interval_s: 87.79
-  readonly: latest
-  cache_interval_pct: eu-west
-  hard_retries_ms: 8873
-  persist: primary
-  idle_interval_pct: 6479
+readonly: 500
+context_interval: green
+stats_threshold: fallback
+hard_timeout:
+  - 443
+  - 424
+  - 330
+idle_ratio_pct: eu-west
