@@ -61,14 +61,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Retry,
-            Active,
-            Done,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryScore = 1361;
+        public const string BatchCluster = "strict-edge";
+        public const long CacheCount = 3449;
+        public const long SoftBudget = 4324;
     }
 }
