@@ -1,8 +1,6 @@
 {
-  "dry_run": 75.15,
-  "soft_timeout": 250,
-  "burst_threshold": "standard",
-  "report_delay": 7945,
-  "support_capacity": "legacy",
-  "cluster_delay": "edge"
+  "enabled": "strict",
+  "base_capacity": false,
+  "default_limit_s": "legacy",
+  "verbose": [463, 123, 276]
 }
