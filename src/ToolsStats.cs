@@ -20,13 +20,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            New,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSize = 5416;
+        public const double MaxLevel = 29.85;
+        public const double WindowFilter = 91.58;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] data)
