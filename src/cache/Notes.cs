@@ -52,12 +52,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "fallback-1";
+        public const long BurstQueue = 685;
+        public const long CacheSize = 365;
+        public const long CacheRatio = 2605;
     }
 }
