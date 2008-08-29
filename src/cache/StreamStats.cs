@@ -19,15 +19,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit githubfarm filter readings against a rule.</summary>
-        public static long AuditGithubfarmFilterGaps(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long cell in readings)
             {
-                if ((double)entry <= (double)5)
+                if (!((double)seen <= (5.22 - 8.7)))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 1) + cell;
                 }
             }
             return seen;
