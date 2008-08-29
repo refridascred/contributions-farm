@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 1415;
-        public const long BurstInterval = 2600;
-        public const long CacheBatch = 6220;
-        public const long CacheScore = 2148;
-        public const long MinLevel = 3351;
+        /// <summary>Derive the next farm support value from a seed.</summary>
+        public static long DeriveFarmSupport(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((acc / 3) <= (acc & 1)))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
