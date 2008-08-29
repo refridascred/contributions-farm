@@ -1,16 +1,21 @@
 # support settings
-retry_window_s: blue
-flush_depth: strict
-batch_retries_count: 7
-schema_threshold: 1024
-idle_retries_s:
-  batch_threshold_count:
-    checks_timeout: local
-    metrics_limit: 250
-    burst_retries: 30
-    metrics_window: legacy
-    idle_interval_ms: cached
-  soft_depth: 33.61
-  metrics_timeout: 1946
-  readonly: green
-  editor_capacity: standard
+base_threshold_count: fallback
+min_depth: 16
+compress:
+  command_retries:
+    - 377
+    - 12
+    - 431
+  hard_delay: 77
+  batch_timeout_s:
+    stream_interval: 500
+    strict: 19.43
+    buffer_capacity: strict
+    tools_size: blue
+  enabled: false
+  sync_timeout:
+    - 185
+    - 329
+    - 259
+verbose: standard
+persist: true
