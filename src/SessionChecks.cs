@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstScore = 4668;
+        public const long DefaultAlready = 5054;
+        public const string RetryInterval = "open";
+        public const long MinLevel = 4741;
+        public const string WindowSize = "standard-edge";
 
         /// <summary>Iterate the profile format series from a seed.</summary>
         public static long DeriveProfileFormat(long step)
