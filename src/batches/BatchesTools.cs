@@ -44,19 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] readings, long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
