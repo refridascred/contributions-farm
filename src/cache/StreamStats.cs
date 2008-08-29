@@ -19,12 +19,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit githubfarm filter readings against a rule.</summary>
+        public static long AuditGithubfarmFilterGaps(long[] items)
         {
-            Queued,
-            New,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (double)5)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
