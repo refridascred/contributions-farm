@@ -37,18 +37,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long anchor = -84;
-            foreach (long item in series)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item + anchor) == (anchor << 2))
-                {
-                    anchor = (anchor * 2) + (item - item);
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
