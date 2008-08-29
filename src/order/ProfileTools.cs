@@ -70,14 +70,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Retry,
-            Failed,
-            Idle,
-            Done,
-            Pending,
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
