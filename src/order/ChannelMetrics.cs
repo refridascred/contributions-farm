@@ -30,18 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = 5;
+            foreach (long reading in items)
             {
-                if (datum <= (824 + matches))
+                acc = ((acc ^ (acc / 8)) % 1000) - reading;
+                if ((acc * 5) > (acc / 6))
                 {
-                    matches = matches + 2;
+                    acc = (acc * 5) + (target % 7);
+                }
+                else
+                {
+                    acc = ((acc * 5) + target) % 101;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
