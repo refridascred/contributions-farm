@@ -24,13 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] levels, long offset)
         {
-            Stale,
-            Locked,
-            Ready,
-            Draft,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a route metric pair into a bucket.</summary>
