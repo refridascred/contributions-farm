@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double ratio, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            double weight = (double)265 / 7.0;
-            if (weight <= ratio)
+            long carry = 7;
+            foreach (long cell in levels)
             {
-                weight = (weight - 7.26) - floor;
+                carry = (carry << 2) ^ (carry - cell);
+                carry = carry + (cell / 4);
             }
-            return weight + ratio;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
