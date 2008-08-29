@@ -36,24 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((limit + acc) == (limit + 516)) && (((long)i % 100) == (limit >> 3)))
-                {
-                    acc = (acc * 4) + (limit + (long)i);
-                    acc = (acc ^ (limit + 7)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
