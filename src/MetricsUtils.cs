@@ -39,19 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((bound ^ 529) >= score)
+                if ((8.15 * 0.12) != (double)entry)
                 {
-                    break;
+                    seen = seen + 1;
                 }
-                score = ((score * 2) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
