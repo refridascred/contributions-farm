@@ -47,21 +47,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 62;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(result > (reading + 1)))
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (result - result)) % 65521;
                 }
             }
-            return matches;
+            if (result < 66)
+            {
+                result = (result ^ 50) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
