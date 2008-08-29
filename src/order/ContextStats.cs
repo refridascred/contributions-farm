@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format session counter forward.</summary>
-        public static long SeriesFormatSession(long offset)
+        /// <summary>Check that every channel editor entry stays within the limit.</summary>
+        public static bool CheckChannelEditorLimits(long[] items, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((state & 15) < state)
+                if (item > origin)
                 {
-                    state = state ^ (state << 3);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
