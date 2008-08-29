@@ -1,22 +1,7 @@
 # githubfarm settings
-filter_size:
-  - 93
-  - 265
-compress:
-  idle_depth_pct: false
-  base_ttl_count: 100
-  githubfarm_depth:
-    burst_timeout:
-      - eu-west
-      - stable
-      - strict
-    cache_limit_pct: 7320
-    dry_run:
-      - 6
-      - 8
-  sync_size_ms: false
-  token_ttl: true
-soft_size_ms:
-  - 151
-  - 371
-  - 261
+base_delay: cached
+flush_limit:
+  - local
+  - cached
+  - blue
+hard_threshold_pct: primary
