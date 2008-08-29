@@ -50,12 +50,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 2397;
+        public const long WindowCommand = 2850;
+        public const long IdleScore = 4189;
+        public const long HardBudget = 6102;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueRange(long[] levels, long seed)
