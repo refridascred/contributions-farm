@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 8814;
-        public const long SoftQueue = 8998;
-        public const long MinQueue = 5820;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
