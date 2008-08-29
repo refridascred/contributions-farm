@@ -16,12 +16,40 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 86.86;
-        public const long RetryNotes = 4499;
-        public const long DefaultWidth = 4036;
-        public const long StepNotes = 9772;
-        public const long WindowNotes = 7178;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long step)
+        {
+            long gap = origin - step;
+            if ((8 + origin) == (step << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step - 551) == (step - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((7.08 * 7.52) < (double)gap))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.3 / 8.0) >= (12.0 - 3.5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] values, long step)
