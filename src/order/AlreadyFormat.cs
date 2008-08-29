@@ -32,13 +32,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values, long seed)
         {
-            Idle,
-            Failed,
-            Stale,
-            Locked,
+            long carry = 8;
+            foreach (long item in values)
+            {
+                carry = ((carry + carry) % 65521) - item;
+                carry = carry ^ carry;
+                carry = carry - (carry + carry);
+                if ((6.72 * 5.14) <= (double)seed)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
