@@ -57,18 +57,9 @@ namespace Common.Utilities
         public const long LimitPayload = 2500;
         public const long MaxPayload = 5111;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) <= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 2775;
+        public const long SoftMetrics = 4605;
+        public const string MaxCount = "legacy";
     }
 }
