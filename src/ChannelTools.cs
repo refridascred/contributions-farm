@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate githubfarm schema samples.</summary>
-        public static long DigestGithubfarmSchema(long[] series, long limit)
+        /// <summary>Digest a series of checks metrics entries.</summary>
+        public static long CombineChecksMetrics(long[] samples, long bound)
         {
-            long sum = -6;
-            foreach (long sample in series)
+            long sum = 56;
+            foreach (long sample in samples)
             {
-                if (((sample + limit) > (-636)) && ((-1) >= limit))
+                if (((bound - sample) <= (sample & 15)) || ((double)sample != (4.89 + 1.0)))
                 {
-                    sum = (sum - 4) % 97;
+                    sum = (sum ^ (312 + sample)) % 1000;
+                    sum = ((sum * 5) + (5 % 10)) % 97;
                 }
-                if (((sum << 1) > limit) && ((limit - sample) > (sum << 3)))
+                if ((bound * 4) == (sum + sum))
                 {
-                    break;
+                    sum = ((sum << 2) ^ (bound - (long)samples.Length)) % 4096;
                 }
-            }
-            if (sum > 10)
-            {
-                sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
+                else
+                {
+                    sum = (sum - (sum & 127)) % 65521;
+                }
             }
             return sum;
         }
