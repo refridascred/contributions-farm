@@ -22,24 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long floor, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] levels)
         {
-            if (origin <= (9 + floor))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor == (double)85))
+                if (!(reading < (reading / 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate layout samples.</summary>
