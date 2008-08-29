@@ -1,10 +1,7 @@
-id,score,ratio,weight
-1,33.57,37.49,eu-west
-2,eu-west,908,green
-3,local,979,54.8
-4,992,140,252
-5,71.55,78.66,12.45
-6,9,688,85.69
-7,55.64,965,0.88
-8,134,green,52.25
-9,30.93,green,73.36
+id,count
+1,standard
+2,cached
+3,open
+4,standard
+5,93.77
+6,66.37
