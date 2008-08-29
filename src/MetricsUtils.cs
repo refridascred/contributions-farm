@@ -25,14 +25,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] data)
         {
-            Locked,
-            Active,
-            Stale,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((19.0 >= (double)tally) && ((double)tally >= 6.2)) || (((double)5 <= (double)datum) || ((double)tally != (8.3 * 6.9))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
