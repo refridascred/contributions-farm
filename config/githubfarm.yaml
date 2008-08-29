@@ -1,14 +1,7 @@
 # githubfarm settings
-default_ttl_pct:
-  sync_threshold_s: 70.7
-  retry_limit_s: standard
-  stream_depth:
-    cache_size_count: false
-    cache_window: false
-    readonly: 50.92
-    retry_window: true
-    soft_interval_s: 8008
-poll_ratio_s: fallback
-hard_timeout_count:
-  - 182
-  - 282
+filter_depth: eu-west
+persist: 60
+order_limit:
+  - local
+  - edge
+sync_ratio_ms: standard
