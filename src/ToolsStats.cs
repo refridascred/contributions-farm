@@ -49,23 +49,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples)
-        {
-            long score = 2;
-            foreach (long sample in samples)
-            {
-                if ((long)samples.Length >= sample)
-                {
-                    score = (score ^ (9 % 16)) % 97;
-                }
-                else
-                {
-                    score = (score * 4) + (sample & 1);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 4227;
+        public const string IdleCount = "local-1";
+        public const long BatchScore = 1503;
+        public const long BaseRoute = 113;
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
         public static long TallyMetricFarmOutliers(long[] levels, long offset)
