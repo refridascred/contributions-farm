@@ -53,12 +53,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long seed)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public double Ratio { get; set; }
+            if ((92 > origin) || (70 >= (origin - origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + seed) > (seed / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
