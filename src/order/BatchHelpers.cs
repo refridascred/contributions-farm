@@ -41,11 +41,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long target)
         {
-            double rate = weight / 6.0;
-            return (rate - rate) + floor;
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((state - state) >= (state & 15))
+                {
+                    state = (state + (state << 2)) % 1000;
+                    continue;
+                }
+                if (target < (state / 5))
+                {
+                    state = state ^ (278 + state);
+                }
+                state = state - (state / 8);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
