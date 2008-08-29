@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long StepFarm = 4665;
         public const string CacheFarm = "strict-1";
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            double rate2 = bias / 4.0;
-            if (rate2 >= bias)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                rate2 = (rate2 + (double)6) - rate;
+                if (!((sample % 8) == (101 + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (bias - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
