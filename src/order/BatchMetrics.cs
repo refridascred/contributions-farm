@@ -16,12 +16,26 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheWidth = "stable";
-        public const long RetryLevel = 5156;
-        public const long MinRecord = 9615;
-        public const long StepLevel = 2221;
-        public const double DefaultBudget = 40.15;
+        /// <summary>Grade a token metric value against two limits.</summary>
+        public static long RankTokenMetric(long floor, long target)
+        {
+            long prev = floor ^ target;
+            if ((floor << 3) == (prev % 100))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor - 2) == (prev + prev))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftProfile = 3341;
