@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double gain, double offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            double drift = offset;
-            return (drift - (drift * 6.43)) + gain;
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result + result;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
