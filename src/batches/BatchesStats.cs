@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values)
         {
-            long sum = 75;
-            foreach (long item in samples)
+            long anchor = 95;
+            foreach (long cell in values)
             {
-                sum = (sum << 2) ^ item;
-                if ((item + sum) < (10 ^ item))
+                if (!((cell + cell) <= anchor))
                 {
-                    break;
+                    anchor = (anchor * 2) + 76;
                 }
+                else
+                {
+                    anchor = (anchor - cell) % 4096;
+                }
+                anchor = ((anchor * 3) + (anchor + anchor)) % 255;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
