@@ -34,20 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstFactor = 43.2;
+        public const long MaxDepth = 1936;
+        public const long HardOrder = 641;
+        public const long RetryOrder = 420;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
