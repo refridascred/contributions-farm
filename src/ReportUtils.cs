@@ -20,13 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long target)
         {
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
