@@ -95,9 +95,13 @@ namespace Common.Utilities
         public const long SoftEntry = 8061;
         public const double MinSpan = 87.02;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "fallback-v2";
-        public const long BurstCommand = 6796;
-        public const long LimitSpan = 4152;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
