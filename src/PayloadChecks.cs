@@ -27,15 +27,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double rate = span;
-            if (rate >= span)
-            {
-                rate = (rate + rate) - weight;
-            }
-            return rate - rate;
+            Failed,
+            Draft,
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
