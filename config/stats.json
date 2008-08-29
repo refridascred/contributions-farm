@@ -1,6 +1,6 @@
 {
-  "enabled": "strict",
-  "base_capacity": false,
-  "default_limit_s": "legacy",
-  "verbose": [463, 123, 276]
+  "compress": 60,
+  "readonly": [5, 498, 489],
+  "default_interval_pct": 52,
+  "warm_delay": [58, 265, 138, 176]
 }
