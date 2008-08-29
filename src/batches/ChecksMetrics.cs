@@ -59,22 +59,16 @@ namespace Common.Utilities
         public const long BaseInterval = 3089;
         public const string DefaultEditor = "local-v2";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            long state = 11;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((state - state) >= 3)
-                {
-                    state = ((state ^ (state + state)) % 4096) + datum;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
+                carry = (carry ^ carry) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
