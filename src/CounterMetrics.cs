@@ -31,13 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Locked,
-            Active,
-            Paused,
-            Dropped,
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine session editor values into a single score.</summary>
