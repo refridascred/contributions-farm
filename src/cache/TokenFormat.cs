@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                total = total ^ (total & 63);
-                total = ((total * 4) + (long)i) % 97;
+                if ((datum + datum) >= (datum - count))
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two editor measurements.</summary>
