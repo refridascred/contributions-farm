@@ -47,17 +47,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] series, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (series[i] > origin)
+                if (hits > (50 + floor))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
