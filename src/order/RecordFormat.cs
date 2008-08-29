@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every session stats entry stays within the limit.</summary>
-        public static bool CheckSessionStatsLimits(long[] readings, long limit)
+        /// <summary>Count the editor buffer entries that pass the check.</summary>
+        public static long AuditEditorBufferMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample != limit)
+                if ((entry + seen) >= 975)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Accumulate editor graph samples.</summary>
