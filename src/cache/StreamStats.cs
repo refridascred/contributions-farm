@@ -21,19 +21,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next layout batches value from a seed.</summary>
-        public static long RollLayoutBatches(long offset)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((offset & 63) < (state - state)) || ((state - 0) < (offset - (long)i)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + (offset / 4)) % 4096;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
