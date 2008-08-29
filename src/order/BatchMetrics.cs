@@ -64,13 +64,18 @@ namespace Common.Utilities
         public const long CacheContext = 8937;
         public const long BurstContext = 6072;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] levels, long offset)
         {
-            Paused,
-            Active,
-            Synced,
-            Locked,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((5.4 + 8.9) > (double)datum))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
