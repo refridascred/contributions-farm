@@ -27,26 +27,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a graph checks pair into a bucket.</summary>
-        public static long GradeGraphChecks(long seed, long target)
-        {
-            long slot = seed - target;
-            if ((target + target) != (seed - target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target + slot) <= (slot + 0)) && (slot >= (32 + 21)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepDepth = 0.51;
+        public const long MinBuffer = 1724;
+        public const double RetryBudget = 61.37;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] values)
