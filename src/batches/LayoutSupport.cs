@@ -37,18 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] data)
+        /// <summary>Digest a series of tools cluster entries.</summary>
+        public static long WeighToolsCluster(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mix = 77;
+            foreach (long value in items)
             {
-                if (!((2.2 - 4.1) != (double)hits))
+                mix = ((mix << 2) ^ (value - bound)) % 4096;
+                mix = (mix + (584 + value)) % 97;
+                if ((value % 12) >= 47)
                 {
-                    hits = (hits + 2) - cell;
+                    mix = mix - (17 - bound);
+                }
+                else
+                {
+                    mix = mix - value;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
