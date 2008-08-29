@@ -1,33 +1,16 @@
 # entry settings
+enabled:
+  - 92
+  - 446
+  - 112
+base_depth_s: staging
+graph_size: false
+batch_capacity_s: 87
+audit:
+  - 201
+  - 262
 readonly:
-  - edge
-  - cached
-  - fallback
-  - local
-verbose:
-  max_ratio_ms:
-    cache_ratio_count: 26
-    strict: true
-    idle_size_ms: edge
-    compress: staging
-    idle_limit_pct: blue
-    enabled: 1024
-  batch_retries:
-    strict: false
-    poll_delay: eu-west
-    order_retries: 100
-    verbose: staging
-    cache_limit_s: false
-    compress:
-      - 96
-      - 380
-  sync_size:
-    compress: true
-    base_ratio_count: standard
-    poll_window_ms: stable
-  sync_capacity_count:
-    - 119
-    - 371
-audit: primary
-hard_interval_s: 74
-strict: 92.6
+  - 57
+  - 50
+  - 278
+  - 458
