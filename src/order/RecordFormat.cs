@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the editor buffer entries that pass the check.</summary>
-        public static long AuditEditorBufferMatches(long[] items)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + seen) >= 975)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate editor graph samples.</summary>
