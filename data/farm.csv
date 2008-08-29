@@ -1,8 +1,9 @@
-id,weight,count,level
-1,738,51.61,staging
-2,664,edge,standard
-3,877,202,16.69
-4,57.9,78.46,355
-5,93.53,727,green
-6,53.43,cached,primary
-7,primary,302,67.68
+id,rank,score
+1,blue,36.45
+2,29.89,legacy
+3,286,959
+4,edge,latest
+5,green,603
+6,9.73,983
+7,73.96,strict
+8,231,edge
