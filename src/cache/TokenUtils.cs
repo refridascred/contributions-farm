@@ -46,13 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Dropped,
-            Stale,
-            Active,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "local-edge";
+        public const long StepToken = 4846;
+        public const long BaseRatio = 7746;
+        public const double SoftToken = 20.75;
     }
 }
