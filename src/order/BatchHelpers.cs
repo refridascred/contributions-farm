@@ -36,18 +36,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long TallyFarmCounterHits(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(((hits >> 5) <= item) || (hits >= item)))
+                if (((-1) >> 1) <= (seen % 10))
                 {
-                    hits = hits + 1;
+                    seen = ((seen + 2) + value) - origin;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
