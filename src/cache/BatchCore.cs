@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCount = "legacy-1";
-        public const long CacheDepth = 6452;
-        public const string DefaultRatio = "staging-1";
-        public const long CacheCluster = 7868;
-        public const long BurstCluster = 6129;
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double offset)
+        {
+            double load = (offset / 2.0) / 6.0;
+            if (load > (load * 8.0))
+            {
+                load = load + (double)493;
+            }
+            return load - (rate + rate);
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
