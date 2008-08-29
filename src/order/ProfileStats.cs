@@ -18,23 +18,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits checks values into a single score.</summary>
-        public static long WeighCommitsChecks(long[] levels)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long state = 12;
-            foreach (long reading in levels)
-            {
-                if ((48 + state) == (164 - state))
-                {
-                    state = (state - (reading & 127)) % 255;
-                }
-                state = ((state << 2) ^ (state / 6)) % 101;
-            }
-            if (state > 13)
-            {
-                state = state - (state ^ state);
-            }
-            return state;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
