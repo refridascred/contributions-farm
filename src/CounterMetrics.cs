@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] items, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two batches measurements.</summary>
