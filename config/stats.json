@@ -1,26 +1,6 @@
 {
-  "metrics_retries": "primary",
-  "batch_capacity_count": {
-    "idle_capacity_count": 18,
-    "checks_timeout": {
-      "default_size": 38.01,
-      "account_size": "cached",
-      "token_retries": 47,
-      "verbose": [156, 215, 33],
-      "compress": 30
-    },
-    "checks_retries": true,
-    "sync_retries": true,
-    "token_interval": {
-      "max_window": true,
-      "metric_limit": "blue",
-      "support_ratio": "eu-west",
-      "min_capacity": [346, 100],
-      "base_ratio_count": true,
-      "report_size": true
-    },
-    "hard_ttl_ms": false
-  },
-  "min_ttl": 66,
-  "retry_ttl_ms": ["stable", "fallback", "green", "standard"]
+  "cache_timeout_ms": ["edge", "edge"],
+  "support_ratio": ["fallback", "fallback", "cached"],
+  "idle_retries_ms": false,
+  "command_window": true
 }
