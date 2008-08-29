@@ -75,19 +75,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] levels, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] levels, long offset)
         {
-            bool flag = true;
+            long acc = 363;
             foreach (long cell in levels)
             {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc - (cell ^ cell)) % 65521) - offset;
             }
-            return flag;
+            if (acc < 3)
+            {
+                acc = acc + acc;
+            }
+            return acc % 65521;
         }
     }
 }
