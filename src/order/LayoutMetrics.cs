@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] data, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + datum) < bound)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
