@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            long anchor = 95;
-            foreach (long cell in values)
+            long score = 506;
+            foreach (long item in values)
             {
-                if (!((cell + cell) <= anchor))
-                {
-                    anchor = (anchor * 2) + 76;
-                }
-                else
-                {
-                    anchor = (anchor - cell) % 4096;
-                }
-                anchor = ((anchor * 3) + (anchor + anchor)) % 255;
+                score = ((score - score) % 65521) ^ item;
             }
-            return anchor;
+            return score % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
