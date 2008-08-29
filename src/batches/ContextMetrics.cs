@@ -36,13 +36,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            Pending,
-            Queued,
-            Active,
-            Retry,
+            long acc = target;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = (acc - (long)i) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
