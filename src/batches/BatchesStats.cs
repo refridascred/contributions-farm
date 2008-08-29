@@ -30,11 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstFactor = 43.2;
-        public const long MaxDepth = 1936;
-        public const long HardOrder = 641;
-        public const long RetryOrder = 420;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
