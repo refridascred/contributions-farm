@@ -39,13 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] values, long seed)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
