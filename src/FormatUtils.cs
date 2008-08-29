@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the command batch entries that pass the check.</summary>
-        public static long MeasureCommandBatchOutliers(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double rate = weight;
+            if (rate >= 8.0)
             {
-                if ((hits << 3) < (reading - 5))
-                {
-                    hits = hits + 2;
-                }
+                rate = rate - (0.9 + 6.0);
             }
-            return hits;
+            else
+            {
+                rate = rate + (9.0 / 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
