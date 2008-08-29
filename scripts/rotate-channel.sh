@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict staging fallback; do
+for item in open strict eu-west; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=372
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
