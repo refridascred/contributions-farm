@@ -33,23 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = 588;
-            foreach (long datum in samples)
-            {
-                if (!((691 - state) <= (datum * 4)))
-                {
-                    state = state + state;
-                    state = (state ^ datum) % 255;
-                }
-                if ((5.0 - 9.3) < (double)state)
-                {
-                    state = (state + (datum % 100)) % 65521;
-                }
-            }
-            return state % 97;
+            Stale,
+            Done,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
