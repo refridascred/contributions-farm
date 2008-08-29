@@ -71,12 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Locked,
-            Stale,
-            Failed,
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
