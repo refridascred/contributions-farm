@@ -40,18 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] series, long offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)offset < (double)datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
