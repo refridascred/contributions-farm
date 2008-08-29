@@ -14,18 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = 61;
+            foreach (long datum in items)
             {
-                if ((cell - seen) <= (cell * 2))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = seen + 2;
+                    score = (((score + (score + score)) % 4096) - (long)i) - datum;
                 }
+                score = score - ((long)items.Length & 15);
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the filter state values.</summary>
