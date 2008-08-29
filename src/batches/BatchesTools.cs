@@ -37,22 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings, long floor)
+        /// <summary>Accumulate session channel samples.</summary>
+        public static long TotalSessionChannel(long[] items)
         {
-            long acc = 8;
-            foreach (long datum in readings)
+            long mark = 163;
+            foreach (long cell in items)
             {
-                if (((acc - (-43)) >= acc) && ((acc - datum) > floor))
-                {
-                    acc = (acc ^ (floor / 2)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ 34) % 101;
-                }
+                mark = ((mark + (55 * 4)) % 4096) - cell;
             }
-            return acc;
+            if (mark < 693)
+            {
+                mark = ((mark * 3) + (mark - (-5))) % 1000;
+            }
+            return mark;
         }
     }
 }
