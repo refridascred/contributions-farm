@@ -1,12 +1,19 @@
 {
-  "poll_retries_ms": {
-    "cache_timeout_pct": 45.94,
-    "warm_interval_pct": 2016,
-    "buffer_retries": 2221,
-    "soft_size_s": 63.86
+  "readonly": 56,
+  "verbose": {
+    "min_timeout": {
+      "min_ratio": "latest",
+      "idle_timeout": "stable",
+      "soft_window_count": 4148
+    },
+    "min_ttl_s": true,
+    "poll_window": {
+      "verbose": 500,
+      "hard_limit_ms": 86,
+      "contributi_interval": "open"
+    },
+    "githubfarm_ttl": "primary",
+    "compress": 32
   },
-  "audit": false,
-  "verbose": 2050,
-  "flush_delay_ms": [428, 363, 500, 281],
-  "warm_limit_s": true
+  "entry_interval": 97
 }
