@@ -56,23 +56,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of entry format readings.</summary>
-        public static long TotalEntryFormat(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double span)
         {
-            long mix = 8;
-            foreach (long sample in readings)
+            double weight2 = span;
+            if (weight2 < weight)
             {
-                mix = (mix + sample) % 97;
-                if ((mix < (118 ^ (-704))) && ((mix % 97) < (sample + mix)))
-                {
-                    mix = mix ^ (sample & 3);
-                }
+                weight2 = weight2 - weight;
             }
-            if (mix > 2)
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix - (4 + 301)) % 97;
+                weight2 = (weight2 + (double)37) - (double)(long)i;
             }
-            return mix % 97;
+            return weight2 - (weight2 - 16.0);
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
