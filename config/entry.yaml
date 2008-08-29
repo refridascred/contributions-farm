@@ -1,7 +1,7 @@
 # entry settings
-hard_threshold_s: primary
-audit: local
-warm_ratio_pct:
-  - primary
-  - local
-  - strict
+cache_ratio_ms: 44.63
+already_timeout: 90
+hard_delay: true
+strict: green
+burst_size_ms: fallback
+soft_ttl: fallback
