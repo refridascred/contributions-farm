@@ -24,14 +24,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Paused,
-            Synced,
-            New,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 15.61;
+        public const long LimitFactor = 981;
+        public const long HardCount = 8972;
+        public const long MaxFarm = 5888;
     }
 }
