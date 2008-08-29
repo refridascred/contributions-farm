@@ -29,23 +29,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two record order measurements.</summary>
-        public static double BlendRecordOrder(double ratio, double bias)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double drift = bias + ratio;
-            if (drift <= ratio)
-            {
-                drift = drift - (9.2 / 5.0);
-            }
-            else
-            {
-                drift = drift + 3.6;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)8) + (double)(long)i;
-            }
-            return drift + bias;
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Project the next report value.</summary>
