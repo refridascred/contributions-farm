@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "primary-edge";
-        public const long BaseCache = 1837;
-        public const double RetryScore = 69.66;
-        public const double HardSpan = 89.48;
+        /// <summary>Roll a entry tools counter forward.</summary>
+        public static long RollEntryTools(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                score = score ^ (score - (long)i);
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long target, long seed)
