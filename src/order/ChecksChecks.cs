@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset * 3) >= seen)
                 {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
