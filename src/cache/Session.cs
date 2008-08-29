@@ -33,18 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record channel readings against a rule.</summary>
-        public static long CountRecordChannelOutliers(long[] series)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((double)reading == (9.4 / 2.0)) && (reading >= (matches / 9)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
