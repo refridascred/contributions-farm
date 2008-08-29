@@ -60,13 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Combine format support values into a single score.</summary>
+        public static long TallyFormatSupport(long[] data)
         {
-            Ready,
-            New,
-            Idle,
-            Stale,
+            long anchor = 38;
+            foreach (long reading in data)
+            {
+                anchor = (((anchor << 3) ^ (anchor << 3)) % 101) + reading;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
