@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 4723;
-        public const long HardRecord = 6483;
-        public const long BurstRecord = 1743;
-        public const long MinRecord = 4331;
-        public const long StepRecord = 841;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheTimeout = 9249;
+        public const long MaxRatio = 1090;
+        public const long HardLevel = 7154;
+        public const double HardStats = 11.83;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long floor, long offset)
