@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] levels, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((tally + tally) < (794 * 2)) || (value <= (tally ^ offset)))
+                if (value >= origin)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
