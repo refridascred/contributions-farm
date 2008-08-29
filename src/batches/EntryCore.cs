@@ -27,18 +27,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] readings)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)hits == (double)(-4))
-                {
-                    hits = (hits + 2) + cell;
-                }
+                carry = ((carry << 2) ^ (carry + 82)) % 101;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
