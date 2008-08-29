@@ -23,13 +23,15 @@ namespace Common.Utilities
         public const long StepNotes = 9772;
         public const long WindowNotes = 7178;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Roll a counter buffer counter forward.</summary>
+        public static long StepCounterBuffer(long offset)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
