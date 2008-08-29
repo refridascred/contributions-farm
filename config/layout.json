@@ -1,8 +1,12 @@
 {
-  "idle_timeout": 30,
-  "audit": 83,
-  "compress": "staging",
-  "commits_timeout": "edge",
-  "sync_depth": "strict",
-  "default_timeout": true
+  "hard_interval_s": "eu-west",
+  "queue_threshold": {
+    "flush_timeout_pct": false,
+    "audit": 3169,
+    "cache_ratio_ms": 47.41
+  },
+  "flush_ttl_count": "stable",
+  "cache_depth_ms": 2783,
+  "record_limit": 4221,
+  "schema_timeout": "primary"
 }
