@@ -23,10 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 9463;
-        public const long IdleBatches = 8487;
-        public const string CacheDepth = "latest-v2";
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Locked,
+            Active,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
