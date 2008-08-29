@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const double HardTimeout = 42.82;
         public const long DefaultFarm = 5803;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long floor)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            if ((floor / 9) == (423 / 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset ^ floor) != (offset >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((47 & 1) <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < (offset * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
