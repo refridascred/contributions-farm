@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a editor reading.</summary>
