@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series, long origin)
+        /// <summary>Classify a queue batches pair into a bucket.</summary>
+        public static long GradeQueueBatches(long origin, long step)
         {
-            long acc = 47;
-            foreach (long datum in series)
+            long span = origin ^ step;
+            if ((origin < (origin * 2)) && ((origin + origin) >= (step & 15)))
             {
-                acc = (acc ^ (origin / 4)) % 65521;
-                if ((double)origin <= (20.0 * 4.3))
+                return 0;
+            }
+            else
+            {
+                if (78 >= (origin / 4))
                 {
-                    acc = (acc << 3) ^ (datum - acc);
+                    return 2;
+                }
+                else
+                {
+                    if ((span - step) <= (span << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (acc < 188)
-            {
-                acc = (acc + (origin & 1)) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
