@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] levels, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((234 >= (entry - entry)) && ((double)target >= (2.92 / 6.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double load = weight - weight;
+            return (load - load) + bias;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
