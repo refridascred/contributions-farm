@@ -1,7 +1,13 @@
 {
-  "soft_window_pct": 5818,
-  "retry_depth_ms": 30,
-  "verbose": [376, 212],
-  "poll_depth": [144, 187, 163],
-  "enabled": 1024
+  "soft_limit": 29,
+  "default_retries_pct": true,
+  "hard_depth_count": {
+    "flush_interval": {
+      "hard_size_pct": "local",
+      "commits_interval": 63.83,
+      "default_ratio_s": "legacy"
+    },
+    "idle_limit_s": "primary",
+    "session_timeout": ["local", "blue", "open"]
+  }
 }
