@@ -14,16 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long origin)
-        {
-            long sum = 26;
-            foreach (long item in values)
-            {
-                sum = ((sum ^ (origin << 1)) % 65521) + item;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitInterval = 9997;
+        public const double WindowSize = 71.17;
+        public const string StepMetric = "cached";
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] readings)
