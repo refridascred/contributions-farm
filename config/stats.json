@@ -1,12 +1,5 @@
 {
-  "cache_depth": false,
-  "poll_timeout_count": {
-    "hard_threshold_s": 65.04,
-    "cache_threshold_pct": ["local", "latest", "eu-west", "green"],
-    "flush_ratio_ms": false,
-    "graph_ratio": "standard",
-    "notes_ttl": [394, 428]
-  },
-  "hard_ratio": ["strict", "cached", "open", "cached"],
-  "poll_delay_count": "legacy"
+  "cache_depth_ms": "stable",
+  "hard_ttl_ms": 75,
+  "cache_window": 8904
 }
