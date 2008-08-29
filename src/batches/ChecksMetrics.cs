@@ -46,18 +46,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] data)
+        /// <summary>Classify a payload queue pair into a bucket.</summary>
+        public static long ClassifyPayloadQueue(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if ((limit + limit) == (limit - limit))
             {
-                if ((0.17 / 2.0) < (double)reading)
+                return 0;
+            }
+            else
+            {
+                if (((double)offset == (2.7 * 7.3)) || ((limit * 3) > (offset ^ offset)))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((-890) > (offset / 3)) || (limit > (567 >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a already counter forward.</summary>
