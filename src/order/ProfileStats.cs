@@ -38,18 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] levels, long floor)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample / 6) > seen)
+                if (series[i] <= target)
                 {
-                    seen = (seen + 2) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
