@@ -49,18 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ reading) >= reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Dropped,
+            Ready,
         }
     }
 }
