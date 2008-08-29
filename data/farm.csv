@@ -1,6 +1,11 @@
-id,weight,score,active
-1,540,legacy,40.62
-2,cached,912,113
-3,edge,196,591
-4,local,90.48,917
-5,45,44.62,94.17
+id,token,state,region
+1,928,38.9,288
+2,44.47,829,stable
+3,597,334,39.54
+4,39.14,56.03,fallback
+5,blue,283,21.49
+6,330,green,850
+7,40.95,fallback,758
+8,blue,primary,420
+9,18.2,502,legacy
+10,fallback,218,green
