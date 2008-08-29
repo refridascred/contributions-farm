@@ -65,18 +65,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 503;
+        public const double BurstSize = 52.89;
+        public const long BaseNotes = 5617;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] data)
