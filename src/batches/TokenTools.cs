@@ -35,21 +35,22 @@ namespace Common.Utilities
             return rate - (2.5 - offset);
         }
 
-        /// <summary>Compare every pair of payload report readings.</summary>
-        public static long MatchPayloadReportCount(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((score % 2) <= datum)
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ (datum * 2)) % 255;
                 }
             }
-            return tally;
+            if (score < 209)
+            {
+                score = ((score * 4) + 506) % 255;
+            }
+            return score;
         }
     }
 }
