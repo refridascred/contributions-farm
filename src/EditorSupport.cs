@@ -39,11 +39,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next farm support value.</summary>
-        public static double BlendFarmSupport(double rate, double offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            double weight = 8.0;
-            return (weight - offset) + rate;
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
