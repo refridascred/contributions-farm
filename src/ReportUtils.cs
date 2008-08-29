@@ -15,15 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the batches cluster series from a seed.</summary>
-        public static long IterateBatchesCluster(long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
