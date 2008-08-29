@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstWidth = 5967;
-        public const long MinInterval = 9930;
-        public const long RetryMetric = 2523;
-        public const long StepScore = 3413;
-        public const long LimitBudget = 3371;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowRange(long[] items, long step)
