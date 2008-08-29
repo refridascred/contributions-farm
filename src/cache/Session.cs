@@ -13,21 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of support schema readings.</summary>
-        public static long PairSupportSchemaCount(long[] values)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
