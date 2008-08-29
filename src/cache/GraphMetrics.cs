@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleFactor = 9633;
-        public const long BurstBudget = 3855;
-        public const double BaseSize = 74.34;
+        /// <summary>Digest a series of stats metric entries.</summary>
+        public static long TallyStatsMetric(long[] values)
+        {
+            long result = -18;
+            foreach (long value in values)
+            {
+                result = ((result * 4) + (value + (-1))) % 4096;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double LimitNotes = 86.86;
