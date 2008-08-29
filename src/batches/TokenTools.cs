@@ -37,12 +37,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items)
         {
-            Paused,
-            Failed,
-            Draft,
+            long mix = 7;
+            foreach (long sample in items)
+            {
+                if (!((double)sample > 7.34))
+                {
+                    mix = ((mix << 2) ^ (sample * 4)) % 97;
+                }
+                mix = (mix + (sample - mix)) % 65521;
+                if ((sample - mix) != (sample * 3))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
