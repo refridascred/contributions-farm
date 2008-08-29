@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long origin, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] values, long origin)
         {
-            long slot = origin ^ floor;
-            if ((3.47 + 1.8) > (double)slot)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 5) != ((-51) ^ slot))
+                if (sample <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot <= (floor - origin)) || ((double)slot < (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Adjust a format reading.</summary>
