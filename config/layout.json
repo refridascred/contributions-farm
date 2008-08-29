@@ -1,23 +1,8 @@
 {
-  "soft_size_count": false,
-  "cache_delay_ms": 1.24,
-  "default_retries_count": {
-    "cache_delay": 85.76,
-    "farm_ratio": {
-      "graph_limit": 500,
-      "compress": 69.25,
-      "burst_depth_pct": false,
-      "base_ratio": 83
-    },
-    "default_depth_ms": 35.93,
-    "idle_limit_ms": {
-      "persist": "legacy",
-      "idle_limit_s": "edge",
-      "route_interval": "eu-west",
-      "cache_timeout_s": 9039,
-      "max_threshold_ms": 13.93,
-      "retry_ttl": true
-    }
-  },
-  "buffer_ttl": "local"
+  "idle_timeout": 30,
+  "audit": 83,
+  "compress": "staging",
+  "commits_timeout": "edge",
+  "sync_depth": "strict",
+  "default_timeout": true
 }
