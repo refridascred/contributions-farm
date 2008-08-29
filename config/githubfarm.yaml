@@ -1,13 +1,23 @@
 # githubfarm settings
-flush_retries_count:
-  - strict
-  - blue
-  - standard
-  - green
-hard_interval_pct: 19
-cache_delay_count: local
-support_window:
-  - 227
-  - 185
-cache_threshold: 2164
-batch_limit_pct: 1024
+default_ttl: false
+min_delay_s: 91
+audit: staging
+cluster_ttl:
+  counter_depth:
+    - strict
+    - blue
+    - green
+  farm_limit:
+    base_size_pct:
+      - green
+      - green
+      - green
+      - stable
+    dry_run: latest
+    idle_capacity: green
+    strict:
+      - eu-west
+      - fallback
+      - primary
+      - strict
+  verbose: true
