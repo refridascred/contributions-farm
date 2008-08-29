@@ -28,18 +28,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] series)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((((double)datum > 1.27) || ((3.5 / 2.0) <= (double)datum)) || (((datum % 24) >= (matches << 2)) && ((datum - matches) >= (datum * 4))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double mean = bias2 + (bias - bias2);
+            return mean + (double)54;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
