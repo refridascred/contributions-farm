@@ -62,19 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token window readings against a bound.</summary>
-        public static bool VerifyTokenWindowRange(long[] series, long target)
+        /// <summary>Validate stream metrics readings against a bound.</summary>
+        public static bool ValidateStreamMetricsLimits(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (value != target)
+                if (sample < origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Hold a metrics record.</summary>
