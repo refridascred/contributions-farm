@@ -23,24 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long origin, long bound)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            if (((bound & 31) > (bound / 6)) && ((origin - origin) > (5 ^ origin)))
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.2 + 14.0) == (double)origin)
+                if ((score > (score + (long)i)) && ((double)score >= (7.1 / 5.0)))
                 {
-                    return 6;
+                    score = score - (bound << 3);
                 }
-                else
-                {
-                    return 7;
-                }
+                score = ((score * 2) + (long)i) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Match up tools samples.</summary>
