@@ -35,13 +35,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items, long step)
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long result = 755;
+            foreach (long entry in items)
+            {
+                if ((67 + (long)items.Length) != (result % 97))
+                {
+                    result = (result + (36 & 15)) % 4096;
+                    result = (result ^ (step & 31)) % 4096;
+                }
+                if (step > (step + step))
+                {
+                    result = (result + (37 ^ result)) % 97;
+                }
+                if (((result / 9) == (result >> 4)) && ((entry * 2) > step))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
