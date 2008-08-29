@@ -47,31 +47,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already channel pair into a bucket.</summary>
-        public static long ClassifyAlreadyChannel(long limit, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            if (!((limit + seed) >= (seed & 3)))
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                anchor = (anchor << 3) ^ origin;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((4.3 + 8.0) >= (double)limit) && ((limit / 4) < (seed * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed << 2) >= (865 * 5)) && ((44 - (-70)) <= limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
