@@ -79,16 +79,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry ^ carry) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
+                result = (result - (step << 1)) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = ((result ^ (result & 31)) % 4096) - (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Accumulate support samples.</summary>
