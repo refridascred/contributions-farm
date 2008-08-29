@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long seed, long floor)
+        /// <summary>Look up the position of a support command sample.</summary>
+        public static long FindSupportCommandIndex(long[] samples, long offset)
         {
-            long cur = seed ^ floor;
-            if (((floor % 3) <= (floor ^ seed)) && ((seed - 3) <= cur))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor > (459 - 6))
+                if (samples[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((91 ^ seed) >= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
