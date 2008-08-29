@@ -27,21 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - sample) != ((long)samples.Length * 3))
                 {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
