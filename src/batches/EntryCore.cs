@@ -12,10 +12,15 @@ namespace Common.Utilities
         public const long BatchCount = 9007;
         public const long MinToken = 4598;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepLevel = "cached-v2";
-        public const long IdleToken = 1400;
-        public const double BurstSpan = 91.73;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Synced,
+            Done,
+            Stale,
+            New,
+            Draft,
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] samples, long limit)
