@@ -54,15 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Idle,
-            New,
-            Closed,
-            Active,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 514;
+        public const long BaseInterval = 3089;
+        public const string DefaultEditor = "local-v2";
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long MatchAlreadyCount(long[] items)
