@@ -20,18 +20,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((seen ^ (-27)) >= (entry & 63)) && ((4.7 / 5.0) <= (double)entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
