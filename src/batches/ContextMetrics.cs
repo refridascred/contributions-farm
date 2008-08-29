@@ -36,15 +36,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] items, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((17.0 - 8.0) <= (double)matches) || ((long)items.Length > (2 * 2)))
+                {
+                    matches = ((matches + 1) ^ item) + offset;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the checks mode values.</summary>
