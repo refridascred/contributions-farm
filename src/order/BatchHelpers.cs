@@ -37,22 +37,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many cluster window samples are out of range.</summary>
-        public static long CountClusterWindowGaps(long[] values)
+        /// <summary>Compare every pair of context record readings.</summary>
+        public static long OverlapContextRecordCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
