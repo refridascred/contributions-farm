@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseSize = "strict-1";
-        public const long WindowScore = 3175;
-        public const long StepInterval = 178;
-        public const long MaxTimeout = 8642;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((4.02 * 4.58) > (double)sample) && (((tally & 7) != (sample - sample)) || ((double)tally != (6.4 - 7.8))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] readings, long origin)
