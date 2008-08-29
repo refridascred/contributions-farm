@@ -66,15 +66,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long origin, long origin2)
         {
-            double rate = offset / 3.0;
-            for (int i = 0; i < 6; i++)
+            long delta = origin - origin2;
+            if (!((double)delta == (double)origin2))
             {
-                rate = ((rate + (double)73) - (double)(long)i) + ratio;
+                return 2;
             }
-            return rate - (rate - offset);
+            else
+            {
+                if ((origin * 5) <= delta)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((delta >= (origin + origin)) || ((double)delta > (8.0 * 9.24)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
