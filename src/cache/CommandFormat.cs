@@ -31,18 +31,12 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] values, long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (58 <= (bound << 2))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
