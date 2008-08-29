@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Roll a account channel counter forward.</summary>
+        public static long DeriveAccountChannel(long limit)
         {
-            long score = 506;
-            foreach (long item in values)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score - score) % 65521) ^ item;
+                carry = (carry - (long)i) % 97;
+                carry = (carry - (limit / 8)) % 65521;
+                carry = (carry + (carry << 1)) % 1000;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return score % 97;
+            return carry;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
