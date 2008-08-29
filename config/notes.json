@@ -1,12 +1,14 @@
 {
-  "default_delay_pct": ["stable", "primary"],
-  "compress": 7557,
-  "checks_interval": "strict",
-  "hard_ttl": {
-    "base_retries": "fallback",
-    "token_limit": [74, 170],
-    "cluster_ttl": 19.76
+  "cache_interval_ms": 1024,
+  "burst_interval_pct": 93.83,
+  "cache_delay_s": "local",
+  "batch_ratio_pct": "eu-west",
+  "support_depth": {
+    "enabled": "strict",
+    "strict": "fallback",
+    "compress": ["latest", "stable", "fallback"],
+    "audit": [91, 389, 308],
+    "burst_threshold_s": "staging"
   },
-  "payload_ratio": 43.72,
-  "sync_timeout_pct": "legacy"
+  "dry_run": 250
 }
