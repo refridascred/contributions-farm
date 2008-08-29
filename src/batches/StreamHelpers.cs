@@ -57,13 +57,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] values, long offset)
         {
-            Active,
-            Closed,
-            Stale,
-            Synced,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (9 > value)
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload mode values.</summary>
