@@ -13,12 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftWidth = 3840;
-        public const double BurstProfile = 48.22;
-        public const long HardProfile = 9050;
-        public const double BurstSpan = 91.72;
-        public const long IdleProfile = 8598;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 3275;
+        public const string BaseBudget = "legacy-v2";
+        public const long DefaultTimeout = 1506;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double bias, double span)
