@@ -53,22 +53,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double ratio = (double)(63 + 411);
+            if (ratio >= gain)
             {
-                if ((value + origin) >= (origin & 7))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = (ratio + 16.0) - bias;
             }
-            return matches;
+            return ratio - (double)61;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
