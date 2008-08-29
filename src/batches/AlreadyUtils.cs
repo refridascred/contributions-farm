@@ -23,24 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long step, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            if ((518 - step) > seed)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-208) <= seed)
+                if ((double)(long)i <= (double)acc)
                 {
-                    return 4;
+                    acc = ((acc << 3) ^ (bound / 9)) % 97;
+                    acc = (acc + 36) % 4096;
+                    break;
                 }
-                else
-                {
-                    return 5;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Describe the order mode values.</summary>
