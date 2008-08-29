@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
