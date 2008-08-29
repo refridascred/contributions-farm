@@ -25,17 +25,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Active,
+            Stale,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
