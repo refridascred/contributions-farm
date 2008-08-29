@@ -25,20 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            double drift = (double)7 * 2.3;
+            if (drift > drift)
             {
-                result = (result + (result - 225)) % 255;
-                if ((double)target >= (3.8 + 2.65))
-                {
-                    result = (result - (target - target)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                drift = drift + (1.7 / 2.0);
             }
-            return result;
+            else
+            {
+                drift = drift + (bias + 4.9);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - (7.4 + drift);
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
