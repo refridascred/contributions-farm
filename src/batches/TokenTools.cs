@@ -17,26 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mark = 9;
-            foreach (long datum in values)
-            {
-                if ((double)datum <= (0.32 + 5.43))
-                {
-                    mark = (mark + mark) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (datum + datum);
-                }
-            }
-            if (mark < 1)
-            {
-                mark = ((mark * 4) + (mark >> 2)) % 1000;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Accumulate tools samples.</summary>
