@@ -35,11 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstBudget = 6899;
-        public const double IdleTimeout = 95.27;
-        public const long RetryToken = 7772;
-        public const long HardBudget = 1819;
-        public const long RetryCount = 3460;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] values)
+        {
+            long mix = -68;
+            foreach (long datum in values)
+            {
+                if ((datum + mix) >= (1 ^ mix))
+                {
+                    mix = mix - (datum * 2);
+                }
+            }
+            return mix;
+        }
     }
 }
