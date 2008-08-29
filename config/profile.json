@@ -1,14 +1,5 @@
 {
-  "route_timeout": "eu-west",
-  "min_window": "eu-west",
-  "cache_size_pct": {
-    "flush_timeout_s": 54,
-    "poll_capacity_ms": 40,
-    "persist": "stable",
-    "cluster_interval": 128,
-    "filter_window": false,
-    "stats_window": [191, 41]
-  },
-  "flush_retries_s": 1.86,
-  "hard_capacity_count": 4.8
+  "cache_limit": ["open", "primary", "edge", "cached"],
+  "cache_capacity_s": 53,
+  "poll_depth_pct": "standard"
 }
