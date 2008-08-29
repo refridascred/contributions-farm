@@ -31,30 +31,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long target)
+        /// <summary>Classify a route metric pair into a bucket.</summary>
+        public static long ClassifyRouteMetric(long bound, long origin)
         {
-            long diff = floor ^ target;
-            if ((target + target) <= (floor + 69))
+            if ((1.55 * 1.29) < (double)origin)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((-458) * 3) == (diff & 127))
+                if ((2.03 + 8.69) < (double)bound)
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((diff & 3) < (diff * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 0;
                 }
             }
         }
