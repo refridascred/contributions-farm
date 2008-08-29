@@ -16,12 +16,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((3.63 - 6.1) >= (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
