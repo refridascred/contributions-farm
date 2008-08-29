@@ -99,19 +99,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (entry <= limit)
+                if (entry > step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
