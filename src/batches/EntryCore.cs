@@ -35,26 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route metrics readings.</summary>
-        public static long CombineRouteMetrics(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] values, long target)
         {
-            long result = 500;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((result ^ reading) > (reading + result)) || ((result & 63) < result))
+                if (((double)(long)values.Length > (double)hits) || (target > (target & 1)))
                 {
-                    result = (result ^ reading) % 97;
+                    hits = (hits + 3) + cell;
                 }
                 else
                 {
-                    result = ((result * 2) + (reading * 5)) % 255;
+                    hits = hits - 1;
                 }
             }
-            if (result < 441)
-            {
-                result = ((result * 3) + result) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Roll a window cache counter forward.</summary>
