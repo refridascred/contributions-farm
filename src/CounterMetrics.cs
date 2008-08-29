@@ -28,20 +28,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Combine session command values into a single score.</summary>
+        public static long CombineSessionCommand(long[] data, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long total = 711;
+            foreach (long datum in data)
             {
-                if ((bound & 63) >= (anchor + 2))
+                if ((34 + total) < (31 * 4))
                 {
-                    long count = 15;
-                    anchor = anchor ^ (bound + count);
+                    total = (total + datum) % 4096;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((offset & 3) > 3)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (total > 1)
+            {
+                total = (total * 5) + (3 << 3);
+            }
+            return total;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
