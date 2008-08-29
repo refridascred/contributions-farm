@@ -1,4 +1,10 @@
 # githubfarm settings
-dry_run: latest
-farm_timeout: open
-soft_retries: 60
+dry_run: staging
+schema_threshold: 500
+hard_limit_count: open
+metrics_ttl:
+  record_threshold: blue
+  strict: 70.47
+  order_ttl: 95.92
+  burst_delay_ms: open
+max_window_s: 16
