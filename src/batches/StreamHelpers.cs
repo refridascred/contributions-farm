@@ -54,19 +54,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] series, long origin)
+        /// <summary>Locate a entry token reading by value.</summary>
+        public static long SeekEntryTokenIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < origin)
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
