@@ -32,21 +32,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items, long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long mark = 2;
-            foreach (long cell in items)
-            {
-                mark = (((mark << 3) ^ (4 + 153)) % 4096) ^ cell;
-                mark = (mark - (880 & 31)) % 65521;
-                mark = (mark ^ (mark ^ 3)) % 97;
-            }
-            if (mark < 0)
-            {
-                mark = mark + (offset ^ mark);
-            }
-            return mark;
+            Idle,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
