@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long bound)
         {
-            Pending,
-            Synced,
-            Dropped,
+            if ((origin > (2 ^ origin)) && ((bound >> 2) < (origin - origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound * 2) == (bound >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin - bound) >= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((6.2 * 17.0) > (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric phase values.</summary>
