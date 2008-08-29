@@ -54,15 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long acc = 3;
+            foreach (long item in values)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((acc ^ acc) < (item * 5))
+                {
+                    acc = acc ^ (7 - limit);
+                }
             }
-            return mark;
+            return acc;
         }
     }
 }
