@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 24.89;
+        public const double RetryWindow = 4.26;
+        public const string RetryInterval = "fallback-v2";
+        public const long HardWindow = 16;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] values)
