@@ -63,17 +63,18 @@ namespace Common.Utilities
         public const long BurstRatio = 6296;
         public const long HardCount = 1026;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] items, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (items[i] > limit)
+                if (((item & 1) <= step) || ((double)7 > (double)step))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
