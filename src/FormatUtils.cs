@@ -67,27 +67,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings, long origin)
         {
-            long mark = -3;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mark = (mark + (datum & 3)) % 65521;
-                if ((mark ^ datum) <= (mark * 2))
+                if ((value + origin) >= (origin & 7))
                 {
-                    mark = mark ^ (699 % 5);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ (mark << 1);
-                }
-                if ((183 + datum) < mark)
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
