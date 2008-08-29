@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] values, long step)
+        /// <summary>Iterate the entry account series from a seed.</summary>
+        public static long DeriveEntryAccount(long origin)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
