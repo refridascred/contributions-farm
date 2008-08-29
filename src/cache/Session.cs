@@ -37,18 +37,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((1 - count) > count)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
