@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of format command entries.</summary>
-        public static long FoldFormatCommand(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] items, long origin)
         {
-            long mix = 4;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                mix = (mix ^ (mix << 1)) + value;
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix > 70)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Check that every batches checks entry stays within the limit.</summary>
