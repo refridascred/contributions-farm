@@ -37,18 +37,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (hits > (50 + floor))
+                if (reading <= offset)
                 {
-                    hits = (hits + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
