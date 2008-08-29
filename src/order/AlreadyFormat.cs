@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine batches cache values into a single score.</summary>
-        public static long ScoreBatchesCache(long[] levels, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 700;
-            foreach (long entry in levels)
-            {
-                mark = mark + (entry - offset);
-            }
-            return mark % 97;
+            Locked,
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
