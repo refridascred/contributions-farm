@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
