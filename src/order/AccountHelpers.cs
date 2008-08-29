@@ -33,17 +33,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long bound)
+        /// <summary>Blend two schema buffer measurements.</summary>
+        public static double ProjectSchemaBuffer(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = rate;
+            return (ratio + (ratio - rate)) + floor;
         }
 
         /// <summary>Hold a payload options.</summary>
