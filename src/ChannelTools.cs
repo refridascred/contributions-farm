@@ -56,17 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long TallyOrderEditorHits(long[] values, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                acc = ((acc * 2) + (bound & 1)) % 97;
-                acc = acc ^ (bound & 255);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (!((entry << 2) != (limit + entry)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
