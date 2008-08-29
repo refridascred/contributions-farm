@@ -54,12 +54,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long floor, long floor2)
         {
-            Ready,
-            Closed,
-            Paused,
+            long offset = floor ^ floor2;
+            if (!((floor2 & 31) == ((-1) ^ offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((43 - offset) == (offset % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor - offset) >= (floor * 5)) || ((-9) >= floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((755 - floor2) == (offset * 3)) && ((offset + offset) != ((-862) << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
