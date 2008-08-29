@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] samples, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)limit >= 8.3)
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            Queued,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Combine token values into a single score.</summary>
