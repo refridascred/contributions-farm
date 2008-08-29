@@ -27,11 +27,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Draft,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the payload mode values.</summary>
