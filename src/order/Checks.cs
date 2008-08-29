@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] samples, long step)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of graph session readings.</summary>
