@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Active,
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
