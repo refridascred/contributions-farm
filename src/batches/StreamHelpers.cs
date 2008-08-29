@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            New,
-            Stale,
+            Failed,
+            Pending,
             Locked,
+            Active,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
