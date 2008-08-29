@@ -29,17 +29,24 @@ namespace Common.Utilities
         public const long IdleFactor = 4664;
         public const long WindowSpan = 8513;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long origin, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin - 9) <= (origin % 2))
             {
-                if (readings[i] <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((origin + seed) > (8 % 24))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a profile context reading by value.</summary>
