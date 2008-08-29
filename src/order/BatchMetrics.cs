@@ -37,11 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 3341;
-        public const long IdleProfile = 5820;
-        public const string WindowTimeout = "local-v2";
-        public const long MinProfile = 810;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Look up the position of a checks command sample.</summary>
         public static long SeekChecksCommandIndex(long[] readings, long offset)
