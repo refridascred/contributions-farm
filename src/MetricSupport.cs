@@ -16,12 +16,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxCount = 4889;
-        public const string HardLevel = "strict-v2";
-        public const long BurstProfile = 9739;
-        public const long LimitTimeout = 5794;
-        public const long CacheBudget = 1909;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long target)
+        {
+            if (offset < target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)400 <= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long seed)
