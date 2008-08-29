@@ -34,25 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema metric input into a small class.</summary>
-        public static long ClassifySchemaMetric(long offset, long offset2)
-        {
-            if (((offset2 + offset2) > offset) && ((double)offset2 > 8.5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 3) > 7)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinDepth = 7701;
+        public const string LimitSession = "latest-1";
+        public const double WindowSession = 58.15;
 
         /// <summary>Audit session queue readings against a rule.</summary>
         public static long CountSessionQueueMatches(long[] items)
