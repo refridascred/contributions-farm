@@ -34,22 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 79;
+            foreach (long datum in data)
             {
-                if ((value + value) < matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix * 5) + (datum << 2);
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
