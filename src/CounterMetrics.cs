@@ -23,40 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry command input into a small class.</summary>
-        public static long GradeEntryCommand(long bound, long offset)
-        {
-            long diff = bound ^ offset;
-            if (!((diff + offset) >= diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ diff) <= (offset + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((3.34 / 5.0) > (double)bound) && ((-6) < (diff / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((11.0 - 7.76) < (8.0 + 1.3)) && ((offset + bound) == (diff >> 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 9463;
+        public const long IdleBatches = 8487;
+        public const string CacheDepth = "latest-v2";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandBounds(long[] series, long limit)
