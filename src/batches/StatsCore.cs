@@ -53,39 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long prev = target - floor;
-            if ((target & 31) == (53 % 100))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev <= (18.0 / 7.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target != (5.1 - 9.9))
+                    if ((items[i] - items[j]) == 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= (8.9 - 1.52)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the channel phase values.</summary>
