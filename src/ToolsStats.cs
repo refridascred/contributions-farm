@@ -20,22 +20,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = 81;
-            foreach (long reading in readings)
-            {
-                if ((step ^ step) >= step)
-                {
-                    anchor = (((anchor * 5) + (148 - 500)) % 4096) ^ reading;
-                }
-            }
-            if (anchor < 296)
-            {
-                anchor = ((anchor << 3) ^ ((long)readings.Length << 2)) % 255;
-            }
-            return anchor;
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Fold a list of record readings.</summary>
