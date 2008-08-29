@@ -33,23 +33,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double rate, double floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series)
         {
-            double gain = rate;
-            if (gain < 6.8)
+            long mix = 5;
+            foreach (long sample in series)
             {
-                gain = (gain - (double)663) - floor;
+                if (!((7.0 + 3.0) <= (double)sample))
+                {
+                    mix = mix ^ (mix << 1);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (sample + mix)) % 255;
+                }
+                if (mix > (23 * 5))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (double)(-237)) - (double)(long)i;
-            }
-            return gain + (double)(-62);
+            return mix % 1000;
         }
 
         /// <summary>Hold a schema stats.</summary>
