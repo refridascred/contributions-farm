@@ -24,12 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Match up layout profile samples.</summary>
+        public static long OverlapLayoutProfileCount(long[] values)
         {
-            New,
-            Stale,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
