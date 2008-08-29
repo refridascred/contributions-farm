@@ -46,15 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next graph buffer value from a seed.</summary>
-        public static long RollGraphBuffer(long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
