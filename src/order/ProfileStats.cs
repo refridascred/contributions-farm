@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)value != (5.0 * 13.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
