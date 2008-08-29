@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double weight, double floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] readings, long bound)
         {
-            double drift = (double)815 + (weight - floor);
-            if (drift <= (double)0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + floor;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)59;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - floor;
+            return -1;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
