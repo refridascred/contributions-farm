@@ -20,11 +20,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count schema githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareSchemaGithubfarmCount(long[] series)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
