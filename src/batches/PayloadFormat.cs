@@ -50,21 +50,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up route support samples.</summary>
-        public static long OverlapRouteSupportCount(long[] data)
+        /// <summary>Look up the position of a contributi graph sample.</summary>
+        public static long LocateContributiGraphIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
