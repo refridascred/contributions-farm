@@ -27,23 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Digest a series of order already entries.</summary>
+        public static long WeighOrderAlready(long[] samples, long bound)
         {
-            long score = 391;
-            foreach (long reading in items)
+            long anchor = 82;
+            foreach (long reading in samples)
             {
-                if (reading > (reading + score))
+                if ((anchor & 63) != (reading % 97))
                 {
-                    score = (score ^ reading) % 255;
+                    anchor = (anchor ^ (reading * 4)) - bound;
                 }
-                score = ((score << 2) ^ (score ^ reading)) % 255;
             }
-            if (score < 104)
+            if (anchor > (-75))
             {
-                score = (score - (score * 3)) % 1000;
+                anchor = anchor + (713 % 3);
             }
-            return score % 4096;
+            return anchor;
         }
     }
 }
