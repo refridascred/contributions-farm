@@ -25,19 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cluster profile entries.</summary>
-        public static long TotalClusterProfile(long[] levels, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long bound, long origin)
         {
-            long result = 17;
-            foreach (long reading in levels)
+            if (!((double)origin != (double)bound))
             {
-                result = (result ^ step) % 4096;
-                if (reading > (result + step))
+                return 4;
+            }
+            else
+            {
+                if (((5.5 + 6.91) < (double)origin) || (origin >= (bound >> 1)))
                 {
-                    result = result + (8 / 9);
+                    return 0;
+                }
+                else
+                {
+                    if ((origin < 4) && (bound > (origin + 390)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)bound > (7.6 + 12.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result % 65521;
         }
     }
 }
