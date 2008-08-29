@@ -1,8 +1,6 @@
-id,state,count,token
-1,fallback,edge,562
-2,green,edge,987
-3,standard,90.01,162
-4,67,68.25,strict
-5,43,65.47,652
-6,895,stable,13.82
-7,101,667,111
+id,state,level,owner,rank
+1,54.27,123,latest,staging
+2,stable,standard,blue,blue
+3,282,53.31,259,71.67
+4,709,primary,700,573
+5,cached,green,7.26,strict
