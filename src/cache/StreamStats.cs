@@ -47,12 +47,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Classify a graph checks pair into a bucket.</summary>
+        public static long GradeGraphChecks(long seed, long target)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long slot = seed - target;
+            if ((target + target) != (seed - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target + slot) <= (slot + 0)) && (slot >= (32 + 21)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
