@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "primary-edge";
-        public const long MinLevel = 4797;
-        public const long CacheWidth = 8087;
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long floor, long origin)
