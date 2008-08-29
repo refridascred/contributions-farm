@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double scale, double floor)
         {
-            Stale,
-            Closed,
-            Paused,
+            double load = scale;
+            if (load >= 6.9)
+            {
+                load = load - (scale - scale);
+            }
+            else
+            {
+                load = load - (scale * 2.3);
+            }
+            return load + floor;
         }
 
         /// <summary>Accumulate graph editor samples.</summary>
