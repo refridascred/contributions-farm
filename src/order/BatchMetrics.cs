@@ -26,13 +26,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Pending,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinSize = "latest-edge";
+        public const long RetryCache = 5079;
+        public const long BatchLevel = 1956;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxSpan = 4252;
