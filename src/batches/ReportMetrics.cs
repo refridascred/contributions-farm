@@ -22,31 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi metrics input into a small class.</summary>
-        public static long BucketContributiMetrics(long floor, long seed)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if ((seed + seed) >= (floor % 60))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed - seed) == (floor << 2)) && ((floor - 398) <= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
