@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate report token readings against a bound.</summary>
-        public static bool VerifyReportTokenBounds(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 5824;
+        public const long IdleGraph = 7502;
+        public const double RetryGraph = 86.44;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
