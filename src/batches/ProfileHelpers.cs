@@ -50,21 +50,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the report commits series from a seed.</summary>
-        public static long IterateReportCommits(long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry ^ (seed << 3)) % 65521;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((2 - 9) > offset)
                 {
-                    carry = (((carry << 2) ^ seed) % 255) + (long)i2;
+                    matches = (matches + 3) + sample;
                 }
-                carry = carry - (seed << 3);
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
     }
 }
