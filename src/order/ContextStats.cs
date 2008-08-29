@@ -68,12 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
