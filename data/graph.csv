@@ -1,6 +1,9 @@
-id,level,score,rank,label
-1,343,269,cached,27.95
-2,green,502,62.84,30.07
-3,47.1,blue,487,legacy
-4,strict,691,cached,primary
-5,95.49,93.12,90.62,60
+id,token,state
+1,721,73.09
+2,513,30.81
+3,green,44.32
+4,green,standard
+5,138,909
+6,18.54,84.78
+7,latest,258
+8,892,661
