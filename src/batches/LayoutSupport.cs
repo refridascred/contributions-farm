@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long target)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
