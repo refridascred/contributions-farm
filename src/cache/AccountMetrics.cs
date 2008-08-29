@@ -75,17 +75,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = limit - target;
+            if ((double)target != (8.99 + 6.0))
             {
-                if (items[i] > bound)
+                return 5;
+            }
+            else
+            {
+                if ((limit >= (limit << 3)) && ((gap ^ limit) <= (gap ^ (-910))))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
