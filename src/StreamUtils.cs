@@ -92,12 +92,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            Done,
+            Synced,
+            Pending,
         }
     }
 }
