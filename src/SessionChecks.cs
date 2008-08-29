@@ -53,24 +53,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long seed)
         {
-            if ((92 > origin) || (70 >= (origin - origin)))
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin + seed) > (seed / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mix;
         }
     }
 }
