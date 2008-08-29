@@ -46,10 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 68.08;
-        public const long IdleContext = 9168;
-        public const long HardContext = 848;
+        /// <summary>Check that every commits layout entry stays within the limit.</summary>
+        public static bool ValidateCommitsLayoutBounds(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] values, long bound)
