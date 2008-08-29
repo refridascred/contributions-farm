@@ -70,18 +70,15 @@ namespace Common.Utilities
             return drift - (drift * 11.0);
         }
 
-        /// <summary>Count the metrics channel entries that pass the check.</summary>
-        public static long MeasureMetricsChannelGaps(long[] data)
+        /// <summary>Scale a cluster metric figure with a bias.</summary>
+        public static double AdjustClusterMetric(double rate, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double drift = (double)((-535) / 7);
+            if (drift <= (9.0 / 5.0))
             {
-                if ((matches - matches) < 1)
-                {
-                    matches = (matches + 2) + item;
-                }
+                drift = (drift - (rate / 3.0)) + span;
             }
-            return matches;
+            return drift - drift;
         }
     }
 }
