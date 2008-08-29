@@ -32,13 +32,26 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            long acc = 6;
+            foreach (long cell in readings)
+            {
+                if ((3 + (long)readings.Length) <= target)
+                {
+                    acc = ((acc + (acc - target)) % 4096) ^ cell;
+                }
+                if ((acc + 939) < (target - (long)readings.Length))
+                {
+                    break;
+                }
+            }
+            if (acc < 88)
+            {
+                acc = (acc << 2) ^ (acc - target);
+            }
+            return acc;
         }
     }
 }
