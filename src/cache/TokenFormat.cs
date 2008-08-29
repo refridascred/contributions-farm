@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a payload graph reading by value.</summary>
-        public static long LookupPayloadGraphIndex(long[] values, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of cluster tools entries.</summary>
