@@ -61,18 +61,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 3018;
         public const double WindowTimeout = 19.95;
 
-        /// <summary>Measure how many account graph samples are out of range.</summary>
-        public static long TallyAccountGraphHits(long[] series, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = -36;
+            foreach (long value in series)
             {
-                if ((4 / 3) > (seen << 1))
+                if (!!((18.0 + 2.0) > (double)(long)series.Length))
                 {
-                    seen = ((seen + 3) + cell) + seed;
+                    state = (state << 2) ^ (value << 2);
+                }
+                if ((state * 2) <= (state + state))
+                {
+                    state = ((state * 2) + (state - value)) % 97;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
