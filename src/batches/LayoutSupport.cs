@@ -50,18 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell < (count % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
