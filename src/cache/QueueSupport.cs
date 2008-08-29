@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double rate, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            double scale = (double)3 * 0.4;
-            if (scale >= rate)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                scale = scale - scale;
+                if (cell <= (matches % 100))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                scale = scale + 0.81;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale + (double)885;
+            return matches;
         }
 
         /// <summary>Project the next command value.</summary>
