@@ -29,21 +29,11 @@ namespace Common.Utilities
             return (load - rate) + span;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepBudget = 15.18;
+        public const double BatchFactor = 7.39;
+        public const long BatchContributi = 1392;
+        public const long BaseContributi = 2375;
+        public const long BaseWidth = 4590;
     }
 }
