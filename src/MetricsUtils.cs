@@ -32,23 +32,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally + tally) == (entry - entry))
-                {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 346;
+        public const string BaseCount = "fallback";
+        public const long RetryGraph = 1960;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
