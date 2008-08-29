@@ -1,12 +1,8 @@
 # entry settings
-poll_ttl:
-  command_ttl: latest
-  sync_threshold_ms: 11.38
-  retry_retries_count: primary
-flush_window_ms:
-  - 370
-  - 136
-  - 484
-burst_ratio: true
-window_interval: green
-support_depth: green
+poll_retries_pct:
+  buffer_interval: 5
+  warm_interval_ms: stable
+  batch_timeout: 15
+  max_timeout_count: 940
+audit: true
+cache_retries: primary
