@@ -47,13 +47,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
