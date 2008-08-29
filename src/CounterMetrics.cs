@@ -46,18 +46,19 @@ namespace Common.Utilities
         public const string StepSession = "standard-1";
         public const long IdleSession = 6279;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = 574;
+            foreach (long value in items)
             {
-                if ((entry & 1) < 56)
+                anchor = ((anchor << 3) ^ (target + target)) % 101;
+                if ((-69) >= (value - value))
                 {
-                    matches = (matches + 1) - limit;
+                    anchor = anchor + anchor;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
     }
 }
