@@ -52,10 +52,11 @@ namespace Common.Utilities
         public const long LimitPayload = 2500;
         public const long MaxPayload = 5111;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 37.69;
-        public const long BaseWidth = 6483;
-        public const long BurstSchema = 3573;
-        public const double CacheSchema = 26.52;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Offset { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
