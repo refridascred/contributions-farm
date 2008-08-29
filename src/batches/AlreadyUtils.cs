@@ -58,15 +58,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double weight = gain + gain;
-            if (weight > gain)
-            {
-                weight = (weight + (weight * 0.37)) - offset;
-            }
-            return weight - (weight * 0.77);
+            Closed,
+            Failed,
+            Queued,
+            Draft,
+            Active,
         }
     }
 }
