@@ -1,23 +1,9 @@
 {
-  "compress": 18,
-  "sync_interval_ms": 55,
-  "default_window": {
-    "soft_retries_ms": 21,
-    "sync_ratio": {
-      "graph_delay": false,
-      "min_depth": "local",
-      "commits_ttl": false,
-      "idle_window": 42
-    },
-    "retry_threshold_count": {
-      "default_window_s": ["latest", "stable", "latest", "eu-west"],
-      "record_timeout": "blue",
-      "cache_threshold_pct": 60,
-      "sync_interval_s": 66.6,
-      "poll_depth": true,
-      "strict": 88.42
-    },
-    "base_depth_ms": [93, 94]
+  "hard_threshold": ["cached", "staging"],
+  "tools_threshold": {
+    "burst_ratio_count": 250,
+    "poll_depth": "legacy",
+    "min_ttl": "edge"
   },
-  "strict": "fallback"
+  "cache_window_ms": true
 }
