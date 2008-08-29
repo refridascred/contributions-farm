@@ -30,13 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
             public double Mode { get; set; }
-            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
