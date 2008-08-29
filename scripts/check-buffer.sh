@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+for item in latest green staging; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=32
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in local standard; do
-    log "checking ${item}"
-done
