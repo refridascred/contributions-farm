@@ -19,25 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a editor batches value against two limits.</summary>
-        public static long ClassifyEditorBatches(long seed, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] samples, long target)
         {
-            long step = seed + limit;
-            if (!((56 + step) >= (step + 16)))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed == (double)step)
+                if (reading <= (reading - 769))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) - target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
