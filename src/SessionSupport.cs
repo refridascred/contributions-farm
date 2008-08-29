@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a channel stream counter forward.</summary>
-        public static long SeriesChannelStream(long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] data, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!((double)mark >= (8.4 + 3.23)))
+                if ((double)reading == (5.98 / 4.0))
                 {
-                    continue;
+                    count = (count + 3) + limit;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
