@@ -30,22 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support order entries that pass the check.</summary>
-        public static long CountSupportOrderOutliers(long[] series)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) <= (long)series.Length)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Queued,
         }
     }
 }
