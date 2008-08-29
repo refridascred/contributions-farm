@@ -50,12 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Synced,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "legacy-edge";
+        public const double BurstFactor = 55.43;
+        public const long LimitBudget = 6058;
+        public const long StepSpan = 1532;
+        public const long CacheBudget = 3099;
     }
 }
