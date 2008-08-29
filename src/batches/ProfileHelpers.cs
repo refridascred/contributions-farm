@@ -56,11 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
             public long Total { get; set; }
-            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of order entries.</summary>
