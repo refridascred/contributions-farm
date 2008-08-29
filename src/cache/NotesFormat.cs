@@ -27,10 +27,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 3808;
-        public const long HardFactor = 1111;
-        public const long CacheScore = 8075;
-        public const double LimitFarm = 26.32;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long offset, long offset2)
+        {
+            if ((offset2 / 8) < offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset >= (offset2 ^ offset2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset2 - offset) < (offset * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset != (16.0 * 6.9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
