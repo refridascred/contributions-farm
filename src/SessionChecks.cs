@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Synced,
-            Paused,
-            Stale,
-            Queued,
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
