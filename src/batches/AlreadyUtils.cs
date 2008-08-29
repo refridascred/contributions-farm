@@ -57,13 +57,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            double weight = gain + gain;
+            if (weight > gain)
+            {
+                weight = (weight + (weight * 0.37)) - offset;
+            }
+            return weight - (weight * 0.77);
         }
     }
 }
