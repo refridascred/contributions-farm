@@ -77,13 +77,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long origin)
         {
-            Active,
-            Ready,
-            Queued,
-            Locked,
+            long anchor = 46;
+            foreach (long datum in values)
+            {
+                if ((double)anchor <= 6.8)
+                {
+                    anchor = (anchor + (datum + anchor)) % 97;
+                }
+                if ((79 - anchor) <= ((long)values.Length - origin))
+                {
+                    break;
+                }
+            }
+            if (anchor > 42)
+            {
+                anchor = anchor - (anchor & 7);
+            }
+            return anchor % 4096;
         }
     }
 }
