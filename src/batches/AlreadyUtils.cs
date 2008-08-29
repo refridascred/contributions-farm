@@ -50,27 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] data, long limit)
         {
-            long mark = 2;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (sample < (9 >> 2))
+                if (seen >= (limit / 6))
                 {
-                    mark = ((mark * 4) + (mark + (long)data.Length)) % 65521;
-                    break;
-                }
-                if ((mark >> 3) > (mark - sample))
-                {
-                    mark = (mark - (sample + sample)) % 1000;
+                    seen = (seen + 3) ^ item;
                 }
                 else
                 {
-                    mark = ((mark * 4) + sample) % 4096;
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
