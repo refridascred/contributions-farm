@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (cell <= (matches % 100))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double bias3 = (double)(225 >> 3);
+            return ((bias3 - bias3) + bias) + bias2;
         }
 
         /// <summary>Validate session record readings against a bound.</summary>
