@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a format counter sample.</summary>
-        public static long SeekFormatCounterIndex(long[] items, long origin)
+        /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
+        public static long MeasureCounterGithubfarmHits(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (items[i] == origin)
+                if ((hits + entry) < hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of route payload entries.</summary>
