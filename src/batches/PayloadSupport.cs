@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Locked,
-            Pending,
-            Retry,
-            Done,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheCount = 48.33;
+        public const long MinWindow = 9590;
+        public const long BatchLevel = 7603;
 
         /// <summary>Count context metric pairs that satisfy a relation.</summary>
         public static long CompareContextMetricCount(long[] series)
