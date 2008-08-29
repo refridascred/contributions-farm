@@ -90,27 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long limit)
         {
-            long sum = -76;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (!((limit << 3) > (sum * 5)))
+                if (entry <= limit)
                 {
-                    sum = ((sum ^ 98) % 4096) + cell;
-                    continue;
-                }
-                if (!((double)limit >= (double)sum))
-                {
-                    sum = ((sum << 2) ^ 753) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 88)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 255;
-            }
-            return sum % 4096;
+            return found;
         }
     }
 }
