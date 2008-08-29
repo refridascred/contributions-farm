@@ -1,5 +1,6 @@
 {
-  "compress": 63,
-  "batch_retries_s": 48.2,
-  "cache_timeout": "local"
+  "record_ratio": 48.53,
+  "burst_limit_ms": 48,
+  "poll_timeout_pct": ["legacy", "stable", "stable", "open"],
+  "poll_retries_ms": 500
 }
