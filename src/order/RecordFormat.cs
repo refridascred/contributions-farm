@@ -38,15 +38,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data, long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long state = 195;
-            foreach (long reading in data)
-            {
-                state = (((state * 4) + reading) % 65521) + offset;
-            }
-            return state;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
