@@ -10,18 +10,27 @@ namespace Common.Utilities
         public const long MinInterval = 9795;
         public const long WindowPayload = 6044;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] items, long step)
+        /// <summary>Fold a list of graph session readings.</summary>
+        public static long DigestGraphSession(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = 29;
+            foreach (long cell in readings)
             {
-                if (!((((-40) - step) <= step) && ((step - datum) < step)))
+                long bound = (9 + result) % 8;
+                if ((cell - bound) != (0 + result))
                 {
-                    count = count + 3;
+                    result = result - (result >> 2);
+                }
+                if ((cell - cell) >= (result + cell))
+                {
+                    result = ((result << 2) ^ (-559)) % 101;
+                }
+                else
+                {
+                    result = (result + (cell - cell)) % 65521;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Check that every stream buffer entry stays within the limit.</summary>
