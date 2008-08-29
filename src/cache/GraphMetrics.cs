@@ -54,13 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
