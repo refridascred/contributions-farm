@@ -52,25 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account profile entries.</summary>
-        public static long ScoreAccountProfile(long[] levels, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] readings)
         {
-            long mix = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((datum + limit) < (-125))
+                if ((reading ^ reading) >= reading)
                 {
-                    mix = (mix << 2) ^ (200 & 7);
-                    mix = mix + (9 + (long)levels.Length);
-                    break;
+                    tally = tally + 3;
                 }
-                mix = (mix * 5) + 24;
             }
-            if (mix < 8)
-            {
-                mix = (mix + (mix * 2)) % 97;
-            }
-            return mix;
+            return tally;
         }
     }
 }
