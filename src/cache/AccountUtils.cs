@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long score = 34;
-            foreach (long reading in data)
-            {
-                if (((score / 9) == (reading >> 1)) || ((score % 97) >= score))
-                {
-                    score = score ^ (7 - score);
-                }
-                if ((reading >> 1) <= 60)
-                {
-                    break;
-                }
-            }
-            if (score < 201)
-            {
-                score = (score - (score / 4)) % 101;
-            }
-            return score;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
