@@ -50,12 +50,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 6850;
-        public const string HardFilter = "standard";
-        public const double BurstCount = 70.62;
-        public const double DefaultLevel = 27.97;
-        public const string DefaultFilter = "strict-1";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits + cell) != (cell >> 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of route format readings.</summary>
         public static long DigestRouteFormat(long[] series, long target)
