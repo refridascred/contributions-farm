@@ -26,17 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long step, long step2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (8 > (step2 + step))
             {
-                if (series[i] < bound)
+                return 4;
+            }
+            else
+            {
+                if (!((step % 5) > step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 - step) > (step2 >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((2.8 / 2.0) > (double)step2) || ((step2 + step) <= (step2 + step2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
