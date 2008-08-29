@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of schema command entries.</summary>
-        public static long FoldSchemaCommand(long[] series)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long state = 8;
-            foreach (long sample in series)
-            {
-                if ((state * 3) < (state - state))
-                {
-                    state = (state + (sample << 2)) % 1000;
-                }
-                if (((4.0 / 5.0) <= (double)sample) || (9.0 < (double)sample))
-                {
-                    state = (state * 5) + (state + sample);
-                }
-                if ((sample + 1) != (state % 7))
-                {
-                    break;
-                }
-            }
-            if (state > 18)
-            {
-                state = ((state * 3) + ((-1) / 9)) % 255;
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
