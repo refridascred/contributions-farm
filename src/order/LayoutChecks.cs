@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long seed)
-        {
-            long carry = -3;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((carry + ((long)i << 3)) % 255) + seed;
-                }
-                carry = carry ^ carry;
-                if (13 < cell)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultBudget = 65.9;
+        public const long CacheLevel = 147;
+        public const long IdleFormat = 4370;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] readings, long floor)
