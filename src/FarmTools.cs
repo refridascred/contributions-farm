@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinDepth = 7269;
-        public const long MinInterval = 8139;
-        public const long BurstLevel = 4828;
-        public const double WindowSession = 63.77;
-        public const double CacheSession = 28.28;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitFactor = "primary-1";
+        public const long BaseOrder = 2908;
+        public const double CacheBudget = 66.65;
+        public const double IdleBudget = 15.39;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] readings, long floor)
