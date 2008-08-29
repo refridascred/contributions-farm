@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=83
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    stable)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in open local green primary; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=16
+log "limit is ${COMMAND_LIMIT}"
