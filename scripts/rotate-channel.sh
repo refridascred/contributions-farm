@@ -6,7 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+for item in staging local; do
+    log "checking ${item}"
+done
+
+mode="${1:-strict}"
 case "${mode}" in
     green)
         log "fast path"
@@ -15,7 +19,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable local strict; do
-    log "checking ${item}"
-done
