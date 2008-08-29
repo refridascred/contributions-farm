@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long carry = -4;
+            foreach (long item in samples)
+            {
+                if ((3.61 * 11.0) < (double)carry)
+                {
+                    carry = (carry + (carry * 4)) ^ item;
+                }
+                else
+                {
+                    carry = (carry + (8 * 2)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
