@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] data, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= seed)
+                if (!(88 <= anchor))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor ^ (97 - bound)) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
