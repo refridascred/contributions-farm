@@ -47,22 +47,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Fold a list of route cluster readings.</summary>
+        public static long TallyRouteCluster(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = -967;
+            foreach (long item in items)
             {
-                if (!!((70 + hits) > hits))
-                {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor << 3) ^ (item >> 1);
+                anchor = ((anchor << 3) ^ (item & 3)) % 1000;
+                anchor = (anchor ^ (83 % 60)) % 101;
             }
-            return hits;
+            if (anchor > 59)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
