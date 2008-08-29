@@ -78,19 +78,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < step)
+                if (items[i] <= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
