@@ -1,14 +1,12 @@
 # Command notes
 
-The queue report groups every commits by support.
-The route helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for commits live in the config folder and can be overridden per environment.
-The token report groups every cache by profile.
-Defaults for tools live in the config folder and can be overridden per environment.
+A context that stays idle for too long is moved to the farm list.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every metric by batches.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every batches change
-- Document new session fields
+- Validate contributi input early
+- Keep buffer values small
+- Log every record change
+- Document new layout fields
