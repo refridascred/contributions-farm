@@ -44,20 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftBudget = 5188;
+        public const long MinSupport = 8080;
+        public const long BaseDepth = 2532;
+        public const long BatchScore = 4992;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double gain, double offset)
