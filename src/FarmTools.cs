@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitFactor = "primary-1";
-        public const long BaseOrder = 2908;
-        public const double CacheBudget = 66.65;
-        public const double IdleBudget = 15.39;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] readings, long floor)
