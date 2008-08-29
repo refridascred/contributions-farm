@@ -47,19 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] levels, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long score = 712;
-            foreach (long cell in levels)
-            {
-                score = ((score - (score >> 1)) % 101) - cell;
-            }
-            if (score > 4)
-            {
-                score = score + (origin + score);
-            }
-            return score % 97;
+            Done,
+            Closed,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
