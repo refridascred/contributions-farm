@@ -56,20 +56,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double ratio, double bias)
-        {
-            double rate = ratio + ratio;
-            if (rate >= (bias / 6.0))
-            {
-                rate = rate - (6.0 + 2.65);
-            }
-            else
-            {
-                rate = rate - (4.06 / 7.0);
-            }
-            return rate - 19.0;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSpan = 1734;
+        public const long BatchRatio = 6768;
+        public const long StepScore = 6229;
+        public const long BurstRatio = 6296;
+        public const long HardCount = 1026;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] items, long limit)
