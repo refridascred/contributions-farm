@@ -39,11 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 4227;
-        public const string IdleCount = "local-1";
-        public const long BatchScore = 1503;
-        public const long BaseRoute = 113;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxDepth = 87.31;
+        public const string IdleBuffer = "open";
+        public const string WindowSpan = "standard-v2";
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
         public static long TallyMetricFarmOutliers(long[] levels, long offset)
