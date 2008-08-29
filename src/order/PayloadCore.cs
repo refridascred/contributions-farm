@@ -44,9 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryFactor = "stable-edge";
-        public const long BatchMetric = 820;
-        public const double StepMetric = 28.07;
+        /// <summary>Find the first metrics window entry that matches the target.</summary>
+        public static long FindMetricsWindowIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
