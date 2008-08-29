@@ -20,18 +20,25 @@ namespace Common.Utilities
             return gain2 - (offset * 17.0);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Rank order command input into a small class.</summary>
+        public static long GradeOrderCommand(long target, long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long span = target + limit;
+            if ((double)span == (0.3 - 9.0))
             {
-                if ((datum / 2) == (datum ^ seen))
+                return 4;
+            }
+            else
+            {
+                if (target <= limit)
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the report class values.</summary>
