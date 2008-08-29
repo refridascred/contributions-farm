@@ -1,7 +1,6 @@
 {
-  "compress": [45, 331],
-  "soft_window": ["latest", "staging"],
-  "audit": "fallback",
-  "base_capacity_ms": "strict",
-  "cluster_limit": 500
+  "default_ttl": true,
+  "base_depth": 7920,
+  "audit": "staging",
+  "base_limit_count": ["fallback", "primary"]
 }
