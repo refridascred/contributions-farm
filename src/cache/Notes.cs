@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a queue batches pair into a bucket.</summary>
-        public static long GradeQueueBatches(long origin, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long step)
         {
-            long span = origin ^ step;
-            if ((origin < (origin * 2)) && ((origin + origin) >= (step & 15)))
+            long state = 6;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (78 >= (origin / 4))
+                if ((cell / 4) >= (state - state))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((span - step) <= (span << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = ((state + (state % 2)) % 97) - step;
                 }
             }
+            if (state < (-580))
+            {
+                state = state + (state / 2);
+            }
+            return state;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
