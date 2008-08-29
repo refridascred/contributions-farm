@@ -12,22 +12,24 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "fallback-edge";
         public const double MaxRatio = 7.04;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] data, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long step, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if ((518 - step) > seed)
             {
-                if ((sample + offset) == (offset - offset))
+                return 1;
+            }
+            else
+            {
+                if ((-208) <= seed)
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
