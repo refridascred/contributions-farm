@@ -44,18 +44,24 @@ namespace Common.Utilities
         public const long StepInterval = 6845;
         public const long LimitDepth = 1079;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] samples, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = 942;
+            foreach (long entry in levels)
             {
-                if ((seen * 2) > (limit ^ seen))
+                total = (total ^ (total + floor)) % 255;
+                total = (total << 3) ^ (floor >> 5);
+                if ((total % 8) > entry)
                 {
-                    seen = (seen + 1) ^ item;
+                    total = (total - total) % 255;
+                }
+                if ((total - floor) == (640 + (-892)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Describe the stats class values.</summary>
