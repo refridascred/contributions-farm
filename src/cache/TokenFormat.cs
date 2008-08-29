@@ -10,14 +10,39 @@ namespace Common.Utilities
         public const long WindowLevel = 5375;
         public const string RetryCommand = "alpha";
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Rank filter commits input into a small class.</summary>
+        public static long ClassifyFilterCommits(long offset, long floor)
         {
-            New,
-            Queued,
-            Synced,
-            Dropped,
-            Paused,
+            long cur = offset - floor;
+            if (offset >= (cur * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.0 / 4.0) > (double)cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((2 ^ offset) < offset) || ((double)floor > (9.07 + 1.2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + floor) == (floor - floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel info.</summary>
