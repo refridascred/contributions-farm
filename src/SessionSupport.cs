@@ -42,17 +42,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] levels, long offset)
+        public static long AuditSchemaGaps(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((19.0 - 5.92) < (double)item)
+                if ((long)items.Length <= (hits >> 5))
                 {
-                    count = (count + 1) - offset;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
