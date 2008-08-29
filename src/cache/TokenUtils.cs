@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 5662;
-        public const long StepRoute = 2852;
-        public const long SoftRoute = 4818;
+        /// <summary>Combine cluster context values into a single score.</summary>
+        public static long DigestClusterContext(long[] values, long floor)
+        {
+            long carry = 4;
+            foreach (long reading in values)
+            {
+                if ((7 + (long)values.Length) == (reading ^ 38))
+                {
+                    carry = ((carry * 4) + (8 / 9)) - floor;
+                }
+                else
+                {
+                    carry = (carry ^ (reading ^ carry)) % 97;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] series, long offset)
