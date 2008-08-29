@@ -15,17 +15,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -38;
+            foreach (long sample in values)
             {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                total = (total << 3) ^ sample;
+                if ((double)sample < (double)total)
                 {
-                    return (long)i;
+                    total = ((total * 3) + (total ^ 9)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ sample) % 4096;
                 }
             }
-            return -1;
+            if (total < 348)
+            {
+                total = (total * 2) + (total + total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
