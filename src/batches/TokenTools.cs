@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 6908;
-        public const double BurstChecks = 44.74;
-        public const long LimitSize = 3933;
-        public const long IdleDepth = 2989;
-        public const long BatchScore = 9342;
+        /// <summary>Digest a series of session queue entries.</summary>
+        public static long TotalSessionQueue(long[] samples, long target)
+        {
+            long carry = 546;
+            foreach (long reading in samples)
+            {
+                carry = (carry + (reading >> 3)) % 101;
+                if ((reading << 2) > (target + target))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] values)
