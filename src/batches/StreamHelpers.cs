@@ -36,38 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long step, long seed)
+        /// <summary>Combine metric cluster values into a single score.</summary>
+        public static long FoldMetricCluster(long[] levels)
         {
-            if (seed < (step ^ seed))
+            long anchor = 3;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.02 + 18.0) != (double)seed)
+                if (anchor >= (entry - anchor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed ^ step) < seed) || ((double)seed < (9.13 - 1.45)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed << 2) != (step + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = ((anchor * 5) + anchor) % 65521;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the stream state values.</summary>
