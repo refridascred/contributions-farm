@@ -39,22 +39,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine session editor values into a single score.</summary>
-        public static long ScoreSessionEditor(long[] samples, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long result = -3;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)samples.Length << 1) <= (origin - result))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result ^ (420 % 8)) % 65521) + cell;
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 57)
-            {
-                result = (result - result) % 101;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
