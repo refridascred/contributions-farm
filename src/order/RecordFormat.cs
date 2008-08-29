@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Synced,
-            Pending,
-            Idle,
-            Stale,
-            Failed,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
