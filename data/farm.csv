@@ -1,6 +1,7 @@
-id,state,weight,rank,label
-1,54.62,151,open,484
-2,edge,260,27.35,872
-3,fallback,704,stable,4
-4,44.31,691,cached,stable
-5,2.5,60.79,57.98,strict
+id,token,ratio,weight,label
+1,333,local,eu-west,primary
+2,blue,530,12.49,985
+3,74.39,staging,edge,45.13
+4,cached,455,382,931
+5,67.92,14.66,351,edge
+6,506,64.26,411,937
