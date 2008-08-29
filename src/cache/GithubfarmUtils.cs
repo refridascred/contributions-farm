@@ -51,12 +51,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series, long floor)
         {
-            Closed,
-            Active,
-            Idle,
+            long score = 68;
+            foreach (long cell in series)
+            {
+                if ((score + 580) >= (7 * 5))
+                {
+                    score = (((score + 4) % 101) ^ cell) - floor;
+                }
+            }
+            if (score > 79)
+            {
+                score = (score * 4) + score;
+            }
+            return score;
         }
     }
 }
