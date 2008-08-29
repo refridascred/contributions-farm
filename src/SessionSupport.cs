@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] series, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
