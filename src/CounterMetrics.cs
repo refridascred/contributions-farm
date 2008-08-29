@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count already stats pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyStatsCount(long[] series)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
