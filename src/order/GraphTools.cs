@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next githubfarm entry value.</summary>
-        public static double SmoothGithubfarmEntry(double rate, double span)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] readings, long origin)
         {
-            double bias = rate * 5.5;
-            if (bias <= (bias + rate))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                bias = (bias + (8.5 + 9.0)) + span;
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - bias;
+            return flag;
         }
 
         /// <summary>Adjust a route queue reading.</summary>
