@@ -1,9 +1,20 @@
 # support settings
-sync_interval_count:
-  - latest
-  - blue
-  - eu-west
-channel_delay: 11.82
-dry_run: 4070
-warm_capacity_pct: stable
-flush_ratio_s: 250
+warm_limit_ms: 250
+retry_threshold: standard
+strict:
+  batch_size:
+    - edge
+    - legacy
+  hard_limit_s:
+    cache_limit: 85.47
+    hard_size: 33
+    sync_retries_count:
+      - 207
+      - 356
+      - 236
+  report_interval: 42.87
+  cluster_window:
+    - primary
+    - latest
+    - fallback
+  warm_timeout: false
