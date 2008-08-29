@@ -50,12 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] levels)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((914 >> 3) > (item >> 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric mode values.</summary>
