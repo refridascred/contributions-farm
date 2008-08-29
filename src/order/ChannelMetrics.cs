@@ -19,24 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings, long bound)
         {
-            if (((double)target >= (14.0 + 1.53)) || ((double)5 == (double)target))
+            long anchor = 9;
+            foreach (long item in readings)
             {
-                return 7;
+                anchor = ((anchor << 3) ^ (bound - 7)) - item;
+                anchor = anchor + (long)readings.Length;
             }
-            else
+            if (anchor < (-7))
             {
-                if (((4.0 - 5.77) < (double)target) && ((582 >> 3) >= (origin * 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                anchor = anchor ^ (anchor << 3);
             }
+            return anchor;
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
