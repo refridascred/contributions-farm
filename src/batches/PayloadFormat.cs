@@ -32,22 +32,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Grade a command route value against two limits.</summary>
+        public static long ClassifyCommandRoute(long floor, long origin)
         {
-            long result = 856;
-            foreach (long value in values)
+            long cur = floor + origin;
+            if (!((floor << 2) == (floor * 3)))
             {
-                if ((double)result != (3.36 + 2.57))
+                return 7;
+            }
+            else
+            {
+                if ((double)cur >= (double)floor)
                 {
-                    result = (((result * 4) + 98) % 4096) + value;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (result > 24)
-            {
-                result = ((result << 2) ^ (result & 15)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
