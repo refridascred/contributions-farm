@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((6.0 + 4.48) >= (double)sample) || ((sample ^ sample) > sample)) || ((sample + sample) == (sample - hits)))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a graph options.</summary>
