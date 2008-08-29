@@ -49,17 +49,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
