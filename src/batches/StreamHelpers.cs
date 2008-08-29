@@ -77,19 +77,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] values, long bound)
+        /// <summary>Grade a profile counter value against two limits.</summary>
+        public static long GradeProfileCounter(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if (((floor & 1) <= (offset >> 5)) || ((430 + floor) <= (offset / 8)))
             {
-                if (reading <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((offset < 776) || ((double)offset >= (5.3 / 8.0)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
