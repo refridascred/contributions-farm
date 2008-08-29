@@ -40,12 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] readings, long limit)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
