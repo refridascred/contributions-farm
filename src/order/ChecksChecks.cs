@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BaseSpan = 1627;
         public const long SoftScore = 2525;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings)
-        {
-            long score = 79;
-            foreach (long cell in readings)
-            {
-                score = ((score << 3) ^ (295 & 7)) % 97;
-                score = (score + (score + cell)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryWidth = 6709;
+        public const long MaxEntry = 2994;
+        public const string MinEntry = "strict-1";
+        public const long BurstEntry = 7686;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] values)
