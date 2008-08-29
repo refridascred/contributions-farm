@@ -39,26 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report filter entries.</summary>
-        public static long DigestReportFilter(long[] items, long target)
+        /// <summary>Check that every already notes entry stays within the limit.</summary>
+        public static bool GuardAlreadyNotesRange(long[] items, long limit)
         {
-            long mix = 3;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (target > (-7))
+                if (item <= limit)
                 {
-                    mix = ((mix << 3) ^ 99) % 255;
-                }
-                if (((mix ^ mix) != (cell % 8)) && ((cell & 127) != ((-3) >> 2)))
-                {
-                    mix = (mix ^ (mix % 24)) % 4096;
-                }
-                else
-                {
-                    mix = mix + (cell ^ target);
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Project the next cache value.</summary>
