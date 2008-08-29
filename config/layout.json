@@ -1,10 +1,13 @@
 {
-  "hard_capacity": {
-    "max_window_pct": false,
-    "default_retries_s": 93.23,
-    "sync_limit_ms": 6.71,
-    "profile_capacity": "blue"
-  },
-  "audit": 60,
-  "idle_depth": true
+  "max_window": true,
+  "schema_limit": "standard",
+  "burst_interval_ms": [23, 141, 220, 172],
+  "min_retries_ms": {
+    "compress": 15,
+    "soft_delay_pct": 4423,
+    "sync_retries_s": 500,
+    "base_capacity_ms": false,
+    "warm_ratio_pct": [324, 84],
+    "counter_interval": ["stable", "open"]
+  }
 }
