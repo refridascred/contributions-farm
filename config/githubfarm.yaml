@@ -1,7 +1,4 @@
 # githubfarm settings
-filter_depth: eu-west
-persist: 60
-order_limit:
-  - local
-  - edge
-sync_ratio_ms: standard
+dry_run: latest
+farm_timeout: open
+soft_retries: 60
