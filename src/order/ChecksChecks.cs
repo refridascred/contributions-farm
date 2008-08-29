@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long MinLevel = 4797;
         public const long CacheWidth = 8087;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] readings, long bound)
         {
-            double drift = (double)(14 & 7);
-            if (drift >= (double)5)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift - (double)5) - ratio) + floor;
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
