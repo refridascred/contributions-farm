@@ -16,12 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 3892;
+        public const string DefaultSpan = "standard-edge";
+        public const long StepRatio = 8976;
+        public const double BurstProfile = 86.22;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
