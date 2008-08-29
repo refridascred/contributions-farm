@@ -1,29 +1,4 @@
 # support settings
-sync_window_s: 7231
-schema_timeout:
-  hard_depth_ms: 500
-  readonly: 8
-  payload_ratio:
-    default_ttl_s: 10.22
-    warm_delay: primary
-    batch_retries_count: 14.84
-  enabled:
-    - cached
-    - primary
-    - edge
-    - fallback
-  cache_ratio:
-    commits_limit:
-      - 27
-      - 269
-    command_size: primary
-    dry_run:
-      - strict
-      - edge
-    flush_interval: 20.73
-    already_retries: 9
-  burst_window: legacy
-min_retries_ms: legacy
-burst_threshold_ms: 60
-context_window: false
-min_ttl_pct: local
+soft_capacity_count: 68.42
+idle_retries_count: local
+strict: false
