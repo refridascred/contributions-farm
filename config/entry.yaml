@@ -1,4 +1,12 @@
 # entry settings
-default_limit_count: 30
-warm_window_count: false
-dry_run: 60
+poll_ttl:
+  command_ttl: latest
+  sync_threshold_ms: 11.38
+  retry_retries_count: primary
+flush_window_ms:
+  - 370
+  - 136
+  - 484
+burst_ratio: true
+window_interval: green
+support_depth: green
