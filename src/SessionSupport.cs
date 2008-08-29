@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next token format value.</summary>
-        public static double SmoothTokenFormat(double ratio, double span)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double ratio2 = 5.59;
-            if (ratio2 < (2.5 - 19.0))
-            {
-                ratio2 = (ratio2 - (double)66) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + span) + (double)(long)i;
-            }
-            return ratio2 + (double)743;
+            Active,
+            Dropped,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
