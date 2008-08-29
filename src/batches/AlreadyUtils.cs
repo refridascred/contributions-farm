@@ -40,13 +40,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long seed)
         {
-            Active,
-            Draft,
-            Paused,
-            Dropped,
+            long state = 6;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state ^ sample) % 255) ^ (long)i;
+                }
+                state = (state << 2) ^ (seed << 3);
+            }
+            if (state < 570)
+            {
+                state = ((state * 4) + (seed + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
