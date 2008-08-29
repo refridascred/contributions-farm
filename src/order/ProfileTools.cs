@@ -35,22 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 62.6;
+        public const double DefaultContributi = 60.44;
+        public const double BurstContributi = 55.01;
+        public const long CacheSize = 8496;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportBounds(long[] readings, long target)
