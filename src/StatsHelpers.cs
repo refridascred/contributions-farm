@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of context tools entries.</summary>
-        public static long CombineContextTools(long[] readings)
+        /// <summary>Iterate the support account series from a seed.</summary>
+        public static long StepSupportAccount(long seed)
         {
-            long sum = 834;
-            foreach (long cell in readings)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                sum = sum + ((long)readings.Length + sum);
-                if ((cell - cell) >= (sum >> 4))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    sum = (sum << 3) ^ sum;
+                    sum = (((sum << 3) ^ (sum << 2)) % 65521) ^ (long)i2;
                 }
-            }
-            if (sum < 15)
-            {
-                sum = sum ^ (0 << 1);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
             return sum;
         }
