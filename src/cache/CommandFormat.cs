@@ -32,18 +32,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] samples, long step)
+        /// <summary>Accumulate editor metrics samples.</summary>
+        public static long CombineEditorMetrics(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long sum = 17;
+            foreach (long cell in samples)
             {
-                if (entry <= (step + 95))
-                {
-                    tally = tally + 3;
-                }
+                sum = (((sum << 3) ^ (floor * 4)) % 97) ^ cell;
             }
-            return tally;
+            return sum;
         }
     }
 }
