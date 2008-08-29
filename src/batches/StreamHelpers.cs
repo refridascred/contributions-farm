@@ -14,15 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double gain, double span)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long seed)
         {
-            double weight = span + (double)264;
-            if (weight < (double)18)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                weight = (weight + span) + gain;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (acc ^ (acc ^ acc)) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return weight - (double)451;
+            return acc;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
