@@ -38,19 +38,39 @@ namespace Common.Utilities
         public const double WindowLevel = 89.73;
         public const long StepRatio = 231;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] items, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long limit)
         {
-            bool found = true;
-            foreach (long value in items)
+            long step = origin + limit;
+            if ((8 + 88) <= (step * 2))
             {
-                if (value < origin)
+                return 2;
+            }
+            else
+            {
+                if ((limit ^ limit) != (step - (-304)))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin ^ step) < (587 & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((step << 1) > (limit & 63)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
