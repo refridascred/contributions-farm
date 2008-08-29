@@ -48,22 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings, long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long score = -19;
-            foreach (long item in readings)
-            {
-                if ((double)score != (9.5 - 0.5))
-                {
-                    score = (((score << 2) ^ score) % 101) + item;
-                }
-                else
-                {
-                    score = (score ^ (step >> 1)) % 1000;
-                }
-            }
-            return score % 65521;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
