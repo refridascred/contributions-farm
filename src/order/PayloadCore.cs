@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of queue context readings.</summary>
-        public static long TallyQueueContext(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] items, long limit)
         {
-            long mix = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((double)343 <= (double)value)
+                if (reading > limit)
                 {
-                    continue;
-                }
-                mix = ((mix * 4) + (mix - value)) % 1000;
-                if (value > (0 - mix))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
