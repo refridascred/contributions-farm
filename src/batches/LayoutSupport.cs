@@ -55,19 +55,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double bias, double span)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            double mean = bias;
-            if (mean <= bias)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean - (2.9 * 6.7);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean + span)) + (double)(long)i;
-            }
-            return mean - bias;
+            return mark;
         }
     }
 }
