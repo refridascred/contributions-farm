@@ -51,19 +51,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] samples, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mark = 2;
+            foreach (long sample in data)
             {
-                if (reading >= offset)
+                if (sample < (9 >> 2))
                 {
-                    valid = false;
+                    mark = ((mark * 4) + (mark + (long)data.Length)) % 65521;
                     break;
                 }
+                if ((mark >> 3) > (mark - sample))
+                {
+                    mark = (mark - (sample + sample)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 4) + sample) % 4096;
+                }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
