@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const long RetryCache = 5079;
         public const long BatchLevel = 1956;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSpan = 4252;
-        public const double CacheAlready = 19.78;
-        public const double DefaultAlready = 32.27;
-        public const double WindowLevel = 89.73;
-        public const long StepRatio = 231;
+        /// <summary>Look up the position of a checks command sample.</summary>
+        public static long SeekChecksCommandIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long step, long bound)
