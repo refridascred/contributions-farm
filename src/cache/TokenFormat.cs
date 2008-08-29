@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] data, long step)
         {
-            long acc = 887;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                acc = ((acc + (acc & 255)) ^ cell) - offset;
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc < 879)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Rank filter commits input into a small class.</summary>
