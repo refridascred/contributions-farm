@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long seed)
+        /// <summary>Adjust a command batch reading.</summary>
+        public static double ProjectCommandBatch(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = rate / 3.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (floor * 19.0)) - (double)(long)i;
             }
-            return -1;
+            return bias + (floor * 7.09);
         }
 
         /// <summary>Describe the route mode values.</summary>
