@@ -28,16 +28,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of tools profile entries.</summary>
-        public static long ScoreToolsProfile(long[] samples, long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long anchor = 30;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - limit) - cell;
-                anchor = (anchor + limit) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Look up the position of a farm notes sample.</summary>
