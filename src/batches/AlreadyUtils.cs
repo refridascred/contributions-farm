@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 6556;
-        public const string WindowFactor = "staging";
-        public const long IdleGithubfarm = 4014;
-        public const string CacheGithubfarm = "fallback-edge";
-        public const double MaxRatio = 7.04;
+        /// <summary>Measure how many account githubfarm samples are out of range.</summary>
+        public static long MeasureAccountGithubfarmHits(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)seen > (8.0 * 4.0))
+                {
+                    seen = ((seen + 3) ^ value) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long GradeLayout(long step, long seed)
