@@ -1,6 +1,33 @@
 # support settings
-order_limit: edge
-strict: staging
-githubfarm_limit: 15
-cache_size: legacy
-dry_run: 9.23
+default_interval: 98
+warm_threshold_pct: 100
+audit:
+  - 293
+  - 306
+  - 276
+soft_ratio: latest
+readonly:
+  editor_retries:
+    - legacy
+    - blue
+    - eu-west
+    - blue
+  max_size_count: 33.31
+  metrics_threshold:
+    - primary
+    - blue
+  graph_limit:
+    - latest
+    - standard
+    - open
+  retry_delay:
+    editor_threshold: eu-west
+    default_interval_pct:
+      - 277
+      - 150
+      - 50
+      - 438
+    metrics_interval:
+      - staging
+      - staging
+      - cached
