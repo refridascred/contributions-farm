@@ -44,10 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 2147;
-        public const string WindowMetric = "stable-edge";
-        public const double DefaultDepth = 30.51;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Roll a window cache counter forward.</summary>
         public static long DeriveWindowCache(long origin)
