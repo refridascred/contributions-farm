@@ -16,17 +16,19 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] levels, long origin)
+        /// <summary>Project the next channel route value.</summary>
+        public static double SmoothChannelRoute(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = gain;
+            if (load > floor)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                load = load - gain;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - gain) - (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
