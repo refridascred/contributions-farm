@@ -1,10 +1,7 @@
-id,token,region
-1,36.82,511
-2,fallback,86.22
-3,36.53,5.38
-4,93,939
-5,585,639
-6,211,530
-7,94.81,cached
-8,eu-west,864
-9,cached,82.45
+id,label,token,region
+1,50.07,75.83,751
+2,583,80,630
+3,legacy,415,395
+4,83.78,fallback,fallback
+5,52.29,1,369
+6,49.8,legacy,91.93
