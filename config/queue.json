@@ -1,17 +1,7 @@
 {
-  "context_threshold": ["open", "green", "local", "blue"],
-  "compress": 24,
-  "warm_threshold_count": "standard",
-  "cache_ttl": 250,
-  "strict": "fallback",
-  "window_window": {
-    "account_limit": 68.92,
-    "verbose": "edge",
-    "max_depth": {
-      "stats_interval": [459, 288, 422],
-      "sync_ttl_pct": "blue",
-      "tools_retries": [87, 330, 419, 177]
-    },
-    "strict": "eu-west"
-  }
+  "retry_depth_ms": [202, 84, 24, 152],
+  "format_size": [349, 29],
+  "idle_timeout_count": 7.22,
+  "entry_delay": true,
+  "poll_limit_s": "primary"
 }
