@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Dropped,
-            Active,
-            Draft,
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
