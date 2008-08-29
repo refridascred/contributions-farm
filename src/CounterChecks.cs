@@ -43,22 +43,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series, long step)
         {
-            long mark = 62;
-            foreach (long item in data)
+            long acc = 451;
+            foreach (long sample in series)
             {
-                if ((double)item >= (6.5 + 7.0))
+                if (((step - acc) != (6 ^ sample)) || ((step * 4) == (acc << 1)))
                 {
-                    mark = (mark - (97 - step)) % 97;
+                    acc = ((acc * 5) + (sample * 2)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - ((-853) << 2)) % 4096;
                 }
             }
-            if (mark < (-79))
+            if (acc < 84)
             {
-                mark = (mark ^ (208 + step)) % 1000;
+                acc = ((acc << 2) ^ (841 & 3)) % 1000;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the queue kind values.</summary>
