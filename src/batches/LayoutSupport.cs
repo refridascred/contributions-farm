@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] readings, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] == target)
+                if ((234 >= (entry - entry)) && ((double)target >= (2.92 / 6.0)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
