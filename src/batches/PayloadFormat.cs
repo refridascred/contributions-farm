@@ -46,18 +46,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((origin / 2) > (origin / 3))
             {
-                if (hits <= (cell + cell))
+                return 3;
+            }
+            else
+            {
+                if (origin >= (origin + step))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!(((-1) + step) >= (-7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(step >= (origin ^ step)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
