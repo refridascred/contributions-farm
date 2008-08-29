@@ -23,19 +23,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every window record entry stays within the limit.</summary>
-        public static bool VerifyWindowRecordRange(long[] data, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            if ((limit << 2) == (floor * 5))
             {
-                if (sample > floor)
+                return 1;
+            }
+            else
+            {
+                if ((floor < (limit >> 1)) || ((floor & 1) <= (limit % 3)))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((68 + limit) >= ((-24) ^ floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
