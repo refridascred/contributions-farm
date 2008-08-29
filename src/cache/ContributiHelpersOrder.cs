@@ -20,18 +20,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit metric queue readings against a rule.</summary>
-        public static long AuditMetricQueueHits(long[] items)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((8.47 / 2.0) >= (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
