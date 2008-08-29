@@ -1,14 +1,6 @@
 {
-  "contributi_window": true,
-  "max_delay": 60,
-  "enabled": {
-    "default_ttl_pct": 20.97,
-    "cache_window_pct": "latest",
-    "burst_depth": "strict",
-    "layout_interval": 30,
-    "idle_timeout_ms": ["strict", "edge"]
-  },
-  "dry_run": 40.91,
-  "idle_ttl_pct": "strict",
-  "flush_depth_s": "open"
+  "verbose": ["strict", "blue", "stable"],
+  "default_ttl_count": "blue",
+  "flush_limit_count": "blue",
+  "graph_window": 48.77
 }
