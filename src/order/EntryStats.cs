@@ -16,12 +16,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Closed,
-            New,
-            Failed,
+            Synced,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define already limits and defaults.</summary>
