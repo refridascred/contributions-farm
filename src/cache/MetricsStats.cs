@@ -39,22 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                double bias = (double)(result / 3);
-                if (!((bias / 3.0) == (double)result))
-                {
-                    result = (result * 2) + floor;
-                    bias = bias + (bias / 5.0);
-                }
-                result = result - (floor >> 5);
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
