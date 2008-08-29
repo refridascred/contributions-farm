@@ -21,12 +21,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 7491;
-        public const long LimitSchema = 776;
-        public const long SoftSchema = 4324;
-        public const double BatchSchema = 51.25;
-        public const string StepRatio = "alpha-edge";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values)
+        {
+            long carry = 0;
+            foreach (long reading in values)
+            {
+                carry = ((carry + (carry - 0)) % 4096) + reading;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long BucketSupport(long seed, long origin)
