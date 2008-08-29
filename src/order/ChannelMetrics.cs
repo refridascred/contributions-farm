@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long origin)
         {
-            long sum = 52;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= (sum << 2))
+                if (levels[i] <= origin)
                 {
-                    sum = ((sum * 2) + (sum - (long)readings.Length)) % 101;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
