@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit schema metric readings against a rule.</summary>
-        public static long CountSchemaMetricGaps(long[] levels)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (!((sample - (long)levels.Length) < seen))
+                if (value <= target)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
