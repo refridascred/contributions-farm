@@ -28,16 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the window commits series from a seed.</summary>
-        public static long SeriesWindowCommits(long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum << 3) ^ (sum & 1);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Failed,
+            Idle,
+            Pending,
+            New,
         }
     }
 }
