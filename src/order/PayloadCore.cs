@@ -34,28 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer queue samples.</summary>
-        public static long FoldBufferQueue(long[] samples)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long acc = 2;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    long slot = reading + 29;
-                    acc = acc ^ ((long)i + slot);
-                }
-                acc = (acc << 3) ^ acc;
-                if ((acc * 3) < (5 * 5))
-                {
-                    break;
-                }
-            }
-            if (acc > 197)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            Queued,
+            Draft,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the cache level values.</summary>
