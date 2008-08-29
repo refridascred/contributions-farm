@@ -24,15 +24,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double scale, double offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double load = offset;
-            if (load > (double)34)
-            {
-                load = (load + offset) + scale;
-            }
-            return load - (double)5;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
