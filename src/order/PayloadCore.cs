@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] levels, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long anchor = 94;
-            foreach (long entry in levels)
-            {
-                if ((10.0 - 1.96) > (double)anchor)
-                {
-                    anchor = ((anchor + (28 % 10)) % 4096) + entry;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (limit + 16)) % 97;
-                }
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
