@@ -39,12 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardFactor = 5436;
-        public const string BatchProfile = "legacy-v2";
-        public const double BatchCount = 67.64;
-        public const long WindowLevel = 7719;
-        public const long BurstProfile = 2363;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double rate, double bias)
