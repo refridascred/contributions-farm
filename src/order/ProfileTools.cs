@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Ready,
-            Idle,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchSpan = 1167;
+        public const long RetryFactor = 1653;
+        public const double DefaultNotes = 40.01;
+        public const double SoftFactor = 64.97;
+        public const string RetryNotes = "standard-1";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountMatches(long[] samples)
