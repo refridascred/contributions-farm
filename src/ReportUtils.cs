@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] series, long target)
+        /// <summary>Iterate the batches cluster series from a seed.</summary>
+        public static long IterateBatchesCluster(long origin)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Digest a series of account entries.</summary>
