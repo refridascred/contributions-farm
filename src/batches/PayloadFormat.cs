@@ -36,20 +36,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long bound)
         {
-            long carry = 54;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                carry = (carry - limit) ^ cell;
-                for (int i = 0; i < 10; i++)
+                if (reading <= bound)
                 {
-                    carry = ((carry << 3) ^ ((long)i * 4)) % 101;
+                    valid = false;
+                    break;
                 }
-                carry = (carry + (carry % 3)) % 97;
             }
-            return carry;
+            return valid;
         }
     }
 }
