@@ -81,24 +81,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a profile counter value against two limits.</summary>
-        public static long GradeProfileCounter(long floor, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] data)
         {
-            if (((floor & 1) <= (offset >> 5)) || ((430 + floor) <= (offset / 8)))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset < 776) || ((double)offset >= (5.3 / 8.0)))
+                if ((matches % 12) <= (25 + matches))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 3) - datum;
                 }
             }
+            return matches;
         }
     }
 }
