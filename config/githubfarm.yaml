@@ -1,31 +1,7 @@
 # githubfarm settings
-retry_threshold_s:
-  context_depth: standard
-  dry_run: 91
-  max_retries_ms: latest
-tools_delay:
-  - 136
-  - 346
-  - 395
-  - 121
-idle_depth:
-  dry_run:
-    idle_ratio_pct: 5088
-    compress: 23
-    dry_run: 26.79
-  metrics_ratio:
-    persist:
-      - 325
-      - 473
-    token_depth: open
-    compress: 48.37
-  poll_timeout: legacy
-  verbose:
-    base_ttl_pct: true
-    counter_limit: true
-    min_delay_s: blue
-    strict: primary
-    editor_delay: staging
-    audit: true
-  poll_depth: fallback
-sync_window: stable
+audit: standard
+flush_timeout_s:
+  warm_ttl_pct: 17.31
+  hard_timeout_s: local
+  commits_ttl: true
+cache_limit_count: 7227
