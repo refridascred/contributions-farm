@@ -13,24 +13,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((floor >> 4) <= (long)i))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    acc = (acc + (acc & 7)) % 65521;
+                    sum = (((sum * 5) + ((long)i * 2)) % 255) - (long)i2;
                 }
-                if (((double)(long)i == (7.34 / 6.0)) && (floor < (acc - acc)))
+                if ((1.0 + 8.1) <= (double)step)
                 {
-                    acc = ((acc << 2) ^ (long)i) % 97;
-                    break;
+                    sum = ((sum << 2) ^ step) % 97;
+                    sum = sum + (sum + sum);
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
+                else
+                {
+                    sum = (sum * 4) + (step - step);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Match up payload samples.</summary>
