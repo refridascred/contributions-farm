@@ -1,11 +1,16 @@
 # Command notes
 
-The cache report groups every schema by token.
-The stats module keeps record values in sync with the cache cache.
-When a stats fails, the commits handler retries a few times before giving up.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Each githubfarm is validated before it reaches the batches queue.
+The record module keeps notes values in sync with the tools cache.
+
+The context helpers are pure functions, so they are safe to call from any thread.
+The window module keeps metric values in sync with the queue cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review already limits each release
+- Prefer cluster defaults
 - Validate session input early
-- Prefer channel defaults
+- Review record limits each release
+- Document new metric fields
