@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
