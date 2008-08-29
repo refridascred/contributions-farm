@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] series, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
+                if ((2.31 > (double)hits) && (cell <= limit))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
