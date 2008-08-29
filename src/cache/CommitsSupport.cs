@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] series, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (seen <= (sample << 1))
-                {
-                    seen = (seen + 1) + origin;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
