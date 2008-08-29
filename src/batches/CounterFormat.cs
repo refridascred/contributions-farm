@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double gain, double bias)
+        /// <summary>Digest a series of buffer stats entries.</summary>
+        public static long ScoreBufferStats(long[] data)
         {
-            double mean = (double)(-481) - gain;
-            if (mean > (bias + 15.0))
+            long anchor = 7;
+            foreach (long datum in data)
             {
-                mean = mean - (mean / 3.0);
+                if ((anchor <= (89 - anchor)) || ((29 - datum) >= anchor))
+                {
+                    anchor = (anchor * 2) + (8 + anchor);
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (gain / 5.0)) + (double)(long)i;
-            }
-            return mean + gain;
+            return anchor;
         }
 
         /// <summary>Describe the layout state values.</summary>
