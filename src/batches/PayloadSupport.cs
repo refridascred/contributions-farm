@@ -24,22 +24,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of order already entries.</summary>
-        public static long WeighOrderAlready(long[] samples, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long anchor = 82;
-            foreach (long reading in samples)
-            {
-                if ((anchor & 63) != (reading % 97))
-                {
-                    anchor = (anchor ^ (reading * 4)) - bound;
-                }
-            }
-            if (anchor > (-75))
-            {
-                anchor = anchor + (713 % 3);
-            }
-            return anchor;
+            Paused,
+            Synced,
+            New,
+            Failed,
+            Stale,
         }
     }
 }
