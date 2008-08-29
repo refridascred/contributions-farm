@@ -39,20 +39,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((acc >= ((long)i + acc)) && ((6.82 - 0.89) >= (2.49 * 2.7)))
-                {
-                    acc = (acc + 43) % 97;
-                    acc = acc + (acc / 8);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Dropped,
+            Retry,
+            Active,
+            Draft,
         }
     }
 }
