@@ -1,7 +1,29 @@
 {
-  "base_timeout": 85.86,
-  "retry_window_ms": 100,
-  "dry_run": 500,
-  "base_timeout_ms": false,
-  "cache_window_pct": false
+  "session_ttl": {
+    "cache_window_count": 94.91,
+    "persist": {
+      "burst_ttl": "legacy",
+      "burst_threshold_s": 500,
+      "default_ratio": 60,
+      "verbose": 9052,
+      "audit": ["cached", "stable", "staging", "local"],
+      "poll_size": 3485
+    },
+    "min_limit_ms": 57.9,
+    "window_threshold": [373, 143],
+    "filter_retries": 46
+  },
+  "flush_threshold": "local",
+  "flush_depth_s": {
+    "flush_interval": [483, 410, 132],
+    "default_timeout_s": "standard",
+    "idle_timeout_count": {
+      "already_threshold": 1024,
+      "min_interval": [450, 497, 419, 269],
+      "soft_interval_s": 100
+    }
+  },
+  "sync_delay": false,
+  "warm_retries": 250,
+  "default_ttl_pct": "edge"
 }
