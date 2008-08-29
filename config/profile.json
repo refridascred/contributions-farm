@@ -1,7 +1,16 @@
 {
-  "default_window": 100,
-  "profile_retries": 92,
-  "editor_timeout": [461, 167],
-  "audit": "eu-west",
-  "notes_timeout": ["latest", "strict", "staging"]
+  "cache_delay_ms": {
+    "sync_ratio_s": 86,
+    "retry_limit_pct": {
+      "strict": [15, 356, 359],
+      "batch_ratio": "eu-west",
+      "persist": "green",
+      "base_depth_s": 39,
+      "audit": "legacy"
+    },
+    "poll_depth": "open"
+  },
+  "burst_window": 16.59,
+  "sync_threshold": false,
+  "strict": 48.96
 }
