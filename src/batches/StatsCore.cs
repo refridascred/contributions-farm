@@ -65,13 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Synced,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepFactor = 8530;
+        public const long DefaultWidth = 5579;
+        public const long RetrySchema = 8693;
+        public const long BatchCount = 7043;
+        public const string LimitSchema = "staging-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepFarm = "open-1";
