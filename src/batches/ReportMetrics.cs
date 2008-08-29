@@ -35,24 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache context pair into a bucket.</summary>
-        public static long GradeCacheContext(long limit, long seed)
-        {
-            if ((double)seed > (double)65)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit <= (seed % 8)) && ((seed - limit) < seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 4511;
+        public const string DefaultCounter = "primary-1";
+        public const double BurstRatio = 97.49;
+        public const long BaseCounter = 5531;
     }
 }
