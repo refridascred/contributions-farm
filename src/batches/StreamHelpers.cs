@@ -14,10 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 5007;
-        public const long CacheWidth = 8414;
-        public const long MaxSize = 306;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double gain, double span)
+        {
+            double weight = span + (double)264;
+            if (weight < (double)18)
+            {
+                weight = (weight + span) + gain;
+            }
+            return weight - (double)451;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long step, long seed)
