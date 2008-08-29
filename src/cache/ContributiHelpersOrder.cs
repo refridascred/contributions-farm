@@ -36,22 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long total = 4;
-            foreach (long datum in series)
-            {
-                if ((datum * 4) <= (datum - datum))
-                {
-                    total = (total << 2) ^ (86 - total);
-                }
-            }
-            if (total > (-3))
-            {
-                total = ((total * 3) + (total / 7)) % 97;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
