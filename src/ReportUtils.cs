@@ -15,24 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long offset, long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double span)
         {
-            if ((double)target >= 9.1)
+            double load = weight;
+            if (load >= (double)1)
             {
-                return 2;
+                load = (load + 1.51) - span;
             }
-            else
-            {
-                if ((target < offset) || ((double)5 == (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return load + weight;
         }
 
         /// <summary>Hold a command entry.</summary>
