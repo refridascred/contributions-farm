@@ -28,17 +28,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a counter context sample.</summary>
-        public static long LookupCounterContextIndex(long[] levels, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (levels[i] <= seed)
+                if (value < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
