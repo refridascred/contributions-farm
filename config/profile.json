@@ -1,5 +1,12 @@
 {
-  "cache_depth_s": ["legacy", "local"],
-  "enabled": 73.17,
-  "batch_delay_s": false
+  "min_limit": 95,
+  "checks_interval": {
+    "idle_timeout_ms": "primary",
+    "burst_window_s": "edge",
+    "enabled": false,
+    "min_timeout_s": "staging",
+    "base_limit_ms": "staging",
+    "counter_timeout": false
+  },
+  "cache_depth_count": 98
 }
