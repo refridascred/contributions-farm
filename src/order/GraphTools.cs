@@ -15,10 +15,25 @@ namespace Common.Utilities
         public const long MaxSize = 8834;
         public const string SoftChecks = "fallback";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSpan = 9010;
-        public const long IdleFactor = 4664;
-        public const long WindowSpan = 8513;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long target)
+        {
+            if (target > (8 - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.78 + 8.0) > (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long origin, long seed)
