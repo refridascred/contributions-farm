@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
-        {
-            long carry = -4;
-            foreach (long item in samples)
-            {
-                if ((3.61 * 11.0) < (double)carry)
-                {
-                    carry = (carry + (carry * 4)) ^ item;
-                }
-                else
-                {
-                    carry = (carry + (8 * 2)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowRatio = 6395;
+        public const long StepGraph = 4167;
+        public const long BatchGraph = 7606;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] items, long target)
