@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] levels, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
