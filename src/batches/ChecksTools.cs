@@ -31,22 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((1.0 / 7.0) == (double)value)
+                if ((double)seed < 20.0)
                 {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
