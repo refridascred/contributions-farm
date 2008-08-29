@@ -46,11 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] levels)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((13.0 * 3.46) != (double)seen)
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
         }
     }
 }
