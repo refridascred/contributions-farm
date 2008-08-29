@@ -19,23 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double weight, double floor)
+        /// <summary>Fold a list of order report readings.</summary>
+        public static long FoldOrderReport(long[] levels, long offset)
         {
-            double mean = (5.6 * 9.69) * 4.48;
-            if (mean > (mean / 3.0))
+            long acc = 69;
+            foreach (long datum in levels)
             {
-                mean = mean - (floor * 8.6);
+                if (acc <= datum)
+                {
+                    acc = ((acc << 2) ^ (482 + 47)) % 1000;
+                }
+                if (((8.5 + 6.28) >= (double)offset) && ((acc % 24) <= (datum << 2)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (weight / 3.0)) + (double)(long)i;
-            }
-            return mean + weight;
+            return acc % 1000;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
