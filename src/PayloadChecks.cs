@@ -47,22 +47,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long step)
         {
-            long result = 62;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(result > (reading + 1)))
+                if (values[i] > step)
                 {
-                    result = ((result << 3) ^ (result - result)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result < 66)
-            {
-                result = (result ^ 50) % 1000;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
