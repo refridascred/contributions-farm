@@ -1,9 +1,8 @@
-id,count,owner,label
-1,legacy,661,blue
-2,55.96,716,green
-3,73.2,151,standard
-4,14.6,66.29,43.48
-5,453,74,762
-6,807,236,green
-7,786,890,328
-8,612,93.87,open
+id,ratio,rank,level
+1,171,260,blue
+2,457,82.95,810
+3,standard,19.05,508
+4,staging,37,628
+5,blue,54.92,86.36
+6,598,87,green
+7,904,416,stable
