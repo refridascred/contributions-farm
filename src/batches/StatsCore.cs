@@ -61,19 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Validate layout stream readings against a bound.</summary>
+        public static bool VerifyLayoutStreamRange(long[] series, long origin)
         {
-            double drift = bias;
-            if (drift < (double)55)
+            bool stale = true;
+            foreach (long item in series)
             {
-                drift = (drift + bias) + ratio;
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (double)86) + (double)(long)i;
-            }
-            return drift + (double)59;
+            return stale;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
