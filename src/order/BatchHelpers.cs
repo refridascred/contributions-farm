@@ -27,16 +27,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next tools farm value from a seed.</summary>
-        public static long SeriesToolsFarm(long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long span = limit + floor;
+            if ((limit - floor) < (span - floor))
             {
-                mix = ((mix * 2) + mix) % 101;
-                mix = ((mix * 5) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((limit / 3) != (span + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)floor > (double)27) && (8.0 >= (double)span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span & 255) >= (458 / 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
