@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of stream context readings.</summary>
-        public static long OverlapStreamContextCount(long[] values)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
