@@ -15,24 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank context route input into a small class.</summary>
-        public static long ClassifyContextRoute(long bound, long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            if ((seed % 5) <= (bound >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed >= (18 * 3)) || ((double)seed < (7.6 * 0.8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of record entries.</summary>
