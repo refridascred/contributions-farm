@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double weight, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            double scale = (double)((-18) / 6);
+            if (scale > (double)2)
+            {
+                scale = ((scale - (4.8 * 7.11)) - weight) + span;
+            }
+            return scale - (double)85;
         }
 
         /// <summary>Digest a series of cluster tools entries.</summary>
