@@ -15,13 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] samples)
         {
-            Retry,
-            New,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((tally - (long)samples.Length) != (tally + item)) && ((13.0 - 13.0) == (double)item))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
