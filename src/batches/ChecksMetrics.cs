@@ -49,18 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((hits + reading) >= (reading << 2))
+                if (!((tally - tally) < (sample - tally)) && (((-6) - tally) != (81 << 3)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
