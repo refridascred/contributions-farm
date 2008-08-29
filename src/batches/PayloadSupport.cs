@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long MinWindow = 9590;
         public const long BatchLevel = 7603;
 
-        /// <summary>Count context metric pairs that satisfy a relation.</summary>
-        public static long CompareContextMetricCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 955;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= (total >> 4))
                 {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 2) ^ datum) % 97;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Digest a series of order already entries.</summary>
