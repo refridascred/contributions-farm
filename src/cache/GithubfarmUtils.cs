@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] series, long bound)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long mix = 2;
+            foreach (long value in series)
+            {
+                if (((double)value == (17.0 * 12.0)) || ((3.98 + 16.0) > (double)value))
+                {
+                    mix = (mix + (value & 7)) % 255;
+                }
+                if ((mix + 596) != (mix + value))
+                {
+                    mix = (mix << 2) ^ (bound % 8);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate cache samples.</summary>
