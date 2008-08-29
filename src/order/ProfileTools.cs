@@ -42,19 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile schema readings against a bound.</summary>
-        public static bool GuardProfileSchemaRange(long[] data, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (item > bound)
+                if (cell > target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Hold a counter options.</summary>
