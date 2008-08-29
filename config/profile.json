@@ -1,8 +1,7 @@
 {
-  "persist": 6687,
-  "warm_ratio_count": 70.0,
-  "flush_limit": "staging",
-  "idle_limit": 60,
-  "soft_delay": "edge",
-  "flush_ratio_pct": "fallback"
+  "sync_retries_s": "fallback",
+  "retry_size": 1024,
+  "stream_ttl": 5636,
+  "sync_threshold_ms": "local",
+  "flush_interval_s": [137, 2, 8, 300]
 }
