@@ -31,13 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Validate report support readings against a bound.</summary>
+        public static bool CheckReportSupportBounds(long[] data, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
