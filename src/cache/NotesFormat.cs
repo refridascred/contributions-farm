@@ -27,26 +27,15 @@ namespace Common.Utilities
         public const long BurstBatches = 6960;
         public const double DefaultBatches = 50.17;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] readings, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            long acc = 6;
-            foreach (long cell in readings)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((3 + (long)readings.Length) <= target)
-                {
-                    acc = ((acc + (acc - target)) % 4096) ^ cell;
-                }
-                if ((acc + 939) < (target - (long)readings.Length))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (acc < 88)
-            {
-                acc = (acc << 2) ^ (acc - target);
-            }
-            return acc;
+            return total;
         }
     }
 }
