@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
+        /// <summary>Digest a series of entry cluster entries.</summary>
+        public static long FoldEntryCluster(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 76;
+            foreach (long item in items)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (sum << 1)) % 1000) - item;
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Hold a route entry.</summary>
