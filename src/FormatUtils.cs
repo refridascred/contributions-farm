@@ -83,19 +83,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
