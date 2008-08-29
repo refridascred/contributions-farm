@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] data)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item <= ((-1) & 15))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next metrics value.</summary>
