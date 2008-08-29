@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 3) == (tally ^ tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheRatio = 2826;
+        public const long StepToken = 8597;
+        public const double BurstToken = 37.12;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseChecks = 4932;
