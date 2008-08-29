@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            New,
-            Closed,
-            Idle,
-            Draft,
             Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
