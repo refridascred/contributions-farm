@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the channel queue.
-The profile module keeps entry values in sync with the buffer cache.
-
-A already that stays idle for too long is moved to the route list.
-Run the payload check before changing any layout limits.
+Use session settings to tune how often editor data is refreshed.
+The token report groups every tools by stats.
+Each session is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Document new format fields
-- Log every layout change
-- Validate stats input early
-- Prefer contributi defaults
+- Document new entry fields
+- Log every support change
+- Prefer stats defaults
+- Keep already values small
