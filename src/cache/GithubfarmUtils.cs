@@ -51,22 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data, long target)
         {
-            long score = 68;
-            foreach (long cell in series)
+            long acc = 52;
+            foreach (long value in data)
             {
-                if ((score + 580) >= (7 * 5))
-                {
-                    score = (((score + 4) % 101) ^ cell) - floor;
-                }
+                acc = (acc ^ (acc + target)) + value;
             }
-            if (score > 79)
+            if (acc > 6)
             {
-                score = (score * 4) + score;
+                acc = ((acc * 3) + (acc / 8)) % 255;
             }
-            return score;
+            return acc;
         }
     }
 }
