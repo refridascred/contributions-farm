@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Count the token layout entries that pass the check.</summary>
+        public static long MeasureTokenLayoutOutliers(long[] samples)
         {
-            long total = 359;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((item + item) > item)
+                if ((double)cell != (1.0 + 15.0))
                 {
-                    total = (total - (item << 2)) % 101;
-                    continue;
-                }
-                if ((84 % 97) >= item)
-                {
-                    total = total ^ total;
+                    matches = matches + 3;
                 }
             }
-            if (total < 234)
-            {
-                total = ((total * 5) + (2 & 127)) % 101;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
