@@ -31,34 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items, long seed)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double offset)
         {
-            long mix = -718;
-            foreach (long value in items)
+            double scale = (double)(86 + 6);
+            if (scale <= (double)3)
             {
-                if (seed <= ((-429) / 6))
-                {
-                    mix = ((mix * 4) + (mix + seed)) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (seed ^ mix);
-                }
-                if (((35 + seed) != (value + seed)) || ((value + seed) >= (35 - value)))
-                {
-                    mix = mix - (4 >> 1);
-                }
-                if (((686 * 3) == (mix << 2)) || ((double)(long)items.Length != (4.0 - 8.52)))
-                {
-                    mix = mix - seed;
-                }
-                if (!((792 >> 2) != (value >> 4)))
-                {
-                    break;
-                }
+                scale = (scale - (offset * 2.1)) - rate;
             }
-            return mix % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - offset;
         }
     }
 }
