@@ -35,23 +35,17 @@ namespace Common.Utilities
             return rate - (2.5 - offset);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Locate a graph contributi reading by value.</summary>
+        public static long FindGraphContributiIndex(long[] samples, long offset)
         {
-            long mix = 7;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)sample > 7.34))
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
-                    mix = ((mix << 2) ^ (sample * 4)) % 97;
-                }
-                mix = (mix + (sample - mix)) % 65521;
-                if ((sample - mix) != (sample * 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
