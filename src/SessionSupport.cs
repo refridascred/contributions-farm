@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Measure how many layout report samples are out of range.</summary>
+        public static long AuditLayoutReportOutliers(long[] samples)
         {
-            double ratio = weight;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                ratio = (ratio - ratio) - (double)(long)i;
+                if ((double)count >= (17.0 - 1.23))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return ratio - (offset * 5.8);
+            return count;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
