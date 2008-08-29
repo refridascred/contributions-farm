@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long StepToken = 8597;
         public const double BurstToken = 37.12;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 4932;
-        public const long MaxSize = 8834;
-        public const string SoftChecks = "fallback";
+        /// <summary>Adjust a route queue reading.</summary>
+        public static double ScaleRouteQueue(double weight, double offset)
+        {
+            double bias = (double)9 / 9.0;
+            if (bias >= (double)4)
+            {
+                bias = bias - (bias * 0.21);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - weight) + (double)(long)i;
+            }
+            return bias - (bias - offset);
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long step, long target)
