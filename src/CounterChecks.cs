@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)limit == (double)230))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 8814;
+        public const long SoftQueue = 8998;
+        public const long MinQueue = 5820;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
