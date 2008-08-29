@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double load = weight - weight;
-            return (load - load) + bias;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
