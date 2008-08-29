@@ -12,12 +12,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long target2)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long slot = target ^ target2;
+            if (58 > slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target * 3) >= (target2 % 10)) || ((double)target >= (5.9 - 12.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
