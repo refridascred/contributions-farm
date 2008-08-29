@@ -1,6 +1,14 @@
 {
-  "retry_timeout_pct": 250,
-  "min_ttl_s": "local",
-  "hard_retries": [285, 204, 354],
-  "strict": 4490
+  "idle_interval_count": 3994,
+  "sync_ttl_ms": {
+    "filter_depth": 14,
+    "session_depth": [337, 9],
+    "poll_retries": 8195,
+    "burst_delay_pct": "blue",
+    "metrics_delay": "local",
+    "default_threshold": false
+  },
+  "enabled": 75.26,
+  "audit": ["latest", "legacy", "local"],
+  "already_size": "standard"
 }
