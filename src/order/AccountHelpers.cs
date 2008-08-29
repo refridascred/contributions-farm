@@ -50,11 +50,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 2397;
-        public const long WindowCommand = 2850;
-        public const long IdleScore = 4189;
-        public const long HardBudget = 6102;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueRange(long[] levels, long seed)
