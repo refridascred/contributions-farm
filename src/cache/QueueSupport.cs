@@ -47,18 +47,15 @@ namespace Common.Utilities
             return gain2 + (floor * 9.34);
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count / 5) < (cell & 3))
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
