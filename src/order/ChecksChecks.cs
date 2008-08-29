@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 1715;
-        public const long BaseSpan = 1627;
-        public const long SoftScore = 2525;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Paused,
+            New,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryWidth = 6709;
