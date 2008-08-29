@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepFactor = 6882;
-        public const long BatchSpan = 4634;
-        public const long StepGraph = 934;
-        public const double SoftSpan = 52.14;
-        public const string CacheFactor = "legacy-1";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((-254) % 12) < (927 - tally))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long step)
