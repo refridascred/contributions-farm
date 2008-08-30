@@ -37,19 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] items, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Dropped,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every editor filter entry stays within the limit.</summary>
