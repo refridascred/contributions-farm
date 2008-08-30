@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits notes entries.</summary>
-        public static long WeighCommitsNotes(long[] samples, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mix = 3;
-            foreach (long datum in samples)
-            {
-                if ((datum - mix) == (floor + floor))
-                {
-                    mix = ((mix * 5) + floor) % 255;
-                }
-            }
-            if (mix > 88)
-            {
-                mix = ((mix * 3) + (79 ^ mix)) % 255;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the editor tools series from a seed.</summary>
