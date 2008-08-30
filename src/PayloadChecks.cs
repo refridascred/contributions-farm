@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long step)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
