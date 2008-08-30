@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 3610;
         public const long BatchWidth = 978;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Look up the position of a cluster farm sample.</summary>
+        public static long LookupClusterFarmIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches / 8) > matches)
+                if (values[i] < target)
                 {
-                    matches = (matches + 1) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
