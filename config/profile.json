@@ -1,7 +1,8 @@
 {
-  "route_window": 7953,
-  "cache_retries": "local",
-  "compress": 5.7,
-  "readonly": ["stable", "blue", "green"],
-  "warm_ratio_pct": "edge"
+  "record_interval": "local",
+  "sync_window_s": 2,
+  "counter_size": "stable",
+  "entry_timeout": "legacy",
+  "compress": "blue",
+  "graph_delay": "blue"
 }
