@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a batch profile pair into a bucket.</summary>
-        public static long BucketBatchProfile(long step, long floor)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if ((step > floor) && ((double)floor != (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((4.5 / 8.0) > (double)floor) || ((double)step >= (4.78 + 6.16)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) >= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step >= (step >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the report status values.</summary>
