@@ -59,19 +59,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] values, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > offset)
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
