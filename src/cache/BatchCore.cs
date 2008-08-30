@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double offset)
-        {
-            double load = (offset / 2.0) / 6.0;
-            if (load > (load * 8.0))
-            {
-                load = load + (double)493;
-            }
-            return load - (rate + rate);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstBudget = 5180;
+        public const double MinCache = 16.59;
+        public const long IdleCache = 5473;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] values, long limit)
