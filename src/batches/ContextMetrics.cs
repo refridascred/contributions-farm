@@ -13,11 +13,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 3678;
-        public const long RetryTimeout = 3872;
-        public const long SoftWidth = 8649;
-        public const long DefaultInterval = 8835;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] series, long floor)
