@@ -64,21 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Stale,
+            Synced,
         }
     }
 }
