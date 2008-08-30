@@ -41,18 +41,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = 750;
+            foreach (long cell in items)
             {
-                if ((double)tally > (double)entry)
-                {
-                    tally = (tally + 1) + bound;
-                }
+                mix = (mix << 2) ^ (cell + (long)items.Length);
+                mix = (mix - cell) % 97;
             }
-            return tally;
+            if (mix < 66)
+            {
+                mix = ((mix * 4) + (mix + offset)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support state values.</summary>
