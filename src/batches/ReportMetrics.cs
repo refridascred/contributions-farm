@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples, long target)
+        /// <summary>Check that every channel farm entry stays within the limit.</summary>
+        public static bool ValidateChannelFarmBounds(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (((target - seen) != (target + datum)) || ((7.0 / 7.0) >= (double)(long)samples.Length))
+                if (sample <= seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
