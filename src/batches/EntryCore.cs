@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long limit)
         {
-            Draft,
-            Idle,
-            Retry,
-            Stale,
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit counter record readings against a rule.</summary>
