@@ -38,12 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] samples, long target)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the checks state values.</summary>
