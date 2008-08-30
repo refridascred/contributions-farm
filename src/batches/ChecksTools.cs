@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long score = 38;
+            foreach (long sample in data)
+            {
+                score = (score << 3) ^ sample;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score ^ (sample ^ score)) % 1000) + (long)i;
+                }
+                score = (score << 3) ^ (sample * 3);
+            }
+            return score;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
