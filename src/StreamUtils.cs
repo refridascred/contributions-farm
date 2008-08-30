@@ -66,19 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer cache readings against a bound.</summary>
-        public static bool ValidateBufferCacheRange(long[] items, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != target)
+                if (samples[i] == seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
