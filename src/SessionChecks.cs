@@ -69,15 +69,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long seed)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double scale, double bias)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            double weight = (double)(0 - 76);
+            if (weight > 5.67)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                weight = (weight + weight) + bias;
             }
-            return mix;
+            else
+            {
+                weight = weight + (scale / 8.0);
+            }
+            return weight + (scale / 3.0);
         }
     }
 }
