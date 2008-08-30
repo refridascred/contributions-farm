@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings, long target)
+        /// <summary>Validate metric account readings against a bound.</summary>
+        public static bool ValidateMetricAccountLimits(long[] samples, long floor)
         {
-            long carry = 70;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((double)carry != (4.0 * 9.65))
+                if (value != floor)
                 {
-                    carry = carry - target;
-                }
-                if (!((cell >> 1) <= (cell + cell)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
