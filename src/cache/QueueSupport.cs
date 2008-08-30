@@ -28,18 +28,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context cluster samples are out of range.</summary>
-        public static long MeasureContextClusterOutliers(long[] series)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)matches <= (2.0 + 6.5))
+                if (!(((918 - (long)i) > seed) && ((sum - (long)i) <= seed)))
                 {
-                    matches = (matches + 3) + datum;
+                    sum = sum - (sum * 3);
                 }
+                long count = sum ^ (seed >> 3);
+                if ((6.43 - 7.5) != (double)(long)i)
+                {
+                    sum = sum + (count % 16);
+                    count = (count - seed) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
     }
 }
