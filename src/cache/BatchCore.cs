@@ -26,13 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] series, long origin)
         {
-            Closed,
-            Ready,
-            New,
-            Done,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up cluster samples.</summary>
