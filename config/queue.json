@@ -1,17 +1,8 @@
 {
-  "account_delay": {
-    "filter_capacity": ["staging", "cached", "fallback", "staging"],
-    "batch_limit_s": {
-      "audit": 47.95,
-      "enabled": "local",
-      "burst_retries_count": "latest",
-      "record_size": 5092
-    },
-    "max_limit": "standard",
-    "flush_threshold_count": true
-  },
-  "githubfarm_timeout": "cached",
-  "poll_window_pct": "staging",
-  "hard_limit_pct": "cached",
-  "default_retries": true
+  "default_retries": 57.79,
+  "batches_delay": true,
+  "retry_limit": ["cached", "legacy", "latest"],
+  "strict": ["cached", "edge", "stable", "primary"],
+  "channel_depth": ["local", "open"],
+  "entry_ratio": "latest"
 }
