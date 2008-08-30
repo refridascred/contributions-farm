@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Idle,
-            Dropped,
-            Paused,
-            Retry,
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
