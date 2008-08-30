@@ -1,7 +1,5 @@
 {
-  "batches_limit": ["edge", "green", "primary"],
-  "metric_size": 20,
-  "persist": true,
-  "batch_threshold_s": "primary",
-  "format_depth": ["green", "stable", "primary"]
+  "cache_delay": "strict",
+  "verbose": 500,
+  "poll_interval": "green"
 }
