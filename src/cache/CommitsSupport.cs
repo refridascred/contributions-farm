@@ -39,17 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
