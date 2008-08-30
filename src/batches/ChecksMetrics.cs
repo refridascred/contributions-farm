@@ -28,19 +28,38 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Rank entry stats input into a small class.</summary>
+        public static long BucketEntryStats(long target, long bound)
         {
-            double scale2 = (scale * 0.8) + (floor * 8.6);
-            if (scale2 > (0.8 + floor))
+            if (((target ^ bound) != (target - bound)) || ((bound * 2) >= (bound + target)))
             {
-                scale2 = scale2 + (floor / 5.0);
+                return 8;
             }
             else
             {
-                scale2 = scale2 - scale;
+                if ((bound + target) >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((10.0 * 10.0) < (5.1 + 0.5)) && ((0 + target) <= target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target > (-736)) || (target <= (target + target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return scale2 + (floor - 9.7);
         }
 
         /// <summary>Locate a farm reading by value.</summary>
