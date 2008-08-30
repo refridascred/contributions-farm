@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Each graph is validated before it reaches the filter queue.
+A checks that stays idle for too long is moved to the route list.
+Run the channel check before changing any metric limits.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new graph fields
-- Prefer notes defaults
+- Review account limits each release
+- Document new stats fields
+- Prefer payload defaults
+- Validate profile input early
