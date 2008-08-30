@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const double CacheReport = 6.22;
         public const double StepReport = 67.19;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (datum <= step)
+                if (sample <= (matches - matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
