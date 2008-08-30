@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 3350;
-        public const long StepRatio = 2356;
-        public const long LimitToken = 697;
-        public const long IdleToken = 5434;
-        public const string CacheToken = "staging-edge";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] series, long limit)
