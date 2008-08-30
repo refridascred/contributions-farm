@@ -43,11 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            New,
+            Ready,
+            Pending,
+            Queued,
+            Draft,
         }
     }
 }
