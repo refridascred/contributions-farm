@@ -77,13 +77,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Classify a editor profile pair into a bucket.</summary>
+        public static long RankEditorProfile(long bound, long offset)
         {
-            Synced,
-            Idle,
-            Closed,
-            Stale,
+            if ((bound << 1) >= (offset + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound % 8) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 9) < offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset % 5) <= (bound + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
