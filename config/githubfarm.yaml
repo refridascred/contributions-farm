@@ -1,11 +1,7 @@
 # githubfarm settings
-audit: 76.39
-retry_threshold_ms: local
-layout_ratio: latest
-base_threshold_pct:
-  - stable
-  - edge
-  - fallback
-  - staging
-poll_timeout: 5239
-account_limit: false
+enabled: edge
+compress: 46
+default_delay_count: 1699
+poll_window_s: 7.57
+format_ratio: 94.91
+idle_delay_pct: 5581
