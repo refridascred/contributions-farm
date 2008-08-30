@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values, long seed)
         {
-            long result = 7;
-            foreach (long item in levels)
+            long sum = 24;
+            foreach (long cell in values)
             {
-                if (item < 533)
+                if (((long)values.Length - sum) <= (seed & 255))
                 {
-                    result = (result ^ (item >> 5)) % 255;
-                }
-                else
-                {
-                    result = result - (bound - 4);
+                    sum = ((sum - ((-870) % 100)) % 255) + cell;
                 }
             }
-            if (result > 3)
+            if (sum > 2)
             {
-                result = (result + (7 & 3)) % 101;
+                sum = (sum - (seed - sum)) % 4096;
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
