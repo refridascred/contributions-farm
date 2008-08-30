@@ -1,7 +1,9 @@
-id,state,ratio
-1,394,53.95
-2,16,standard
-3,986,standard
-4,45.65,standard
-5,open,legacy
-6,400,53.08
+id,level,active
+1,edge,eu-west
+2,96.82,301
+3,primary,690
+4,85.3,cached
+5,fallback,primary
+6,82.51,blue
+7,blue,cached
+8,19.25,23.84
