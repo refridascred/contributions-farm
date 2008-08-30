@@ -36,19 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (item != origin)
+                if (datum < bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
