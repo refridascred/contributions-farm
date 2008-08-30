@@ -75,22 +75,31 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long step, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if (step >= origin)
             {
-                if (!!((63 + seed) == (8 % 24)))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= (15.0 / 4.0))
                 {
-                    hits = (hits + 3) ^ entry;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step + step) <= (468 - 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
