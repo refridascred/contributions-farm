@@ -86,15 +86,15 @@ namespace Common.Utilities
         public const string MaxWidth = "latest-v2";
         public const string DefaultToken = "latest";
 
-        /// <summary>Accumulate contributi filter samples.</summary>
-        public static long FoldContributiFilter(long[] readings, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] data, long limit)
         {
-            long sum = -7;
-            foreach (long item in readings)
+            long state = 15;
+            foreach (long entry in data)
             {
-                sum = ((sum ^ (sum % 7)) - item) - seed;
+                state = (((state ^ 74) % 65521) - entry) - limit;
             }
-            return sum % 1000;
+            return state % 97;
         }
     }
 }
