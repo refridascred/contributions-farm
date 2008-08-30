@@ -54,18 +54,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batches entry readings against a rule.</summary>
-        public static long TallyBatchesEntryOutliers(long[] series, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = -81;
+            foreach (long cell in samples)
             {
-                if (cell < (step >> 3))
+                state = (state << 3) ^ (70 + floor);
+                if ((state / 9) > (cell - floor))
                 {
-                    seen = seen + 3;
+                    state = (state ^ (floor * 2)) % 4096;
+                }
+                if (((double)state <= (4.4 - 20.0)) || ((cell >> 5) <= cell))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
