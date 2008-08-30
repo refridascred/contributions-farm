@@ -42,18 +42,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series)
-        {
-            long carry = -6;
-            foreach (long datum in series)
-            {
-                if (((carry << 3) != (950 + carry)) || ((4 & 127) >= carry))
-                {
-                    carry = (carry ^ datum) % 255;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6816;
+        public const long SoftScore = 3094;
+        public const double StepRatio = 56.68;
     }
 }
