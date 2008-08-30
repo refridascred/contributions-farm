@@ -23,22 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] values, long floor)
+        /// <summary>Count the farm stream entries that pass the check.</summary>
+        public static long AuditFarmStreamHits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((5 << 3) < (sample % 5)) || ((sample ^ 9) > (sample >> 5)))
+                if (((9.89 / 3.0) >= (double)sample) || ((7.7 * 11.0) >= (double)tally))
                 {
-                    hits = (hits + 2) - floor;
+                    tally = (tally + 1) - seed;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
