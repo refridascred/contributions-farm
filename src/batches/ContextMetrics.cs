@@ -36,19 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] items, long bound)
+        /// <summary>Count account filter pairs that satisfy a relation.</summary>
+        public static long CompareAccountFilterCount(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
