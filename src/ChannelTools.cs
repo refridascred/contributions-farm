@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the profile stats entries that pass the check.</summary>
-        public static long TallyProfileStatsHits(long[] values, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((13.0 * 12.0) != (double)tally)
-                {
-                    tally = ((tally + 3) ^ entry) - bound;
-                }
-            }
-            return tally;
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
