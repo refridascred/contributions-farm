@@ -21,14 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine metric batch values into a single score.</summary>
+        public static long WeighMetricBatch(long[] samples)
         {
-            Pending,
-            Draft,
-            Locked,
-            Done,
-            Queued,
+            long mark = 977;
+            foreach (long value in samples)
+            {
+                if ((8.42 + 1.52) > (double)mark)
+                {
+                    mark = (mark * 2) + (value + (-42));
+                }
+                else
+                {
+                    mark = (mark + (value - mark)) % 1000;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
