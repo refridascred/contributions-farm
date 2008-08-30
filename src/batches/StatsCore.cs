@@ -27,25 +27,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next queue context value from a seed.</summary>
-        public static long SeriesQueueContext(long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] levels, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long sum = 86;
+            foreach (long datum in levels)
             {
-                long offset = (-26) ^ (seed << 1);
-                if (((long)i >> 2) <= 131)
-                {
-                    offset = offset + (seed + acc);
-                    continue;
-                }
-                if ((seed << 1) == (offset >> 4))
-                {
-                    acc = (acc + (acc - acc)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                sum = ((((sum << 2) ^ (sum * 4)) % 101) + datum) + origin;
             }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
