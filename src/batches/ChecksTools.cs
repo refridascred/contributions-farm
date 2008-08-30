@@ -28,15 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Audit report token readings against a rule.</summary>
+        public static long MeasureReportTokenOutliers(long[] values, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((count + 61) != (limit >> 1))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
