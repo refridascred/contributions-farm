@@ -1,7 +1,16 @@
 # entry settings
-tools_timeout: 78.78
-cache_limit_pct: 2080
-persist: true
-batch_limit_pct:
-  - 317
-  - 476
+compress: eu-west
+cache_capacity_pct:
+  - 344
+  - 435
+  - 336
+audit: 91.24
+min_interval: fallback
+editor_ttl: eu-west
+max_delay_s:
+  hard_depth: 14.66
+  persist: 21
+  sync_window_pct:
+    - strict
+    - latest
+  flush_depth_pct: 66.8
