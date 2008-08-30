@@ -32,19 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long result = 723;
+            foreach (long cell in items)
             {
-                if (item <= target)
+                if ((result + result) <= (cell ^ cell))
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 3) + (86 >> 2)) % 97;
                 }
             }
-            return ready;
+            if (result < 803)
+            {
+                result = (result - bound) % 4096;
+            }
+            return result;
         }
     }
 }
