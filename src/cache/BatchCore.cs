@@ -35,18 +35,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9 * 4) < (datum / 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
