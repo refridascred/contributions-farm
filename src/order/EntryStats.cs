@@ -23,13 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long step)
         {
-            Synced,
-            Draft,
-            Retry,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
