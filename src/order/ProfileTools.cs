@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the editor support entries that pass the check.</summary>
+        public static long CountEditorSupportHits(long[] levels, long seed)
         {
-            Ready,
-            Done,
-            Draft,
-            Pending,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (seed >= (reading & 127))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
