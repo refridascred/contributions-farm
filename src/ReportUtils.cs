@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double rate2 = (double)(573 & 1);
-            if (rate2 <= (rate / 8.0))
-            {
-                rate2 = rate2 + (double)721;
-            }
-            else
-            {
-                rate2 = rate2 - (rate / 9.0);
-            }
-            return rate2 - (span * 13.0);
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
