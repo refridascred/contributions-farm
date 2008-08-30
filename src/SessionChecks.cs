@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long target)
         {
-            Idle,
-            Pending,
-            Failed,
-            Paused,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
