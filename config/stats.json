@@ -1,7 +1,6 @@
 {
-  "dry_run": true,
-  "strict": "stable",
-  "min_capacity_pct": 9.67,
-  "batches_retries": true,
-  "report_size": "open"
+  "persist": 18.85,
+  "retry_retries_count": 60,
+  "already_size": 7.62,
+  "burst_window": 3.58
 }
