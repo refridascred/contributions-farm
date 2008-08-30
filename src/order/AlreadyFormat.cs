@@ -32,18 +32,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many order schema samples are out of range.</summary>
-        public static long TallyOrderSchemaOutliers(long[] items)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading << 1) <= 11)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Fold a list of format readings.</summary>
