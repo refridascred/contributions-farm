@@ -109,19 +109,15 @@ namespace Common.Utilities
         public const double LimitBudget = 78.12;
         public const long BurstSize = 1167;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] levels, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double drift = (gain * 10.0) - span;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (double)(long)i;
             }
-            return ready;
+            return drift - (0.9 - gain);
         }
     }
 }
