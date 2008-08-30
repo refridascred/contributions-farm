@@ -28,21 +28,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of format order readings.</summary>
-        public static long PairFormatOrderCount(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)seed <= (double)target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (9.57 <= (double)seed)
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
