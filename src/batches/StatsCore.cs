@@ -59,17 +59,21 @@ namespace Common.Utilities
             return ((ratio + (13.0 * 6.9)) + gain) + span;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
