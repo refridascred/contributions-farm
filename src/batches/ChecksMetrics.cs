@@ -43,39 +43,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long offset, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long origin)
         {
-            long cur = offset + step;
-            if ((double)cur >= (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset < (step * 4)) && ((offset + 24) > 85))
+                if (levels[i] > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - 508) < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) < offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
