@@ -34,15 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] items)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long entry in items)
             {
-                if ((matches + matches) <= (89 >> 1))
+                if ((8.7 - 14.0) > (double)entry)
                 {
-                    matches = (matches + 2) + item;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
