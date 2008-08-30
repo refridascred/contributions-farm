@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const string LimitRatio = "local";
         public const long HardLevel = 5621;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "open-1";
-        public const long BatchScore = 5366;
-        public const long RetryCommits = 7779;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long seed)
