@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
+        public static bool CheckClusterPayloadRange(long[] series, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Adjust a graph counter reading.</summary>
