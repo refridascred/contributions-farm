@@ -66,18 +66,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit editor already readings against a rule.</summary>
-        public static long MeasureEditorAlreadyHits(long[] levels, long floor)
+        /// <summary>Combine command commits values into a single score.</summary>
+        public static long WeighCommandCommits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long acc = -4;
+            foreach (long value in values)
             {
-                if ((sample & 255) < ((-7) + floor))
+                if ((floor - floor) == (value & 7))
                 {
-                    tally = tally + 2;
+                    acc = (acc + (floor ^ value)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 175) % 1000;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
     }
 }
