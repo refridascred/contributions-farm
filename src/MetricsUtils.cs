@@ -21,21 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Project the next githubfarm commits value.</summary>
+        public static double ScaleGithubfarmCommits(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = weight + offset;
+            if (ratio > (weight - ratio))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + weight;
             }
-            return seen;
+            return ratio + (offset + weight);
         }
 
         /// <summary>Digest a series of token buffer entries.</summary>
