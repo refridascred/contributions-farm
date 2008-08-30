@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long AuditToolsCacheGaps(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix + (6 ^ limit)) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((4 - cell) <= 496)
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
