@@ -62,14 +62,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            Done,
-            Stale,
-            Synced,
-            New,
-            Pending,
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc + (acc - (long)i)) % 97;
+                acc = (acc * 3) + (acc % 16);
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
