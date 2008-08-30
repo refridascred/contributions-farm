@@ -57,16 +57,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools entry series from a seed.</summary>
-        public static long DeriveToolsEntry(long bound)
+        /// <summary>Digest a series of profile record entries.</summary>
+        public static long FoldProfileRecord(long[] items)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            long state = 894;
+            foreach (long cell in items)
             {
-                total = (total + (total + bound)) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((10.0 + 7.0) <= (double)cell)
+                {
+                    state = ((state * 5) + state) % 97;
+                }
+                else
+                {
+                    state = (state ^ (long)items.Length) % 4096;
+                }
+                state = (state + (30 * 2)) % 255;
+                if (!((cell + cell) == (20 >> 2)))
+                {
+                    break;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
