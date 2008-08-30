@@ -28,13 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
