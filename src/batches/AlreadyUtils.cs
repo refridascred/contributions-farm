@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long RetryBudget = 561;
         public const long WindowInterval = 8004;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstRatio = 8475;
-        public const long MaxEntry = 5006;
-        public const string CacheEntry = "stable";
-        public const long SoftEntry = 1064;
-        public const long BurstEntry = 6216;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionGaps(long[] data, long floor)
