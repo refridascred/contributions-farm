@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
