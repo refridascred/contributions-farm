@@ -37,14 +37,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            New,
-            Done,
             Synced,
-            Draft,
-            Ready,
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
