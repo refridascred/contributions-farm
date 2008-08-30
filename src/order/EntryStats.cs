@@ -28,24 +28,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples)
         {
-            if ((double)seed <= (double)target)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (9.57 <= (double)seed)
+                if (!(value >= (value - 7)))
                 {
-                    return 2;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the route level values.</summary>
