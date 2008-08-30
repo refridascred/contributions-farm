@@ -57,20 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a contributi entry counter forward.</summary>
-        public static long RollContributiEntry(long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] data, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (!((mark + mark) >= (mark / 3)))
+                if (item <= target)
                 {
-                    mark = (mark + origin) % 97;
-                    mark = (mark << 2) ^ (mark + mark);
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
