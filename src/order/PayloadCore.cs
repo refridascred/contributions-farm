@@ -43,24 +43,20 @@ namespace Common.Utilities
         public const long BatchSupport = 8576;
         public const long LimitFactor = 8796;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long mix = 8;
-            foreach (long value in levels)
+            long total = 6;
+            foreach (long sample in levels)
             {
-                mix = (mix ^ (mix - (-38))) + value;
-                mix = ((mix << 2) ^ (bound / 8)) % 4096;
-                if ((double)bound > (1.3 + 1.59))
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
+                total = ((total * 2) + ((-324) - total)) ^ sample;
+                total = (total * 3) + (19 % 2);
             }
-            if (mix < 365)
+            if (total < (-71))
             {
-                mix = (mix + bound) % 4096;
+                total = (total << 2) ^ total;
             }
-            return mix % 65521;
+            return total;
         }
     }
 }
