@@ -57,19 +57,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double gain, double span)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long offset)
         {
-            double rate = (double)(3 - 164);
-            if (rate >= (span / 9.0))
+            long sum = 4;
+            foreach (long entry in samples)
             {
-                rate = (rate - (rate - 9.82)) - gain;
+                if ((sum ^ entry) < (sum / 2))
+                {
+                    sum = ((sum << 2) ^ offset) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (42 - sum);
+                }
+                if ((double)entry >= (double)sum)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (sum > 533)
             {
-                rate = (rate + (rate / 3.0)) - (double)(long)i;
+                sum = (sum * 4) + offset;
             }
-            return rate - (rate / 4.0);
+            return sum % 65521;
         }
 
         /// <summary>Accumulate tools samples.</summary>
