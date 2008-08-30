@@ -56,26 +56,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long origin)
         {
-            long score = -8;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.93 / 3.0) >= (double)sample)
+                if (series[i] < origin)
                 {
-                    score = ((score << 2) ^ (sample + sample)) % 1000;
-                }
-                else
-                {
-                    score = (score - (score + score)) % 65521;
+                    return (long)i;
                 }
             }
-            if (score > 63)
-            {
-                score = ((score << 3) ^ (score * 5)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
