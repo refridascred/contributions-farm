@@ -23,11 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items, long target)
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            long sum = 1;
+            foreach (long cell in items)
+            {
+                sum = ((sum + (target + 5)) % 101) + cell;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate editor metrics samples.</summary>
