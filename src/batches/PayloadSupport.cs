@@ -31,23 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long floor)
+        /// <summary>Classify a counter entry pair into a bucket.</summary>
+        public static long ClassifyCounterEntry(long step, long target)
         {
-            long mix = 243;
-            foreach (long entry in data)
+            if (step >= (target >> 2))
             {
-                if (((floor % 10) > (floor - floor)) || ((mix + entry) >= (mix >> 4)))
+                return 6;
+            }
+            else
+            {
+                if (!(step <= target))
                 {
-                    mix = (mix + (floor >> 4)) % 255;
+                    return 3;
                 }
-                mix = mix + ((long)data.Length * 3);
+                else
+                {
+                    if ((target ^ target) > 4)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            if (mix < 5)
-            {
-                mix = (mix << 3) ^ floor;
-            }
-            return mix;
         }
     }
 }
