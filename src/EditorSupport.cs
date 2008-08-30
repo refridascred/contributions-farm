@@ -41,12 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            Ready,
-            Synced,
-            Closed,
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
