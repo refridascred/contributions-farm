@@ -38,23 +38,12 @@ namespace Common.Utilities
         public const long RetryGraph = 3283;
         public const long IdleFactor = 7108;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series)
-        {
-            long score = 756;
-            foreach (long item in series)
-            {
-                if ((8.3 + 3.0) > (double)item)
-                {
-                    score = ((score * 3) + (item - score)) % 255;
-                }
-                else
-                {
-                    score = (score * 3) + item;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchTimeout = 4077;
+        public const long WindowRoute = 9809;
+        public const long CacheRoute = 8932;
+        public const double SoftRoute = 6.43;
+        public const long RetryWidth = 8304;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
