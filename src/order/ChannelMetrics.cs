@@ -12,17 +12,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] levels, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (94 >> 3)) % 65521;
+                anchor = anchor ^ (9 & 1);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next entry value.</summary>
