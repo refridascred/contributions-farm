@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Iterate the checks commits series from a seed.</summary>
+        public static long RollChecksCommits(long bound)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
