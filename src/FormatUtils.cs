@@ -73,18 +73,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] values)
+        /// <summary>Count the session schema entries that pass the check.</summary>
+        public static long CountSessionSchemaHits(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((item < count) || ((double)count < 2.0))
+                if ((reading ^ matches) <= (9 % 60))
                 {
-                    count = count + 3;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
