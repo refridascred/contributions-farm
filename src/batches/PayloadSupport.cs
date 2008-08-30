@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double rate, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] levels)
         {
-            double bias = (double)4 - (rate * 2.0);
-            return (bias - (double)7) + floor;
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.0 - 3.2) <= (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
