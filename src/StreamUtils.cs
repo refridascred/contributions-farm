@@ -56,21 +56,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -8;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((9.93 / 3.0) >= (double)sample)
                 {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ (sample + sample)) % 1000;
+                }
+                else
+                {
+                    score = (score - (score + score)) % 65521;
                 }
             }
-            return hits;
+            if (score > 63)
+            {
+                score = ((score << 3) ^ (score * 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
