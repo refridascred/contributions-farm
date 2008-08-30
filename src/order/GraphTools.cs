@@ -37,22 +37,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Match up queue token samples.</summary>
+        public static long CompareQueueTokenCount(long[] items)
         {
-            long sum = 8;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.33 - 7.6) > (double)reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ (sum / 9)) % 255;
-                }
-                else
-                {
-                    sum = (sum + (41 & 15)) % 255;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Check that every editor filter entry stays within the limit.</summary>
