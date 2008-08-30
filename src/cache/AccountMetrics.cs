@@ -55,18 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((6 + count) > (entry / 9)))
+                if (datum <= seen)
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
