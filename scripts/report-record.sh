@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=303
-log "limit is ${RECORD_LIMIT}"
-
-for item in green legacy edge blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=158
+log "limit is ${RECORD_LIMIT}"
