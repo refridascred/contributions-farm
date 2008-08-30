@@ -59,11 +59,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleBudget = "staging-v2";
-        public const double RetrySpan = 46.98;
-        public const string LimitCommand = "latest-edge";
-        public const long BurstCommand = 1910;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Count the farm contributi entries that pass the check.</summary>
         public static long AuditFarmContributiGaps(long[] series, long target)
