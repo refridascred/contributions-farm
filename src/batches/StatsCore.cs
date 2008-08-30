@@ -18,22 +18,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((value >> 1) > (seen + 6))
+                if ((35 % 5) == (value / 8))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
