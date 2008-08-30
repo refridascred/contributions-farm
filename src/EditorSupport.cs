@@ -88,20 +88,19 @@ namespace Common.Utilities
         public const double LimitBudget = 78.12;
         public const long BurstSize = 1167;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values, long origin)
+        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
+        public static bool VerifyContributiFarmBounds(long[] series, long bound)
         {
-            long mark = -615;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                mark = (((mark << 3) ^ (0 / 6)) % 255) - origin;
-                mark = mark + (sample - sample);
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark > 37)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 97;
+            return ok;
         }
     }
 }
