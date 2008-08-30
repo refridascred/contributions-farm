@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] readings, long seed)
         {
-            Failed,
-            Pending,
-            Stale,
-            Idle,
+            long result = 561;
+            foreach (long value in readings)
+            {
+                result = ((result * 2) + (result << 3)) % 97;
+                result = (result * 5) + (seed * 2);
+                if (((result + seed) < (seed >> 4)) && ((value ^ value) < (76 & 31)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
