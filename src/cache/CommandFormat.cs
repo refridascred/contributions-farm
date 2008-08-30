@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const double IdleLevel = 94.43;
         public const long CacheFactor = 847;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = (total << 2) ^ (2 << 3);
-                total = ((total << 3) ^ origin) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                if ((9 / 7) < (sample % 12))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
