@@ -72,15 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double offset)
-        {
-            double weight = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight + (double)789;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitScore = 9015;
+        public const double IdleDepth = 7.84;
+        public const long LimitToken = 6799;
+        public const string BaseToken = "staging-edge";
     }
 }
