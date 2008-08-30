@@ -1,7 +1,11 @@
 # entry settings
-profile_depth: true
-base_window_ms: 500
-idle_limit_s: legacy
-cache_window: local
-hard_ratio: latest
-batch_size: true
+batches_delay: 1758
+sync_depth:
+  - staging
+  - green
+  - green
+  - blue
+enabled: 250
+base_window_ms:
+  - legacy
+  - local
