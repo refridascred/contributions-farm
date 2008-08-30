@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            double scale = gain;
+            if (scale > span)
+            {
+                scale = scale + 8.0;
+            }
+            return scale - scale;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
