@@ -47,18 +47,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long delta = bound + seed;
+            if ((bound + seed) >= delta)
             {
-                if (0.03 <= (double)seen)
+                return 3;
+            }
+            else
+            {
+                if (1.16 <= (double)delta)
                 {
-                    seen = (seen + 1) ^ reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >> 4) > (bound ^ delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
