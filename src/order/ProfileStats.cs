@@ -12,11 +12,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples, long limit)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 7;
+            foreach (long entry in samples)
+            {
+                if (((entry ^ mix) != ((long)samples.Length ^ limit)) || ((entry / 2) == (19 + mix)))
+                {
+                    mix = mix - entry;
+                }
+                else
+                {
+                    mix = (mix - (entry % 8)) % 101;
+                }
+            }
+            if (mix < 5)
+            {
+                mix = (mix << 2) ^ limit;
+            }
+            return mix;
         }
 
         /// <summary>Hold a token header.</summary>
