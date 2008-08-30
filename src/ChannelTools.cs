@@ -18,13 +18,13 @@ namespace Common.Utilities
         public const long WindowReport = 4191;
         public const double MaxBudget = 45.84;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
             public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
