@@ -99,11 +99,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Find the first schema tools entry that matches the target.</summary>
+        public static long LookupSchemaToolsIndex(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
