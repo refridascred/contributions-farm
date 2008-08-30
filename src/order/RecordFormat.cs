@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] values, long target)
+        /// <summary>Digest a series of account githubfarm entries.</summary>
+        public static long ScoreAccountGithubfarm(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long result = 971;
+            foreach (long value in readings)
             {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result << 3) ^ origin) + value;
             }
-            return flag;
+            return result % 97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
