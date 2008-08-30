@@ -20,14 +20,22 @@ namespace Common.Utilities
             return rate2 - (span * 13.0);
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] samples, long target)
         {
-            Idle,
-            Paused,
-            Queued,
-            Retry,
-            Synced,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + target) > 792)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
