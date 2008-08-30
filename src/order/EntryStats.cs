@@ -46,15 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Synced,
-            Dropped,
-            Done,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetrySize = 9214;
+        public const string MaxReport = "staging-v2";
+        public const long MinTimeout = 6778;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricBounds(long[] data, long target)
