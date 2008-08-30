@@ -44,22 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((tally - entry) <= (24 + entry)) || (((entry + 38) <= entry) || ((entry + tally) != (tally & 15))))
+                if (10.0 >= (double)offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
