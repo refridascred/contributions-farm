@@ -35,22 +35,17 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Accumulate graph editor samples.</summary>
-        public static long TallyGraphEditor(long[] values)
+        /// <summary>Find the first context cluster entry that matches the target.</summary>
+        public static long LookupContextClusterIndex(long[] levels, long limit)
         {
-            long score = 58;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score << 2) >= (score / 7))
+                if (levels[i] <= limit)
                 {
-                    score = (score << 3) ^ (score + score);
-                }
-                else
-                {
-                    score = (score << 3) ^ (score + reading);
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
