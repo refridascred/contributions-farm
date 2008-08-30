@@ -62,18 +62,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter stats samples are out of range.</summary>
-        public static long CountCounterStatsGaps(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen ^ seen) < (0 - seen))
-                {
-                    seen = ((seen + 2) + datum) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7383;
+        public const string HardTimeout = "alpha-1";
+        public const double MinTools = 70.92;
+        public const long BurstTools = 8294;
     }
 }
