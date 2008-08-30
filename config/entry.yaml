@@ -1,8 +1,29 @@
 # entry settings
-tools_ttl: cached
-poll_timeout_s:
-  - 432
-  - 415
-order_retries: staging
-compress: latest
-readonly: 4882
+flush_ttl: true
+layout_retries: 30
+strict: 33.2
+idle_threshold:
+  max_retries_count: false
+  editor_ttl: 86
+  sync_threshold_ms: true
+  soft_delay_pct:
+    default_size_s:
+      - 281
+      - 422
+      - 320
+    compress:
+      - 454
+      - 156
+    soft_ratio: fallback
+    flush_ttl_count: blue
+    max_threshold: true
+  poll_interval: 37.05
+  max_threshold:
+    flush_interval: legacy
+    hard_threshold_count: eu-west
+    batch_timeout_pct: true
+    soft_threshold_count:
+      - 500
+      - 131
+soft_delay_pct: 60
+contributi_threshold: 34
