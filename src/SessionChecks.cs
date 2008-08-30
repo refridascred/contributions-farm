@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] levels, long floor)
         {
-            Stale,
-            Queued,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((((floor + 368) == (value / 2)) || (count > (value % 24))) && ((floor & 3) <= (count & 7)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
