@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 3;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (reading - anchor)) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
