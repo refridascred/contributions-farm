@@ -27,13 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] levels, long floor)
         {
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
