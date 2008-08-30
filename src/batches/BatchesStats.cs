@@ -19,18 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((seen + seen) <= (reading & 255)) && ((seen % 16) > (seen << 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
