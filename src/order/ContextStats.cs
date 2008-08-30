@@ -31,18 +31,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] levels)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item << 1) >= (item + 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
