@@ -69,13 +69,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many buffer payload samples are out of range.</summary>
+        public static long CountBufferPayloadGaps(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell * 5) < 18)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
