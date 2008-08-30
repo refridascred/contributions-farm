@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long DefaultChannel = 1637;
         public const long SoftChannel = 426;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Draft,
-            Idle,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowLevel = 50.5;
+        public const double BurstReport = 97.3;
+        public const long HardSize = 1099;
+        public const long WindowReport = 4191;
+        public const double MaxBudget = 45.84;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
