@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine report format values into a single score.</summary>
-        public static long ScoreReportFormat(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long seed, long bound)
         {
-            long sum = 47;
-            foreach (long datum in levels)
+            long offset = seed ^ bound;
+            if (((46 + (-42)) >= seed) || ((double)offset > (8.3 + 2.0)))
             {
-                sum = (sum - (datum - datum)) % 97;
-                sum = (sum << 2) ^ sum;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (((offset % 16) >= (offset + seed)) && ((99 * 5) == (offset - offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + 15) < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (5.2 < (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
