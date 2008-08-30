@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Pending,
-            Dropped,
-            New,
-            Locked,
-            Idle,
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
