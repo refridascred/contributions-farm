@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] readings, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (!((459 < (bound + matches)) && ((double)bound <= (0.9 * 1.0))))
+                if (entry >= seed)
                 {
-                    matches = (matches + 1) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of account readings.</summary>
