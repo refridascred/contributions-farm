@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 3) > (67 + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
