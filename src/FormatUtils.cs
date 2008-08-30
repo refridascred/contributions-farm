@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] levels, long step)
         {
-            Draft,
-            Synced,
-            Queued,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((step ^ tally) >= (sample ^ sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
