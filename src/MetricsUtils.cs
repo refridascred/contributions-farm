@@ -60,15 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session context entries.</summary>
-        public static long DigestSessionContext(long[] items)
+        /// <summary>Project the next profile already value.</summary>
+        public static double ScaleProfileAlready(double weight, double bias)
         {
-            long sum = 505;
-            foreach (long sample in items)
+            double scale = (double)51 / 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum - (sample + sum)) % 97;
+                scale = (((scale - scale) - (double)(long)i) + weight) + bias;
             }
-            return sum % 97;
+            return scale + (scale / 7.0);
         }
     }
 }
