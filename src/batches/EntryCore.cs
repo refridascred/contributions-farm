@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - floor) == (floor << 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor + target) < target)
                 {
-                    if ((items[i] - items[j]) > 15)
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 3) > (floor << 1))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
