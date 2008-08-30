@@ -20,32 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a report counter pair into a bucket.</summary>
-        public static long ClassifyReportCounter(long step, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] samples, long bound)
         {
-            long cur = step + offset;
-            if ((7.5 - 15.0) <= (double)offset)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur != (4.8 / 9.0))
+                if ((10.0 * 8.04) >= (double)bound)
                 {
-                    return 6;
+                    matches = (matches + 2) ^ cell;
                 }
                 else
                 {
-                    if (step < (252 & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a profile entry.</summary>
