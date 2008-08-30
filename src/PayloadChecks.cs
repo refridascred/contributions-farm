@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            long score = 5;
+            foreach (long sample in data)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if ((6 - sample) > (787 / 6))
+                {
+                    score = (score * 2) + (1 - 6);
+                }
+            }
+            if (score < 9)
+            {
+                score = score - score;
             }
             return score;
         }
