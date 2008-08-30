@@ -1,16 +1,14 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Each batches is validated before it reaches the route queue.
-The layout module keeps stream values in sync with the report cache.
+Each schema is validated before it reaches the record queue.
+Run the metrics check before changing any buffer limits.
 
-Keep already and support names short and lowercase.
-The filter helpers are pure functions, so they are safe to call from any thread.
-Run the layout check before changing any githubfarm limits.
+A order that stays idle for too long is moved to the githubfarm list.
+Each report is validated before it reaches the context queue.
+Each githubfarm is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Document new window fields
-- Log every entry change
-- Prefer format defaults
-- Keep cluster values small
+- Document new record fields
+- Prefer cache defaults
+- Keep batch values small
