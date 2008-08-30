@@ -34,19 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            double load = (double)(65 * 2);
-            if (load < (floor * 8.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (floor / 6.0)) + (double)(long)i;
-            }
-            return load + ratio;
+            return count;
         }
     }
 }
