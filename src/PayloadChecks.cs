@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long diff = floor + target;
+            if ((diff >> 2) >= (diff + 33))
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((target + target) == (diff % 100))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < (10.0 - 0.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - target) <= target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
