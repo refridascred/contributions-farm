@@ -1,4 +1,7 @@
 # support settings
-cache_depth: latest
-burst_retries: 100
-soft_retries: true
+enabled: 28.76
+batch_window_ms: cached
+poll_ratio: 31.56
+order_size: 96.18
+batch_size: true
+batch_ratio: 460
