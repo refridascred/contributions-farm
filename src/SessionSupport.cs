@@ -23,22 +23,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] values, long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum <= ((long)values.Length << 1)) && (matches >= (65 / 7)))
-                {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Idle,
+            New,
         }
     }
 }
