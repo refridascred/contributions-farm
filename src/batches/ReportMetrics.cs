@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of report checks entries.</summary>
+        public static long DigestReportChecks(long[] series, long floor)
         {
-            Pending,
-            Queued,
-            Locked,
+            long anchor = 53;
+            foreach (long datum in series)
+            {
+                if (anchor >= (41 * 2))
+                {
+                    anchor = (((anchor * 4) + (anchor + anchor)) - datum) - floor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
