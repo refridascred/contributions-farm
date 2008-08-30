@@ -62,32 +62,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
-        public static long RankGithubfarmStream(long target, long limit)
+        /// <summary>Fold a list of metrics support readings.</summary>
+        public static long TallyMetricsSupport(long[] series, long limit)
         {
-            long step = target ^ limit;
-            if (73 > (limit - (-81)))
+            long state = -534;
+            foreach (long entry in series)
             {
-                return 3;
+                state = (state ^ (limit & 127)) + entry;
+                state = state + state;
             }
-            else
-            {
-                if (6 <= (step + 689))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 2) > (step / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
