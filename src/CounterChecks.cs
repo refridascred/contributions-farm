@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 19.11;
-        public const double WindowAccount = 98.06;
-        public const long BurstAccount = 5123;
-        public const string BaseFactor = "open";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Closed,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 744;
