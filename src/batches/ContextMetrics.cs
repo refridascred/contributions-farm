@@ -54,12 +54,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 7864;
+        public const long MinBatch = 1032;
+        public const long MinSize = 8794;
     }
 }
