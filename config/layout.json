@@ -1,8 +1,11 @@
 {
-  "readonly": 98.63,
-  "batch_delay": ["primary", "blue"],
-  "default_retries": true,
-  "layout_delay": 60,
-  "idle_ttl": true,
-  "flush_capacity": "strict"
+  "verbose": 68.63,
+  "sync_window": 2782,
+  "retry_window_s": {
+    "channel_capacity": true,
+    "sync_ratio_count": "strict",
+    "sync_interval_pct": 5.4,
+    "poll_capacity": "fallback"
+  },
+  "report_limit": 324
 }
