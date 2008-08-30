@@ -1,4 +1,9 @@
 # githubfarm settings
-editor_threshold: 5.33
-payload_ttl: edge
-poll_interval: false
+sync_limit_s: open
+strict: 96.58
+sync_delay:
+  - 204
+  - 379
+  - 36
+  - 480
+enabled: local
