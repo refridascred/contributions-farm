@@ -29,20 +29,15 @@ namespace Common.Utilities
         public const double CacheReport = 6.22;
         public const double StepReport = 67.19;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((long)i >= 92)
-                {
-                    long diff = (mix / 6) & 1;
-                    mix = ((mix << 2) ^ (diff + 78)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Check that every stream channel entry stays within the limit.</summary>
