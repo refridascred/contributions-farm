@@ -1,6 +1,5 @@
 {
-  "sync_timeout_pct": [1, 26],
-  "retry_ratio_pct": true,
-  "flush_retries_ms": 100,
-  "filter_depth": "standard"
+  "max_delay_ms": 11,
+  "burst_capacity": 40,
+  "verbose": 27
 }
