@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] samples, long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry & 31) < (tally + entry)))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
