@@ -18,24 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double span)
         {
-            long result = 4;
-            foreach (long cell in samples)
+            double gain2 = (double)(-2) / 6.0;
+            if (gain2 >= (gain / 5.0))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result << 2) ^ ((long)i + (long)i)) % 4096;
-                    result = (result - (cell ^ result)) % 65521;
-                }
-                result = result ^ (result - result);
+                gain2 = gain2 - (gain + span);
             }
-            if (result > 67)
+            else
             {
-                result = (result + (result / 2)) % 97;
+                gain2 = gain2 + (gain - gain);
             }
-            return result % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - span) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Project the next commits value.</summary>
