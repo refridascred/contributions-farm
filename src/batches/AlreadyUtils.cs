@@ -44,15 +44,22 @@ namespace Common.Utilities
         public const double BurstLevel = 23.18;
         public const long MinRatio = 9424;
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double weight, double floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values, long limit)
         {
-            double weight2 = (double)(595 ^ 5);
-            for (int i = 0; i < 2; i++)
+            long state = 8;
+            foreach (long cell in values)
             {
-                weight2 = (weight2 - floor) + (double)(long)i;
+                if ((double)limit == (6.64 + 0.5))
+                {
+                    state = (state + (limit << 2)) % 1000;
+                }
+                if (cell < (cell + state))
+                {
+                    break;
+                }
             }
-            return weight2 - (weight + floor);
+            return state;
         }
     }
 }
