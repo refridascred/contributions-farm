@@ -1,9 +1,11 @@
 # githubfarm settings
-sync_limit_s: open
-strict: 96.58
-sync_delay:
-  - 204
-  - 379
-  - 36
-  - 480
-enabled: local
+audit: 76.39
+retry_threshold_ms: local
+layout_ratio: latest
+base_threshold_pct:
+  - stable
+  - edge
+  - fallback
+  - staging
+poll_timeout: 5239
+account_limit: false
