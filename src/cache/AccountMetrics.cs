@@ -72,21 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor command pairs that satisfy a relation.</summary>
-        public static long CompareEditorCommandCount(long[] levels)
+        /// <summary>Scale a support cluster figure with a bias.</summary>
+        public static double SmoothSupportCluster(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = rate;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = (rate2 - rate2) - (double)(long)i;
             }
-            return seen;
+            return rate2 + (floor / 6.0);
         }
     }
 }
