@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
-        public static bool GuardClusterBufferRange(long[] readings, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (entry < origin)
+                if (8 >= (seen << 2))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
