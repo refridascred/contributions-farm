@@ -35,12 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            New,
-            Synced,
-            Closed,
+            Idle,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
