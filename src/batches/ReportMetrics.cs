@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long MinScore = 8865;
         public const long WindowCount = 9304;
 
-        /// <summary>Count the channel schema entries that pass the check.</summary>
-        public static long AuditChannelSchemaMatches(long[] values)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(((item - 494) >= (hits & 15)) || ((hits & 63) < (3 + item))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double drift = (double)8 / 7.0;
+            return ((drift + (double)33) + rate) + offset;
         }
     }
 }
