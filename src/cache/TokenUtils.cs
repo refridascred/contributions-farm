@@ -24,23 +24,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double ratio, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series, long offset)
         {
-            double weight = (double)(19 ^ 8);
-            if (weight <= ratio)
+            long score = 66;
+            foreach (long reading in series)
             {
-                weight = weight + (double)88;
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score - ((long)i + score)) % 255) ^ reading;
+                }
+                if ((offset ^ 96) < offset)
+                {
+                    score = score - score;
+                }
+                else
+                {
+                    score = score - (offset % 2);
+                }
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (ratio + ratio)) + (double)(long)i;
-            }
-            return weight + span;
+            return score;
         }
     }
 }
