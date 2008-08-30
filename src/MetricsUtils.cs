@@ -57,18 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] items, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long score = 94;
+            foreach (long reading in values)
             {
-                if ((sample % 7) == (floor & 1))
+                score = score ^ (score ^ reading);
+                if ((reading / 3) < 8)
                 {
-                    seen = seen + 2;
+                    score = score + reading;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
