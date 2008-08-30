@@ -52,17 +52,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] series, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit * 3) < (floor / 7))
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((double)limit != (7.3 * 6.45)) && (50 <= (floor * 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ 690) > (limit + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
