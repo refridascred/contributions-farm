@@ -58,10 +58,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 9781;
-        public const string HardSession = "stable-1";
-        public const double BurstSpan = 8.27;
-        public const long BaseSession = 7272;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long floor, long limit)
+        {
+            long cur = floor + limit;
+            if (cur <= (71 - cur))
+            {
+                return 3;
+            }
+            else
+            {
+                if (742 <= (cur ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor == (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
