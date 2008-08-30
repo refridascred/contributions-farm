@@ -1,5 +1,7 @@
 {
-  "graph_threshold": "cached",
-  "profile_limit": "standard",
-  "readonly": "green"
+  "idle_depth_count": true,
+  "route_delay": 250,
+  "enabled": [73, 225, 181],
+  "record_timeout": 2646,
+  "account_size": 9227
 }
