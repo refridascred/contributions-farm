@@ -39,23 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] samples, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long sum = 82;
-            foreach (long sample in samples)
-            {
-                sum = sum - sum;
-                if (!(offset < sample))
-                {
-                    sum = sum + ((-7) * 4);
-                }
-                else
-                {
-                    sum = sum + ((-599) / 5);
-                }
-            }
-            return sum;
+            New,
+            Dropped,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
