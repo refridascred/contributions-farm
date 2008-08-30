@@ -17,14 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Paused,
-            Synced,
-            Ready,
-            Retry,
-            Pending,
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
