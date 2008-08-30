@@ -1,8 +1,6 @@
-id,active,weight
-1,eu-west,16.53
-2,39.39,fallback
-3,edge,881
-4,primary,56.17
-5,cached,9.78
-6,primary,legacy
-7,88.98,184
+id,count
+1,strict
+2,44.68
+3,7.71
+4,stable
+5,517
