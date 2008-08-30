@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Iterate the context cluster series from a seed.</summary>
+        public static long SeriesContextCluster(long limit)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                long prev = limit;
+                result = result + prev;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
