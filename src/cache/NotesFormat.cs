@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a account farm pair into a bucket.</summary>
-        public static long BucketAccountFarm(long bound, long bound2)
+        /// <summary>Digest a series of command record entries.</summary>
+        public static long TallyCommandRecord(long[] readings)
         {
-            if ((bound2 + 604) < (bound2 * 4))
+            long acc = 98;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound < bound2)
+                acc = ((acc << 3) ^ acc) % 101;
+                if ((acc % 97) > sample)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    acc = ((acc * 5) + (sample / 7)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
