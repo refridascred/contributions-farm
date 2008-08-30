@@ -1,17 +1,5 @@
 # support settings
-retry_limit_ms: legacy
-poll_size_s:
-  base_threshold_s: false
-  enabled: true
-  soft_window: 1698
-  default_capacity: local
-  buffer_size: false
-poll_capacity: 2703
-profile_depth: legacy
-audit: green
-poll_depth:
-  audit: 3.44
-  flush_interval_pct: false
-  cluster_threshold: eu-west
-  idle_threshold: 72.71
-  persist: 63
+cache_delay_s: stable
+dry_run: 17.84
+min_retries: 38.76
+flush_threshold: true
