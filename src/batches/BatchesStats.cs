@@ -19,15 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token session samples.</summary>
-        public static long CombineTokenSession(long[] data, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] items)
         {
-            long total = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                total = ((total - (4 / 6)) - sample) + limit;
+                if (((seen + seen) <= (reading & 255)) && ((seen % 16) > (seen << 1)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
