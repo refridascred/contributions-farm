@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "standard-edge";
-        public const long WindowBuffer = 9893;
-        public const long DefaultSpan = 9962;
-        public const string MinBuffer = "standard-edge";
-        public const long RetryBuffer = 9765;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4494;
+        public const long RetryEntry = 8766;
+        public const long CacheEntry = 2886;
+        public const double BaseLevel = 63.71;
+        public const long MinDepth = 6537;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] values, long step)
