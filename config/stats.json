@@ -1,7 +1,17 @@
 {
-  "poll_ttl_ms": [125, 438, 197],
-  "hard_ttl_ms": 854,
-  "max_retries_count": true,
-  "hard_timeout_count": false,
-  "burst_timeout": true
+  "counter_ttl": 19,
+  "sync_interval_ms": 84.76,
+  "min_interval": [11, 351, 241],
+  "channel_capacity": "staging",
+  "layout_depth": true,
+  "soft_window_pct": {
+    "cluster_threshold": {
+      "dry_run": 1024,
+      "cache_threshold_ms": "legacy",
+      "batch_window_count": 8818,
+      "base_delay_count": false
+    },
+    "verbose": "staging",
+    "strict": ["standard", "legacy", "fallback", "eu-west"]
+  }
 }
