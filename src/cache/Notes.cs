@@ -56,10 +56,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "fallback-1";
-        public const long BurstQueue = 685;
-        public const long CacheSize = 365;
-        public const long CacheRatio = 2605;
+        /// <summary>Measure how many token farm samples are out of range.</summary>
+        public static long CountTokenFarmOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits + entry) == (86 - (-4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
