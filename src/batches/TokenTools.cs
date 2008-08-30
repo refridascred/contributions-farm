@@ -25,18 +25,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] readings)
+        /// <summary>Derive the next cluster stats value from a seed.</summary>
+        public static long DeriveClusterStats(long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (hits < (value - value))
+                if (target <= 4)
                 {
-                    hits = hits + 3;
+                    acc = (acc + ((long)i + (long)i)) % 1000;
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
