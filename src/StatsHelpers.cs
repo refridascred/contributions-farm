@@ -48,23 +48,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long state = -81;
-            foreach (long cell in samples)
-            {
-                state = (state << 3) ^ (70 + floor);
-                if ((state / 9) > (cell - floor))
-                {
-                    state = (state ^ (floor * 2)) % 4096;
-                }
-                if (((double)state <= (4.4 - 20.0)) || ((cell >> 5) <= cell))
-                {
-                    break;
-                }
-            }
-            return state;
+            Draft,
+            Synced,
+            Locked,
+            Stale,
+            Queued,
         }
     }
 }
