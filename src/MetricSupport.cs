@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] levels, long seed)
+        /// <summary>Locate a filter record reading by value.</summary>
+        public static long SeekFilterRecordIndex(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                if (data[i] <= limit)
                 {
                     return (long)i;
                 }
