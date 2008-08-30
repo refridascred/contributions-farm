@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of cluster metric entries.</summary>
-        public static long ScoreClusterMetric(long[] series, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] items, long floor)
         {
-            long state = 8;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                state = (((state ^ (57 << 1)) % 255) + entry) + step;
-                if ((double)state != (double)6)
+                if ((datum - floor) > count)
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
