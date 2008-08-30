@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] data, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (reading > floor)
+                if (tally >= (value << 3))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count counter account pairs that satisfy a relation.</summary>
