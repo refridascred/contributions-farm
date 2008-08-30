@@ -15,17 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] values, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
