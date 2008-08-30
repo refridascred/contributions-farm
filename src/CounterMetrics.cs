@@ -39,13 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
