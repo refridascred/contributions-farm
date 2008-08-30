@@ -26,22 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mark = 34;
-            foreach (long entry in series)
-            {
-                if (((entry % 8) <= (77 - entry)) || ((entry % 8) < mark))
-                {
-                    mark = mark - (mark + mark);
-                }
-            }
-            if (mark > 179)
-            {
-                mark = ((mark * 3) + (mark << 3)) % 1000;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
