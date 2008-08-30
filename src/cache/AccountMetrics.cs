@@ -59,18 +59,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardSize = 1.2;
+        public const long IdleLayout = 815;
+        public const double SoftDepth = 92.62;
+        public const long HardLayout = 2043;
 
         /// <summary>Scale a support cluster figure with a bias.</summary>
         public static double SmoothSupportCluster(double rate, double floor)
