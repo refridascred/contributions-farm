@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many counter report samples are out of range.</summary>
-        public static long TallyCounterReportGaps(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long offset = bound + floor;
+            if (floor >= bound)
             {
-                if ((1 / 8) <= item)
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 1) <= offset)
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((6.8 + 19.0) < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound <= (3 / 6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
