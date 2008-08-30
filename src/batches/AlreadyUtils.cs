@@ -62,35 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values, long floor)
+        /// <summary>Match up stream buffer samples.</summary>
+        public static long PairStreamBufferCount(long[] items)
         {
-            long score = 432;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)cell >= (14.0 / 6.0)) || ((cell + 424) == (floor % 7)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score ^ 18;
-                    score = ((score << 3) ^ cell) % 4096;
-                }
-                else
-                {
-                    score = (score - (66 + score)) % 4096;
-                }
-                if ((floor * 4) > (2 + score))
-                {
-                    score = (score - (92 - 143)) % 4096;
-                }
-                else
-                {
-                    score = (score + (cell / 6)) % 255;
-                }
-                if ((9.94 + 3.55) >= (double)cell)
-                {
-                    break;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
