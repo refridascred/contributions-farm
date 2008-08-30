@@ -13,18 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm stream readings against a rule.</summary>
-        public static long MeasureFarmStreamGaps(long[] values)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((9.0 - 4.92) != (double)tally) && ((reading + (-59)) > 486))
+                if (readings[i] < floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
