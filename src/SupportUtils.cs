@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long mix = 3;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix - (sample + sample);
-                if (((double)sample >= (2.3 - 6.39)) && (mix <= (sample - mix)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix << 2) ^ mix;
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 9)
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 101;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
