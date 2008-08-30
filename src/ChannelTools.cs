@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2821;
-        public const long MaxChannel = 8903;
-        public const long DefaultChannel = 1637;
-        public const long SoftChannel = 426;
+        /// <summary>Count the contributi entry entries that pass the check.</summary>
+        public static long TallyContributiEntryMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!!((0.62 + 2.8) >= (double)step))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long offset, long step)
