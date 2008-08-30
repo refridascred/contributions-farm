@@ -39,18 +39,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long AuditAccountSchemaGaps(long[] data, long floor)
+        /// <summary>Measure how many context already samples are out of range.</summary>
+        public static long CountContextAlreadyGaps(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((double)floor >= (double)hits)
+                if ((limit < (4 + count)) && (limit > (limit ^ count)))
                 {
-                    hits = (hits + 2) - cell;
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
