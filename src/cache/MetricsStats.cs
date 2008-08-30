@@ -44,10 +44,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 1684;
-        public const double BurstSize = 75.21;
-        public const long BurstWindow = 8074;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result - ((long)i2 * 3)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountGaps(long[] readings)
