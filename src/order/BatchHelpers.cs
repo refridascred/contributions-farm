@@ -28,14 +28,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Paused,
-            Stale,
-            Dropped,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 84.57;
+        public const double BaseTimeout = 37.58;
+        public const long MaxRatio = 423;
     }
 }
