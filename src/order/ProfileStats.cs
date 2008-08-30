@@ -15,22 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] items, long seed)
+        /// <summary>Check that every filter order entry stays within the limit.</summary>
+        public static bool ValidateFilterOrderBounds(long[] readings, long offset)
         {
-            long anchor = -9;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (((anchor - 79) < (seed + reading)) && ((46 + reading) < anchor))
+                if (cell < offset)
                 {
-                    anchor = anchor - anchor;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
