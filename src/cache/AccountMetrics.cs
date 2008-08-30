@@ -60,12 +60,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 7501;
-        public const long MinTimeout = 7929;
-        public const long BurstDepth = 9822;
-        public const long MaxBatches = 4989;
-        public const double WindowBatches = 73.0;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Combine account filter values into a single score.</summary>
         public static long WeighAccountFilter(long[] values, long step)
