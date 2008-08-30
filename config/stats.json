@@ -1,6 +1,11 @@
 {
-  "tools_retries": "eu-west",
-  "cluster_retries": true,
-  "strict": 37.98,
-  "persist": ["strict", "strict", "local"]
+  "hard_window": "strict",
+  "readonly": ["edge", "green"],
+  "payload_capacity": false,
+  "context_interval": 60,
+  "max_window": {
+    "default_capacity_ms": "stable",
+    "min_depth_s": 18.13,
+    "poll_limit_s": "legacy"
+  }
 }
