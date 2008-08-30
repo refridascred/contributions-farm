@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long DefaultTools = 3302;
         public const string HardInterval = "cached-v2";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long offset2)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            if ((double)offset2 >= (2.0 - 2.7))
             {
-                if (reading <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((offset2 + offset) >= (26 & 255))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((-2) > (offset2 * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset2 * 5) < (40 & 31))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
