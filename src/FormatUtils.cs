@@ -13,18 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((long)data.Length - reading) <= (reading ^ tally))
+                if (((6.42 < (1.8 / 2.0)) || (count <= (datum + datum))) && ((datum ^ (long)samples.Length) > (datum << 3)))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
