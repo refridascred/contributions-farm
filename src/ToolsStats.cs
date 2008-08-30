@@ -53,13 +53,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchWidth = 195;
+        public const string CacheGraph = "strict-v2";
+        public const long BurstGraph = 2302;
+        public const long SoftGraph = 630;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] data, long target)
