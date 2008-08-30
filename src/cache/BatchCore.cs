@@ -25,15 +25,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            New,
-            Retry,
-            Queued,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 75.46;
+        public const long SoftAccount = 3209;
+        public const long BaseSpan = 2985;
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] levels)
