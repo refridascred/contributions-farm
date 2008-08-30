@@ -20,23 +20,10 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - floor) > count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "cached";
+        public const string IdleSize = "strict-edge";
+        public const long HardInterval = 2515;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long bound)
