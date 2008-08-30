@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long floor2)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long gap = floor - floor2;
+            if ((((-969) + floor) < (floor + floor)) && (floor2 >= (floor - floor2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor2 + floor2) == (gap / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((11.0 * 1.3) > (double)floor) && ((double)6 > (double)gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
