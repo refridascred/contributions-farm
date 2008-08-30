@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 6405;
-        public const long WindowSession = 2308;
-        public const double MaxSession = 40.51;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportBounds(long[] samples, long floor)
