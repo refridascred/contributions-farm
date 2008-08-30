@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)matches != (double)reading)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
