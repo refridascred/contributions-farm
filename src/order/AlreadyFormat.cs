@@ -49,21 +49,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values, long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long carry = 8;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry + carry) % 65521) - item;
-                carry = carry ^ carry;
-                carry = carry - (carry + carry);
-                if ((6.72 * 5.14) <= (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
