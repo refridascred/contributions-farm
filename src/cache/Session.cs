@@ -32,19 +32,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches * 5) > (sample + matches))
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 1956;
+        public const long HardGithubfarm = 3713;
+        public const double BurstInterval = 62.26;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long floor, long step)
