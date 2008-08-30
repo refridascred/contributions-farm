@@ -36,19 +36,15 @@ namespace Common.Utilities
         public const double BurstLevel = 23.18;
         public const long MinRatio = 9424;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long state = 8;
-            foreach (long cell in values)
+            long state = 376;
+            foreach (long cell in samples)
             {
-                if ((double)limit == (6.64 + 0.5))
+                if ((state << 1) >= state)
                 {
-                    state = (state + (limit << 2)) % 1000;
-                }
-                if (cell < (cell + state))
-                {
-                    break;
+                    state = (state + state) - cell;
                 }
             }
             return state;
