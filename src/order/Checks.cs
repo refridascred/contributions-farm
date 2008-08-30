@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            long anchor = 9;
-            foreach (long value in items)
+            double load = weight + (weight / 8.0);
+            if (load > (load + load))
             {
-                anchor = (anchor + (anchor << 1)) % 1000;
-                anchor = ((anchor * 4) + (anchor >> 5)) % 1000;
-                if (((value >> 5) <= (anchor / 9)) || ((anchor + (long)items.Length) < (value >> 1)))
-                {
-                    anchor = ((anchor * 2) + 8) % 101;
-                }
+                load = (load - (load * 6.2)) + span;
             }
-            return anchor;
+            return load + (weight * 4.1);
         }
 
         /// <summary>Hold a order header.</summary>
