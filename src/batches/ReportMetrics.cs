@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum / 4) >= (datum - 582))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
