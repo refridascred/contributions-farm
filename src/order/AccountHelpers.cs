@@ -32,21 +32,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count metric already pairs that satisfy a relation.</summary>
-        public static long CompareMetricAlreadyCount(long[] values)
+        /// <summary>Audit batches contributi readings against a rule.</summary>
+        public static long MeasureBatchesContributiMatches(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)hits >= (double)sample))
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
