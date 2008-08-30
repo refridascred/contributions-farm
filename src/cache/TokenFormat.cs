@@ -17,21 +17,18 @@ namespace Common.Utilities
         public const double WindowGraph = 49.3;
         public const long CacheScore = 7944;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((984 + value) <= value) || ((value % 97) == (count + 88)))
                 {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
