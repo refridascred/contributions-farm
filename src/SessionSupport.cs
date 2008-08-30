@@ -20,21 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] <= bound)
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
