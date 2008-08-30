@@ -21,22 +21,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metric batch values into a single score.</summary>
-        public static long WeighMetricBatch(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long floor)
         {
-            long mark = 977;
-            foreach (long value in samples)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((8.42 + 1.52) > (double)mark)
+                long span = (result ^ result) & 255;
+                if (((long)i + span) >= (997 * 2))
                 {
-                    mark = (mark * 2) + (value + (-42));
+                    result = result ^ (406 >> 1);
+                    continue;
                 }
-                else
-                {
-                    mark = (mark + (value - mark)) % 1000;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
