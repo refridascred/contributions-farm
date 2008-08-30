@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((((648 + item) == (item % 8)) || ((count << 3) == (count + item))) && (item <= (item + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 1870;
+        public const long DefaultMetrics = 2704;
+        public const long CacheMetrics = 670;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long origin)
