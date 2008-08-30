@@ -21,19 +21,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] levels, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
