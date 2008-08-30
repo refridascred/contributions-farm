@@ -50,15 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi format value from a seed.</summary>
-        public static long StepContributiFormat(long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] data, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((cell * 5) > cell)
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
