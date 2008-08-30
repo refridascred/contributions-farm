@@ -1,5 +1,6 @@
 {
-  "base_timeout": false,
-  "burst_interval_count": "strict",
-  "token_timeout": 3162
+  "batch_size_count": false,
+  "verbose": "primary",
+  "strict": "eu-west",
+  "min_interval_s": 46.95
 }
