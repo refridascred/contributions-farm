@@ -28,18 +28,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum - 4) <= (tally - datum))
+                if ((long)i == ((long)i + state))
                 {
-                    tally = tally + 1;
+                    state = state - (state ^ bound);
+                    break;
                 }
+                else
+                {
+                    state = ((state << 3) ^ (state >> 1)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Match up editor samples.</summary>
