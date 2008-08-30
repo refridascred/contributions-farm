@@ -53,32 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long limit, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] series)
         {
-            long gap = limit + offset;
-            if (((limit + 194) < (gap + (-15))) || ((offset - gap) >= (gap >> 2)))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > (542 >> 5))
+                if (12 >= (seen + value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + offset) < (limit + gap))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
