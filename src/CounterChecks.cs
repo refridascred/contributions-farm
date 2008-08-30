@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit tools command readings against a rule.</summary>
-        public static long AuditToolsCommandGaps(long[] series, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long reading in readings)
             {
-                if ((target & 15) <= (item << 2))
+                if ((reading < (reading & 1)) && !(427 < reading))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
