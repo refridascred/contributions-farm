@@ -31,14 +31,21 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 8031;
         public const long BatchFactor = 6711;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Match up profile githubfarm samples.</summary>
+        public static long CompareProfileGithubfarmCount(long[] samples)
         {
-            Locked,
-            Paused,
-            Queued,
-            Active,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a window counter forward.</summary>
