@@ -1,11 +1,8 @@
 # entry settings
-flush_retries_pct:
-  - primary
-  - legacy
-  - blue
-  - local
-retry_ttl: 250
-route_retries:
-  - 366
-  - 382
-burst_retries_s: staging
+soft_capacity_s: 60
+flush_threshold: 9332
+flush_limit:
+  idle_capacity: local
+  sync_delay_count: true
+  readonly: false
+audit: edge
