@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the metrics batch series from a seed.</summary>
-        public static long SeriesMetricsBatch(long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long delta = seed ^ floor;
+            if ((delta % 24) > (seed % 12))
             {
-                acc = (acc ^ acc) % 101;
-                if ((acc >> 2) >= (long)i)
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (!((delta & 31) > floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (delta > (floor ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) <= delta)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
