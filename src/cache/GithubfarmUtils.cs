@@ -26,11 +26,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                total = total - (step - total);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
