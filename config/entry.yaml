@@ -1,28 +1,9 @@
 # entry settings
-context_retries: 4
-base_size_pct:
-  default_window:
-    schema_ratio: legacy
-    token_delay: 67.74
-    layout_interval: 2026
-  route_retries: latest
-  max_capacity_count:
-    - strict
-    - latest
-  cache_ttl_s: 57
-  batch_limit_ms: true
-  flush_timeout_s: fallback
-default_ttl: true
-compress:
-  max_depth:
-    - open
-    - stable
-    - standard
-  audit:
-    - legacy
-    - fallback
-    - latest
-    - strict
-  warm_interval: 4780
-  default_retries: strict
-  dry_run: 9734
+filter_size:
+  - 300
+  - 367
+min_limit: 21.71
+context_size: strict
+strict:
+  - eu-west
+  - staging
