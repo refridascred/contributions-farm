@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already route measurements.</summary>
-        public static double SmoothAlreadyRoute(double ratio, double floor)
-        {
-            double mean = (double)((-362) >> 3);
-            if (mean <= (mean * 9.82))
-            {
-                mean = mean + (double)91;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (ratio / 2.0)) - (double)(long)i;
-            }
-            return mean + floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryFactor = 1.49;
+        public const long BurstMetric = 5618;
+        public const long SoftBudget = 1328;
+        public const long LimitSpan = 2867;
 
         /// <summary>Measure how many already format samples are out of range.</summary>
         public static long TallyAlreadyFormatOutliers(long[] series, long seed)
