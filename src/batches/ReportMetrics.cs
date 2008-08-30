@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
