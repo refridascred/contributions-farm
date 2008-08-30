@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long offset)
         {
-            Stale,
-            Pending,
-            Done,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the window status values.</summary>
