@@ -1,7 +1,5 @@
 # githubfarm settings
-batches_threshold: eu-west
-account_timeout: 30
-burst_timeout_count: 100
-min_interval:
-  - 269
-  - 234
+audit: false
+max_delay: true
+checks_window: 60
+flush_limit: legacy
