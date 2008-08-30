@@ -1,8 +1,19 @@
 # support settings
-verbose: false
-poll_interval_count:
-  - 218
-  - 309
-  - 85
-  - 113
-batch_capacity_s: 250
+record_depth: cached
+sync_retries_pct: staging
+base_ttl_ms:
+  compress: 3331
+  soft_limit_count:
+    - 142
+    - 368
+    - 432
+    - 280
+  poll_timeout: 41
+  support_timeout: 6899
+  command_delay: 8.16
+compress: cached
+readonly:
+  soft_delay_ms: true
+  sync_size_count: true
+  batch_size: 30.96
+warm_ratio: 36.07
