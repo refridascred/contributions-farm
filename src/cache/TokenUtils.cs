@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long CacheFactor = 939;
         public const string MaxBudget = "legacy";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] levels, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long result = -918;
-            foreach (long value in levels)
-            {
-                result = (result + (limit * 2)) + value;
-                result = result - (result + result);
-            }
-            return result;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
