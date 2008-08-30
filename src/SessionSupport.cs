@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            Done,
-            Closed,
-            Stale,
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state - step) % 65521;
+                state = ((state << 2) ^ (step / 4)) % 4096;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a stats layout reading by value.</summary>
