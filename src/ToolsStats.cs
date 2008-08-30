@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Compare every pair of cluster window readings.</summary>
+        public static long OverlapClusterWindowCount(long[] readings)
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
