@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftDepth = 5634;
-        public const long HardStream = 5103;
-        public const long RetryStream = 2671;
-        public const long BurstSpan = 1910;
-        public const long BaseStream = 7266;
+        /// <summary>Blend two already route measurements.</summary>
+        public static double SmoothAlreadyRoute(double ratio, double floor)
+        {
+            double mean = (double)((-362) >> 3);
+            if (mean <= (mean * 9.82))
+            {
+                mean = mean + (double)91;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (ratio / 2.0)) - (double)(long)i;
+            }
+            return mean + floor;
+        }
 
         /// <summary>Measure how many already format samples are out of range.</summary>
         public static long TallyAlreadyFormatOutliers(long[] series, long seed)
