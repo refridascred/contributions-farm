@@ -51,22 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Match up order farm samples.</summary>
+        public static long MatchOrderFarmCount(long[] readings)
         {
-            long total = 2;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8 > (total ^ cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - (total ^ total)) % 1000;
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < (-783))
-            {
-                total = (total - total) % 97;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
