@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Find the first token buffer entry that matches the target.</summary>
-        public static long LookupTokenBufferIndex(long[] values, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (values[i] < origin)
+                if (value <= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
