@@ -34,19 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (reading >= step)
+                if ((matches + matches) <= (89 >> 1))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + item;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
