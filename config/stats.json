@@ -1,13 +1,7 @@
 {
-  "counter_ttl": {
-    "compress": true,
-    "max_window_count": "edge",
-    "min_depth_count": 7207,
-    "account_capacity": ["local", "edge"],
-    "flush_limit_pct": "staging"
-  },
-  "base_ratio_s": "stable",
-  "hard_timeout_ms": "green",
-  "record_depth": false,
-  "sync_retries_count": false
+  "poll_ttl_ms": [125, 438, 197],
+  "hard_ttl_ms": 854,
+  "max_retries_count": true,
+  "hard_timeout_count": false,
+  "burst_timeout": true
 }
