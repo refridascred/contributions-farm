@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values, long bound)
         {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long anchor = 296;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length > (cell * 2))
+                {
+                    anchor = (anchor ^ (44 % 12)) % 255;
+                }
+            }
+            if (anchor > 28)
+            {
+                anchor = anchor + (bound % 8);
+            }
+            return anchor;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
