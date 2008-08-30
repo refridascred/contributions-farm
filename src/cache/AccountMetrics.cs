@@ -74,23 +74,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account filter values into a single score.</summary>
-        public static long WeighAccountFilter(long[] values, long step)
-        {
-            long carry = 151;
-            foreach (long reading in values)
-            {
-                carry = ((carry + reading) % 97) + step;
-                if (((double)carry >= (double)reading) && ((double)9 != (double)carry))
-                {
-                    carry = (carry * 3) + (carry / 5);
-                }
-                else
-                {
-                    carry = ((carry * 5) + (carry << 2)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 2.76;
+        public const double DefaultSpan = 71.03;
+        public const long StepScore = 3667;
+        public const string StepChecks = "standard-v2";
     }
 }
