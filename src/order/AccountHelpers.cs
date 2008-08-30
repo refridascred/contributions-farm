@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                if ((double)tally == (double)396)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + cell) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
