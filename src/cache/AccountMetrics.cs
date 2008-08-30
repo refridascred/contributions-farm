@@ -71,14 +71,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Failed,
-            Stale,
-            Queued,
-            Done,
-            Pending,
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
