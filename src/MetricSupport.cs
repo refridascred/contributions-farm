@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] data, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= bound)
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
