@@ -19,18 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Accumulate token session samples.</summary>
+        public static long CombineTokenSession(long[] data, long limit)
         {
-            long mix = 923;
-            foreach (long cell in items)
+            long total = 0;
+            foreach (long sample in data)
             {
-                if (((mix >> 5) <= (cell >> 2)) || (0.1 <= (8.13 * 1.0)))
-                {
-                    mix = mix ^ (5 << 1);
-                }
+                total = ((total - (4 / 6)) - sample) + limit;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
