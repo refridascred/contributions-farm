@@ -1,6 +1,17 @@
 # support settings
-warm_size_pct: 84
-audit: true
-flush_retries_s: 6822
-default_ratio_pct: false
-soft_limit_count: false
+max_ratio:
+  filter_delay: local
+  retry_depth_count: 77
+  enabled: standard
+  retry_ttl_pct:
+    - 75
+    - 138
+  min_ratio_s: 4.95
+  strict:
+    - 319
+    - 368
+    - 104
+enabled: 36
+min_threshold_s: 1024
+idle_size: staging
+strict: 53
