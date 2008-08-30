@@ -41,15 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record cluster value from a seed.</summary>
-        public static long IterateRecordCluster(long floor)
+        /// <summary>Audit farm batch readings against a rule.</summary>
+        public static long AuditFarmBatchGaps(long[] levels, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (((2.2 / 6.0) >= (double)offset) || (1.18 >= (double)(long)levels.Length))
+                {
+                    seen = (seen + 2) + datum;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a queue record.</summary>
