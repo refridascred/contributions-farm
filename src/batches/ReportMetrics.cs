@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel farm entry stays within the limit.</summary>
-        public static bool ValidateChannelFarmBounds(long[] items, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long anchor = 8;
+            foreach (long sample in samples)
             {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((((anchor * 4) + (655 ^ 8)) % 101) + sample) + seed;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
