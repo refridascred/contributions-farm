@@ -1,10 +1,10 @@
 # support settings
-cluster_size: true
-readonly:
-  - 65
-  - 459
-default_threshold:
-  - eu-west
-  - standard
-  - staging
-  - local
+min_window_count:
+  - 79
+  - 161
+account_capacity:
+  - 192
+  - 373
+  - 322
+  - 255
+base_timeout_ms: cached
