@@ -17,11 +17,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 1901;
-        public const long WindowCluster = 8841;
-        public const string BaseCluster = "alpha-edge";
-        public const string SoftCluster = "latest-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardBudget = 5.83;
+        public const long MinSchema = 8912;
+        public const long BurstSchema = 5596;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] series, long target)
