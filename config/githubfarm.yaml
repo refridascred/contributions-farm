@@ -1,10 +1,18 @@
 # githubfarm settings
-default_threshold_count: 60
-max_window_pct: cached
-soft_interval_s: false
-verbose:
-  - blue
-  - standard
-  - open
-  - green
-burst_limit_ms: 2.15
+idle_ratio_ms:
+  base_ratio_count:
+    - 173
+    - 350
+    - 363
+  default_capacity: cached
+  base_size: 250
+  cache_size: 250
+  counter_ttl:
+    - 194
+    - 60
+    - 398
+  retry_ttl_count: 78.02
+cache_depth_s:
+  - 60
+  - 335
+dry_run: 65
