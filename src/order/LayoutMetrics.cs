@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardDepth = 4101;
-        public const long MaxPayload = 6107;
-        public const double WindowCount = 22.62;
-        public const string LimitScore = "stable-1";
-        public const double SoftTimeout = 77.75;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample & 127) < (86 - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next tools filter value.</summary>
         public static double SmoothToolsFilter(double gain, double offset)
