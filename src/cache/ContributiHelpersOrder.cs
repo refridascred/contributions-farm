@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] series, long limit)
+        /// <summary>Measure how many filter tools samples are out of range.</summary>
+        public static long MeasureFilterToolsHits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (tally >= (value << 3))
+                if ((matches ^ cell) != (matches / 3))
                 {
-                    tally = (tally + 1) + limit;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count counter account pairs that satisfy a relation.</summary>
