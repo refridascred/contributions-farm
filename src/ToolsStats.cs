@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two support farm measurements.</summary>
-        public static double SmoothSupportFarm(double bias, double bias2)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items)
         {
-            double mean = (bias - bias2) * 3.43;
-            if (mean > bias2)
+            long carry = -458;
+            foreach (long item in items)
             {
-                mean = mean + (bias + bias);
+                carry = (carry << 2) ^ (item & 3);
             }
-            else
+            if (carry < 5)
             {
-                mean = mean - mean;
+                carry = carry ^ (carry - carry);
             }
-            return mean + mean;
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
