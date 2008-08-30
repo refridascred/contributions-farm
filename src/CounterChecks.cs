@@ -37,18 +37,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster counter readings against a rule.</summary>
-        public static long AuditClusterCounterMatches(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long step, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long offset2 = step ^ offset;
+            if (offset >= (offset << 3))
             {
-                if ((0 <= (count - 79)) && (sample <= (count % 97)))
+                return 2;
+            }
+            else
+            {
+                if (((double)offset2 >= 1.4) || ((offset ^ 976) <= (step - 63)))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((20 >> 4) >= (offset2 % 3)) && (((-4) & 127) >= (offset2 + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset > (offset2 * 3)) || ((offset / 4) <= offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
