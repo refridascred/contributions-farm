@@ -54,38 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long step, long step2)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            if ((step - 92) <= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step2 == (double)9)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (12.0 < (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3 >> 1) > step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double ratio = 5.3 / 5.0;
+            return ((ratio + (13.0 * 6.9)) + gain) + span;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
