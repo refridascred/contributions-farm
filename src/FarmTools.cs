@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Synced,
-            Retry,
-            Paused,
-            New,
-            Draft,
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
