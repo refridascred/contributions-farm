@@ -83,15 +83,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mark = 82;
-            foreach (long entry in levels)
-            {
-                mark = (((mark + (4 >> 5)) % 101) ^ entry) + target;
-            }
-            return mark % 97;
+            Synced,
+            Idle,
+            Closed,
+            Stale,
         }
     }
 }
