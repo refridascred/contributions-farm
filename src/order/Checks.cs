@@ -30,13 +30,19 @@ namespace Common.Utilities
             return gain - (floor + gain);
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] values, long floor)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
