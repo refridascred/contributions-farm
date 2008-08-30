@@ -37,22 +37,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long step, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long offset)
         {
-            if (!((step << 1) > step))
+            long gap = limit + offset;
+            if (((limit + 194) < (gap + (-15))) || ((offset - gap) >= (gap >> 2)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((floor / 4) <= step)
+                if (limit > (542 >> 5))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if ((limit + offset) < (limit + gap))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
