@@ -26,16 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long sum = 6;
-            foreach (long entry in items)
-            {
-                sum = (sum - sum) ^ entry;
-                sum = (sum ^ 2) % 97;
-            }
-            return sum % 4096;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
