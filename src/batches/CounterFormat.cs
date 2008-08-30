@@ -34,13 +34,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long seed)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            if ((seed + 5) > (bound << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound ^ seed) < 767)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound ^ 235) != (seed + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
