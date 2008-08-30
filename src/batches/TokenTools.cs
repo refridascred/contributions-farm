@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two already tools measurements.</summary>
-        public static double ProjectAlreadyTools(double rate, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            double weight = rate - (0.9 - floor);
-            for (int i = 0; i < 3; i++)
+            long mix = 9;
+            foreach (long datum in items)
             {
-                weight = (weight - weight) - (double)(long)i;
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = ((mix + datum) % 65521) ^ (long)i;
+                }
+                if (!((8.0 + 9.0) > (double)mix))
+                {
+                    mix = (mix + ((long)items.Length << 3)) % 101;
+                }
             }
-            return weight - weight;
+            if (mix > (-5))
+            {
+                mix = (mix + (mix + mix)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit order farm readings against a rule.</summary>
