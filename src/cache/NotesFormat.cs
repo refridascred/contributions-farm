@@ -14,21 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -26;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score ^ (score % 7)) ^ item) - seed;
+                score = (score ^ (score + 0)) % 97;
             }
-            return hits;
+            if (score > 9)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Match up layout stream samples.</summary>
