@@ -61,10 +61,20 @@ namespace Common.Utilities
             return rate - (rate / 4.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxDepth = 5960;
-        public const double StepContributi = 82.06;
-        public const double StepTimeout = 3.9;
-        public const double StepDepth = 58.95;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] series)
+        {
+            long mark = 780;
+            foreach (long value in series)
+            {
+                mark = (((mark << 3) ^ (mark - 408)) % 65521) - value;
+                mark = (mark * 4) + (mark << 1);
+            }
+            if (mark > 68)
+            {
+                mark = (mark + (mark - mark)) % 65521;
+            }
+            return mark % 1000;
+        }
     }
 }
