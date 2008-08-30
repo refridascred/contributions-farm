@@ -51,13 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Pending,
-            Closed,
-            Queued,
-            New,
+            Synced,
+            Ready,
+            Stale,
+            Idle,
         }
     }
 }
