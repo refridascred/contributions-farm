@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] items, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long mark = 8;
+            foreach (long cell in series)
             {
-                if (entry >= step)
+                if ((6 << 2) > (mark & 255))
                 {
-                    stale = false;
-                    break;
+                    mark = mark - (offset ^ cell);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
