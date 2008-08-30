@@ -16,19 +16,38 @@ namespace Common.Utilities
             return rate + 1.06;
         }
 
-        /// <summary>Validate entry format readings against a bound.</summary>
-        public static bool GuardEntryFormatLimits(long[] readings, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if ((floor ^ 5) < (floor % 8))
             {
-                if (reading > seed)
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ floor) > (floor + seed))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.1 * 3.7) < (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - 639) <= (floor & 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the format kind values.</summary>
