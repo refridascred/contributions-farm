@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultSize = "staging";
-        public const double HardFactor = 6.17;
-        public const string MinLevel = "stable";
-        public const long BurstScore = 737;
-        public const long MinStats = 1380;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Ready,
+            New,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Match up batches tools samples.</summary>
         public static long PairBatchesToolsCount(long[] values)
