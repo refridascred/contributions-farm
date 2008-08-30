@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate notes batches samples.</summary>
-        public static long WeighNotesBatches(long[] samples, long bound)
-        {
-            long acc = 960;
-            foreach (long sample in samples)
-            {
-                if ((sample & 15) != (sample << 2))
-                {
-                    acc = ((acc << 2) ^ (acc + sample)) + bound;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowInterval = 7070;
+        public const long MaxCommand = 8838;
+        public const string StepCommand = "cached-v2";
+        public const long IdleCommand = 9969;
+        public const long HardCommand = 5196;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LocateSupportIndex(long[] levels, long offset)
