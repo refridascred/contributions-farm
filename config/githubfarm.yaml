@@ -1,5 +1,8 @@
 # githubfarm settings
-warm_interval_count: 36
-flush_interval_pct: true
-poll_timeout_count: 30
-idle_interval_ms: blue
+persist: false
+compress:
+  - 172
+  - 3
+  - 125
+  - 139
+cache_ttl_pct: green
