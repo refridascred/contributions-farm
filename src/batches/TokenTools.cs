@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitDepth = 28.32;
-        public const double MinProfile = 9.55;
-        public const long BurstRatio = 8704;
-        public const long IdleBudget = 7725;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels)
