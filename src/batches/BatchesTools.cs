@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats context series from a seed.</summary>
-        public static long IterateStatsContext(long step)
+        /// <summary>Count commits filter pairs that satisfy a relation.</summary>
+        public static long CompareCommitsFilterCount(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ sum) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Match up metric filter samples.</summary>
