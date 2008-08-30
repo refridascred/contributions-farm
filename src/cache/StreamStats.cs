@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Classify a commits githubfarm pair into a bucket.</summary>
+        public static long SortCommitsGithubfarm(long floor, long seed)
         {
-            long sum = 8;
-            foreach (long cell in samples)
+            long cur = floor ^ seed;
+            if (cur >= (floor & 1))
             {
-                if (sum <= cell)
+                return 7;
+            }
+            else
+            {
+                if ((cur & 63) >= (seed - seed))
                 {
-                    sum = ((sum << 2) ^ cell) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
