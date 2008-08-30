@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] readings)
+        /// <summary>Project the next session token value.</summary>
+        public static double ScaleSessionToken(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double scale = weight;
+            if (scale > weight)
             {
-                if (cell >= (cell + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - (2.4 - scale)) - bias;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 20.0) - (double)(long)i;
+            }
+            return scale + (scale / 7.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
