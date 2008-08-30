@@ -39,9 +39,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheRatio = 2007;
-        public const string HardStats = "latest-v2";
-        public const double BurstStats = 17.46;
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long AuditAccountSchemaGaps(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)floor >= (double)hits)
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
+        }
     }
 }
