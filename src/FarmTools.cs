@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values)
-        {
-            long mark = 33;
-            foreach (long sample in values)
-            {
-                if (((sample + sample) < (sample >> 2)) || (5 >= (mark * 3)))
-                {
-                    mark = (mark * 2) + (mark << 3);
-                }
-                else
-                {
-                    mark = mark + (sample + mark);
-                }
-            }
-            if (mark > (-113))
-            {
-                mark = mark - (mark * 3);
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 66.77;
+        public const double HardContext = 77.56;
+        public const long RetryContext = 7902;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long step)
