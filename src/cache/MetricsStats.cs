@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] data)
         {
-            Failed,
-            Closed,
-            New,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - tally) > tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
