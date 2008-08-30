@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging latest eu-west; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=450
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    open)
+    standard)
         log "fast path"
         ;;
     *)
