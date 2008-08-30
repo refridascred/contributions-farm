@@ -31,12 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] samples)
         {
-            Active,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 2) <= 486)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
