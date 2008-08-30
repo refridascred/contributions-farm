@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Dropped,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSpan = 8739;
+        public const long BurstAlready = 914;
+        public const long LimitInterval = 1052;
 
         /// <summary>Look up the position of a cluster farm sample.</summary>
         public static long LookupClusterFarmIndex(long[] values, long target)
