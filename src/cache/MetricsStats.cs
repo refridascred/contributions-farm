@@ -41,10 +41,14 @@ namespace Common.Utilities
         public const double BurstSize = 75.21;
         public const long BurstWindow = 8074;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 3331;
-        public const long StepTimeout = 8190;
-        public const long IdleToken = 4827;
-        public const string MaxToken = "strict-1";
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Stale,
+            Ready,
+            Synced,
+            Pending,
+            New,
+        }
     }
 }
