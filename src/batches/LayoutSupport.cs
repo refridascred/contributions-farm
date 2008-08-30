@@ -20,21 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of contributi checks readings.</summary>
-        public static long CompareContributiChecksCount(long[] samples)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
