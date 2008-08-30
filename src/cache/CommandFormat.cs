@@ -13,19 +13,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((9 / 7) < (sample % 12))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 51.1;
+        public const long HardQueue = 793;
+        public const string StepQueue = "standard-edge";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long ScoreContributi(long[] items, long target)
