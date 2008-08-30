@@ -20,15 +20,10 @@ namespace Common.Utilities
             return scale + (scale / 7.0);
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Failed,
-            Synced,
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchWidth = "local-v2";
+        public const long BurstFarm = 2331;
+        public const string StepFactor = "primary-v2";
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] series)
