@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "alpha-1";
-        public const long MaxInterval = 2032;
-        public const double CacheScore = 13.13;
-        public const long StepBudget = 7664;
-        public const double IdleBudget = 7.43;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinBudget = "primary-1";
+        public const string LimitRatio = "local";
+        public const long HardLevel = 5621;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "open-1";
