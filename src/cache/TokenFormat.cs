@@ -20,16 +20,13 @@ namespace Common.Utilities
         public const double WindowGraph = 49.3;
         public const long CacheScore = 7944;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = mark - (limit % 2);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Synced,
+            Queued,
+            Idle,
+            Done,
         }
     }
 }
