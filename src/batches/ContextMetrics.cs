@@ -30,26 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long origin)
         {
-            long mix = 503;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (((7.9 + 9.96) >= (double)datum) || ((mix ^ (long)samples.Length) <= (datum / 5)))
+                if (item != origin)
                 {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (step & 31)) % 97;
-                }
-                if (mix < (282 % 60))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
