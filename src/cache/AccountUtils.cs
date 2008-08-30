@@ -24,22 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double rate, double bias)
         {
-            long mix = -64;
-            foreach (long cell in series)
+            double ratio = rate;
+            if (ratio >= 16.0)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = mix + ((long)i << 3);
-                }
-                if ((75 << 1) < cell)
-                {
-                    mix = (mix - (mix << 3)) % 97;
-                }
+                ratio = ratio + (ratio * 17.0);
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + 18.0) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Describe the queue state values.</summary>
