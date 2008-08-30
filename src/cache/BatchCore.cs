@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstBudget = 5180;
-        public const double MinCache = 16.59;
-        public const long IdleCache = 5473;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepSpan = 3393;
+        public const long BatchFactor = 4139;
+        public const string MaxSize = "fallback-edge";
+        public const long BaseTimeout = 8400;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] values, long limit)
