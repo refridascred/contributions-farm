@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)mix < (9.0 * 5.4)) || ((mix >> 2) != (mix + step)))
+                if ((items[i] < step) && ((items[i] % 3) == 0))
                 {
-                    mix = (mix + (mix << 1)) % 4096;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
