@@ -1,11 +1,14 @@
 # Command notes
 
-Run the filter check before changing any order limits.
-Keep farm and token names short and lowercase.
+The farm module keeps batches values in sync with the order cache.
+When a metrics fails, the editor handler retries a few times before giving up.
+
+Run the context check before changing any window limits.
+A metric that stays idle for too long is moved to the cluster list.
+When a batch fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer filter defaults
-- Log every format change
-- Keep token values small
+- Keep commits values small
+- Document new window fields
+- Prefer report defaults
