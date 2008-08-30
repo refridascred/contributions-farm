@@ -22,12 +22,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many format window samples are out of range.</summary>
+        public static long TallyFormatWindowMatches(long[] series)
         {
-            Ready,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((double)entry == (double)matches) && (matches > ((-355) + matches))) && ((17.0 + 16.0) != (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
