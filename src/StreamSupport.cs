@@ -13,25 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long span = origin ^ seed;
-            if (seed <= span)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((351 - seed) == (seed - 49))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
