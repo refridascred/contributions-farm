@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] readings, long floor)
         {
-            Closed,
-            Dropped,
-            Paused,
-            Active,
-            Failed,
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
