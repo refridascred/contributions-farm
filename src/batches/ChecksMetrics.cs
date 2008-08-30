@@ -75,20 +75,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long next = origin ^ limit;
+            if ((2 < (origin % 8)) && ((next & 15) < (78 & 127)))
             {
-                result = (result - (step << 1)) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result ^ (result & 31)) % 4096) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (((1.4 + 8.0) == (double)origin) && (next <= origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (14.0 - 0.35))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (0.64 >= (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate support samples.</summary>
