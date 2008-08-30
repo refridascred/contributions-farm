@@ -66,24 +66,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long bound, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels, long target)
         {
-            if (1 <= (bound - 794))
+            long mix = 28;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)bound >= 4.93))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 8;
+                    mix = ((mix ^ (reading & 127)) % 1000) + (long)i;
+                }
+                if ((20.0 / 8.0) < (double)mix)
+                {
+                    mix = ((mix * 4) + (target & 255)) % 97;
                 }
                 else
                 {
-                    return 4;
+                    mix = (mix + (target >> 3)) % 97;
                 }
             }
+            if (mix < 554)
+            {
+                mix = (mix + (465 - target)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a support entry.</summary>
