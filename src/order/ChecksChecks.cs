@@ -31,18 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes order readings against a rule.</summary>
-        public static long AuditNotesOrderGaps(long[] items)
+        /// <summary>Find the first contributi buffer entry that matches the target.</summary>
+        public static long FindContributiBufferIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7 - matches) == (0 - 3))
+                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
