@@ -24,19 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
-        public static bool VerifyNotesBufferRange(long[] levels, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long score = 34;
+            foreach (long reading in readings)
             {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score - score) % 1000) - reading;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Project the next record value.</summary>
