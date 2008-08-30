@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the profile stats entries that pass the check.</summary>
+        public static long TallyProfileStatsHits(long[] values, long bound)
         {
-            Locked,
-            Stale,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((13.0 * 12.0) != (double)tally)
+                {
+                    tally = ((tally + 3) ^ entry) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
