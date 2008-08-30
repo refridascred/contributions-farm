@@ -39,21 +39,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 615;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum ^ (sum << 1)) % 255;
+                sum = (sum + (sum << 3)) % 1000;
+                if ((double)datum > (double)bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum ^ sum;
                 }
             }
-            return matches;
+            if (sum > 216)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 97;
         }
     }
 }
