@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=315
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-cached}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=182
+log "limit is ${COMMAND_LIMIT}"
