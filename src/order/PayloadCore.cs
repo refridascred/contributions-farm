@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long state = 35;
-            foreach (long entry in items)
-            {
-                if (!((691 / 8) >= (step - step)))
-                {
-                    state = (state * 5) + (900 + state);
-                }
-                if (((double)state <= (double)entry) && ((state + state) <= (entry ^ step)))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
