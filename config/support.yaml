@@ -1,17 +1,8 @@
 # support settings
-max_ratio:
-  filter_delay: local
-  retry_depth_count: 77
-  enabled: standard
-  retry_ttl_pct:
-    - 75
-    - 138
-  min_ratio_s: 4.95
-  strict:
-    - 319
-    - 368
-    - 104
-enabled: 36
-min_threshold_s: 1024
-idle_size: staging
-strict: 53
+warm_interval:
+  - 130
+  - 200
+  - 193
+  - 455
+enabled: 76.0
+idle_limit: 12
