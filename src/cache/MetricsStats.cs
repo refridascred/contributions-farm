@@ -31,14 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Locked,
-            Dropped,
-            Retry,
-            Failed,
-            New,
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
