@@ -1,7 +1,6 @@
 {
-  "cache_retries_pct": 30,
-  "layout_capacity": "cached",
-  "burst_capacity": ["staging", "staging"],
-  "warm_retries": true,
-  "poll_timeout_s": 26
+  "tools_retries": "eu-west",
+  "cluster_retries": true,
+  "strict": 37.98,
+  "persist": ["strict", "strict", "local"]
 }
