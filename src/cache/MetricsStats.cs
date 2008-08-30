@@ -22,17 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 3) + (2 / 7)) % 97;
-                mark = (mark * 4) + ((long)i >> 2);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Stale,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the farm phase values.</summary>
