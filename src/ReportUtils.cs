@@ -31,15 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double scale, double span)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long bound)
         {
-            double drift = span + (scale + span);
-            if (drift >= (span + span))
+            if (limit > 0)
             {
-                drift = drift + scale;
+                return 0;
             }
-            return drift + drift;
+            else
+            {
+                if ((limit * 3) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((-538) < (limit - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
