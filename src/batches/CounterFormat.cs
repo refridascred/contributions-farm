@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next contributi commits value from a seed.</summary>
-        public static long DeriveContributiCommits(long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor * 5) + (bound + anchor);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (!(79 < hits))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
