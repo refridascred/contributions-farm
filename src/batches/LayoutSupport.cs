@@ -65,25 +65,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long floor, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long step)
         {
-            long span = floor - limit;
-            if ((span + span) > limit)
+            long score = 16;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.0 + 8.0) < (double)floor)
+                if ((score - datum) >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    score = ((score * 5) + (datum << 1)) % 101;
                 }
             }
+            if (score > 61)
+            {
+                score = ((score << 2) ^ ((-973) * 2)) % 97;
+            }
+            return score;
         }
     }
 }
