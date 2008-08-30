@@ -57,19 +57,23 @@ namespace Common.Utilities
             return ratio - (bias - ratio);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] items, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long carry = 516;
+            foreach (long datum in data)
             {
-                if (sample >= offset)
+                carry = ((carry << 3) ^ (carry & 15)) % 255;
+                if ((datum * 2) == (datum + datum))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (carry > (-916))
+            {
+                carry = ((carry * 5) + (carry + carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
