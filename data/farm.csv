@@ -1,8 +1,7 @@
-id,owner,level
-1,517,978
-2,97.03,563
-3,55,22.78
-4,70.85,503
-5,blue,355
-6,67.29,latest
-7,primary,strict
+id,count,token,state
+1,latest,primary,29.01
+2,713,3,889
+3,692,292,326
+4,870,507,green
+5,392,eu-west,138
+6,574,408,legacy
