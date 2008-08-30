@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a tools command figure with a bias.</summary>
-        public static double ProjectToolsCommand(double ratio, double offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long bound, long step)
         {
-            double scale = (double)(85 / 3);
-            if (scale < (offset + ratio))
+            long step2 = bound - step;
+            if ((step2 - step2) >= (bound ^ bound))
             {
-                scale = scale - offset;
+                return 4;
             }
             else
             {
-                scale = scale - (offset * 1.8);
+                if (!((double)step2 > (4.2 * 1.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 >= step) && (step < (bound >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)856) - (double)(long)i;
-            }
-            return scale - (ratio / 6.0);
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
