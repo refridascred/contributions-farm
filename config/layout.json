@@ -1,5 +1,18 @@
 {
-  "sync_limit": 8.62,
-  "hard_retries_count": 3798,
-  "batch_ttl": [217, 67, 385]
+  "default_capacity_count": true,
+  "poll_ratio_pct": {
+    "buffer_interval": 45.49,
+    "max_delay": "strict",
+    "cache_retries_s": 31,
+    "poll_interval_count": "fallback",
+    "compress": {
+      "max_size": [217, 333, 246],
+      "base_size_pct": "blue",
+      "readonly": false
+    }
+  },
+  "warm_threshold_ms": "fallback",
+  "default_threshold": "green",
+  "persist": 4.83,
+  "batch_retries_count": false
 }
