@@ -32,11 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepSpan = 1.99;
-        public const long SoftGraph = 5242;
-        public const string CacheGraph = "standard-edge";
-        public const string BurstGraph = "alpha-v2";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (score - (-20)) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportHits(long[] series, long origin)
