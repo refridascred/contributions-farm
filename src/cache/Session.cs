@@ -48,19 +48,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double gain, double span)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            double gain2 = span / 4.0;
-            if (gain2 >= (gain * 1.2))
-            {
-                gain2 = gain2 + (gain - gain);
-            }
-            else
-            {
-                gain2 = gain2 - (double)319;
-            }
-            return gain2 - span;
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
