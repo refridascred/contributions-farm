@@ -44,22 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mark = 81;
-            foreach (long reading in data)
-            {
-                if ((5.5 + 4.9) > (double)mark)
-                {
-                    mark = ((mark * 4) + (966 & 31)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (origin ^ reading)) % 4096;
-                }
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
