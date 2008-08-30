@@ -41,11 +41,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
