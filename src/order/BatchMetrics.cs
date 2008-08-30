@@ -45,38 +45,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long bound)
         {
-            if ((double)floor >= (7.48 / 2.0))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) == (7 + bound))
+                if (entry != bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-58) % 2) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (8.58 / 5.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
