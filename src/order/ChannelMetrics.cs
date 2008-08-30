@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double weight, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((64 + (-21)) <= (3 ^ offset)) || ((double)sum >= 6.06))
-                {
-                    sum = (sum << 3) ^ (offset << 1);
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            double rate = 15.0;
+            return (rate + span) + weight;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
