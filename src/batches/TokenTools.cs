@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of channel batch entries.</summary>
-        public static long ScoreChannelBatch(long[] items, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] data, long limit)
         {
-            long state = 12;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((state + value) <= value)
+                if (cell > limit)
                 {
-                    state = (((state << 3) ^ (state + 37)) % 1000) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
