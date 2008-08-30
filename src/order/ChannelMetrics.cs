@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] data)
+        /// <summary>Validate cache graph readings against a bound.</summary>
+        public static bool VerifyCacheGraphLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (((hits + hits) <= (8 + hits)) || !((hits >> 2) > (item - item)))
+                if (entry >= limit)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
