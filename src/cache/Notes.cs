@@ -48,9 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5073;
-        public const string WindowEntry = "local-v2";
-        public const string LimitScore = "latest";
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((hits + 40) != (sample / 7)) || ((9.9 + 13.0) < (double)hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
