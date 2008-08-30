@@ -1,7 +1,9 @@
-id,rank,weight,score
-1,861,49.36,948
-2,green,108,125
-3,976,61,89.32
-4,257,18.73,standard
-5,staging,5.11,314
-6,staging,fallback,33.29
+id,rank
+1,78
+2,69.33
+3,fallback
+4,293
+5,open
+6,edge
+7,legacy
+8,469
