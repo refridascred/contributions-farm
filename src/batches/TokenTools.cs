@@ -25,14 +25,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many notes payload samples are out of range.</summary>
+        public static long TallyNotesPayloadHits(long[] series, long bound)
         {
-            Pending,
-            Done,
-            Synced,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((bound + bound) < ((long)series.Length + 4))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
