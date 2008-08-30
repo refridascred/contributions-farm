@@ -46,21 +46,12 @@ namespace Common.Utilities
         public const double IdleWidth = 40.33;
         public const long BurstCount = 3009;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
