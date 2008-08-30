@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 9271;
+        public const long MinTimeout = 7689;
+        public const long LimitTimeout = 1475;
+        public const long BatchBudget = 7383;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
