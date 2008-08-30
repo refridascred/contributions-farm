@@ -39,12 +39,15 @@ namespace Common.Utilities
             return drift + (drift * 1.03);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 8276;
-        public const string CacheSpan = "cached-edge";
-        public const long MinMetrics = 5341;
-        public const double IdleWidth = 40.33;
-        public const long BurstCount = 3009;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Paused,
+            Done,
+            Synced,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
