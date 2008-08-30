@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of command tools readings.</summary>
-        public static long TotalCommandTools(long[] data)
-        {
-            long carry = 763;
-            foreach (long sample in data)
-            {
-                if ((sample - sample) > sample)
-                {
-                    carry = (carry - (sample & 7)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (sample + 65);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 5420;
+        public const long IdleBudget = 7508;
+        public const long MinRatio = 4883;
+        public const double MaxAccount = 6.42;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
