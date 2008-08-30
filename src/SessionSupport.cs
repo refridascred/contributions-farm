@@ -30,22 +30,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] items, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long offset)
         {
-            long result = 723;
-            foreach (long cell in items)
+            if (origin > (offset / 3))
             {
-                if ((result + result) <= (cell ^ cell))
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ origin) == (offset & 7))
                 {
-                    result = ((result * 3) + (86 >> 2)) % 97;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (result < 803)
-            {
-                result = (result - bound) % 4096;
-            }
-            return result;
         }
     }
 }
