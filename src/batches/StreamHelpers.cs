@@ -12,26 +12,20 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7580;
         public const string BurstTimeout = "primary-edge";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            long total = 415;
-            foreach (long value in levels)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((7.7 / 7.0) < (double)value)
+                if (((double)(long)i == (5.67 / 8.0)) || ((target << 2) <= anchor))
                 {
-                    total = ((total << 3) ^ (38 - 6)) % 65521;
+                    anchor = (anchor * 2) + (anchor + target);
+                    anchor = ((anchor * 5) + (anchor ^ anchor)) % 97;
                 }
-                else
-                {
-                    total = ((total * 4) + value) % 65521;
-                }
-                if ((double)total < 4.92)
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Combine metric cluster values into a single score.</summary>
