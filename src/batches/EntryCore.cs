@@ -60,13 +60,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (origin < (tally - tally))
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
