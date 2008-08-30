@@ -14,21 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up batches tools samples.</summary>
-        public static long PairBatchesToolsCount(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) > 9)
+                    if ((levels[i] - levels[j]) > 12)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up layout stream samples.</summary>
