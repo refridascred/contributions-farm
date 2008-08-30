@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
