@@ -20,15 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats batch entries.</summary>
-        public static long WeighStatsBatch(long[] values)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long state = 959;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (state % 97)) - sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
