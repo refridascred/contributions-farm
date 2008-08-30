@@ -58,12 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 5843;
-        public const long DefaultCommand = 5150;
-        public const string HardCommand = "stable-v2";
-        public const long CacheCommand = 3637;
-        public const long MinScore = 2525;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((step % 60) >= (item / 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool GuardCounterLimits(long[] values, long floor)
