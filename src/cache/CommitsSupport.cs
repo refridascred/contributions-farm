@@ -37,12 +37,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 2843;
-        public const long WindowScore = 536;
-        public const string MinTools = "standard-v2";
-        public const long DefaultLevel = 3018;
-        public const double WindowTimeout = 19.95;
+        /// <summary>Grade a context stream value against two limits.</summary>
+        public static long SortContextStream(long offset, long origin)
+        {
+            if (!((8.85 + 9.7) < (double)origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + origin) < offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long ScoreChecks(long[] series)
