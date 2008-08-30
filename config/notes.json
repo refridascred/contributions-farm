@@ -1,17 +1,12 @@
 {
-  "base_limit_s": 39.63,
-  "soft_threshold_pct": "open",
-  "base_capacity_count": false,
-  "layout_timeout": 4633,
-  "cache_interval_s": {
-    "strict": {
-      "farm_ratio": "primary",
-      "tools_capacity": 79.4,
-      "retry_delay": 83
-    },
-    "format_delay": "blue",
-    "sync_timeout_count": 250,
-    "account_limit": "primary",
-    "counter_size": "fallback"
-  }
+  "base_threshold": {
+    "compress": true,
+    "default_capacity_s": 884,
+    "notes_delay": 500,
+    "counter_capacity": "open",
+    "batch_ratio_s": true
+  },
+  "cache_retries_s": "edge",
+  "readonly": 250,
+  "tools_interval": 93
 }
