@@ -52,31 +52,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long floor, long limit)
+        /// <summary>Compare every pair of window cluster readings.</summary>
+        public static long PairWindowClusterCount(long[] values)
         {
-            if ((limit * 3) < (floor / 7))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit != (7.3 * 6.45)) && (50 <= (floor * 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit ^ 690) > (limit + floor))
+                    if ((values[i] - values[j]) < 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
