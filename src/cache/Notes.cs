@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] levels, long offset)
         {
-            Closed,
-            Idle,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((entry - 7) < matches) && (entry > (entry & 255))))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
