@@ -59,21 +59,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Scale a entry filter figure with a bias.</summary>
