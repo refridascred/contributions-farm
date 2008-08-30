@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long result = 2;
+            foreach (long datum in samples)
             {
-                if ((double)value < (1.91 / 5.0))
+                if ((datum ^ result) > result)
                 {
-                    matches = (matches + 3) + origin;
+                    result = ((result * 5) + (result ^ datum)) % 65521;
                 }
             }
-            return matches;
+            if (result < 830)
+            {
+                result = ((result * 5) + ((long)samples.Length + result)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many notes payload samples are out of range.</summary>
