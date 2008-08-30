@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const string BaseAccount = "local-edge";
         public const long SoftSpan = 2798;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Count cache channel pairs that satisfy a relation.</summary>
+        public static long MatchCacheChannelCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (815 <= (seen & 31))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + item;
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
