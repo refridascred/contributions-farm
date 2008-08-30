@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long MinBatch = 9221;
         public const double BaseRatio = 32.85;
 
-        /// <summary>Combine record report values into a single score.</summary>
-        public static long TallyRecordReport(long[] readings, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings, long origin)
         {
-            long acc = -199;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((32 <= (cell - acc)) && (7.0 < (double)acc))
+                if ((double)value < (1.91 / 5.0))
                 {
-                    acc = (((acc * 5) + (acc & 127)) % 4096) - step;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many notes payload samples are out of range.</summary>
