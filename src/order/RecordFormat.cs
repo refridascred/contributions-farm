@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of account githubfarm entries.</summary>
-        public static long ScoreAccountGithubfarm(long[] readings, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] items)
         {
-            long result = 971;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                result = ((result << 3) ^ origin) + value;
+                if (count >= ((long)items.Length + reading))
+                {
+                    count = count + 2;
+                }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
