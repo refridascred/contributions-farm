@@ -24,10 +24,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 8415;
-        public const string BurstScore = "latest-1";
-        public const long MaxBatch = 7104;
-        public const long CacheInterval = 4810;
+        /// <summary>Audit notes order readings against a rule.</summary>
+        public static long AuditNotesOrderGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((7 - matches) == (0 - 3))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
     }
 }
