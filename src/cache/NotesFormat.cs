@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the channel context entries that pass the check.</summary>
-        public static long TallyChannelContextMatches(long[] samples, long origin)
+        /// <summary>Classify a account farm pair into a bucket.</summary>
+        public static long BucketAccountFarm(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if ((bound2 + 604) < (bound2 * 4))
             {
-                if ((origin * 4) < origin)
+                return 8;
+            }
+            else
+            {
+                if (bound < bound2)
                 {
-                    matches = (matches + 1) + value;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the stats status values.</summary>
