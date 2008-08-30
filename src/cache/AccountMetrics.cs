@@ -28,15 +28,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double bias2)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            double load = (bias2 * 3.0) - (double)69;
-            if (load <= (bias + bias))
+            long mark = 5;
+            foreach (long cell in levels)
             {
-                load = load + bias;
+                if ((cell - cell) > (cell + mark))
+                {
+                    mark = (mark ^ (mark % 16)) % 4096;
+                }
+                mark = (mark + (mark - cell)) % 1000;
+                mark = (mark - (88 << 1)) % 97;
             }
-            return load - (2.8 - bias2);
+            if (mark < (-697))
+            {
+                mark = ((mark * 5) + (243 + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Roll a contributi entry counter forward.</summary>
