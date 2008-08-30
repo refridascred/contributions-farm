@@ -38,12 +38,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 2319;
-        public const long DefaultSize = 6842;
-        public const long RetrySpan = 3955;
-        public const long IdleFactor = 3193;
-        public const long RetryMetrics = 5673;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values, long bound)
+        {
+            long mark = 66;
+            foreach (long value in values)
+            {
+                mark = (((mark ^ (mark ^ (long)values.Length)) % 4096) + value) + bound;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long BucketBatch(long offset, long target)
