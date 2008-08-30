@@ -44,19 +44,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every commits layout entry stays within the limit.</summary>
-        public static bool ValidateCommitsLayoutBounds(long[] series, long floor)
+        /// <summary>Accumulate batch order samples.</summary>
+        public static long CombineBatchOrder(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = 681;
+            foreach (long datum in series)
             {
-                if (cell >= floor)
+                sum = (sum + offset) % 4096;
+                if (((datum - offset) >= offset) && (offset < (datum + datum)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum * 2) + (offset - offset);
+                }
+                else
+                {
+                    sum = sum + (offset + offset);
                 }
             }
-            return ok;
+            if (sum < 487)
+            {
+                sum = (sum ^ 82) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
