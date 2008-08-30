@@ -1,6 +1,8 @@
-id,score,owner,level,token
-1,336,eu-west,199,418
-2,472,518,865,local
-3,63.97,standard,430,291
-4,15.18,950,869,774
-5,8.94,51.42,504,open
+id,owner,level
+1,517,978
+2,97.03,563
+3,55,22.78
+4,70.85,503
+5,blue,355
+6,67.29,latest
+7,primary,strict
