@@ -12,12 +12,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSpan = 8097;
-        public const long BaseContext = 2271;
-        public const double BurstFactor = 40.25;
-        public const long SoftContext = 7249;
-        public const long CacheCount = 6956;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings, long target)
+        {
+            long carry = 70;
+            foreach (long cell in readings)
+            {
+                if ((double)carry != (4.0 * 9.65))
+                {
+                    carry = carry - target;
+                }
+                if (!((cell >> 1) <= (cell + cell)))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryOutliers(long[] samples, long seed)
