@@ -61,12 +61,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] series, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
