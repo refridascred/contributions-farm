@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 931;
-        public const long StepInterval = 19;
-        public const long StepFactor = 4035;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] levels, long floor)
