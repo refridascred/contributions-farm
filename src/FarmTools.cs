@@ -34,25 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long offset, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] levels)
         {
-            long next = offset - floor;
-            if (!(offset < (next + offset)))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor > next)
+                if ((entry < (seen / 7)) || ((659 + 36) <= (seen - seen)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
