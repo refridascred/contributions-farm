@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardInterval = "standard-v2";
-        public const double IdleRatio = 5.28;
-        public const long WindowTimeout = 3610;
-        public const long BatchWidth = 978;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Dropped,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Look up the position of a cluster farm sample.</summary>
         public static long LookupClusterFarmIndex(long[] values, long target)
