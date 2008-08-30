@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long offset, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long target)
         {
-            if ((5.41 + 1.76) != (double)offset)
+            long mix = 56;
+            foreach (long entry in levels)
             {
-                return 7;
+                mix = (((mix * 5) + (entry * 3)) % 97) - target;
             }
-            else
-            {
-                if ((6.67 - 5.9) >= (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset >= (1.0 * 1.21))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the already state values.</summary>
