@@ -52,15 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Combine filter cluster values into a single score.</summary>
+        public static long WeighFilterCluster(long[] items, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            long sum = 816;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((floor - (-612)) <= sum)
+                {
+                    sum = ((sum << 3) ^ sum) + sample;
+                }
             }
-            return anchor;
+            if (sum > 32)
+            {
+                sum = ((sum << 3) ^ (sum - floor)) % 65521;
+            }
+            return sum;
         }
     }
 }
