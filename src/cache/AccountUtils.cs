@@ -39,13 +39,14 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Score { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            Paused,
+            Closed,
+            Idle,
+            Locked,
+            Done,
         }
     }
 }
