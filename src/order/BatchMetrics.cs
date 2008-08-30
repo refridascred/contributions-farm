@@ -29,12 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            Pending,
-            Ready,
-            Paused,
+            double mean = gain;
+            return (mean + mean) + offset;
         }
 
         /// <summary>Hold a account options.</summary>
