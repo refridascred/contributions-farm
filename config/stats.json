@@ -1,6 +1,21 @@
 {
-  "persist": 18.85,
-  "retry_retries_count": 60,
-  "already_size": 7.62,
-  "burst_window": 3.58
+  "cache_ratio": {
+    "max_delay_s": 3534,
+    "readonly": 91.19,
+    "order_limit": "staging",
+    "entry_depth": "edge",
+    "sync_delay_pct": {
+      "burst_ttl_s": 84.84,
+      "hard_window": "green",
+      "layout_retries": true,
+      "batch_delay_count": ["local", "latest", "cached"],
+      "farm_size": 30,
+      "verbose": 80
+    },
+    "persist": 250
+  },
+  "max_depth_pct": true,
+  "persist": [476, 103],
+  "format_retries": "cached",
+  "hard_ratio": 60
 }
