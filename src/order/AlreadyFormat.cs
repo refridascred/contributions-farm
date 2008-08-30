@@ -52,11 +52,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultSpan = 4883;
-        public const long LimitBatches = 5772;
-        public const long RetryBatches = 4919;
-        public const long MaxRatio = 19;
-        public const long BurstDepth = 4364;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
