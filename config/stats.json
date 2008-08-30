@@ -1,11 +1,5 @@
 {
-  "hard_window": "strict",
-  "readonly": ["edge", "green"],
-  "payload_capacity": false,
-  "context_interval": 60,
-  "max_window": {
-    "default_capacity_ms": "stable",
-    "min_depth_s": 18.13,
-    "poll_limit_s": "legacy"
-  }
+  "batches_interval": "primary",
+  "account_interval": "cached",
+  "burst_window_pct": ["fallback", "fallback", "edge", "strict"]
 }
