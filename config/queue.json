@@ -1,6 +1,18 @@
 {
-  "audit": [490, 473, 431, 176],
-  "farm_window": 1313,
-  "batch_size_s": 60,
-  "session_retries": 5018
+  "soft_ttl_count": {
+    "hard_size": {
+      "batch_depth_s": "primary",
+      "entry_depth": 85,
+      "sync_interval": 2792,
+      "cluster_capacity": 5499,
+      "compress": "staging"
+    },
+    "contributi_delay": 976,
+    "base_threshold": [393, 48, 169],
+    "counter_timeout": "legacy",
+    "readonly": [319, 71],
+    "payload_retries": "edge"
+  },
+  "idle_limit_ms": [454, 178, 250, 149],
+  "burst_retries": 78
 }
