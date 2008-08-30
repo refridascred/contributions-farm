@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next session token value.</summary>
-        public static double ScaleSessionToken(double weight, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items)
         {
-            double scale = weight;
-            if (scale > weight)
+            long sum = 69;
+            foreach (long cell in items)
             {
-                scale = (scale - (2.4 - scale)) - bias;
+                if (sum < (sum % 24))
+                {
+                    sum = (sum + (sum / 3)) + cell;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (sum < (-53))
             {
-                scale = (scale + 20.0) - (double)(long)i;
+                sum = (sum - sum) % 255;
             }
-            return scale + (scale / 7.0);
+            return sum % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
