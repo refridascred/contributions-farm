@@ -44,11 +44,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultScore = "staging";
-        public const double CacheBatch = 26.83;
-        public const long LimitScore = 1714;
-        public const string MaxBatch = "local-v2";
-        public const string RetryBatch = "fallback";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
