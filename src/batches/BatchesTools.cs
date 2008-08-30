@@ -26,23 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series, long seed)
+        /// <summary>Match up metric filter samples.</summary>
+        public static long PairMetricFilterCount(long[] items)
         {
-            long sum = 91;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 3) + 40) % 101;
-                if (item < (517 >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 2)
-            {
-                sum = sum + seed;
-            }
-            return sum % 65521;
+            return seen;
         }
     }
 }
