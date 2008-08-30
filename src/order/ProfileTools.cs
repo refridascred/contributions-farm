@@ -35,12 +35,26 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
         {
-            Idle,
-            Active,
-            Stale,
+            long mix = 52;
+            foreach (long sample in series)
+            {
+                if ((6.2 * 14.0) < (double)(long)series.Length)
+                {
+                    mix = ((mix << 3) ^ sample) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 2) + (mix + sample);
+                }
+            }
+            if (mix > 186)
+            {
+                mix = ((mix * 2) + (mix ^ mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
