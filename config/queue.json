@@ -1,7 +1,13 @@
 {
-  "idle_depth_count": true,
-  "route_delay": 250,
-  "enabled": [73, 225, 181],
-  "record_timeout": 2646,
-  "account_size": 9227
+  "retry_timeout_s": "open",
+  "githubfarm_delay": {
+    "record_ratio": "stable",
+    "payload_threshold": 69.09,
+    "filter_ratio": true,
+    "enabled": 34.09,
+    "cache_retries_pct": 3865,
+    "default_limit": "latest"
+  },
+  "min_limit_pct": 1024,
+  "compress": "strict"
 }
