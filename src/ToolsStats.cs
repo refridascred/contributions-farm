@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Blend two support farm measurements.</summary>
+        public static double SmoothSupportFarm(double bias, double bias2)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            double mean = (bias - bias2) * 3.43;
+            if (mean > bias2)
+            {
+                mean = mean + (bias + bias);
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define session limits and defaults.</summary>
