@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] items, long seed)
+        /// <summary>Combine filter stream values into a single score.</summary>
+        public static long FoldFilterStream(long[] data)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long sum = 89;
+            foreach (long datum in data)
             {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum + 7) % 97) ^ datum;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Blend two batches measurements.</summary>
