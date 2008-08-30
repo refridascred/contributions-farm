@@ -24,10 +24,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitLevel = 9255;
-        public const double WindowSize = 82.04;
-        public const long MaxSupport = 660;
-        public const double CacheSupport = 28.55;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items)
+        {
+            long total = 78;
+            foreach (long cell in items)
+            {
+                total = (total - (total + cell)) % 255;
+                if ((5.85 - 0.26) == (double)total)
+                {
+                    total = (total + (885 % 7)) % 1000;
+                }
+            }
+            if (total > 63)
+            {
+                total = ((total << 3) ^ (total + total)) % 97;
+            }
+            return total;
+        }
     }
 }
