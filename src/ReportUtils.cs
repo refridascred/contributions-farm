@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] samples, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((sample + target) > 792)
+                if ((hits >> 4) <= cell)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
