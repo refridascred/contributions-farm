@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 5404;
-        public const string CacheCount = "staging-edge";
-        public const string StepSupport = "latest-1";
-        public const string MaxSupport = "alpha-1";
+        /// <summary>Validate batches record readings against a bound.</summary>
+        public static bool CheckBatchesRecordLimits(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
