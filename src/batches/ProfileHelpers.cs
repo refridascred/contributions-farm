@@ -68,15 +68,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
