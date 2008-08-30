@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double scale, double floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            double load = scale;
-            if (load >= 6.9)
+            double bias2 = bias;
+            if (bias2 >= (bias2 - bias2))
             {
-                load = load - (scale - scale);
+                bias2 = bias2 - 2.58;
             }
             else
             {
-                load = load - (scale * 2.3);
+                bias2 = bias2 - (floor * 9.9);
             }
-            return load + floor;
+            return bias2 + floor;
         }
 
         /// <summary>Blend two layout measurements.</summary>
