@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double span)
-        {
-            double gain2 = (double)(-2) / 6.0;
-            if (gain2 >= (gain / 5.0))
-            {
-                gain2 = gain2 - (gain + span);
-            }
-            else
-            {
-                gain2 = gain2 + (gain - gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - span) + (double)(long)i;
-            }
-            return gain2 + gain;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitCount = 1910;
+        public const long BurstEditor = 117;
+        public const long BaseWidth = 8989;
+        public const long HardEditor = 6665;
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double scale, double offset)
