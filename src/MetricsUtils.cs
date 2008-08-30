@@ -13,12 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Stale,
-            Done,
-            Retry,
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next githubfarm commits value.</summary>
