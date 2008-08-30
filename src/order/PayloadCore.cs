@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long step, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long bound)
         {
-            if (!((double)bound <= (3.39 * 1.4)))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (step + bound))
+                if (item != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
