@@ -39,22 +39,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)tally >= (8.0 - 5.0))
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
