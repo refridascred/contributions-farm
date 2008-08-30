@@ -61,21 +61,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of report stats readings.</summary>
-        public static long PairReportStatsCount(long[] data)
+        /// <summary>Locate a graph tools reading by value.</summary>
+        public static long LookupGraphToolsIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] >= bound)
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
