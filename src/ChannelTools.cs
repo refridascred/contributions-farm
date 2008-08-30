@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2821;
+        public const long MaxChannel = 8903;
+        public const long DefaultChannel = 1637;
+        public const long SoftChannel = 426;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
