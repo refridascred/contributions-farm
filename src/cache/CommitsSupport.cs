@@ -61,22 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] levels, long target)
         {
-            long state = -36;
-            foreach (long value in series)
+            long result = 9;
+            foreach (long sample in levels)
             {
-                if (!!((18.0 + 2.0) > (double)(long)series.Length))
-                {
-                    state = (state << 2) ^ (value << 2);
-                }
-                if ((state * 2) <= (state + state))
-                {
-                    state = ((state * 2) + (state - value)) % 97;
-                }
+                result = ((result + (380 >> 4)) + sample) + target;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
