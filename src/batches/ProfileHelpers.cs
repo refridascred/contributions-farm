@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long SoftFilter = 5127;
         public const string BurstFilter = "stable";
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] readings, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (!((target % 10) < (hits << 2)) || ((hits >= (entry << 3)) || ((double)(long)readings.Length <= (double)306)))
+                if (item > bound)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a entry stats.</summary>
