@@ -1,8 +1,8 @@
-id,owner,rank,weight,score
-1,668,725,standard,59.74
-2,972,29.02,39.32,83
-3,62,open,staging,823
-4,447,54.44,eu-west,716
-5,972,local,62.99,11.1
-6,257,635,58.4,715
-7,latest,92.59,958,open
+id,score,state,owner
+1,legacy,259,6
+2,primary,eu-west,33
+3,local,63,613
+4,blue,670,906
+5,87.33,57.01,794
+6,legacy,staging,425
+7,blue,259,legacy
