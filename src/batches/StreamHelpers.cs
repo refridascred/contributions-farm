@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 7335;
-        public const long BurstFormat = 5168;
-        public const long BaseFormat = 6833;
-        public const long IdleBudget = 6046;
-        public const long MinBudget = 7662;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((offset / 2) >= offset) || ((reading / 4) == (offset << 1))) && ((matches - reading) >= offset))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
