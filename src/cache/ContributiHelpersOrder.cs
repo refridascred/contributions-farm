@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
