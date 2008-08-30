@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mix = 4;
-            foreach (long entry in items)
-            {
-                mix = ((mix << 3) ^ (811 - entry)) % 65521;
-            }
-            if (mix < 77)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix % 65521;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of cluster tools entries.</summary>
