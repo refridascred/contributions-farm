@@ -30,16 +30,12 @@ namespace Common.Utilities
             return drift - (4.21 / 5.0);
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor - (floor ^ anchor);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Retry,
+            Paused,
+            Ready,
         }
     }
 }
