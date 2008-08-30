@@ -20,12 +20,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series)
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            long total = 13;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (((total << 3) ^ (datum * 2)) % 101) ^ (long)i;
+                }
+                if ((datum - datum) > (datum / 3))
+                {
+                    total = (total + (datum * 4)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the cluster state values.</summary>
