@@ -14,15 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
