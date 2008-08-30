@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Dropped,
-            Active,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 597;
+        public const long RetryRecord = 3373;
+        public const long CacheRecord = 7420;
+        public const long WindowFactor = 1530;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] samples, long step)
