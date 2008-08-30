@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long TallyNotesProfileOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count - target) >= (count + target))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 475;
+        public const long CacheDepth = 9200;
+        public const string SoftFactor = "alpha-v2";
+        public const long BaseTimeout = 389;
+        public const long BatchScore = 6813;
 
         /// <summary>Validate context report readings against a bound.</summary>
         public static bool CheckContextReportRange(long[] data, long step)
