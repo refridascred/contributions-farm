@@ -14,22 +14,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] readings, long limit)
+        /// <summary>Find the first tools account entry that matches the target.</summary>
+        public static long FindToolsAccountIndex(long[] values, long bound)
         {
-            long carry = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit >= 3) || (9.64 < (double)limit))
+                if (values[i] < bound)
                 {
-                    carry = (((carry * 3) + (long)readings.Length) % 255) + datum;
+                    return (long)i;
                 }
             }
-            if (carry > 483)
-            {
-                carry = (carry - (carry - limit)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit account notes readings against a rule.</summary>
