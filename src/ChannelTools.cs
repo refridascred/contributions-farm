@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the contributi entry entries that pass the check.</summary>
-        public static long TallyContributiEntryMatches(long[] items, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = 900;
+            foreach (long sample in readings)
             {
-                if (!!((0.62 + 2.8) >= (double)step))
+                if ((double)score == (10.0 * 8.0))
                 {
-                    count = (count + 2) - reading;
+                    score = ((score + (score + score)) % 1000) + sample;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Locate a buffer githubfarm reading by value.</summary>
