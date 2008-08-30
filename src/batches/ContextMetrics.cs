@@ -54,11 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
             public long Flag { get; set; }
         }
     }
