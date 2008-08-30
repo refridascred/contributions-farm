@@ -65,19 +65,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics entry readings against a bound.</summary>
-        public static bool CheckMetricsEntryRange(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 9781;
+        public const string HardSession = "stable-1";
+        public const double BurstSpan = 8.27;
+        public const long BaseSession = 7272;
     }
 }
