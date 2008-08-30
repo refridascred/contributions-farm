@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] series, long floor)
         {
-            long carry = 7;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((item + item) != (carry - item)) && ((carry ^ carry) > item))
+                if (entry <= floor)
                 {
-                    carry = ((carry * 4) + (item - 962)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a support options.</summary>
