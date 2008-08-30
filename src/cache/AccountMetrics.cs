@@ -55,18 +55,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum <= seen)
+                if (target > (mix & 15))
                 {
-                    seen = seen + 1;
+                    mix = (mix << 2) ^ (target << 2);
+                    mix = (mix << 2) ^ ((long)i & 15);
                 }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
