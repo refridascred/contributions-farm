@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long CacheFactor = 939;
         public const string MaxBudget = "legacy";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] data, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -918;
+            foreach (long value in levels)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = (result + (limit * 2)) + value;
+                result = result - (result + result);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
