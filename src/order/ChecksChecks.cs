@@ -24,23 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
-            long total = 78;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                total = (total - (total + cell)) % 255;
-                if ((5.85 - 0.26) == (double)total)
+                if ((tally & 63) >= (961 >> 1))
                 {
-                    total = (total + (885 % 7)) % 1000;
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (total > 63)
-            {
-                total = ((total << 3) ^ (total + total)) % 97;
-            }
-            return total;
+            return tally;
         }
     }
 }
