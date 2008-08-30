@@ -12,23 +12,15 @@ namespace Common.Utilities
         public const long CacheGraph = 4383;
         public const string BaseGraph = "cached-edge";
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double rate, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            double gain = rate / 6.0;
-            if (gain <= (double)4)
+            long mark = step;
+            for (int i = 0; i < 21; i++)
             {
-                gain = (gain + 12.0) - floor;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return mark;
         }
 
         /// <summary>Describe the cluster state values.</summary>
