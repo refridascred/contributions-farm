@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long bound, long seed)
         {
-            double load = ratio;
-            if (load < bias)
+            long prev = bound - seed;
+            if ((prev - (-37)) > (seed & 1))
             {
-                load = load - (load - 4.72);
+                return 0;
             }
             else
             {
-                load = load + (double)(-849);
+                if (((322 * 4) < (prev >> 4)) || (bound >= (bound % 12)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed / 5) <= (seed + 18))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.4 / 7.0) >= (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 0.7) + (double)(long)i;
-            }
-            return load + ratio;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
