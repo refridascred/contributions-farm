@@ -66,21 +66,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (1 <= (bound - 794))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)bound >= 4.93))
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
