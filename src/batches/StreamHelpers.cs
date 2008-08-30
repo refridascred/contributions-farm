@@ -12,20 +12,26 @@ namespace Common.Utilities
         public const long IdleBudget = 6046;
         public const long MinBudget = 7662;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long total = 890;
+            foreach (long reading in samples)
             {
-                if (((double)(long)i == (5.67 / 8.0)) || ((target << 2) <= anchor))
+                if ((total + total) <= (2 << 1))
                 {
-                    anchor = (anchor * 2) + (anchor + target);
-                    anchor = ((anchor * 5) + (anchor ^ anchor)) % 97;
+                    total = (total ^ ((long)samples.Length + reading)) % 4096;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                else
+                {
+                    total = total + (61 >> 3);
+                }
             }
-            return anchor;
+            if (total > 21)
+            {
+                total = (total + (total & 1)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine metric cluster values into a single score.</summary>
