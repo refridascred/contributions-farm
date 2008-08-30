@@ -1,4 +1,10 @@
 # githubfarm settings
-audit: true
-compress: 76.56
-poll_delay_pct: false
+soft_capacity_ms: 30
+contributi_window:
+  - 296
+  - 403
+  - 424
+  - 403
+idle_threshold: staging
+session_limit: open
+hard_window_ms: legacy
