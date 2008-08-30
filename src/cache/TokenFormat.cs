@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double span)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            double scale = (double)((-18) / 6);
-            if (scale > (double)2)
+            long mix = 4;
+            foreach (long entry in items)
             {
-                scale = ((scale - (4.8 * 7.11)) - weight) + span;
+                mix = ((mix << 3) ^ (811 - entry)) % 65521;
             }
-            return scale - (double)85;
+            if (mix < 77)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of cluster tools entries.</summary>
