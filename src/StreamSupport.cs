@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a farm metric reading.</summary>
-        public static double BlendFarmMetric(double rate, double floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            double gain = 9.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = ((gain - (double)1) + (double)(long)i) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain - (floor / 6.0);
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
