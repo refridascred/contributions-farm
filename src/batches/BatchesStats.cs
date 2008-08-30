@@ -33,12 +33,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheDepth = 449;
-        public const string StepInterval = "staging-v2";
-        public const string LimitCount = "legacy-edge";
-        public const long IdleInterval = 2936;
-        public const long IdleFactor = 289;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long origin)
+        {
+            long acc = 0;
+            foreach (long cell in levels)
+            {
+                if (origin <= (cell ^ cell))
+                {
+                    acc = acc ^ (long)levels.Length;
+                    continue;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc - (cell % 64)) % 65521) - (long)i;
+                }
+                if ((cell + acc) <= (acc * 4))
+                {
+                    acc = (acc ^ (acc >> 3)) % 4096;
+                }
+                else
+                {
+                    acc = acc - 0;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Measure how many contributi batches samples are out of range.</summary>
         public static long TallyContributiBatchesHits(long[] samples, long floor)
