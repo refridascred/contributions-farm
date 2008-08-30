@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((-861) >= (1 + bound2))
             {
-                if ((reading < (reading & 1)) && !(427 < reading))
+                return 5;
+            }
+            else
+            {
+                if ((7.55 - 4.0) <= (double)bound)
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
