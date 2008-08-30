@@ -33,18 +33,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
-        {
-            long mix = 413;
-            foreach (long datum in items)
-            {
-                if (((mix & 3) >= 670) && ((datum - mix) < datum))
-                {
-                    mix = ((mix << 3) ^ ((-694) + datum)) % 65521;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardDepth = "legacy-edge";
+        public const long IdleScore = 5581;
+        public const long BatchRoute = 575;
     }
 }
