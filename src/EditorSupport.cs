@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of cluster metric entries.</summary>
+        public static long ScoreClusterMetric(long[] series, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            long state = 8;
+            foreach (long entry in series)
+            {
+                state = (((state ^ (57 << 1)) % 255) + entry) + step;
+                if ((double)state != (double)6)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
