@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item / 8) == (item >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the channel session entries that pass the check.</summary>
