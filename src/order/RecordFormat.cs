@@ -62,12 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            Retry,
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
