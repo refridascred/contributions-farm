@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 2775;
+        public const long DefaultCommand = 8658;
+        public const double MaxCommand = 81.41;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueMatches(long[] data, long seed)
