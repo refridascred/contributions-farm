@@ -1,9 +1,7 @@
-id,state,owner
-1,673,13.3
-2,585,legacy
-3,eu-west,cached
-4,879,45.82
-5,206,252
-6,57.05,eu-west
-7,544,stable
-8,23.46,standard
+id,region,state
+1,738,22.89
+2,blue,95.72
+3,456,49
+4,468,blue
+5,357,837
+6,edge,25.78
