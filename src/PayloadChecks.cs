@@ -12,23 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next support counter value.</summary>
-        public static double SmoothSupportCounter(double rate, double offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            double gain = (offset / 7.0) + (double)7;
-            if (gain < (offset - gain))
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                gain = (gain + (double)1) + rate;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain + 0.63;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (7.4 / 6.0)) - (double)(long)i;
-            }
-            return gain + offset;
+            return anchor;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
