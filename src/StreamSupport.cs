@@ -34,29 +34,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long origin, long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long floor, long limit)
         {
-            long offset = origin - seed;
-            if ((offset >> 2) < (origin + offset))
+            long delta = floor ^ limit;
+            if (((double)delta <= (double)floor) || ((577 >> 4) <= (limit / 4)))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((offset << 1) >= (offset / 2))
+                if ((delta * 5) < (delta * 4))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((19 << 3) < (origin - seed))
+                    if ((59 + limit) > (limit & 3))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        if ((floor >> 5) <= (floor ^ limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
