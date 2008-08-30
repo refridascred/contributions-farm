@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long seed, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long offset = seed ^ bound;
-            if (((46 + (-42)) >= seed) || ((double)offset > (8.3 + 2.0)))
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset % 16) >= (offset + seed)) && ((99 * 5) == (offset - offset)))
+                if (!(total <= ((long)i >> 2)))
                 {
-                    return 3;
+                    continue;
                 }
-                else
-                {
-                    if ((offset + 15) < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (5.2 < (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                total = (total - target) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Describe the editor mode values.</summary>
