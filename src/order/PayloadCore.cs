@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] items, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > limit)
+                if (readings[i] < bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
