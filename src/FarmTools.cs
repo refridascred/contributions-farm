@@ -24,10 +24,40 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8755;
-        public const long WindowChecks = 2199;
-        public const double IdleChecks = 52.06;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long limit)
+        {
+            long step = origin - limit;
+            if ((limit >= (step + step)) || ((origin & 63) == (68 >> 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((9.0 + 12.0) >= (double)limit) && (step >= (limit / 8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step / 6) >= (step ^ 37)) || ((double)limit == (3.0 * 20.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit - step) < (origin % 7)) && (step > (limit << 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 5914;
