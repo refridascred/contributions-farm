@@ -65,19 +65,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next support order value from a seed.</summary>
-        public static long DeriveSupportOrder(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)offset != (3.09 - 8.0))
-                {
-                    mix = ((mix << 2) ^ (long)i) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 5107;
+        public const string BaseFactor = "local-v2";
+        public const string LimitRatio = "standard-1";
     }
 }
