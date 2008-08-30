@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const string StepSession = "open-1";
         public const long IdleSession = 670;
 
-        /// <summary>Scale a already format figure with a bias.</summary>
-        public static double ScaleAlreadyFormat(double bias, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] items, long bound)
         {
-            double bias2 = 6.0 - 4.2;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                bias2 = ((bias2 - bias) + (double)(long)i) + floor;
+                if ((bound & 63) >= (entry ^ bound))
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias2 - bias;
+            return tally;
         }
     }
 }
