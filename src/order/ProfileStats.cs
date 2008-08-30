@@ -39,11 +39,12 @@ namespace Common.Utilities
             return drift + (drift * 1.03);
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
