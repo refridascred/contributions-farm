@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const string StepSession = "open-1";
         public const long IdleSession = 670;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] items, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound & 63) >= (entry ^ bound))
+                if (levels[i] > floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
