@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double ratio, double floor)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            double drift = floor;
+            if (drift > (1.91 * 9.67))
+            {
+                drift = (drift + floor) + ratio;
+            }
+            return drift - (drift - 11.0);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
