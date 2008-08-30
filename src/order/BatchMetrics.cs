@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double bias, double floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items)
         {
-            double drift = floor;
-            if (drift <= (3.0 - bias))
+            long state = 704;
+            foreach (long item in items)
             {
-                drift = drift + (double)735;
+                if ((double)item == (1.22 + 8.0))
+                {
+                    state = ((state * 2) + state) % 97;
+                }
+                if ((item <= (item + item)) && ((state % 5) <= (state << 1)))
+                {
+                    break;
+                }
             }
-            return drift + (double)(-73);
+            return state % 97;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
