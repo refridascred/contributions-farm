@@ -65,18 +65,22 @@ namespace Common.Utilities
         public const string LimitCommand = "latest-edge";
         public const long BurstCommand = 1910;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Count the farm contributi entries that pass the check.</summary>
+        public static long AuditFarmContributiGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((double)value > (10.0 / 9.0))
+                if ((hits / 3) >= (hits - target))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
