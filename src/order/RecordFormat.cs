@@ -13,15 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] series, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] samples)
         {
             long count = 0;
-            foreach (long sample in series)
+            foreach (long sample in samples)
             {
-                if ((sample % 60) > (845 << 3))
+                if ((((count / 3) >= (sample - count)) || ((sample % 3) >= (sample >> 5))) || ((9 + sample) == (sample / 8)))
                 {
-                    count = (count + 1) - offset;
+                    count = count + 1;
                 }
             }
             return count;
