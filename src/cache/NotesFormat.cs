@@ -14,14 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Failed,
-            Idle,
-            Locked,
-            Dropped,
-            Stale,
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a payload tools reading by value.</summary>
