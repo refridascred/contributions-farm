@@ -13,18 +13,32 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] data, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long offset = floor - bound;
+            if (((bound >> 1) <= (942 - bound)) && (76 < (floor & 255)))
             {
-                if ((matches % 7) > (matches << 3))
+                return 4;
+            }
+            else
+            {
+                if ((offset & 31) >= floor)
                 {
-                    matches = ((matches + 3) ^ value) + seed;
+                    return 1;
+                }
+                else
+                {
+                    if ((13.0 + 0.1) != (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
