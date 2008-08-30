@@ -1,30 +1,44 @@
 # entry settings
-idle_retries_ms:
-  report_timeout: 12.26
-  max_window_ms: 3841
-  checks_retries: staging
-  hard_window: 30
-  flush_depth_s: false
-max_delay: fallback
-report_retries:
-  retry_size_pct:
-    batch_depth: blue
-    schema_delay: green
-    filter_delay: true
-  poll_threshold_s:
-    - blue
-    - green
-    - local
-    - stable
-  channel_capacity: cached
-hard_timeout:
-  layout_capacity: blue
-  persist: blue
-  hard_window_count: false
-  cache_ratio_ms: fallback
-  default_retries_count:
-    batch_ttl_pct: 53.83
-    warm_limit_pct: 78.4
-    flush_limit_s: false
-  retry_retries_ms: 70.21
-hard_ttl: latest
+route_delay:
+  default_limit: false
+  audit: 98
+  cache_ttl_s: 30.07
+  persist: 13.86
+  batch_delay: 2677
+  idle_ratio_pct: 8789
+dry_run:
+  sync_ttl: 3838
+  hard_timeout_s: stable
+  queue_ratio:
+    max_size_pct: false
+    route_size:
+      - edge
+      - green
+      - local
+      - cached
+    batch_depth: 8639
+    profile_size: blue
+    warm_depth_s:
+      - blue
+      - edge
+      - eu-west
+      - strict
+    cache_delay: 42.35
+support_ttl: 28
+retry_ratio_s: 38
+stats_ratio:
+  burst_interval_pct: 54
+  poll_capacity:
+    idle_depth_count: 69
+    audit: 2874
+    flush_ratio_s: fallback
+    batch_depth_count:
+      - 442
+      - 295
+  persist: local
+  contributi_timeout:
+    - primary
+    - legacy
+    - open
+    - fallback
+audit: true
