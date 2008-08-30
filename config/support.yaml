@@ -1,17 +1,17 @@
 # support settings
-profile_ratio:
-  batch_threshold_ms:
-    - 455
-    - 403
-  burst_ttl_s:
-    - 219
-    - 425
-    - 371
-    - 382
-  account_threshold: 34.58
-batch_window_pct:
-  - 98
-  - 197
-  - 347
-  - 178
-max_ratio: standard
+retry_limit_ms: legacy
+poll_size_s:
+  base_threshold_s: false
+  enabled: true
+  soft_window: 1698
+  default_capacity: local
+  buffer_size: false
+poll_capacity: 2703
+profile_depth: legacy
+audit: green
+poll_depth:
+  audit: 3.44
+  flush_interval_pct: false
+  cluster_threshold: eu-west
+  idle_threshold: 72.71
+  persist: 63
