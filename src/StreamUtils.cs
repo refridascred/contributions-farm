@@ -66,19 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] items, long step)
+        /// <summary>Validate buffer cache readings against a bound.</summary>
+        public static bool ValidateBufferCacheRange(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (value != step)
+                if (item != target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
