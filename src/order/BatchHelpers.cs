@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Failed,
-            Idle,
-            Retry,
+            Done,
+            Active,
+            Closed,
+            Queued,
             Synced,
-            Ready,
         }
 
         /// <summary>Describe the graph class values.</summary>
