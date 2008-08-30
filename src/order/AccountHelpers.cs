@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double rate, double bias)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double rate2 = bias;
-            if (rate2 >= (rate2 + bias))
-            {
-                rate2 = rate2 + bias;
-            }
-            else
-            {
-                rate2 = rate2 - (rate2 + rate);
-            }
-            return rate2 - 7.0;
+            Done,
+            Idle,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Digest a series of already entries.</summary>
