@@ -31,15 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] readings, long floor)
+        /// <summary>Audit account notes readings against a rule.</summary>
+        public static long CountAccountNotesGaps(long[] data, long target)
         {
-            long anchor = 5;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor ^ (364 + floor)) % 4096) ^ sample;
+                if (((value >> 4) == (tally % 24)) && (((2 + tally) >= target) && ((15.0 / 6.0) == (double)target)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
