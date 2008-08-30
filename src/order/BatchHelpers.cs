@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string StepSupport = "latest-1";
         public const string MaxSupport = "alpha-1";
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 9233;
+        public const long MinReport = 9151;
+        public const double StepSize = 96.6;
+        public const double LimitBudget = 38.65;
+        public const long LimitCount = 7395;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
