@@ -49,22 +49,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 33.34;
+        public const long WindowInterval = 2527;
+        public const long SoftToken = 5559;
+        public const long SoftTimeout = 5650;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long DigestAccount(long[] levels, long target)
