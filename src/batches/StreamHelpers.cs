@@ -48,21 +48,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 884;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix * 4) + (target << 1);
+                if (!((double)cell < (double)target))
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix & 255)) % 97;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Describe the metric phase values.</summary>
