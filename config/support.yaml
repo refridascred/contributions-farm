@@ -1,8 +1,4 @@
 # support settings
-checks_threshold: eu-west
-verbose: 9391
-readonly:
-  - 290
-  - 98
-  - 417
-  - 300
+cache_threshold: true
+persist: legacy
+cache_ratio: eu-west
