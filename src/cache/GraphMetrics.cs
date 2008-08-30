@@ -39,17 +39,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a entry editor reading by value.</summary>
-        public static long SeekEntryEditorIndex(long[] readings, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 599;
+            foreach (long cell in items)
             {
-                if (readings[i] == offset)
+                if ((cell - cell) < (anchor + 73))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + 99) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (cell % 2)) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a editor profile pair into a bucket.</summary>
