@@ -1,12 +1,16 @@
 # Command notes
 
-Keep token and buffer names short and lowercase.
-A counter that stays idle for too long is moved to the report list.
-When a buffer fails, the entry handler retries a few times before giving up.
+Defaults for token live in the config folder and can be overridden per environment.
+Run the record check before changing any graph limits.
+Keep already and editor names short and lowercase.
+
+Use schema settings to tune how often payload data is refreshed.
+Keep profile and entry names short and lowercase.
+Use format settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate editor input early
-- Prefer channel defaults
-- Log every commits change
+- Log every metric change
+- Validate counter input early
+- Keep buffer values small
+- Document new tools fields
