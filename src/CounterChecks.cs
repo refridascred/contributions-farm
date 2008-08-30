@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph counter reading.</summary>
-        public static double ProjectGraphCounter(double ratio, double span)
-        {
-            double weight = span - (ratio - span);
-            if (weight >= (span + 1.7))
-            {
-                weight = weight - (2.0 / 4.0);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + (7.68 - 1.9);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 744;
+        public const string WindowFormat = "standard";
+        public const double MinFormat = 63.71;
 
         /// <summary>Grade a buffer stats value against two limits.</summary>
         public static long BucketBufferStats(long target, long origin)
