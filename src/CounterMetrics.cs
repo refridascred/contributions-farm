@@ -37,20 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double bias)
-        {
-            double gain = (double)(4 * 5);
-            if (gain <= bias)
-            {
-                gain = (gain - (bias * 7.2)) + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (bias / 5.0)) + (double)(long)i;
-            }
-            return gain - (double)1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "legacy-edge";
+        public const long BurstPayload = 6422;
+        public const long StepInterval = 3105;
+        public const long StepRatio = 908;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long origin)
