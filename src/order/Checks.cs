@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate support githubfarm samples.</summary>
-        public static long DigestSupportGithubfarm(long[] data, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items)
         {
-            long state = 3;
-            foreach (long sample in data)
+            long anchor = 9;
+            foreach (long value in items)
             {
-                if ((double)state == (4.03 - 8.04))
+                anchor = (anchor + (anchor << 1)) % 1000;
+                anchor = ((anchor * 4) + (anchor >> 5)) % 1000;
+                if (((value >> 5) <= (anchor / 9)) || ((anchor + (long)items.Length) < (value >> 1)))
                 {
-                    state = (((state ^ state) % 65521) + sample) - floor;
+                    anchor = ((anchor * 2) + 8) % 101;
                 }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the entry level values.</summary>
