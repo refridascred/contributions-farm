@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next layout support value.</summary>
-        public static double AdjustLayoutSupport(double scale, double bias)
+        /// <summary>Count entry profile pairs that satisfy a relation.</summary>
+        public static long CompareEntryProfileCount(long[] data)
         {
-            double weight = 0.6 / 5.0;
-            if (weight <= (double)6)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + (scale * 10.0)) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (weight * 3.35);
-            }
-            return weight + (scale * 6.5);
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
