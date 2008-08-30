@@ -1,13 +1,8 @@
 {
-  "stats_timeout": 100,
-  "warm_interval": 78.84,
-  "warm_delay": [198, 334],
-  "buffer_delay": [85, 204, 398],
-  "burst_timeout_s": {
-    "warm_threshold_pct": 60,
-    "support_retries": 2,
-    "retry_delay": false,
-    "format_interval": true
-  },
-  "min_threshold_s": ["blue", "primary", "cached", "stable"]
+  "base_ttl": 40,
+  "compress": true,
+  "min_size": true,
+  "enabled": 67.14,
+  "cache_limit": 3129,
+  "cache_ratio": "standard"
 }
