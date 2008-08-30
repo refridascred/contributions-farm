@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
