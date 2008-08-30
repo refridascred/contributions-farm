@@ -34,9 +34,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 5914;
-        public const long RetryFactor = 3609;
-        public const string RetryLevel = "cached-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "strict-1";
+        public const double BaseCommits = 78.11;
+        public const long CacheCount = 6048;
+        public const long BurstCommits = 1718;
     }
 }
