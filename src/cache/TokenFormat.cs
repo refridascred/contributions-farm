@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 5420;
-        public const long IdleBudget = 7508;
-        public const long MinRatio = 4883;
-        public const double MaxAccount = 6.42;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Locked,
+            Failed,
+            Ready,
+            Done,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultBudget = 8426;
