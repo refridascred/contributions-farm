@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
         {
-            Active,
-            New,
-            Locked,
-            Paused,
-            Dropped,
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 2) + (offset + total)) % 4096;
+                total = total ^ ((long)i + total);
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
