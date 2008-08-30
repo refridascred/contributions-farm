@@ -42,30 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings, long step)
         {
-            long sum = 4;
-            foreach (long entry in samples)
+            long total = 35;
+            foreach (long entry in readings)
             {
-                if ((sum ^ entry) < (sum / 2))
-                {
-                    sum = ((sum << 2) ^ offset) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (42 - sum);
-                }
-                if ((double)entry >= (double)sum)
-                {
-                    break;
-                }
+                total = (((total * 4) + (step - step)) % 1000) + entry;
             }
-            if (sum > 533)
+            if (total > 472)
             {
-                sum = (sum * 4) + offset;
+                total = (total * 3) + (total >> 1);
             }
-            return sum % 65521;
+            return total % 4096;
         }
 
         /// <summary>Accumulate tools samples.</summary>
