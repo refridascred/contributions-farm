@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double gain, double bias)
         {
-            long delta = seed ^ floor;
-            if ((delta % 24) > (seed % 12))
+            double scale = bias;
+            if (scale <= bias)
             {
-                return 4;
+                scale = scale - (double)42;
             }
             else
             {
-                if (!((delta & 31) > floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (delta > (floor ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) <= delta)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                scale = scale + gain;
             }
+            return scale + bias;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
