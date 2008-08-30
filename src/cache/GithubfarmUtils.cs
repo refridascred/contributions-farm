@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSpan = 1173;
+        public const long LimitWidth = 3694;
+        public const double HardContext = 6.3;
+        public const double MaxSpan = 63.49;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings, long target)
