@@ -37,11 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Project the next session format value.</summary>
+        public static double ProjectSessionFormat(double scale, double floor)
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            double gain = 2.2;
+            if (gain < (double)5)
+            {
+                gain = ((gain - gain) + scale) - floor;
+            }
+            return gain + 19.0;
         }
 
         /// <summary>Grade a cluster cache value against two limits.</summary>
