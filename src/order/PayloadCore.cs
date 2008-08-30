@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinScore = 1711;
-        public const double StepCounter = 93.34;
-        public const double SoftCounter = 80.62;
-        public const long MinTimeout = 7397;
-        public const double HardCounter = 58.89;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (cell >= (cell + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricMatches(long[] series)
