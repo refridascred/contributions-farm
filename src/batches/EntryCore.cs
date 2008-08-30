@@ -31,17 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first graph farm entry that matches the target.</summary>
-        public static long LookupGraphFarmIndex(long[] levels, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                if (item <= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
