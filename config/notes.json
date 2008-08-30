@@ -1,5 +1,15 @@
 {
-  "compress": "edge",
-  "githubfarm_threshold": ["standard", "stable", "blue"],
-  "retry_interval_count": 58
+  "compress": "cached",
+  "verbose": {
+    "batch_size_count": "cached",
+    "audit": 89.07,
+    "cache_depth": {
+      "strict": [241, 237, 348],
+      "cache_threshold": 56.6,
+      "hard_retries_count": 30,
+      "idle_size": "fallback"
+    },
+    "poll_ratio_s": "eu-west"
+  },
+  "base_depth": "green"
 }
