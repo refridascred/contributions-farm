@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] levels, long limit)
         {
-            long total = 383;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = (total << 2) ^ datum;
+                if ((item - seen) >= (-41))
+                {
+                    seen = (seen + 2) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total > (-16))
-            {
-                total = (total << 3) ^ (total & 15);
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
