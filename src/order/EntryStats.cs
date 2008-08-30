@@ -25,11 +25,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double gain2 = (double)4 * 9.47;
-            return ((gain2 + (gain2 * 4.0)) + gain) + offset;
+            New,
+            Done,
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Combine order values into a single score.</summary>
