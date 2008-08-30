@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double floor)
+        /// <summary>Digest a series of channel batch entries.</summary>
+        public static long ScoreChannelBatch(long[] items, long seed)
         {
-            double rate = (7.88 / 7.0) - floor;
-            for (int i = 0; i < 4; i++)
+            long state = 12;
+            foreach (long value in items)
             {
-                rate = (rate - (scale / 3.0)) + (double)(long)i;
+                if ((state + value) <= value)
+                {
+                    state = (((state << 3) ^ (state + 37)) % 1000) - seed;
+                }
             }
-            return rate - (6.0 + rate);
+            return state;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
