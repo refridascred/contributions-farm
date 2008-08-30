@@ -56,11 +56,13 @@ namespace Common.Utilities
             return mean + (double)621;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public string Flag { get; set; } = "";
             public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
