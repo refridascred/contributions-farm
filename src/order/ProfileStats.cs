@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BurstChecks = 5274;
         public const double StepChecks = 26.43;
 
-        /// <summary>Look up the position of a cluster farm sample.</summary>
-        public static long LookupClusterFarmIndex(long[] values, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
