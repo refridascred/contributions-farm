@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 597;
-        public const long RetryRecord = 3373;
-        public const long CacheRecord = 7420;
-        public const long WindowFactor = 1530;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] readings)
+        {
+            long carry = 918;
+            foreach (long datum in readings)
+            {
+                carry = (carry << 3) ^ datum;
+                if ((carry << 3) != (datum << 2))
+                {
+                    carry = carry + 63;
+                }
+                else
+                {
+                    carry = ((carry * 3) + carry) % 97;
+                }
+            }
+            if (carry > 217)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
