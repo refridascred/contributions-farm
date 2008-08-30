@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long floor, long origin)
         {
-            double gain = (double)(222 + (-75));
-            if (gain > (double)416)
+            if ((floor % 16) < origin)
             {
-                gain = ((gain + (double)52) + scale) + floor;
+                return 8;
             }
-            return gain + (double)893;
+            else
+            {
+                if (((origin % 97) > (floor + floor)) || ((floor + floor) > (floor & 63)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor < (floor - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((686 >> 3) >= (origin - floor)) && ((origin - floor) >= origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window options.</summary>
