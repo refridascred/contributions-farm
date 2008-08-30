@@ -34,27 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double floor)
         {
-            long sum = 65;
-            foreach (long datum in levels)
+            double load = (double)(65 * 2);
+            if (load < (floor * 8.0))
             {
-                sum = ((sum << 2) ^ (6 + 18)) % 65521;
-                if ((sum % 60) == (sum ^ datum))
-                {
-                    sum = (sum + (datum << 2)) % 4096;
-                }
-                if ((9 & 31) >= (datum >> 5))
-                {
-                    break;
-                }
+                load = load - ratio;
             }
-            if (sum > 27)
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum + (sum ^ sum)) % 65521;
+                load = (load - (floor / 6.0)) + (double)(long)i;
             }
-            return sum % 4096;
+            return load + ratio;
         }
     }
 }
