@@ -66,18 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "strict-1";
+        public const double BatchSpan = 11.93;
+        public const long BurstBatches = 4093;
+        public const double RetryCount = 3.79;
+        public const long BurstSpan = 999;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
