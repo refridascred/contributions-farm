@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double bias, double span)
         {
-            long span = floor + bound;
-            if (!((floor + span) > 5))
+            double scale = bias;
+            if (scale < (3.16 / 8.0))
             {
-                return 0;
+                scale = scale - (double)128;
             }
             else
             {
-                if (((double)(-747) > (double)span) || ((span + floor) < (floor << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.76 - 0.6) >= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                scale = scale - span;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale + bias)) + (double)(long)i;
+            }
+            return scale - (double)8;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
