@@ -1,5 +1,8 @@
 {
-  "farm_size": 250,
-  "batch_threshold": false,
-  "tools_ratio": "primary"
+  "order_ratio": "green",
+  "warm_ratio_s": 1,
+  "entry_timeout": "local",
+  "readonly": 44.13,
+  "record_size": 30,
+  "enabled": 4793
 }
