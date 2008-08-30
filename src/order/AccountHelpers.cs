@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 2349;
-        public const long LimitPayload = 4235;
-        public const double MaxPayload = 46.09;
-        public const double BatchPayload = 93.41;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 9.33;
+        public const long MinFarm = 5442;
+        public const long LimitFarm = 2756;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] values, long offset)
