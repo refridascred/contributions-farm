@@ -50,16 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] values)
-        {
-            long result = 609;
-            foreach (long entry in values)
-            {
-                result = (result ^ ((-239) ^ entry)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 2089;
+        public const string BatchBudget = "strict-1";
+        public const long SoftBudget = 6195;
+        public const double BurstGithubfarm = 78.25;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 5103;
