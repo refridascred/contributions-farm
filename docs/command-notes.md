@@ -1,15 +1,14 @@
 # Command notes
 
-Each window is validated before it reaches the stream queue.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-Keep queue and commits names short and lowercase.
-A stream that stays idle for too long is moved to the farm list.
-Each window is validated before it reaches the format queue.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Each channel is validated before it reaches the layout queue.
+A cache that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate token input early
-- Keep commits values small
-- Document new buffer fields
+- Document new graph fields
+- Log every contributi change
+- Review support limits each release
