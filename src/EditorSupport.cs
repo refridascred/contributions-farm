@@ -91,31 +91,18 @@ namespace Common.Utilities
         public const double LimitBudget = 78.12;
         public const long BurstSize = 1167;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long offset, long floor)
+        /// <summary>Audit graph profile readings against a rule.</summary>
+        public static long CountGraphProfileGaps(long[] readings)
         {
-            if (((floor ^ floor) < offset) || (floor < offset))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset / 2) > 6)
+                if (!((reading ^ matches) >= (matches * 2)) || (((double)reading >= (2.6 - 15.0)) && (((long)readings.Length - matches) > 433)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.12 - 18.0) >= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
