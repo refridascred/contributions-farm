@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long sum = -23;
-            foreach (long entry in values)
+            long carry = 38;
+            foreach (long cell in series)
             {
-                if ((sum - sum) <= sum)
-                {
-                    sum = ((sum * 2) + (entry ^ 630)) % 1000;
-                }
+                carry = ((carry << 2) ^ ((long)series.Length ^ cell)) % 1000;
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
