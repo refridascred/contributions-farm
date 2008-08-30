@@ -49,14 +49,18 @@ namespace Common.Utilities
         public const double BurstSize = 75.21;
         public const long BurstWindow = 8074;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            Stale,
-            Ready,
-            Synced,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((15 >= (reading & 31)) && (((double)reading >= (9.99 * 0.24)) && (16.0 >= (double)reading)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
