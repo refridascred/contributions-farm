@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate window tools readings against a bound.</summary>
-        public static bool VerifyWindowToolsLimits(long[] series, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
