@@ -46,11 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
