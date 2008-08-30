@@ -1,8 +1,21 @@
 {
-  "idle_timeout_s": 530,
-  "default_ratio_s": "standard",
-  "poll_ratio_count": 30,
-  "enabled": 54,
-  "route_retries": "green",
-  "min_depth_s": false
+  "min_retries": 30.28,
+  "persist": {
+    "cache_timeout_count": {
+      "verbose": "primary",
+      "min_size_pct": 60,
+      "enabled": 65.84,
+      "githubfarm_retries": 8053
+    },
+    "poll_delay": "staging",
+    "account_delay": 2181,
+    "cache_capacity_ms": {
+      "record_limit": ["green", "edge"],
+      "enabled": true,
+      "metric_depth": "strict"
+    },
+    "max_window_s": [233, 253, 332]
+  },
+  "flush_timeout_pct": false,
+  "metrics_depth": false
 }
