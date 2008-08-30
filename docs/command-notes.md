@@ -1,11 +1,15 @@
 # Command notes
 
-Run the session check before changing any report limits.
-The profile module keeps record values in sync with the account cache.
-Keep queue and format names short and lowercase.
+Each window is validated before it reaches the stream queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
+
+Keep queue and commits names short and lowercase.
+A stream that stays idle for too long is moved to the farm list.
+Each window is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Keep checks values small
-- Log every metrics change
-- Review order limits each release
+- Review tools limits each release
+- Validate token input early
+- Keep commits values small
+- Document new buffer fields
