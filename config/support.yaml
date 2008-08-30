@@ -1,10 +1,8 @@
 # support settings
-idle_capacity_pct: 30
-poll_ratio_count:
-  sync_threshold_pct: 7578
-  account_retries: 93.66
-  report_ratio: 54
-  idle_capacity: true
-  default_interval: 93.37
-command_limit: open
-notes_retries: 8831
+verbose: false
+poll_interval_count:
+  - 218
+  - 309
+  - 85
+  - 113
+batch_capacity_s: 250
