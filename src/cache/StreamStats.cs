@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long sum = 8;
+            foreach (long cell in samples)
             {
-                carry = carry - (floor / 4);
-                carry = (carry << 3) ^ (floor + (long)i);
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (sum <= cell)
+                {
+                    sum = ((sum << 2) ^ cell) % 65521;
+                }
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Check that every farm format entry stays within the limit.</summary>
