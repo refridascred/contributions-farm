@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxDepth = "cached";
-        public const string LimitInterval = "local-v2";
-        public const long BaseSize = 21;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardRatio = 83.36;
+        public const long SoftWidth = 6916;
+        public const long IdleCount = 1767;
+        public const double LimitSize = 39.98;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] samples, long offset)
