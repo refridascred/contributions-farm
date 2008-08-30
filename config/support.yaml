@@ -1,7 +1,13 @@
 # support settings
-enabled: 28.76
-batch_window_ms: cached
-poll_ratio: 31.56
-order_size: 96.18
-batch_size: true
-batch_ratio: 460
+farm_interval:
+  - 331
+  - 109
+verbose: latest
+cache_ttl:
+  - 3
+  - 292
+cluster_ttl:
+  - primary
+  - staging
+base_interval: 5987
+batch_retries: false
