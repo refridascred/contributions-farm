@@ -30,13 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Idle,
-            Locked,
-            Pending,
-            Retry,
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
