@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
-        public static long MeasureCounterGithubfarmHits(long[] data, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits + entry) < hits)
+                if (items[i] > seed)
                 {
-                    hits = (hits + 1) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
