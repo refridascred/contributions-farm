@@ -60,17 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] >= step) && ((series[i] % 3) != 0))
+                if (!((6 + count) > (entry / 9)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine account filter values into a single score.</summary>
