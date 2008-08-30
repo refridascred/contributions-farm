@@ -45,23 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] series)
         {
-            long carry = 516;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry << 3) ^ (carry & 15)) % 255;
-                if ((datum * 2) == (datum + datum))
+                if ((sample * 5) == (tally & 7))
                 {
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > (-916))
-            {
-                carry = ((carry * 5) + (carry + carry)) % 65521;
-            }
-            return carry;
+            return tally;
         }
     }
 }
