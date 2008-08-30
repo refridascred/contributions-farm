@@ -65,18 +65,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = 50;
+            foreach (long cell in samples)
             {
-                if ((sample & 127) > (sample * 5))
+                if (!((8 << 3) < (bound - 2)))
                 {
-                    matches = matches + 1;
+                    mark = (mark ^ (cell / 6)) % 1000;
+                }
+                if ((double)1 >= (double)cell)
+                {
+                    mark = (mark ^ (cell - cell)) % 1000;
                 }
             }
-            return matches;
+            if (mark < 4)
+            {
+                mark = (mark - (bound - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a support entry.</summary>
