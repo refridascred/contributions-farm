@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine payload stream values into a single score.</summary>
-        public static long CombinePayloadStream(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] readings)
         {
-            long mix = 2;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((4.67 >= (double)mix) || ((mix & 255) >= mix))
+                if (!(((count << 1) <= count) || ((item >> 3) <= (count - item))))
                 {
-                    mix = ((mix ^ (49 + 842)) % 255) + entry;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of already entries.</summary>
