@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (item < (item + (long)series.Length))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 4267;
+        public const long WindowCache = 8230;
+        public const string BatchSize = "standard";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long OverlapContextCount(long[] items)
