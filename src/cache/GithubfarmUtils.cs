@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSpan = 1173;
-        public const long LimitWidth = 3694;
-        public const double HardContext = 6.3;
-        public const double MaxSpan = 63.49;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings, long target)
