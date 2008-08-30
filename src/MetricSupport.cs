@@ -19,12 +19,14 @@ namespace Common.Utilities
         public const long MinRecord = 7568;
         public const long WindowLevel = 2915;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Queued,
-            Paused,
-            Active,
+            Retry,
+            Locked,
+            Failed,
+            Dropped,
+            Closed,
         }
     }
 }
