@@ -49,18 +49,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the counter schema entries that pass the check.</summary>
-        public static long AuditCounterSchemaOutliers(long[] levels, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry < (8 + entry))
-                {
-                    count = (count + 2) - target;
-                }
+                carry = ((carry * 3) + (carry + 548)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
