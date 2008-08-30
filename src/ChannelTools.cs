@@ -34,11 +34,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 4309;
-        public const long IdleReport = 8236;
-        public const long BatchDepth = 9761;
-        public const double SoftScore = 1.17;
-        public const long BatchReport = 175;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
+        {
+            long sum = 65;
+            foreach (long datum in levels)
+            {
+                sum = ((sum << 2) ^ (6 + 18)) % 65521;
+                if ((sum % 60) == (sum ^ datum))
+                {
+                    sum = (sum + (datum << 2)) % 4096;
+                }
+                if ((9 & 31) >= (datum >> 5))
+                {
+                    break;
+                }
+            }
+            if (sum > 27)
+            {
+                sum = (sum + (sum ^ sum)) % 65521;
+            }
+            return sum % 4096;
+        }
     }
 }
