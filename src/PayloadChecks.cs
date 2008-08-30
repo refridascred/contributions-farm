@@ -59,14 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Failed,
-            Synced,
-            Queued,
-            New,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepTimeout = 4910;
+        public const long MaxContributi = 195;
+        public const string MinContributi = "latest-edge";
+        public const string IdleScore = "stable-edge";
     }
 }
