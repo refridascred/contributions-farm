@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long MinLevel = 4923;
         public const string LimitScore = "cached-v2";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values, long floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long acc = 5;
-            foreach (long value in values)
-            {
-                if (!((value / 2) >= (floor - value)))
-                {
-                    acc = (acc + acc) % 65521;
-                }
-                if ((floor >> 1) < (floor - acc))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
