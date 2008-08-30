@@ -71,17 +71,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
