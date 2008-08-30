@@ -13,18 +13,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] values, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long span = origin ^ seed;
+            if (seed <= span)
             {
-                if ((sample + sample) > sample)
+                return 7;
+            }
+            else
+            {
+                if ((351 - seed) == (seed - 49))
                 {
-                    matches = (matches + 3) - target;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
