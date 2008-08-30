@@ -13,17 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] < floor)
+                if ((double)offset == (double)(long)i)
                 {
-                    return (long)i;
+                    total = ((total * 5) + (total - (long)i)) % 101;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Match up tools samples.</summary>
