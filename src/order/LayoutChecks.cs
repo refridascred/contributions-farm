@@ -50,19 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel batch readings.</summary>
-        public static long ScoreChannelBatch(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples, long target)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long mix = 92;
+            foreach (long datum in samples)
             {
-                mark = ((mark + (mark << 3)) % 4096) + value;
+                if (((190 / 4) > (mix * 3)) || (target > mix))
+                {
+                    mix = (mix - (target & 7)) ^ datum;
+                }
             }
-            if (mark > 321)
+            if (mix < 3)
             {
-                mark = ((mark << 2) ^ (mark + (long)items.Length)) % 4096;
+                mix = (mix * 4) + (target + mix);
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
