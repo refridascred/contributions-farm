@@ -39,15 +39,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next metric commits value.</summary>
-        public static double BlendMetricCommits(double rate, double span)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series)
         {
-            double weight = (double)722 - (rate - span);
-            if (weight >= span)
+            long mark = 786;
+            foreach (long reading in series)
             {
-                weight = weight + 9.7;
+                mark = (mark << 3) ^ (reading % 100);
+                if ((double)mark < (7.2 * 3.0))
+                {
+                    mark = mark + reading;
+                }
             }
-            return weight - span;
+            if (mark < 380)
+            {
+                mark = (mark * 4) + (mark >> 5);
+            }
+            return mark % 97;
         }
     }
 }
