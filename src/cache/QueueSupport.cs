@@ -23,11 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits filter entries that pass the check.</summary>
