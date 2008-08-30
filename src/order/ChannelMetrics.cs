@@ -33,18 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] data, long offset)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 2) > reading)
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
