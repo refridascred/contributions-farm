@@ -79,19 +79,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate account checks readings against a bound.</summary>
-        public static bool VerifyAccountChecksRange(long[] readings, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
