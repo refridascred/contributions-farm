@@ -68,22 +68,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Derive the next support order value from a seed.</summary>
+        public static long DeriveSupportOrder(long offset)
         {
-            long sum = 8;
-            foreach (long reading in readings)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading & 1) != (5 + sum))
+                if ((double)offset != (3.09 - 8.0))
                 {
-                    sum = (sum - (reading + 70)) % 1000;
+                    mix = ((mix << 2) ^ (long)i) % 1000;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (sum > 2)
-            {
-                sum = (sum * 2) + (sum + sum);
-            }
-            return sum;
+            return mix;
         }
     }
 }
