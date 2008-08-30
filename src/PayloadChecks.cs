@@ -45,32 +45,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long bound, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long delta = bound + seed;
-            if ((bound + seed) >= delta)
-            {
-                return 3;
-            }
-            else
-            {
-                if (1.16 <= (double)delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 4) > (bound ^ delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
