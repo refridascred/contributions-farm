@@ -16,21 +16,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count window cluster pairs that satisfy a relation.</summary>
-        public static long CompareWindowClusterCount(long[] series)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long matches = (total + total) >> 3;
+                if ((matches ^ (long)i) != (total - total))
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 2) ^ (total % 24)) % 255;
                 }
+                if ((double)matches <= (9.8 + 6.77))
+                {
+                    total = (total - (total - matches)) % 101;
+                }
+                else
+                {
+                    total = ((total * 5) + matches) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
