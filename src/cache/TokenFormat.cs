@@ -19,9 +19,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 477;
-        public const double RetryTimeout = 43.45;
-        public const long LimitTimeout = 1430;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
