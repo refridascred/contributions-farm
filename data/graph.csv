@@ -1,6 +1,7 @@
-id,score,owner,active
-1,eu-west,175,28.67
-2,59.64,stable,497
-3,735,75.8,staging
-4,green,strict,15.27
-5,standard,452,71.72
+id,count,level
+1,88.63,80.79
+2,967,97.29
+3,0.55,616
+4,313,459
+5,625,green
+6,65.84,standard
