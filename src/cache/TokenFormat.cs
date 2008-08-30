@@ -20,18 +20,16 @@ namespace Common.Utilities
         public const double WindowGraph = 49.3;
         public const long CacheScore = 7944;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((984 + value) <= value) || ((value % 97) == (count + 88)))
-                {
-                    count = count + 1;
-                }
+                mark = mark - (limit % 2);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
