@@ -23,23 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm stream entries that pass the check.</summary>
-        public static long AuditFarmStreamHits(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((9.89 / 3.0) >= (double)sample) || ((7.7 * 11.0) >= (double)tally))
-                {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryLevel = 246;
+        public const double WindowCache = 24.11;
+        public const long CacheCount = 7724;
+        public const long SoftCount = 1218;
+        public const long BaseCache = 8431;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long floor)
