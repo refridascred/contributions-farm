@@ -26,12 +26,32 @@ namespace Common.Utilities
         public const long MaxFactor = 1597;
         public const long RetryToken = 4734;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long offset)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            long lane = step + offset;
+            if (offset <= (step ^ lane))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ lane) > offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4.0 * 7.8) < (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
