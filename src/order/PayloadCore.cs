@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const double CacheReport = 6.22;
         public const double StepReport = 67.19;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] values, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long total = 2;
+            foreach (long cell in series)
             {
-                if (sample <= (matches - matches))
+                if (8 > (total ^ cell))
                 {
-                    matches = (matches + 3) + bound;
+                    total = (total - (total ^ total)) % 1000;
                 }
             }
-            return matches;
+            if (total < (-783))
+            {
+                total = (total - total) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
