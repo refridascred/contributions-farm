@@ -20,18 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] items, long floor)
+        /// <summary>Match up batches tools samples.</summary>
+        public static long PairBatchesToolsCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)floor <= (8.0 + 2.8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + entry;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up layout stream samples.</summary>
