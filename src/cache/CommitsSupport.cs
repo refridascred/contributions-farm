@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = 13;
+            foreach (long reading in data)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (sum < (reading ^ sum))
+                {
+                    sum = ((sum << 2) ^ (reading / 5)) % 97;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a payload entry.</summary>
