@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardDepth = "local";
-        public const string BaseSpan = "latest-edge";
-        public const double LimitLayout = 90.17;
-        public const string CacheLayout = "local-edge";
-        public const string BurstInterval = "open-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSpan = 8097;
+        public const long BaseContext = 2271;
+        public const double BurstFactor = 40.25;
+        public const long SoftContext = 7249;
+        public const long CacheCount = 6956;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
