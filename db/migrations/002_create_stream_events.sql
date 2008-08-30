@@ -2,10 +2,8 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    active INTEGER NOT NULL DEFAULT 1,
-    region TEXT
+    label TEXT,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
-
-INSERT INTO stream_events (owner, active, region) VALUES ('legacy', 97, 'standard');
+CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
