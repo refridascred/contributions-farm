@@ -15,21 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
