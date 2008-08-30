@@ -42,18 +42,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long TallyContributiBatchesHits(long[] samples, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long score = 0;
+            foreach (long reading in items)
             {
-                if (7.0 >= (double)hits)
+                if (!((score + score) >= (offset << 3)))
                 {
-                    hits = ((hits + 2) ^ value) - floor;
+                    score = (score ^ (score * 3)) ^ reading;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score + score);
                 }
             }
-            return hits;
+            if (score > (-366))
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
     }
 }
