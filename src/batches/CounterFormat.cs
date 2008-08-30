@@ -31,18 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] values)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((matches >> 3) > (cell + cell)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
