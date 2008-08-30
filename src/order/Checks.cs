@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (hits <= (2 - hits))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
