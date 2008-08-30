@@ -1,11 +1,10 @@
 # Command notes
 
-Run the stats check before changing any stream limits.
-When a queue fails, the channel handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+Use command settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer checks defaults
-- Keep stats values small
-- Document new stats fields
+- Log every graph change
+- Prefer payload defaults
+- Review channel limits each release
