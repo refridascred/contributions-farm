@@ -79,9 +79,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 5107;
-        public const string BaseFactor = "local-v2";
-        public const string LimitRatio = "standard-1";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 3) + ((long)i / 8)) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
