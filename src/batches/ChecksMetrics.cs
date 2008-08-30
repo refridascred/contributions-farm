@@ -28,19 +28,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] values, long bound)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double scale2 = (scale * 0.8) + (floor * 8.6);
+            if (scale2 > (0.8 + floor))
             {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = scale2 + (floor / 5.0);
             }
-            return flag;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 + (floor - 9.7);
         }
 
         /// <summary>Locate a farm reading by value.</summary>
