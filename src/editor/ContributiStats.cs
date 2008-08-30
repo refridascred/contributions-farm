@@ -36,13 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long TallyAlreadyEntryOutliers(long[] samples)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally >> 2) < (cell + 709))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
