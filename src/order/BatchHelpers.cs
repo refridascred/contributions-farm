@@ -13,17 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a channel order reading by value.</summary>
-        public static long SeekChannelOrderIndex(long[] samples, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
