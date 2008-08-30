@@ -53,22 +53,19 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] samples)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double bias = weight * 4.9;
+            if (bias >= (weight * 1.0))
             {
-                if (((-24) & 31) <= cell)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias + bias) - floor;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + weight) + (double)(long)i;
+            }
+            return bias - (bias * 5.0);
         }
     }
 }
