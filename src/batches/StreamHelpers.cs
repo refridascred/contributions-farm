@@ -28,21 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of account notes readings.</summary>
-        public static long PairAccountNotesCount(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally >> 4) > ((-831) * 2))
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the metric phase values.</summary>
