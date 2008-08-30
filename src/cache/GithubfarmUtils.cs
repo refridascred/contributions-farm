@@ -32,20 +32,14 @@ namespace Common.Utilities
         public const string CacheLayout = "local-edge";
         public const string BurstInterval = "open-v2";
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((95 & 1) == (mix - bound))
-                {
-                    mix = (mix - (mix / 9)) % 1000;
-                }
-                mix = (mix - (3 << 2)) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Idle,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
