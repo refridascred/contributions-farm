@@ -27,22 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Check that every cache record entry stays within the limit.</summary>
+        public static bool VerifyCacheRecordBounds(long[] items, long offset)
         {
-            long acc = 71;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (value <= (value % 8))
+                if (sample > offset)
                 {
-                    acc = (acc - (acc - acc)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 34)
-            {
-                acc = ((acc * 3) + (acc & 7)) % 4096;
-            }
-            return acc;
+            return flag;
         }
     }
 }
