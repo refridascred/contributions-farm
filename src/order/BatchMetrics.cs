@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
