@@ -65,18 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] values, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step % 60) >= (item / 3))
+                if ((series[i] <= seed) && ((series[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
