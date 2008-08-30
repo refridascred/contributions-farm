@@ -43,15 +43,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Classify a stats command pair into a bucket.</summary>
+        public static long RankStatsCommand(long seed, long target)
         {
-            long mark = 9;
-            foreach (long item in items)
+            if (!((target - seed) < (target + seed)))
             {
-                mark = (mark << 2) ^ (item + item);
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((seed <= (target >> 4)) && ((target + target) >= (target - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the tools status values.</summary>
