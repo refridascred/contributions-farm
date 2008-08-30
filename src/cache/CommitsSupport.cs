@@ -14,19 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every route graph entry stays within the limit.</summary>
-        public static bool GuardRouteGraphBounds(long[] data, long offset)
+        /// <summary>Compare every pair of editor window readings.</summary>
+        public static long MatchEditorWindowCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
