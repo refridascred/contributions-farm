@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] series, long seed)
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long AuditPayloadToolsOutliers(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (value != seed)
+                if ((cell / 9) >= (cell / 4))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
