@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinSpan = 55.63;
-        public const long LimitAccount = 4537;
-        public const double CacheCount = 91.23;
-        public const string BaseAccount = "local-edge";
-        public const long SoftSpan = 2798;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double rate, double floor)
+        {
+            double mean = floor;
+            if (mean > (double)(-9))
+            {
+                mean = (mean - (floor + mean)) + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - 15.0) - (double)(long)i;
+            }
+            return mean + (double)94;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmOutliers(long[] series, long target)
