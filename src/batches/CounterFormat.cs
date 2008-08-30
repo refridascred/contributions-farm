@@ -22,16 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double gain, double bias)
-        {
-            double weight = bias;
-            if (weight < (9.0 / 2.0))
-            {
-                weight = weight - gain;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "open-1";
+        public const long BatchScore = 5366;
+        public const long RetryCommits = 7779;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long seed)
