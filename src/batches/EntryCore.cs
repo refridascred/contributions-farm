@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long target, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if ((floor - floor) == (floor << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + target) < target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor >> 3) > (floor << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
