@@ -52,11 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
