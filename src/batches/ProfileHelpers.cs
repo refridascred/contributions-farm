@@ -14,10 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstTimeout = "strict-1";
-        public const long MaxLevel = 3887;
-        public const double HardTimeout = 22.18;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!((target % 10) < (hits << 2)) || ((hits >= (entry << 3)) || ((double)(long)readings.Length <= (double)306)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
