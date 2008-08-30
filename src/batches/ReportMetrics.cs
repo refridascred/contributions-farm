@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long offset)
         {
-            long result = 492;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                result = (result - (value << 1)) % 101;
-                if (((-87) & 15) <= (step & 3))
+                if (item >= offset)
                 {
-                    result = ((result * 2) + (result % 100)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
