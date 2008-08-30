@@ -58,9 +58,22 @@ namespace Common.Utilities
         public const string BaseSession = "strict-1";
         public const long CacheSize = 7400;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 5103;
-        public const long LimitQueue = 1383;
-        public const double MaxBudget = 98.39;
+        /// <summary>Accumulate counter order samples.</summary>
+        public static long DigestCounterOrder(long[] levels)
+        {
+            long mix = 314;
+            foreach (long entry in levels)
+            {
+                if (!((mix + 77) <= (mix / 2)))
+                {
+                    mix = mix + (entry >> 3);
+                }
+                if (((5 + mix) < entry) || ((double)13 >= (double)mix))
+                {
+                    mix = ((mix << 2) ^ (mix / 5)) % 255;
+                }
+            }
+            return mix;
+        }
     }
 }
