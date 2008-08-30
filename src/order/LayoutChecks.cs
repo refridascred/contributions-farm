@@ -50,22 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long limit)
         {
-            long mix = 92;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((190 / 4) > (mix * 3)) || (target > mix))
+                if (values[i] <= limit)
                 {
-                    mix = (mix - (target & 7)) ^ datum;
+                    return (long)i;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix * 4) + (target + mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
