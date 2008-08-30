@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long WindowChannel = 5613;
         public const long BatchLevel = 4442;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "latest";
+        public const string BaseSize = "latest";
+        public const double LimitTimeout = 54.68;
+        public const long StepCount = 2099;
 
         /// <summary>Count the commits filter entries that pass the check.</summary>
         public static long CountCommitsFilterGaps(long[] levels, long limit)
