@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long MinOrder = 5039;
         public const double MinBudget = 24.98;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] levels, long target)
+        /// <summary>Fold a list of profile editor readings.</summary>
+        public static long TallyProfileEditor(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long state = 449;
+            foreach (long reading in series)
             {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (((state << 2) ^ (bound * 2)) % 65521) - reading;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
