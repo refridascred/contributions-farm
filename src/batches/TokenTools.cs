@@ -33,31 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data, long floor)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long result = 331;
-            foreach (long cell in data)
-            {
-                result = ((result << 2) ^ (result + result)) % 4096;
-                if (((-8) >= (floor / 4)) && ((long)data.Length <= floor))
-                {
-                    result = ((result << 2) ^ (cell + 70)) % 255;
-                }
-                else
-                {
-                    result = (result << 3) ^ (233 + floor);
-                }
-                if (((result - result) <= (result << 1)) && ((floor >> 2) <= (cell - result)))
-                {
-                    break;
-                }
-            }
-            if (result < 35)
-            {
-                result = result - (5 << 3);
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
