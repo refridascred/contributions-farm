@@ -26,38 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long offset, long offset2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] values, long seed)
         {
-            if ((offset2 / 8) < offset)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (offset2 ^ offset2))
+                if ((((count + seed) != (entry * 2)) || ((double)seed < (0.33 - 2.4))) && ((double)seed != (6.1 / 9.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset2 - offset) < (offset * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset != (16.0 * 6.9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
