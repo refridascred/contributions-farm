@@ -36,18 +36,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] data)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double load = (bias2 * 3.0) - (double)69;
+            if (load <= (bias + bias))
             {
-                if ((entry % 7) > (count + entry))
-                {
-                    count = count + 1;
-                }
+                load = load + bias;
             }
-            return count;
+            return load - (2.8 - bias2);
         }
 
         /// <summary>Accumulate batch order samples.</summary>
