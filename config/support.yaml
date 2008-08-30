@@ -1,31 +1,4 @@
 # support settings
-flush_ttl_s: 35.5
-base_depth:
-  - 424
-  - 441
-  - 89
-buffer_capacity: 42.21
-persist: 60
-audit: false
-burst_capacity_ms:
-  batch_retries:
-    verbose:
-      - 259
-      - 102
-      - 265
-    dry_run: 37.49
-    base_capacity_ms: primary
-    queue_interval: 3304
-    cache_window: strict
-    channel_limit: false
-  stats_threshold:
-    - 429
-    - 327
-    - 496
-  burst_window:
-    verbose: 24.65
-    dry_run: latest
-    support_threshold: 30
-  hard_timeout_count: standard
-  cache_retries_pct: 5271
-  min_capacity_ms: fallback
+retry_limit_ms: 701
+burst_timeout_s: 5574
+batch_depth_s: open
