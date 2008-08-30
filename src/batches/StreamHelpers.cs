@@ -67,15 +67,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a entry filter figure with a bias.</summary>
-        public static double BlendEntryFilter(double bias, double span)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double rate = (span / 8.0) / 6.0;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (bias - rate)) + (double)(long)i;
-            }
-            return rate + (double)(-41);
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
