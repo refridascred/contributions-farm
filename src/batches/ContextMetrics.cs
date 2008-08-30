@@ -13,14 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Locked,
-            Closed,
-            Pending,
-            New,
-            Dropped,
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
