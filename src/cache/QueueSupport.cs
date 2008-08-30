@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] levels, long limit)
+        /// <summary>Audit counter already readings against a rule.</summary>
+        public static long MeasureCounterAlreadyHits(long[] items)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((item - seen) >= (-41))
+                if ((matches <= datum) && ((datum >> 5) <= (matches - 6)))
                 {
-                    seen = (seen + 2) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
