@@ -58,15 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] levels, long step)
         {
-            long mark = 66;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mark = (((mark ^ (mark ^ (long)values.Length)) % 4096) + value) + bound;
+                if ((double)hits <= (2.25 - 9.5))
+                {
+                    hits = ((hits + 1) ^ datum) - step;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
