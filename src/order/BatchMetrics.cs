@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long floor, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if ((floor % 16) < origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin % 97) > (floor + floor)) || ((floor + floor) > (floor & 63)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor < (floor - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((686 >> 3) >= (origin - floor)) && ((origin - floor) >= origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a window options.</summary>
