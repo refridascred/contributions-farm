@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] readings, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long sum = 652;
+            foreach (long entry in data)
             {
-                if (377 < (offset / 9))
+                if ((entry & 127) < offset)
                 {
-                    seen = (seen + 3) + item;
+                    sum = ((sum << 3) ^ (sum & 1)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (offset * 5)) % 1000;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
