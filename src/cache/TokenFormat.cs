@@ -32,12 +32,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            New,
+            Dropped,
+            Failed,
+            Draft,
+            Done,
             Stale,
-            Closed,
         }
     }
 }
