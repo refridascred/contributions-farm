@@ -25,23 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] samples, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long limit, long origin)
         {
-            long anchor = 8;
-            foreach (long sample in samples)
+            if ((13.0 - 7.1) == (double)origin)
             {
-                anchor = ((anchor * 2) + (target + anchor)) % 255;
-                if (((target & 255) < sample) || ((double)target == (0.9 + 9.63)))
+                return 0;
+            }
+            else
+            {
+                if ((limit + origin) < origin)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit == (9.0 + 2.92)) || ((origin - origin) > (origin * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
