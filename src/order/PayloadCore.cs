@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items, long step)
         {
-            long sum = 69;
-            foreach (long cell in items)
+            long state = 35;
+            foreach (long entry in items)
             {
-                if (sum < (sum % 24))
+                if (!((691 / 8) >= (step - step)))
                 {
-                    sum = (sum + (sum / 3)) + cell;
+                    state = (state * 5) + (900 + state);
+                }
+                if (((double)state <= (double)entry) && ((state + state) <= (entry ^ step)))
+                {
+                    break;
                 }
             }
-            if (sum < (-53))
-            {
-                sum = (sum - sum) % 255;
-            }
-            return sum % 1000;
+            return state % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
