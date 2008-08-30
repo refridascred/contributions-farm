@@ -21,11 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            Stale,
+            Synced,
+            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
