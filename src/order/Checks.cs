@@ -39,11 +39,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 8679;
-        public const long WindowChannel = 800;
-        public const long BurstChannel = 2679;
-        public const long HardFactor = 9047;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] levels, long target)
