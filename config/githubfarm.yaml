@@ -1,5 +1,5 @@
 # githubfarm settings
-audit: false
-max_delay: true
-checks_window: 60
-flush_limit: legacy
+warm_interval_count: 36
+flush_interval_pct: true
+poll_timeout_count: 30
+idle_interval_ms: blue
