@@ -13,12 +13,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Locate a channel order reading by value.</summary>
+        public static long SeekChannelOrderIndex(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
