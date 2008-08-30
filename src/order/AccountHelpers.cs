@@ -66,12 +66,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Active,
-            Failed,
-            Pending,
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
