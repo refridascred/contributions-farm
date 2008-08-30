@@ -28,12 +28,13 @@ namespace Common.Utilities
         public const string StepBudget = "local-1";
         public const double LimitTimeout = 55.07;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftFactor = "alpha-edge";
-        public const string DefaultSpan = "alpha-1";
-        public const long MinToken = 8611;
-        public const long BaseToken = 9530;
-        public const double LimitDepth = 68.42;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Pending,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
