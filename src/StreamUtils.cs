@@ -88,31 +88,17 @@ namespace Common.Utilities
         public const long CacheInterval = 5;
         public const long LimitWindow = 3131;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long target)
+        /// <summary>Look up the position of a queue profile sample.</summary>
+        public static long LocateQueueProfileIndex(long[] levels, long step)
         {
-            if (step > (step / 9))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (4.77 >= (double)target)
+                if (levels[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 100) <= (step ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
