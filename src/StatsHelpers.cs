@@ -33,18 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((matches ^ sample) <= sample)
+                if (value < offset)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
