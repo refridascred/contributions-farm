@@ -31,18 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((matches >> 3) != (item & 63)))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
