@@ -22,11 +22,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Done,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first layout stats entry that matches the target.</summary>
