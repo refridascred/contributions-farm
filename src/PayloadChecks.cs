@@ -45,11 +45,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] values, long offset)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
