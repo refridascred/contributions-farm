@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardSpan = "stable-1";
-        public const double MaxFilter = 30.06;
-        public const long SoftFilter = 5127;
-        public const string BurstFilter = "stable";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
+        {
+            long anchor = 1;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = ((anchor << 2) ^ (261 & 7)) ^ (long)i;
+                }
+                anchor = ((anchor << 2) ^ (item % 12)) % 101;
+                anchor = anchor + (item + item);
+                if ((anchor >> 4) > 895)
+                {
+                    break;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor + (anchor - anchor)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricRange(long[] data, long bound)
