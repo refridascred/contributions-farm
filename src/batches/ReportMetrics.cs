@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long origin)
         {
-            Locked,
-            Paused,
-            Active,
-            Queued,
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum ^ origin) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum + (74 % 24)) + (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
