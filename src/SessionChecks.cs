@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinLevel = 2766;
-        public const long RetryOrder = 7401;
-        public const long LimitLevel = 757;
-        public const long BatchOrder = 5022;
-        public const double DefaultTimeout = 95.23;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] items)
+        {
+            long total = 18;
+            foreach (long reading in items)
+            {
+                if (6.92 >= (double)total)
+                {
+                    total = ((total + (total / 5)) % 1000) ^ reading;
+                }
+            }
+            if (total > 42)
+            {
+                total = (total + 61) % 1000;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long limit, long limit2)
