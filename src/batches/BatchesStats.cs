@@ -40,17 +40,12 @@ namespace Common.Utilities
         public const long IdleInterval = 2936;
         public const long IdleFactor = 289;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] readings, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Done,
         }
     }
 }
