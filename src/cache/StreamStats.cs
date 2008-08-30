@@ -54,22 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((datum / 2) <= 486)
+                if (!((reading & 15) <= (matches / 7)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
