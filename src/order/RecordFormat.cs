@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] items)
+        /// <summary>Iterate the batches filter series from a seed.</summary>
+        public static long RollBatchesFilter(long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (count >= ((long)items.Length + reading))
+                if ((limit - acc) <= (36 >> 5))
                 {
-                    count = count + 2;
+                    acc = ((acc << 3) ^ (31 - 9)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
