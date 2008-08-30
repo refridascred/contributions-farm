@@ -28,13 +28,39 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long floor)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Idle,
+            long step = target + floor;
+            if (((double)target <= 18.0) || ((double)step > (double)12))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > (-4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor << 2) < (step >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor > (7.0 * 1.25))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue level values.</summary>
