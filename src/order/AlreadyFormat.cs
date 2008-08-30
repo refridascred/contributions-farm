@@ -66,21 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 361;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)floor >= (2.8 * 6.6)) || (state > (state / 9)))
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 3) ^ (datum << 3)) % 101;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
