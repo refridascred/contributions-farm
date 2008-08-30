@@ -20,11 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 8160;
-        public const double StepRatio = 60.85;
-        public const long WindowReport = 3505;
-        public const long MaxReport = 5729;
+        /// <summary>Roll a route editor counter forward.</summary>
+        public static long StepRouteEditor(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum + floor) % 4096;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] samples)
