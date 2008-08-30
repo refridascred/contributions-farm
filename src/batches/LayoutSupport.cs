@@ -65,25 +65,25 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long floor, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long span = floor - limit;
+            if ((span + span) > limit)
             {
-                if ((6.3 * 5.5) < (double)(long)i)
-                {
-                    carry = (carry << 2) ^ (step + (long)i);
-                    continue;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry - (step & 1)) % 101) - (long)i2;
-                }
-                carry = carry + (carry & 255);
-                carry = ((carry * 2) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((3.0 + 8.0) < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
