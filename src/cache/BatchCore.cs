@@ -40,14 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Derive the next contributi format value from a seed.</summary>
+        public static long StepContributiFormat(long bound)
         {
-            Closed,
-            Failed,
-            New,
-            Idle,
-            Ready,
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
