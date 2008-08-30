@@ -32,22 +32,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit batches contributi readings against a rule.</summary>
-        public static long MeasureBatchesContributiMatches(long[] samples, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double span)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double bias = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)hits >= (double)sample))
-                {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = ((bias - bias) - (double)(long)i) - span;
             }
-            return hits;
+            return bias + (double)(-8);
         }
 
         /// <summary>Hold a entry snapshot.</summary>
