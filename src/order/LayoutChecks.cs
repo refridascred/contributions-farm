@@ -49,19 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] samples, long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double weight = (offset + offset) / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight - (bias * 9.1)) + (double)(long)i;
             }
-            return flag;
+            return weight + offset;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
