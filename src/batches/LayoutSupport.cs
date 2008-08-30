@@ -58,20 +58,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            long carry = 213;
-            foreach (long cell in data)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (carry > (seed << 3))
+                if ((6.3 * 5.5) < (double)(long)i)
                 {
-                    carry = (carry ^ (cell - cell)) % 4096;
+                    carry = (carry << 2) ^ (step + (long)i);
+                    continue;
                 }
-            }
-            if (carry > 15)
-            {
-                carry = carry ^ ((-123) & 1);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = ((carry - (step & 1)) % 101) - (long)i2;
+                }
+                carry = carry + (carry & 255);
+                carry = ((carry * 2) + (long)i) % 101;
             }
             return carry;
         }
