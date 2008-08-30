@@ -52,11 +52,19 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            long result = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)result != (8.32 * 10.0))
+                {
+                    result = ((result << 3) ^ origin) % 255;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
