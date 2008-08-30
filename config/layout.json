@@ -1,7 +1,6 @@
 {
-  "warm_threshold_count": 17,
-  "retry_size_pct": 73,
-  "base_window": true,
-  "cache_threshold": 16,
-  "base_ttl": 41
+  "default_window": true,
+  "metrics_ttl": [210, 317, 304, 43],
+  "persist": 25.69,
+  "dry_run": true
 }
