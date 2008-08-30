@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context report readings against a bound.</summary>
-        public static bool CheckContextReportRange(long[] data, long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double bias, double span)
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double bias2 = span;
+            return (bias2 - span) + bias;
         }
 
         /// <summary>Hold a token header.</summary>
