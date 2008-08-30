@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer payload entries that pass the check.</summary>
-        public static long CountBufferPayloadGaps(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long sum = 274;
+            foreach (long datum in levels)
             {
-                if (!(((long)readings.Length << 1) <= (reading + reading)))
+                sum = (((sum << 2) ^ (sum + 96)) % 97) ^ datum;
+                if ((step << 2) != (sum - step))
                 {
-                    tally = tally + 1;
+                    sum = (sum * 4) + (long)levels.Length;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Blend two schema buffer measurements.</summary>
