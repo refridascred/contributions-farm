@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            if ((double)bound <= (1.26 - 7.1))
             {
-                state = ((state * 4) + (long)i) % 101;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((offset << 3) <= 5)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the batch mode values.</summary>
