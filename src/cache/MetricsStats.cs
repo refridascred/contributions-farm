@@ -39,13 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
+            Locked,
+            Dropped,
+            Retry,
+            Failed,
             New,
-            Closed,
-            Idle,
-            Pending,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
