@@ -40,19 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] readings, long bound)
+        /// <summary>Count the channel schema entries that pass the check.</summary>
+        public static long AuditChannelSchemaMatches(long[] values)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (sample <= bound)
+                if (!(((item - 494) >= (hits & 15)) || ((hits & 63) < (3 + item))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
