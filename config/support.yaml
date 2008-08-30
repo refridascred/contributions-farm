@@ -1,8 +1,4 @@
 # support settings
-warm_interval:
-  - 130
-  - 200
-  - 193
-  - 455
-enabled: 76.0
-idle_limit: 12
+flush_capacity_count: 6962
+strict: true
+max_limit: 4.54
