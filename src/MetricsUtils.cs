@@ -38,17 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long step)
+        /// <summary>Digest a series of token buffer entries.</summary>
+        public static long ScoreTokenBuffer(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 73;
+            foreach (long entry in data)
             {
-                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                if (!(entry > sum))
                 {
-                    return (long)i;
+                    sum = (sum - sum) % 1000;
                 }
             }
-            return -1;
+            if (sum > 0)
+            {
+                sum = (sum + (sum >> 1)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Project the next profile already value.</summary>
