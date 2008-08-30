@@ -1,8 +1,19 @@
 {
-  "record_interval": "local",
-  "sync_window_s": 2,
-  "counter_size": "stable",
-  "entry_timeout": "legacy",
-  "compress": "blue",
-  "graph_delay": "blue"
+  "base_retries_pct": "latest",
+  "default_depth_count": 29.63,
+  "verbose": {
+    "readonly": 30,
+    "default_size_pct": "cached",
+    "token_interval": "strict",
+    "session_depth": {
+      "retry_retries_pct": 20.32,
+      "farm_retries": 100,
+      "base_threshold_count": true,
+      "notes_capacity": [135, 237]
+    },
+    "default_capacity_ms": "eu-west"
+  },
+  "cache_depth_s": 500,
+  "idle_size_s": true,
+  "retry_ttl": "cached"
 }
