@@ -17,18 +17,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the batch already entries that pass the check.</summary>
-        public static long AuditBatchAlreadyMatches(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > (741 >> 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
