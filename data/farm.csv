@@ -1,6 +1,6 @@
-id,token,score
-1,190,577
-2,16.29,20
-3,819,49.16
-4,628,142
-5,40.43,499
+id,region,rank,state,weight
+1,85.53,228,53,44.51
+2,674,185,cached,737
+3,strict,open,legacy,340
+4,855,open,886,blue
+5,516,legacy,764,legacy
