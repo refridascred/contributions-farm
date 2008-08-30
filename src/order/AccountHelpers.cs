@@ -70,17 +70,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleLevel = 77.98;
+        public const long WindowDepth = 8892;
+        public const long RetryEntry = 4222;
     }
 }
