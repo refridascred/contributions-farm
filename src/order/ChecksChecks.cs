@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)matches != (double)reading)
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
