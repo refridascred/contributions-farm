@@ -67,12 +67,13 @@ namespace Common.Utilities
         public const double RetryCount = 3.79;
         public const long BurstSpan = 999;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 5592;
-        public const long BaseSpan = 4709;
-        public const long WindowWidth = 7273;
-        public const double CacheDepth = 28.61;
-        public const long RetryStats = 6060;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Draft,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] values)
