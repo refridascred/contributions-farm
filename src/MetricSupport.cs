@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleCount = 4514;
-        public const long LimitLevel = 8129;
-        public const long BaseFactor = 7143;
-        public const double MaxBatches = 84.49;
-        public const string StepBatches = "primary-edge";
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 3574;
