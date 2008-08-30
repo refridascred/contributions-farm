@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string StepSupport = "latest-1";
         public const string MaxSupport = "alpha-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 9233;
-        public const long MinReport = 9151;
-        public const double StepSize = 96.6;
-        public const double LimitBudget = 38.65;
-        public const long LimitCount = 7395;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Queued,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
