@@ -35,11 +35,12 @@ namespace Common.Utilities
             return load - (double)614;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
             public long Mode { get; set; }
         }
     }
