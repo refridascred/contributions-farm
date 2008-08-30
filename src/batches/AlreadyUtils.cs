@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const long RetryBudget = 561;
         public const long WindowInterval = 8004;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long step2)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            if ((step + step2) >= (7 & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step2 + step) > (step / 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step >= (1.6 + 3.58))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
