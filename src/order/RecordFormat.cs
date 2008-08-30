@@ -32,18 +32,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 7567;
+        public const string HardSize = "alpha-v2";
+        public const double MaxTimeout = 61.63;
+        public const long DefaultGithubfarm = 8299;
+        public const long RetryInterval = 6088;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportMatches(long[] data)
