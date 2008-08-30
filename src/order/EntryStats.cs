@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] levels)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell > (cell << 3)) || ((double)tally != (double)cell)) || (((-203) / 4) > (tally - 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
