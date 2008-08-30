@@ -19,39 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi account input into a small class.</summary>
-        public static long SortContributiAccount(long floor, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples, long target)
         {
-            long offset = floor + limit;
-            if ((offset ^ floor) >= (floor >> 1))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(13.0 >= (double)limit))
+                if (((target - seen) != (target + datum)) || ((7.0 / 7.0) >= (double)(long)samples.Length))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((125 <= (floor << 1)) && ((19 + offset) >= floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit != (double)862)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
