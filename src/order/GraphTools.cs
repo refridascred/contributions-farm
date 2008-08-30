@@ -13,21 +13,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
