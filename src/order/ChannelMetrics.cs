@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Dropped,
-            Locked,
-            Retry,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 9957;
+        public const long SoftLevel = 2204;
+        public const string BurstCache = "alpha-v2";
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] items)
