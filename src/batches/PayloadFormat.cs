@@ -34,22 +34,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] items, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if ((double)target > (9.0 - 13.0))
             {
-                if ((tally + 9) > (reading % 7))
+                return 0;
+            }
+            else
+            {
+                if ((double)target >= (4.9 * 8.0))
                 {
-                    tally = (tally + 2) + step;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((-80) <= (seed ^ 80))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((69 + seed) <= (target >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
