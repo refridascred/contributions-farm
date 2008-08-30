@@ -50,23 +50,39 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long origin)
         {
-            double drift = gain;
-            if (drift >= drift)
+            long span = bound ^ origin;
+            if (((bound - span) <= (bound << 3)) || ((bound + 68) < (8 - origin)))
             {
-                drift = drift + (offset - drift);
+                return 1;
             }
             else
             {
-                drift = drift + drift;
+                if (bound <= (origin / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - span) < (52 + span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound != (1.2 - 1.9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (7.0 - drift)) + (double)(long)i;
-            }
-            return drift + (offset * 0.7);
         }
 
         /// <summary>Hold a metrics summary.</summary>
