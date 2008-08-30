@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Find the first metrics stream entry that matches the target.</summary>
+        public static long SeekMetricsStreamIndex(long[] values, long offset)
         {
-            long carry = 918;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry << 3) ^ datum;
-                if ((carry << 3) != (datum << 2))
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
-                    carry = carry + 63;
-                }
-                else
-                {
-                    carry = ((carry * 3) + carry) % 97;
+                    return (long)i;
                 }
             }
-            if (carry > 217)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
