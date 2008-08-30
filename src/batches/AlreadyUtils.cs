@@ -22,31 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long step2)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            if ((step + step2) >= (7 & 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step2 + step) > (step / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step >= (1.6 + 3.58))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first layout stats entry that matches the target.</summary>
