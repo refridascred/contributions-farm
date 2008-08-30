@@ -1,15 +1,10 @@
 {
-  "flush_ratio": 53.48,
-  "record_window": 58.76,
-  "base_interval_count": {
-    "command_window": 250,
-    "readonly": 17,
-    "idle_ratio_s": true,
-    "strict": 70,
-    "flush_depth_pct": "legacy",
-    "burst_limit": "staging"
+  "dry_run": {
+    "batch_timeout": "staging",
+    "flush_capacity_s": "eu-west",
+    "dry_run": true,
+    "schema_threshold": 61.15
   },
-  "base_delay_pct": false,
-  "default_interval_ms": ["latest", "primary", "standard"],
-  "window_threshold": ["local", "legacy"]
+  "default_interval_count": "strict",
+  "base_interval_pct": 70.79
 }
