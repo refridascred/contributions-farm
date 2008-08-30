@@ -39,13 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] samples, long offset)
         {
-            Synced,
-            Pending,
-            Paused,
-            Queued,
+            long sum = 82;
+            foreach (long sample in samples)
+            {
+                sum = sum - sum;
+                if (!(offset < sample))
+                {
+                    sum = sum + ((-7) * 4);
+                }
+                else
+                {
+                    sum = sum + ((-599) / 5);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
