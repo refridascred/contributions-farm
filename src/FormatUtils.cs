@@ -27,22 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] values)
         {
-            long total = 145;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((value >> 5) <= value)
+                if ((datum - count) <= count)
                 {
-                    total = (total - (total + 1)) % 101;
-                }
-                else
-                {
-                    total = (total * 5) + (long)readings.Length;
+                    count = count + 3;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
