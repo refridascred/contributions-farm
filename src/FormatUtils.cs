@@ -55,12 +55,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultScore = "primary-edge";
-        public const double StepSpan = 58.0;
-        public const double IdleRatio = 18.56;
-        public const long StepTimeout = 9929;
-        public const double HardCount = 42.78;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] series)
+        {
+            long anchor = 461;
+            foreach (long value in series)
+            {
+                if ((anchor & 63) >= (value & 63))
+                {
+                    anchor = ((anchor << 3) ^ (value - value)) % 97;
+                }
+                if ((value - anchor) > ((-91) / 2))
+                {
+                    anchor = (anchor ^ (93 + anchor)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double scale, double bias)
