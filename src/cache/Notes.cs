@@ -46,14 +46,18 @@ namespace Common.Utilities
         public const long RetryGraph = 3283;
         public const long IdleFactor = 7108;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long bound)
         {
-            Queued,
-            Done,
-            Draft,
-            Pending,
-            Failed,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((20.0 - 8.0) < (double)cell)
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token farm samples are out of range.</summary>
