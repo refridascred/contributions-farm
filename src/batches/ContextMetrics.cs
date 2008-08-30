@@ -54,24 +54,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long limit, long bound)
-        {
-            if (((bound / 5) < (230 + bound)) || ((bound / 4) == ((-490) ^ bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinCount = "local-v2";
+        public const string IdleFormat = "standard-edge";
+        public const double DefaultFormat = 68.22;
     }
 }
