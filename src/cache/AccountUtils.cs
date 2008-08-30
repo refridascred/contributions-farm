@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            long sum = 16;
-            foreach (long item in items)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((long)items.Length == (item % 7))
+                if (((long)i - step) == (81 + (long)i))
                 {
-                    sum = (sum + (sum >> 5)) % 255;
+                    sum = sum + (sum + 71);
                 }
+                if (!((step + step) == (42 ^ (-37))))
+                {
+                    sum = sum + (step + 93);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
             return sum;
         }
