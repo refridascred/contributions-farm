@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] samples, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = -156;
+            foreach (long item in levels)
             {
-                if ((target * 2) >= (cell + (-955)))
-                {
-                    count = count + 3;
-                }
+                mix = ((mix ^ 393) % 255) + item;
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
