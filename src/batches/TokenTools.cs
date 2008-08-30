@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double floor)
         {
-            long anchor = 3;
-            foreach (long entry in samples)
+            double rate = (7.88 / 7.0) - floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 3) + (anchor >> 4)) + entry;
+                rate = (rate - (scale / 3.0)) + (double)(long)i;
             }
-            if (anchor < 37)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 101;
-            }
-            return anchor % 97;
+            return rate - (6.0 + rate);
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
