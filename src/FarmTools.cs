@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] items, long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Count the token account entries that pass the check.</summary>
