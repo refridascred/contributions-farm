@@ -21,22 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] samples)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((5.64 / 6.0) != (double)reading)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Queued,
+            Locked,
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
