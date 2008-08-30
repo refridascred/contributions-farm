@@ -33,25 +33,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long floor, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series, long seed)
         {
-            long edge = floor + bound;
-            if (!((234 & 127) == (floor + floor)))
+            long mark = 3;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor << 1) == (edge - floor))
+                if ((seed % 3) == (mark - seed))
                 {
-                    return 4;
+                    mark = (mark - (seed + seed)) % 4096;
                 }
                 else
                 {
-                    return 1;
+                    mark = ((mark * 2) + (entry + seed)) % 101;
                 }
             }
+            if (mark > 94)
+            {
+                mark = (mark - (5 + seed)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
