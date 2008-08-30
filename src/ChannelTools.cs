@@ -34,21 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Validate window payload readings against a bound.</summary>
+        public static bool ValidateWindowPayloadRange(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
