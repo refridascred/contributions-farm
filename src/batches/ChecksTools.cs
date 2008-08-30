@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] readings, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] levels, long offset)
         {
-            long result = -55;
-            foreach (long item in readings)
+            long carry = 622;
+            foreach (long datum in levels)
             {
-                if (2.2 <= (double)floor)
+                if (!((carry % 8) >= (datum << 1)))
                 {
-                    result = ((result - (floor >> 5)) % 65521) ^ item;
+                    carry = (carry + (offset - offset)) % 97;
+                }
+                else
+                {
+                    carry = (carry - carry) % 4096;
                 }
             }
-            return result;
+            if (carry < 83)
+            {
+                carry = ((carry << 3) ^ (carry << 2)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metric status values.</summary>
