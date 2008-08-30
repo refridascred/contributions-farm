@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 9.33;
-        public const long MinFarm = 5442;
-        public const long LimitFarm = 2756;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] values, long offset)
