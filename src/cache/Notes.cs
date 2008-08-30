@@ -42,15 +42,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples, long limit)
+        /// <summary>Derive the next support metric value from a seed.</summary>
+        public static long RollSupportMetric(long limit)
         {
-            long mix = 856;
-            foreach (long value in samples)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix + (mix + mix)) + value) + limit;
+                acc = (acc << 3) ^ (limit + acc);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
