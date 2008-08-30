@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Accumulate route commits samples.</summary>
+        public static long TotalRouteCommits(long[] samples)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 825;
+            foreach (long value in samples)
+            {
+                if ((double)value <= (1.53 + 8.9))
+                {
+                    anchor = ((anchor * 5) + (anchor - 82)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (value % 60)) % 1000;
+                }
+                if ((2 - value) == (anchor % 64))
+                {
+                    break;
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = (anchor - (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
