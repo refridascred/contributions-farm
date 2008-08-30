@@ -59,22 +59,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of session context entries.</summary>
-        public static long DigestSessionContext(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] items, long floor)
         {
-            long state = 930;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((535 / 4) <= state)
+                if ((sample % 7) == (floor & 1))
                 {
-                    state = (state - (state ^ state)) - datum;
+                    seen = seen + 2;
                 }
             }
-            if (state > 4)
-            {
-                state = ((state << 2) ^ (state % 12)) % 101;
-            }
-            return state % 1000;
+            return seen;
         }
     }
 }
