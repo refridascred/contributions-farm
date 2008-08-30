@@ -1,18 +1,7 @@
 {
-  "dry_run": [383, 133],
-  "soft_ttl": {
-    "batch_interval": 30,
-    "warm_depth": {
-      "stats_window": [394, 189, 358, 447],
-      "filter_timeout": 500,
-      "burst_interval": 6366,
-      "entry_ttl": 7.65,
-      "soft_window_s": 500
-    },
-    "tools_ttl": "legacy",
-    "warm_threshold_ms": "green"
-  },
-  "base_retries_s": ["green", "staging", "latest", "latest"],
-  "notes_limit": true,
-  "min_window": 28.74
+  "compress": 15,
+  "enabled": ["primary", "local"],
+  "cache_interval": 2252,
+  "base_threshold": true,
+  "readonly": "staging"
 }
