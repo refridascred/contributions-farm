@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter record readings against a rule.</summary>
-        public static long TallyCounterRecordHits(long[] values, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((reading ^ target) != (hits * 4))
+                if (reading <= seed)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
