@@ -42,12 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long floor)
         {
-            Failed,
-            Stale,
-            Ready,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a stats stats.</summary>
