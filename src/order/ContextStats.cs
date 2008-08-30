@@ -43,14 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            New,
+            Dropped,
+            Failed,
+            Retry,
             Ready,
-            Pending,
-            Queued,
-            Draft,
         }
     }
 }
