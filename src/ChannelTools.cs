@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 31.11;
-        public const long StepBuffer = 7336;
-        public const string LimitSize = "latest-v2";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Locked,
+            Stale,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] levels, long floor)
