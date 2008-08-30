@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 4754;
-        public const string MaxProfile = "primary-v2";
-        public const string RetryProfile = "latest";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 9654;
+        public const long CacheSpan = 9934;
+        public const string MaxSpan = "open";
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long offset, long origin)
