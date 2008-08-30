@@ -1,17 +1,15 @@
 # entry settings
-enabled: true
-min_capacity: 1293
-token_interval: open
-poll_window_s:
-  persist: open
-  verbose: 0.75
-  batch_timeout: 59.33
-metric_delay:
-  audit: 250
-  base_depth_s: stable
-  max_threshold_s: true
-  warm_threshold_pct:
-    - 384
-    - 356
-  max_retries_pct: true
-  queue_interval: cached
+counter_capacity: true
+checks_depth: true
+persist:
+  default_ratio_ms: 15.7
+  enabled:
+    - legacy
+    - green
+    - open
+    - blue
+  min_delay_s: 1024
+  batch_threshold_count: 44.48
+  idle_limit_count: false
+  retry_retries_pct: cached
+counter_timeout: 4611
