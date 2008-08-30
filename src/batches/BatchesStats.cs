@@ -31,21 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((entry / 4) > (entry / 6)) || ((tally * 2) <= ((-608) + entry))) || ((double)tally >= (4.14 + 6.0)))
                 {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
