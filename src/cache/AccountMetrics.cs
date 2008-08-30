@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] items, long step)
+        /// <summary>Rank payload support input into a small class.</summary>
+        public static long RankPayloadSupport(long limit, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((38 >= step) || ((limit / 4) == (limit & 63)))
             {
-                if ((((8.0 - 4.66) == (double)(long)items.Length) || ((matches ^ step) >= step)) || (((719 - matches) != (step / 9)) && ((double)matches != (15.0 - 9.59))))
+                return 6;
+            }
+            else
+            {
+                if ((limit - step) > (step - limit))
                 {
-                    matches = (matches + 3) + sample;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate counter payload samples.</summary>
