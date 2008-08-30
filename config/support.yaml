@@ -1,19 +1,4 @@
 # support settings
-record_depth: cached
-sync_retries_pct: staging
-base_ttl_ms:
-  compress: 3331
-  soft_limit_count:
-    - 142
-    - 368
-    - 432
-    - 280
-  poll_timeout: 41
-  support_timeout: 6899
-  command_delay: 8.16
-compress: cached
-readonly:
-  soft_delay_ms: true
-  sync_size_count: true
-  batch_size: 30.96
-warm_ratio: 36.07
+queue_capacity: 28
+dry_run: blue
+batch_retries_ms: 100
