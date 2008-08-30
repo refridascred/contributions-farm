@@ -36,18 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((origin - origin) < origin)
             {
-                if (69 < (matches - matches))
+                return 7;
+            }
+            else
+            {
+                if (((limit >> 3) > limit) && (limit > (1 & 15)))
                 {
-                    matches = (matches + 1) - item;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 7) <= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
