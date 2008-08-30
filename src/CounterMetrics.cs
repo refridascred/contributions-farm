@@ -26,19 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double offset)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double drift = rate;
-            if (drift < 2.7)
-            {
-                drift = (drift - (9.0 - drift)) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 0.29) + (double)(long)i;
-            }
-            return drift + (rate * 1.51);
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
