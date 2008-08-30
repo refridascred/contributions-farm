@@ -13,20 +13,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate queue githubfarm readings against a bound.</summary>
-        public static bool ValidateQueueGithubfarmBounds(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 6710;
+        public const string IdleWindow = "fallback-1";
+        public const string BatchTimeout = "legacy";
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long bound)
