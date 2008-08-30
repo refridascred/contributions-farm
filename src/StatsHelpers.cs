@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long IdleContributi = 1468;
         public const long WindowContributi = 5177;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] samples, long floor)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the filter kind values.</summary>
