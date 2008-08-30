@@ -46,10 +46,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 8845;
         public const long StepCount = 8120;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 6036;
-        public const string BurstRoute = "legacy-1";
-        public const string IdleLevel = "cached-edge";
+        /// <summary>Locate a queue metric reading by value.</summary>
+        public static long SeekQueueMetricIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
