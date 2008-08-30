@@ -52,31 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long target, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long origin)
         {
-            if ((double)target > 2.1)
+            long mark = 81;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 2) <= (82 % 10))
+                if ((5.5 + 4.9) > (double)mark)
                 {
-                    return 3;
+                    mark = ((mark * 4) + (966 & 31)) % 101;
                 }
                 else
                 {
-                    if ((591 / 8) >= (target & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (mark ^ (origin ^ reading)) % 4096;
                 }
             }
+            return mark;
         }
     }
 }
