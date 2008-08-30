@@ -50,17 +50,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] values, long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long seed, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step ^ seed) <= (seed >> 1))
             {
-                if (values[i] <= limit)
+                return 5;
+            }
+            else
+            {
+                if (((step - 895) <= (step + seed)) || ((seed / 6) >= (seed - seed)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 2) == (seed - 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
