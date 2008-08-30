@@ -14,18 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] readings, long target)
+        /// <summary>Combine record notes values into a single score.</summary>
+        public static long ScoreRecordNotes(long[] values)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = 33;
+            foreach (long item in values)
             {
-                if ((count * 3) >= (entry / 9))
+                if (55 > (carry * 3))
                 {
-                    count = (count + 2) + target;
+                    carry = carry + (item - carry);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the cache phase values.</summary>
