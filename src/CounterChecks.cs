@@ -38,18 +38,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cluster format readings against a rule.</summary>
-        public static long TallyClusterFormatMatches(long[] data)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if (((bound >> 1) < (bound >> 5)) && (limit <= 66))
             {
-                if ((4.64 - 4.0) >= (double)matches)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > 5.2)
                 {
-                    matches = (matches + 3) - entry;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
