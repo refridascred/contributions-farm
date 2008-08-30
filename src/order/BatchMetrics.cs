@@ -14,11 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Combine command githubfarm values into a single score.</summary>
+        public static long TotalCommandGithubfarm(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            long mark = 288;
+            foreach (long sample in levels)
+            {
+                mark = mark - sample;
+                if (!((mark - 58) >= (mark ^ mark)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
