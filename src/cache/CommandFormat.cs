@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Combine report format values into a single score.</summary>
+        public static long ScoreReportFormat(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 47;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum - (datum - datum)) % 97;
+                sum = (sum << 2) ^ sum;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
