@@ -44,13 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Done,
-            Dropped,
-            Queued,
-            Retry,
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
