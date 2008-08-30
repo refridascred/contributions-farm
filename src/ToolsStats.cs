@@ -29,17 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a commits route sample.</summary>
-        public static long SeekCommitsRouteIndex(long[] levels, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
