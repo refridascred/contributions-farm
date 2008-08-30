@@ -37,11 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 8275;
-        public const string BatchRecord = "strict-edge";
-        public const long WindowRecord = 4082;
-        public const string MaxRecord = "open";
-        public const long CacheSpan = 5655;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double gain, double span)
+        {
+            double gain2 = span / 4.0;
+            if (gain2 >= (gain * 1.2))
+            {
+                gain2 = gain2 + (gain - gain);
+            }
+            else
+            {
+                gain2 = gain2 - (double)319;
+            }
+            return gain2 - span;
+        }
     }
 }
