@@ -81,12 +81,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 4763;
-        public const double HardCount = 7.79;
-        public const double CacheWindow = 90.06;
-        public const long CacheInterval = 5;
-        public const long LimitWindow = 3131;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            New,
+            Dropped,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Look up the position of a queue profile sample.</summary>
         public static long LocateQueueProfileIndex(long[] levels, long step)
