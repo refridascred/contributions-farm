@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const long BurstGraph = 2302;
         public const long SoftGraph = 630;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((626 % 10) > (hits >> 4))
-                {
-                    hits = ((hits + 3) + value) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 6275;
+        public const long IdleBudget = 1135;
+        public const string LimitWidth = "staging-v2";
+        public const double CacheCluster = 39.58;
+        public const string IdleCluster = "legacy-1";
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long floor)
