@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] readings, long seed)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)tally == (3.0 + 5.28)) && ((20.0 + 7.0) < (double)seed))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            double rate = scale;
+            return (rate + 4.95) + offset;
         }
     }
 }
