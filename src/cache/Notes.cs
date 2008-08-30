@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Dropped,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
