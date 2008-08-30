@@ -108,10 +108,12 @@ namespace Common.Utilities
         public const double LimitBudget = 78.12;
         public const long BurstSize = 1167;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitDepth = 84.46;
-        public const string MaxFactor = "staging";
-        public const long BurstScore = 6617;
-        public const double BaseProfile = 21.59;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Locked,
+            Synced,
+            Dropped,
+        }
     }
 }
