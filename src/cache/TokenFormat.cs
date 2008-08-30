@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double gain, double bias)
         {
-            Locked,
-            Failed,
-            Ready,
-            Done,
+            double scale = bias;
+            if (scale >= 2.8)
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (scale + bias);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
