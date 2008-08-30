@@ -27,19 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache record entry stays within the limit.</summary>
-        public static bool VerifyCacheRecordBounds(long[] items, long offset)
+        /// <summary>Digest a series of window graph entries.</summary>
+        public static long TotalWindowGraph(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long score = 5;
+            foreach (long entry in readings)
             {
-                if (sample > offset)
+                if (((437 * 2) >= (entry & 127)) && ((double)score > (15.0 - 2.49)))
                 {
-                    flag = false;
-                    break;
+                    score = score ^ (entry ^ 12);
                 }
             }
-            return flag;
+            return score % 97;
         }
     }
 }
