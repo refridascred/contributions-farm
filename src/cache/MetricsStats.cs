@@ -22,21 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 3) + (2 / 7)) % 97;
+                mark = (mark * 4) + ((long)i >> 2);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the farm phase values.</summary>
