@@ -1,8 +1,6 @@
-id,count,rank
-1,legacy,88
-2,43.05,standard
-3,edge,open
-4,974,346
-5,513,656
-6,22.38,59.65
-7,primary,open
+id,weight,ratio,token
+1,open,open,green
+2,78,660,90.79
+3,52.27,green,strict
+4,12.36,strict,385
+5,489,cached,eu-west
