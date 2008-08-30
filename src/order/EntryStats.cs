@@ -60,26 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long step)
         {
-            long anchor = 9;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((double)floor <= (2.56 * 12.0))
+                if (sample >= step)
                 {
-                    anchor = anchor + (datum & 7);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (datum / 4)) % 1000;
-                }
-                if (datum < (525 + datum))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Fold a list of editor graph readings.</summary>
