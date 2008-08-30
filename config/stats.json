@@ -1,6 +1,18 @@
 {
-  "audit": 1024,
-  "max_retries_count": false,
-  "strict": 500,
-  "warm_capacity": 58.46
+  "verbose": "stable",
+  "min_retries": {
+    "max_limit_count": "blue",
+    "max_depth": ["standard", "stable", "strict"],
+    "cache_size": "latest",
+    "commits_delay": "standard",
+    "readonly": 5293
+  },
+  "persist": {
+    "batch_window_ms": 3786,
+    "enabled": ["latest", "primary", "primary"],
+    "retry_capacity_ms": 29,
+    "dry_run": "standard"
+  },
+  "max_delay_pct": 250,
+  "strict": 100
 }
