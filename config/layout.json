@@ -1,15 +1,7 @@
 {
-  "metrics_ttl": true,
-  "flush_ratio_count": {
-    "max_size_s": "legacy",
-    "audit": "stable",
-    "batch_delay": "open"
-  },
-  "soft_timeout": false,
-  "sync_interval_count": true,
-  "max_depth_count": {
-    "min_threshold_pct": 7564,
-    "editor_limit": false,
-    "batch_retries": 100
-  }
+  "batches_limit": ["edge", "green", "primary"],
+  "metric_size": 20,
+  "persist": true,
+  "batch_threshold_s": "primary",
+  "format_depth": ["green", "stable", "primary"]
 }
