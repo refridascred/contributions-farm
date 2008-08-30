@@ -64,18 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseWidth = 1485;
+        public const long IdleCount = 5177;
+        public const long SoftMetric = 5001;
+        public const string BatchScore = "strict";
+        public const long IdleBudget = 1316;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
