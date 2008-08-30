@@ -32,19 +32,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] series, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Paused,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
