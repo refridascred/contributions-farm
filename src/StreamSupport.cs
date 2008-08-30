@@ -20,13 +20,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long limit)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            long offset = floor + limit;
+            if ((3.9 - 4.71) < (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (1.0 / 7.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor << 2) == (limit % 24)) && ((offset ^ floor) < (limit ^ 84)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((((-354) - floor) != (floor + limit)) || ((floor * 4) > limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
