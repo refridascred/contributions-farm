@@ -19,39 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry stats input into a small class.</summary>
-        public static long BucketEntryStats(long target, long bound)
-        {
-            if (((target ^ bound) != (target - bound)) || ((bound * 2) >= (bound + target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + target) >= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((10.0 * 10.0) < (5.1 + 0.5)) && ((0 + target) <= target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target > (-736)) || (target <= (target + target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 817;
+        public const double CacheCount = 35.66;
+        public const double BaseSpan = 43.44;
+        public const long CacheCluster = 472;
+        public const double SoftCluster = 67.36;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] levels, long origin)
