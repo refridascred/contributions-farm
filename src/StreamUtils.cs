@@ -66,38 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long target, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] items, long step)
         {
-            if ((18.0 / 7.0) == (double)seed)
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(target < seed))
+                if (value != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(target > seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (4.79 + 6.35))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate metric order samples.</summary>
