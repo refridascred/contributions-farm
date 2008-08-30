@@ -47,12 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchTimeout = 4077;
-        public const long WindowRoute = 9809;
-        public const long CacheRoute = 8932;
-        public const double SoftRoute = 6.43;
-        public const long RetryWidth = 8304;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 72.83;
+        public const double RetryBatches = 35.82;
+        public const long SoftBatches = 9602;
+        public const long HardWidth = 4791;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 5073;
