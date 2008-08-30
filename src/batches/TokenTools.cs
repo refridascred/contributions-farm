@@ -23,19 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] series, long floor)
+        /// <summary>Audit order farm readings against a rule.</summary>
+        public static long TallyOrderFarmMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (entry <= floor)
+                if ((5.03 - 0.07) > (double)value)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
