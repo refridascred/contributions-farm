@@ -44,14 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            New,
-            Dropped,
-            Done,
-            Closed,
-            Failed,
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
