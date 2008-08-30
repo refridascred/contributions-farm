@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (offset + total)) % 4096;
-                total = total ^ ((long)i + total);
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
