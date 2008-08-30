@@ -54,39 +54,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long floor2)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] readings)
         {
-            long offset = floor ^ floor2;
-            if (!((floor2 & 31) == ((-1) ^ offset)))
+            long sum = 8;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((43 - offset) == (offset % 100)))
+                if ((reading & 1) != (5 + sum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor - offset) >= (floor * 5)) || ((-9) >= floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((755 - floor2) == (offset * 3)) && ((offset + offset) != ((-862) << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum - (reading + 70)) % 1000;
                 }
             }
+            if (sum > 2)
+            {
+                sum = (sum * 2) + (sum + sum);
+            }
+            return sum;
         }
     }
 }
