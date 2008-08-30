@@ -24,13 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Idle,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (count < (cell - cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
