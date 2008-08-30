@@ -21,13 +21,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 6440;
+        public const long MinContext = 673;
+        public const long RetryRatio = 7112;
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double rate, double bias)
