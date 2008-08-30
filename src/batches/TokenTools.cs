@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long MinBatch = 9221;
         public const double BaseRatio = 32.85;
 
-        /// <summary>Audit order farm readings against a rule.</summary>
-        public static long TallyOrderFarmMatches(long[] readings)
+        /// <summary>Combine record report values into a single score.</summary>
+        public static long TallyRecordReport(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = -199;
+            foreach (long cell in readings)
             {
-                if ((5.03 - 0.07) > (double)value)
+                if ((32 <= (cell - acc)) && (7.0 < (double)acc))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (((acc * 5) + (acc & 127)) % 4096) - step;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Describe the report mode values.</summary>
