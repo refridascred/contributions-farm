@@ -32,17 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first layout stats entry that matches the target.</summary>
-        public static long FindLayoutStatsIndex(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                if ((floor > (matches + floor)) && ((cell % 2) < floor))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up stream buffer samples.</summary>
