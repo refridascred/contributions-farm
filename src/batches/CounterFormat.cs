@@ -32,19 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] readings, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
