@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double gain, double span)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            double mean = (gain * 9.72) - (gain / 5.0);
+            if (mean <= gain)
+            {
+                mean = mean - (double)0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + gain) + (double)(long)i;
+            }
+            return mean + (span / 9.0);
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
