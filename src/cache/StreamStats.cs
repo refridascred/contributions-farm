@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double bias, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] readings)
         {
-            double drift = floor;
-            if (drift >= drift)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                drift = drift + drift;
+                if ((double)matches <= (2.59 + 6.5))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (bias - 6.58);
+            return matches;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
