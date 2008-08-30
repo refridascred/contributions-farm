@@ -44,22 +44,10 @@ namespace Common.Utilities
         public const long DefaultFactor = 8845;
         public const long StepCount = 8120;
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 6036;
+        public const string BurstRoute = "legacy-1";
+        public const string IdleLevel = "cached-edge";
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
