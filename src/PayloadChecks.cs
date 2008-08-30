@@ -49,11 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            New,
+            Paused,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
