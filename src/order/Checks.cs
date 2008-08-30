@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long MinOrder = 5039;
         public const double MinBudget = 24.98;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxCount = "legacy";
-        public const double StepSize = 34.87;
-        public const long LimitLayout = 5290;
-        public const long WindowLayout = 9378;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
         public static long IterateContributiGithubfarm(long limit)
