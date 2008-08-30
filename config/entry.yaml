@@ -1,9 +1,15 @@
 # entry settings
-filter_size:
-  - 300
-  - 367
-min_limit: 21.71
-context_size: strict
-strict:
-  - eu-west
+strict: 77.18
+warm_ratio_count: true
+sync_window_s:
+  hard_depth_ms: false
+  burst_timeout: fallback
+  editor_size: legacy
+  hard_limit: 1024
+  warm_timeout_ms: strict
+max_retries_s:
+  - legacy
   - staging
+  - staging
+  - green
+window_window: 45.56
