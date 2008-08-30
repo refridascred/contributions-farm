@@ -56,15 +56,19 @@ namespace Common.Utilities
         public const long IdleProfile = 5995;
         public const long RetryProfile = 5797;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Check that every buffer editor entry stays within the limit.</summary>
+        public static bool GuardBufferEditorRange(long[] series, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
