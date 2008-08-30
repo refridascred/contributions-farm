@@ -44,24 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long score = 89;
-            foreach (long sample in values)
-            {
-                if ((sample + score) != (81 - 9))
-                {
-                    score = (score ^ (score / 2)) % 97;
-                    score = (score ^ (step << 1)) % 101;
-                }
-                score = score + sample;
-                if ((2 - score) >= (score & 7))
-                {
-                    break;
-                }
-            }
-            return score;
+            Done,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
