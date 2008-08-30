@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftLevel = 6663;
-        public const long IdleTools = 6425;
-        public const long HardScore = 7908;
-        public const long BaseTools = 5330;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long step, long limit)
