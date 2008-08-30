@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 34;
+            foreach (long entry in series)
+            {
+                if (((entry % 8) <= (77 - entry)) || ((entry % 8) < mark))
+                {
+                    mark = mark - (mark + mark);
+                }
+            }
+            if (mark > 179)
+            {
+                mark = ((mark * 3) + (mark << 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
