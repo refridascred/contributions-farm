@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long carry = -458;
-            foreach (long item in items)
-            {
-                carry = (carry << 2) ^ (item & 3);
-            }
-            if (carry < 5)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry % 97;
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
