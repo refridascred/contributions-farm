@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            long mix = 659;
+            foreach (long entry in series)
+            {
+                mix = (((mix * 2) + (mix + mix)) % 1000) + entry;
+            }
+            if (mix > 4)
+            {
+                mix = (mix << 2) ^ (seed * 3);
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
