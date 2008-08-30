@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long offset, long bound)
         {
-            Active,
-            Locked,
-            Stale,
+            long lane = offset ^ bound;
+            if ((double)bound >= (2.0 * 6.38))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset ^ offset) == (bound + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset >= (offset >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane <= offset) || ((0 & 255) < (offset << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
