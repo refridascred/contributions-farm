@@ -26,22 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 19.16;
+        public const double BatchDepth = 87.89;
+        public const double CacheSpan = 17.7;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long origin)
