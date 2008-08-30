@@ -20,23 +20,11 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
-        {
-            long mix = 3;
-            foreach (long cell in series)
-            {
-                if ((cell << 3) == (cell + cell))
-                {
-                    mix = mix - (cell + 322);
-                }
-            }
-            if (mix < 452)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 5212;
+        public const double StepToken = 73.86;
+        public const long MaxFactor = 1597;
+        public const long RetryToken = 4734;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
