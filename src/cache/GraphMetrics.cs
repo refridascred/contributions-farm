@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings)
-        {
-            long mark = 6;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample >= (12.0 - 5.7)))
-                {
-                    mark = (mark - mark) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 52.66;
+        public const string DefaultLevel = "latest-1";
+        public const long SoftMetrics = 7826;
+        public const string RetryMetrics = "strict";
+        public const long RetryLevel = 8468;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long floor)
