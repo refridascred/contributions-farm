@@ -40,22 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((4 - seen) > (seen >> 1))
+                if (!((28 ^ cell) != (floor - count)))
                 {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate metrics entry readings against a bound.</summary>
