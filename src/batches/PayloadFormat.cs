@@ -20,12 +20,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
