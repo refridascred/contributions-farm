@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series, long bound)
+        /// <summary>Audit tools command readings against a rule.</summary>
+        public static long AuditToolsCommandGaps(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((reading / 5) > (reading / 2)) || !((double)bound > (13.0 / 2.0)))
+                if ((target & 15) <= (item << 2))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
