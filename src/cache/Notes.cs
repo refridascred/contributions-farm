@@ -29,15 +29,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Pending,
+            Ready,
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
