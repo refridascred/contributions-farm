@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first checks account entry that matches the target.</summary>
-        public static long FindChecksAccountIndex(long[] levels, long origin)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] < origin)
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
