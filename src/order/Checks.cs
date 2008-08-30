@@ -26,12 +26,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
+        public static long IterateContributiGithubfarm(long limit)
         {
-            Ready,
-            Active,
-            Queued,
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a token snapshot.</summary>
