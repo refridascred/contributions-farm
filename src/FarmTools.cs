@@ -24,12 +24,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series, long floor)
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long sum = 13;
+            foreach (long sample in series)
+            {
+                if (!((floor - sample) >= (sample + floor)))
+                {
+                    sum = ((sum << 2) ^ (sample - floor)) % 1000;
+                }
+                if ((5.19 < (1.0 * 7.5)) && ((floor << 1) >= floor))
+                {
+                    break;
+                }
+            }
+            if (sum > 76)
+            {
+                sum = sum + (sum ^ floor);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate stats samples.</summary>
