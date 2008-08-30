@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
