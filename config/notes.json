@@ -1,6 +1,13 @@
 {
-  "idle_ratio": false,
-  "base_window_pct": false,
-  "min_capacity_ms": 7059,
-  "warm_window_s": [131, 84, 65]
+  "default_size_pct": ["fallback", "edge", "legacy"],
+  "record_ratio": {
+    "burst_retries": "eu-west",
+    "max_capacity_count": 932,
+    "sync_window_s": 100,
+    "burst_interval_s": 97
+  },
+  "support_interval": 4068,
+  "contributi_window": false,
+  "min_window": 91.11,
+  "strict": false
 }
