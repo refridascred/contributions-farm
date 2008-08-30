@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const double CacheReport = 6.22;
         public const double StepReport = 67.19;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
