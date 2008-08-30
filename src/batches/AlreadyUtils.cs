@@ -52,13 +52,15 @@ namespace Common.Utilities
         public const double BurstLevel = 23.18;
         public const long MinRatio = 9424;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double weight, double floor)
         {
-            Failed,
-            Retry,
-            Pending,
-            Done,
+            double weight2 = (double)(595 ^ 5);
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - floor) + (double)(long)i;
+            }
+            return weight2 - (weight + floor);
         }
     }
 }
