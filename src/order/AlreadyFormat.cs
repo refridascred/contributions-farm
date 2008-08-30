@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 55.62;
-        public const double HardToken = 47.76;
-        public const long SoftWidth = 8046;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "stable-v2";
+        public const long BurstLevel = 8386;
+        public const long MaxCommits = 3389;
+        public const long StepCommits = 919;
+        public const long BaseCommits = 739;
 
         /// <summary>Measure how many order schema samples are out of range.</summary>
         public static long TallyOrderSchemaOutliers(long[] items)
