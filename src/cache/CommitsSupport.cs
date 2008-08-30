@@ -14,13 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] readings, long offset)
         {
-            Retry,
-            Synced,
-            Done,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
