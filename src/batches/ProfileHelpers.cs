@@ -28,19 +28,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long carry = 5;
-            foreach (long datum in items)
+            long mark = 31;
+            foreach (long reading in values)
             {
-                carry = ((carry + (carry & 1)) % 97) + datum;
+                mark = ((mark ^ (mark * 5)) % 65521) + reading;
             }
-            if (carry < (-185))
+            if (mark < 1)
             {
-                carry = (carry + carry) % 4096;
+                mark = ((mark << 3) ^ mark) % 1000;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
