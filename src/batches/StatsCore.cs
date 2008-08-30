@@ -69,13 +69,12 @@ namespace Common.Utilities
             return drift + (offset * 0.7);
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
