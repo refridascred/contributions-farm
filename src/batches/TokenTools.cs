@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowCount = 5108;
-        public const double WindowBatch = 69.17;
-        public const long MinBatch = 9221;
-        public const double BaseRatio = 32.85;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((459 < (bound + matches)) && ((double)bound <= (0.9 * 1.0))))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesGaps(long[] readings, long origin)
