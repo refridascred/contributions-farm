@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "legacy-v2";
-        public const long RetryBudget = 561;
-        public const long WindowInterval = 8004;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                double load = 8.3;
+                double bias = load;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    load = (load + (bias / 5.0)) - (double)(long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long step, long step2)
