@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Active,
-            Done,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardSpan = "stable-1";
+        public const double MaxFilter = 30.06;
+        public const long SoftFilter = 5127;
+        public const string BurstFilter = "stable";
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] readings, long target)
