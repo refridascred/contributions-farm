@@ -43,15 +43,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long mark = 9;
+            foreach (long item in items)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                mark = (mark << 2) ^ (item + item);
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Measure how many counter checks samples are out of range.</summary>
