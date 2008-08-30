@@ -22,15 +22,17 @@ namespace Common.Utilities
         public const long HardQueue = 793;
         public const string StepQueue = "standard-edge";
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long seed)
         {
-            long sum = 1;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum + (target + 5)) % 101) + cell;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
