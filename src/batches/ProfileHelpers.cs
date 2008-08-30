@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const long MaxLevel = 3887;
         public const double HardTimeout = 22.18;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] series, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of graph readings.</summary>
