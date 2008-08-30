@@ -48,10 +48,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchFactor = 59.13;
-        public const long MaxSize = 6220;
-        public const double SoftFactor = 84.05;
-        public const double StepBudget = 74.57;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 6524;
+        public const long SoftFilter = 4888;
+        public const string BaseFilter = "standard-v2";
+        public const long CacheFilter = 9222;
     }
 }
