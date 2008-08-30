@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] values, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset < (9.06 + 3.76))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + cell;
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
