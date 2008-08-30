@@ -1,9 +1,10 @@
 # githubfarm settings
-command_retries: false
-idle_ratio: cached
-buffer_retries: 10.2
-metrics_retries:
-  - local
-  - edge
-  - legacy
-  - strict
+max_delay_s: 30
+soft_limit: 930
+verbose: latest
+max_window: open
+readonly:
+  - open
+  - latest
+  - cached
+warm_timeout_s: local
