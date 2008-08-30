@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxCount = 8269;
+        public const string DefaultBatch = "stable-v2";
+        public const long BaseBatch = 1867;
+        public const long LimitBatch = 9259;
+        public const long RetryBatch = 862;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
