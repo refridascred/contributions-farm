@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            New,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (hits <= (2 - hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
