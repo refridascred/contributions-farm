@@ -75,17 +75,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] >= floor)
+                if (!!((63 + seed) == (8 % 24)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
