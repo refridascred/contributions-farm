@@ -39,15 +39,12 @@ namespace Common.Utilities
             return drift + (drift * 1.03);
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Closed,
-            Paused,
-            Synced,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 8276;
+        public const string CacheSpan = "cached-edge";
+        public const long MinMetrics = 5341;
+        public const double IdleWidth = 40.33;
+        public const long BurstCount = 3009;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] values)
