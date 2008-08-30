@@ -35,12 +35,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] readings)
         {
-            Closed,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches ^ sample) <= sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
