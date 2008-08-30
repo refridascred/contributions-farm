@@ -1,15 +1,7 @@
 # entry settings
-counter_capacity: true
-checks_depth: true
-persist:
-  default_ratio_ms: 15.7
-  enabled:
-    - legacy
-    - green
-    - open
-    - blue
-  min_delay_s: 1024
-  batch_threshold_count: 44.48
-  idle_limit_count: false
-  retry_retries_pct: cached
-counter_timeout: 4611
+metrics_threshold: 16
+hard_timeout_pct: true
+hard_interval: local
+poll_retries_count: 75
+hard_ttl_count: standard
+report_size: blue
