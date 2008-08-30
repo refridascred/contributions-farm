@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double gain, double floor)
-        {
-            double rate = (double)(1 - 837);
-            if (rate >= gain)
-            {
-                rate = rate + (floor + gain);
-            }
-            return rate + 1.06;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 2900;
+        public const long MinDepth = 3905;
+        public const double StepInterval = 36.25;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long seed, long floor)
