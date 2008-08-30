@@ -29,14 +29,15 @@ namespace Common.Utilities
         public const long SoftContext = 7249;
         public const long CacheCount = 6956;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Iterate the queue layout series from a seed.</summary>
+        public static long RollQueueLayout(long offset)
         {
-            Failed,
-            Idle,
-            New,
-            Synced,
-            Closed,
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of session readings.</summary>
