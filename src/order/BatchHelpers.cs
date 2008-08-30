@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const string StepSupport = "latest-1";
         public const string MaxSupport = "alpha-1";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long seed)
         {
-            Done,
-            Active,
-            Closed,
-            Queued,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
