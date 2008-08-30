@@ -1,14 +1,11 @@
 # Command notes
 
-Each schema is validated before it reaches the record queue.
-Run the metrics check before changing any buffer limits.
-
-A order that stays idle for too long is moved to the githubfarm list.
-Each report is validated before it reaches the context queue.
-Each githubfarm is validated before it reaches the format queue.
+Run the format check before changing any farm limits.
+A layout that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Document new record fields
-- Prefer cache defaults
-- Keep batch values small
+- Prefer format defaults
+- Validate command input early
+- Review contributi limits each release
+- Document new queue fields
