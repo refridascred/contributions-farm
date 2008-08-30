@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the batches filter series from a seed.</summary>
-        public static long RollBatchesFilter(long limit)
+        /// <summary>Match up support farm samples.</summary>
+        public static long CompareSupportFarmCount(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit - acc) <= (36 >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (31 - 9)) % 97;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
