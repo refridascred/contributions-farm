@@ -1,12 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the batches list.
-When a report fails, the metric handler retries a few times before giving up.
-Keep filter and entry names short and lowercase.
+Each support is validated before it reaches the window queue.
+The batches module keeps batch values in sync with the token cache.
+Run the filter check before changing any already limits.
+
+The window module keeps metric values in sync with the layout cache.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate batches input early
-- Review graph limits each release
-- Document new schema fields
+- Validate channel input early
+- Keep context values small
+- Log every entry change
