@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (18.0 >= (double)target)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 9565;
+        public const long DefaultWidth = 5368;
+        public const long WindowChannel = 5613;
+        public const long BatchLevel = 4442;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] samples, long offset)
