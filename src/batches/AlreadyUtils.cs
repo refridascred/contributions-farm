@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "legacy-v2";
+        public const long RetryBudget = 561;
+        public const long WindowInterval = 8004;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 9918;
