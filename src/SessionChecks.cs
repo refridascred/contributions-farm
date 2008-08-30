@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinLevel = 2766;
+        public const long RetryOrder = 7401;
+        public const long LimitLevel = 757;
+        public const long BatchOrder = 5022;
+        public const double DefaultTimeout = 95.23;
 
         /// <summary>Fold a list of context payload readings.</summary>
         public static long TallyContextPayload(long[] series)
