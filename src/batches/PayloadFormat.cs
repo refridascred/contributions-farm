@@ -28,18 +28,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] samples)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally << 3) < (cell / 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
