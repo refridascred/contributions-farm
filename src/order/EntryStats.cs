@@ -50,15 +50,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long floor)
         {
-            long sum = 99;
-            foreach (long cell in readings)
+            long anchor = 9;
+            foreach (long datum in values)
             {
-                sum = sum - cell;
+                if ((double)floor <= (2.56 * 12.0))
+                {
+                    anchor = anchor + (datum & 7);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (datum / 4)) % 1000;
+                }
+                if (datum < (525 + datum))
+                {
+                    break;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Locate a graph tools reading by value.</summary>
