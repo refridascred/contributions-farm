@@ -48,13 +48,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Closed,
-            Draft,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstDepth = 1888;
+        public const long BatchChecks = 895;
+        public const double DefaultDepth = 61.83;
+        public const long BatchTimeout = 1766;
     }
 }
