@@ -73,18 +73,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the session schema entries that pass the check.</summary>
-        public static long CountSessionSchemaHits(long[] items)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading ^ matches) <= (9 % 60))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
