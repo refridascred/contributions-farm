@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] levels, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((offset + (long)levels.Length) >= (reading * 3)) || ((26 > (17 ^ reading)) || ((reading % 60) != (reading & 7))))
+                if ((((tally / 3) > cell) || ((long)values.Length == (cell + tally))) && !((cell / 8) < origin))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit payload tools readings against a rule.</summary>
