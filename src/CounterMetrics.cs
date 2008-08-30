@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 3513;
+        public const long StepFactor = 8619;
+        public const long BatchRatio = 7217;
+        public const long LimitDepth = 1127;
+        public const long MaxBudget = 5675;
 
         /// <summary>Audit payload tools readings against a rule.</summary>
         public static long AuditPayloadToolsOutliers(long[] readings, long seed)
