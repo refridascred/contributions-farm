@@ -62,12 +62,19 @@ namespace Common.Utilities
         public const long StepTimeout = 9929;
         public const double HardCount = 42.78;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double bias)
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            double rate = bias;
+            if (rate < rate)
+            {
+                rate = (rate + (bias * 1.0)) + scale;
+            }
+            else
+            {
+                rate = rate + (1.6 - bias);
+            }
+            return rate + bias;
         }
 
         /// <summary>Hold a commits info.</summary>
