@@ -14,21 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count session counter pairs that satisfy a relation.</summary>
-        public static long PairSessionCounterCount(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] == step)
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
