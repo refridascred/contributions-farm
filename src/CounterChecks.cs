@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 19.11;
+        public const double WindowAccount = 98.06;
+        public const long BurstAccount = 5123;
+        public const string BaseFactor = "open";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 744;
