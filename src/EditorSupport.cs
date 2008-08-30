@@ -43,15 +43,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the commits state values.</summary>
