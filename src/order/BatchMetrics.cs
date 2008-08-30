@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)i * 3) >= (bound & 255))
                 {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                sum = (sum << 3) ^ (bound + (-193));
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
