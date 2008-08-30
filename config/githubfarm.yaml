@@ -1,18 +1,15 @@
 # githubfarm settings
-idle_ratio_ms:
-  base_ratio_count:
-    - 173
-    - 350
-    - 363
-  default_capacity: cached
-  base_size: 250
-  cache_size: 250
-  counter_ttl:
-    - 194
-    - 60
-    - 398
-  retry_ttl_count: 78.02
-cache_depth_s:
-  - 60
-  - 335
-dry_run: 65
+batch_threshold: true
+cache_threshold_pct: 51
+cache_size_count: 60
+compress:
+  tools_delay: true
+  dry_run:
+    hard_timeout_pct: cached
+    default_interval_count: staging
+    poll_window_s: blue
+    batch_delay: primary
+    base_interval: false
+    githubfarm_timeout: 46.21
+  account_threshold: 100
+  batch_ttl: 100
