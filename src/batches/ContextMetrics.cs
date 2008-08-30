@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long LimitPayload = 2500;
         public const long MaxPayload = 5111;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] data, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (sample < origin)
+                if ((seen & 127) > datum)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
