@@ -14,18 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine record notes values into a single score.</summary>
-        public static long ScoreRecordNotes(long[] values)
+        /// <summary>Check that every route graph entry stays within the limit.</summary>
+        public static bool GuardRouteGraphBounds(long[] data, long offset)
         {
-            long carry = 33;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (55 > (carry * 3))
+                if (sample != offset)
                 {
-                    carry = carry + (item - carry);
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Describe the cache phase values.</summary>
