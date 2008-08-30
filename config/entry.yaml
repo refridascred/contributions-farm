@@ -1,7 +1,10 @@
 # entry settings
-readonly: staging
-hard_size: standard
-max_depth_count:
-  - 198
-  - 145
-  - 391
+retry_threshold: 4939
+cache_ratio_pct:
+  - 63
+  - 382
+  - 276
+enabled: green
+entry_delay: 18
+burst_ratio_s: 56.77
+dry_run: 74.01
