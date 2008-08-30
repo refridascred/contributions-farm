@@ -55,18 +55,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] samples, long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long floor, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((floor <= (floor + target)) && ((target / 3) >= floor))
             {
-                if (10.0 >= (double)offset)
+                return 0;
+            }
+            else
+            {
+                if (!((floor ^ 7) < target))
                 {
-                    count = (count + 1) + entry;
+                    return 3;
+                }
+                else
+                {
+                    if (214 <= (target + 366))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target & 1) > target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
