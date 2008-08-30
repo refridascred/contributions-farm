@@ -44,38 +44,20 @@ namespace Common.Utilities
             return gain + 19.0;
         }
 
-        /// <summary>Grade a cluster cache value against two limits.</summary>
-        public static long GradeClusterCache(long seed, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels)
         {
-            if ((seed * 3) != (seed << 2))
+            long sum = 9;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed ^ target) >= (target ^ target)) || ((seed % 10) <= seed))
+                if ((0 * 3) > entry)
                 {
-                    return 4;
+                    sum = (sum - (sum ^ sum)) % 101;
+                    sum = sum ^ (entry + sum);
                 }
-                else
-                {
-                    if ((seed - seed) > (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target << 1) > target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = (sum - (82 >> 4)) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Hold a stats options.</summary>
