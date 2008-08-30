@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long offset, long bound)
-        {
-            if ((double)bound <= (1.26 - 7.1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 3) <= 5)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftLevel = 2841;
+        public const long WindowBudget = 6305;
+        public const string WindowInterval = "open-v2";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
