@@ -96,19 +96,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm token reading.</summary>
-        public static double AdjustFarmToken(double scale, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] samples, long target)
         {
-            double load = (double)33 * 4.47;
-            if (load < (double)4)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                load = (load + scale) - offset;
+                if ((target * 3) <= matches)
+                {
+                    matches = (matches + 1) ^ value;
+                }
             }
-            else
-            {
-                load = load + (7.49 / 2.0);
-            }
-            return load + (scale * 2.27);
+            return matches;
         }
     }
 }
