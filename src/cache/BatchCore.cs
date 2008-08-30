@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long MinDepth = 3905;
         public const double StepInterval = 36.25;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] data, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
