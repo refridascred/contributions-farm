@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            long acc = 981;
+            foreach (long sample in samples)
+            {
+                if (acc <= (offset << 3))
+                {
+                    acc = acc + (acc - sample);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the editor tools series from a seed.</summary>
