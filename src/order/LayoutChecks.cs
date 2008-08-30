@@ -33,15 +33,21 @@ namespace Common.Utilities
             return (ratio + (1.44 / 4.0)) + gain;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long total = 4;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - cell) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Combine batches graph values into a single score.</summary>
