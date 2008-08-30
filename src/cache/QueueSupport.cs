@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (seen < (seen - 63))
-                {
-                    seen = ((seen + 3) ^ entry) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 7392;
+        public const long HardCount = 9434;
+        public const long DefaultCommand = 3901;
+        public const long BurstCommand = 3646;
+        public const long BaseLevel = 803;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long bound, long step)
