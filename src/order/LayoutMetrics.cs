@@ -37,11 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowTimeout = 7681;
-        public const long CacheSpan = 5447;
-        public const string LimitGithubfarm = "stable-v2";
-        public const string StepGithubfarm = "staging-v2";
-        public const string BurstRatio = "latest";
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public double Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
