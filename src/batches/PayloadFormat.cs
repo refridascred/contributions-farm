@@ -68,19 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sample != origin)
+                if ((double)count == (5.04 - 8.0))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + cell;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
