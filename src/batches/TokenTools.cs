@@ -25,20 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next cluster stats value from a seed.</summary>
-        public static long DeriveClusterStats(long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] items, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (target <= 4)
+                if (entry >= limit)
                 {
-                    acc = (acc + ((long)i + (long)i)) % 1000;
+                    valid = false;
                     break;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
     }
 }
