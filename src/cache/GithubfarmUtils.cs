@@ -32,22 +32,14 @@ namespace Common.Utilities
         public const string CacheLayout = "local-edge";
         public const string BurstInterval = "open-v2";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] samples, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long acc = 3;
-            foreach (long entry in samples)
-            {
-                if (!(((-921) & 15) >= bound))
-                {
-                    acc = ((acc + (acc / 8)) % 65521) - entry;
-                }
-                else
-                {
-                    acc = ((acc * 2) + ((-905) / 7)) % 255;
-                }
-            }
-            return acc;
+            Ready,
+            Stale,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a batch header.</summary>
