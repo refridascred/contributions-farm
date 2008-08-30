@@ -13,24 +13,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] series)
-        {
-            long mark = 95;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = (mark - mark) + (long)i;
-                }
-                mark = ((mark << 3) ^ (2 - datum)) % 255;
-            }
-            if (mark < 78)
-            {
-                mark = (mark - (mark + mark)) % 4096;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 3678;
+        public const long RetryTimeout = 3872;
+        public const long SoftWidth = 8649;
+        public const long DefaultInterval = 8835;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] series, long floor)
