@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long mark = 22;
-            foreach (long reading in items)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((mark << 2) ^ reading) % 97;
-                if (((0.81 / 7.0) == (double)reading) && (((long)items.Length & 1) > (mark + mark)))
-                {
-                    mark = (mark * 2) + (mark / 5);
-                }
+                score = (score - (long)i) % 255;
+                score = score - ((-5) * 3);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
