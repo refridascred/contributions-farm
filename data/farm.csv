@@ -1,9 +1,6 @@
-id,score,region,label,token
-1,87.86,eu-west,992,942
-2,11.14,754,legacy,373
-3,54.95,678,87.87,5
-4,staging,232,19.62,edge
-5,2.38,785,880,79
-6,green,936,439,77
-7,437,green,legacy,latest
-8,standard,31.02,strict,33.03
+id,region,token
+1,6.25,38
+2,263,standard
+3,873,fallback
+4,106,0.4
+5,strict,local
