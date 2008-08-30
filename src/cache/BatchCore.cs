@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 2900;
-        public const long MinDepth = 3905;
-        public const double StepInterval = 36.25;
+        /// <summary>Look up the position of a session batches sample.</summary>
+        public static long LookupSessionBatchesIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] series)
