@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long step)
+        /// <summary>Digest a series of stats batch entries.</summary>
+        public static long WeighStatsBatch(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long state = 959;
+            foreach (long sample in values)
             {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state - (state % 97)) - sample;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
