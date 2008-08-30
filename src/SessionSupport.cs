@@ -22,15 +22,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] values, long bound)
         {
-            long carry = 594;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                carry = (((carry << 3) ^ carry) + item) - floor;
+                if ((datum <= ((long)values.Length << 1)) && (matches >= (65 / 7)))
+                {
+                    matches = (matches + 3) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
