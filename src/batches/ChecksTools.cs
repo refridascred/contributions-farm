@@ -19,24 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((2.6 / 2.0) == (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 63) != (step - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
