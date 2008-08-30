@@ -62,13 +62,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Pending,
-            Queued,
-            Stale,
-            Draft,
+            Dropped,
+            New,
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
