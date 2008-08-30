@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long bound2)
+        /// <summary>Measure how many filter record samples are out of range.</summary>
+        public static long CountFilterRecordHits(long[] values)
         {
-            if ((-861) >= (1 + bound2))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.55 - 4.0) <= (double)bound)
+                if ((seen + seen) >= (2 + (long)values.Length))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
