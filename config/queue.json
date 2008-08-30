@@ -1,8 +1,5 @@
 {
-  "route_window": true,
-  "base_threshold_ms": 30,
-  "support_size": false,
-  "commits_ttl": ["strict", "primary"],
-  "default_limit_ms": 2500,
-  "checks_size": 3.18
+  "batch_ratio_ms": ["local", "eu-west"],
+  "account_capacity": "staging",
+  "flush_limit": "open"
 }
