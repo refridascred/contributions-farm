@@ -50,18 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = 521;
+            foreach (long sample in readings)
             {
-                if ((double)anchor >= (double)limit)
-                {
-                    anchor = ((anchor * 5) + (anchor + 99)) % 255;
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ 45) + sample;
             }
             return anchor;
         }
