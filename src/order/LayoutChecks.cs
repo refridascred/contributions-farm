@@ -75,16 +75,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Rank graph cache input into a small class.</summary>
+        public static long ClassifyGraphCache(long bound, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            if ((target - 5) < (bound << 3))
             {
-                sum = ((sum * 3) + ((long)i / 8)) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((double)target >= (2.9 * 3.4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - bound) > (target / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
