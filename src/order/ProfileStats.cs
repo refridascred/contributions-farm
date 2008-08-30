@@ -46,15 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] values, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long step)
         {
-            long mark = 6;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mark = ((mark + (mark >> 2)) ^ value) + seed;
+                if (!(5.1 > (double)entry) && ((step << 3) <= (entry - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark % 65521;
+            return seen;
         }
     }
 }
