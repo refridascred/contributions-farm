@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] values, long bound)
         {
-            long carry = 38;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                carry = ((carry << 2) ^ ((long)series.Length ^ cell)) % 1000;
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
