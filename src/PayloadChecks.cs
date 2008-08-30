@@ -69,10 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepTimeout = 4910;
-        public const long MaxContributi = 195;
-        public const string MinContributi = "latest-edge";
-        public const string IdleScore = "stable-edge";
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
