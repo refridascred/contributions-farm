@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the editor support entries that pass the check.</summary>
-        public static long CountEditorSupportHits(long[] levels, long seed)
+        /// <summary>Measure how many buffer stats samples are out of range.</summary>
+        public static long MeasureBufferStatsHits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (seed >= (reading & 127))
+                if ((5.3 / 3.0) == (double)seen)
                 {
-                    matches = matches + 2;
+                    seen = ((seen + 1) - item) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
