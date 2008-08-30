@@ -18,25 +18,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long target, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            if (offset <= (target * 4))
             {
-                carry = (carry * 2) + (1 + (long)i);
-                if ((carry * 3) >= (offset & 3))
+                return 4;
+            }
+            else
+            {
+                if (!((target ^ offset) >= (target - target)))
                 {
-                    carry = carry ^ (offset >> 1);
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    carry = (carry - (carry + carry)) % 4096;
+                    return 6;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
