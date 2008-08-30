@@ -27,19 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many report batch samples are out of range.</summary>
-        public static long TallyReportBatchMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (item <= (item >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "standard-1";
+        public const long IdleNotes = 9537;
+        public const double RetryCount = 57.82;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long StepGithubfarm = 136;
