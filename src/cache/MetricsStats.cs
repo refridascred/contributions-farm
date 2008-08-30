@@ -43,10 +43,10 @@ namespace Common.Utilities
         public const double BurstSize = 75.21;
         public const long BurstWindow = 8074;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 6524;
-        public const long SoftFilter = 4888;
-        public const string BaseFilter = "standard-v2";
-        public const long CacheFilter = 9222;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 3331;
+        public const long StepTimeout = 8190;
+        public const long IdleToken = 4827;
+        public const string MaxToken = "strict-1";
     }
 }
