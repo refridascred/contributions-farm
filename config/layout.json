@@ -1,8 +1,19 @@
 {
-  "dry_run": [103, 276, 154, 160],
-  "persist": [448, 13, 245],
-  "flush_threshold_ms": 30,
-  "idle_threshold": 72.79,
-  "stats_limit": true,
-  "strict": false
+  "warm_interval_s": "local",
+  "batch_window_pct": false,
+  "idle_capacity_count": {
+    "record_window": 500,
+    "idle_ratio_ms": 9203,
+    "metric_interval": 78.43,
+    "warm_threshold_ms": 7368,
+    "command_ttl": 12.07,
+    "default_limit_count": true
+  },
+  "format_timeout": "staging",
+  "hard_window": "eu-west",
+  "enabled": {
+    "soft_window_ms": 78.28,
+    "cache_window": "primary",
+    "enabled": [177, 212, 176, 91]
+  }
 }
