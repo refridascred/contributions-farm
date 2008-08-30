@@ -1,8 +1,34 @@
 # support settings
-payload_ratio: primary
-soft_interval:
-  - eu-west
-  - stable
-  - open
-readonly: 80
-batch_depth_s: latest
+context_timeout: stable
+compress:
+  batches_capacity:
+    - 418
+    - 121
+    - 464
+  queue_interval: 500
+  enabled:
+    max_depth_s: 8277
+    payload_depth: 500
+    warm_delay: 23
+    soft_ttl_count: 500
+    audit: 79.74
+  compress:
+    - cached
+    - fallback
+    - open
+    - fallback
+  soft_ratio_pct:
+    cache_interval: 5543
+    readonly: 82.13
+    burst_limit:
+      - 373
+      - 335
+  default_capacity_count:
+    soft_timeout_count: blue
+    editor_timeout: 100
+    persist: 500
+    base_ttl_count: staging
+min_interval_count: 446
+warm_interval_pct: 95.56
+readonly: edge
+idle_interval: 500
