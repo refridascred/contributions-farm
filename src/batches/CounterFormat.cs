@@ -25,20 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] readings, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                total = ((total << 3) ^ ((long)i & 1)) % 97;
-                if ((55 - (long)i) == (seed - total))
+                if (value <= origin)
                 {
-                    total = (total ^ (total >> 5)) % 4096;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return stale;
         }
     }
 }
