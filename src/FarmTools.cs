@@ -34,19 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the order context series from a seed.</summary>
-        public static long SeriesOrderContext(long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] series, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (series[i] < limit)
                 {
-                    mark = ((mark - ((long)i + bound)) % 65521) ^ (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
     }
 }
