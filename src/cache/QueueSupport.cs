@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long anchor = 3;
-            foreach (long reading in data)
+            long total = 383;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + (reading - anchor)) % 101;
+                total = (total << 2) ^ datum;
             }
-            return anchor;
+            if (total > (-16))
+            {
+                total = (total << 3) ^ (total & 15);
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
