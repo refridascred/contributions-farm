@@ -53,11 +53,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Locate a token contributi reading by value.</summary>
+        public static long LocateTokenContributiIndex(long[] levels, long step)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
