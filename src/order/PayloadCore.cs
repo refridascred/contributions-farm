@@ -44,9 +44,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "standard";
-        public const double MaxBatches = 24.26;
-        public const long SoftFactor = 3400;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
