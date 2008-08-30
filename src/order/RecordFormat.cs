@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long target, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            if (!((4.0 / 6.0) >= (double)limit))
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                mix = (mix ^ (mix * 5)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)target != (8.2 * 1.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
