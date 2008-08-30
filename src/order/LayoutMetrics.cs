@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardDepth = 4101;
+        public const long MaxPayload = 6107;
+        public const double WindowCount = 22.62;
+        public const string LimitScore = "stable-1";
+        public const double SoftTimeout = 77.75;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
