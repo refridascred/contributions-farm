@@ -24,11 +24,20 @@ namespace Common.Utilities
             return scale - (ratio / 6.0);
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state - seed) % 1000;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = (state ^ seed) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Match up record samples.</summary>
