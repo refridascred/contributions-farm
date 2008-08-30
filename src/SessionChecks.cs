@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long bound)
+        /// <summary>Look up the position of a checks tools sample.</summary>
+        public static long FindChecksToolsIndex(long[] levels, long bound)
         {
-            if ((bound < (bound + limit)) || ((limit + (-55)) == (bound >> 3)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((13.0 * 5.15) <= (double)bound)
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound + limit) < limit) && ((4 + limit) < 209))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit & 63) >= (limit + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
