@@ -20,16 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a batches entry counter forward.</summary>
-        public static long StepBatchesEntry(long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 3) + (floor & 15)) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
