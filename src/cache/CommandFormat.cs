@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long carry = 12;
+            foreach (long reading in items)
             {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = carry + reading;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
