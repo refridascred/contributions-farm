@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double weight, double bias)
         {
-            if (floor <= (floor + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor / 4) != (origin + floor)) && ((39 - origin) >= floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double rate = weight;
+            return (rate + (weight + rate)) + bias;
         }
 
         /// <summary>Look up the position of a token githubfarm sample.</summary>
