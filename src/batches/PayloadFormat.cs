@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate buffer account readings against a bound.</summary>
-        public static bool VerifyBufferAccountRange(long[] values, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = total - (bound % 8);
+                total = (total + bound) % 101;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
