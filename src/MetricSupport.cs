@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Stale,
-            Dropped,
-            Idle,
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
