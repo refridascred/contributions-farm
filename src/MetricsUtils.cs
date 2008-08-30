@@ -23,18 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Classify a schema cache pair into a bucket.</summary>
+        public static long RankSchemaCache(long target, long bound)
         {
-            long state = 96;
-            foreach (long entry in levels)
+            if (!((target - 28) != (bound << 3)))
             {
-                if (!(entry < (state << 2)))
+                return 3;
+            }
+            else
+            {
+                if ((bound * 3) == (70 - bound))
                 {
-                    state = (state << 2) ^ (entry ^ state);
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) >= (target * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the batches kind values.</summary>
