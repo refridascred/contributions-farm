@@ -13,24 +13,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cluster tools entries.</summary>
-        public static long CombineClusterTools(long[] series)
-        {
-            long anchor = 135;
-            foreach (long value in series)
-            {
-                anchor = ((anchor << 2) ^ (anchor - value)) % 255;
-                if (((value >> 1) != (anchor - 68)) && ((anchor << 1) >= (value % 60)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 366)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultBudget = 7139;
+        public const double IdleReport = 29.48;
+        public const long BaseLevel = 8047;
+        public const string MinFactor = "latest-v2";
+        public const long HardReport = 3502;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
