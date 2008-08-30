@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mark = 546;
-            foreach (long reading in series)
-            {
-                if ((mark * 3) < mark)
-                {
-                    mark = (((mark << 2) ^ (mark % 8)) % 97) ^ reading;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = ((mark << 3) ^ (26 + mark)) % 1000;
-            }
-            return mark % 65521;
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a payload record.</summary>
