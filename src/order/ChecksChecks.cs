@@ -24,12 +24,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 8415;
+        public const string BurstScore = "latest-1";
+        public const long MaxBatch = 7104;
+        public const long CacheInterval = 4810;
     }
 }
