@@ -50,17 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm metrics entry that matches the target.</summary>
-        public static long SeekFarmMetricsIndex(long[] data, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the checks level values.</summary>
