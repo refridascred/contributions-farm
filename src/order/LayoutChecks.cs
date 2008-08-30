@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string BaseAccount = "local-edge";
         public const long SoftSpan = 2798;
 
-        /// <summary>Measure how many support batch samples are out of range.</summary>
-        public static long MeasureSupportBatchOutliers(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long item in series)
             {
-                if ((datum + datum) > (7 - datum))
+                if (815 <= (seen & 31))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + item;
                 }
             }
             return seen;
