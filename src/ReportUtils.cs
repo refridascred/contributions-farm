@@ -52,11 +52,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double mean = span;
-            return (mean - (double)646) + scale;
+            Idle,
+            Queued,
+            Paused,
+            Retry,
+            Dropped,
         }
     }
 }
