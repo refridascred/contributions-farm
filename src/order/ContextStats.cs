@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long bound, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] samples, long target)
         {
-            long step2 = bound - step;
-            if ((step2 - step2) >= (bound ^ bound))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)step2 > (4.2 * 1.0)))
+                if ((target * 2) >= (cell + (-955)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 >= step) && (step < (bound >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
