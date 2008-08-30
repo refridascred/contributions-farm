@@ -15,11 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long step)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
