@@ -43,11 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseLevel = 5318;
-        public const double IdleSpan = 58.58;
-        public const long BatchCounter = 5091;
-        public const long SoftWidth = 4000;
-        public const string StepCounter = "latest-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 2482;
+        public const long CacheMetrics = 7678;
+        public const long RetryMetrics = 7538;
+        public const long LimitMetrics = 789;
+        public const long BatchMetrics = 8620;
     }
 }
