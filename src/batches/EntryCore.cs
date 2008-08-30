@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Done,
-            Stale,
-            Locked,
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
