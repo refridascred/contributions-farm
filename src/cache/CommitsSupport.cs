@@ -72,32 +72,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long origin, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            long bound = origin + seed;
-            if ((bound + seed) < (origin >> 5))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound > (origin & 7))
+                if ((double)value > (10.0 / 9.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.4 / 2.0) != (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
