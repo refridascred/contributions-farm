@@ -1,5 +1,7 @@
 {
-  "cache_delay": "strict",
-  "verbose": 500,
-  "poll_interval": "green"
+  "account_depth": true,
+  "default_capacity_pct": ["primary", "primary", "stable", "primary"],
+  "notes_delay": [210, 486],
+  "contributi_window": false,
+  "min_interval_pct": 19
 }
