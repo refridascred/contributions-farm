@@ -52,13 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftSize = 4391;
+        public const long IdleOrder = 7944;
+        public const long IdleScore = 3306;
+        public const long HardOrder = 7514;
+        public const double HardTimeout = 66.36;
     }
 }
