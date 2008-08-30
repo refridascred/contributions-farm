@@ -1,30 +1,5 @@
 {
-  "warm_retries": {
-    "hard_ttl_ms": ["legacy", "stable", "stable"],
-    "poll_capacity_count": true,
-    "report_timeout": false,
-    "poll_capacity_pct": {
-      "filter_retries": "edge",
-      "burst_threshold_count": "blue",
-      "hard_threshold": 1024,
-      "strict": 58
-    },
-    "base_interval_s": false,
-    "commits_ratio": [438, 283, 26, 97]
-  },
-  "dry_run": 47.55,
-  "metric_timeout": true,
-  "sync_capacity": {
-    "flush_ratio_count": {
-      "enabled": false,
-      "format_threshold": 88.24,
-      "base_delay_pct": 500,
-      "compress": 8958,
-      "strict": 500
-    },
-    "verbose": 30,
-    "enabled": "edge",
-    "poll_depth": [480, 454],
-    "min_interval_count": [66, 397]
-  }
+  "dry_run": 3069,
+  "base_capacity_pct": 7887,
+  "base_interval_s": "blue"
 }
