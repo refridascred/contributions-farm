@@ -61,19 +61,10 @@ namespace Common.Utilities
             return rate - (rate / 4.0);
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double scale, double bias)
-        {
-            double weight = (double)(0 - 76);
-            if (weight > 5.67)
-            {
-                weight = (weight + weight) + bias;
-            }
-            else
-            {
-                weight = weight + (scale / 8.0);
-            }
-            return weight + (scale / 3.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxDepth = 5960;
+        public const double StepContributi = 82.06;
+        public const double StepTimeout = 3.9;
+        public const double StepDepth = 58.95;
     }
 }
