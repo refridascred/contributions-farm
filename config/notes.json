@@ -1,7 +1,8 @@
 {
-  "cache_depth_ms": 61,
-  "soft_timeout_count": ["local", "strict", "strict"],
-  "flush_size": 3.16,
-  "burst_ttl_s": [485, 407, 22],
-  "hard_threshold": 250
+  "idle_timeout_s": 530,
+  "default_ratio_s": "standard",
+  "poll_ratio_count": 30,
+  "enabled": 54,
+  "route_retries": "green",
+  "min_depth_s": false
 }
