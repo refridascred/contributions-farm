@@ -1,10 +1,4 @@
 # support settings
-filter_timeout: 81.18
-batch_timeout_pct: 6774
-retry_window_count:
-  - 130
-  - 258
-  - 141
-record_size: 27
-contributi_size: 10.07
-retry_window_ms: strict
+persist: stable
+hard_size_ms: primary
+flush_limit_count: false
