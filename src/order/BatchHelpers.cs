@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Validate stats token readings against a bound.</summary>
+        public static bool ValidateStatsTokenRange(long[] samples, long target)
         {
-            long carry = 4;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((double)entry < (4.5 / 6.0))
+                if (datum > target)
                 {
-                    carry = (carry ^ (221 % 16)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry & 127);
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 8)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
