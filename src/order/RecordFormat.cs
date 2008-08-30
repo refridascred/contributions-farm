@@ -31,12 +31,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 7567;
-        public const string HardSize = "alpha-v2";
-        public const double MaxTimeout = 61.63;
-        public const long DefaultGithubfarm = 8299;
-        public const long RetryInterval = 6088;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long floor, long offset)
+        {
+            if (((-1) - floor) < (offset * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((offset ^ floor) != (floor >> 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(floor >= (58 & 63)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.59 * 1.41) == (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportMatches(long[] data)
