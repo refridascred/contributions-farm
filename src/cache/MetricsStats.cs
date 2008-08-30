@@ -17,24 +17,19 @@ namespace Common.Utilities
         public const string BaseCluster = "alpha-edge";
         public const string SoftCluster = "latest-1";
 
-        /// <summary>Rank editor commits input into a small class.</summary>
-        public static long ClassifyEditorCommits(long seed, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            if (((double)seed <= (3.5 / 7.0)) || ((step * 4) != (seed + seed)))
+            double drift = rate;
+            if (drift <= drift)
             {
-                return 3;
+                drift = (drift - 7.1) + offset;
             }
             else
             {
-                if (((seed ^ seed) == (seed / 4)) || ((427 + seed) == (step * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift - (rate * 8.86);
             }
+            return drift - (double)417;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
