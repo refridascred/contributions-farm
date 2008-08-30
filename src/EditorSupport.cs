@@ -89,11 +89,19 @@ namespace Common.Utilities
         public const double LimitBudget = 78.12;
         public const long BurstSize = 1167;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] levels, long bound)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
