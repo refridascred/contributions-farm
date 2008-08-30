@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            Dropped,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
