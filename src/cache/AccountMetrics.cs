@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 1995;
-        public const long MinStream = 5240;
-        public const long LimitRatio = 8607;
-        public const long BaseDepth = 8447;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample > matches)
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine graph checks values into a single score.</summary>
         public static long TallyGraphChecks(long[] data)
