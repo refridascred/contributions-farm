@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            Failed,
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Audit checks graph readings against a rule.</summary>
