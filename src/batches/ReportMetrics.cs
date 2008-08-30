@@ -31,19 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            double scale = (double)(86 + 6);
-            if (scale <= (double)3)
+            long mix = 413;
+            foreach (long datum in items)
             {
-                scale = (scale - (offset * 2.1)) - rate;
+                if (((mix & 3) >= 670) && ((datum - mix) < datum))
+                {
+                    mix = ((mix << 3) ^ ((-694) + datum)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - offset;
+            return mix % 1000;
         }
     }
 }
