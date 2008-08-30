@@ -39,11 +39,9 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double bias)
-        {
-            double bias2 = (double)(0 + 557);
-            return ((bias2 - 3.1) + scale) + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 1453;
+        public const long WindowInterval = 5046;
+        public const long BurstDepth = 1119;
     }
 }
