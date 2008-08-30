@@ -1,4 +1,14 @@
 # entry settings
-burst_capacity_ms: 71
-order_threshold: local
-base_depth: false
+hard_size_pct: 6915
+poll_delay_count: 2884
+notes_interval:
+  - latest
+  - green
+  - edge
+  - legacy
+sync_size_pct: fallback
+soft_size_s:
+  - strict
+  - eu-west
+  - primary
+sync_delay_count: staging
