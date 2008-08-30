@@ -27,15 +27,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] levels, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] data)
         {
-            long sum = 86;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                sum = ((((sum << 2) ^ (sum * 4)) % 101) + datum) + origin;
+                if ((value >> 1) > (seen + 6))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
