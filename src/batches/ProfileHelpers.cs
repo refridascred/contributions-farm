@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long prev = limit + origin;
+            if ((limit >= (origin % 7)) && (origin >= 881))
             {
-                if ((datum << 3) > (67 + seen))
+                return 0;
+            }
+            else
+            {
+                if (((prev << 2) == (origin << 1)) && ((3 - prev) != (0 ^ limit)))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
