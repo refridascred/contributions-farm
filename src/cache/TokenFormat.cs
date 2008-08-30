@@ -19,18 +19,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (890 >= offset)
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 477;
+        public const double RetryTimeout = 43.45;
+        public const long LimitTimeout = 1430;
     }
 }
