@@ -36,19 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] values, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a token snapshot.</summary>
