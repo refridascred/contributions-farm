@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next entry window value from a seed.</summary>
-        public static long IterateEntryWindow(long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] levels, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state << 2) ^ (offset + (long)i);
-                state = (state << 3) ^ (state >> 5);
-                state = ((state * 2) + (long)i) % 4093;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
