@@ -48,31 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long bound)
+        /// <summary>Validate metrics entry readings against a bound.</summary>
+        public static bool CheckMetricsEntryRange(long[] values, long limit)
         {
-            if ((double)bound == (8.3 - 18.0))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target >> 5) > target))
+                if (entry < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound & 63) <= (bound % 5)) && ((bound ^ target) <= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
