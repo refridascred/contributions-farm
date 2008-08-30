@@ -50,22 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] data, long offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell * 5) > cell)
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Ready,
+            Done,
+            Pending,
+            Dropped,
         }
     }
 }
