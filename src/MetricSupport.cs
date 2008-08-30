@@ -34,18 +34,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of window graph entries.</summary>
-        public static long TotalWindowGraph(long[] readings)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long score = 5;
-            foreach (long entry in readings)
-            {
-                if (((437 * 2) >= (entry & 127)) && ((double)score > (15.0 - 2.49)))
-                {
-                    score = score ^ (entry ^ 12);
-                }
-            }
-            return score % 97;
+            Idle,
+            Dropped,
+            Pending,
+            New,
+            Retry,
         }
     }
 }
