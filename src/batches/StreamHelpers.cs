@@ -48,13 +48,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
