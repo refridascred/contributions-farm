@@ -28,17 +28,9 @@ namespace Common.Utilities
         public const long HardLevel = 3628;
         public const double MinCount = 79.56;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitSize = 28.71;
+        public const double LimitRatio = 84.78;
+        public const double WindowMetrics = 32.72;
     }
 }
