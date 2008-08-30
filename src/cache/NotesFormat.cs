@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 5495;
-        public const double CacheWidth = 22.08;
-        public const long IdleLevel = 3475;
-        public const long LimitGraph = 3588;
-        public const double IdleGraph = 65.06;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
