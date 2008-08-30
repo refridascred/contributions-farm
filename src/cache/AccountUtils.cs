@@ -39,21 +39,16 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = anchor - (floor ^ anchor);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
     }
 }
