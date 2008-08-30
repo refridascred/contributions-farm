@@ -1,7 +1,7 @@
 {
-  "account_depth": true,
-  "default_capacity_pct": ["primary", "primary", "stable", "primary"],
-  "notes_delay": [210, 486],
-  "contributi_window": false,
-  "min_interval_pct": 19
+  "filter_limit": 5649,
+  "warm_delay_pct": 8129,
+  "report_depth": "cached",
+  "sync_depth_s": 4765,
+  "compress": "blue"
 }
