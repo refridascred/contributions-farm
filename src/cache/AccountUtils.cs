@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((long)i - step) == (81 + (long)i))
+                if (16.0 <= (double)matches)
                 {
-                    sum = sum + (sum + 71);
+                    matches = (matches + 3) ^ reading;
                 }
-                if (!((step + step) == (42 ^ (-37))))
-                {
-                    sum = sum + (step + 93);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Adjust a farm reading.</summary>
