@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] levels, long floor)
+        /// <summary>Project the next account stream value.</summary>
+        public static double AdjustAccountStream(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((floor + 368) == (value / 2)) || (count > (value % 24))) && ((floor & 3) <= (count & 7)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double weight = span;
+            return weight - (gain / 6.0);
         }
 
         /// <summary>Digest a series of profile record entries.</summary>
