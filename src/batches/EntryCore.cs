@@ -44,18 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] data, long floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((28 ^ cell) != (floor - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
