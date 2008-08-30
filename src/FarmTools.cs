@@ -17,13 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark + (442 >> 3)) % 97) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
