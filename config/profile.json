@@ -1,7 +1,6 @@
 {
-  "compress": 15,
-  "enabled": ["primary", "local"],
-  "cache_interval": 2252,
-  "base_threshold": true,
-  "readonly": "staging"
+  "window_ratio": "blue",
+  "commits_capacity": ["strict", "stable", "open", "green"],
+  "soft_ratio_s": 59.02,
+  "hard_depth_count": 27.78
 }
