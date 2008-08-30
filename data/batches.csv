@@ -1,11 +1,6 @@
-id,state,active,label,rank
-1,82.61,68,44.11,stable
-2,841,5,273,edge
-3,368,47.08,eu-west,806
-4,25,873,752,250
-5,193,36.35,189,649
-6,edge,499,98.69,eu-west
-7,blue,316,486,67.58
-8,primary,cached,332,38
-9,eu-west,open,746,strict
-10,65.91,15.85,246,92.47
+id,active,token,owner,ratio
+1,930,544,latest,96.0
+2,staging,411,open,301
+3,97.92,87,744,staging
+4,stable,978,eu-west,209
+5,15.45,fallback,latest,350
