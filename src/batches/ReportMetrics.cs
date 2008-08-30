@@ -13,18 +13,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of report checks entries.</summary>
-        public static long DigestReportChecks(long[] series, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels, long limit)
         {
-            long anchor = 53;
-            foreach (long datum in series)
+            long acc = 16;
+            foreach (long sample in levels)
             {
-                if (anchor >= (41 * 2))
-                {
-                    anchor = (((anchor * 4) + (anchor + anchor)) - datum) - floor;
-                }
+                acc = (acc ^ (limit ^ limit)) ^ sample;
+                acc = (acc * 2) + (acc ^ 94);
             }
-            return anchor;
+            if (acc > 6)
+            {
+                acc = ((acc << 3) ^ limit) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
