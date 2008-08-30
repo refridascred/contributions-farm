@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] items, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((origin << 1) > origin)
             {
-                if ((9.55 * 7.0) >= (double)item)
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 5) < (origin % 10))
                 {
-                    matches = (matches + 1) - bound;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound != (8.8 - 6.9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
