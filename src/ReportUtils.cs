@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] samples, long offset)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen + offset) > cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
