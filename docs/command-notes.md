@@ -1,11 +1,11 @@
 # Command notes
 
-Each batch is validated before it reaches the command queue.
-Keep profile and batches names short and lowercase.
-Run the queue check before changing any layout limits.
+The queue report groups every batch by cache.
+When a token fails, the command handler retries a few times before giving up.
+The editor module keeps token values in sync with the filter cache.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new channel fields
-- Validate command input early
+- Keep support values small
+- Review batch limits each release
+- Log every order change
