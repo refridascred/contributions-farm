@@ -80,19 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] levels, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long result = 14;
-            foreach (long value in levels)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result ^ (origin * 2)) - value;
+                score = ((score * 5) + (long)i) % 101;
             }
-            if (result > 3)
-            {
-                result = result + (result >> 2);
-            }
-            return result;
+            return score;
         }
     }
 }
