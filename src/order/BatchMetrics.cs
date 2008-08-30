@@ -35,18 +35,13 @@ namespace Common.Utilities
         public const long BaseToken = 9530;
         public const double LimitDepth = 68.42;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] values)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value + matches) >= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
