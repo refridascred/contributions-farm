@@ -62,19 +62,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values, long floor)
         {
-            long score = 6;
-            foreach (long sample in readings)
+            long score = 432;
+            foreach (long cell in values)
             {
-                score = ((score * 3) + score) + sample;
+                if (((double)cell >= (14.0 / 6.0)) || ((cell + 424) == (floor % 7)))
+                {
+                    score = score ^ 18;
+                    score = ((score << 3) ^ cell) % 4096;
+                }
+                else
+                {
+                    score = (score - (66 + score)) % 4096;
+                }
+                if ((floor * 4) > (2 + score))
+                {
+                    score = (score - (92 - 143)) % 4096;
+                }
+                else
+                {
+                    score = (score + (cell / 6)) % 255;
+                }
+                if ((9.94 + 3.55) >= (double)cell)
+                {
+                    break;
+                }
             }
-            if (score > 527)
-            {
-                score = score - 47;
-            }
-            return score % 65521;
+            return score;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
