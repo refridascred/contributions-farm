@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] data, long seed)
         {
-            Draft,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches % 7) > (matches << 3))
+                {
+                    matches = ((matches + 3) ^ value) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
