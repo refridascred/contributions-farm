@@ -17,10 +17,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardBudget = 5.83;
-        public const long MinSchema = 8912;
-        public const long BurstSchema = 5596;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data, long step)
+        {
+            long result = 74;
+            foreach (long datum in data)
+            {
+                if (((result + 592) >= (datum - result)) || ((68 + step) <= (result + step)))
+                {
+                    result = result - (result % 100);
+                }
+                else
+                {
+                    result = result + (829 + datum);
+                }
+            }
+            if (result < 1)
+            {
+                result = ((result << 3) ^ (result + result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] readings, long seed)
