@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum / 4) >= (datum - 582))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
