@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 3574;
-        public const string HardRecord = "primary";
-        public const string RetryRecord = "strict-1";
-        public const long MinRecord = 7568;
-        public const long WindowLevel = 2915;
+        /// <summary>Match up batches record samples.</summary>
+        public static long PairBatchesRecordCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
