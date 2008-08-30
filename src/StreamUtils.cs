@@ -20,18 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally & 255) <= (cell + cell))
+                carry = (carry * 2) + (1 + (long)i);
+                if ((carry * 3) >= (offset & 3))
                 {
-                    tally = tally + 1;
+                    carry = carry ^ (offset >> 1);
+                    break;
                 }
+                else
+                {
+                    carry = (carry - (carry + carry)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
