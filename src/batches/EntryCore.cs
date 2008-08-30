@@ -37,17 +37,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] samples, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a cluster cache value against two limits.</summary>
