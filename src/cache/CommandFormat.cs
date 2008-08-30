@@ -58,19 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] values, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Ready,
+            Draft,
         }
     }
 }
