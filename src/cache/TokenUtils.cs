@@ -21,22 +21,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] samples, long floor)
+        /// <summary>Accumulate stream batch samples.</summary>
+        public static long CombineStreamBatch(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = 4;
+            foreach (long datum in series)
             {
-                if ((double)floor < 8.37)
+                if (((double)state < (double)datum) && ((datum & 7) <= state))
                 {
-                    seen = (seen + 2) + entry;
+                    state = ((state * 4) + state) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = (state + (state ^ datum)) % 255;
                 }
             }
-            return seen;
+            if (state > 6)
+            {
+                state = ((state << 3) ^ state) % 101;
+            }
+            return state;
         }
     }
 }
