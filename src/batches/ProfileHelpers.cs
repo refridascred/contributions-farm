@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const string MinBuffer = "standard-edge";
         public const long RetryBuffer = 9765;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] data, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > bound)
+                if (values[i] == step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
