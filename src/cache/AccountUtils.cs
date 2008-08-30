@@ -24,15 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double rate, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            double drift = bias;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                drift = ((drift - (bias * 3.0)) + (double)(long)i) + rate;
             }
-            return mix;
+            return drift - (4.21 / 5.0);
         }
 
         /// <summary>Roll a tools counter forward.</summary>
