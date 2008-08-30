@@ -48,13 +48,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheRatio = 2007;
+        public const string HardStats = "latest-v2";
+        public const double BurstStats = 17.46;
     }
 }
