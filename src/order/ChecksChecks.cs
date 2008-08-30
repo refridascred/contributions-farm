@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] samples, long origin)
+        /// <summary>Match up metric githubfarm samples.</summary>
+        public static long CompareMetricGithubfarmCount(long[] readings)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
