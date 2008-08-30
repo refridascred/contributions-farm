@@ -19,21 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Rank contributi account input into a small class.</summary>
+        public static long SortContributiAccount(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = floor + limit;
+            if ((offset ^ floor) >= (floor >> 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(13.0 >= (double)limit))
                 {
-                    if ((values[i] ^ values[j]) < 20)
+                    return 0;
+                }
+                else
+                {
+                    if ((125 <= (floor << 1)) && ((19 + offset) >= floor))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit != (double)862)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
