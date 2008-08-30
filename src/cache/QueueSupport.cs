@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] samples, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (value <= floor)
+                if (((double)entry > (12.0 - 5.7)) && (((matches + 0) <= matches) && ((matches % 64) < 9)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
