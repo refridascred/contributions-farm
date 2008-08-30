@@ -1,8 +1,16 @@
 {
-  "retry_threshold_pct": "open",
-  "burst_capacity": "legacy",
-  "readonly": 82.78,
-  "burst_depth_ms": 65,
-  "sync_retries": "primary",
-  "audit": "legacy"
+  "base_timeout_count": "eu-west",
+  "channel_limit": {
+    "strict": 2,
+    "poll_limit": {
+      "githubfarm_limit": 6849,
+      "audit": ["blue", "edge"],
+      "dry_run": 8.98
+    },
+    "sync_delay": false,
+    "retry_ttl_pct": "edge"
+  },
+  "readonly": "blue",
+  "poll_ttl_s": "fallback",
+  "warm_ratio": 53.9
 }
