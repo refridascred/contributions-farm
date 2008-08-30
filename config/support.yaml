@@ -1,5 +1,8 @@
 # support settings
-persist: 33
-profile_retries: eu-west
-editor_depth: stable
-min_timeout_count: staging
+checks_threshold: eu-west
+verbose: 9391
+readonly:
+  - 290
+  - 98
+  - 417
+  - 300
