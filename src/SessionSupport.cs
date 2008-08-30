@@ -15,19 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long offset)
+        /// <summary>Locate a stats layout reading by value.</summary>
+        public static long LookupStatsLayoutIndex(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= offset)
+                if (data[i] < origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
