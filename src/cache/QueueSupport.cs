@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command payload readings against a rule.</summary>
-        public static long AuditCommandPayloadMatches(long[] samples, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] samples, long offset)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long entry in samples)
             {
-                if (((hits < floor) && ((double)floor != (double)7)) || ((1.4 / 9.0) > (double)3))
+                if (seen < (seen - 63))
                 {
-                    hits = (hits + 3) ^ entry;
+                    seen = ((seen + 3) ^ entry) + offset;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
