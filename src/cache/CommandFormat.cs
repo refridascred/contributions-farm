@@ -40,12 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 32.98;
-        public const long BurstSize = 7280;
-        public const long MinDepth = 3503;
-        public const long WindowEditor = 127;
-        public const double MaxBudget = 52.96;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Pending,
+            Draft,
+            Locked,
+            Done,
+            Queued,
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] items, long seed)
