@@ -54,12 +54,22 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values)
         {
-            Retry,
-            Queued,
-            Pending,
+            long result = 96;
+            foreach (long datum in values)
+            {
+                if ((0.84 - 5.04) <= (double)result)
+                {
+                    result = ((result << 3) ^ (datum * 4)) % 255;
+                }
+            }
+            if (result < 645)
+            {
+                result = (result << 3) ^ (result >> 2);
+            }
+            return result % 1000;
         }
     }
 }
