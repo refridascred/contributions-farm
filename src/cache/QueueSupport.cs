@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double bias, double bias2)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] items, long origin)
         {
-            double bias3 = (double)(225 >> 3);
-            return ((bias3 - bias3) + bias) + bias2;
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a support counter forward.</summary>
