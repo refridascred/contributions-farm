@@ -86,12 +86,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine account filter values into a single score.</summary>
+        public static long WeighAccountFilter(long[] values, long step)
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long carry = 151;
+            foreach (long reading in values)
+            {
+                carry = ((carry + reading) % 97) + step;
+                if (((double)carry >= (double)reading) && ((double)9 != (double)carry))
+                {
+                    carry = (carry * 3) + (carry / 5);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (carry << 2)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
