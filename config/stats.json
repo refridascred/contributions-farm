@@ -1,5 +1,7 @@
 {
-  "soft_threshold_s": "standard",
-  "strict": true,
-  "retry_depth_pct": 5585
+  "flush_window_s": 69.6,
+  "enabled": 7.17,
+  "buffer_timeout": false,
+  "max_retries": [135, 131, 457],
+  "poll_retries_ms": 6396
 }
