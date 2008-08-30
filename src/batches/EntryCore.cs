@@ -84,13 +84,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
             public long Size { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
         }
     }
 }
