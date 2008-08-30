@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MinLevel = 4923;
         public const string LimitScore = "cached-v2";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values, long floor)
         {
-            long acc = -5;
-            foreach (long datum in items)
+            long acc = 5;
+            foreach (long value in values)
             {
-                if (!(468 > (acc ^ 2)))
+                if (!((value / 2) >= (floor - value)))
                 {
-                    acc = (((acc << 3) ^ (acc >> 3)) % 101) ^ datum;
+                    acc = (acc + acc) % 65521;
+                }
+                if ((floor >> 1) < (floor - acc))
+                {
+                    break;
                 }
             }
-            return acc;
+            return acc % 4096;
         }
 
         /// <summary>Hold a command options.</summary>
