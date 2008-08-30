@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] levels, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] samples, long origin)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long entry in samples)
             {
-                if ((step ^ tally) >= (sample ^ sample))
+                if (!((entry & 31) < (tally + entry)))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) + origin;
                 }
             }
             return tally;
