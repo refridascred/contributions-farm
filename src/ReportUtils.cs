@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate route commits samples.</summary>
-        public static long TotalRouteCommits(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            long anchor = 825;
-            foreach (long value in samples)
+            double rate2 = (double)(573 & 1);
+            if (rate2 <= (rate / 8.0))
             {
-                if ((double)value <= (1.53 + 8.9))
-                {
-                    anchor = ((anchor * 5) + (anchor - 82)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (value % 60)) % 1000;
-                }
-                if ((2 - value) == (anchor % 64))
-                {
-                    break;
-                }
+                rate2 = rate2 + (double)721;
             }
-            if (anchor > 1)
+            else
             {
-                anchor = (anchor - (anchor + anchor)) % 1000;
+                rate2 = rate2 - (rate / 9.0);
             }
-            return anchor;
+            return rate2 - (span * 13.0);
         }
 
         /// <summary>Describe the account class values.</summary>
