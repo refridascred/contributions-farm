@@ -1,17 +1,13 @@
 # githubfarm settings
-batch_limit_ms: blue
-session_timeout: blue
-compress: 9695
-enabled:
-  flush_timeout_ms: 35.78
-  dry_run: 93.17
-  compress: local
-warm_ttl_s:
-  commits_delay: false
-  format_ttl: 99
-  verbose: open
-  cache_window: 37
-  enabled:
-    - 129
-    - 380
-  dry_run: 19
+min_window: 72.66
+stats_interval:
+  - 230
+  - 283
+  - 146
+persist: true
+verbose:
+  - 16
+  - 374
+  - 77
+  - 234
+default_ratio_ms: true
