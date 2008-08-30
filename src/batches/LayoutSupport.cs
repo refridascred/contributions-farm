@@ -20,12 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long offset)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            if (6.0 <= (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + 607) == (offset * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
