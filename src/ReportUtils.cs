@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!((seen ^ 38) <= (limit >> 2)))
+                if (!((matches >> 3) != (item & 63)))
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up entry samples.</summary>
