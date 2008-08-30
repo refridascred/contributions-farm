@@ -38,31 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] series, long step)
         {
-            if ((step << 1) < seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((20 * 5) > (step * 2))
+                if (series[i] > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 5) > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
