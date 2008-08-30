@@ -45,15 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            double mean = offset;
+            if (mean > offset)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                mean = (mean - (offset / 7.0)) - scale;
             }
-            return total;
+            return mean + (double)621;
         }
 
         /// <summary>Hold a contributi options.</summary>
