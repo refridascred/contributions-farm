@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 3610;
         public const long BatchWidth = 978;
 
-        /// <summary>Check that every filter order entry stays within the limit.</summary>
-        public static bool ValidateFilterOrderBounds(long[] readings, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (cell < offset)
+                if ((matches / 8) > matches)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
