@@ -39,18 +39,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context already samples are out of range.</summary>
-        public static long CountContextAlreadyGaps(long[] series, long limit)
+        /// <summary>Project the next metric commits value.</summary>
+        public static double BlendMetricCommits(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double weight = (double)722 - (rate - span);
+            if (weight >= span)
             {
-                if ((limit < (4 + count)) && (limit > (limit ^ count)))
-                {
-                    count = (count + 1) + item;
-                }
+                weight = weight + 9.7;
             }
-            return count;
+            return weight - span;
         }
     }
 }
