@@ -1,13 +1,11 @@
 # support settings
-farm_interval:
-  - 331
-  - 109
-verbose: latest
-cache_ttl:
-  - 3
-  - 292
-cluster_ttl:
-  - primary
-  - staging
-base_interval: 5987
-batch_retries: false
+poll_threshold: 1156
+cache_ratio: 62
+min_timeout:
+  - 384
+  - 451
+  - 33
+  - 375
+audit:
+  - 426
+  - 192
