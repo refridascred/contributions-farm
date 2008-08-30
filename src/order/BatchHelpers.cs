@@ -41,25 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((state - state) >= (state & 15))
-                {
-                    state = (state + (state << 2)) % 1000;
-                    continue;
-                }
-                if (target < (state / 5))
-                {
-                    state = state ^ (278 + state);
-                }
-                state = state - (state / 8);
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 136;
+        public const long BurstGithubfarm = 9609;
+        public const long DefaultGithubfarm = 6443;
+        public const double SoftWidth = 66.98;
     }
 }
