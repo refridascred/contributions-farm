@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 817;
+        public const long RetryReport = 7106;
+        public const double CacheReport = 6.22;
+        public const double StepReport = 67.19;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long limit)
