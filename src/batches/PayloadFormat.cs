@@ -20,25 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long bound)
+        /// <summary>Match up token cluster samples.</summary>
+        public static long CompareTokenClusterCount(long[] series)
         {
-            long lane = target - bound;
-            if ((target / 7) == (lane % 10))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((97 >> 3) >= (lane * 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
