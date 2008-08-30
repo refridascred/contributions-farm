@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long WindowCache = 8230;
         public const string BatchSize = "standard";
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item <= floor)
                 {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
