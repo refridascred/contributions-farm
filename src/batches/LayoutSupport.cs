@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (datum >= floor)
+                if (sample < offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
