@@ -33,17 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] levels, long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Project the next already value.</summary>
