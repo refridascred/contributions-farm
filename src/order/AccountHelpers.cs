@@ -48,19 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate batches command readings against a bound.</summary>
-        public static bool GuardBatchesCommandRange(long[] data, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next graph window value from a seed.</summary>
