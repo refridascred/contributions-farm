@@ -30,12 +30,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            Pending,
-            Ready,
-            Locked,
+            double mean = (double)(45 % 3);
+            if (mean > (double)(-4))
+            {
+                mean = mean + (floor / 4.0);
+            }
+            else
+            {
+                mean = mean + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (weight / 5.0)) - (double)(long)i;
+            }
+            return mean + (double)578;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
