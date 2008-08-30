@@ -32,19 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Stale,
+            Closed,
         }
     }
 }
