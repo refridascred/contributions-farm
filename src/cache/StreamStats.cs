@@ -55,38 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long floor, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            if ((floor <= (floor + target)) && ((target / 3) >= floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor ^ 7) < target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (214 <= (target + 366))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target & 1) > target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
