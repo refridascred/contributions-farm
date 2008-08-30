@@ -27,12 +27,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            Locked,
-            New,
-            Queued,
+            long anchor = 7;
+            foreach (long sample in items)
+            {
+                if (!(sample <= (anchor + sample)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor % 5)) % 65521;
+                }
+                if (anchor > 60)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
