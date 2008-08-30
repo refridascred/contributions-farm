@@ -1,6 +1,14 @@
 {
-  "retry_ttl_count": "open",
-  "retry_timeout_s": 63,
-  "verbose": 21.86,
-  "flush_limit_s": 5253
+  "default_retries": false,
+  "tools_retries": true,
+  "cache_ratio": 30,
+  "counter_threshold": 88,
+  "enabled": {
+    "warm_delay_count": "eu-west",
+    "cache_timeout_count": 2.99,
+    "cache_size": "local",
+    "cache_interval": true,
+    "format_ratio": "blue"
+  },
+  "soft_capacity_s": 73.3
 }
