@@ -51,39 +51,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a payload channel value against two limits.</summary>
-        public static long BucketPayloadChannel(long floor, long floor2)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long seed)
         {
-            long lane = floor - floor2;
-            if ((lane + 189) <= 95)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (268 > lane)
+                if (items[i] <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (4.7 * 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((lane / 5) <= (floor << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
