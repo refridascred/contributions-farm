@@ -1,15 +1,13 @@
 {
-  "dry_run": 57.28,
-  "enabled": {
-    "queue_depth": ["eu-west", "strict"],
-    "dry_run": 4697,
-    "strict": 7590,
-    "retry_size_s": 7.08,
-    "warm_timeout_pct": 21.79,
-    "route_capacity": false
+  "stats_timeout": 100,
+  "warm_interval": 78.84,
+  "warm_delay": [198, 334],
+  "buffer_delay": [85, 204, 398],
+  "burst_timeout_s": {
+    "warm_threshold_pct": 60,
+    "support_retries": 2,
+    "retry_delay": false,
+    "format_interval": true
   },
-  "hard_interval_ms": "strict",
-  "filter_timeout": 4141,
-  "support_retries": 1024,
-  "compress": 34.61
+  "min_threshold_s": ["blue", "primary", "cached", "stable"]
 }
