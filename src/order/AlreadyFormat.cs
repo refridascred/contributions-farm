@@ -99,18 +99,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((-4) >= (hits + 3))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
