@@ -20,11 +20,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the route cache entries that pass the check.</summary>
+        public static long AuditRouteCacheGaps(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((((hits * 5) > bound) || ((double)item >= (0.6 + 4.44))) || (((2.46 * 8.33) >= (double)hits) || ((item + item) >= (bound - bound))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
