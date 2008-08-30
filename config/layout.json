@@ -1,8 +1,12 @@
 {
-  "editor_ttl": [378, 126, 107, 148],
-  "route_retries": 2,
-  "command_depth": 53.5,
-  "persist": "latest",
-  "idle_ttl_ms": 7,
-  "flush_delay_count": "green"
+  "readonly": "edge",
+  "batch_delay_pct": 1024,
+  "poll_capacity": {
+    "max_retries_count": 1024,
+    "strict": "blue",
+    "retry_delay": true,
+    "cache_retries_count": "legacy",
+    "soft_window": "cached"
+  },
+  "command_threshold": "local"
 }
