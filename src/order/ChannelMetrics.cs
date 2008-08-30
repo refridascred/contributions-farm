@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate cache graph readings against a bound.</summary>
-        public static bool VerifyCacheGraphLimits(long[] data, long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
