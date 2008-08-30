@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = 51;
-            foreach (long item in readings)
-            {
-                state = ((state + (20 / 5)) % 4096) + item;
-            }
-            if (state > 63)
-            {
-                state = (state ^ seed) % 1000;
-            }
-            return state % 4096;
+            New,
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
