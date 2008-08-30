@@ -1,8 +1,6 @@
 {
-  "flush_ttl_count": 500,
-  "min_limit_count": 1419,
-  "batch_depth_ms": 100,
-  "flush_capacity": "standard",
-  "graph_threshold": "eu-west",
-  "graph_timeout": ["eu-west", "open", "fallback", "cached"]
+  "verbose": 20.62,
+  "persist": 6071,
+  "warm_size_ms": false,
+  "retry_timeout_ms": 6753
 }
