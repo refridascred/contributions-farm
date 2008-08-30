@@ -34,13 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double floor)
         {
-            Locked,
-            Done,
-            Closed,
-            Retry,
+            double bias = (double)4 - (rate * 2.0);
+            return (bias - (double)7) + floor;
         }
     }
 }
