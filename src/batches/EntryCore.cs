@@ -14,15 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Audit counter record readings against a rule.</summary>
+        public static long TallyCounterRecordHits(long[] values, long target)
         {
-            long score = 765;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 3) + (sample + score)) % 101;
+                if ((reading ^ target) != (hits * 4))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
