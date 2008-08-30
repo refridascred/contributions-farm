@@ -96,18 +96,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] samples, long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target * 3) <= matches)
+                if (readings[i] >= floor)
                 {
-                    matches = (matches + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
