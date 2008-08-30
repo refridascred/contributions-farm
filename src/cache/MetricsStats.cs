@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = 7;
+            foreach (long datum in samples)
             {
-                if ((reading - tally) > tally)
+                state = (state + datum) % 97;
+                if (state > (datum >> 4))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Classify a window notes pair into a bucket.</summary>
