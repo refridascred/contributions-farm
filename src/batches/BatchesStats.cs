@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double scale = offset;
-            return (scale - offset) + weight;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
