@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            long carry = 5;
-            foreach (long cell in data)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                carry = ((carry * 5) + (cell - (-4))) % 1000;
+                result = ((result << 3) ^ (long)i) % 4096;
+                result = (result << 3) ^ (long)i;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a report info.</summary>
