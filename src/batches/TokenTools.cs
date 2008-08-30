@@ -45,19 +45,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload queue readings against a bound.</summary>
-        public static bool ValidatePayloadQueueLimits(long[] levels, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Done,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
