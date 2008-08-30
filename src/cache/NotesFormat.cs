@@ -34,22 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Match up layout stream samples.</summary>
+        public static long PairLayoutStreamCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.7 - 14.0) > (double)entry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
