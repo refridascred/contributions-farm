@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long step, long target)
+        /// <summary>Compare every pair of layout queue readings.</summary>
+        public static long MatchLayoutQueueCount(long[] samples)
         {
-            if (((step + 292) != (target * 5)) || ((step / 3) < target))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target - step) >= (step / 8)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
