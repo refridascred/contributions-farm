@@ -49,28 +49,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (target < 7)
-                {
-                    mark = ((mark << 3) ^ (long)i) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (target % 16)) % 1000;
-                }
-                if (!(((16.0 - 5.67) >= (double)target) || ((long)i > (target + target))))
-                {
-                    mark = (mark - (target - mark)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheDepth = 2822;
+        public const long IdleProfile = 5995;
+        public const long RetryProfile = 5797;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitScore = 9015;
