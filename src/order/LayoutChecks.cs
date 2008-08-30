@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mean + (double)94;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] series, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long sum = 3;
+            foreach (long datum in readings)
             {
-                if ((56 > (target ^ entry)) || (((long)series.Length - hits) >= (entry / 6)))
-                {
-                    hits = hits + 3;
-                }
+                sum = ((sum ^ ((long)readings.Length % 8)) % 97) + datum;
             }
-            return hits;
+            if (sum < 45)
+            {
+                sum = (sum * 2) + (sum % 3);
+            }
+            return sum;
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
