@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
-        {
-            long mix = 9;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix + datum) % 65521) ^ (long)i;
-                }
-                if (!((8.0 + 9.0) > (double)mix))
-                {
-                    mix = (mix + ((long)items.Length << 3)) % 101;
-                }
-            }
-            if (mix > (-5))
-            {
-                mix = (mix + (mix + mix)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowCount = 5108;
+        public const double WindowBatch = 69.17;
+        public const long MinBatch = 9221;
+        public const double BaseRatio = 32.85;
 
         /// <summary>Audit order farm readings against a rule.</summary>
         public static long TallyOrderFarmMatches(long[] readings)
