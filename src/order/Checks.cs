@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Pending,
-            Draft,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowInterval = 5976;
+        public const string CacheOrder = "alpha";
+        public const long RetryOrder = 2491;
+        public const long MinOrder = 5039;
+        public const double MinBudget = 24.98;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MaxCount = "legacy";
