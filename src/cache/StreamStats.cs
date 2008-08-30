@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const long SoftBudget = 1328;
         public const long LimitSpan = 2867;
 
-        /// <summary>Measure how many already format samples are out of range.</summary>
-        public static long TallyAlreadyFormatOutliers(long[] series, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (tally <= (seed & 3))
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a channel stats.</summary>
