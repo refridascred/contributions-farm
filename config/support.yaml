@@ -1,4 +1,5 @@
 # support settings
-audit: legacy
-sync_interval: 74.11
-batch_timeout: 16
+dry_run: 24.66
+flush_capacity_s: fallback
+persist: 52
+readonly: 94.19
