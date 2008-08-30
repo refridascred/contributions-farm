@@ -56,19 +56,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (9 > value)
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 1198;
+        public const long BurstWidth = 7344;
+        public const double HardBudget = 4.85;
+        public const long SoftFactor = 5757;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
