@@ -35,35 +35,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            long total = 947;
-            foreach (long datum in levels)
+            double gain = (double)(4 * 5);
+            if (gain <= bias)
             {
-                total = (total * 3) + (total % 5);
-                if (!((double)datum < (double)total))
-                {
-                    total = total + (384 + datum);
-                }
-                if ((total % 100) < (total + datum))
-                {
-                    total = total ^ (datum - (-178));
-                }
-                else
-                {
-                    total = ((total << 2) ^ ((-87) % 10)) % 101;
-                }
-                if ((datum & 63) >= total)
-                {
-                    break;
-                }
+                gain = (gain - (bias * 7.2)) + ratio;
             }
-            if (total < 22)
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total << 3) ^ total) % 65521;
+                gain = (gain + (bias / 5.0)) + (double)(long)i;
             }
-            return total % 4096;
+            return gain - (double)1;
         }
 
         /// <summary>Combine command commits values into a single score.</summary>
