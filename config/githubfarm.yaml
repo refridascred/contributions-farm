@@ -1,37 +1,5 @@
 # githubfarm settings
-max_threshold: 7
-githubfarm_limit: false
-flush_delay: 7023
-persist:
-  layout_timeout:
-    - green
-    - open
-    - local
-    - cached
-  retry_interval:
-    - 59
-    - 124
-    - 295
-  retry_threshold:
-    audit: 15
-    idle_delay_s:
-      - 156
-      - 93
-      - 236
-    payload_window: 5061
-    strict: 46
-strict:
-  persist:
-    - fallback
-    - strict
-  cache_limit_pct: true
-  support_size:
-    - 238
-    - 70
-  poll_capacity_ms:
-    - 160
-    - 68
-    - 441
-    - 430
-  default_ttl_pct: 37
-base_delay_pct: 37
+support_timeout: 56.78
+batch_depth: false
+persist: false
+audit: 1.2
