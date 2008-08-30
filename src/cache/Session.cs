@@ -35,24 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] data, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] series, long origin)
         {
-            long sum = 615;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                sum = (sum ^ (sum << 1)) % 255;
-                sum = (sum + (sum << 3)) % 1000;
-                if ((double)datum > (double)bound)
+                if (origin >= (origin + origin))
                 {
-                    sum = sum ^ sum;
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum > 216)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 97;
+            return tally;
         }
     }
 }
