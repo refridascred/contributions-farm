@@ -38,21 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
