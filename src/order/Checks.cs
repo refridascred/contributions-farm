@@ -39,15 +39,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Ready,
-            Draft,
-            Retry,
-            Locked,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 8679;
+        public const long WindowChannel = 800;
+        public const long BurstChannel = 2679;
+        public const long HardFactor = 9047;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] levels, long target)
