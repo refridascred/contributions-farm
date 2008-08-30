@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate counter token samples.</summary>
-        public static long WeighCounterToken(long[] readings, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long score = 487;
-            foreach (long datum in readings)
-            {
-                score = (((score * 5) + datum) % 101) + target;
-                score = (score * 5) + (1 + datum);
-            }
-            if (score > 84)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
