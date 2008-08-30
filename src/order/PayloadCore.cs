@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long step, long bound)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            if (!((double)bound <= (3.39 * 1.4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= (step + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
