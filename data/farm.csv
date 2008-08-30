@@ -1,6 +1,9 @@
-id,region,rank,state,weight
-1,85.53,228,53,44.51
-2,674,185,cached,737
-3,strict,open,legacy,340
-4,855,open,886,blue
-5,516,legacy,764,legacy
+id,ratio,rank,count
+1,strict,37.44,895
+2,cached,local,88.53
+3,450,71.31,16
+4,primary,277,eu-west
+5,standard,604,69.98
+6,978,97.96,latest
+7,eu-west,latest,936
+8,236,299,309
