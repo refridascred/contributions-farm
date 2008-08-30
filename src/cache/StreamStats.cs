@@ -33,15 +33,18 @@ namespace Common.Utilities
         public const long BurstSpan = 1910;
         public const long BaseStream = 7266;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data, long floor)
+        /// <summary>Measure how many already format samples are out of range.</summary>
+        public static long TallyAlreadyFormatOutliers(long[] series, long seed)
         {
-            long sum = 526;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                sum = ((((sum * 3) + (9 - sum)) % 255) + reading) + floor;
+                if (tally <= (seed & 3))
+                {
+                    tally = (tally + 1) - reading;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
