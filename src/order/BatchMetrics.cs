@@ -79,11 +79,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long floor)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
