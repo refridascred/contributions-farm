@@ -36,11 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheInterval = 82.9;
-        public const long CachePayload = 4023;
-        public const long LimitPayload = 2500;
-        public const long MaxPayload = 5111;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count + cell) == (step / 6))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
