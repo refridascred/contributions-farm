@@ -21,21 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)30 / 7.0;
+            if (bias2 >= 13.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = (bias2 + 7.8) - bias;
             }
-            return hits;
+            return bias2 - offset;
         }
 
         /// <summary>Project the next entry value.</summary>
