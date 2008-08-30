@@ -34,14 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] series, long offset)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Ready,
-            New,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
