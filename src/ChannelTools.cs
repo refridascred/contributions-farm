@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (5.84 >= (double)seen)
-                {
-                    seen = ((seen + 3) ^ reading) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 31.11;
+        public const long StepBuffer = 7336;
+        public const string LimitSize = "latest-v2";
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] levels, long floor)
