@@ -1,13 +1,4 @@
 # githubfarm settings
-min_window: 72.66
-stats_interval:
-  - 230
-  - 283
-  - 146
-persist: true
-verbose:
-  - 16
-  - 374
-  - 77
-  - 234
-default_ratio_ms: true
+editor_threshold: 5.33
+payload_ttl: edge
+poll_interval: false
