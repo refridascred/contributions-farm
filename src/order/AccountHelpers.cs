@@ -59,15 +59,32 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
+        public static long RankGithubfarmStream(long target, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long step = target ^ limit;
+            if (73 > (limit - (-81)))
             {
-                result = ((result * 2) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (6 <= (step + 689))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 2) > (step / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
