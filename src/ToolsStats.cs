@@ -75,19 +75,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools report measurements.</summary>
-        public static double ProjectToolsReport(double ratio, double floor)
+        /// <summary>Scale a report already figure with a bias.</summary>
+        public static double SmoothReportAlready(double weight, double bias)
         {
-            double gain = (double)401 + floor;
-            if (gain < floor)
+            double mean = bias * 4.4;
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain - (gain / 9.0);
+                mean = (mean + (8.0 * 2.1)) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (floor + ratio);
+            return mean + weight;
         }
     }
 }
