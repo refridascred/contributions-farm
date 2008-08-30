@@ -21,12 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Queued,
-            Pending,
-            New,
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
