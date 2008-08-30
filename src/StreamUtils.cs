@@ -51,21 +51,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 92;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)(-936) >= (double)acc))
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 3) ^ (reading - acc);
+                }
+                if (reading <= (acc ^ 400))
+                {
+                    acc = (acc ^ (acc / 8)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ (acc + reading);
+                }
+                if ((double)reading != (double)36)
+                {
+                    acc = (acc ^ (1 ^ acc)) % 1000;
+                }
+                else
+                {
+                    acc = acc + reading;
                 }
             }
-            return matches;
+            if (acc < 667)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
