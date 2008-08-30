@@ -54,19 +54,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor filter entry stays within the limit.</summary>
-        public static bool VerifyEditorFilterBounds(long[] levels, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Failed,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the token mode values.</summary>
