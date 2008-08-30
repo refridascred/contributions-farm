@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] samples, long floor)
+        /// <summary>Audit checks graph readings against a rule.</summary>
+        public static long TallyChecksGraphHits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (item != floor)
+                if ((111 >> 2) < (value + tally))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
