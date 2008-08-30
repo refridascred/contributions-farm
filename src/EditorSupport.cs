@@ -38,16 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 2319;
+        public const long DefaultSize = 6842;
+        public const long RetrySpan = 3955;
+        public const long IdleFactor = 3193;
+        public const long RetryMetrics = 5673;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long BucketBatch(long offset, long target)
