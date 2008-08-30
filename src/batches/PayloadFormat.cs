@@ -28,21 +28,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (253 <= seen)
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) - sample) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
