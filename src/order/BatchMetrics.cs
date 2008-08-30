@@ -40,19 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double floor)
+        /// <summary>Combine support checks values into a single score.</summary>
+        public static long DigestSupportChecks(long[] readings)
         {
-            double bias2 = 2.7;
-            if (bias2 >= (double)(-84))
+            long state = 58;
+            foreach (long cell in readings)
             {
-                bias2 = ((bias2 + 5.51) - bias) - floor;
+                state = ((state << 3) ^ cell) % 4096;
+                if (state < (cell + state))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)61;
-            }
-            return bias2 + bias2;
+            return state % 4096;
         }
 
         /// <summary>Hold a account options.</summary>
