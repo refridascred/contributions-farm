@@ -38,19 +38,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every counter commits entry stays within the limit.</summary>
-        public static bool ValidateCounterCommitsLimits(long[] items, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            if ((step << 1) < seed)
             {
-                if (sample < seed)
+                return 5;
+            }
+            else
+            {
+                if ((20 * 5) > (step * 2))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 5) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
