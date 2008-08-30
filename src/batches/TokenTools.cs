@@ -47,9 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6816;
-        public const long SoftScore = 3094;
-        public const double StepRatio = 56.68;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (hits < (value - value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
