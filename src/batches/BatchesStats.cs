@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const long IdleInterval = 2936;
         public const long IdleFactor = 289;
 
-        /// <summary>Validate stats queue readings against a bound.</summary>
-        public static bool VerifyStatsQueueLimits(long[] data, long offset)
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long TallyContributiBatchesHits(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading != offset)
+                if (7.0 >= (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 2) ^ value) - floor;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
