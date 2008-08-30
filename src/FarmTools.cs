@@ -15,22 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the token account entries that pass the check.</summary>
-        public static long MeasureTokenAccountGaps(long[] data)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits % 24) != (reading & 31))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
