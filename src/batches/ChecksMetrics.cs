@@ -54,22 +54,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter checks samples are out of range.</summary>
-        public static long AuditCounterChecksHits(long[] levels, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((((82 & 31) > (seed >> 5)) || (item < (6 - item))) || !((51 ^ item) != (seed * 4)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
