@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (3.9 * 2.1))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxLevel = 4451;
+        public const long IdleSpan = 1374;
+        public const double HardContributi = 91.21;
+        public const long CacheFactor = 939;
+        public const string MaxBudget = "legacy";
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long limit, long offset)
