@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] data)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (entry < count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate report support readings against a bound.</summary>
