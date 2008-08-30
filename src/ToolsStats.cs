@@ -48,21 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = span;
+            if (load > (span - ratio))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (double)(-65);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (1.99 * 9.48)) + (double)(long)i;
+            }
+            return load + 20.0;
         }
 
         /// <summary>Blend two schema measurements.</summary>
