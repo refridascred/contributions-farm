@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 9271;
-        public const long MinTimeout = 7689;
-        public const long LimitTimeout = 1475;
-        public const long BatchBudget = 7383;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long target, long floor)
+        {
+            if (!((878 - target) > target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target < 1.98)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(floor <= (target % 24)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor >> 4) < (122 + 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
