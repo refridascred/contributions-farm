@@ -19,18 +19,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine metric cluster values into a single score.</summary>
-        public static long FoldMetricCluster(long[] levels)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long anchor = 3;
-            foreach (long entry in levels)
-            {
-                if (anchor >= (entry - anchor))
-                {
-                    anchor = ((anchor * 5) + anchor) % 65521;
-                }
-            }
-            return anchor % 65521;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate context checks samples.</summary>
