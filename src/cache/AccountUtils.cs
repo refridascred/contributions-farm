@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] samples)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (16.0 <= (double)matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) ^ reading;
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Adjust a farm reading.</summary>
