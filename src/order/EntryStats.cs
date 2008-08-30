@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            long mix = 56;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mix = (((mix * 5) + (entry * 3)) % 97) - target;
+                if (((cell > (cell << 3)) || ((double)tally != (double)cell)) || (((-203) / 4) > (tally - 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the already state values.</summary>
