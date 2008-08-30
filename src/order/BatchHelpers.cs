@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a batch profile counter forward.</summary>
-        public static long DeriveBatchProfile(long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
