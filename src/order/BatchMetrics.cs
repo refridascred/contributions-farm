@@ -74,11 +74,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 6476;
-        public const long SoftScore = 8931;
-        public const long HardCluster = 89;
-        public const string DefaultInterval = "staging-v2";
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long bound)
+        {
+            if ((double)floor >= (7.48 / 2.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) == (7 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-58) % 2) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (8.58 / 5.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] levels, long origin)
