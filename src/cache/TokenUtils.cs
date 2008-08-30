@@ -23,21 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count record route pairs that satisfy a relation.</summary>
-        public static long OverlapRecordRouteCount(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < origin)
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Accumulate stream batch samples.</summary>
