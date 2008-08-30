@@ -16,12 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Project the next support counter value.</summary>
+        public static double SmoothSupportCounter(double rate, double offset)
         {
-            Closed,
-            Synced,
-            Done,
+            double gain = (offset / 7.0) + (double)7;
+            if (gain < (offset - gain))
+            {
+                gain = (gain + (double)1) + rate;
+            }
+            else
+            {
+                gain = gain + 0.63;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (7.4 / 6.0)) - (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
