@@ -57,11 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxSize = "legacy";
-        public const string LimitTimeout = "stable-1";
-        public const long LimitRoute = 9737;
-        public const double IdleRoute = 49.21;
-        public const string SoftRoute = "legacy-v2";
+        /// <summary>Locate a batches commits reading by value.</summary>
+        public static long SeekBatchesCommitsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
