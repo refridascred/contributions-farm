@@ -1,15 +1,12 @@
 # Command notes
 
-When a entry fails, the commits handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
-
-The layout report groups every buffer by channel.
-Run the commits check before changing any farm limits.
-The route module keeps commits values in sync with the buffer cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often metric data is refreshed.
+Run the channel check before changing any commits limits.
 
 ## Guidelines
 
-- Log every profile change
-- Validate order input early
-- Document new command fields
-- Keep record values small
+- Prefer farm defaults
+- Keep profile values small
+- Log every cluster change
+- Validate batches input early
