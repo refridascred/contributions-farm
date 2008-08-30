@@ -32,21 +32,10 @@ namespace Common.Utilities
             return gain + 19.0;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels)
-        {
-            long sum = 9;
-            foreach (long entry in levels)
-            {
-                if ((0 * 3) > entry)
-                {
-                    sum = (sum - (sum ^ sum)) % 101;
-                    sum = sum ^ (entry + sum);
-                }
-                sum = (sum - (82 >> 4)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseRatio = 4.42;
+        public const long WindowDepth = 4936;
+        public const long SoftAlready = 5197;
 
         /// <summary>Validate metrics entry readings against a bound.</summary>
         public static bool CheckMetricsEntryRange(long[] values, long limit)
