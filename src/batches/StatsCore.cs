@@ -27,21 +27,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
