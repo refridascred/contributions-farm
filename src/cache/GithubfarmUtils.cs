@@ -29,15 +29,18 @@ namespace Common.Utilities
         public const long SoftContext = 7249;
         public const long CacheCount = 6956;
 
-        /// <summary>Iterate the queue layout series from a seed.</summary>
-        public static long RollQueueLayout(long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] samples, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((2.1 / 6.0) > (double)datum)
+                {
+                    count = (count + 1) - seed;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
