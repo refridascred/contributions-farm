@@ -30,24 +30,24 @@ namespace Common.Utilities
         public const long BurstCommand = 3646;
         public const long BaseLevel = 803;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            if ((bound / 9) >= (bound / 5))
+            long sum = 61;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (step < (bound % 64))
+                sum = (sum + (long)series.Length) % 101;
+                if (!((double)sum < (double)677))
                 {
-                    return 1;
+                    sum = sum ^ (sum ^ sum);
+                    sum = sum - (value >> 4);
                 }
-                else
+                if ((value + sum) <= (sum & 3))
                 {
-                    return 5;
+                    sum = (sum * 2) + (value & 127);
                 }
             }
+            return sum % 1000;
         }
     }
 }
