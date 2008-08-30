@@ -113,12 +113,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] samples, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
