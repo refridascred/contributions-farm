@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "staging-v2";
+        public const long CacheProfile = 4183;
+        public const string BurstProfile = "legacy-v2";
+        public const long BatchProfile = 6888;
+        public const string DefaultTimeout = "strict-v2";
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] items)
