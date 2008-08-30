@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 33;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score + (offset % 10)) - cell;
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
