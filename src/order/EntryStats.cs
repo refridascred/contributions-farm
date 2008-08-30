@@ -28,23 +28,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!(value >= (value - 7)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "staging-edge";
+        public const string BurstReport = "stable-1";
+        public const long StepReport = 8181;
+        public const double CacheCount = 91.22;
+        public const double DefaultReport = 0.95;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetrySize = 9214;
