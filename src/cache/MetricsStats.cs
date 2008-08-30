@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const string BaseCluster = "alpha-edge";
         public const string SoftCluster = "latest-1";
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] series, long target)
         {
-            double drift = rate;
-            if (drift <= drift)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - 7.1) + offset;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (rate * 8.86);
-            }
-            return drift - (double)417;
+            return -1;
         }
 
         /// <summary>Describe the route kind values.</summary>
