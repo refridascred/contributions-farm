@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] values, long origin)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((((tally / 3) > cell) || ((long)values.Length == (cell + tally))) && !((cell / 8) < origin))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit payload tools readings against a rule.</summary>
