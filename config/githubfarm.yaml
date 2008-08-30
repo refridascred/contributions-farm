@@ -1,13 +1,10 @@
 # githubfarm settings
-max_capacity_pct: stable
-max_timeout_ms: true
-dry_run:
-  - staging
-  - strict
-  - primary
-retry_ratio_count: staging
-session_ratio:
-  - 307
-  - 113
-  - 427
-sync_depth_s: false
+profile_capacity:
+  max_threshold_count: open
+  hard_ratio_pct: 93.52
+  command_ttl: 9820
+  flush_interval_count:
+    - blue
+    - fallback
+cache_limit: stable
+already_threshold: 500
