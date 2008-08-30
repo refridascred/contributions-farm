@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            if ((origin + target) != (target * 4))
+            double weight = (double)((-354) + (-70));
+            if (weight >= (offset * 12.0))
             {
-                return 3;
+                weight = weight - (offset + ratio);
             }
-            else
-            {
-                if ((double)target > 10.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return weight - (double)567;
         }
 
         /// <summary>Count the buffer token entries that pass the check.</summary>
