@@ -1,10 +1,14 @@
 # Command notes
 
-The cluster module keeps farm values in sync with the session cache.
-The batches module keeps tools values in sync with the layout cache.
+The window report groups every report by checks.
+The token module keeps buffer values in sync with the command cache.
+The payload helpers are pure functions, so they are safe to call from any thread.
+
+The buffer module keeps payload values in sync with the schema cache.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Keep editor values small
-- Document new checks fields
+- Validate entry input early
+- Document new order fields
+- Prefer cluster defaults
