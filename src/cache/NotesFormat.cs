@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Stale,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 5405;
+        public const long WindowContributi = 2267;
+        public const long StepCount = 3804;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
