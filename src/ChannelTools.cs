@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data, long seed)
         {
-            long offset = target ^ limit;
-            if ((offset / 6) >= (offset * 2))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.4 <= (double)limit) && ((offset + limit) < (target & 63)))
+                if ((reading + reading) < (seed + 8))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((target - limit) >= target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit % 8) >= (offset >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
