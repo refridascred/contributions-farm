@@ -73,15 +73,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] levels, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long result = 14;
+            foreach (long value in levels)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                result = (result ^ (origin * 2)) - value;
             }
-            return mark;
+            if (result > 3)
+            {
+                result = result + (result >> 2);
+            }
+            return result;
         }
     }
 }
