@@ -32,21 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -946;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit + 6) >= limit)
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state + (-2)) % 4096) + sample;
                 }
             }
-            return matches;
+            if (state > 98)
+            {
+                state = state + (limit ^ limit);
+            }
+            return state % 97;
         }
 
         /// <summary>Blend two checks measurements.</summary>
