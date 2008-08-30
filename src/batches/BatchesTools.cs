@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double RetryQueue = 15.9;
         public const double LimitSpan = 66.17;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] samples, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (reading <= (reading - 769))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Match up metric filter samples.</summary>
