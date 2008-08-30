@@ -38,26 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] items, long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long seed)
         {
-            long score = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((score + score) >= (offset << 3)))
+                if (items[i] > seed)
                 {
-                    score = (score ^ (score * 3)) ^ reading;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score + score);
+                    return (long)i;
                 }
             }
-            if (score > (-366))
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
+            return -1;
         }
     }
 }
