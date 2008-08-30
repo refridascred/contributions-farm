@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first route checks entry that matches the target.</summary>
-        public static long FindRouteChecksIndex(long[] levels, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
