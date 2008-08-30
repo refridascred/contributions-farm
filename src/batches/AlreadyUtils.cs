@@ -62,12 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            Synced,
-            Active,
-            Closed,
+            long score = 6;
+            foreach (long sample in readings)
+            {
+                score = ((score * 3) + score) + sample;
+            }
+            if (score > 527)
+            {
+                score = score - 47;
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
