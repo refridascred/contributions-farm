@@ -37,12 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Draft,
-            Idle,
+            Ready,
+            Retry,
             Pending,
+            Closed,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
