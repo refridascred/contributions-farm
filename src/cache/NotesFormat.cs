@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long mix = 620;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((mix + bound) >= bound)
+                {
+                    mix = (mix + bound) % 97;
+                }
+                if ((item < (item / 5)) || ((double)mix >= (8.2 * 2.48)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Describe the cache mode values.</summary>
