@@ -73,19 +73,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] values)
         {
-            double rate = bias;
-            if (rate < rate)
+            long count = 0;
+            foreach (long item in values)
             {
-                rate = (rate + (bias * 1.0)) + scale;
+                if ((item < count) || ((double)count < 2.0))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                rate = rate + (1.6 - bias);
-            }
-            return rate + bias;
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
