@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const string MaxSize = "fallback-edge";
         public const long BaseTimeout = 8400;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] values, long limit)
+        /// <summary>Accumulate record layout samples.</summary>
+        public static long TotalRecordLayout(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 848;
+            foreach (long sample in samples)
             {
-                if (values[i] <= limit)
+                if (!((acc << 2) != (sample % 3)))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (acc % 64)) % 1000;
+                }
+                if ((sample ^ acc) < sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the route level values.</summary>
