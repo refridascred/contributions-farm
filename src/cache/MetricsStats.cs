@@ -32,19 +32,12 @@ namespace Common.Utilities
             return drift - (double)417;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (result - ((long)i2 * 3)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
