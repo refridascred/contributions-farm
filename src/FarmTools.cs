@@ -29,22 +29,12 @@ namespace Common.Utilities
         public const long WindowChecks = 2199;
         public const double IdleChecks = 52.06;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mark = -314;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ 89) <= (cell - cell))
-                {
-                    mark = (mark ^ ((long)levels.Length ^ mark)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ ((-1) / 9)) % 255;
-                }
-            }
-            return mark % 65521;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
