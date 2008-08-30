@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] values)
+        /// <summary>Accumulate batch support samples.</summary>
+        public static long TallyBatchSupport(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long anchor = 79;
+            foreach (long value in readings)
             {
-                if (!(120 >= (cell >> 3)))
+                if ((value ^ value) >= value)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = ((anchor << 3) ^ 573) % 97;
                 }
             }
-            return seen;
+            if (anchor < 708)
+            {
+                anchor = anchor + (anchor % 16);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer status values.</summary>
