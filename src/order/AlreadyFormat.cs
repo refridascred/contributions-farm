@@ -39,13 +39,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank cache payload input into a small class.</summary>
+        public static long BucketCachePayload(long step, long target)
         {
-            Idle,
-            Draft,
-            Locked,
-            Failed,
+            if ((step - target) != (step & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target - 83) > (458 & 255))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target <= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step < (step - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
