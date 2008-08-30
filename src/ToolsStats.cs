@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Dropped,
-            Retry,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSpan = 1590;
+        public const double BurstRatio = 91.75;
+        public const long CacheSession = 802;
+        public const string IdleSession = "alpha-1";
 
         /// <summary>Fold a list of farm order readings.</summary>
         public static long CombineFarmOrder(long[] data)
