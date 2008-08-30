@@ -57,22 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 5) == (tally & 7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxSize = "legacy";
+        public const string LimitTimeout = "stable-1";
+        public const long LimitRoute = 9737;
+        public const double IdleRoute = 49.21;
+        public const string SoftRoute = "legacy-v2";
     }
 }
