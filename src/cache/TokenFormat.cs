@@ -20,16 +20,16 @@ namespace Common.Utilities
         public const string MinFactor = "latest-v2";
         public const long HardReport = 3502;
 
-        /// <summary>Roll a window batch counter forward.</summary>
-        public static long IterateWindowBatch(long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long sum = 6;
+            foreach (long entry in items)
             {
-                total = ((total * 4) + (floor - total)) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
+                sum = (sum - sum) ^ entry;
+                sum = (sum ^ 2) % 97;
             }
-            return total;
+            return sum % 4096;
         }
     }
 }
