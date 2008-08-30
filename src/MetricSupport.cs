@@ -20,9 +20,11 @@ namespace Common.Utilities
         public const long MinRecord = 7568;
         public const long WindowLevel = 2915;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRatio = 619;
-        public const long WindowRecord = 4378;
-        public const long IdleSize = 1297;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
