@@ -16,18 +16,19 @@ namespace Common.Utilities
             return drift - (drift - 11.0);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((reading * 3) < (77 << 3))
+                if (datum <= bound)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Digest a series of window graph entries.</summary>
