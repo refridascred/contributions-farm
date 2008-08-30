@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Validate window tools readings against a bound.</summary>
+        public static bool VerifyWindowToolsLimits(long[] series, long target)
         {
-            long carry = 12;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long item in series)
             {
-                carry = carry + reading;
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
