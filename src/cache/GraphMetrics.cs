@@ -33,24 +33,19 @@ namespace Common.Utilities
         public const string RetryMetrics = "strict";
         public const long RetryLevel = 8468;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long state = 38;
+            foreach (long sample in levels)
             {
-                if ((floor & 1) <= floor)
-                {
-                    mark = ((mark * 5) + (602 + floor)) % 4096;
-                    mark = (mark + (mark ^ mark)) % 97;
-                }
-                else
-                {
-                    mark = mark ^ (mark % 3);
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                state = (state ^ state) - sample;
             }
-            return mark;
+            if (state < 980)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
