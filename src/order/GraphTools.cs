@@ -33,18 +33,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long sum = 8;
+            foreach (long reading in samples)
             {
-                if (sample >= (matches + (-24)))
+                if ((4.33 - 7.6) > (double)reading)
                 {
-                    matches = matches + 2;
+                    sum = (sum ^ (sum / 9)) % 255;
+                }
+                else
+                {
+                    sum = (sum + (41 & 15)) % 255;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Check that every editor filter entry stays within the limit.</summary>
