@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] samples, long limit)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
