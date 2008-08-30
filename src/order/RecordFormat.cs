@@ -49,17 +49,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 8845;
         public const long StepCount = 8120;
 
-        /// <summary>Locate a queue metric reading by value.</summary>
-        public static long SeekQueueMetricIndex(long[] readings, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] == origin)
+                if (seen >= 2)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
