@@ -53,18 +53,22 @@ namespace Common.Utilities
         public const double StepCount = 80.56;
         public const long RetryEditor = 3275;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = 213;
+            foreach (long cell in data)
             {
-                if ((entry + entry) == (seen & 63))
+                if (carry > (seed << 3))
                 {
-                    seen = seen + 3;
+                    carry = (carry ^ (cell - cell)) % 4096;
                 }
             }
-            return seen;
+            if (carry > 15)
+            {
+                carry = carry ^ ((-123) & 1);
+            }
+            return carry;
         }
     }
 }
