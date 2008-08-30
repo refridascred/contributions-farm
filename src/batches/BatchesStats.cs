@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long IdleInterval = 2936;
         public const long IdleFactor = 289;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate stats queue readings against a bound.</summary>
+        public static bool VerifyStatsQueueLimits(long[] data, long offset)
         {
-            Pending,
-            Active,
-            Done,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
