@@ -1,10 +1,19 @@
 # entry settings
-retry_threshold: 4939
-cache_ratio_pct:
-  - 63
-  - 382
-  - 276
-enabled: green
-entry_delay: 18
-burst_ratio_s: 56.77
-dry_run: 74.01
+max_limit_s: legacy
+persist: 53.87
+base_ttl_count:
+  compress: strict
+  warm_threshold_pct: 44.23
+  poll_window_s:
+    cache_limit: 23
+    cluster_ttl: edge
+    stream_threshold: edge
+dry_run: 98
+order_timeout:
+  burst_ttl_s: 60
+  batch_ttl_pct: 3284
+  readonly: fallback
+  persist: 93.23
+  default_capacity_pct: 9642
+  max_interval: false
+queue_window: strict
