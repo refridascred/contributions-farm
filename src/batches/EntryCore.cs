@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchLevel = 668;
+        public const long DefaultTools = 3302;
+        public const string HardInterval = "cached-v2";
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] series, long seed)
