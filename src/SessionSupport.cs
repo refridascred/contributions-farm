@@ -18,17 +18,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a stats layout reading by value.</summary>
-        public static long LookupStatsLayoutIndex(long[] data, long origin)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
