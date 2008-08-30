@@ -52,24 +52,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long step, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            if (((origin ^ step) >= (origin - step)) && ((origin / 4) == (41 % 60)))
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) < ((-44) >> 4))
+                if ((1.2 / 9.0) > (double)mark)
                 {
-                    return 6;
+                    mark = ((mark << 2) ^ (mark + mark)) % 97;
                 }
-                else
-                {
-                    return 5;
-                }
+                mark = ((mark << 3) ^ (60 + mark)) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
+            return mark;
         }
     }
 }
