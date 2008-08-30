@@ -22,11 +22,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstFactor = "primary";
-        public const long BaseBudget = 9505;
-        public const long WindowTimeout = 6033;
-        public const long HardBatches = 1614;
-        public const long LimitSize = 4604;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Paused,
+            Stale,
+            Dropped,
+            Idle,
+            Synced,
+        }
     }
 }
