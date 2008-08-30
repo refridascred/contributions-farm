@@ -53,15 +53,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Count the counter schema entries that pass the check.</summary>
+        public static long AuditCounterSchemaOutliers(long[] levels, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (entry < (8 + entry))
+                {
+                    count = (count + 2) - target;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
