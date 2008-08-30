@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long CacheCommits = 5256;
         public const long DefaultCommits = 3238;
 
-        /// <summary>Count the githubfarm tools entries that pass the check.</summary>
-        public static long TallyGithubfarmToolsMatches(long[] readings)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits % 5) < 29)
+                if (samples[i] == limit)
                 {
-                    hits = (hits + 3) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank editor commits input into a small class.</summary>
