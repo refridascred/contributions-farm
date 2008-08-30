@@ -55,14 +55,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long target, long offset)
         {
-            Dropped,
-            Failed,
-            Queued,
-            Done,
-            Locked,
+            if ((double)target > 2.1)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 2) <= (82 % 10))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((591 / 8) >= (target & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
