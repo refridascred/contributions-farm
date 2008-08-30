@@ -33,10 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 4487;
-        public const double RetryFactor = 57.73;
-        public const long IdlePayload = 5505;
-        public const long SoftLevel = 358;
+        /// <summary>Find the first report session entry that matches the target.</summary>
+        public static long LookupReportSessionIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
