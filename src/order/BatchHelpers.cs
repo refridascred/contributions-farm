@@ -23,14 +23,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long floor, long bound)
         {
-            Closed,
-            Dropped,
-            Idle,
-            Synced,
-            Retry,
+            long edge = floor + bound;
+            if (!((234 & 127) == (floor + floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor << 1) == (edge - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
