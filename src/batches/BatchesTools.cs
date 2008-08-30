@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Idle,
-            Pending,
-            Closed,
-            Active,
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
