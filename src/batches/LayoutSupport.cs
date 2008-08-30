@@ -56,13 +56,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            Idle,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
