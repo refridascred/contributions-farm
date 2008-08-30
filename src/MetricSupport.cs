@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches record samples.</summary>
-        public static long PairBatchesRecordCount(long[] levels)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a payload record.</summary>
