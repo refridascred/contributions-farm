@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up support farm samples.</summary>
-        public static long CompareSupportFarmCount(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((4.0 / 6.0) >= (double)limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)target != (8.2 * 1.5))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
