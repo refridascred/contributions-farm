@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 4309;
+        public const long IdleReport = 8236;
+        public const long BatchDepth = 9761;
+        public const double SoftScore = 1.17;
+        public const long BatchReport = 175;
     }
 }
