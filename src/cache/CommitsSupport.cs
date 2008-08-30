@@ -31,19 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((double)sample > 1.0)
                 {
-                    state = ((state << 2) ^ (target << 3)) ^ (long)i2;
+                    count = count + 2;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
