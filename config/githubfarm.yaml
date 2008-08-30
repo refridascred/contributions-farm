@@ -1,9 +1,14 @@
 # githubfarm settings
-base_depth_s:
-  - 260
-  - 402
-  - 263
-  - 36
-poll_delay_s: true
-max_timeout_s: local
-flush_threshold: 44.11
+enabled: legacy
+retry_size_pct: true
+checks_depth:
+  - 484
+  - 33
+  - 450
+  - 458
+max_window_count:
+  - open
+  - strict
+  - cached
+verbose: 82
+persist: standard
