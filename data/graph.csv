@@ -1,10 +1,7 @@
-id,score,region,token
-1,112,67.94,fallback
-2,7.99,0,75
-3,standard,staging,62.2
-4,336,240,primary
-5,45.88,244,93.65
-6,cached,27.8,cached
-7,21.15,stable,legacy
-8,strict,641,933
-9,627,32,537
+id,ratio,label
+1,87.81,14.77
+2,133,205
+3,538,574
+4,13.2,560
+5,523,850
+6,green,12.62
