@@ -42,11 +42,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 72.83;
-        public const double RetryBatches = 35.82;
-        public const long SoftBatches = 9602;
-        public const long HardWidth = 4791;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] samples, long limit)
+        {
+            long mix = 856;
+            foreach (long value in samples)
+            {
+                mix = ((mix + (mix + mix)) + value) + limit;
+            }
+            return mix;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 5073;
