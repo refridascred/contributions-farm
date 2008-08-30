@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long mark = 695;
+            foreach (long cell in series)
+            {
+                if ((cell * 5) != (mark - 92))
+                {
+                    mark = (mark ^ (46 / 2)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ (cell * 4);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the window state values.</summary>
