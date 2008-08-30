@@ -31,14 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Closed,
-            Ready,
+            Active,
             Idle,
-            Failed,
-            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Blend two graph measurements.</summary>
