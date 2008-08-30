@@ -70,13 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Locked,
-            Failed,
-            Stale,
-            Synced,
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
