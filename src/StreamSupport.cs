@@ -27,11 +27,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long origin, long seed)
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            long offset = origin - seed;
+            if ((offset >> 2) < (origin + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 1) >= (offset / 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((19 << 3) < (origin - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
