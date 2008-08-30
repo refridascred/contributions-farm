@@ -35,17 +35,35 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Find the first context cluster entry that matches the target.</summary>
-        public static long LookupContextClusterIndex(long[] levels, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 947;
+            foreach (long datum in levels)
             {
-                if (levels[i] <= limit)
+                total = (total * 3) + (total % 5);
+                if (!((double)datum < (double)total))
                 {
-                    return (long)i;
+                    total = total + (384 + datum);
+                }
+                if ((total % 100) < (total + datum))
+                {
+                    total = total ^ (datum - (-178));
+                }
+                else
+                {
+                    total = ((total << 2) ^ ((-87) % 10)) % 101;
+                }
+                if ((datum & 63) >= total)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 22)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit editor already readings against a rule.</summary>
