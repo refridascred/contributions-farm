@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Project the next contributi cache value.</summary>
+        public static double AdjustContributiCache(double ratio, double span)
         {
-            Ready,
-            Closed,
-            Locked,
-            Active,
+            double weight = span + (span - span);
+            if (weight > ratio)
+            {
+                weight = weight - (span * 5.3);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (ratio / 8.0);
         }
 
         /// <summary>Locate a session reading by value.</summary>
