@@ -1,5 +1,7 @@
 {
-  "batch_delay_count": 63,
-  "burst_depth_count": "standard",
-  "warm_size": 4.64
+  "warm_threshold_count": 17,
+  "retry_size_pct": 73,
+  "base_window": true,
+  "cache_threshold": 16,
+  "base_ttl": 41
 }
