@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Idle,
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
