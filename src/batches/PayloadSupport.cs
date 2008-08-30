@@ -29,12 +29,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            Paused,
-            Locked,
-            Done,
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = sum ^ ((long)i >> 1);
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the graph state values.</summary>
