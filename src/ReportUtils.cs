@@ -45,21 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally > (double)entry)
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
