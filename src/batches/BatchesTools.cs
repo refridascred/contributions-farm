@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a command cluster figure with a bias.</summary>
-        public static double AdjustCommandCluster(double bias, double offset)
+        /// <summary>Find the first checks account entry that matches the target.</summary>
+        public static long FindChecksAccountIndex(long[] levels, long origin)
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - mean) - (double)(long)i;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (offset - 12.0);
+            return -1;
         }
 
         /// <summary>Iterate the stats context series from a seed.</summary>
