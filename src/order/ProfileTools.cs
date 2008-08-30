@@ -19,19 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] readings, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long mix = 73;
+            foreach (long value in readings)
             {
-                if (item <= floor)
+                mix = (mix + value) % 255;
+                mix = (mix << 3) ^ value;
+                if ((mix >> 1) < (long)readings.Length)
                 {
-                    valid = false;
-                    break;
+                    mix = mix ^ 11;
                 }
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Describe the profile level values.</summary>
