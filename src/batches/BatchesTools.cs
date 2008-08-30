@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4575;
-        public const double IdleSize = 70.0;
-        public const double DefaultQueue = 44.98;
-        public const double RetryQueue = 15.9;
-        public const double LimitSpan = 66.17;
+        /// <summary>Scale a command cluster figure with a bias.</summary>
+        public static double AdjustCommandCluster(double bias, double offset)
+        {
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (offset - 12.0);
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
