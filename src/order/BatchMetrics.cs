@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double bias, double floor)
         {
-            long mix = 39;
-            foreach (long value in samples)
+            double drift = floor;
+            if (drift <= (3.0 - bias))
             {
-                if (value < (0 ^ mix))
-                {
-                    mix = ((mix << 3) ^ value) % 101;
-                }
+                drift = drift + (double)735;
             }
-            return mix;
+            return drift + (double)(-73);
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
