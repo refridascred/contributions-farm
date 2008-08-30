@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit githubfarm context readings against a rule.</summary>
-        public static long CountGithubfarmContextHits(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((0.7 * 5.26) == (double)sample)
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 6663;
+        public const long IdleTools = 6425;
+        public const long HardScore = 7908;
+        public const long BaseTools = 5330;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] samples, long offset)
