@@ -1,9 +1,6 @@
-id,level,ratio
-1,754,6
-2,standard,238
-3,32.9,strict
-4,81,456
-5,72.34,87
-6,staging,79.02
-7,80.62,blue
-8,37,419
+id,score,owner,level,token
+1,336,eu-west,199,418
+2,472,518,865,local
+3,63.97,standard,430,291
+4,15.18,950,869,774
+5,8.94,51.42,504,open
