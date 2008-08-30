@@ -39,18 +39,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] data)
         {
-            long state = 376;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((state << 1) >= state)
+                if ((double)seen > (0.21 * 12.0))
                 {
-                    state = (state + state) - cell;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
