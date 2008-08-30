@@ -41,10 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBudget = "stable-1";
-        public const long StepTimeout = 7535;
-        public const string HardBatches = "legacy-1";
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
