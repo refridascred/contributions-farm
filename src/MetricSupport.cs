@@ -25,13 +25,9 @@ namespace Common.Utilities
         public const long MinRecord = 7568;
         public const long WindowLevel = 2915;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRatio = 619;
+        public const long WindowRecord = 4378;
+        public const long IdleSize = 1297;
     }
 }
