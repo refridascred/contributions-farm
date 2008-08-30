@@ -14,11 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double bias, double span)
+        /// <summary>Digest a series of commits notes entries.</summary>
+        public static long WeighCommitsNotes(long[] samples, long floor)
         {
-            double bias2 = span;
-            return (bias2 - span) + bias;
+            long mix = 3;
+            foreach (long datum in samples)
+            {
+                if ((datum - mix) == (floor + floor))
+                {
+                    mix = ((mix * 5) + floor) % 255;
+                }
+            }
+            if (mix > 88)
+            {
+                mix = ((mix * 3) + (79 ^ mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
