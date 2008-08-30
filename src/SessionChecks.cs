@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account stream value.</summary>
-        public static double AdjustAccountStream(double gain, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] samples, long floor)
         {
-            double weight = span;
-            return weight - (gain / 6.0);
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((floor ^ count) != (count << 2)))
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a counter reading.</summary>
