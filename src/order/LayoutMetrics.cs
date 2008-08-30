@@ -37,13 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] values, long step)
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
+            long result = 468;
+            foreach (long reading in values)
+            {
+                result = (result ^ step) ^ reading;
+            }
+            if (result > 2)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result % 1000;
         }
     }
 }
