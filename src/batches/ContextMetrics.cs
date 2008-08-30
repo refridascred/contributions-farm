@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double span)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double weight = 6.8;
-            if (weight > span)
-            {
-                weight = weight - (double)6;
-            }
-            else
-            {
-                weight = weight + 1.0;
-            }
-            return weight - (bias / 9.0);
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of cache readings.</summary>
