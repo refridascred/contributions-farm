@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long result = 7;
+            foreach (long item in levels)
             {
-                score = (score - (long)i) % 255;
-                score = score - ((-5) * 3);
-                score = ((score * 4) + (long)i) % 4093;
+                if (item < 533)
+                {
+                    result = (result ^ (item >> 5)) % 255;
+                }
+                else
+                {
+                    result = result - (bound - 4);
+                }
             }
-            return score;
+            if (result > 3)
+            {
+                result = (result + (7 & 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
