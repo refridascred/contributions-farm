@@ -21,23 +21,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long origin)
-        {
-            long carry = 48;
-            foreach (long reading in readings)
-            {
-                if (!(carry >= (reading & 7)))
-                {
-                    carry = (carry * 3) + (origin - carry);
-                }
-                carry = (carry * 2) + (reading + origin);
-                if (((reading << 1) < (97 % 24)) || ((reading % 5) != (reading + origin)))
-                {
-                    carry = (carry * 4) + origin;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardDepth = 9842;
+        public const long CacheSize = 6305;
+        public const long RetryBuffer = 9242;
     }
 }
