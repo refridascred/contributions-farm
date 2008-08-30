@@ -33,17 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
