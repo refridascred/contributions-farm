@@ -34,13 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Retry,
-            Closed,
-            Locked,
-            Done,
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
