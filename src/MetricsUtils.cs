@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] levels, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long result = 302;
+            foreach (long reading in levels)
             {
-                if ((datum >> 3) >= count)
+                if (!((9.5 * 8.7) == (double)result))
                 {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (((result << 2) ^ (target + (long)levels.Length)) % 97) + reading;
                 }
             }
-            return count;
+            if (result > 1)
+            {
+                result = result - (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
