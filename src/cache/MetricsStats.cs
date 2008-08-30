@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "alpha";
-        public const long RetryCommits = 1522;
-        public const long CacheCommits = 5256;
-        public const long DefaultCommits = 3238;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCount = 1901;
