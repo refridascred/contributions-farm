@@ -64,31 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long step, long origin)
+        /// <summary>Accumulate farm stats samples.</summary>
+        public static long TallyFarmStats(long[] data, long origin)
         {
-            if (step >= origin)
+            long result = 6;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (15.0 / 4.0))
+                result = ((result * 4) + (8 >> 2)) % 255;
+                if (((item + item) < result) || ((origin / 8) > item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) <= (468 - 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = (result ^ (item - origin)) % 97;
                 }
             }
+            return result % 65521;
         }
     }
 }
