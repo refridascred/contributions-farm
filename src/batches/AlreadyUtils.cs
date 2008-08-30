@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 5585;
-        public const long WindowRatio = 972;
-        public const long IdleRatio = 4244;
-        public const string SoftLevel = "stable-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 9918;
+        public const long RetryLevel = 8521;
+        public const long IdleSpan = 1586;
+        public const string CacheCount = "primary-v2";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionGaps(long[] data, long floor)
