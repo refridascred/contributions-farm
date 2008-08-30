@@ -25,22 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data, long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long limit, long seed)
         {
-            long sum = 652;
-            foreach (long entry in data)
+            if ((limit < seed) || (limit < (2 * 5)))
             {
-                if ((entry & 127) < offset)
+                return 7;
+            }
+            else
+            {
+                if ((limit * 2) < (limit / 2))
                 {
-                    sum = ((sum << 3) ^ (sum & 1)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (offset * 5)) % 1000;
+                    return 5;
                 }
             }
-            return sum;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
