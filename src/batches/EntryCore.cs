@@ -60,19 +60,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items, long origin)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] series)
         {
             long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (origin < (tally - tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
