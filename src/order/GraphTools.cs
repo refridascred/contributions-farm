@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] items, long bound)
+        /// <summary>Accumulate editor githubfarm samples.</summary>
+        public static long TotalEditorGithubfarm(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long total = 67;
+            foreach (long cell in levels)
             {
-                if (datum <= bound)
+                total = (total ^ (cell / 4)) % 255;
+                if ((cell + seed) != (232 / 6))
                 {
-                    flag = false;
-                    break;
+                    total = ((total << 2) ^ (95 / 3)) % 97;
                 }
+                total = total ^ seed;
             }
-            return flag;
+            if (total > 324)
+            {
+                total = (total ^ (4 >> 1)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Roll a route editor counter forward.</summary>
