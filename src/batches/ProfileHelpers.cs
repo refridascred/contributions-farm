@@ -28,19 +28,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] values, long origin)
         {
-            long mark = 31;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ (mark * 5)) % 65521) + reading;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 1)
-            {
-                mark = ((mark << 3) ^ mark) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
