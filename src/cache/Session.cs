@@ -38,18 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile session readings against a rule.</summary>
-        public static long CountProfileSessionGaps(long[] readings, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry > (target % 100)) || (((entry + count) == (count - target)) && ((count & 3) >= (606 * 3))))
-                {
-                    count = count + 3;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a contributi options.</summary>
