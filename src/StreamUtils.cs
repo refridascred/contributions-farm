@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long CacheGraph = 4383;
         public const string BaseGraph = "cached-edge";
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((tally & 255) <= (cell + cell))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
