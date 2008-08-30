@@ -13,11 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next githubfarm commits value.</summary>
