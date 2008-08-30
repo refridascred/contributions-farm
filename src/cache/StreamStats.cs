@@ -19,19 +19,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every farm format entry stays within the limit.</summary>
-        public static bool GuardFarmFormatLimits(long[] values, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (reading != step)
+                if (!((hits ^ reading) > (hits / 2)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
