@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long CacheCommits = 5256;
         public const long DefaultCommits = 3238;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the githubfarm tools entries that pass the check.</summary>
+        public static long TallyGithubfarmToolsMatches(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits % 5) < 29)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank editor commits input into a small class.</summary>
