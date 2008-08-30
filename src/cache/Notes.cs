@@ -60,18 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token farm samples are out of range.</summary>
-        public static long CountTokenFarmOutliers(long[] series)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits + entry) == (86 - (-4)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
