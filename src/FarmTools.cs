@@ -25,18 +25,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data, long floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((0.9 - 2.96) <= (double)seen) || !(floor < (cell ^ cell)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Pending,
+            Failed,
+            Dropped,
         }
     }
 }
