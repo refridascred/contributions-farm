@@ -53,19 +53,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry + (seed + seed)) % 65521) ^ (long)i2;
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
