@@ -26,31 +26,17 @@ namespace Common.Utilities
         public const long CacheSession = 802;
         public const string IdleSession = "alpha-1";
 
-        /// <summary>Fold a list of farm order readings.</summary>
-        public static long CombineFarmOrder(long[] data)
+        /// <summary>Look up the position of a commits route sample.</summary>
+        public static long SeekCommitsRouteIndex(long[] levels, long seed)
         {
-            long total = 91;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(sample >= (65 ^ (long)data.Length)))
+                if (levels[i] <= seed)
                 {
-                    total = ((total << 2) ^ (sample >> 4)) % 101;
-                    total = (total * 2) + (total + total);
-                }
-                if (total > (sample + (-319)))
-                {
-                    total = total - ((-680) + (long)data.Length);
-                }
-                if ((total >> 5) == (long)data.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 141)
-            {
-                total = (total ^ (long)data.Length) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
