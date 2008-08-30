@@ -16,11 +16,18 @@ namespace Common.Utilities
             return gain - (floor / 6.0);
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double weight, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] values, long target)
         {
-            double drift = weight;
-            return (drift - (5.5 * 9.35)) + span;
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + sample) > sample)
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats header.</summary>
