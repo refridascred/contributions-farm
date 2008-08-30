@@ -91,19 +91,31 @@ namespace Common.Utilities
         public const double LimitBudget = 78.12;
         public const long BurstSize = 1167;
 
-        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
-        public static bool VerifyContributiFarmBounds(long[] series, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long offset, long floor)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            if (((floor ^ floor) < offset) || (floor < offset))
             {
-                if (cell >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((offset / 2) > 6)
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.12 - 18.0) >= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
