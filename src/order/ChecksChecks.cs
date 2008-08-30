@@ -14,13 +14,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 5;
+            foreach (long cell in data)
+            {
+                carry = ((carry * 5) + (cell - (-4))) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi level values.</summary>
