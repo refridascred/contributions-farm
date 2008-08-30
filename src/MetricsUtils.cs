@@ -13,19 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)offset == (double)(long)i)
-                {
-                    total = ((total * 5) + (total - (long)i)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            Done,
+            Retry,
         }
 
         /// <summary>Match up tools samples.</summary>
