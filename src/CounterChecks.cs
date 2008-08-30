@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double gain, double span)
+        /// <summary>Count the graph batches entries that pass the check.</summary>
+        public static long TallyGraphBatchesMatches(long[] samples)
         {
-            double mean = (gain * 9.72) - (gain / 5.0);
-            if (mean <= gain)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mean = mean - (double)0;
+                if ((double)(long)samples.Length == (7.6 * 15.0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean + (span / 9.0);
+            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
