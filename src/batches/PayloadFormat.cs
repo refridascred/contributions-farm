@@ -20,22 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up token cluster samples.</summary>
-        public static long CompareTokenClusterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "local-1";
+        public const long StepGithubfarm = 9429;
+        public const long RetryGithubfarm = 8031;
+        public const long BatchFactor = 6711;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] samples, long offset)
