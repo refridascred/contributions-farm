@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Idle,
-            Active,
-            Locked,
+            Dropped,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of farm order readings.</summary>
