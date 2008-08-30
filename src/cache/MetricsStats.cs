@@ -39,18 +39,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long seed)
+        /// <summary>Count tools already pairs that satisfy a relation.</summary>
+        public static long CompareToolsAlreadyCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally ^ (-57)) == ((long)readings.Length - tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 3) + cell) + seed;
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
