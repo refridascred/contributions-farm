@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftInterval = 9897;
-        public const long BaseLayout = 1259;
-        public const double StepLayout = 8.7;
-        public const long BaseScore = 1680;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 8160;
+        public const double StepRatio = 60.85;
+        public const long WindowReport = 3505;
+        public const long MaxReport = 5729;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] samples)
