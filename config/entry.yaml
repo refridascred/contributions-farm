@@ -1,27 +1,8 @@
 # entry settings
-cache_interval_count:
-  flush_capacity:
-    flush_delay: edge
-    hard_timeout: primary
-    max_size:
-      - 58
-      - 205
-      - 163
-    dry_run: local
-  poll_ttl_s: 4.95
-  sync_timeout_pct: fallback
-persist: 1024
-burst_size_s:
-  warm_capacity_pct:
-    - fallback
-    - cached
-  cache_delay_ms:
-    commits_timeout: true
-    idle_ttl: primary
-    cache_threshold_count: true
-    sync_ttl_s: false
-    max_capacity_s: 100
-  poll_window_ms: 60
-  sync_limit_s: 51.12
-  poll_depth_pct: strict
-  dry_run: cached
+tools_ttl: cached
+poll_timeout_s:
+  - 432
+  - 415
+order_retries: staging
+compress: latest
+readonly: 4882
