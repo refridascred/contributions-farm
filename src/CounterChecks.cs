@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] series, long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long score = 26;
-            foreach (long item in series)
-            {
-                if ((item - item) <= ((long)series.Length + item))
-                {
-                    score = (score + (step & 7)) % 65521;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
