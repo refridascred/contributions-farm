@@ -62,17 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] samples, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (samples[i] == offset)
+                if (value > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
