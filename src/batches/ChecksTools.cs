@@ -21,12 +21,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            Active,
-            Failed,
-            Done,
+            long mark = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((target * 5) >= (683 - target)) || ((7.0 + 4.0) > (double)mark))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark * 3) + target;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
