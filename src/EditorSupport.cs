@@ -51,12 +51,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            Locked,
-            Synced,
-            Dropped,
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result + (result & 127)) % 255;
+                if ((result & 31) <= ((long)i & 63))
+                {
+                    result = result + ((long)i % 3);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = ((result + result) % 1000) - (long)i2;
+                    result = (result << 3) ^ (seed - result);
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
