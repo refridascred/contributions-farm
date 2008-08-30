@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitSpan = "cached";
-        public const long BurstDepth = 6437;
-        public const long BatchCache = 9461;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Ready,
+            Idle,
+            Paused,
+            New,
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
