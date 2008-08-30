@@ -48,17 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] items, long limit)
+        /// <summary>Audit editor already readings against a rule.</summary>
+        public static long MeasureEditorAlreadyHits(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                if ((sample & 255) < ((-7) + floor))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
