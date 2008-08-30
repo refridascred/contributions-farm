@@ -37,17 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                if (69 < (matches - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
