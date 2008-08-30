@@ -44,18 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= 5.62)
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Audit batches entry readings against a rule.</summary>
