@@ -32,10 +32,19 @@ namespace Common.Utilities
             return gain + 19.0;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseRatio = 4.42;
-        public const long WindowDepth = 4936;
-        public const long SoftAlready = 5197;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally >> 4) >= (entry % 64))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate metrics entry readings against a bound.</summary>
         public static bool CheckMetricsEntryRange(long[] values, long limit)
