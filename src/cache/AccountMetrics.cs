@@ -59,11 +59,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardSize = 1.2;
-        public const long IdleLayout = 815;
-        public const double SoftDepth = 92.62;
-        public const long HardLayout = 2043;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state * 3) + state;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
