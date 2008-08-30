@@ -14,13 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Retry,
+            Queued,
             Idle,
-            Paused,
-            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
