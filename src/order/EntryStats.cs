@@ -41,13 +41,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a profile payload value against two limits.</summary>
+        public static long ClassifyProfilePayload(long limit, long floor)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Retry,
+            long prev = limit - floor;
+            if (prev > (floor - 517))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev % 3) < (69 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor >> 3) >= limit) || (3 >= limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)prev < (9.45 - 9.2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
