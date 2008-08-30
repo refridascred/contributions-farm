@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Done,
-            Active,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinLevel = 3829;
+        public const string SoftScore = "staging-edge";
+        public const double RetryContext = 77.32;
+        public const long LimitContext = 1956;
+        public const long BaseDepth = 1867;
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
         public static long CompareWindowClusterCount(long[] series)
