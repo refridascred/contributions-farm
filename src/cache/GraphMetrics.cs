@@ -10,38 +10,13 @@ namespace Common.Utilities
         public const long CacheSpan = 9934;
         public const string MaxSpan = "open";
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long offset, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            if (origin >= (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.83 - 17.0) <= (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset >> 1) < (origin << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((6 ^ 54) == (origin % 64))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            New,
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a window counter forward.</summary>
