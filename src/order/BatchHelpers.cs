@@ -20,10 +20,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 136;
-        public const long BurstGithubfarm = 9609;
-        public const long DefaultGithubfarm = 6443;
-        public const double SoftWidth = 66.98;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Closed,
+            Dropped,
+            Idle,
+            Synced,
+            Retry,
+        }
     }
 }
