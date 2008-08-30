@@ -1,4 +1,22 @@
 # support settings
-queue_capacity: 28
-dry_run: blue
-batch_retries_ms: 100
+already_window: blue
+contributi_delay: eu-west
+flush_limit:
+  audit:
+    - 350
+    - 182
+    - 266
+    - 35
+  default_size_ms: 73
+  support_delay:
+    - 400
+    - 245
+    - 76
+  notes_timeout:
+    soft_delay: open
+    idle_ttl: 5196
+    base_threshold_ms: true
+    max_interval: 17
+    stats_timeout: legacy
+    soft_size_count: cached
+batch_depth: 42.73
