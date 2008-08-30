@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel token samples are out of range.</summary>
-        public static long CountChannelTokenHits(long[] items, long floor)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.14 / 5.0) != (double)floor)
+                if (samples[i] == offset)
                 {
-                    tally = (tally + 3) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
