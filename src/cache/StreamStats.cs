@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a commits githubfarm pair into a bucket.</summary>
-        public static long SortCommitsGithubfarm(long floor, long seed)
+        /// <summary>Count support entry pairs that satisfy a relation.</summary>
+        public static long CompareSupportEntryCount(long[] items)
         {
-            long cur = floor ^ seed;
-            if (cur >= (floor & 1))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur & 63) >= (seed - seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two already route measurements.</summary>
