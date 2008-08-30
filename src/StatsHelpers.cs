@@ -14,18 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit checks graph readings against a rule.</summary>
-        public static long TallyChecksGraphHits(long[] values, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((111 >> 2) < (value + tally))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up payload samples.</summary>
