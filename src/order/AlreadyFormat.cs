@@ -26,21 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Measure how many order schema samples are out of range.</summary>
+        public static long TallyOrderSchemaOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading << 1) <= 11)
                 {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the metric level values.</summary>
