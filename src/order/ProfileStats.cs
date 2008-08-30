@@ -24,16 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] readings)
-        {
-            long score = 34;
-            foreach (long reading in readings)
-            {
-                score = ((score - score) % 1000) - reading;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 51.01;
+        public const double StepBudget = 37.58;
+        public const long SoftSpan = 8741;
+        public const long WindowWidth = 2734;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double weight, double span)
