@@ -1,18 +1,8 @@
 {
-  "metric_timeout": 47.18,
-  "audit": {
-    "idle_retries_count": "cached",
-    "max_timeout_pct": {
-      "batches_ttl": 41,
-      "burst_ttl_pct": 18.77,
-      "metric_threshold": 36,
-      "soft_retries_count": 28.64,
-      "window_timeout": "stable"
-    },
-    "poll_threshold": 30,
-    "default_limit": false
-  },
-  "dry_run": 30,
-  "persist": 500,
-  "min_depth": 3495
+  "record_capacity": 52,
+  "cache_delay": 9882,
+  "enabled": 88.79,
+  "counter_size": "fallback",
+  "counter_capacity": "latest",
+  "flush_capacity_pct": 10
 }
