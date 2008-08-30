@@ -44,19 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] series, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (reading > step)
+                if ((double)sample <= 5.62)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + target;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit batches entry readings against a rule.</summary>
