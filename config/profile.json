@@ -1,8 +1,5 @@
 {
-  "warm_threshold_ms": "strict",
-  "idle_ttl_s": 38,
-  "batch_ttl_ms": 30,
-  "flush_threshold_count": 86,
-  "commits_limit": "local",
-  "poll_delay": 4.84
+  "farm_size": 250,
+  "batch_threshold": false,
+  "tools_ratio": "primary"
 }
