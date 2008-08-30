@@ -59,21 +59,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry * 3) + limit;
-                if ((double)limit > (6.14 / 5.0))
-                {
-                    carry = (carry << 2) ^ limit;
-                    carry = (carry << 3) ^ ((long)i ^ carry);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                mark = (mark + (floor * 5)) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
     }
 }
