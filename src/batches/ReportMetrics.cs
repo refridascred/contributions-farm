@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series)
         {
-            double drift = (double)8 / 7.0;
-            return ((drift + (double)33) + rate) + offset;
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value & 127) >= (166 << 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
