@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double weight, double span)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double rate = 15.0;
-            return (rate + span) + weight;
+            Dropped,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
