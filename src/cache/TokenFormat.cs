@@ -20,11 +20,11 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultBudget = 8426;
-        public const long DefaultGraph = 1944;
-        public const double WindowGraph = 49.3;
-        public const long CacheScore = 7944;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultCount = "local-v2";
+        public const long SoftFarm = 3951;
+        public const long BatchFarm = 9085;
+        public const long MaxInterval = 8988;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
