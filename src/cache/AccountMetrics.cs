@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter payload samples.</summary>
-        public static long TotalCounterPayload(long[] levels, long offset)
+        /// <summary>Validate queue buffer readings against a bound.</summary>
+        public static bool ValidateQueueBufferLimits(long[] levels, long step)
         {
-            long result = 4;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                result = ((result - (entry - 92)) % 97) + offset;
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Blend two stream measurements.</summary>
