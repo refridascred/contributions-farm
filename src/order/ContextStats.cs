@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] readings, long origin)
         {
-            if (!((seed ^ step) < step))
+            long sum = 17;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - seed) > (28 % 8))
+                if (((double)sum < (double)origin) && (sum > origin))
                 {
-                    return 0;
+                    sum = ((sum - origin) % 1000) + entry;
                 }
                 else
                 {
-                    if (((2.0 + 4.38) < (double)step) || (2.8 < (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step % 16) < (seed % 16))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = ((sum * 2) + (913 * 3)) % 4096;
                 }
+                sum = (sum + (long)readings.Length) % 4096;
+                sum = (sum - 1) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
