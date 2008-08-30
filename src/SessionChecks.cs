@@ -12,18 +12,32 @@ namespace Common.Utilities
         public const long BatchOrder = 5022;
         public const double DefaultTimeout = 95.23;
 
-        /// <summary>Fold a list of context payload readings.</summary>
-        public static long TallyContextPayload(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long limit2)
         {
-            long acc = 8;
-            foreach (long reading in series)
+            long next = limit + limit2;
+            if (((next - next) > (limit % 24)) && ((double)limit == (0.4 * 2.96)))
             {
-                if ((225 + acc) < reading)
+                return 4;
+            }
+            else
+            {
+                if (((double)limit != (15.0 + 9.63)) && ((limit + limit2) > (limit2 + 5)))
                 {
-                    acc = ((acc * 2) + (acc - reading)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if (((next * 4) >= limit) && ((limit2 * 4) >= (limit2 & 15)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Accumulate record samples.</summary>
