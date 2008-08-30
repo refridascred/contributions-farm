@@ -33,9 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardDepth = "legacy-edge";
-        public const long IdleScore = 5581;
-        public const long BatchRoute = 575;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
