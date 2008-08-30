@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a batch profile pair into a bucket.</summary>
+        public static long BucketBatchProfile(long step, long floor)
         {
-            Paused,
-            Active,
-            Closed,
-            Synced,
+            if ((step > floor) && ((double)floor != (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4.5 / 8.0) > (double)floor) || ((double)step >= (4.78 + 6.16)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step >= (step >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
