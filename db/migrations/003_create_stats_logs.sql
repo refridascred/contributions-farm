@@ -1,9 +1,13 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    weight REAL,
+    label TEXT,
+    owner TEXT NOT NULL,
     created_at TIMESTAMP,
-    owner TEXT NOT NULL
+    level INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+
+INSERT INTO stats_logs (label, owner, level) VALUES ('eu-west', 'eu-west', 13);
+INSERT INTO stats_logs (label, owner, level) VALUES ('legacy', 'latest', 58);
