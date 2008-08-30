@@ -30,15 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
-        public static long IterateContributiGithubfarm(long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Pending,
+            Ready,
+            Locked,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
