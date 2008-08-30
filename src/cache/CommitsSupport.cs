@@ -73,12 +73,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFactor = 68.4;
+        public const long CacheFormat = 4809;
+        public const long BatchFormat = 8918;
+        public const long SoftFormat = 2827;
+        public const long DefaultFormat = 4999;
     }
 }
