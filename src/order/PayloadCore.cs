@@ -52,12 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Retry,
-            Synced,
-            New,
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
