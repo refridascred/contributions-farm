@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels, long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (123 > (sample << 1))
-                {
-                    seen = (seen + 3) + seed;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the batch mode values.</summary>
