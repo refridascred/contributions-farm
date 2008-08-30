@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double span)
         {
-            long lane = bound + target;
-            if ((5.0 <= (double)lane) && (target < (lane << 3)))
+            double ratio = span;
+            if (ratio > span)
             {
-                return 5;
+                ratio = ratio - span;
             }
             else
             {
-                if (bound <= (target + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                ratio = ratio - (double)219;
             }
+            return ratio + gain;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
