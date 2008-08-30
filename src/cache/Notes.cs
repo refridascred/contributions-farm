@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] levels, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long acc = 611;
-            foreach (long reading in levels)
-            {
-                if ((step / 2) == (acc * 2))
-                {
-                    acc = acc ^ (step + reading);
-                }
-            }
-            if (acc < 560)
-            {
-                acc = ((acc * 4) + (8 << 3)) % 1000;
-            }
-            return acc % 1000;
+            Closed,
+            Dropped,
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
