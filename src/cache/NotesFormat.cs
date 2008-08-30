@@ -19,17 +19,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a payload tools reading by value.</summary>
-        public static long FindPayloadToolsIndex(long[] data, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (data[i] > seed)
+                if (reading >= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
