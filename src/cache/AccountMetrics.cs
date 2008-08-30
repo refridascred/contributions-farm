@@ -74,17 +74,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state * 3) + state;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 7501;
+        public const long MinTimeout = 7929;
+        public const long BurstDepth = 9822;
+        public const long MaxBatches = 4989;
+        public const double WindowBatches = 73.0;
 
         /// <summary>Combine account filter values into a single score.</summary>
         public static long WeighAccountFilter(long[] values, long step)
