@@ -1,6 +1,5 @@
 {
-  "audit": 5.58,
-  "base_limit_count": [317, 459, 447, 142],
-  "default_delay_ms": 100,
-  "compress": "blue"
+  "graph_threshold": "cached",
+  "profile_limit": "standard",
+  "readonly": "green"
 }
