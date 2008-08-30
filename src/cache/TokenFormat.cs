@@ -26,14 +26,16 @@ namespace Common.Utilities
         public const string MinFactor = "latest-v2";
         public const long HardReport = 3502;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Roll a window batch counter forward.</summary>
+        public static long IterateWindowBatch(long floor)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Done,
-            Stale,
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 4) + (floor - total)) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
