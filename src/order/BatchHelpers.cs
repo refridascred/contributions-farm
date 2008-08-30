@@ -27,26 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series, long seed)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] series, long target)
         {
-            long mark = 3;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed % 3) == (mark - seed))
+                if (series[i] < target)
                 {
-                    mark = (mark - (seed + seed)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (entry + seed)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark > 94)
-            {
-                mark = (mark - (5 + seed)) % 97;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
