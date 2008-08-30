@@ -33,13 +33,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long acc = 65;
+            foreach (long value in readings)
+            {
+                if ((value - acc) == (acc ^ (-9)))
+                {
+                    acc = (acc + (acc + value)) % 4096;
+                }
+            }
+            if (acc > 70)
+            {
+                acc = ((acc * 4) + (46 ^ acc)) % 97;
+            }
+            return acc;
         }
     }
 }
