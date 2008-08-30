@@ -70,18 +70,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = 973;
+            foreach (long datum in series)
             {
-                if ((((double)count <= (double)value) || ((count + 6) > value)) || ((9.04 - 4.4) < (double)value))
+                for (int i = 0; i < 3; i++)
                 {
-                    count = count + 3;
+                    score = (score ^ datum) - (long)i;
+                }
+                if (((-286) & 1) < (score + score))
+                {
+                    score = (score * 4) + (score * 3);
+                }
+                else
+                {
+                    score = (score ^ score) % 4096;
                 }
             }
-            return count;
+            return score % 1000;
         }
     }
 }
