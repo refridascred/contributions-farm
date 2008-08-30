@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double scale, double bias)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels)
         {
-            double weight = (scale - 12.0) * 1.86;
-            if (weight < (double)8)
+            long anchor = 18;
+            foreach (long reading in levels)
             {
-                weight = (weight + (double)4) + bias;
+                if (!((double)reading == (1.63 * 1.9)))
+                {
+                    long slot = anchor << 2;
+                    anchor = anchor ^ slot;
+                }
+                if ((reading % 97) >= (reading ^ 192))
+                {
+                    anchor = (anchor - reading) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (4 - reading)) % 4096;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 1.03) - (double)(long)i;
-            }
-            return weight - (17.0 + scale);
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
