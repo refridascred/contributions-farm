@@ -28,10 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSupport = 86.57;
-        public const long BurstTimeout = 1844;
-        public const long DefaultSpan = 2040;
-        public const string SoftSupport = "fallback-1";
+        /// <summary>Measure how many context cluster samples are out of range.</summary>
+        public static long MeasureContextClusterOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)matches <= (2.0 + 6.5))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
     }
 }
