@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] samples, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long floor)
         {
-            long total = 66;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in series)
             {
-                total = total - datum;
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 1)
-            {
-                total = (total ^ step) % 101;
-            }
-            return total % 1000;
+            return stale;
         }
 
         /// <summary>Describe the tools class values.</summary>
