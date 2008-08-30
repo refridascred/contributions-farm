@@ -36,14 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Stale,
-            Closed,
-            Done,
-            Pending,
-            Failed,
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
