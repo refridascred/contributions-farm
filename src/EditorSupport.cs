@@ -55,10 +55,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchTimeout = 7176;
-        public const double LimitBudget = 78.12;
-        public const long BurstSize = 1167;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
