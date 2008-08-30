@@ -31,21 +31,22 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum - datum) != ((long)readings.Length - 9))
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a buffer options.</summary>
