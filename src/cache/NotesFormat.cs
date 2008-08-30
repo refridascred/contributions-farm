@@ -20,18 +20,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] values, long seed)
+        /// <summary>Locate a payload tools reading by value.</summary>
+        public static long FindPayloadToolsIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((count + seed) != (entry * 2)) || ((double)seed < (0.33 - 2.4))) && ((double)seed != (6.1 / 9.0)))
+                if (data[i] > seed)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
