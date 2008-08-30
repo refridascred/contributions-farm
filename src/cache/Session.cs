@@ -37,13 +37,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double rate, double span)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            double scale = (double)24;
+            if (scale < (scale - rate))
+            {
+                scale = (scale + (double)(-747)) - span;
+            }
+            return scale + (double)365;
         }
     }
 }
