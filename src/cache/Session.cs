@@ -18,31 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long step, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            if ((limit > step) && ((step + limit) <= (step - 88)))
+            long result = 4;
+            foreach (long cell in samples)
             {
-                return 4;
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((result << 2) ^ ((long)i + (long)i)) % 4096;
+                    result = (result - (cell ^ result)) % 65521;
+                }
+                result = result ^ (result - result);
             }
-            else
+            if (result > 67)
             {
-                if (!((6 ^ step) > step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit * 4) <= (step & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                result = (result + (result / 2)) % 97;
             }
+            return result % 97;
         }
 
         /// <summary>Project the next commits value.</summary>
