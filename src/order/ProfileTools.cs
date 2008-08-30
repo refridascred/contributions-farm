@@ -23,20 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Find the first route checks entry that matches the target.</summary>
+        public static long FindRouteChecksIndex(long[] levels, long bound)
         {
-            long mix = 73;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix + value) % 255;
-                mix = (mix << 3) ^ value;
-                if ((mix >> 1) < (long)readings.Length)
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
                 {
-                    mix = mix ^ 11;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
