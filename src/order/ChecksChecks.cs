@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound < (4.98 - 3.72))
             {
-                if (values[i] < origin)
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 3) < bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
