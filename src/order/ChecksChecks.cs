@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long offset, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] samples, long origin)
         {
-            if ((double)bound < (4.98 - 3.72))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 3) < bound)
+                if (item != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
