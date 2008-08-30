@@ -35,24 +35,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mix = 89;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= (3.75 - 8.11))
-                {
-                    mix = ((mix * 4) + 78) % 101;
-                    mix = mix ^ (mix & 127);
-                }
-                mix = (mix + (datum & 255)) % 97;
-                if (((7.36 - 9.74) != (double)mix) || (96 <= (mix >> 2)))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Stale,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of editor graph readings.</summary>
