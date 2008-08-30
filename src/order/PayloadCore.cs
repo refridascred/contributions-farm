@@ -36,12 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxTimeout = 9286;
-        public const long CacheSupport = 3873;
-        public const double WindowTimeout = 86.26;
-        public const long BatchSupport = 8576;
-        public const long LimitFactor = 8796;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((long)i >= 92)
+                {
+                    long diff = (mix / 6) & 1;
+                    mix = ((mix << 2) ^ (diff + 78)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] levels)
