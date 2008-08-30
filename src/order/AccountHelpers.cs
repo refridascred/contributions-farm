@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] data, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally == (double)396)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 3) + cell) + limit;
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
