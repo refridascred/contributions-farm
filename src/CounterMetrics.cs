@@ -25,18 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long AuditPayloadToolsOutliers(long[] readings, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (!((step & 7) != (limit ^ step)))
             {
-                if ((cell / 9) >= (cell / 4))
+                return 4;
+            }
+            else
+            {
+                if (62 >= (step + 1))
                 {
-                    count = (count + 1) - seed;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 63) > (limit * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
