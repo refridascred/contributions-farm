@@ -39,18 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context counter samples are out of range.</summary>
-        public static long MeasureContextCounterOutliers(long[] samples)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((621 ^ 8) < (hits + (-469)))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
