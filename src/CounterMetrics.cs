@@ -26,10 +26,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 19.16;
-        public const double BatchDepth = 87.89;
-        public const double CacheSpan = 17.7;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double offset)
+        {
+            double drift = rate;
+            if (drift < 2.7)
+            {
+                drift = (drift - (9.0 - drift)) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 0.29) + (double)(long)i;
+            }
+            return drift + (rate * 1.51);
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmMatches(long[] samples)
