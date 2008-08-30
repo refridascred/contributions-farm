@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long score = 5;
-            foreach (long sample in data)
-            {
-                if ((6 - sample) > (787 / 6))
-                {
-                    score = (score * 2) + (1 - 6);
-                }
-            }
-            if (score < 9)
-            {
-                score = score - score;
-            }
-            return score;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next support counter value.</summary>
