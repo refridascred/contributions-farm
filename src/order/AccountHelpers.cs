@@ -48,13 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "stable";
+        public const double RetryBudget = 13.27;
+        public const string BatchLevel = "staging";
+        public const string LimitRatio = "strict-v2";
+        public const long LimitBatch = 789;
 
         /// <summary>Derive the next graph window value from a seed.</summary>
         public static long RollGraphWindow(long seed)
