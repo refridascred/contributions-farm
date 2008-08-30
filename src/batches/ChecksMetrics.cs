@@ -98,22 +98,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            long anchor = 1;
-            foreach (long reading in items)
+            double weight = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)anchor < (4.1 + 12.0))
-                {
-                    anchor = (anchor + (705 >> 3)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (reading % 3);
-                }
+                weight = (weight + offset) + (double)(long)i;
             }
-            return anchor;
+            return weight + (double)789;
         }
     }
 }
