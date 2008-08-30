@@ -53,19 +53,11 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double weight, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double bias = weight * 4.9;
-            if (bias >= (weight * 1.0))
-            {
-                bias = (bias + bias) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias - (bias * 5.0);
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
