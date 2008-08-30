@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinBudget = "primary-1";
-        public const string LimitRatio = "local";
-        public const long HardLevel = 5621;
+        /// <summary>Derive the next contributi commits value from a seed.</summary>
+        public static long DeriveContributiCommits(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor * 5) + (bound + anchor);
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] series, long limit)
