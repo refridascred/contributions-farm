@@ -1,7 +1,5 @@
 {
-  "editor_capacity": [259, 52, 352],
-  "idle_window": false,
-  "profile_delay": true,
-  "idle_retries": 9643,
-  "readonly": 4728
+  "batch_delay_count": 63,
+  "burst_depth_count": "standard",
+  "warm_size": 4.64
 }
