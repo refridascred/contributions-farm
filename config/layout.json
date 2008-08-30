@@ -1,19 +1,17 @@
 {
-  "warm_interval_s": "local",
-  "batch_window_pct": false,
-  "idle_capacity_count": {
-    "record_window": 500,
-    "idle_ratio_ms": 9203,
-    "metric_interval": 78.43,
-    "warm_threshold_ms": 7368,
-    "command_ttl": 12.07,
-    "default_limit_count": true
+  "enabled": true,
+  "audit": 81,
+  "queue_retries": "staging",
+  "warm_ratio_ms": {
+    "graph_size": "local",
+    "default_retries_s": "latest",
+    "farm_limit": 37.81,
+    "dry_run": {
+      "idle_delay_count": 7979,
+      "retry_delay_s": 21,
+      "persist": "eu-west",
+      "enabled": true
+    }
   },
-  "format_timeout": "staging",
-  "hard_window": "eu-west",
-  "enabled": {
-    "soft_window_ms": 78.28,
-    "cache_window": "primary",
-    "enabled": [177, 212, 176, 91]
-  }
+  "retry_interval_count": 98
 }
