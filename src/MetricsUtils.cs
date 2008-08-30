@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] levels, long seed)
         {
-            Locked,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 3) >= count)
+                {
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
