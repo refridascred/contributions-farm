@@ -45,22 +45,19 @@ namespace Common.Utilities
         public const long StepInterval = 19;
         public const long StepFactor = 4035;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((2.9 + 4.05) > (double)step)
+                if (datum != floor)
                 {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
