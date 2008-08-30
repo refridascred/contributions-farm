@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long TallyNotesProfileOutliers(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count - target) >= (count + target))
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate context report readings against a bound.</summary>
