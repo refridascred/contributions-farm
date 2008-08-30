@@ -31,13 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data, long floor)
         {
-            Active,
-            Idle,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (6.6 > (double)hits)
+                {
+                    hits = ((hits + 1) + item) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
