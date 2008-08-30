@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Done,
-            New,
-            Synced,
+            Idle,
+            Queued,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a checks header.</summary>
