@@ -1,6 +1,9 @@
-id,active,token,owner,ratio
-1,930,544,latest,96.0
-2,staging,411,open,301
-3,97.92,87,744,staging
-4,stable,978,eu-west,209
-5,15.45,fallback,latest,350
+id,state,owner
+1,673,13.3
+2,585,legacy
+3,eu-west,cached
+4,879,45.82
+5,206,252
+6,57.05,eu-west
+7,544,stable
+8,23.46,standard
