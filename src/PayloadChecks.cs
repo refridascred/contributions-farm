@@ -31,22 +31,17 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Look up the position of a contributi graph sample.</summary>
+        public static long FindContributiGraphIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - datum) != ((long)readings.Length - 9))
+                if (series[i] > seed)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
