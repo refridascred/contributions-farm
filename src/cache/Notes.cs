@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const long RetryGraph = 3283;
         public const long IdleFactor = 7108;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = 756;
+            foreach (long item in series)
             {
-                if ((20.0 - 8.0) < (double)cell)
+                if ((8.3 + 3.0) > (double)item)
                 {
-                    count = (count + 1) + bound;
+                    score = ((score * 3) + (item - score)) % 255;
+                }
+                else
+                {
+                    score = (score * 3) + item;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
