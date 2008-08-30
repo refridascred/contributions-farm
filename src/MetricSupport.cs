@@ -32,14 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Idle,
-            Dropped,
-            Pending,
-            New,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstRatio = 9724;
+        public const long BatchBudget = 5184;
+        public const long HardEntry = 1332;
+        public const long StepEntry = 4841;
     }
 }
