@@ -1,5 +1,15 @@
 # support settings
-dry_run: 74.29
-sync_interval_count: latest
-soft_interval: blue
-base_depth: fallback
+filter_capacity:
+  stream_ratio: false
+  flush_threshold:
+    - 293
+    - 372
+  default_timeout_pct:
+    - local
+    - strict
+    - strict
+    - staging
+  sync_interval_ms: blue
+  warm_interval_count: 1524
+enabled: false
+warm_timeout: false
