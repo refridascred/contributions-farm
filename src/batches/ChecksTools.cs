@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long score = 797;
+            foreach (long sample in samples)
             {
-                if (sample > offset)
+                if (((8.0 / 7.0) <= (double)seed) || ((16.0 * 9.2) > (2.3 / 8.0)))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 4) + (sample & 63)) % 255;
                 }
             }
-            return ready;
+            return score % 1000;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
