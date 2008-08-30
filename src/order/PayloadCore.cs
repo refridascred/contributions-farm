@@ -46,15 +46,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
