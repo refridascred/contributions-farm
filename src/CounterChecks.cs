@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] series, long bound)
         {
-            Closed,
-            Synced,
-            Stale,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((reading / 5) > (reading / 2)) || !((double)bound > (13.0 / 2.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
