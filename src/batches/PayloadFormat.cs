@@ -20,18 +20,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] values, long step)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((658 + value) < (tally + value))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
