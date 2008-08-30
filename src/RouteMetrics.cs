@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits >> 5) > (hits / 5))
-                {
-                    hits = ((hits + 2) + value) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 9138;
+        public const long SoftBudget = 9532;
+        public const long BatchInterval = 5920;
+        public const long LimitSession = 8323;
+        public const string DefaultWidth = "strict-v2";
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long RankBuffer(long origin, long limit)
