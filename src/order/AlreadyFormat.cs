@@ -32,20 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (score - (-20)) + (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "strict-v2";
+        public const long BaseSize = 7394;
+        public const long DefaultCommits = 5847;
+        public const double HardScore = 4.97;
+        public const long DefaultDepth = 575;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportHits(long[] series, long origin)
