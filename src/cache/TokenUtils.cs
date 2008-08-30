@@ -38,26 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stream batch samples.</summary>
-        public static long CombineStreamBatch(long[] series)
+        /// <summary>Check that every counter commits entry stays within the limit.</summary>
+        public static bool ValidateCounterCommitsLimits(long[] items, long seed)
         {
-            long state = 4;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (((double)state < (double)datum) && ((datum & 7) <= state))
+                if (sample < seed)
                 {
-                    state = ((state * 4) + state) % 65521;
-                }
-                else
-                {
-                    state = (state + (state ^ datum)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 6)
-            {
-                state = ((state << 3) ^ state) % 101;
-            }
-            return state;
+            return flag;
         }
     }
 }
