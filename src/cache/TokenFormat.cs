@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MinLevel = 4923;
         public const string LimitScore = "cached-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultBudget = 7139;
-        public const double IdleReport = 29.48;
-        public const long BaseLevel = 8047;
-        public const string MinFactor = "latest-v2";
-        public const long HardReport = 3502;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series, long step)
+        {
+            long score = 6;
+            foreach (long entry in series)
+            {
+                if (((73 & 15) >= (entry + 9)) && (0.67 <= (double)entry))
+                {
+                    score = ((score << 2) ^ step) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] items)
