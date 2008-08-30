@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a profile graph pair into a bucket.</summary>
-        public static long BucketProfileGraph(long bound, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long diff = bound ^ target;
-            if ((187 + 74) >= (bound & 15))
+            long anchor = 3;
+            foreach (long entry in samples)
             {
-                return 6;
+                anchor = ((anchor * 3) + (anchor >> 4)) + entry;
             }
-            else
+            if (anchor < 37)
             {
-                if (((bound / 9) <= (bound % 24)) || (target >= (diff >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target < (0.5 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                anchor = (anchor ^ (anchor - anchor)) % 101;
             }
+            return anchor % 97;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
