@@ -1,9 +1,7 @@
-id,rank
-1,78
-2,69.33
-3,fallback
-4,293
-5,open
-6,edge
-7,legacy
-8,469
+id,level,rank
+1,24.89,753
+2,strict,838
+3,14.88,fallback
+4,700,82.06
+5,staging,latest
+6,81.72,98.23
