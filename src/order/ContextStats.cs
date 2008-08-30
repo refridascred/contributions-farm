@@ -36,24 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if ((double)limit < (9.86 + 8.42))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.0 - 13.0) < (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Closed,
+            Done,
+            Pending,
+            Failed,
         }
     }
 }
