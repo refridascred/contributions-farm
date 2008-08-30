@@ -1,6 +1,6 @@
 {
-  "retry_window_s": 31.21,
-  "persist": "latest",
-  "strict": 6960,
-  "counter_timeout": "staging"
+  "min_ratio": "legacy",
+  "warm_ttl_count": false,
+  "soft_size": [482, 182],
+  "token_delay": 100
 }
