@@ -27,18 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] samples, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((2.1 / 6.0) > (double)datum)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
