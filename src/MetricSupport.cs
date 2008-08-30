@@ -25,14 +25,13 @@ namespace Common.Utilities
         public const long MinRecord = 7568;
         public const long WindowLevel = 2915;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Retry,
-            Locked,
-            Failed,
-            Dropped,
-            Closed,
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
