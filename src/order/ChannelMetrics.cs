@@ -21,16 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double bias, double offset)
-        {
-            double bias2 = (double)30 / 7.0;
-            if (bias2 >= 13.0)
-            {
-                bias2 = (bias2 + 7.8) - bias;
-            }
-            return bias2 - offset;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchSize = "standard";
+        public const double BatchCounter = 27.34;
+        public const long LimitCounter = 2114;
 
         /// <summary>Digest a series of editor record entries.</summary>
         public static long ScoreEditorRecord(long[] items, long floor)
