@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] samples)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((6.42 < (1.8 / 2.0)) || (count <= (datum + datum))) && ((datum ^ (long)samples.Length) > (datum << 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a contributi record.</summary>
