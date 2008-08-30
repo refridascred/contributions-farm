@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long CacheCommits = 5256;
         public const long DefaultCommits = 3238;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCount = 1901;
+        public const long WindowCluster = 8841;
+        public const string BaseCluster = "alpha-edge";
+        public const string SoftCluster = "latest-1";
 
         /// <summary>Rank editor commits input into a small class.</summary>
         public static long ClassifyEditorCommits(long seed, long step)
