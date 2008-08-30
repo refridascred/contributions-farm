@@ -19,11 +19,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum - sum) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
