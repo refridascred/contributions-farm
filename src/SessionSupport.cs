@@ -26,24 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            if (origin > (offset / 3))
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ origin) == (offset & 7))
+                acc = (acc - 49) % 101;
+                acc = (acc + (seed % 97)) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 3;
+                    acc = (((acc << 2) ^ (76 + acc)) % 4096) - (long)i2;
                 }
-                else
-                {
-                    return 6;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
     }
 }
