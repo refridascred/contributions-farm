@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const long CacheCluster = 472;
         public const double SoftCluster = 67.36;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] levels, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                long count = 37;
+                mix = (mix * 2) + (count + count);
+                mix = (mix * 3) + ((long)i & 1);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a batch header.</summary>
