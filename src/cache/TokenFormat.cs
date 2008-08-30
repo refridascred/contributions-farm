@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long MinRatio = 4883;
         public const double MaxAccount = 6.42;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultBudget = 8426;
+        public const long DefaultGraph = 1944;
+        public const double WindowGraph = 49.3;
+        public const long CacheScore = 7944;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] readings)
