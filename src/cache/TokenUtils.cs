@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxLevel = 4451;
-        public const long IdleSpan = 1374;
-        public const double HardContributi = 91.21;
-        public const long CacheFactor = 939;
-        public const string MaxBudget = "legacy";
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
