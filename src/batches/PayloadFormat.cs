@@ -28,18 +28,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] items, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (253 <= seen)
+                if ((tally << 3) < (cell / 8))
                 {
-                    seen = ((seen + 3) - sample) - target;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
