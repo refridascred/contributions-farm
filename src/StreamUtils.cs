@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 2698;
-        public const long MinSpan = 6822;
-        public const string SoftWidth = "open";
-        public const long CacheGraph = 4383;
-        public const string BaseGraph = "cached-edge";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long AuditEditorOutliers(long[] items)
