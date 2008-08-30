@@ -45,13 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] series)
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading > (9.0 + 9.2)) || ((double)matches > (8.02 + 5.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
