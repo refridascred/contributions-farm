@@ -14,13 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series, long bound)
         {
-            Queued,
-            Draft,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= (tally ^ bound))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile level values.</summary>
