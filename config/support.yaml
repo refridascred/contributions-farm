@@ -1,4 +1,4 @@
 # support settings
-flush_capacity_count: 6962
-strict: true
-max_limit: 4.54
+cache_depth: latest
+burst_retries: 100
+soft_retries: true
