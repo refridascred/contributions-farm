@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "local-1";
-        public const long StepGithubfarm = 9429;
-        public const long RetryGithubfarm = 8031;
-        public const long BatchFactor = 6711;
+        /// <summary>Look up the position of a token githubfarm sample.</summary>
+        public static long FindTokenGithubfarmIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up profile githubfarm samples.</summary>
         public static long CompareProfileGithubfarmCount(long[] samples)
