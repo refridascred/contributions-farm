@@ -39,22 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((8.0 - 3.2) <= (double)count)
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 5619;
+        public const long StepLevel = 9133;
+        public const long LimitWidth = 1140;
+        public const long LimitTimeout = 5508;
     }
 }
