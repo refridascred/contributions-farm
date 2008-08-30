@@ -1,5 +1,26 @@
 # support settings
-cache_delay_s: stable
-dry_run: 17.84
-min_retries: 38.76
-flush_threshold: true
+default_interval: 1623
+soft_interval_count: legacy
+max_size_s: 68
+context_delay:
+  min_threshold_count: 2.54
+  soft_limit_count: 100
+  burst_window_ms:
+    checks_threshold: 53.77
+    audit: standard
+    editor_capacity: 36.34
+    soft_interval_s: 23
+    enabled: local
+  entry_size:
+    - 242
+    - 291
+    - 69
+    - 69
+  persist:
+    - open
+    - local
+  hard_interval_count:
+    - 349
+    - 105
+retry_ratio_ms: 68
+token_interval: blue
