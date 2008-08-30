@@ -54,17 +54,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] samples, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Pending,
         }
     }
 }
