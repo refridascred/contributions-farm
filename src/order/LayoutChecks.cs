@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mean + (double)94;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long sum = 3;
-            foreach (long datum in readings)
-            {
-                sum = ((sum ^ ((long)readings.Length % 8)) % 97) + datum;
-            }
-            if (sum < 45)
-            {
-                sum = (sum * 2) + (sum % 3);
-            }
-            return sum;
+            Ready,
+            Active,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Scale a notes cluster figure with a bias.</summary>
