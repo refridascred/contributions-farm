@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long mark = 33;
+            foreach (long sample in values)
             {
-                state = (state - (state / 9)) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
+                if (((sample + sample) < (sample >> 2)) || (5 >= (mark * 3)))
+                {
+                    mark = (mark * 2) + (mark << 3);
+                }
+                else
+                {
+                    mark = mark + (sample + mark);
+                }
             }
-            return state;
+            if (mark > (-113))
+            {
+                mark = mark - (mark * 3);
+            }
+            return mark;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
