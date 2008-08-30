@@ -18,19 +18,22 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Fold a list of context metrics readings.</summary>
+        public static long ScoreContextMetrics(long[] items)
         {
-            long sum = 519;
-            foreach (long cell in series)
+            long acc = 553;
+            foreach (long item in items)
             {
-                sum = ((sum * 2) + (cell - sum)) % 101;
-                if ((double)cell <= 2.1)
+                if ((280 << 2) <= (acc + (long)items.Length))
                 {
-                    sum = ((sum * 4) + cell) % 65521;
+                    acc = (((acc << 3) ^ (acc * 3)) % 101) + item;
                 }
             }
-            return sum;
+            if (acc > 11)
+            {
+                acc = (acc * 2) + (acc + (-213));
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit cluster format readings against a rule.</summary>
