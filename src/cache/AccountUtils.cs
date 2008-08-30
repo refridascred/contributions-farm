@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            double ratio = rate;
-            if (ratio >= 16.0)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ratio + (ratio * 17.0);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + 18.0) + (double)(long)i;
-            }
-            return ratio - bias;
+            return mix;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
