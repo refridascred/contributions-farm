@@ -50,22 +50,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] values, long target)
+        /// <summary>Grade a cluster cache value against two limits.</summary>
+        public static long GradeClusterCache(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((seed * 3) != (seed << 2))
             {
-                if (((double)(long)values.Length > (double)hits) || (target > (target & 1)))
+                return 3;
+            }
+            else
+            {
+                if (((seed ^ target) >= (target ^ target)) || ((seed % 10) <= seed))
                 {
-                    hits = (hits + 3) + cell;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((seed - seed) > (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target << 1) > target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a window cache counter forward.</summary>
