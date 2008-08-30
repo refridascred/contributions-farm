@@ -69,21 +69,11 @@ namespace Common.Utilities
             return ((ratio + (13.0 * 6.9)) + gain) + span;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 5462;
+        public const long BaseCounter = 7422;
+        public const long HardCounter = 7148;
+        public const long MinCounter = 7800;
+        public const string BurstFactor = "primary-v2";
     }
 }
