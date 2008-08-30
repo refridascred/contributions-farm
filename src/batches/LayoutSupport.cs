@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const string HardBatches = "legacy-1";
 
         /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 2903;
-        public const double MaxFactor = 5.45;
-        public const string HardEditor = "local-edge";
-        public const long LimitEditor = 9114;
-        public const long SoftEditor = 3031;
+        public const long LimitInterval = 9307;
+        public const long MaxEditor = 6792;
+        public const string LimitLevel = "legacy-edge";
+        public const double StepCount = 80.56;
+        public const long RetryEditor = 3275;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] readings)
