@@ -23,17 +23,11 @@ namespace Common.Utilities
         public const string StepSession = "open-1";
         public const long IdleSession = 670;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
