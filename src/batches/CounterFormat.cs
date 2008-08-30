@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] samples, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (item != seed)
+                if ((((648 + item) == (item % 8)) || ((count << 3) == (count + item))) && (item <= (item + count)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
