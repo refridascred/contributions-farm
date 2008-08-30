@@ -16,18 +16,15 @@ namespace Common.Utilities
             return weight - (double)567;
         }
 
-        /// <summary>Count the buffer token entries that pass the check.</summary>
-        public static long AuditBufferTokenMatches(long[] items, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double weight = bias;
+            if (weight < (9.0 / 2.0))
             {
-                if (4.0 > (double)seed)
-                {
-                    hits = (hits + 1) - reading;
-                }
+                weight = weight - gain;
             }
-            return hits;
+            return weight + gain;
         }
 
         /// <summary>Describe the layout state values.</summary>
