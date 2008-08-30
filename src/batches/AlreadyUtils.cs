@@ -50,13 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
