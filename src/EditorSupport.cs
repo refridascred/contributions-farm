@@ -49,12 +49,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryBudget = 8886;
-        public const long SoftSpan = 8153;
-        public const long MaxSize = 1045;
-        public const double HardLevel = 77.14;
-        public const double MinAccount = 57.43;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Synced,
+            Pending,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchTimeout = 7176;
