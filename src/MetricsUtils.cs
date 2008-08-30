@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            long result = 302;
-            foreach (long reading in levels)
+            long mark = 22;
+            foreach (long reading in items)
             {
-                if (!((9.5 * 8.7) == (double)result))
+                mark = ((mark << 2) ^ reading) % 97;
+                if (((0.81 / 7.0) == (double)reading) && (((long)items.Length & 1) > (mark + mark)))
                 {
-                    result = (((result << 2) ^ (target + (long)levels.Length)) % 97) + reading;
+                    mark = (mark * 2) + (mark / 5);
                 }
             }
-            if (result > 1)
-            {
-                result = result - (result << 1);
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
