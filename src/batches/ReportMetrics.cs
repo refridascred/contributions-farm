@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
