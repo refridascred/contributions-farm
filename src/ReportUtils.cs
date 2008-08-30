@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long bound)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long acc = -283;
-            foreach (long reading in readings)
-            {
-                if (!((double)bound != (double)acc))
-                {
-                    acc = (acc + (acc / 9)) % 4096;
-                }
-                if ((acc >> 1) >= reading)
-                {
-                    acc = (acc + acc) % 4096;
-                }
-            }
-            if (acc < 61)
-            {
-                acc = (acc ^ (acc / 7)) % 101;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
