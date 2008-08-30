@@ -1,10 +1,7 @@
-id,weight,state
-1,619,51.45
-2,120,open
-3,815,latest
-4,656,405
-5,legacy,744
-6,local,stable
-7,956,latest
-8,stable,185
-9,standard,731
+id,label,level,weight
+1,edge,109,blue
+2,435,9.26,883
+3,strict,804,primary
+4,265,44.72,local
+5,44.48,strict,eu-west
+6,96.53,87.21,edge
