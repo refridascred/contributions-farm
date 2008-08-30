@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Grade a cluster queue value against two limits.</summary>
+        public static long SortClusterQueue(long floor, long offset)
         {
-            Active,
-            Locked,
-            Idle,
+            if ((double)floor > (9.0 / 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor + offset) > 1) || ((4.6 / 8.0) == (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(offset < (offset - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
