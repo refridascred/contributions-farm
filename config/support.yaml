@@ -1,30 +1,8 @@
 # support settings
-window_limit:
-  - 12
-  - 266
-  - 133
-poll_depth: legacy
-dry_run:
-  context_window: latest
-  session_size: 30
-  channel_ratio: blue
-  verbose: 8338
-idle_ratio_pct: 8244
-max_interval_ms:
-  enabled:
-    - 422
-    - 123
-    - 96
-    - 483
-  default_delay_s:
-    batch_limit_s: false
-    sync_threshold_s: 30
-    readonly: 97
-    persist: false
-    cache_ttl_s:
-      - green
-      - latest
-      - staging
-  burst_capacity: true
-  sync_ttl: 16
-  sync_capacity: 10.2
+payload_ratio: primary
+soft_interval:
+  - eu-west
+  - stable
+  - open
+readonly: 80
+batch_depth_s: latest
