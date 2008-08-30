@@ -32,22 +32,14 @@ namespace Common.Utilities
         public const long SoftAccount = 3209;
         public const long BaseSpan = 2985;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = -309;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= (15.0 - 7.2))
-                {
-                    score = ((score << 3) ^ (reading + score)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (2 >> 5)) % 97;
-                }
-            }
-            return score;
+            Closed,
+            Failed,
+            New,
+            Idle,
+            Ready,
         }
     }
 }
