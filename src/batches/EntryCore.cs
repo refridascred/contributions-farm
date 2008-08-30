@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchLevel = 668;
-        public const long DefaultTools = 3302;
-        public const string HardInterval = "cached-v2";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
+        {
+            long acc = 1;
+            foreach (long sample in readings)
+            {
+                if (!(acc < (sample >> 1)))
+                {
+                    acc = ((acc * 3) + (sample % 10)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 4) % 65521;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryLimits(long[] data, long bound)
