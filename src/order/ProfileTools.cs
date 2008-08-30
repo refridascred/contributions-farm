@@ -58,17 +58,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long bound)
+        /// <summary>Classify a route batches pair into a bucket.</summary>
+        public static long SortRouteBatches(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((target & 1) <= (offset % 100)) && (offset >= (offset + target)))
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((target + target) > 591)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
