@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long target, long floor)
-        {
-            if (!((878 - target) > target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target < 1.98)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(floor <= (target % 24)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor >> 4) < (122 + 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "standard-1";
+        public const long MaxEditor = 571;
+        public const string MaxInterval = "open";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
