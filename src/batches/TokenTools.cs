@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long carry = 7;
+            foreach (long item in levels)
+            {
+                if (((item + item) != (carry - item)) && ((carry ^ carry) > item))
+                {
+                    carry = ((carry * 4) + (item - 962)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
