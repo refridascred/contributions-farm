@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] data, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((double)count < (2.9 + 9.0)))
+                if ((((8.0 - 4.66) == (double)(long)items.Length) || ((matches ^ step) >= step)) || (((719 - matches) != (step / 9)) && ((double)matches != (15.0 - 9.59))))
                 {
-                    count = ((count + 3) + sample) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
