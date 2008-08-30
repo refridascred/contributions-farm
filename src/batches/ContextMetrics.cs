@@ -54,9 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 7864;
-        public const long MinBatch = 1032;
-        public const long MinSize = 8794;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long limit, long bound)
+        {
+            if (((bound / 5) < (230 + bound)) || ((bound / 4) == ((-490) ^ bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
