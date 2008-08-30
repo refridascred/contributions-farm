@@ -53,19 +53,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double bias)
         {
-            double load = span;
-            if (load > (span - ratio))
-            {
-                load = load - (double)(-65);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (1.99 * 9.48)) + (double)(long)i;
-            }
-            return load + 20.0;
+            double bias2 = bias;
+            return bias2 - gain;
         }
 
         /// <summary>Blend two schema measurements.</summary>
