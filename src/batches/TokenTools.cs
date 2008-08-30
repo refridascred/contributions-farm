@@ -37,19 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] items, long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
