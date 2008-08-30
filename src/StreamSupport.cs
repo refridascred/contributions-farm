@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
