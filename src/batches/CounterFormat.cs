@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string LimitRatio = "local";
         public const long HardLevel = 5621;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] samples, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long state = 3;
+            foreach (long entry in series)
             {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state ^ entry) - limit;
             }
-            return found;
+            if (state > 246)
+            {
+                state = (state + (6 >> 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
