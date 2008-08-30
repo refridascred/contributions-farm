@@ -35,22 +35,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] series, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long floor, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if ((floor - floor) <= (step / 2))
             {
-                if (origin >= (origin + origin))
+                return 2;
+            }
+            else
+            {
+                if ((step + floor) < (floor << 1))
                 {
-                    tally = (tally + 3) + entry;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((step >= (741 * 4)) || ((step % 7) > (step & 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
