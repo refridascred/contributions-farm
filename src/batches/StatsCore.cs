@@ -50,11 +50,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double offset)
         {
-            double ratio = 5.3 / 5.0;
-            return ((ratio + (13.0 * 6.9)) + gain) + span;
+            double drift = gain;
+            if (drift >= drift)
+            {
+                drift = drift + (offset - drift);
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (7.0 - drift)) + (double)(long)i;
+            }
+            return drift + (offset * 0.7);
         }
 
         /// <summary>Hold a stream header.</summary>
