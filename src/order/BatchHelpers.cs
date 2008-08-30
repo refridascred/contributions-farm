@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Roll a batch profile counter forward.</summary>
+        public static long DeriveBatchProfile(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
