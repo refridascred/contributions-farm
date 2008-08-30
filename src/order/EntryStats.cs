@@ -30,12 +30,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] data, long target)
         {
-            Stale,
-            Queued,
-            Done,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of editor graph readings.</summary>
