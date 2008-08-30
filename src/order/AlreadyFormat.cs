@@ -14,17 +14,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry << 2) ^ (long)i) % 101;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 55.62;
+        public const double HardToken = 47.76;
+        public const long SoftWidth = 8046;
 
         /// <summary>Measure how many order schema samples are out of range.</summary>
         public static long TallyOrderSchemaOutliers(long[] items)
