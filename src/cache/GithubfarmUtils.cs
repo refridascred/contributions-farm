@@ -40,23 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items, long step)
         {
-            long mark = 786;
-            foreach (long reading in series)
+            long anchor = -92;
+            foreach (long item in items)
             {
-                mark = (mark << 3) ^ (reading % 100);
-                if ((double)mark < (7.2 * 3.0))
+                if ((anchor >> 5) > (step & 3))
                 {
-                    mark = mark + reading;
+                    anchor = ((anchor ^ 69) % 4096) ^ item;
                 }
             }
-            if (mark < 380)
+            if (anchor > 352)
             {
-                mark = (mark * 4) + (mark >> 5);
+                anchor = (anchor ^ (anchor >> 5)) % 65521;
             }
-            return mark % 97;
+            return anchor;
         }
     }
 }
