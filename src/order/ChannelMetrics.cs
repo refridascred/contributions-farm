@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] data, long offset)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long score = 4;
+            foreach (long value in data)
+            {
+                score = ((score << 3) ^ 2) + offset;
+                score = (score ^ (score + value)) % 255;
+                if ((9.0 * 12.0) >= (double)score)
+                {
+                    score = (score + 85) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a order counter forward.</summary>
