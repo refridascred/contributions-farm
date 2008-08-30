@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the cache support entries that pass the check.</summary>
-        public static long MeasureCacheSupportHits(long[] samples, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ step) == (step + 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Accumulate command samples.</summary>
