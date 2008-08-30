@@ -1,27 +1,9 @@
 # githubfarm settings
-idle_delay_count: fallback
-account_ttl: false
-retry_size_s:
-  max_interval_ms:
-    token_limit: 70
-    persist: 30
-    cache_ttl: 107
-    flush_retries_count: true
-    githubfarm_ttl: latest
-  warm_limit_ms: eu-west
-  default_interval: strict
-  notes_size: legacy
-  hard_limit_pct: primary
-  schema_ratio: fallback
-soft_ratio_s:
-  metrics_depth: fallback
-  soft_timeout:
-    - fallback
-    - cached
-    - local
-  hard_timeout_count: 84.28
-sync_ttl_count:
-  editor_ratio: false
-  flush_delay: 1393
-  readonly: strict
-max_size_ms: 30
+base_depth_s:
+  - 260
+  - 402
+  - 263
+  - 36
+poll_delay_s: true
+max_timeout_s: local
+flush_threshold: 44.11
