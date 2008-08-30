@@ -20,19 +20,38 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double bias, double bias2)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long bound)
         {
-            double load = (double)(2 >> 5);
-            if (load >= (double)85)
+            if ((double)bound >= (double)floor)
             {
-                load = load - (load - load);
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load + bias) + (double)(long)i;
+                if ((floor + bound) != (bound + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((27 / 3) < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound & 31) <= (bound / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return load + (bias2 * 0.5);
         }
 
         /// <summary>Scale a already format figure with a bias.</summary>
