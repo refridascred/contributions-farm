@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] readings, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long origin)
         {
-            long result = 382;
-            foreach (long value in readings)
+            if (floor <= (floor + origin))
             {
-                result = (((result * 5) + (36 << 2)) % 1000) ^ value;
+                return 8;
             }
-            if (result > 24)
+            else
             {
-                result = result + origin;
+                if (((floor / 4) != (origin + floor)) && ((39 - origin) >= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
