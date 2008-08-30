@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 1870;
-        public const long DefaultMetrics = 2704;
-        public const long CacheMetrics = 670;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double ratio, double floor)
+        {
+            double gain = floor;
+            if (gain <= (gain - gain))
+            {
+                gain = (gain + (double)108) - ratio;
+            }
+            return gain + (4.0 * 10.0);
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] series)
