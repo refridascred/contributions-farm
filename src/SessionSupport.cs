@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchWidth = 2659;
-        public const string SoftInterval = "fallback";
-        public const string LimitCount = "latest-v2";
-        public const long BurstScore = 5934;
-        public const long HardChannel = 6100;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Done,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Locate a stats layout reading by value.</summary>
         public static long LookupStatsLayoutIndex(long[] data, long origin)
