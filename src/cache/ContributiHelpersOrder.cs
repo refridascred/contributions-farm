@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftSize = "standard-v2";
-        public const long BaseRoute = 1087;
-        public const double BurstScore = 20.56;
-        public const string BurstLevel = "cached-1";
-        public const double WindowTimeout = 77.66;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 4487;
