@@ -32,14 +32,20 @@ namespace Common.Utilities
         public const string CacheLayout = "local-edge";
         public const string BurstInterval = "open-v2";
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            Ready,
-            Stale,
-            Idle,
-            Failed,
-            Synced,
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((95 & 1) == (mix - bound))
+                {
+                    mix = (mix - (mix / 9)) % 1000;
+                }
+                mix = (mix - (3 << 2)) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch header.</summary>
