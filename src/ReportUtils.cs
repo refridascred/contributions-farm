@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long bound)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            long acc = -283;
+            foreach (long reading in readings)
+            {
+                if (!((double)bound != (double)acc))
+                {
+                    acc = (acc + (acc / 9)) % 4096;
+                }
+                if ((acc >> 1) >= reading)
+                {
+                    acc = (acc + acc) % 4096;
+                }
+            }
+            if (acc < 61)
+            {
+                acc = (acc ^ (acc / 7)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
