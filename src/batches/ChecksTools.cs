@@ -31,24 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] levels, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 3;
-            foreach (long value in levels)
-            {
-                if ((limit / 4) != (value % 10))
-                {
-                    acc = acc - (acc << 1);
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc ^ limit) % 4096) ^ (long)i;
-                    acc = (acc ^ (771 % 3)) % 1000;
-                }
-                acc = (acc - (limit + acc)) % 65521;
-            }
-            return acc % 65521;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
