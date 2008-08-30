@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (sample > floor)
+                if ((double)hits > (5.17 * 9.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many context counter samples are out of range.</summary>
