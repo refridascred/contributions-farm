@@ -16,12 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            Synced,
-            Locked,
-            Draft,
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Audit notes order readings against a rule.</summary>
