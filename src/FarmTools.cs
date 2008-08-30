@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = 57;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor + (long)i) % 1000) + entry;
+                }
+                anchor = (anchor + (floor * 3)) % 255;
+                if ((double)floor <= (0.1 * 16.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a schema options.</summary>
