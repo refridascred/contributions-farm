@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long LimitGraph = 3588;
         public const double IdleGraph = 65.06;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Draft,
-            Closed,
-            Done,
+            Failed,
+            Idle,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Locate a payload tools reading by value.</summary>
