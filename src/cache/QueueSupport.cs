@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] items, long origin)
+        /// <summary>Audit command payload readings against a rule.</summary>
+        public static long AuditCommandPayloadMatches(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (value > origin)
+                if (((hits < floor) && ((double)floor != (double)7)) || ((1.4 / 9.0) > (double)3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Roll a support counter forward.</summary>
