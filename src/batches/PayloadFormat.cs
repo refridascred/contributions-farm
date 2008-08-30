@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] values, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 382;
+            foreach (long value in readings)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                result = (((result * 5) + (36 << 2)) % 1000) ^ value;
             }
-            return -1;
+            if (result > 24)
+            {
+                result = result + origin;
+            }
+            return result;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
