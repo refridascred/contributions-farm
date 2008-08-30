@@ -12,26 +12,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples, long limit)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            double drift = (bias / 4.0) * 13.0;
+            if (drift > bias2)
             {
-                if (((entry ^ mix) != ((long)samples.Length ^ limit)) || ((entry / 2) == (19 + mix)))
-                {
-                    mix = mix - entry;
-                }
-                else
-                {
-                    mix = (mix - (entry % 8)) % 101;
-                }
+                drift = drift + drift;
             }
-            if (mix < 5)
+            else
             {
-                mix = (mix << 2) ^ limit;
+                drift = drift + drift;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)14) + (double)(long)i;
+            }
+            return drift + (drift * 1.03);
         }
 
         /// <summary>Hold a token header.</summary>
