@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batch profile readings against a rule.</summary>
-        public static long TallyBatchProfileMatches(long[] levels)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double load = 16.0;
+            if (load >= (6.0 + bias))
             {
-                if ((((sample + sample) != (count + count)) || ((86 - sample) < count)) || (((6 + 2) <= sample) && (446 <= (sample % 12))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + (bias2 * 4.86);
             }
-            return count;
+            return load - (double)576;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
