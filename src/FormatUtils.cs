@@ -66,13 +66,17 @@ namespace Common.Utilities
         public const string RetrySupport = "staging-v2";
         public const long BurstSupport = 1555;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry << 3) ^ carry;
+                carry = (carry * 5) + (floor << 2);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
