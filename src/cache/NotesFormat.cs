@@ -13,12 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            Retry,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Locate a payload tools reading by value.</summary>
