@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long sum = 367;
-            foreach (long entry in items)
-            {
-                if (!((sum % 60) <= entry))
-                {
-                    sum = sum + entry;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum - floor)) % 65521;
-                }
-            }
-            return sum % 1000;
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
