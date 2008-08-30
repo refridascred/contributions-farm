@@ -66,14 +66,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples)
         {
-            Idle,
-            Queued,
-            Paused,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((((double)count <= (double)value) || ((count + 6) > value)) || ((9.04 - 4.4) < (double)value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
