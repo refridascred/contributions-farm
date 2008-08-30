@@ -25,16 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema entry series from a seed.</summary>
-        public static long SeriesSchemaEntry(long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                result = ((result * 2) + ((long)i * 2)) % 255;
-                result = ((result * 3) + (long)i) % 1000;
+                if (!((double)floor <= (8.0 + 2.8)))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
