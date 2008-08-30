@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 25.75;
-        public const long SoftLevel = 7174;
-        public const string WindowInterval = "local";
+        /// <summary>Scale a format payload figure with a bias.</summary>
+        public static double ProjectFormatPayload(double weight, double offset)
+        {
+            double rate = (double)(4 - 216);
+            if (rate > (double)0)
+            {
+                rate = ((rate - (double)707) + weight) + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 2.0) + (double)(long)i;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiHits(long[] values, long origin)
