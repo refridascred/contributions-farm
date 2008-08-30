@@ -42,11 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Draft,
+            Paused,
+            Pending,
         }
     }
 }
