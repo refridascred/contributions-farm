@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long offset, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] items, long seed)
         {
-            long lane = offset ^ bound;
-            if ((double)bound >= (2.0 * 6.38))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset ^ offset) == (bound + offset))
+                if (seed < tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset >= (offset >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane <= offset) || ((0 & 255) < (offset << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 3) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
