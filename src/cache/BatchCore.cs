@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel session entries that pass the check.</summary>
-        public static long AuditChannelSessionHits(long[] items, long origin)
+        /// <summary>Match up support channel samples.</summary>
+        public static long MatchSupportChannelCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell + hits) < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
