@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
-        {
-            long mix = -156;
-            foreach (long item in levels)
-            {
-                mix = ((mix ^ 393) % 255) + item;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 8757;
+        public const long BaseWidth = 5171;
+        public const long CacheRatio = 8267;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
