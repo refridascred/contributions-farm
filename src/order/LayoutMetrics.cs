@@ -36,9 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchDepth = 1879;
-        public const string DefaultRatio = "standard-v2";
-        public const string HardStream = "primary-1";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)tally == (3.0 + 5.28)) && ((20.0 + 7.0) < (double)seed))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
     }
 }
