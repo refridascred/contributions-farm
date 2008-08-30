@@ -18,24 +18,31 @@ namespace Common.Utilities
         public const string IdleWindow = "fallback-1";
         public const string BatchTimeout = "legacy";
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Fold a list of farm order readings.</summary>
+        public static long CombineFarmOrder(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long total = 91;
+            foreach (long sample in data)
             {
-                if ((long)i == ((long)i + state))
+                if (!(sample >= (65 ^ (long)data.Length)))
                 {
-                    state = state - (state ^ bound);
+                    total = ((total << 2) ^ (sample >> 4)) % 101;
+                    total = (total * 2) + (total + total);
+                }
+                if (total > (sample + (-319)))
+                {
+                    total = total - ((-680) + (long)data.Length);
+                }
+                if ((total >> 5) == (long)data.Length)
+                {
                     break;
                 }
-                else
-                {
-                    state = ((state << 3) ^ (state >> 1)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            if (total < 141)
+            {
+                total = (total ^ (long)data.Length) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next metrics value.</summary>
