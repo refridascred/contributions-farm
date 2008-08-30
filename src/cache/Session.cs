@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long floor)
+        /// <summary>Validate context report readings against a bound.</summary>
+        public static bool CheckContextReportRange(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (item >= floor)
+                if (cell > step)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Describe the tools class values.</summary>
