@@ -72,19 +72,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 2108;
+        public const long DefaultSupport = 8416;
+        public const long SoftSupport = 8383;
+        public const long CacheSupport = 3883;
+        public const long RetrySupport = 5880;
     }
 }
