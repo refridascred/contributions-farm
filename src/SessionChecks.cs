@@ -57,15 +57,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Iterate the tools entry series from a seed.</summary>
+        public static long DeriveToolsEntry(long bound)
         {
-            long sum = 458;
-            foreach (long datum in levels)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (((sum * 3) + ((-494) ^ sum)) % 101) + datum;
+                total = (total + (total + bound)) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
