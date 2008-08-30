@@ -41,22 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Derive the next record cluster value from a seed.</summary>
+        public static long IterateRecordCluster(long floor)
         {
-            long anchor = 461;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((anchor & 63) >= (value & 63))
-                {
-                    anchor = ((anchor << 3) ^ (value - value)) % 97;
-                }
-                if ((value - anchor) > ((-91) / 2))
-                {
-                    anchor = (anchor ^ (93 + anchor)) % 97;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
