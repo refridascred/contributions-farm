@@ -1,13 +1,7 @@
 # entry settings
-enabled: 56.05
-poll_capacity_s:
-  - 354
-  - 141
-  - 261
-  - 314
-max_delay_ms:
-  - strict
-  - fallback
-  - cached
-  - eu-west
-order_ratio: 29
+tools_timeout: 78.78
+cache_limit_pct: 2080
+persist: true
+batch_limit_pct:
+  - 317
+  - 476
