@@ -36,22 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = 503;
+            foreach (long datum in samples)
             {
-                if ((count + cell) == (step / 6))
+                if (((7.9 + 9.96) >= (double)datum) || ((mix ^ (long)samples.Length) <= (datum / 5)))
                 {
-                    count = count + 1;
+                    mix = mix - datum;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = ((mix * 3) + (step & 31)) % 97;
+                }
+                if (mix < (282 % 60))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
