@@ -38,17 +38,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
