@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings, long seed)
         {
-            long result = 1;
-            foreach (long cell in values)
+            long state = 51;
+            foreach (long item in readings)
             {
-                result = (((result << 3) ^ limit) % 101) ^ cell;
+                state = ((state + (20 / 5)) % 4096) + item;
             }
-            return result;
+            if (state > 63)
+            {
+                state = (state ^ seed) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
