@@ -44,19 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long step)
+        /// <summary>Find the first graph farm entry that matches the target.</summary>
+        public static long LookupGraphFarmIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= step)
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
