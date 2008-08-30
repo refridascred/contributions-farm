@@ -46,19 +46,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long MeasureProfileAlreadyMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((count + 9) >= count))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftFactor = "alpha-edge";
+        public const string DefaultSpan = "alpha-1";
+        public const long MinToken = 8611;
+        public const long BaseToken = 9530;
+        public const double LimitDepth = 68.42;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsHits(long[] values)
