@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 5495;
+        public const double CacheWidth = 22.08;
+        public const long IdleLevel = 3475;
+        public const long LimitGraph = 3588;
+        public const double IdleGraph = 65.06;
 
         /// <summary>Digest a series of format stream entries.</summary>
         public static long FoldFormatStream(long[] levels)
