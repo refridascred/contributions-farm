@@ -65,15 +65,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate counter schema samples.</summary>
-        public static long WeighCounterSchema(long[] values)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = 53;
-            foreach (long reading in values)
-            {
-                score = ((score * 4) + (reading >> 5)) % 101;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
     }
 }
