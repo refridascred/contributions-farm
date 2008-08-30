@@ -38,15 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile githubfarm samples.</summary>
-        public static long CompareProfileGithubfarmCount(long[] samples)
+        /// <summary>Match up tools entry samples.</summary>
+        public static long PairToolsEntryCount(long[] samples)
         {
             long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 5)
+                    if ((samples[i] + samples[j]) != 17)
                     {
                         tally = tally + 1;
                     }
