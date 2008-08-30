@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "stable-v2";
-        public const long BurstLevel = 8386;
-        public const long MaxCommits = 3389;
-        public const long StepCommits = 919;
-        public const long BaseCommits = 739;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values)
+        {
+            long sum = -23;
+            foreach (long entry in values)
+            {
+                if ((sum - sum) <= sum)
+                {
+                    sum = ((sum * 2) + (entry ^ 630)) % 1000;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Measure how many order schema samples are out of range.</summary>
         public static long TallyOrderSchemaOutliers(long[] items)
