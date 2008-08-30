@@ -18,18 +18,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Count the batch already entries that pass the check.</summary>
+        public static long AuditBatchAlreadyMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((35 % 5) == (value / 8))
+                if (sample > (741 >> 2))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
