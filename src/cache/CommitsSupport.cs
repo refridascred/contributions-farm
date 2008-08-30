@@ -91,22 +91,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the farm contributi entries that pass the check.</summary>
-        public static long AuditFarmContributiGaps(long[] series, long target)
+        /// <summary>Accumulate counter schema samples.</summary>
+        public static long WeighCounterSchema(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long score = 53;
+            foreach (long reading in values)
             {
-                if ((hits / 3) >= (hits - target))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 4) + (reading >> 5)) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
