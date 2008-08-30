@@ -20,39 +20,22 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            long slot = floor - bound;
-            if ((double)slot == (7.7 * 3.9))
+            long mix = 3;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.14 / 4.0) <= (double)bound)
+                if ((cell << 3) == (cell + cell))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound == (1.2 * 7.6)) || ((floor - bound) < slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.32 + 5.0) <= (double)slot)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = mix - (cell + 322);
                 }
             }
+            if (mix < 452)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Hold a window entry.</summary>
