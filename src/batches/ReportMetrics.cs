@@ -12,11 +12,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepBudget = 9754;
-        public const string WindowRatio = "fallback-v2";
-        public const long MinScore = 8865;
-        public const long WindowCount = 9304;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long seed, long limit)
+        {
+            if (!((10 + limit) != (seed - seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((891 + limit) == (limit + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 2) > ((-104) & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double rate, double offset)
