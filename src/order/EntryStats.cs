@@ -25,39 +25,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a profile payload value against two limits.</summary>
-        public static long ClassifyProfilePayload(long limit, long floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long floor)
         {
-            long prev = limit - floor;
-            if (prev > (floor - 517))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev % 3) < (69 * 2))
+                if (datum >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor >> 3) >= limit) || (3 >= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)prev < (9.45 - 9.2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine order values into a single score.</summary>
