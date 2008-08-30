@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double scale, double span)
-        {
-            double load = (double)(719 - 43);
-            if (load < load)
-            {
-                load = (load + (load * 4.5)) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (0.03 - span);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 7335;
+        public const long BurstFormat = 5168;
+        public const long BaseFormat = 6833;
+        public const long IdleBudget = 6046;
+        public const long MinBudget = 7662;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long target)
