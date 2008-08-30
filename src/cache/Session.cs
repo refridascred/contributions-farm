@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 475;
-        public const long CacheDepth = 9200;
-        public const string SoftFactor = "alpha-v2";
-        public const long BaseTimeout = 389;
-        public const long BatchScore = 6813;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate context report readings against a bound.</summary>
         public static bool CheckContextReportRange(long[] data, long step)
