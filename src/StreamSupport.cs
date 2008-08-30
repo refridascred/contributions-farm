@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 2577;
+        public const long MinWidth = 6064;
+        public const long RetryCount = 7127;
+        public const string StepSession = "open-1";
+        public const long IdleSession = 670;
 
         /// <summary>Scale a already format figure with a bias.</summary>
         public static double ScaleAlreadyFormat(double bias, double floor)
