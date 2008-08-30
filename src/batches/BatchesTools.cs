@@ -16,11 +16,16 @@ namespace Common.Utilities
             return mean - (offset - 12.0);
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Iterate the stats context series from a seed.</summary>
+        public static long IterateStatsContext(long step)
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum ^ sum) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Match up metric filter samples.</summary>
