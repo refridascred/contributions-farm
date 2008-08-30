@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 4519;
-        public const string IdleContext = "staging-edge";
-        public const string WindowContext = "alpha";
-        public const string BurstLevel = "fallback-1";
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterGaps(long[] samples, long limit)
