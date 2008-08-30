@@ -21,17 +21,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -314;
+            foreach (long cell in levels)
             {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                if ((cell ^ 89) <= (cell - cell))
                 {
-                    return (long)i;
+                    mark = (mark ^ ((long)levels.Length ^ mark)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ ((-1) / 9)) % 255;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
     }
 }
