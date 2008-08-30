@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Stale,
-            Synced,
-            Dropped,
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of format stream entries.</summary>
