@@ -33,18 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheDepth = 449;
+        public const string StepInterval = "staging-v2";
+        public const string LimitCount = "legacy-edge";
+        public const long IdleInterval = 2936;
+        public const long IdleFactor = 289;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] readings, long bound)
