@@ -54,11 +54,9 @@ namespace Common.Utilities
         public const double SoftRoute = 6.43;
         public const long RetryWidth = 8304;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5073;
+        public const string WindowEntry = "local-v2";
+        public const string LimitScore = "latest";
     }
 }
