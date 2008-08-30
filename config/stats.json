@@ -1,7 +1,14 @@
 {
-  "flush_window_s": 69.6,
-  "enabled": 7.17,
-  "buffer_timeout": false,
-  "max_retries": [135, 131, 457],
-  "poll_retries_ms": 6396
+  "batch_retries_s": {
+    "compress": "legacy",
+    "cache_window": 64.27,
+    "min_threshold": true,
+    "editor_size": [24, 71],
+    "farm_interval": "edge"
+  },
+  "flush_window_s": 250,
+  "persist": 1024,
+  "enabled": "eu-west",
+  "hard_capacity_ms": "local",
+  "batch_size_ms": 44.98
 }
