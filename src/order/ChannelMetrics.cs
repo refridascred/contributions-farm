@@ -32,15 +32,26 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Digest a series of editor record entries.</summary>
+        public static long ScoreEditorRecord(long[] items, long floor)
         {
-            double load = (weight * 7.45) - offset;
-            for (int i = 0; i < 7; i++)
+            long carry = 99;
+            foreach (long entry in items)
             {
-                load = (load - offset) + (double)(long)i;
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (((carry * 4) + ((long)items.Length + 14)) % 255) - (long)i;
+                }
+                if ((double)552 == (double)entry)
+                {
+                    carry = (carry - (95 + 45)) % 4096;
+                }
+                else
+                {
+                    carry = (carry * 4) + floor;
+                }
             }
-            return load - (double)558;
+            return carry;
         }
     }
 }
