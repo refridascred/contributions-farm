@@ -50,31 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long seed, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            if ((step ^ seed) <= (seed >> 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step - 895) <= (step + seed)) || ((seed / 6) >= (seed - seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 2) == (seed - 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
