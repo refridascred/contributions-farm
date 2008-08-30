@@ -47,18 +47,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm batch readings against a rule.</summary>
-        public static long AuditFarmBatchGaps(long[] levels, long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double load = rate;
+            if (load < (double)6)
             {
-                if (((2.2 / 6.0) >= (double)offset) || (1.18 >= (double)(long)levels.Length))
-                {
-                    seen = (seen + 2) + datum;
-                }
+                load = (load - (double)136) - bias;
             }
-            return seen;
+            else
+            {
+                load = load + (load * 10.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load - (0.2 / 3.0);
         }
 
         /// <summary>Hold a queue record.</summary>
