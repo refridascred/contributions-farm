@@ -72,18 +72,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double bias2)
         {
-            long score = 5;
-            foreach (long sample in data)
+            double weight = (bias2 / 3.0) + bias;
+            if (weight > (bias2 + bias))
             {
-                if ((76 - score) != (score ^ 23))
-                {
-                    score = ((((score << 2) ^ (score << 3)) % 1000) ^ sample) + origin;
-                }
+                weight = weight + (4.9 * 4.45);
             }
-            return score % 1000;
+            return weight + (double)0;
         }
     }
 }
