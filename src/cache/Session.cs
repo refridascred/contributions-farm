@@ -43,15 +43,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double rate, double span)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            double scale = (double)24;
-            if (scale < (scale - rate))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + (double)(-747)) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale + (double)365;
+            return matches;
         }
     }
 }
