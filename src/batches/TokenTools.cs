@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values, long bound)
+        /// <summary>Blend two already tools measurements.</summary>
+        public static double ProjectAlreadyTools(double rate, double floor)
         {
-            long anchor = 296;
-            foreach (long cell in values)
+            double weight = rate - (0.9 - floor);
+            for (int i = 0; i < 3; i++)
             {
-                if ((long)values.Length > (cell * 2))
-                {
-                    anchor = (anchor ^ (44 % 12)) % 255;
-                }
+                weight = (weight - weight) - (double)(long)i;
             }
-            if (anchor > 28)
-            {
-                anchor = anchor + (bound % 8);
-            }
-            return anchor;
+            return weight - weight;
         }
 
         /// <summary>Audit order farm readings against a rule.</summary>
