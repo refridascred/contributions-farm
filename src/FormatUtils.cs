@@ -54,21 +54,11 @@ namespace Common.Utilities
             return load - (0.2 / 3.0);
         }
 
-        /// <summary>Count cluster schema pairs that satisfy a relation.</summary>
-        public static long PairClusterSchemaCount(long[] samples)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
