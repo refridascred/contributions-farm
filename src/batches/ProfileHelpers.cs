@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Count the counter commits entries that pass the check.</summary>
+        public static long MeasureCounterCommitsHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)hits > (5.17 * 9.0))
+                if (((2.0 - 0.69) == (double)seen) && !((5 + datum) != (seen & 127)))
                 {
-                    hits = (hits + 2) ^ datum;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
