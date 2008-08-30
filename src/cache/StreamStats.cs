@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long floor)
         {
-            long carry = 4;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry + (carry & 127)) + item;
+                carry = carry - (floor / 4);
+                carry = (carry << 3) ^ (floor + (long)i);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Check that every farm format entry stays within the limit.</summary>
