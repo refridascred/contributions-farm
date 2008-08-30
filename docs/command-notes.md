@@ -1,14 +1,14 @@
 # Command notes
 
-Each support is validated before it reaches the window queue.
-The batches module keeps batch values in sync with the token cache.
-Run the filter check before changing any already limits.
+Use window settings to tune how often route data is refreshed.
+The cluster module keeps report values in sync with the layout cache.
 
-The window module keeps metric values in sync with the layout cache.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the buffer queue.
+Run the route check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate channel input early
-- Keep context values small
-- Log every entry change
+- Keep editor values small
+- Prefer window defaults
+- Document new payload fields
+- Log every profile change
