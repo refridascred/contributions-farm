@@ -19,18 +19,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] samples, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((31 >> 2) < (sample ^ 16))
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 2) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
