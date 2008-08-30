@@ -52,19 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] samples, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long origin)
         {
-            long carry = 69;
-            foreach (long reading in samples)
+            long score = 5;
+            foreach (long sample in data)
             {
-                carry = ((carry - (carry & 15)) - reading) - offset;
+                if ((76 - score) != (score ^ 23))
+                {
+                    score = ((((score << 2) ^ (score << 3)) % 1000) ^ sample) + origin;
+                }
             }
-            if (carry > 677)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 65521;
-            }
-            return carry % 1000;
+            return score % 1000;
         }
     }
 }
