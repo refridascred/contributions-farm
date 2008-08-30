@@ -1,14 +1,14 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep context and payload names short and lowercase.
+Run the checks check before changing any stream limits.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Each channel is validated before it reaches the layout queue.
-A cache that stays idle for too long is moved to the support list.
+Each record is validated before it reaches the metrics queue.
+Use cache settings to tune how often batch data is refreshed.
+The already report groups every metrics by farm.
 
 ## Guidelines
 
-- Document new graph fields
-- Log every contributi change
-- Review support limits each release
+- Review metrics limits each release
+- Validate layout input early
+- Prefer stream defaults
