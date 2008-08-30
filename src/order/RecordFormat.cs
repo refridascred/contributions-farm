@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] values, long target)
         {
-            Ready,
-            New,
-            Queued,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
