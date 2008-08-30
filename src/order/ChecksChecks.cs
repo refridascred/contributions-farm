@@ -19,17 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Locate a notes account reading by value.</summary>
+        public static long LookupNotesAccountIndex(long[] values, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 3) ^ (long)i) % 4096;
-                result = (result << 3) ^ (long)i;
-                result = ((result * 2) + (long)i) % 4093;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a report info.</summary>
