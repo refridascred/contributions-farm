@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long mark = -2;
-            foreach (long cell in readings)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)cell == (8.7 / 3.0))
+                if (((64 + (-21)) <= (3 ^ offset)) || ((double)sum >= 6.06))
                 {
-                    mark = ((mark << 2) ^ (cell * 5)) % 4096;
+                    sum = (sum << 3) ^ (offset << 1);
+                    break;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
