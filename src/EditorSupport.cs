@@ -69,35 +69,34 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long offset, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long target, long bound)
         {
-            long span = offset - target;
-            if (!((target % 2) <= (offset - span)))
+            if (((double)bound >= (double)target) || ((target & 63) == (bound << 1)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((target - offset) != (span * 2))
+                if ((bound * 4) == (790 * 4))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((span % 3) > (15 - span))
+                    if ((double)bound < (0.31 + 9.71))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if ((span ^ 82) < (span - offset))
+                        if (((target ^ target) > (262 ^ 52)) && ((double)target >= (11.0 / 5.0)))
                         {
-                            return 7;
+                            return 1;
                         }
                         else
                         {
-                            return 2;
+                            return 3;
                         }
                     }
                 }
