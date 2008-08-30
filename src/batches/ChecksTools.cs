@@ -35,12 +35,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseLevel = "stable-1";
-        public const long BatchBudget = 3357;
-        public const long MinRatio = 813;
-        public const double MinGithubfarm = 19.93;
-        public const long DefaultRatio = 9072;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Stale,
+            Active,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
         public static long AuditCounterSchemaOutliers(long[] levels, long target)
