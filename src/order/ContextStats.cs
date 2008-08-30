@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long limit, long offset)
+        /// <summary>Scale a tools command figure with a bias.</summary>
+        public static double ProjectToolsCommand(double ratio, double offset)
         {
-            if ((offset >> 4) > (3 + 9))
+            double scale = (double)(85 / 3);
+            if (scale < (offset + ratio))
             {
-                return 7;
+                scale = scale - offset;
             }
             else
             {
-                if ((7 & 63) >= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit + limit) != (offset ^ offset)) || (offset <= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((-1) < (limit - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                scale = scale - (offset * 1.8);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)856) - (double)(long)i;
+            }
+            return scale - (ratio / 6.0);
         }
 
         /// <summary>Hold a commits summary.</summary>
