@@ -46,10 +46,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9591;
-        public const long BurstWidth = 3165;
-        public const long LimitSpan = 3353;
+        /// <summary>Validate batches command readings against a bound.</summary>
+        public static bool GuardBatchesCommandRange(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
