@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] items, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((offset / 2) >= offset) || ((reading / 4) == (offset << 1))) && ((matches - reading) >= offset))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a layout header.</summary>
