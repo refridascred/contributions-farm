@@ -68,17 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long seed)
+        /// <summary>Accumulate metric order samples.</summary>
+        public static long TallyMetricOrder(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 96;
+            foreach (long entry in data)
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (entry + mark)) % 1000;
             }
-            return -1;
+            if (mark < 3)
+            {
+                mark = ((mark << 3) ^ (515 + mark)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
