@@ -39,38 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long offset)
         {
-            if ((origin / 2) > (origin / 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (origin + step))
+                if (samples[i] > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(((-1) + step) >= (-7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(step >= (origin ^ step)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
