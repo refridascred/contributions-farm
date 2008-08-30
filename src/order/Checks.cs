@@ -45,11 +45,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowInterval = 8955;
-        public const long IdleCount = 1489;
-        public const long HardQueue = 2420;
-        public const double MaxQueue = 68.79;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterRange(long[] readings, long origin)
