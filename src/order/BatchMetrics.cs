@@ -14,20 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine command githubfarm values into a single score.</summary>
-        public static long TotalCommandGithubfarm(long[] levels)
-        {
-            long mark = 288;
-            foreach (long sample in levels)
-            {
-                mark = mark - sample;
-                if (!((mark - 58) >= (mark ^ mark)))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowInterval = "legacy";
+        public const long WindowDepth = 416;
+        public const string StepBudget = "local-1";
+        public const double LimitTimeout = 55.07;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string SoftFactor = "alpha-edge";
