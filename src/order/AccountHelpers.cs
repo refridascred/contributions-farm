@@ -71,22 +71,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer payload samples are out of range.</summary>
-        public static long CountBufferPayloadGaps(long[] levels)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell * 5) < 18)
+                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
