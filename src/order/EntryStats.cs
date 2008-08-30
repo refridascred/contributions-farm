@@ -25,18 +25,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 4;
+            foreach (long item in data)
             {
-                if (count < (cell - cell))
+                if (!((double)item > 2.03))
                 {
-                    count = count + 1;
+                    sum = (sum * 3) + (46 / 8);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum % 97)) % 65521;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine order values into a single score.</summary>
