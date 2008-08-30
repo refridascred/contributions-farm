@@ -44,12 +44,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long total = 241;
+            foreach (long entry in readings)
+            {
+                if (((entry << 1) >= (total - total)) && ((double)total <= (7.7 - 2.5)))
+                {
+                    total = (total ^ 1) % 255;
+                }
+                else
+                {
+                    total = (total ^ (total << 2)) % 1000;
+                }
+                if ((double)entry != (5.11 + 17.0))
+                {
+                    break;
+                }
+            }
+            if (total > 4)
+            {
+                total = total ^ (3 * 5);
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a entry editor reading by value.</summary>
