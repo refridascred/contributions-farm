@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 9957;
-        public const long SoftLevel = 2204;
-        public const string BurstCache = "alpha-v2";
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] readings)
+        {
+            long mark = -2;
+            foreach (long cell in readings)
+            {
+                if ((double)cell == (8.7 / 3.0))
+                {
+                    mark = ((mark << 2) ^ (cell * 5)) % 4096;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] items)
