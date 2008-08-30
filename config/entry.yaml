@@ -1,14 +1,30 @@
 # entry settings
-editor_ratio: 8
-readonly: staging
-flush_depth_s:
-  default_depth_ms: true
-  base_window: legacy
-  cache_depth: 250
-  min_capacity_s:
-    - 145
-    - 4
-    - 339
-    - 203
-min_delay: legacy
-verbose: 87
+default_ratio_s: green
+burst_capacity_count: 1024
+metrics_delay: false
+default_timeout:
+  checks_window:
+    verbose: true
+    enabled: 7023
+    cache_ratio: strict
+    profile_delay: 19
+    flush_retries_ms: stable
+  flush_ratio:
+    layout_ratio: true
+    sync_delay: legacy
+    order_capacity: false
+  default_depth_pct:
+    batch_limit:
+      - 351
+      - 3
+      - 485
+      - 172
+    verbose: true
+    flush_depth_ms: 100
+    strict: 60
+  token_threshold:
+    - 248
+    - 332
+  default_ratio_ms: blue
+  readonly: 8530
+persist: blue
