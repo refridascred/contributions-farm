@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank payload support input into a small class.</summary>
-        public static long RankPayloadSupport(long limit, long step)
+        /// <summary>Look up the position of a already metric sample.</summary>
+        public static long FindAlreadyMetricIndex(long[] samples, long seed)
         {
-            if ((38 >= step) || ((limit / 4) == (limit & 63)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - step) > (step - limit))
+                if (samples[i] > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate queue buffer readings against a bound.</summary>
