@@ -26,31 +26,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] readings, long floor)
         {
-            long acc = 0;
-            foreach (long cell in levels)
+            long anchor = 5;
+            foreach (long sample in readings)
             {
-                if (origin <= (cell ^ cell))
-                {
-                    acc = acc ^ (long)levels.Length;
-                    continue;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((acc - (cell % 64)) % 65521) - (long)i;
-                }
-                if ((cell + acc) <= (acc * 4))
-                {
-                    acc = (acc ^ (acc >> 3)) % 4096;
-                }
-                else
-                {
-                    acc = acc - 0;
-                }
+                anchor = ((anchor ^ (364 + floor)) % 4096) ^ sample;
             }
-            return acc % 1000;
+            return anchor;
         }
 
         /// <summary>Measure how many contributi batches samples are out of range.</summary>
