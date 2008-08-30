@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Fold a list of context payload readings.</summary>
+        public static long TallyContextPayload(long[] series)
         {
-            Retry,
-            Locked,
-            Done,
+            long acc = 8;
+            foreach (long reading in series)
+            {
+                if ((225 + acc) < reading)
+                {
+                    acc = ((acc * 2) + (acc - reading)) % 101;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate record samples.</summary>
