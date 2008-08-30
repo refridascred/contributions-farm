@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a report counter pair into a bucket.</summary>
