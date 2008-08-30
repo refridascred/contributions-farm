@@ -30,12 +30,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] data, long offset)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (890 >= offset)
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
