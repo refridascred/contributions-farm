@@ -18,22 +18,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Rank editor commits input into a small class.</summary>
+        public static long ClassifyEditorCommits(long seed, long step)
         {
-            long total = 13;
-            foreach (long datum in series)
+            if (((double)seed <= (3.5 / 7.0)) || ((step * 4) != (seed + seed)))
             {
-                for (int i = 0; i < 4; i++)
+                return 3;
+            }
+            else
+            {
+                if (((seed ^ seed) == (seed / 4)) || ((427 + seed) == (step * 4)))
                 {
-                    total = (((total << 3) ^ (datum * 2)) % 101) ^ (long)i;
+                    return 5;
                 }
-                if ((datum - datum) > (datum / 3))
+                else
                 {
-                    total = (total + (datum * 4)) % 255;
+                    return 0;
                 }
             }
-            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
