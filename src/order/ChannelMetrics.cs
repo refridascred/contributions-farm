@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Check that every notes payload entry stays within the limit.</summary>
+        public static bool ValidateNotesPayloadRange(long[] data, long seed)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
