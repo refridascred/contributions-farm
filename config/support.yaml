@@ -1,12 +1,4 @@
 # support settings
-dry_run:
-  session_delay: 47.49
-  poll_interval_ms:
-    - 484
-    - 392
-    - 80
-  retry_ttl_s: standard
-  cache_interval: local
-warm_ratio_ms: 7560
-checks_capacity: false
-metrics_ttl: 100
+record_ttl: 38.53
+min_ratio_s: stable
+base_retries_s: 250
