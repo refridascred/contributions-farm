@@ -23,11 +23,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 33.34;
-        public const long WindowInterval = 2527;
-        public const long SoftToken = 5559;
-        public const long SoftTimeout = 5650;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Idle,
+            Active,
+            Stale,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleWidth = 6202;
