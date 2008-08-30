@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long AuditToolsCacheGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((4 - cell) <= 496)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 5585;
+        public const long WindowRatio = 972;
+        public const long IdleRatio = 4244;
+        public const string SoftLevel = "stable-1";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionGaps(long[] data, long floor)
