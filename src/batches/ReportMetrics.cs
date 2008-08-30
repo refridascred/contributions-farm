@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinLevel = 3829;
-        public const string SoftScore = "staging-edge";
-        public const double RetryContext = 77.32;
-        public const long LimitContext = 1956;
-        public const long BaseDepth = 1867;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Count window cluster pairs that satisfy a relation.</summary>
         public static long CompareWindowClusterCount(long[] series)
