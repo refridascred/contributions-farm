@@ -1,5 +1,13 @@
 {
-  "batches_interval": "primary",
-  "account_interval": "cached",
-  "burst_window_pct": ["fallback", "fallback", "edge", "strict"]
+  "editor_ratio": {
+    "cache_capacity_ms": [291, 232, 87, 78],
+    "max_threshold": 92.96,
+    "strict": true,
+    "session_threshold": 35.55,
+    "buffer_limit": 250
+  },
+  "readonly": "blue",
+  "githubfarm_timeout": 52,
+  "sync_limit": [134, 493, 171, 215],
+  "sync_size_ms": 6.15
 }
