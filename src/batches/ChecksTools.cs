@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] items, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (seed < tally)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
