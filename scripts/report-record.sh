@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue cached staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-RECORD_LIMIT=283
+mode="${1:-eu-west}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=414
 log "limit is ${RECORD_LIMIT}"
