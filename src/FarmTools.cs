@@ -22,11 +22,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "stable";
-        public const long RetryTools = 6312;
-        public const string BaseDepth = "staging-v2";
-        public const long IdleScore = 771;
-        public const double RetryScore = 72.85;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Failed,
+            Active,
+            Synced,
+            Done,
+            Paused,
+        }
     }
 }
