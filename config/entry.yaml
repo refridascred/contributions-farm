@@ -1,11 +1,15 @@
 # entry settings
-batches_delay: 1758
-sync_depth:
-  - staging
-  - green
-  - green
-  - blue
-enabled: 250
-base_window_ms:
-  - legacy
-  - local
+poll_timeout: 39.94
+base_interval_pct: strict
+max_threshold_s: false
+readonly:
+  window_delay: false
+  batch_retries: 30
+  soft_interval: 500
+  batch_threshold_ms: open
+  sync_interval_s:
+    - 288
+    - 119
+    - 3
+    - 183
+  flush_window: 17.21
