@@ -34,17 +34,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] readings, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = offset - floor;
+            if (!(offset < (next + offset)))
             {
-                if (readings[i] >= seed)
+                return 6;
+            }
+            else
+            {
+                if (floor > next)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
