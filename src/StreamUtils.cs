@@ -32,32 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long offset, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double rate, double bias)
         {
-            long next = offset ^ bound;
-            if ((double)next == (14.0 - 8.3))
+            double drift = (double)((-240) - 2);
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                drift = ((drift + (drift * 8.0)) + (double)(long)i) - rate;
             }
-            else
-            {
-                if (!((next ^ offset) <= (next & 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + offset) < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return drift - (bias + drift);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
