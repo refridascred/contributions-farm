@@ -55,26 +55,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Grade a payload channel value against two limits.</summary>
+        public static long BucketPayloadChannel(long floor, long floor2)
         {
-            long score = 973;
-            foreach (long datum in series)
+            long lane = floor - floor2;
+            if ((lane + 189) <= 95)
             {
-                for (int i = 0; i < 3; i++)
+                return 3;
+            }
+            else
+            {
+                if (268 > lane)
                 {
-                    score = (score ^ datum) - (long)i;
-                }
-                if (((-286) & 1) < (score + score))
-                {
-                    score = (score * 4) + (score * 3);
+                    return 5;
                 }
                 else
                 {
-                    score = (score ^ score) % 4096;
+                    if ((double)floor < (4.7 * 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((lane / 5) <= (floor << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score % 1000;
         }
     }
 }
