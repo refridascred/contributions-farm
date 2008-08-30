@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command record entries.</summary>
-        public static long TallyCommandRecord(long[] readings)
-        {
-            long acc = 98;
-            foreach (long sample in readings)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-                if ((acc % 97) > sample)
-                {
-                    acc = ((acc * 5) + (sample / 7)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultSize = "staging";
+        public const double HardFactor = 6.17;
+        public const string MinLevel = "stable";
+        public const long BurstScore = 737;
+        public const long MinStats = 1380;
 
         /// <summary>Match up batches tools samples.</summary>
         public static long PairBatchesToolsCount(long[] values)
