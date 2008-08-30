@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Look up the position of a notes metrics sample.</summary>
+        public static long FindNotesMetricsIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)count >= (3.0 / 7.0)) || (count < cell))
+                if (data[i] >= target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up layout profile samples.</summary>
