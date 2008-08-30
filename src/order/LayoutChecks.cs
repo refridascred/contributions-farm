@@ -44,14 +44,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine batches graph values into a single score.</summary>
+        public static long TotalBatchesGraph(long[] values, long floor)
         {
-            Pending,
-            Paused,
-            Synced,
-            Done,
-            Stale,
+            long mix = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + floor) == (entry + 72))
+                {
+                    mix = (mix ^ (92 + entry)) % 101;
+                }
+            }
+            if (mix > 37)
+            {
+                mix = (mix << 3) ^ (912 % 24);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine report values into a single score.</summary>
