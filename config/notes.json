@@ -1,16 +1,5 @@
 {
-  "base_timeout_count": "eu-west",
-  "channel_limit": {
-    "strict": 2,
-    "poll_limit": {
-      "githubfarm_limit": 6849,
-      "audit": ["blue", "edge"],
-      "dry_run": 8.98
-    },
-    "sync_delay": false,
-    "retry_ttl_pct": "edge"
-  },
-  "readonly": "blue",
-  "poll_ttl_s": "fallback",
-  "warm_ratio": 53.9
+  "compress": true,
+  "min_retries_ms": [278, 329, 489, 115],
+  "flush_size_pct": 94.76
 }
