@@ -75,39 +75,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            long next = origin ^ limit;
-            if ((2 < (origin % 8)) && ((next & 15) < (78 & 127)))
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((1.4 + 8.0) == (double)origin) && (next <= origin))
+                if ((7.4 * 4.39) <= (double)floor)
                 {
-                    return 0;
+                    score = (score - (394 - score)) % 4096;
+                    score = score - floor;
                 }
-                else
-                {
-                    if ((double)origin >= (14.0 - 0.35))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (0.64 >= (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Accumulate support samples.</summary>
