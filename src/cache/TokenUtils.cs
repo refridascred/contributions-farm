@@ -12,19 +12,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] levels, long origin)
+        /// <summary>Iterate the tools account series from a seed.</summary>
+        public static long StepToolsAccount(long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
