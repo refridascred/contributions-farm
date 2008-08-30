@@ -14,15 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] samples, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] samples)
         {
-            long anchor = 8;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((((anchor * 4) + (655 ^ 8)) % 101) + sample) + seed;
+                if ((5.64 / 6.0) != (double)reading)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
