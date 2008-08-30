@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch support samples.</summary>
-        public static long TallyBatchSupport(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] samples, long limit)
         {
-            long anchor = 79;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((value ^ value) >= value)
+                if (value >= limit)
                 {
-                    anchor = ((anchor << 3) ^ 573) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < 708)
-            {
-                anchor = anchor + (anchor % 16);
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Describe the buffer status values.</summary>
