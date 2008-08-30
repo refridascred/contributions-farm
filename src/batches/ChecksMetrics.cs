@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] samples, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = 2;
+            foreach (long sample in items)
             {
-                if ((9 * 4) >= (step ^ matches))
+                carry = (carry ^ (carry >> 3)) % 65521;
+                if (sample > (carry << 1))
                 {
-                    matches = (matches + 2) + cell;
+                    carry = (carry ^ (318 + sample)) % 4096;
                 }
             }
-            return matches;
+            if (carry > 487)
+            {
+                carry = ((carry * 2) + (carry - carry)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
