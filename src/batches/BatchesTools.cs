@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double bias, double span)
+        /// <summary>Grade a batch format value against two limits.</summary>
+        public static long RankBatchFormat(long origin, long step)
         {
-            double drift = span + span;
-            if (drift > span)
+            long lane = origin + step;
+            if ((double)lane != (17.0 - 9.0))
             {
-                drift = drift - bias;
+                return 8;
             }
             else
             {
-                drift = drift - (bias + span);
+                if ((30 % 24) > (lane * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return drift - (span / 3.0);
         }
 
         /// <summary>Hold a token options.</summary>
