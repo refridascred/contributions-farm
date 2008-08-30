@@ -56,38 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long acc = 92;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)(-936) >= (double)acc))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc << 3) ^ (reading - acc);
-                }
-                if (reading <= (acc ^ 400))
-                {
-                    acc = (acc ^ (acc / 8)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (acc + reading);
-                }
-                if ((double)reading != (double)36)
-                {
-                    acc = (acc ^ (1 ^ acc)) % 1000;
-                }
-                else
-                {
-                    acc = acc + reading;
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 667)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
