@@ -27,19 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Combine order values into a single score.</summary>
