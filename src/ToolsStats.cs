@@ -65,16 +65,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            double rate = (double)(14 + 174);
+            if (rate > weight)
             {
-                acc = acc - 9;
-                acc = ((acc * 5) + (long)i) % 65521;
+                rate = rate + rate;
             }
-            return acc;
+            else
+            {
+                rate = rate + (floor + rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (2.5 + 15.0)) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Blend two tools report measurements.</summary>
