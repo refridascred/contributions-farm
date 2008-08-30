@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
-        public static bool CheckClusterPayloadRange(long[] series, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a graph counter reading.</summary>
