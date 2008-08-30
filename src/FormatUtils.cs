@@ -87,11 +87,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
