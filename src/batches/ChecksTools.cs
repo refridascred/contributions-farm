@@ -12,23 +12,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((target * 5) >= (683 - target)) || ((7.0 + 4.0) > (double)mark))
+                if (datum <= seed)
                 {
+                    found = false;
                     break;
                 }
-                else
-                {
-                    mark = (mark * 3) + target;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
