@@ -23,13 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count record route pairs that satisfy a relation.</summary>
+        public static long OverlapRecordRouteCount(long[] readings)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate stream batch samples.</summary>
