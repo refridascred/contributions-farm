@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double weight = (double)((-354) + (-70));
-            if (weight >= (offset * 12.0))
-            {
-                weight = weight - (offset + ratio);
-            }
-            return weight - (double)567;
+            Draft,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Project the next account value.</summary>
