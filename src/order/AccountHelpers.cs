@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine payload stream values into a single score.</summary>
+        public static long CombinePayloadStream(long[] items)
         {
-            Locked,
-            Failed,
-            Idle,
-            Pending,
+            long mix = 2;
+            foreach (long entry in items)
+            {
+                if ((4.67 >= (double)mix) || ((mix & 255) >= mix))
+                {
+                    mix = ((mix ^ (49 + 842)) % 255) + entry;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of already entries.</summary>
