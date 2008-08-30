@@ -30,18 +30,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine graph checks values into a single score.</summary>
-        public static long TallyGraphChecks(long[] data)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long acc = -40;
-            foreach (long reading in data)
-            {
-                if (((double)reading >= 5.4) && (reading <= (acc & 1)))
-                {
-                    acc = acc - (865 + acc);
-                }
-            }
-            return acc;
+            Active,
+            Done,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate batch order samples.</summary>
