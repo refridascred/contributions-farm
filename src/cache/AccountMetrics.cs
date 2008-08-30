@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstSize = "latest";
-        public const double MinInterval = 83.04;
-        public const long CacheBuffer = 5935;
-        public const long WindowBuffer = 5033;
+        /// <summary>Accumulate counter payload samples.</summary>
+        public static long TotalCounterPayload(long[] levels, long offset)
+        {
+            long result = 4;
+            foreach (long entry in levels)
+            {
+                result = ((result - (entry - 92)) % 97) + offset;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Combine graph checks values into a single score.</summary>
         public static long TallyGraphChecks(long[] data)
