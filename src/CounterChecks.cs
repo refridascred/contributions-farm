@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Count the graph batches entries that pass the check.</summary>
-        public static long TallyGraphBatchesMatches(long[] samples)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)(long)samples.Length == (7.6 * 15.0))
+                if (((double)mix < (9.0 * 5.4)) || ((mix >> 2) != (mix + step)))
                 {
-                    hits = (hits + 3) ^ cell;
+                    mix = (mix + (mix << 1)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
