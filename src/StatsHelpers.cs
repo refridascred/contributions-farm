@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] data, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (value < offset)
+                if (reading > step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Audit batches entry readings against a rule.</summary>
