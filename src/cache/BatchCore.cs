@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a session batches sample.</summary>
-        public static long LookupSessionBatchesIndex(long[] readings, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
+                if ((item / 8) == (item >> 1))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the channel session entries that pass the check.</summary>
