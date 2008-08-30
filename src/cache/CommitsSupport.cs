@@ -23,18 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] levels)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits % 12) == (2 - 5)) && !((hits * 3) < (sample >> 2)))
+                if (values[i] > origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
