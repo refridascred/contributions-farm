@@ -44,19 +44,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] data, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading < step)
+                if ((double)anchor >= (double)limit)
                 {
-                    found = false;
+                    anchor = ((anchor * 5) + (anchor + 99)) % 255;
                     break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
     }
 }
