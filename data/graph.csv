@@ -1,7 +1,10 @@
-id,ratio,label
-1,87.81,14.77
-2,133,205
-3,538,574
-4,13.2,560
-5,523,850
-6,green,12.62
+id,ratio,rank,token
+1,78.11,primary,legacy
+2,98.89,648,eu-west
+3,65.52,staging,open
+4,457,2.69,6.95
+5,stable,19,984
+6,local,primary,9.49
+7,blue,strict,open
+8,460,open,blue
+9,666,71.31,49.76
