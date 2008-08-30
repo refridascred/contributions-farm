@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
             Stale,
+            Done,
+            Pending,
             Failed,
-            Dropped,
-            New,
         }
 
         /// <summary>Describe the farm phase values.</summary>
