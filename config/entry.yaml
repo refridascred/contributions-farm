@@ -1,30 +1,11 @@
 # entry settings
-default_ratio_s: green
-burst_capacity_count: 1024
-metrics_delay: false
-default_timeout:
-  checks_window:
-    verbose: true
-    enabled: 7023
-    cache_ratio: strict
-    profile_delay: 19
-    flush_retries_ms: stable
-  flush_ratio:
-    layout_ratio: true
-    sync_delay: legacy
-    order_capacity: false
-  default_depth_pct:
-    batch_limit:
-      - 351
-      - 3
-      - 485
-      - 172
-    verbose: true
-    flush_depth_ms: 100
-    strict: 60
-  token_threshold:
-    - 248
-    - 332
-  default_ratio_ms: blue
-  readonly: 8530
-persist: blue
+flush_retries_pct:
+  - primary
+  - legacy
+  - blue
+  - local
+retry_ttl: 250
+route_retries:
+  - 366
+  - 382
+burst_retries_s: staging
