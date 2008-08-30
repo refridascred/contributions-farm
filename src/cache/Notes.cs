@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 2775;
-        public const long DefaultCommand = 8658;
-        public const double MaxCommand = 81.41;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit batch profile readings against a rule.</summary>
         public static long TallyBatchProfileMatches(long[] levels)
