@@ -25,32 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long bound, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] levels, long step)
         {
-            long prev = bound - origin;
-            if ((bound - prev) > prev)
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev >> 4) < (origin - prev))
+                if ((0 + step) <= 926)
                 {
-                    return 2;
+                    count = (count + 3) + value;
                 }
                 else
                 {
-                    if ((double)prev >= (double)578)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
