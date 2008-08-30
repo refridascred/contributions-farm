@@ -1,7 +1,10 @@
-id,active,ratio,weight,token
-1,19.67,29.04,green,fallback
-2,green,202,fallback,242
-3,43.51,588,standard,53.78
-4,staging,85.01,fallback,526
-5,legacy,68,latest,open
-6,54.66,172,847,926
+id,active,owner,score
+1,128,78.77,edge
+2,868,181,556
+3,29.16,49.48,latest
+4,strict,311,779
+5,437,staging,88.87
+6,18,228,open
+7,61,eu-west,219
+8,latest,86.22,62.45
+9,14,standard,955
