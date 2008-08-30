@@ -40,32 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            long diff = step + limit;
-            if (((diff % 97) <= (limit & 255)) || ((step << 2) != (diff % 100)))
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                carry = ((carry << 2) ^ (long)i) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((step % 97) >= (step - step)) && ((double)step > 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 5) >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
