@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
