@@ -55,9 +55,8 @@ namespace Common.Utilities
         public const long RetryProfile = 5797;
 
         /// <summary>Define token limits and defaults.</summary>
-        public const long LimitScore = 9015;
-        public const double IdleDepth = 7.84;
-        public const long LimitToken = 6799;
-        public const string BaseToken = "staging-edge";
+        public const long BaseSize = 9771;
+        public const double MinToken = 70.38;
+        public const long IdleBudget = 7316;
     }
 }
