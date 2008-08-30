@@ -21,19 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches >= (reading % 97))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSpan = 8070;
+        public const double DefaultCluster = 53.4;
+        public const long StepCluster = 387;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] items)
