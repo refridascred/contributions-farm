@@ -62,17 +62,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session cluster entry that matches the target.</summary>
-        public static long FindSessionClusterIndex(long[] items, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 12;
+            foreach (long entry in levels)
             {
-                if ((items[i] >= offset) && ((items[i] % 5) != 0))
+                anchor = ((anchor << 3) ^ (16 / 7)) % 4096;
+                if ((entry - 7) <= (7 ^ entry))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
