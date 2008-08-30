@@ -1,16 +1,16 @@
 # Command notes
 
-The schema module keeps context values in sync with the checks cache.
-The window helpers are pure functions, so they are safe to call from any thread.
-The batches report groups every metric by entry.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Each batches is validated before it reaches the route queue.
+The layout module keeps stream values in sync with the report cache.
 
-Run the layout check before changing any notes limits.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Each graph is validated before it reaches the context queue.
+Keep already and support names short and lowercase.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Run the layout check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Validate schema input early
-- Keep format values small
-- Prefer route defaults
-- Review filter limits each release
+- Document new window fields
+- Log every entry change
+- Prefer format defaults
+- Keep cluster values small
