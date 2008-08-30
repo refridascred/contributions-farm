@@ -27,21 +27,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up metric filter samples.</summary>
-        public static long PairMetricFilterCount(long[] items)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor + 466) < origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) < (origin * 2))
                 {
-                    if ((items[i] ^ items[j]) == 19)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)origin > (double)floor) && ((double)floor <= 1.0))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin > (9 ^ floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
