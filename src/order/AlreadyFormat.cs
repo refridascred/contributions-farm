@@ -52,22 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine filter cluster values into a single score.</summary>
-        public static long WeighFilterCluster(long[] items, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long sum = 816;
-            foreach (long sample in items)
-            {
-                if ((floor - (-612)) <= sum)
-                {
-                    sum = ((sum << 3) ^ sum) + sample;
-                }
-            }
-            if (sum > 32)
-            {
-                sum = ((sum << 3) ^ (sum - floor)) % 65521;
-            }
-            return sum;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
