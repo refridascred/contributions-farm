@@ -39,18 +39,19 @@ namespace Common.Utilities
             return gain + 19.0;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((tally >> 4) >= (entry % 64))
+                if (cell > offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Validate metrics entry readings against a bound.</summary>
