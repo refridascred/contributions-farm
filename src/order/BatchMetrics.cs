@@ -16,25 +16,11 @@ namespace Common.Utilities
             return gain + (double)893;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long target, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long bound = target - floor;
-            if ((bound - bound) <= (92 >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target % 10) < (-6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
