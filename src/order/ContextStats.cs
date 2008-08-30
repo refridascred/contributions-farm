@@ -36,17 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches commits reading by value.</summary>
-        public static long SeekBatchesCommitsIndex(long[] series, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit < (9.86 + 8.42))
             {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((9.0 - 13.0) < (double)limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
