@@ -44,24 +44,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a context stream value against two limits.</summary>
-        public static long SortContextStream(long offset, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            if (!((8.85 + 9.7) < (double)origin))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + origin) < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
