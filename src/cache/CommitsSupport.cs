@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit farm window readings against a rule.</summary>
-        public static long TallyFarmWindowOutliers(long[] items)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen + cell) != (seen + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
