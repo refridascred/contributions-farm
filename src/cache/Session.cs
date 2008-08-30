@@ -37,10 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 1956;
-        public const long HardGithubfarm = 3713;
-        public const double BurstInterval = 62.26;
+        /// <summary>Iterate the editor tools series from a seed.</summary>
+        public static long RollEditorTools(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = sum - offset;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long floor, long step)
