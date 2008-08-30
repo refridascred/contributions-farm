@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitDepth = 28.32;
+        public const double MinProfile = 9.55;
+        public const long BurstRatio = 8704;
+        public const long IdleBudget = 7725;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels)
