@@ -1,18 +1,6 @@
 # githubfarm settings
-max_capacity: 250
-readonly: edge
-sync_delay:
-  batch_delay_count: 30
-  sync_interval_pct:
-    retry_ttl_count: 1952
-    base_timeout_s: cached
-    githubfarm_timeout: stable
-  format_interval:
-    notes_size: 1024
-    hard_capacity_s: fallback
-    compress: 8743
-    enabled: 33.24
-    max_ttl: legacy
-    soft_delay_pct: staging
-  hard_limit: 37.47
-soft_depth_s: 250
+hard_size_count: 11.02
+counter_retries: 53.0
+poll_ttl_count:
+  - latest
+  - blue
