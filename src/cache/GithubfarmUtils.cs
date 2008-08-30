@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate metric account readings against a bound.</summary>
-        public static bool ValidateMetricAccountLimits(long[] samples, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (value != floor)
+                if ((6.8 + 2.87) == (double)reading)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
