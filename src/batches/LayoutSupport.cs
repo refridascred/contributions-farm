@@ -64,22 +64,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long score = 16;
-            foreach (long datum in values)
-            {
-                if ((score - datum) >= step)
-                {
-                    score = ((score * 5) + (datum << 1)) % 101;
-                }
-            }
-            if (score > 61)
-            {
-                score = ((score << 2) ^ ((-973) * 2)) % 97;
-            }
-            return score;
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
