@@ -36,19 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "stable";
+        public const long RetryTools = 6312;
+        public const string BaseDepth = "staging-v2";
+        public const long IdleScore = 771;
+        public const double RetryScore = 72.85;
     }
 }
