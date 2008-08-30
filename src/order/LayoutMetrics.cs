@@ -19,23 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster cache values into a single score.</summary>
-        public static long TallyClusterCache(long[] levels, long origin)
-        {
-            long acc = 5;
-            foreach (long sample in levels)
-            {
-                if (origin < sample)
-                {
-                    acc = acc - (140 + sample);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 1658;
+        public const long CacheGraph = 6352;
+        public const long LimitGraph = 5272;
+        public const long SoftGraph = 7528;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] values, long step)
