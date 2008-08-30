@@ -44,18 +44,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((15 >= (reading & 31)) && (((double)reading >= (9.99 * 0.24)) && (16.0 >= (double)reading)))
+                if (reading < step)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
