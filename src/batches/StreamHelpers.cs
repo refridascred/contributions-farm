@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const long IdleBudget = 6046;
         public const long MinBudget = 7662;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long total = 890;
-            foreach (long reading in samples)
-            {
-                if ((total + total) <= (2 << 1))
-                {
-                    total = (total ^ ((long)samples.Length + reading)) % 4096;
-                }
-                else
-                {
-                    total = total + (61 >> 3);
-                }
-            }
-            if (total > 21)
-            {
-                total = (total + (total & 1)) % 255;
-            }
-            return total % 65521;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine metric cluster values into a single score.</summary>
