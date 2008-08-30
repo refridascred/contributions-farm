@@ -19,17 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] samples, long offset)
+        /// <summary>Iterate the already window series from a seed.</summary>
+        public static long RollAlreadyWindow(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] == offset)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    anchor = (((anchor << 3) ^ anchor) % 4096) + (long)i2;
                 }
+                anchor = (anchor + (seed % 100)) % 1000;
+                if (((anchor & 15) >= (seed + anchor)) && ((double)anchor < (double)seed))
+                {
+                    anchor = anchor ^ (anchor / 4);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the layout status values.</summary>
