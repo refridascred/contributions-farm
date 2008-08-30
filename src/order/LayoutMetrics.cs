@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long offset, long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            if (!(target >= (offset + offset)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target << 1) > (target % 8)) && (offset > (649 - offset)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((19.0 * 7.0) == (double)offset)
+                    if ((readings[i] + readings[j]) != 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((27 ^ target) == (target + 61))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many filter schema samples are out of range.</summary>
