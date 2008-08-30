@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy stable edge open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 6 ]; do
@@ -16,9 +18,9 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-latest}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
