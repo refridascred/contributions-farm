@@ -19,17 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a buffer githubfarm reading by value.</summary>
-        public static long FindBufferGithubfarmIndex(long[] samples, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (samples[i] <= target)
+                if (sample < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
