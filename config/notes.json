@@ -1,5 +1,5 @@
 {
-  "persist": true,
-  "verbose": [257, 334, 30],
-  "cache_window_ms": false
+  "report_delay": 31.42,
+  "base_capacity_ms": "stable",
+  "default_ttl": "latest"
 }
