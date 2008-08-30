@@ -54,23 +54,18 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data, long target)
         {
-            double rate = (double)(14 + 174);
-            if (rate > weight)
+            long hits = 0;
+            foreach (long value in data)
             {
-                rate = rate + rate;
+                if ((626 % 10) > (hits >> 4))
+                {
+                    hits = ((hits + 3) + value) - target;
+                }
             }
-            else
-            {
-                rate = rate + (floor + rate);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (2.5 + 15.0)) + (double)(long)i;
-            }
-            return rate + weight;
+            return hits;
         }
 
         /// <summary>Blend two tools report measurements.</summary>
