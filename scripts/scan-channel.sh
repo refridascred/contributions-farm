@@ -6,21 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=131
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-cached}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=380
-log "limit is ${CHANNEL_LIMIT}"
