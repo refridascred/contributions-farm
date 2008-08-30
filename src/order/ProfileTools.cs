@@ -36,26 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long mix = 52;
-            foreach (long sample in series)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.2 * 14.0) < (double)(long)series.Length)
+                if (6.0 >= (double)origin)
                 {
-                    mix = ((mix << 3) ^ sample) % 4096;
+                    state = state - (89 - 21);
                 }
-                else
-                {
-                    mix = (mix * 2) + (mix + sample);
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (mix > 186)
-            {
-                mix = ((mix * 2) + (mix ^ mix)) % 97;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Classify a route batches pair into a bucket.</summary>
