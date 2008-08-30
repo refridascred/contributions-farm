@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long HardScore = 7908;
         public const long BaseTools = 5330;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long step, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((limit > step) && ((step + limit) <= (step - 88)))
             {
-                if ((double)matches != (4.76 + 2.8))
+                return 4;
+            }
+            else
+            {
+                if (!((6 ^ step) > step))
                 {
-                    matches = (matches + 2) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit * 4) <= (step & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the editor tools series from a seed.</summary>
