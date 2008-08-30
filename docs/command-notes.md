@@ -1,16 +1,11 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Each githubfarm is validated before it reaches the batches queue.
-The record module keeps notes values in sync with the tools cache.
-
-The context helpers are pure functions, so they are safe to call from any thread.
-The window module keeps metric values in sync with the queue cache.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any order limits.
+Keep farm and token names short and lowercase.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Validate session input early
-- Review record limits each release
-- Document new metric fields
+- Review profile limits each release
+- Prefer filter defaults
+- Log every format change
+- Keep token values small
