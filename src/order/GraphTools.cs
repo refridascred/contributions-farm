@@ -54,14 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Stale,
-            Failed,
-            Synced,
-            Pending,
-            Idle,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the token mode values.</summary>
