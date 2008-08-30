@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the context cluster series from a seed.</summary>
-        public static long SeriesContextCluster(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                long prev = limit;
-                result = result + prev;
-                result = ((result * 3) + (long)i) % 97;
+                if (!(reading <= (482 + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
