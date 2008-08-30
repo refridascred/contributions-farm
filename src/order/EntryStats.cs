@@ -60,19 +60,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long mix = 89;
+            foreach (long datum in samples)
             {
-                if (sample >= step)
+                if ((double)datum >= (3.75 - 8.11))
                 {
-                    flag = false;
+                    mix = ((mix * 4) + 78) % 101;
+                    mix = mix ^ (mix & 127);
+                }
+                mix = (mix + (datum & 255)) % 97;
+                if (((7.36 - 9.74) != (double)mix) || (96 <= (mix >> 2)))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of editor graph readings.</summary>
