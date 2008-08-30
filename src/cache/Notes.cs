@@ -31,18 +31,12 @@ namespace Common.Utilities
             return load - (double)576;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] levels, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((entry - 7) < matches) && (entry > (entry & 255))))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Derive the next support metric value from a seed.</summary>
