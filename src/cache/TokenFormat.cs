@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long sum = 2;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((925 & 3) < (sum + cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum * 4) + (64 << 2)) % 97;
-                }
-                sum = (sum + (sum ^ sum)) % 1000;
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
