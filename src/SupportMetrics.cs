@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Support metrics helpers.</summary>
     public static class SupportMetrics
     {
-        /// <summary>Look up the position of a booking sample.</summary>
-        public static long LocateBookingIndex(long[] series, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] <= offset)
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
