@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long carry = 4;
+            foreach (long item in readings)
             {
-                if ((double)matches <= (2.59 + 6.5))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
+                carry = (carry + (carry & 127)) + item;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Check that every farm format entry stays within the limit.</summary>
