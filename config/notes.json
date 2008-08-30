@@ -1,5 +1,13 @@
 {
-  "compress": true,
-  "min_retries_ms": [278, 329, 489, 115],
-  "flush_size_pct": 94.76
+  "audit": {
+    "readonly": "latest",
+    "compress": "eu-west",
+    "poll_timeout": true,
+    "batch_capacity": "standard",
+    "verbose": true,
+    "strict": "cached"
+  },
+  "cache_capacity": 89,
+  "profile_threshold": [486, 319],
+  "dry_run": true
 }
