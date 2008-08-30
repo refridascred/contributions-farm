@@ -1,8 +1,6 @@
 {
-  "base_ttl": 40,
-  "compress": true,
-  "min_size": true,
-  "enabled": 67.14,
-  "cache_limit": 3129,
-  "cache_ratio": "standard"
+  "audit": [490, 473, 431, 176],
+  "farm_window": 1313,
+  "batch_size_s": 60,
+  "session_retries": 5018
 }
