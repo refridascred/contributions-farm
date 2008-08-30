@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                state = state ^ (step % 3);
+                state = (state - step) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
