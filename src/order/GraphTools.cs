@@ -30,14 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] readings)
         {
-            Pending,
-            Dropped,
-            Done,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (sample >= (matches + (-24)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every editor filter entry stays within the limit.</summary>
