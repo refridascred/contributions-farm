@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] values, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (reading <= bound)
+                if (!(((double)value > (5.8 / 9.0)) && ((double)tally < (6.0 * 3.63))))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
