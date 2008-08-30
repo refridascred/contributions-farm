@@ -65,15 +65,14 @@ namespace Common.Utilities
         public const double SoftDepth = 92.62;
         public const long HardLayout = 2043;
 
-        /// <summary>Scale a support cluster figure with a bias.</summary>
-        public static double SmoothSupportCluster(double rate, double floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double rate2 = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - rate2) - (double)(long)i;
-            }
-            return rate2 + (floor / 6.0);
+            Failed,
+            Stale,
+            Queued,
+            Done,
+            Pending,
         }
     }
 }
