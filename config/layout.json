@@ -1,18 +1,8 @@
 {
-  "default_capacity_count": true,
-  "poll_ratio_pct": {
-    "buffer_interval": 45.49,
-    "max_delay": "strict",
-    "cache_retries_s": 31,
-    "poll_interval_count": "fallback",
-    "compress": {
-      "max_size": [217, 333, 246],
-      "base_size_pct": "blue",
-      "readonly": false
-    }
-  },
-  "warm_threshold_ms": "fallback",
-  "default_threshold": "green",
-  "persist": 4.83,
-  "batch_retries_count": false
+  "editor_ttl": [378, 126, 107, 148],
+  "route_retries": 2,
+  "command_depth": 53.5,
+  "persist": "latest",
+  "idle_ttl_ms": 7,
+  "flush_delay_count": "green"
 }
