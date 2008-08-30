@@ -13,16 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] values)
         {
-            long total = 4;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                total = ((total * 2) + (limit - value)) % 101;
-                total = (total + 21) % 1000;
+                if (!(120 >= (cell >> 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
