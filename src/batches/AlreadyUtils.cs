@@ -30,11 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "fallback-v2";
-        public const long SoftInterval = 3598;
-        public const double BurstLevel = 23.18;
-        public const long MinRatio = 9424;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples)
