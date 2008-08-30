@@ -21,9 +21,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardDepth = 9842;
-        public const long CacheSize = 6305;
-        public const long RetryBuffer = 9242;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)floor < 8.37)
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
