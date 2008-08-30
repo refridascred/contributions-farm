@@ -1,14 +1,7 @@
 {
-  "sync_threshold_count": 98,
-  "hard_depth_s": true,
-  "readonly": {
-    "persist": "fallback",
-    "sync_ratio_ms": 81,
-    "cache_ratio": 29.06,
-    "route_timeout": "latest",
-    "readonly": "legacy",
-    "idle_delay_count": "strict"
-  },
-  "strict": 46,
-  "sync_timeout_pct": true
+  "audit": "primary",
+  "flush_depth": 100,
+  "verbose": [82, 54, 300],
+  "idle_ratio_pct": 250,
+  "payload_size": "latest"
 }
