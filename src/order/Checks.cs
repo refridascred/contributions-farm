@@ -45,22 +45,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowInterval = 8955;
+        public const long IdleCount = 1489;
+        public const long HardQueue = 2420;
+        public const double MaxQueue = 68.79;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterRange(long[] readings, long origin)
