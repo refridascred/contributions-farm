@@ -48,26 +48,15 @@ namespace Common.Utilities
             return ratio + (offset + weight);
         }
 
-        /// <summary>Fold a list of account context readings.</summary>
-        public static long TallyAccountContext(long[] readings, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long anchor = 27;
-            foreach (long entry in readings)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((3.0 - 13.0) >= (15.0 * 10.0)) || (anchor < (anchor + (long)readings.Length)))
-                {
-                    anchor = ((anchor - anchor) % 255) + entry;
-                }
-                if (!((floor & 63) <= (anchor % 10)))
-                {
-                    anchor = (anchor + (anchor * 3)) % 65521;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (anchor > (-496))
-            {
-                anchor = ((anchor << 2) ^ (floor + anchor)) % 4096;
-            }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
