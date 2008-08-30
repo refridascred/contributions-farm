@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!(((double)value > (5.8 / 9.0)) && ((double)tally < (6.0 * 3.63))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8315;
+        public const long DefaultSize = 1585;
+        public const long IdleLevel = 7087;
+        public const double RetryFilter = 68.41;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string WindowCommits = "strict-v2";
