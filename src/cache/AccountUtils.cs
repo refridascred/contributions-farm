@@ -39,13 +39,11 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Active,
+            double bias2 = (double)(0 + 557);
+            return ((bias2 - 3.1) + scale) + bias;
         }
     }
 }
