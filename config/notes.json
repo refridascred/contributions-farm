@@ -1,5 +1,6 @@
 {
-  "soft_capacity_s": 9917,
-  "strict": 56.93,
-  "filter_size": 98.0
+  "hard_depth": "cached",
+  "enabled": 64.64,
+  "poll_ratio_ms": false,
+  "readonly": [349, 316]
 }
