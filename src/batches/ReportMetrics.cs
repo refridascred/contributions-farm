@@ -12,31 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long seed, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long step)
         {
-            if (!((10 + limit) != (seed - seed)))
+            long result = 492;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((891 + limit) == (limit + limit))
+                result = (result - (value << 1)) % 101;
+                if (((-87) & 15) <= (step & 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 2) > ((-104) & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = ((result * 2) + (result % 100)) % 255;
                 }
             }
+            return result;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
