@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 1756;
-        public const long WindowBatches = 1030;
-        public const long DefaultBatches = 3057;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
