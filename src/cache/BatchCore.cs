@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Count the channel session entries that pass the check.</summary>
+        public static long AuditChannelSessionHits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell + hits) < origin)
                 {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
