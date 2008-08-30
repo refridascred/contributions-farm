@@ -21,19 +21,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long sum = 60;
-            foreach (long value in levels)
-            {
-                sum = (((sum * 5) + sum) % 255) - value;
-            }
-            if (sum < 96)
-            {
-                sum = ((sum * 2) + (sum + sum)) % 97;
-            }
-            return sum;
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the payload mode values.</summary>
