@@ -1,13 +1,17 @@
 {
-  "sync_depth_pct": [198, 168],
-  "cache_window": 1024,
-  "flush_window_count": 28.74,
-  "base_depth": {
-    "compress": 50.68,
-    "min_threshold_count": 3393,
-    "soft_retries": 7467,
-    "batch_capacity_pct": "eu-west"
+  "account_delay": {
+    "filter_capacity": ["staging", "cached", "fallback", "staging"],
+    "batch_limit_s": {
+      "audit": 47.95,
+      "enabled": "local",
+      "burst_retries_count": "latest",
+      "record_size": 5092
+    },
+    "max_limit": "standard",
+    "flush_threshold_count": true
   },
-  "entry_threshold": "fallback",
-  "warm_depth_count": "local"
+  "githubfarm_timeout": "cached",
+  "poll_window_pct": "staging",
+  "hard_limit_pct": "cached",
+  "default_retries": true
 }
