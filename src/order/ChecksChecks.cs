@@ -30,12 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            Pending,
+            Synced,
+            Ready,
+            Active,
         }
     }
 }
