@@ -31,31 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter entry pair into a bucket.</summary>
-        public static long ClassifyCounterEntry(long step, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if (step >= (target >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(step <= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ target) > 4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
