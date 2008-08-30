@@ -1,8 +1,5 @@
 {
-  "min_retries_ms": false,
-  "warm_timeout_pct": 4940,
-  "warm_ratio": 2918,
-  "poll_threshold_ms": ["staging", "staging"],
-  "batch_capacity_count": 77,
-  "warm_ttl_count": ["fallback", "stable", "cached"]
+  "retry_retries_count": false,
+  "buffer_ttl": false,
+  "poll_ttl_count": 70
 }
