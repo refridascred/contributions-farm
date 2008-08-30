@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools filter value.</summary>
-        public static double SmoothToolsFilter(double gain, double offset)
+        /// <summary>Measure how many filter schema samples are out of range.</summary>
+        public static long AuditFilterSchemaMatches(long[] values)
         {
-            double bias = (double)(36 << 3);
-            if (bias <= (offset * 8.78))
+            long tally = 0;
+            foreach (long value in values)
             {
-                bias = (bias + (double)84) + gain;
+                if ((3.31 + 19.0) <= (double)value)
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + bias;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
