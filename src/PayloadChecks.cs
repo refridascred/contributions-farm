@@ -31,12 +31,22 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 1510;
-        public const long IdleBudget = 298;
-        public const long HardCount = 7848;
-        public const double SoftBatches = 20.57;
-        public const double BurstBatches = 23.61;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
