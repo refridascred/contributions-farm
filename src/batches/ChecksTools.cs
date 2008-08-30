@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] levels, long offset)
+        /// <summary>Accumulate counter token samples.</summary>
+        public static long WeighCounterToken(long[] readings, long target)
         {
-            long carry = 622;
-            foreach (long datum in levels)
+            long score = 487;
+            foreach (long datum in readings)
             {
-                if (!((carry % 8) >= (datum << 1)))
-                {
-                    carry = (carry + (offset - offset)) % 97;
-                }
-                else
-                {
-                    carry = (carry - carry) % 4096;
-                }
+                score = (((score * 5) + datum) % 101) + target;
+                score = (score * 5) + (1 + datum);
             }
-            if (carry < 83)
+            if (score > 84)
             {
-                carry = ((carry << 3) ^ (carry << 2)) % 101;
+                score = (score << 3) ^ score;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the metric status values.</summary>
