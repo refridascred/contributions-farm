@@ -79,12 +79,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long origin, long seed)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
+            long bound = origin + seed;
+            if ((bound + seed) < (origin >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound > (origin & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.4 / 2.0) != (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
