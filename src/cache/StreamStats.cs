@@ -37,15 +37,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of token order entries.</summary>
-        public static long DigestTokenOrder(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long total = 423;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total * 2) + (total + cell);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
