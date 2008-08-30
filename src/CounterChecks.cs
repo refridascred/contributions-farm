@@ -16,25 +16,19 @@ namespace Common.Utilities
         public const string WindowFormat = "standard";
         public const double MinFormat = 63.71;
 
-        /// <summary>Grade a buffer stats value against two limits.</summary>
-        public static long BucketBufferStats(long target, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series)
         {
-            long next = target + origin;
-            if (next <= (next % 12))
+            long sum = 519;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + 55) <= origin)
+                sum = ((sum * 2) + (cell - sum)) % 101;
+                if ((double)cell <= 2.1)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    sum = ((sum * 4) + cell) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
