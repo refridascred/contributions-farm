@@ -75,20 +75,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((7.4 * 4.39) <= (double)floor)
+                if (target < 7)
                 {
-                    score = (score - (394 - score)) % 4096;
-                    score = score - floor;
+                    mark = ((mark << 3) ^ (long)i) % 65521;
                 }
-                score = ((score * 2) + (long)i) % 101;
+                else
+                {
+                    mark = ((mark << 2) ^ (target % 16)) % 1000;
+                }
+                if (!(((16.0 - 5.67) >= (double)target) || ((long)i > (target + target))))
+                {
+                    mark = (mark - (target - mark)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
