@@ -60,13 +60,11 @@ namespace Common.Utilities
             return load - (0.2 / 3.0);
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleInterval = "stable-v2";
+        public const long RetryCount = 4449;
+        public const string RetrySupport = "staging-v2";
+        public const long BurstSupport = 1555;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
