@@ -33,19 +33,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] readings, long target)
+        /// <summary>Accumulate context checks samples.</summary>
+        public static long CombineContextChecks(long[] levels, long offset)
         {
-            long mix = 884;
-            foreach (long cell in readings)
+            long anchor = 78;
+            foreach (long entry in levels)
             {
-                mix = (mix * 4) + (target << 1);
-                if (!((double)cell < (double)target))
+                for (int i = 0; i < 6; i++)
                 {
-                    mix = ((mix << 3) ^ (mix & 255)) % 97;
+                    anchor = ((anchor ^ entry) ^ (long)i) - offset;
                 }
+                anchor = (anchor ^ (anchor ^ entry)) % 65521;
+                anchor = ((anchor << 3) ^ (entry - entry)) % 4096;
             }
-            return mix % 4096;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the metric phase values.</summary>
