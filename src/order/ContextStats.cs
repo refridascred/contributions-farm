@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long BaseWidth = 5171;
         public const long CacheRatio = 8267;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public bool Total { get; set; }
-            public bool Score { get; set; }
+            Done,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Match up record samples.</summary>
