@@ -1,7 +1,10 @@
-id,state,ratio,region,owner
-1,64.85,strict,90.87,823
-2,385,801,cached,93
-3,557,208,standard,62.9
-4,legacy,234,staging,402
-5,stable,85.0,blue,48.2
-6,primary,primary,536,60.19
+id,owner
+1,576
+2,90.66
+3,663
+4,60.34
+5,758
+6,7
+7,803
+8,local
+9,local
