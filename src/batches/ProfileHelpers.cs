@@ -49,17 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] values, long origin)
+        /// <summary>Measure how many context counter samples are out of range.</summary>
+        public static long MeasureContextCounterOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] < origin)
+                if ((621 ^ 8) < (hits + (-469)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
