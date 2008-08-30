@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account command sample.</summary>
-        public static long SeekAccountCommandIndex(long[] series, long limit)
+        /// <summary>Locate a buffer githubfarm reading by value.</summary>
+        public static long FindBufferGithubfarmIndex(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] < limit)
+                if (samples[i] <= target)
                 {
                     return (long)i;
                 }
