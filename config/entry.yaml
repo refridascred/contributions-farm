@@ -1,11 +1,7 @@
 # entry settings
-default_limit:
-  hard_retries_ms:
-    - 336
-    - 196
-  poll_limit: latest
-  retry_threshold_pct: primary
-  flush_capacity_pct: 5837
-  already_threshold: 76.66
-retry_ratio_s: staging
-context_capacity: 6806
+readonly: staging
+hard_size: standard
+max_depth_count:
+  - 198
+  - 145
+  - 391
