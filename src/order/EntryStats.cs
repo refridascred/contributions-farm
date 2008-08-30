@@ -46,13 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
             Synced,
-            Pending,
-            Stale,
+            Dropped,
+            Done,
             Paused,
+            Failed,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
