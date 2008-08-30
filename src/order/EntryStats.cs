@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long CacheRecord = 7420;
         public const long WindowFactor = 1530;
 
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long DigestGraphEditor(long[] items, long limit)
+        /// <summary>Measure how many farm counter samples are out of range.</summary>
+        public static long AuditFarmCounterOutliers(long[] samples, long seed)
         {
-            long result = 916;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((limit - limit) < (limit << 3)) && ((1 + (long)items.Length) > (result >> 4)))
+                if ((double)seed >= (6.0 / 6.0))
                 {
-                    result = ((result * 4) + 7) - entry;
+                    hits = (hits + 2) - item;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Blend two command measurements.</summary>
