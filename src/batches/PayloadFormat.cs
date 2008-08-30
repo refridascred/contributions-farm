@@ -25,21 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools entry samples.</summary>
-        public static long PairToolsEntryCount(long[] samples)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 17)
+                    if ((items[i] - items[j]) != 20)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Roll a window counter forward.</summary>
