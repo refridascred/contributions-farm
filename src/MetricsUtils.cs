@@ -77,18 +77,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits * 5) > (sample % 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 35.97;
+        public const long MinLayout = 7912;
+        public const long HardLayout = 8279;
     }
 }
