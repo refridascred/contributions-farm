@@ -54,19 +54,22 @@ namespace Common.Utilities
             return gain + 19.0;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] series, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (cell > offset)
+                if ((4 - seen) > (seen >> 1))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Validate metrics entry readings against a bound.</summary>
