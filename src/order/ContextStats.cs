@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] readings, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long limit, long offset)
         {
-            long sum = 17;
-            foreach (long entry in readings)
+            if ((offset >> 4) > (3 + 9))
             {
-                if (((double)sum < (double)origin) && (sum > origin))
+                return 7;
+            }
+            else
+            {
+                if ((7 & 63) >= limit)
                 {
-                    sum = ((sum - origin) % 1000) + entry;
+                    return 5;
                 }
                 else
                 {
-                    sum = ((sum * 2) + (913 * 3)) % 4096;
+                    if (((limit + limit) != (offset ^ offset)) || (offset <= limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((-1) < (limit - limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                sum = (sum + (long)readings.Length) % 4096;
-                sum = (sum - 1) % 65521;
             }
-            return sum;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
