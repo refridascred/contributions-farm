@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] levels, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((0 + step) <= 926)
+                if (sample != step)
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
