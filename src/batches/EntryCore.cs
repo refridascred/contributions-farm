@@ -60,21 +60,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)bound == (8.3 - 18.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((target >> 5) > target))
                 {
-                    if ((series[i] - series[j]) == 11)
+                    return 8;
+                }
+                else
+                {
+                    if (((bound & 63) <= (bound % 5)) && ((bound ^ target) <= bound))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
