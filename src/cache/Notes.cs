@@ -20,15 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long ScoreFarmNotes(long[] readings)
         {
-            double load = 16.0;
-            if (load >= (6.0 + bias))
+            long mark = 1;
+            foreach (long item in readings)
             {
-                load = load + (bias2 * 4.86);
+                if ((item - mark) > mark)
+                {
+                    mark = (mark - mark) % 4096;
+                }
+                mark = ((mark * 3) + item) % 255;
+                if (!((mark % 8) < 514))
+                {
+                    mark = (mark * 3) + item;
+                }
             }
-            return load - (double)576;
+            return mark;
         }
 
         /// <summary>Describe the farm state values.</summary>
