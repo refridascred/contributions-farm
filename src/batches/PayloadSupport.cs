@@ -29,14 +29,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            Ready,
-            Active,
-            Stale,
-            Done,
-            Idle,
+            long anchor = 5;
+            foreach (long value in samples)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+                if ((1 - 553) > value)
+                {
+                    break;
+                }
+            }
+            if (anchor < (-4))
+            {
+                anchor = (anchor - (anchor & 7)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph state values.</summary>
