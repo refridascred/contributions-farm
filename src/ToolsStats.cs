@@ -73,15 +73,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a report already figure with a bias.</summary>
-        public static double SmoothReportAlready(double weight, double bias)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double mean = bias * 4.4;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (8.0 * 2.1)) + (double)(long)i;
-            }
-            return mean + weight;
+            New,
+            Idle,
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
