@@ -29,11 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double mean = gain;
-            return (mean + mean) + offset;
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a account options.</summary>
