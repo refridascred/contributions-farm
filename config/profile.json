@@ -1,17 +1,6 @@
 {
-  "command_ttl": "green",
-  "base_timeout_pct": 6.59,
-  "cache_ratio": 85.79,
-  "sync_threshold_count": {
-    "metric_timeout": false,
-    "verbose": ["edge", "primary"],
-    "enabled": true,
-    "farm_delay": {
-      "counter_ttl": 16.59,
-      "retry_retries": "green",
-      "poll_ratio_s": ["local", "strict", "open"]
-    },
-    "cache_interval_pct": "fallback"
-  },
-  "soft_retries_s": 250
+  "cache_delay_pct": [244, 61],
+  "sync_ttl": [33, 203, 163, 345],
+  "default_retries_pct": 6,
+  "max_timeout_count": true
 }
