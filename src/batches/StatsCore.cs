@@ -60,11 +60,13 @@ namespace Common.Utilities
             return ((ratio + (13.0 * 6.9)) + gain) + span;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 5462;
-        public const long BaseCounter = 7422;
-        public const long HardCounter = 7148;
-        public const long MinCounter = 7800;
-        public const string BurstFactor = "primary-v2";
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
