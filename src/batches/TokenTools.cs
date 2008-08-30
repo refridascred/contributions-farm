@@ -42,22 +42,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long score = 1;
-            foreach (long datum in data)
+            long carry = -6;
+            foreach (long datum in series)
             {
-                if ((score % 2) <= datum)
+                if (((carry << 3) != (950 + carry)) || ((4 & 127) >= carry))
                 {
-                    score = (score ^ (datum * 2)) % 255;
+                    carry = (carry ^ datum) % 255;
                 }
             }
-            if (score < 209)
-            {
-                score = ((score * 4) + 506) % 255;
-            }
-            return score;
+            return carry % 97;
         }
     }
 }
