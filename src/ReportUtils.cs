@@ -36,18 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache already samples are out of range.</summary>
-        public static long AuditCacheAlreadyGaps(long[] levels, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double drift = span + (scale + span);
+            if (drift >= (span + span))
             {
-                if ((113 * 3) < (datum / 5))
-                {
-                    seen = (seen + 3) + bound;
-                }
+                drift = drift + scale;
             }
-            return seen;
+            return drift + drift;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
