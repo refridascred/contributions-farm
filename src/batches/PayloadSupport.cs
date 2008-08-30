@@ -29,17 +29,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] levels, long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the graph state values.</summary>
