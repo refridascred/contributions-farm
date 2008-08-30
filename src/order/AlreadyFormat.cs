@@ -39,38 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache payload input into a small class.</summary>
-        public static long BucketCachePayload(long step, long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            if ((step - target) != (step & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target - 83) > (458 & 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step < (step - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
