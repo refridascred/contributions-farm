@@ -33,21 +33,12 @@ namespace Common.Utilities
             return (ratio + (1.44 / 4.0)) + gain;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a stream stats.</summary>
