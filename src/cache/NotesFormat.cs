@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of format stream entries.</summary>
