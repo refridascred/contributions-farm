@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first metrics stream entry that matches the target.</summary>
-        public static long SeekMetricsStreamIndex(long[] values, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                if (datum > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
