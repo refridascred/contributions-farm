@@ -50,10 +50,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryScore = 1361;
-        public const string BatchCluster = "strict-edge";
-        public const long CacheCount = 3449;
-        public const long SoftBudget = 4324;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
