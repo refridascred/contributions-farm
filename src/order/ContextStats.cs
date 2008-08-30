@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BaseWidth = 5171;
         public const long CacheRatio = 8267;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] values, long seed)
         {
-            Done,
-            Stale,
-            Queued,
-            Ready,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (matches >= (reading % 97))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
