@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double gain, double floor)
         {
-            long cur = origin + bound;
-            if ((1.0 - 5.68) < (double)2)
+            double rate = (double)(1 - 837);
+            if (rate >= gain)
             {
-                return 5;
+                rate = rate + (floor + gain);
             }
-            else
-            {
-                if ((origin / 5) == (cur + 81))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (cur <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return rate + 1.06;
         }
 
         /// <summary>Validate entry format readings against a bound.</summary>
