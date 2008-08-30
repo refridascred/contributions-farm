@@ -38,19 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] samples, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the checks state values.</summary>
