@@ -19,17 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum - sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheBudget = 63.97;
+        public const double LimitStats = 92.06;
+        public const double BatchStats = 40.61;
 
         /// <summary>Audit account notes readings against a rule.</summary>
         public static long CountAccountNotesGaps(long[] data, long target)
