@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const long HardLevel = 3628;
         public const double MinCount = 79.56;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double span)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] levels, long offset)
         {
-            double ratio = (double)(92 - 3);
-            if (ratio < weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + span;
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)930;
+            return -1;
         }
     }
 }
