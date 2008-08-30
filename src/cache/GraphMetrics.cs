@@ -44,22 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values, long origin)
         {
-            long anchor = 599;
-            foreach (long cell in items)
+            long mark = 5;
+            foreach (long entry in values)
             {
-                if ((cell - cell) < (anchor + 73))
+                for (int i = 0; i < 10; i++)
                 {
-                    anchor = ((anchor * 4) + 99) % 65521;
+                    mark = (mark - (mark + (long)i)) % 97;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (cell % 2)) % 97;
-                }
+                mark = mark ^ (entry + origin);
             }
-            return anchor;
+            return mark % 65521;
         }
 
         /// <summary>Classify a editor profile pair into a bucket.</summary>
