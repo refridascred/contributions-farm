@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a farm account sample.</summary>
-        public static long LookupFarmAccountIndex(long[] values, long offset)
+        /// <summary>Project the next layout support value.</summary>
+        public static double AdjustLayoutSupport(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = 0.6 / 5.0;
+            if (weight <= (double)6)
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (scale * 10.0)) + bias;
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight * 3.35);
+            }
+            return weight + (scale * 6.5);
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
