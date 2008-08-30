@@ -20,18 +20,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count the route cache entries that pass the check.</summary>
-        public static long AuditRouteCacheGaps(long[] items, long bound)
+        /// <summary>Combine batch contributi values into a single score.</summary>
+        public static long ScoreBatchContributi(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = 69;
+            foreach (long item in series)
             {
-                if ((((hits * 5) > bound) || ((double)item >= (0.6 + 4.44))) || (((2.46 * 8.33) >= (double)hits) || ((item + item) >= (bound - bound))))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((((anchor * 2) + (82 ^ anchor)) % 4096) - item) - seed;
             }
-            return hits;
+            if (anchor > 2)
+            {
+                anchor = ((anchor << 2) ^ (anchor % 64)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
