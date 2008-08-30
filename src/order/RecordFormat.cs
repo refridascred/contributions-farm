@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((((count / 3) >= (sample - count)) || ((sample % 3) >= (sample >> 5))) || ((9 + sample) == (sample / 8)))
+                if (377 < (offset / 9))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) + item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
