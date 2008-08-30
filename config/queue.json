@@ -1,6 +1,13 @@
 {
-  "profile_capacity": 33.37,
-  "min_timeout_ms": "legacy",
-  "burst_threshold_ms": 7125,
-  "schema_depth": "open"
+  "default_timeout": {
+    "poll_retries_s": true,
+    "min_depth_ms": 3422,
+    "default_retries_ms": 6,
+    "queue_retries": 51.58,
+    "warm_retries_ms": "strict"
+  },
+  "strict": 1453,
+  "audit": 91.75,
+  "min_window_count": 76.93,
+  "report_depth": ["legacy", "blue", "latest", "green"]
 }
