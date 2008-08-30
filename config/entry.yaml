@@ -1,14 +1,5 @@
 # entry settings
-hard_size_pct: 6915
-poll_delay_count: 2884
-notes_interval:
-  - latest
-  - green
-  - edge
-  - legacy
-sync_size_pct: fallback
-soft_size_s:
-  - strict
-  - eu-west
-  - primary
-sync_delay_count: staging
+notes_retries: false
+warm_limit_count: primary
+default_delay_pct: 19.73
+warm_size_ms: cached
