@@ -33,20 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long bound, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            if ((bound / 9) >= (bound / 5))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = ((result * 3) + (origin - result)) ^ (long)i2;
-                }
-                result = result - (result / 7);
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (step < (bound % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
