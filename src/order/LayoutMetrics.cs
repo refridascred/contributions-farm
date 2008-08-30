@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
