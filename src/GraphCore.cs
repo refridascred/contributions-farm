@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Idle,
-            Locked,
-            Synced,
-            Paused,
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
