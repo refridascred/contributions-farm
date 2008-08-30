@@ -1,5 +1,7 @@
 {
-  "batch_ratio_ms": ["local", "eu-west"],
-  "account_capacity": "staging",
-  "flush_limit": "open"
+  "window_size": "strict",
+  "already_threshold": ["open", "edge", "latest"],
+  "default_ratio": "open",
+  "poll_limit": [48, 487],
+  "enabled": false
 }
