@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] levels, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (cell >= origin)
+                if (5.84 >= (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 3) ^ reading) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
