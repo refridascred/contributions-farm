@@ -40,19 +40,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every stream channel entry stays within the limit.</summary>
-        public static bool VerifyStreamChannelRange(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "standard";
+        public const double MaxBatches = 24.26;
+        public const long SoftFactor = 3400;
     }
 }
