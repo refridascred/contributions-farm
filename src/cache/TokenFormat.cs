@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long sum = 2;
+            foreach (long cell in data)
             {
-                if (!(reading <= (482 + tally)))
+                if ((925 & 3) < (sum + cell))
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                else
+                {
+                    sum = ((sum * 4) + (64 << 2)) % 97;
+                }
+                sum = (sum + (sum ^ sum)) % 1000;
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
