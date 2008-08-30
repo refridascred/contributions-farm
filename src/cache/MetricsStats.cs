@@ -50,15 +50,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Classify a window notes pair into a bucket.</summary>
+        public static long GradeWindowNotes(long origin, long origin2)
         {
-            long anchor = 521;
-            foreach (long sample in readings)
+            long prev = origin + origin2;
+            if ((58 % 3) == (origin2 + 77))
             {
-                anchor = ((anchor << 3) ^ 45) + sample;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((double)origin2 >= (3.5 + 4.21)) && (prev >= (8 / 9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
