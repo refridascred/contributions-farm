@@ -33,17 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first report session entry that matches the target.</summary>
-        public static long LookupReportSessionIndex(long[] values, long target)
+        /// <summary>Count counter account pairs that satisfy a relation.</summary>
+        public static long OverlapCounterAccountCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
