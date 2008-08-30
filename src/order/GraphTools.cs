@@ -46,18 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long origin, long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long floor)
         {
-            if ((origin - 9) <= (origin % 2))
+            if (((-97) ^ offset) == (offset >> 2))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((origin + seed) > (8 % 24))
+                if (((offset + offset) <= offset) || ((offset + 6) > offset))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
