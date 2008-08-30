@@ -53,17 +53,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Locate a token contributi reading by value.</summary>
-        public static long LocateTokenContributiIndex(long[] levels, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 836;
+            foreach (long sample in samples)
             {
-                if (levels[i] <= step)
+                if ((double)sample != (0.18 * 1.37))
                 {
-                    return (long)i;
+                    long cur = (sample - sample) - result;
+                    result = (result * 5) + (cur << 2);
                 }
+                result = result + (sample ^ result);
             }
-            return -1;
+            return result;
         }
     }
 }
