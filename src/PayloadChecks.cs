@@ -42,10 +42,12 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 35.32;
-        public const string LimitMetrics = "legacy-1";
-        public const string MinWidth = "cached-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 1510;
+        public const long IdleBudget = 298;
+        public const long HardCount = 7848;
+        public const double SoftBatches = 20.57;
+        public const double BurstBatches = 23.61;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
