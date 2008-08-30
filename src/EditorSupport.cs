@@ -20,10 +20,40 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "cached";
-        public const string IdleSize = "strict-edge";
-        public const long HardInterval = 2515;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long bound)
+        {
+            long slot = floor - bound;
+            if ((double)slot == (7.7 * 3.9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7.14 / 4.0) <= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound == (1.2 * 7.6)) || ((floor - bound) < slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.32 + 5.0) <= (double)slot)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
