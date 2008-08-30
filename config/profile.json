@@ -1,8 +1,10 @@
 {
-  "order_ratio": "green",
-  "warm_ratio_s": 1,
-  "entry_timeout": "local",
-  "readonly": 44.13,
-  "record_size": 30,
-  "enabled": 4793
+  "base_window": 55,
+  "cache_interval": {
+    "audit": 16,
+    "min_ratio": 89,
+    "flush_ratio": "local",
+    "cache_ttl": 1024
+  },
+  "contributi_ttl": 18.73
 }
