@@ -1,21 +1,12 @@
 # support settings
-hard_retries_ms: staging
 dry_run:
-  max_threshold_pct: false
-  dry_run: false
-  commits_threshold: true
-stream_ttl:
-  - standard
-  - strict
-sync_capacity: true
-hard_window_pct:
-  verbose: true
-  min_delay_count: green
-  min_ttl_pct: staging
-  base_limit_count:
-    warm_threshold: 100
-    warm_window_s: 500
-    flush_interval_s: 20.11
-    entry_threshold: latest
-    enabled: open
-batch_timeout: 250
+  session_delay: 47.49
+  poll_interval_ms:
+    - 484
+    - 392
+    - 80
+  retry_ttl_s: standard
+  cache_interval: local
+warm_ratio_ms: 7560
+checks_capacity: false
+metrics_ttl: 100
