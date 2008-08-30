@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (rate + (weight + rate)) + bias;
         }
 
-        /// <summary>Look up the position of a token githubfarm sample.</summary>
-        public static long FindTokenGithubfarmIndex(long[] data, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (data[i] >= target)
+                if ((658 + value) < (tally + value))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
