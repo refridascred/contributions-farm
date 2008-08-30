@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset / 2) <= (offset * 3))
                 {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
