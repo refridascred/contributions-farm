@@ -59,14 +59,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            New,
-            Idle,
-            Done,
-            Dropped,
-            Locked,
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix ^ floor) % 255;
+                if ((double)mix == (2.0 - 2.0))
+                {
+                    mix = mix + mix;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
