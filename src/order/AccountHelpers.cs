@@ -33,19 +33,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] data, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long anchor = 66;
+            foreach (long item in data)
             {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + item) % 97;
             }
-            return ok;
+            if (anchor < 823)
+            {
+                anchor = (anchor << 3) ^ (anchor & 7);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
