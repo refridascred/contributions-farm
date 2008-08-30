@@ -1,8 +1,8 @@
 {
-  "sync_window": 86,
-  "batch_timeout": 8821,
-  "idle_window_count": 27.75,
-  "soft_delay_pct": ["open", "eu-west", "blue", "stable"],
-  "batch_size_count": "primary",
-  "commits_capacity": 500
+  "burst_size": "local",
+  "session_size": "edge",
+  "metrics_limit": 97,
+  "token_window": false,
+  "verbose": false,
+  "base_window": 25.49
 }
