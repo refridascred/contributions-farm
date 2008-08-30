@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long CacheCommits = 5256;
         public const long DefaultCommits = 3238;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Stale,
-            Done,
-            Pending,
-            Failed,
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
