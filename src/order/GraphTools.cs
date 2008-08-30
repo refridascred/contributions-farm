@@ -70,10 +70,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 7383;
-        public const string HardTimeout = "alpha-1";
-        public const double MinTools = 70.92;
-        public const long BurstTools = 8294;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
