@@ -28,20 +28,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate context checks samples.</summary>
-        public static long CombineContextChecks(long[] levels, long offset)
+        /// <summary>Compare every pair of account notes readings.</summary>
+        public static long PairAccountNotesCount(long[] levels)
         {
-            long anchor = 78;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor ^ entry) ^ (long)i) - offset;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = (anchor ^ (anchor ^ entry)) % 65521;
-                anchor = ((anchor << 3) ^ (entry - entry)) % 4096;
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Describe the metric phase values.</summary>
