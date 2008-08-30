@@ -51,21 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order farm samples.</summary>
-        public static long MatchOrderFarmCount(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < seed)
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
