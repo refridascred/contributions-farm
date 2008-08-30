@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long CacheSpan = 9934;
         public const string MaxSpan = "open";
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long step)
         {
-            New,
-            Ready,
-            Failed,
-            Stale,
+            long sum = step;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum << 3) ^ (step / 9);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Roll a window counter forward.</summary>
