@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            Locked,
+            New,
+            Idle,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the graph status values.</summary>
