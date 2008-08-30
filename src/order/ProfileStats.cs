@@ -34,19 +34,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] samples, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double span)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double ratio = (double)(92 - 3);
+            if (ratio < weight)
             {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + span;
             }
-            return found;
+            return ratio - (double)930;
         }
     }
 }
