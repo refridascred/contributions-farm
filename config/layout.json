@@ -1,5 +1,11 @@
 {
-  "cache_ratio_s": "open",
-  "base_capacity_count": 12.97,
-  "persist": 1024
+  "soft_threshold_ms": 4956,
+  "sync_retries_ms": false,
+  "idle_interval_count": ["standard", "latest", "edge"],
+  "idle_ttl": [330, 458],
+  "support_delay": {
+    "retry_threshold_count": "strict",
+    "readonly": ["edge", "eu-west", "standard"],
+    "compress": ["latest", "primary", "green"]
+  }
 }
