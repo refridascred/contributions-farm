@@ -48,11 +48,22 @@ namespace Common.Utilities
             return load - (0.2 / 3.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleInterval = "stable-v2";
-        public const long RetryCount = 4449;
-        public const string RetrySupport = "staging-v2";
-        public const long BurstSupport = 1555;
+        /// <summary>Count cluster schema pairs that satisfy a relation.</summary>
+        public static long PairClusterSchemaCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long floor)
