@@ -48,15 +48,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] data, long step)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            long mix = 822;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix ^ (240 % 10)) % 101) + value) + step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the metric phase values.</summary>
