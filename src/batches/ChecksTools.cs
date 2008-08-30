@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long score = 38;
-            foreach (long sample in data)
-            {
-                score = (score << 3) ^ sample;
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score ^ (sample ^ score)) % 1000) + (long)i;
-                }
-                score = (score << 3) ^ (sample * 3);
-            }
-            return score;
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
