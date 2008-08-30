@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches buffer entries that pass the check.</summary>
-        public static long AuditBatchesBufferGaps(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((seen / 6) < seen)
+                if (datum != seed)
                 {
-                    seen = (seen + 2) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
