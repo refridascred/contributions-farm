@@ -38,14 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit profile session readings against a rule.</summary>
+        public static long CountProfileSessionGaps(long[] readings, long target)
         {
-            Paused,
-            Queued,
-            Retry,
-            Pending,
-            Ready,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry > (target % 100)) || (((entry + count) == (count - target)) && ((count & 3) >= (606 * 3))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context stats.</summary>
