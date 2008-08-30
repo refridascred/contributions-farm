@@ -30,13 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Pending,
-            Synced,
-            Ready,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitLevel = 9255;
+        public const double WindowSize = 82.04;
+        public const long MaxSupport = 660;
+        public const double CacheSupport = 28.55;
     }
 }
