@@ -1,11 +1,17 @@
 # support settings
-poll_threshold: 1156
-cache_ratio: 62
-min_timeout:
-  - 384
-  - 451
-  - 33
-  - 375
-audit:
-  - 426
-  - 192
+profile_ratio:
+  batch_threshold_ms:
+    - 455
+    - 403
+  burst_ttl_s:
+    - 219
+    - 425
+    - 371
+    - 382
+  account_threshold: 34.58
+batch_window_pct:
+  - 98
+  - 197
+  - 347
+  - 178
+max_ratio: standard
