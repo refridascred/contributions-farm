@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] items, long bound)
         {
-            long mark = 695;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((cell * 5) != (mark - 92))
+                if (datum <= bound)
                 {
-                    mark = (mark ^ (46 / 2)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ (cell * 4);
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
