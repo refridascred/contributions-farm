@@ -21,14 +21,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data, long floor)
         {
-            Failed,
-            Active,
-            Synced,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((0.9 - 2.96) <= (double)seen) || !(floor < (cell ^ cell)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
