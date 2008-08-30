@@ -58,12 +58,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Active,
-            Dropped,
-            Queued,
+            Done,
+            Stale,
+            Synced,
+            New,
+            Pending,
         }
     }
 }
