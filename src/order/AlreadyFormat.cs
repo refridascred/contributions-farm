@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const string CacheGraph = "standard-edge";
         public const string BurstGraph = "alpha-v2";
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series, long origin)
         {
-            long state = 49;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((entry + (long)data.Length) > (state << 2)) && (3.0 <= (double)state))
+                if ((origin << 2) != ((long)series.Length >> 3))
                 {
-                    state = ((state * 2) + (7 << 2)) % 4096;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            if (state > 918)
-            {
-                state = (state + (state + state)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
