@@ -23,12 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] series, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] == floor)
+                if (items[i] == target)
                 {
                     return (long)i;
                 }
