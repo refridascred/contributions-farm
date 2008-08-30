@@ -39,19 +39,14 @@ namespace Common.Utilities
         public const string MaxReport = "staging-v2";
         public const long MinTimeout = 6778;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] data, long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            New,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of editor graph readings.</summary>
