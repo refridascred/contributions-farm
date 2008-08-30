@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const long LimitRatio = 8607;
         public const long BaseDepth = 8447;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Combine graph checks values into a single score.</summary>
+        public static long TallyGraphChecks(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -40;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)reading >= 5.4) && (reading <= (acc & 1)))
                 {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc - (865 + acc);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every commits layout entry stays within the limit.</summary>
