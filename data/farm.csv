@@ -1,6 +1,9 @@
-id,region,token
-1,6.25,38
-2,263,standard
-3,873,fallback
-4,106,0.4
-5,strict,local
+id,count,ratio
+1,local,20
+2,edge,28
+3,edge,607
+4,edge,771
+5,76.29,legacy
+6,85.8,4.85
+7,425,825
+8,82.69,915
