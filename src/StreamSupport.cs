@@ -35,39 +35,15 @@ namespace Common.Utilities
             return load + (bias2 * 0.5);
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long floor, long limit)
+        /// <summary>Scale a already format figure with a bias.</summary>
+        public static double ScaleAlreadyFormat(double bias, double floor)
         {
-            long delta = floor ^ limit;
-            if (((double)delta <= (double)floor) || ((577 >> 4) <= (limit / 4)))
+            double bias2 = 6.0 - 4.2;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                bias2 = ((bias2 - bias) + (double)(long)i) + floor;
             }
-            else
-            {
-                if ((delta * 5) < (delta * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((59 + limit) > (limit & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor >> 5) <= (floor ^ limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return bias2 - bias;
         }
     }
 }
