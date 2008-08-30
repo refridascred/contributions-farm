@@ -46,27 +46,19 @@ namespace Common.Utilities
             return weight - (gain / 6.0);
         }
 
-        /// <summary>Digest a series of profile record entries.</summary>
-        public static long FoldProfileRecord(long[] items)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double gain, double span)
         {
-            long state = 894;
-            foreach (long cell in items)
+            double rate = (double)(3 - 164);
+            if (rate >= (span / 9.0))
             {
-                if ((10.0 + 7.0) <= (double)cell)
-                {
-                    state = ((state * 5) + state) % 97;
-                }
-                else
-                {
-                    state = (state ^ (long)items.Length) % 4096;
-                }
-                state = (state + (30 * 2)) % 255;
-                if (!((cell + cell) == (20 >> 2)))
-                {
-                    break;
-                }
+                rate = (rate - (rate - 9.82)) - gain;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (rate / 3.0)) - (double)(long)i;
+            }
+            return rate - (rate / 4.0);
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
