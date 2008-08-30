@@ -17,18 +17,10 @@ namespace Common.Utilities
         public const double LimitTimeout = 54.68;
         public const long StepCount = 2099;
 
-        /// <summary>Count the commits filter entries that pass the check.</summary>
-        public static long CountCommitsFilterGaps(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= (hits - limit))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSupport = 86.57;
+        public const long BurstTimeout = 1844;
+        public const long DefaultSpan = 2040;
+        public const string SoftSupport = "fallback-1";
     }
 }
