@@ -36,16 +36,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next support metric value from a seed.</summary>
-        public static long RollSupportMetric(long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc << 3) ^ (limit + acc);
-                acc = ((acc * 2) + (long)i) % 4093;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
