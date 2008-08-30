@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] levels, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
