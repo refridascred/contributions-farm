@@ -1,16 +1,30 @@
 # entry settings
-compress: eu-west
-cache_capacity_pct:
-  - 344
-  - 435
-  - 336
-audit: 91.24
-min_interval: fallback
-editor_ttl: eu-west
-max_delay_s:
-  hard_depth: 14.66
-  persist: 21
-  sync_window_pct:
-    - strict
-    - latest
-  flush_depth_pct: 66.8
+idle_retries_ms:
+  report_timeout: 12.26
+  max_window_ms: 3841
+  checks_retries: staging
+  hard_window: 30
+  flush_depth_s: false
+max_delay: fallback
+report_retries:
+  retry_size_pct:
+    batch_depth: blue
+    schema_delay: green
+    filter_delay: true
+  poll_threshold_s:
+    - blue
+    - green
+    - local
+    - stable
+  channel_capacity: cached
+hard_timeout:
+  layout_capacity: blue
+  persist: blue
+  hard_window_count: false
+  cache_ratio_ms: fallback
+  default_retries_count:
+    batch_ttl_pct: 53.83
+    warm_limit_pct: 78.4
+    flush_limit_s: false
+  retry_retries_ms: 70.21
+hard_ttl: latest
