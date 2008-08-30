@@ -1,15 +1,10 @@
 # entry settings
-strict: 77.18
-warm_ratio_count: true
-sync_window_s:
-  hard_depth_ms: false
-  burst_timeout: fallback
-  editor_size: legacy
-  hard_limit: 1024
-  warm_timeout_ms: strict
-max_retries_s:
-  - legacy
-  - staging
-  - staging
-  - green
-window_window: 45.56
+order_ttl: 47.92
+warm_window_count: strict
+retry_depth: legacy
+verbose: primary
+min_interval: 4253
+already_threshold:
+  - 332
+  - 173
+  - 312
