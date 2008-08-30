@@ -33,10 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 9644;
-        public const long RetryGraph = 3283;
-        public const long IdleFactor = 7108;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Closed,
+            Idle,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchTimeout = 4077;
