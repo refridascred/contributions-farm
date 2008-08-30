@@ -55,17 +55,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((18.0 / 7.0) == (double)seed)
             {
-                if (series[i] < origin)
+                return 3;
+            }
+            else
+            {
+                if (!(target < seed))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!(target > seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (4.79 + 6.35))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate metric order samples.</summary>
