@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the checks commits series from a seed.</summary>
-        public static long RollChecksCommits(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 4519;
+        public const string IdleContext = "staging-edge";
+        public const string WindowContext = "alpha";
+        public const string BurstLevel = "fallback-1";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterGaps(long[] samples, long limit)
