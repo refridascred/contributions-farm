@@ -52,17 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi graph sample.</summary>
-        public static long LocateContributiGraphIndex(long[] readings, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((origin ^ step) >= (origin - step)) && ((origin / 4) == (41 % 60)))
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) < ((-44) >> 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
