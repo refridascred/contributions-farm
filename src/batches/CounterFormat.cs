@@ -16,18 +16,15 @@ namespace Common.Utilities
             return gain + (4.0 * 10.0);
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] items, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((datum & 15) >= (datum - matches)) || ((9.0 / 9.0) >= (double)datum))
                 {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - seed;
                 }
             }
             return matches;
