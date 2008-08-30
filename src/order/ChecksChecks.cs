@@ -30,22 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally & 63) >= (961 >> 1))
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
