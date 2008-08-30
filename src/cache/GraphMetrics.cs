@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 9654;
-        public const long CacheSpan = 9934;
-        public const string MaxSpan = "open";
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long target)
+        {
+            long lane = bound + target;
+            if ((5.0 <= (double)lane) && (target < (lane << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= (target + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long DigestToken(long[] readings)
