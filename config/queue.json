@@ -1,5 +1,6 @@
 {
-  "counter_interval": "legacy",
-  "base_ratio": ["legacy", "staging", "open"],
-  "verbose": 68
+  "profile_capacity": 33.37,
+  "min_timeout_ms": "legacy",
+  "burst_threshold_ms": 7125,
+  "schema_depth": "open"
 }
