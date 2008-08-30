@@ -43,19 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (value < seed)
+                if (((6.0 + 6.9) == (double)matches) && (item < (item + item)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the cache level values.</summary>
