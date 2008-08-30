@@ -25,24 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long limit, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] values, long limit)
         {
-            if ((limit < seed) || (limit < (2 * 5)))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 2) < (limit / 2))
+                if (!(limit <= (tally - 58)))
                 {
-                    return 2;
+                    tally = (tally + 3) ^ value;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
