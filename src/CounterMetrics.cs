@@ -50,22 +50,21 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Combine command commits values into a single score.</summary>
-        public static long WeighCommandCommits(long[] values, long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long acc = -4;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor - floor) == (value & 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc + (floor ^ value)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 175) % 1000;
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return seen;
         }
     }
 }
