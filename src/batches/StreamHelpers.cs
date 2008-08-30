@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 63.66;
-        public const long MinGithubfarm = 7090;
-        public const long LimitGithubfarm = 2116;
-        public const long CacheGithubfarm = 7580;
-        public const string BurstTimeout = "primary-edge";
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double scale, double span)
+        {
+            double load = (double)(719 - 43);
+            if (load < load)
+            {
+                load = (load + (load * 4.5)) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (0.03 - span);
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long target)
