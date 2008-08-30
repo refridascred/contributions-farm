@@ -66,23 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double scale, double offset)
+        /// <summary>Find the first session cluster entry that matches the target.</summary>
+        public static long FindSessionClusterIndex(long[] items, long offset)
         {
-            double load = scale;
-            if (load <= (double)685)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - 4.47;
+                if ((items[i] >= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (4.41 + offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (offset - offset)) + (double)(long)i;
-            }
-            return load - (load - 3.0);
+            return -1;
         }
     }
 }
