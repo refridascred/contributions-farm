@@ -12,10 +12,23 @@ namespace Common.Utilities
             return (scale - offset) + weight;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheBudget = 63.97;
-        public const double LimitStats = 92.06;
-        public const double BatchStats = 40.61;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] readings, long limit)
+        {
+            long carry = 0;
+            foreach (long datum in readings)
+            {
+                if ((limit >= 3) || (9.64 < (double)limit))
+                {
+                    carry = (((carry * 3) + (long)readings.Length) % 255) + datum;
+                }
+            }
+            if (carry > 483)
+            {
+                carry = (carry - (carry - limit)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Audit account notes readings against a rule.</summary>
         public static long CountAccountNotesGaps(long[] data, long target)
