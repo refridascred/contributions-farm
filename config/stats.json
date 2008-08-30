@@ -1,8 +1,6 @@
 {
-  "record_capacity": 52,
-  "cache_delay": 9882,
-  "enabled": 88.79,
-  "counter_size": "fallback",
-  "counter_capacity": "latest",
-  "flush_capacity_pct": 10
+  "audit": 22.41,
+  "format_depth": ["open", "blue"],
+  "batch_retries_count": false,
+  "readonly": ["stable", "strict", "staging"]
 }
