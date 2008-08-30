@@ -43,22 +43,37 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a stats command pair into a bucket.</summary>
-        public static long RankStatsCommand(long seed, long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long offset, long step)
         {
-            if (!((target - seed) < (target + seed)))
+            long cur = offset + step;
+            if ((double)cur >= (double)step)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((seed <= (target >> 4)) && ((target + target) >= (target - seed)))
+                if ((offset < (step * 4)) && ((offset + 24) > 85))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if ((step - 508) < step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) < offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
