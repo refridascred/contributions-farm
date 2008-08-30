@@ -30,19 +30,14 @@ namespace Common.Utilities
             return drift - (4.21 / 5.0);
         }
 
-        /// <summary>Check that every editor token entry stays within the limit.</summary>
-        public static bool VerifyEditorTokenBounds(long[] samples, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Dropped,
+            Stale,
+            Idle,
+            Active,
         }
     }
 }
