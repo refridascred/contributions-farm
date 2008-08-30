@@ -14,13 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] readings, long target)
         {
-            Done,
-            Idle,
-            Queued,
-            Paused,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count * 3) >= (entry / 9))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload entry.</summary>
