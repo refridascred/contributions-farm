@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long carry = 0;
-            foreach (long cell in series)
-            {
-                if ((6.0 + 20.0) == (double)cell)
-                {
-                    carry = ((carry << 3) ^ (cell >> 1)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (carry + cell);
-                }
-            }
-            if (carry < 41)
-            {
-                carry = (carry ^ (carry >> 1)) % 97;
-            }
-            return carry;
+            Stale,
+            Retry,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
