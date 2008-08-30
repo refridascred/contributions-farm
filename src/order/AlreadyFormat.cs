@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long bound, long floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long offset = bound + floor;
-            if (floor >= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor >> 1) <= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.8 + 19.0) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound <= (3 / 6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
