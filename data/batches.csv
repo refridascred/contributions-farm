@@ -1,10 +1,7 @@
-id,weight,token,label,level
-1,721,969,34.6,34.35
-2,616,53.28,34.6,legacy
-3,green,73.26,eu-west,852
-4,108,380,822,90.96
-5,550,60.27,787,59.29
-6,primary,117,788,eu-west
-7,latest,933,657,33
-8,edge,local,12.38,4.73
-9,strict,907,592,39.79
+id,level,label
+1,legacy,legacy
+2,804,53
+3,edge,820
+4,155,895
+5,47.02,18.84
+6,23.72,95.6
