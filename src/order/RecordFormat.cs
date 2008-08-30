@@ -53,13 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Retry,
-            Stale,
-            Paused,
-            Dropped,
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
