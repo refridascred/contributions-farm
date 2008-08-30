@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] samples, long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((10.0 * 8.04) >= (double)bound)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
