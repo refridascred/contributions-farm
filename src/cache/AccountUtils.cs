@@ -19,11 +19,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 66.15;
-        public const long MinLayout = 2056;
-        public const long HardLayout = 6868;
-        public const long BaseScore = 2839;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series)
+        {
+            long mix = -64;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = mix + ((long)i << 3);
+                }
+                if ((75 << 1) < cell)
+                {
+                    mix = (mix - (mix << 3)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
