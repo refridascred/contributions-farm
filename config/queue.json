@@ -1,8 +1,8 @@
 {
-  "default_retries": 57.79,
-  "batches_delay": true,
-  "retry_limit": ["cached", "legacy", "latest"],
-  "strict": ["cached", "edge", "stable", "primary"],
-  "channel_depth": ["local", "open"],
-  "entry_ratio": "latest"
+  "min_retries_ms": false,
+  "warm_timeout_pct": 4940,
+  "warm_ratio": 2918,
+  "poll_threshold_ms": ["staging", "staging"],
+  "batch_capacity_count": 77,
+  "warm_ttl_count": ["fallback", "stable", "cached"]
 }
