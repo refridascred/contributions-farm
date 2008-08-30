@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data)
-        {
-            long result = 58;
-            foreach (long value in data)
-            {
-                result = ((result + (long)data.Length) % 4096) + value;
-            }
-            if (result > 40)
-            {
-                result = (result << 3) ^ (result - result);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstLevel = 85.27;
+        public const long MaxBuffer = 629;
+        public const long BaseBuffer = 7493;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long floor, long bound)
