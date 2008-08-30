@@ -46,12 +46,18 @@ namespace Common.Utilities
         public const long StepTimeout = 7535;
         public const string HardBatches = "legacy-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitInterval = 9307;
-        public const long MaxEditor = 6792;
-        public const string LimitLevel = "legacy-edge";
-        public const double StepCount = 80.56;
-        public const long RetryEditor = 3275;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] data, long seed)
