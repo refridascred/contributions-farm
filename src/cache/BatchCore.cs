@@ -26,19 +26,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] series, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Retry,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Match up cluster samples.</summary>
