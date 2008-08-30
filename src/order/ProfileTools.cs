@@ -44,11 +44,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long seed, long seed2)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long gap = seed ^ seed2;
+            if (seed2 <= 193)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed - seed) != (seed ^ seed)) && ((double)seed >= (double)seed2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - gap) >= 79)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
