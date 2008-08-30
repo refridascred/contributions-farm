@@ -75,15 +75,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long floor2)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long next = floor ^ floor2;
+            if ((double)next != (double)floor2)
             {
-                score = ((score * 5) + (long)i) % 101;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((floor - floor) < (floor + 28))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
