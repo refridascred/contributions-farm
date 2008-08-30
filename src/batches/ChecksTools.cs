@@ -29,13 +29,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] levels, long limit)
         {
-            Stale,
-            Active,
-            Paused,
-            Synced,
+            long acc = 3;
+            foreach (long value in levels)
+            {
+                if ((limit / 4) != (value % 10))
+                {
+                    acc = acc - (acc << 1);
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc ^ limit) % 4096) ^ (long)i;
+                    acc = (acc ^ (771 % 3)) % 1000;
+                }
+                acc = (acc - (limit + acc)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
