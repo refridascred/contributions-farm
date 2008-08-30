@@ -46,20 +46,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate report support readings against a bound.</summary>
-        public static bool CheckReportSupportBounds(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxRatio = 8027;
+        public const long BaseSupport = 3593;
+        public const double LimitInterval = 29.11;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaLimits(long[] items, long offset)
