@@ -1,14 +1,13 @@
 {
-  "default_retries": false,
-  "tools_retries": true,
-  "cache_ratio": 30,
-  "counter_threshold": 88,
-  "enabled": {
-    "warm_delay_count": "eu-west",
-    "cache_timeout_count": 2.99,
-    "cache_size": "local",
-    "cache_interval": true,
-    "format_ratio": "blue"
+  "counter_ttl": {
+    "compress": true,
+    "max_window_count": "edge",
+    "min_depth_count": 7207,
+    "account_capacity": ["local", "edge"],
+    "flush_limit_pct": "staging"
   },
-  "soft_capacity_s": 73.3
+  "base_ratio_s": "stable",
+  "hard_timeout_ms": "green",
+  "record_depth": false,
+  "sync_retries_count": false
 }
