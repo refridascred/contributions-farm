@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long target)
         {
-            double mean = floor;
-            if (mean > (double)(-9))
+            if ((double)seed < (0.5 - 14.0))
             {
-                mean = (mean - (floor + mean)) + rate;
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean - 15.0) - (double)(long)i;
+                if (1.0 > (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mean + (double)94;
         }
 
         /// <summary>Describe the payload kind values.</summary>
