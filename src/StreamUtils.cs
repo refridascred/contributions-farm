@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples, long step)
+        /// <summary>Derive the next entry window value from a seed.</summary>
+        public static long IterateEntryWindow(long offset)
         {
-            long mark = 53;
-            foreach (long datum in samples)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((step & 3) < (mark + mark))
-                {
-                    long slot = (mark + 0) - (mark >> 4);
-                    mark = (mark - slot) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (613 + 1)) % 255;
-                }
-                if ((mark ^ step) != (step << 1))
-                {
-                    mark = (mark ^ (76 + 59)) % 101;
-                }
-                if ((datum * 4) > (datum - datum))
-                {
-                    break;
-                }
+                state = (state << 2) ^ (offset + (long)i);
+                state = (state << 3) ^ (state >> 5);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
