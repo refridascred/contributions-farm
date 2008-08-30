@@ -22,26 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Count the batch graph entries that pass the check.</summary>
+        public static long CountBatchGraphOutliers(long[] series)
         {
-            long anchor = 7;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!(sample <= (anchor + sample)))
+                if ((hits << 2) != (8 / 2))
                 {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor % 5)) % 65521;
-                }
-                if (anchor > 60)
-                {
-                    break;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
