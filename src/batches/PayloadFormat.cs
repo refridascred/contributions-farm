@@ -51,20 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] values, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((1.2 / 9.0) > (double)mark)
+                if (sample != origin)
                 {
-                    mark = ((mark << 2) ^ (mark + mark)) % 97;
+                    found = false;
+                    break;
                 }
-                mark = ((mark << 3) ^ (60 + mark)) % 65521;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return found;
         }
     }
 }
