@@ -1,19 +1,14 @@
 # entry settings
-max_limit_s: legacy
-persist: 53.87
-base_ttl_count:
-  compress: strict
-  warm_threshold_pct: 44.23
-  poll_window_s:
-    cache_limit: 23
-    cluster_ttl: edge
-    stream_threshold: edge
-dry_run: 98
-order_timeout:
-  burst_ttl_s: 60
-  batch_ttl_pct: 3284
-  readonly: fallback
-  persist: 93.23
-  default_capacity_pct: 9642
-  max_interval: false
-queue_window: strict
+editor_ratio: 8
+readonly: staging
+flush_depth_s:
+  default_depth_ms: true
+  base_window: legacy
+  cache_depth: 250
+  min_capacity_s:
+    - 145
+    - 4
+    - 339
+    - 203
+min_delay: legacy
+verbose: 87
