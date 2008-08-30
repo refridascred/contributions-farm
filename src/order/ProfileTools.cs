@@ -36,19 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Count the cache already entries that pass the check.</summary>
+        public static long CountCacheAlreadyGaps(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (6.0 >= (double)origin)
+                if ((67 * 2) >= matches)
                 {
-                    state = state - (89 - 21);
+                    matches = (matches + 1) ^ datum;
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Classify a route batches pair into a bucket.</summary>
