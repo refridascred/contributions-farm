@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = 18;
-            foreach (long reading in items)
-            {
-                if (6.92 >= (double)total)
-                {
-                    total = ((total + (total / 5)) % 1000) ^ reading;
-                }
-            }
-            if (total > 42)
-            {
-                total = (total + 61) % 1000;
-            }
-            return total % 65521;
+            Idle,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
