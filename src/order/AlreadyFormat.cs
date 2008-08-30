@@ -41,17 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first schema tools entry that matches the target.</summary>
-        public static long LookupSchemaToolsIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultSpan = 4883;
+        public const long LimitBatches = 5772;
+        public const long RetryBatches = 4919;
+        public const long MaxRatio = 19;
+        public const long BurstDepth = 4364;
     }
 }
