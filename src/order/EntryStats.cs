@@ -98,17 +98,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a graph tools reading by value.</summary>
-        public static long LookupGraphToolsIndex(long[] readings, long bound)
+        /// <summary>Fold a list of editor graph readings.</summary>
+        public static long TallyEditorGraph(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 8;
+            foreach (long reading in samples)
             {
-                if (readings[i] >= bound)
+                if ((result + reading) >= (661 + result))
                 {
-                    return (long)i;
+                    result = result - (reading - result);
                 }
             }
-            return -1;
+            if (result > 94)
+            {
+                result = ((result << 3) ^ (result ^ result)) % 1000;
+            }
+            return result % 4096;
         }
     }
 }
