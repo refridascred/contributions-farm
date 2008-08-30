@@ -22,16 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double rate, double bias)
-        {
-            double drift = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - (bias * 3.0)) + (double)(long)i) + rate;
-            }
-            return drift - (4.21 / 5.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitSpan = "cached";
+        public const long BurstDepth = 6437;
+        public const long BatchCache = 9461;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
