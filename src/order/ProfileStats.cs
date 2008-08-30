@@ -19,10 +19,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryLevel = 91.48;
-        public const long HardLevel = 3628;
-        public const double MinCount = 79.56;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double LimitSize = 28.71;
