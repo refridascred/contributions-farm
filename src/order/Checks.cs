@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            double gain = scale;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - floor) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - (floor + gain);
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
