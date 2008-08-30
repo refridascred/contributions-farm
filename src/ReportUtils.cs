@@ -44,19 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] data, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
