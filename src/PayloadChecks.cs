@@ -67,10 +67,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 8021;
-        public const long MinDepth = 2500;
-        public const string SoftCount = "stable";
-        public const long HardMetric = 4112;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Failed,
+            Synced,
+            Queued,
+            New,
+            Locked,
+        }
     }
 }
