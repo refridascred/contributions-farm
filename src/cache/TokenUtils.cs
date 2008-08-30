@@ -29,31 +29,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double ratio, double span)
         {
-            if ((limit << 2) == (floor * 5))
+            double weight = (double)(19 ^ 8);
+            if (weight <= ratio)
             {
-                return 1;
+                weight = weight + (double)88;
             }
             else
             {
-                if ((floor < (limit >> 1)) || ((floor & 1) <= (limit % 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((68 + limit) >= ((-24) ^ floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                weight = weight + ratio;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (ratio + ratio)) + (double)(long)i;
+            }
+            return weight + span;
         }
     }
 }
