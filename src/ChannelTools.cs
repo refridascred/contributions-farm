@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (sample < offset)
+                if (sample < limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
