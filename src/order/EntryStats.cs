@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long CacheRecord = 7420;
         public const long WindowFactor = 1530;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long step)
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long DigestGraphEditor(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 916;
+            foreach (long entry in items)
             {
-                if (samples[i] < step)
+                if (((limit - limit) < (limit << 3)) && ((1 + (long)items.Length) > (result >> 4)))
                 {
-                    return (long)i;
+                    result = ((result * 4) + 7) - entry;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
