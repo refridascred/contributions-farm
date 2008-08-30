@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] samples, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen + offset) > cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
