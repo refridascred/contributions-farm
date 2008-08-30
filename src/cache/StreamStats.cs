@@ -44,21 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((tally - entry) <= (24 + entry)) || (((entry + 38) <= entry) || ((entry + tally) != (tally & 15))))
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
