@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a commits account value against two limits.</summary>
-        public static long SortCommitsAccount(long floor, long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if (858 < (floor ^ 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset < (floor << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((724 * 4) >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset >= (785 * 3)) || (offset >= (floor + offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
