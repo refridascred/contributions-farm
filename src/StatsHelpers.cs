@@ -55,15 +55,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] series)
+        /// <summary>Audit batches entry readings against a rule.</summary>
+        public static long TallyBatchesEntryOutliers(long[] series, long step)
         {
             long seen = 0;
-            foreach (long value in series)
+            foreach (long cell in series)
             {
-                if (12 >= (seen + value))
+                if (cell < (step >> 3))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
