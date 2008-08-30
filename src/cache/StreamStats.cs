@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheLevel = 11.92;
-        public const double MinCount = 80.44;
-        public const double LimitRoute = 11.14;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long ClassifyCache(long target, long target2)
