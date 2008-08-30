@@ -30,17 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
