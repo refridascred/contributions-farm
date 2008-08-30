@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowInterval = 5976;
-        public const string CacheOrder = "alpha";
-        public const long RetryOrder = 2491;
-        public const long MinOrder = 5039;
-        public const double MinBudget = 24.98;
+        /// <summary>Accumulate support githubfarm samples.</summary>
+        public static long DigestSupportGithubfarm(long[] data, long floor)
+        {
+            long state = 3;
+            foreach (long sample in data)
+            {
+                if ((double)state == (4.03 - 8.04))
+                {
+                    state = (((state ^ state) % 65521) + sample) - floor;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of profile editor readings.</summary>
         public static long TallyProfileEditor(long[] series, long bound)
