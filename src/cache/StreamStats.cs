@@ -55,13 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
