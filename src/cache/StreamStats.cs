@@ -37,22 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long sum = 526;
+            foreach (long reading in data)
             {
-                if (!((reading & 15) <= (matches / 7)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((((sum * 3) + (9 - sum)) % 255) + reading) + floor;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Digest a series of token order entries.</summary>
