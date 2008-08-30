@@ -91,18 +91,11 @@ namespace Common.Utilities
         public const double LimitBudget = 78.12;
         public const long BurstSize = 1167;
 
-        /// <summary>Audit graph profile readings against a rule.</summary>
-        public static long CountGraphProfileGaps(long[] readings)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading ^ matches) >= (matches * 2)) || (((double)reading >= (2.6 - 15.0)) && (((long)readings.Length - matches) > 433)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
     }
 }
