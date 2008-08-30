@@ -46,10 +46,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxRatio = 8027;
-        public const long BaseSupport = 3593;
-        public const double LimitInterval = 29.11;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Pending,
+            New,
+            Locked,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaLimits(long[] items, long offset)
