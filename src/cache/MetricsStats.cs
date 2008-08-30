@@ -38,15 +38,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Idle,
-            Active,
-            Queued,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 1684;
+        public const double BurstSize = 75.21;
+        public const long BurstWindow = 8074;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepFilter = 6524;
