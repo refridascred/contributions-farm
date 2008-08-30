@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Iterate the metrics batch series from a seed.</summary>
+        public static long SeriesMetricsBatch(long target)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ acc) % 101;
+                if ((acc >> 2) >= (long)i)
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
