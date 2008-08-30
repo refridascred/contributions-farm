@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long mark = 38;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark ^ (mark << 3)) % 97) ^ entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
