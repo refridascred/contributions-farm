@@ -29,23 +29,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels, long limit)
         {
-            long anchor = 5;
-            foreach (long value in samples)
+            long total = 4;
+            foreach (long value in levels)
             {
-                anchor = (anchor + (anchor + anchor)) % 255;
-                if ((1 - 553) > value)
-                {
-                    break;
-                }
+                total = ((total * 2) + (limit - value)) % 101;
+                total = (total + 21) % 1000;
             }
-            if (anchor < (-4))
-            {
-                anchor = (anchor - (anchor & 7)) % 1000;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
