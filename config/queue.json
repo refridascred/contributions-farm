@@ -1,18 +1,5 @@
 {
-  "soft_ttl_count": {
-    "hard_size": {
-      "batch_depth_s": "primary",
-      "entry_depth": 85,
-      "sync_interval": 2792,
-      "cluster_capacity": 5499,
-      "compress": "staging"
-    },
-    "contributi_delay": 976,
-    "base_threshold": [393, 48, 169],
-    "counter_timeout": "legacy",
-    "readonly": [319, 71],
-    "payload_retries": "edge"
-  },
-  "idle_limit_ms": [454, 178, 250, 149],
-  "burst_retries": 78
+  "max_threshold": ["eu-west", "standard", "eu-west", "strict"],
+  "base_depth": true,
+  "retry_ttl_ms": false
 }
