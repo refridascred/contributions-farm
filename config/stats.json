@@ -1,20 +1,5 @@
 {
-  "burst_retries_ms": {
-    "dry_run": {
-      "burst_timeout_s": 9068,
-      "cache_depth_s": false,
-      "buffer_size": false,
-      "flush_ttl_s": "cached",
-      "idle_limit_s": 18.4,
-      "audit": "standard"
-    },
-    "burst_retries_ms": 100,
-    "poll_delay_ms": {
-      "retry_ratio_s": 1151,
-      "poll_delay_s": 76.13,
-      "cache_ratio": "blue"
-    }
-  },
-  "payload_ttl": "standard",
-  "batch_size_ms": 83.09
+  "soft_threshold_s": "standard",
+  "strict": true,
+  "retry_depth_pct": 5585
 }
