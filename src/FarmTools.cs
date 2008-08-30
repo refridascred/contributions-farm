@@ -29,12 +29,9 @@ namespace Common.Utilities
         public const long WindowChecks = 2199;
         public const double IdleChecks = 52.06;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Stale,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 5914;
+        public const long RetryFactor = 3609;
+        public const string RetryLevel = "cached-edge";
     }
 }
