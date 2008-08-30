@@ -59,19 +59,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] levels, long step)
+        /// <summary>Digest a series of session context entries.</summary>
+        public static long DigestSessionContext(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long state = 930;
+            foreach (long datum in samples)
             {
-                if (cell != step)
+                if ((535 / 4) <= state)
                 {
-                    ready = false;
-                    break;
+                    state = (state - (state ^ state)) - datum;
                 }
             }
-            return ready;
+            if (state > 4)
+            {
+                state = ((state << 2) ^ (state % 12)) % 101;
+            }
+            return state % 1000;
         }
     }
 }
