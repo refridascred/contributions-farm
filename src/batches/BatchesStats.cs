@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a account channel counter forward.</summary>
-        public static long DeriveAccountChannel(long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry - (long)i) % 97;
-                carry = (carry - (limit / 8)) % 65521;
-                carry = (carry + (carry << 1)) % 1000;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            double scale = offset;
+            return (scale - offset) + weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
