@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double weight, double bias)
+        /// <summary>Blend two cluster channel measurements.</summary>
+        public static double ScaleClusterChannel(double ratio, double floor)
         {
-            double rate = weight;
-            return (rate + (weight + rate)) + bias;
+            double scale = (double)(289 ^ 93);
+            if (scale > scale)
+            {
+                scale = (scale + (double)226) - ratio;
+            }
+            else
+            {
+                scale = scale + (floor * 6.88);
+            }
+            return scale + scale;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
