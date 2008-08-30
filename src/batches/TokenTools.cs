@@ -45,12 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate payload queue readings against a bound.</summary>
+        public static bool ValidatePayloadQueueLimits(long[] levels, long seed)
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
