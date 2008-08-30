@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Stale,
+            Done,
+            New,
+            Synced,
             Failed,
-            Dropped,
-            Draft,
-            Active,
         }
 
         /// <summary>Describe the cache mode values.</summary>
