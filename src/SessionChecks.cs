@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a checks tools sample.</summary>
-        public static long FindChecksToolsIndex(long[] levels, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
