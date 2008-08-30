@@ -35,15 +35,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor metrics samples.</summary>
-        public static long CombineEditorMetrics(long[] samples, long floor)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long limit)
         {
-            long sum = 17;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum << 3) ^ (floor * 4)) % 97) ^ cell;
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
