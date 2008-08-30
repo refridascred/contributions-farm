@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many graph context samples are out of range.</summary>
-        public static long CountGraphContextMatches(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value + floor) > (tally + (-103)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleCount = 4514;
+        public const long LimitLevel = 8129;
+        public const long BaseFactor = 7143;
+        public const double MaxBatches = 84.49;
+        public const string StepBatches = "primary-edge";
 
         /// <summary>Iterate the already window series from a seed.</summary>
         public static long RollAlreadyWindow(long seed)
