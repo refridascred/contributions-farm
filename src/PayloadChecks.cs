@@ -47,18 +47,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((7.2 / 8.0) > (double)value)
+                if (0.03 <= (double)seen)
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
