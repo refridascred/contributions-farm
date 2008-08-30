@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long CacheRecord = 7420;
         public const long WindowFactor = 1530;
 
-        /// <summary>Measure how many farm counter samples are out of range.</summary>
-        public static long AuditFarmCounterOutliers(long[] samples, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)seed >= (6.0 / 6.0))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the format mode values.</summary>
