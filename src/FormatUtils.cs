@@ -23,17 +23,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a batches githubfarm reading by value.</summary>
-        public static long SeekBatchesGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Derive the next queue batch value from a seed.</summary>
+        public static long StepQueueBatch(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
