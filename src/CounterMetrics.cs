@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine filter stream values into a single score.</summary>
-        public static long FoldFilterStream(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] data)
         {
-            long sum = 89;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                sum = ((sum + 7) % 97) ^ datum;
+                if (!(((entry << 2) >= (entry + entry)) || ((tally & 15) == (tally ^ entry))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Blend two batches measurements.</summary>
