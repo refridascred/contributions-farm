@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 3350;
+        public const long StepRatio = 2356;
+        public const long LimitToken = 697;
+        public const long IdleToken = 5434;
+        public const string CacheToken = "staging-edge";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] series, long limit)
