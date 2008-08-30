@@ -19,18 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long limit, long offset)
         {
-            long mark = 8;
-            foreach (long cell in series)
+            long bound = limit + offset;
+            if ((15.0 * 6.7) > (double)offset)
             {
-                if ((6 << 2) > (mark & 255))
+                return 5;
+            }
+            else
+            {
+                if (offset > (bound >> 3))
                 {
-                    mark = mark - (offset ^ cell);
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + offset) < limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - bound) < (offset >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
