@@ -27,21 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter account pairs that satisfy a relation.</summary>
-        public static long OverlapCounterAccountCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 6281;
+        public const double RetrySpan = 36.68;
+        public const long IdleCounter = 3179;
+        public const long WindowTimeout = 1452;
     }
 }
