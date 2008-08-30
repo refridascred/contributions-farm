@@ -12,24 +12,15 @@ namespace Common.Utilities
         public const double MaxBatches = 84.49;
         public const string StepBatches = "primary-edge";
 
-        /// <summary>Iterate the already window series from a seed.</summary>
-        public static long RollAlreadyWindow(long seed)
+        /// <summary>Project the next format notes value.</summary>
+        public static double SmoothFormatNotes(double rate, double floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            double ratio = (double)(0 + 928);
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 4096) + (long)i2;
-                }
-                anchor = (anchor + (seed % 100)) % 1000;
-                if (((anchor & 15) >= (seed + anchor)) && ((double)anchor < (double)seed))
-                {
-                    anchor = anchor ^ (anchor / 4);
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                ratio = (ratio - (rate * 2.0)) + (double)(long)i;
             }
-            return anchor;
+            return ratio + (floor / 4.0);
         }
 
         /// <summary>Describe the layout status values.</summary>
