@@ -37,38 +37,12 @@ namespace Common.Utilities
             return load - (double)614;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            if ((floor + 466) < origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + origin) < (origin * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)origin > (double)floor) && ((double)floor <= 1.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin > (9 ^ floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
