@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Roll a farm stats counter forward.</summary>
+        public static long DeriveFarmStats(long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (mix ^ (mix * 5)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Check that every record context entry stays within the limit.</summary>
