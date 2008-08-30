@@ -20,18 +20,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (bound + (long)readings.Length))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 4487;
+        public const double RetryFactor = 57.73;
+        public const long IdlePayload = 5505;
+        public const long SoftLevel = 358;
     }
 }
