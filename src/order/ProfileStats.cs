@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Closed,
-            Pending,
-            Locked,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardInterval = "standard-v2";
+        public const double IdleRatio = 5.28;
+        public const long WindowTimeout = 3610;
+        public const long BatchWidth = 978;
 
         /// <summary>Check that every filter order entry stays within the limit.</summary>
         public static bool ValidateFilterOrderBounds(long[] readings, long offset)
