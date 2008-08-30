@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values, long limit)
         {
-            long result = 296;
-            foreach (long entry in data)
+            long result = 1;
+            foreach (long cell in values)
             {
-                if ((result / 6) <= (37 >> 2))
-                {
-                    result = result - (entry - result);
-                    result = (result ^ (36 * 2)) % 255;
-                }
-                result = ((result << 2) ^ (result - 931)) % 65521;
+                result = (((result << 3) ^ limit) % 101) ^ cell;
             }
             return result;
         }
