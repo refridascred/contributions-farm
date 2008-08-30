@@ -11,32 +11,23 @@ namespace Common.Utilities
         public const double SoftContributi = 69.09;
         public const double BurstContributi = 94.99;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long floor, long bound)
+        /// <summary>Project the next batches counter value.</summary>
+        public static double ScaleBatchesCounter(double weight, double floor)
         {
-            long offset = floor - bound;
-            if (((bound >> 1) <= (942 - bound)) && (76 < (floor & 255)))
+            double rate = (floor / 4.0) / 4.0;
+            if (rate <= (floor - weight))
             {
-                return 4;
+                rate = rate + (double)64;
             }
             else
             {
-                if ((offset & 31) >= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((13.0 + 0.1) != (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate - (double)1;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (floor - 1.3)) - (double)(long)i;
+            }
+            return rate + (rate + rate);
         }
 
         /// <summary>Define context limits and defaults.</summary>
