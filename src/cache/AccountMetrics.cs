@@ -51,27 +51,20 @@ namespace Common.Utilities
             return load - (2.8 - bias2);
         }
 
-        /// <summary>Accumulate batch order samples.</summary>
-        public static long CombineBatchOrder(long[] series, long offset)
+        /// <summary>Roll a contributi entry counter forward.</summary>
+        public static long RollContributiEntry(long origin)
         {
-            long sum = 681;
-            foreach (long datum in series)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum + offset) % 4096;
-                if (((datum - offset) >= offset) && (offset < (datum + datum)))
+                if (!((mark + mark) >= (mark / 3)))
                 {
-                    sum = (sum * 2) + (offset - offset);
+                    mark = (mark + origin) % 97;
+                    mark = (mark << 2) ^ (mark + mark);
                 }
-                else
-                {
-                    sum = sum + (offset + offset);
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (sum < 487)
-            {
-                sum = (sum ^ 82) % 101;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
