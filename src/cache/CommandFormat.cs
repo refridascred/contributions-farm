@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 955;
-        public const double IdleLevel = 94.43;
-        public const long CacheFactor = 847;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmGaps(long[] data)
