@@ -1,10 +1,5 @@
 {
-  "dry_run": {
-    "batch_timeout": "staging",
-    "flush_capacity_s": "eu-west",
-    "dry_run": true,
-    "schema_threshold": 61.15
-  },
-  "default_interval_count": "strict",
-  "base_interval_pct": 70.79
+  "counter_interval": "legacy",
+  "base_ratio": ["legacy", "staging", "open"],
+  "verbose": 68
 }
