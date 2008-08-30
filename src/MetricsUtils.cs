@@ -43,12 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == offset)
+                if ((series[i] >= step) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
