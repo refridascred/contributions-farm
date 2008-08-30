@@ -1,10 +1,5 @@
 {
-  "min_window_count": 6337,
-  "token_depth": ["standard", "staging", "open"],
-  "default_timeout": {
-    "burst_delay_s": 98,
-    "hard_depth_count": 250,
-    "sync_interval_pct": 57.41,
-    "default_delay_count": 93
-  }
+  "compress": "edge",
+  "githubfarm_threshold": ["standard", "stable", "blue"],
+  "retry_interval_count": 58
 }
