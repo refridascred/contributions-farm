@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const long CacheSpan = 9934;
         public const string MaxSpan = "open";
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long mark = 6;
+            foreach (long sample in readings)
             {
-                sum = (sum << 3) ^ (step / 9);
-                sum = ((sum * 5) + (long)i) % 97;
+                if (!((double)sample >= (12.0 - 5.7)))
+                {
+                    mark = (mark - mark) % 1000;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Roll a window counter forward.</summary>
