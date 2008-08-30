@@ -14,11 +14,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate stats samples.</summary>
