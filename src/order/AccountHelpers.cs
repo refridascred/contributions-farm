@@ -33,15 +33,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double span)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double bias = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias - bias) - (double)(long)i) - span;
-            }
-            return bias + (double)(-8);
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
