@@ -39,14 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public double Region { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitScore = 2252;
+        public const string SoftSpan = "latest";
+        public const long LimitDepth = 8322;
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] items)
