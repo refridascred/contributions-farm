@@ -24,39 +24,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double rate, double offset)
         {
-            long step = origin - limit;
-            if ((limit >= (step + step)) || ((origin & 63) == (68 >> 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((9.0 + 12.0) >= (double)limit) && (step >= (limit / 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step / 6) >= (step ^ 37)) || ((double)limit == (3.0 * 20.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit - step) < (origin % 7)) && (step > (limit << 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double gain = offset + offset;
+            return (gain - 2.6) + rate;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
