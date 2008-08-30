@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long origin2)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            if ((origin2 + origin2) >= origin)
             {
-                if (cell < step)
+                return 2;
+            }
+            else
+            {
+                if (origin2 >= (origin >> 5))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (4.8 < (double)origin2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin2 <= (origin2 + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the route status values.</summary>
