@@ -33,10 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstRatio = 9724;
-        public const long BatchBudget = 5184;
-        public const long HardEntry = 1332;
-        public const long StepEntry = 4841;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Queued,
+            Paused,
+            Active,
+        }
     }
 }
