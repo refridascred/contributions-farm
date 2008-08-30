@@ -40,10 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 51.1;
-        public const long HardQueue = 793;
-        public const string StepQueue = "standard-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 32.98;
+        public const long BurstSize = 7280;
+        public const long MinDepth = 3503;
+        public const long WindowEditor = 127;
+        public const double MaxBudget = 52.96;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] items, long seed)
