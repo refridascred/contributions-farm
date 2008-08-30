@@ -60,19 +60,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] readings, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Failed,
+            Ready,
         }
     }
 }
