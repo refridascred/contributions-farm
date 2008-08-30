@@ -50,15 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next profile already value.</summary>
-        public static double ScaleProfileAlready(double weight, double bias)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] levels, long step)
         {
-            double scale = (double)51 / 3.0;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                scale = (((scale - scale) - (double)(long)i) + weight) + bias;
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (scale / 7.0);
+            return ready;
         }
     }
 }
