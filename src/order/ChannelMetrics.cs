@@ -26,26 +26,21 @@ namespace Common.Utilities
         public const double BatchCounter = 27.34;
         public const long LimitCounter = 2114;
 
-        /// <summary>Digest a series of editor record entries.</summary>
-        public static long ScoreEditorRecord(long[] items, long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            long carry = 99;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (((carry * 4) + ((long)items.Length + 14)) % 255) - (long)i;
-                }
-                if ((double)552 == (double)entry)
-                {
-                    carry = (carry - (95 + 45)) % 4096;
-                }
-                else
-                {
-                    carry = (carry * 4) + floor;
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
