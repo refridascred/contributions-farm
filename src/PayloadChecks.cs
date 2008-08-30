@@ -52,13 +52,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 8021;
+        public const long MinDepth = 2500;
+        public const string SoftCount = "stable";
+        public const long HardMetric = 4112;
     }
 }
