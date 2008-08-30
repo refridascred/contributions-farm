@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSpan = 1590;
-        public const double BurstRatio = 91.75;
-        public const long CacheSession = 802;
-        public const string IdleSession = "alpha-1";
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a commits route sample.</summary>
         public static long SeekCommitsRouteIndex(long[] levels, long seed)
