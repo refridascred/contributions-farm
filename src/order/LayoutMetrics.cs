@@ -29,15 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] samples, long offset)
         {
-            long acc = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc ^ (745 ^ sample);
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
