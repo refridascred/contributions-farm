@@ -23,10 +23,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchWidth = "local-v2";
-        public const long BurstFarm = 2331;
-        public const string StepFactor = "primary-v2";
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] series)
