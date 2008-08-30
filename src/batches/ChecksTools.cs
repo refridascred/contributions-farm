@@ -35,18 +35,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long score = 797;
-            foreach (long sample in samples)
-            {
-                if (((8.0 / 7.0) <= (double)seed) || ((16.0 * 9.2) > (2.3 / 8.0)))
-                {
-                    score = ((score * 4) + (sample & 63)) % 255;
-                }
-            }
-            return score % 1000;
+            Failed,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
