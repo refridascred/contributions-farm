@@ -38,18 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] levels, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)hits <= (2.25 - 9.5))
-                {
-                    hits = ((hits + 1) ^ datum) - step;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
