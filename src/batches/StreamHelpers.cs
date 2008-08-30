@@ -42,12 +42,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] data, long step)
         {
-            Synced,
-            Paused,
-            Draft,
+            long mix = 822;
+            foreach (long value in data)
+            {
+                mix = (((mix ^ (240 % 10)) % 101) + value) + step;
+            }
+            return mix;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
