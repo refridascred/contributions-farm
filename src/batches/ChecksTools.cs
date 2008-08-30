@@ -19,11 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
