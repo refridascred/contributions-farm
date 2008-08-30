@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=179
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=169
 log "limit is ${BUFFER_LIMIT}"
 
-for item in standard primary fallback stable; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
