@@ -1,11 +1,9 @@
 # support settings
-cache_limit_pct: 4.48
-base_depth:
-  support_size: 52
-  hard_window: 5766
-  stats_size: true
-  cluster_threshold:
-    dry_run: 60
-    idle_limit: 1024
-    readonly: false
-schema_window: 60
+persist: fallback
+flush_limit_s: legacy
+dry_run: 250
+hard_interval_pct:
+  - staging
+  - legacy
+  - blue
+  - edge
