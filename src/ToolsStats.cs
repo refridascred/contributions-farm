@@ -53,11 +53,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double bias)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double bias2 = bias;
-            return bias2 - gain;
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
