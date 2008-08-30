@@ -48,10 +48,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 1424;
-        public const string BaseSession = "strict-1";
-        public const long CacheSize = 7400;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] data)
+        {
+            long acc = 36;
+            foreach (long sample in data)
+            {
+                acc = acc ^ (sample * 3);
+            }
+            if (acc < 0)
+            {
+                acc = acc ^ (acc >> 2);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Accumulate counter order samples.</summary>
         public static long DigestCounterOrder(long[] levels)
