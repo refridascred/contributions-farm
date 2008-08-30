@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const long WindowChecks = 2199;
         public const double IdleChecks = 52.06;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            Active,
+            Dropped,
         }
     }
 }
