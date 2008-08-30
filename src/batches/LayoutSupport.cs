@@ -54,15 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Find the first farm metrics entry that matches the target.</summary>
+        public static long SeekFarmMetricsIndex(long[] data, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((data[i] < step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the checks level values.</summary>
