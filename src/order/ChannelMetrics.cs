@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] data)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((hits + hits) <= (8 + hits)) || !((hits >> 2) > (item - item)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
