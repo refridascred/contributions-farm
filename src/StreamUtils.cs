@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSpan = 4761;
+        public const double CacheCount = 1.51;
+        public const string MaxSession = "latest-edge";
+        public const long CacheSession = 7339;
+        public const string HardSession = "stable-v2";
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long offset)
