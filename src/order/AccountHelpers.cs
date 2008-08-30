@@ -48,12 +48,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "stable";
-        public const double RetryBudget = 13.27;
-        public const string BatchLevel = "staging";
-        public const string LimitRatio = "strict-v2";
-        public const long LimitBatch = 789;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels)
+        {
+            long sum = -21;
+            foreach (long item in levels)
+            {
+                sum = (((sum * 4) + (89 << 3)) % 65521) - item;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long target)
