@@ -1,6 +1,5 @@
 {
-  "hard_depth": "cached",
-  "enabled": 64.64,
-  "poll_ratio_ms": false,
-  "readonly": [349, 316]
+  "persist": true,
+  "verbose": [257, 334, 30],
+  "cache_window_ms": false
 }
