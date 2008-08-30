@@ -1,12 +1,10 @@
 {
-  "base_threshold": {
-    "compress": true,
-    "default_capacity_s": 884,
-    "notes_delay": 500,
-    "counter_capacity": "open",
-    "batch_ratio_s": true
-  },
-  "cache_retries_s": "edge",
-  "readonly": 250,
-  "tools_interval": 93
+  "min_window_count": 6337,
+  "token_depth": ["standard", "staging", "open"],
+  "default_timeout": {
+    "burst_delay_s": 98,
+    "hard_depth_count": 250,
+    "sync_interval_pct": 57.41,
+    "default_delay_count": 93
+  }
 }
