@@ -19,17 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long state = 3;
-            foreach (long entry in series)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state ^ entry) - limit;
-            }
-            if (state > 246)
-            {
-                state = (state + (6 >> 2)) % 4096;
+                if (((long)i / 9) < state)
+                {
+                    state = ((state * 5) + (origin + state)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
             return state;
         }
