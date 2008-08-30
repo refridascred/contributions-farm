@@ -36,21 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 145;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value >> 5) <= value)
                 {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (total + 1)) % 101;
+                }
+                else
+                {
+                    total = (total * 5) + (long)readings.Length;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
