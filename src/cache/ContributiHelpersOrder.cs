@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long MaxBudget = 2420;
         public const long HardFactor = 2923;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long DigestAccountGraph(long[] series, long target)
         {
-            long carry = -1;
-            foreach (long datum in readings)
+            long mix = 1;
+            foreach (long reading in series)
             {
-                if ((184 + carry) >= (carry - datum))
-                {
-                    carry = (carry + (41 - datum)) % 4096;
-                }
-                if (carry >= (datum - carry))
-                {
-                    carry = ((carry * 2) + carry) % 1000;
-                }
+                mix = (((mix << 3) ^ 10) + reading) - target;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
