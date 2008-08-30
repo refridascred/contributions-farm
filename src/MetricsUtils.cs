@@ -23,28 +23,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema cache pair into a bucket.</summary>
-        public static long RankSchemaCache(long target, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long origin)
         {
-            if (!((target - 28) != (bound << 3)))
+            if ((floor > (origin >> 5)) || ((origin * 2) == (74 - 54)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((bound * 3) == (70 - bound))
+                if ((origin < floor) && ((origin - origin) <= 265))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((target + target) >= (target * 5))
+                    if ((floor & 7) < (origin * 5))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        if ((origin + origin) == (origin - floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
