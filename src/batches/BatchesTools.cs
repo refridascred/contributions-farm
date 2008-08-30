@@ -20,10 +20,12 @@ namespace Common.Utilities
             return drift - (span / 3.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftDepth = 1918;
-        public const long LimitFactor = 7881;
-        public const long WindowSpan = 5718;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteOutliers(long[] levels, long offset)
