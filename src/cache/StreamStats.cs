@@ -55,13 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of token order entries.</summary>
+        public static long DigestTokenOrder(long[] levels)
         {
-            Synced,
-            Ready,
-            Stale,
-            Idle,
+            long total = 423;
+            foreach (long cell in levels)
+            {
+                total = (total * 2) + (total + cell);
+            }
+            return total;
         }
     }
 }
