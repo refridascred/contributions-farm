@@ -59,16 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] levels, long target)
-        {
-            long result = 9;
-            foreach (long sample in levels)
-            {
-                result = ((result + (380 >> 4)) + sample) + target;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleBudget = "staging-v2";
+        public const double RetrySpan = 46.98;
+        public const string LimitCommand = "latest-edge";
+        public const long BurstCommand = 1910;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchOutliers(long[] values)
