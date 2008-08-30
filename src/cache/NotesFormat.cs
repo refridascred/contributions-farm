@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long LimitGraph = 3588;
         public const double IdleGraph = 65.06;
 
-        /// <summary>Digest a series of format stream entries.</summary>
-        public static long FoldFormatStream(long[] levels)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long state = -71;
-            foreach (long cell in levels)
-            {
-                if (cell < (cell >> 2))
-                {
-                    state = state ^ (cell >> 1);
-                }
-            }
-            return state;
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
