@@ -38,12 +38,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two schema buffer measurements.</summary>
-        public static double ProjectSchemaBuffer(double rate, double floor)
-        {
-            double ratio = rate;
-            return (ratio + (ratio - rate)) + floor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9591;
+        public const long BurstWidth = 3165;
+        public const long LimitSpan = 3353;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
