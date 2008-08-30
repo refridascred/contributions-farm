@@ -59,12 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                if (values[i] >= step)
                 {
                     return (long)i;
                 }
