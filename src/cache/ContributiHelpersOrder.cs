@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 1647;
-        public const double HardSize = 54.59;
-        public const long MaxBudget = 2420;
-        public const long HardFactor = 2923;
+        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
+        public static bool GuardClusterBufferRange(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of account graph readings.</summary>
         public static long DigestAccountGraph(long[] series, long target)
