@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 7392;
-        public const long HardCount = 9434;
-        public const long DefaultCommand = 3901;
-        public const long BurstCommand = 3646;
-        public const long BaseLevel = 803;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Size { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the commits filter entries that pass the check.</summary>
         public static long CountCommitsFilterGaps(long[] levels, long limit)
