@@ -47,24 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long floor)
+        /// <summary>Check that every editor filter entry stays within the limit.</summary>
+        public static bool VerifyEditorFilterBounds(long[] levels, long step)
         {
-            if (((-97) ^ offset) == (offset >> 2))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset + offset) <= offset) || ((offset + 6) > offset))
+                if (sample >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Find the first session cluster entry that matches the target.</summary>
