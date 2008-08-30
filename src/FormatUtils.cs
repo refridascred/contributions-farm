@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the token format entries that pass the check.</summary>
-        public static long AuditTokenFormatGaps(long[] levels, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)bound == (15.0 - 2.1))
+                if (((long)data.Length - reading) <= (reading ^ tally))
                 {
-                    count = (count + 1) - item;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
