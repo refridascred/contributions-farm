@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 9565;
-        public const long DefaultWidth = 5368;
-        public const long WindowChannel = 5613;
-        public const long BatchLevel = 4442;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Find the first token buffer entry that matches the target.</summary>
         public static long LookupTokenBufferIndex(long[] values, long origin)
