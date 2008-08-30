@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter already readings against a rule.</summary>
-        public static long MeasureCounterAlreadyHits(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series, long target)
         {
             long matches = 0;
-            foreach (long datum in items)
+            foreach (long value in series)
             {
-                if ((matches <= datum) && ((datum >> 5) <= (matches - 6)))
+                if (18.0 >= (double)target)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
