@@ -25,13 +25,18 @@ namespace Common.Utilities
             return (bias2 - span) + bias;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches * 5) > (sample + matches))
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
