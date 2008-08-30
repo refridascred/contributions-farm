@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSize = 5082;
-        public const double RetryCache = 31.02;
-        public const long RetrySpan = 9723;
-        public const string MaxSpan = "primary-1";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series)
+        {
+            long carry = 0;
+            foreach (long cell in series)
+            {
+                if ((6.0 + 20.0) == (double)cell)
+                {
+                    carry = ((carry << 3) ^ (cell >> 1)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (carry + cell);
+                }
+            }
+            if (carry < 41)
+            {
+                carry = (carry ^ (carry >> 1)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
