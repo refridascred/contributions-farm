@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i * 3) >= (bound & 255))
-                {
-                    continue;
-                }
-                sum = (sum << 3) ^ (bound + (-193));
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
