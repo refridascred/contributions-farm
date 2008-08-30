@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] values, long bound)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound / 2) < (long)values.Length)
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
             return count;
