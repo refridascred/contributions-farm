@@ -1,16 +1,10 @@
 # support settings
-enabled: 28.74
-queue_ttl:
-  soft_limit_s:
-    - 73
-    - 328
-    - 439
-    - 84
-  flush_threshold_s: cached
-  poll_interval_pct:
-    sync_ratio_ms: 6065
-    default_capacity_ms: 42
-    hard_capacity_s: false
-    burst_delay_pct: true
-  dry_run: blue
-compress: 5
+filter_timeout: 81.18
+batch_timeout_pct: 6774
+retry_window_count:
+  - 130
+  - 258
+  - 141
+record_size: 27
+contributi_size: 10.07
+retry_window_ms: strict
