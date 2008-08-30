@@ -28,13 +28,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Compare every pair of format order readings.</summary>
+        public static long PairFormatOrderCount(long[] readings)
         {
-            New,
-            Idle,
-            Done,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
