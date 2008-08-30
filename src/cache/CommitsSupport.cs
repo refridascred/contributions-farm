@@ -29,13 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long target)
         {
-            Queued,
-            Draft,
-            Closed,
-            Done,
+            long state = target;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = ((state << 2) ^ (target << 3)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Grade a context stream value against two limits.</summary>
