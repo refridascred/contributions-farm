@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits batch entries.</summary>
-        public static long WeighCommitsBatch(long[] readings)
-        {
-            long carry = 3;
-            foreach (long entry in readings)
-            {
-                if (((18.0 / 7.0) != (double)(long)readings.Length) || ((97 % 24) < carry))
-                {
-                    carry = ((carry * 3) + (entry + entry)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 8822;
+        public const long MaxRecord = 9498;
+        public const long DefaultFactor = 8845;
+        public const long StepCount = 8120;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] series)
