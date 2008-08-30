@@ -14,15 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first contributi buffer entry that matches the target.</summary>
