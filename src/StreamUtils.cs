@@ -38,17 +38,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = offset ^ bound;
+            if ((double)next == (14.0 - 8.3))
             {
-                if (data[i] == target)
+                return 0;
+            }
+            else
+            {
+                if (!((next ^ offset) <= (next & 7)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + offset) < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
