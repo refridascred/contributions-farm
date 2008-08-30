@@ -24,11 +24,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double gain = offset + offset;
-            return (gain - 2.6) + rate;
+            Paused,
+            Synced,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
