@@ -43,18 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long state = 361;
-            foreach (long datum in items)
-            {
-                if (((double)floor >= (2.8 * 6.6)) || (state > (state / 9)))
-                {
-                    state = ((state << 3) ^ (datum << 3)) % 101;
-                }
-            }
-            return state;
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Find the first schema tools entry that matches the target.</summary>
