@@ -49,39 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long target, long bound)
-        {
-            if (((double)bound >= (double)target) || ((target & 63) == (bound << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 4) == (790 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound < (0.31 + 9.71))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target ^ target) > (262 ^ 52)) && ((double)target >= (11.0 / 5.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryBudget = 8886;
+        public const long SoftSpan = 8153;
+        public const long MaxSize = 1045;
+        public const double HardLevel = 77.14;
+        public const double MinAccount = 57.43;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchTimeout = 7176;
