@@ -39,17 +39,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (items[i] < seed)
+                if ((seen >> 3) <= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
