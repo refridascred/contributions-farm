@@ -14,17 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] values, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 9;
+            foreach (long reading in items)
             {
-                if (values[i] < offset)
+                if ((reading + reading) < 0)
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (anchor * 4);
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of format readings.</summary>
