@@ -1,8 +1,9 @@
 # githubfarm settings
-sync_ratio: false
-persist: true
-flush_window_count: 30
-dry_run:
-  - 134
-  - 450
-entry_retries: blue
+command_retries: false
+idle_ratio: cached
+buffer_retries: 10.2
+metrics_retries:
+  - local
+  - edge
+  - legacy
+  - strict
