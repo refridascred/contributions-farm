@@ -37,18 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data, long floor)
+        /// <summary>Find the first layout stats entry that matches the target.</summary>
+        public static long FindLayoutStatsIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (6.6 > (double)hits)
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
-                    hits = ((hits + 1) + item) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a command stats.</summary>
