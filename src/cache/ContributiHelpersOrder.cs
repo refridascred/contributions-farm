@@ -27,10 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 6281;
-        public const double RetrySpan = 36.68;
-        public const long IdleCounter = 3179;
-        public const long WindowTimeout = 1452;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches % 10) < (cell + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
