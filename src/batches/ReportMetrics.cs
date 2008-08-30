@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
