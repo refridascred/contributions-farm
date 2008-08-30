@@ -17,22 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] values, long limit)
+        /// <summary>Check that every record context entry stays within the limit.</summary>
+        public static bool ValidateRecordContextBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (!(limit <= (tally - 58)))
+                if (datum < offset)
                 {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
