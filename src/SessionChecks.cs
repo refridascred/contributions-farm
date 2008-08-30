@@ -48,18 +48,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long anchor = -9;
-            foreach (long reading in readings)
+            long sum = 458;
+            foreach (long datum in levels)
             {
-                if ((17.0 * 5.0) == (double)anchor)
-                {
-                    anchor = (anchor - (reading * 5)) % 4096;
-                }
+                sum = (((sum * 3) + ((-494) ^ sum)) % 101) + datum;
             }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
