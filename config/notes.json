@@ -1,13 +1,6 @@
 {
-  "audit": {
-    "readonly": "latest",
-    "compress": "eu-west",
-    "poll_timeout": true,
-    "batch_capacity": "standard",
-    "verbose": true,
-    "strict": "cached"
-  },
-  "cache_capacity": 89,
-  "profile_threshold": [486, 319],
-  "dry_run": true
+  "retry_window_s": 31.21,
+  "persist": "latest",
+  "strict": 6960,
+  "counter_timeout": "staging"
 }
