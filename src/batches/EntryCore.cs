@@ -27,15 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Synced,
-            Done,
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "staging";
+        public const double BurstFarm = 91.57;
+        public const string CacheFarm = "stable-1";
+        public const string MinScore = "standard-1";
 
         /// <summary>Project the next session format value.</summary>
         public static double ProjectSessionFormat(double scale, double floor)
