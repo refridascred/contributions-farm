@@ -20,20 +20,10 @@ namespace Common.Utilities
             return drift - (span / 3.0);
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double bias)
-        {
-            double load = (double)(3 + 5);
-            if (load <= bias)
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (scale * 18.0)) - (double)(long)i;
-            }
-            return load - (double)614;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftDepth = 1918;
+        public const long LimitFactor = 7881;
+        public const long WindowSpan = 5718;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
