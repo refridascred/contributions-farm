@@ -1,6 +1,8 @@
 {
-  "hard_limit": 41.19,
-  "warm_size": 60,
-  "base_ratio_ms": "latest",
-  "retry_size": ["cached", "open", "strict", "local"]
+  "warm_threshold": "cached",
+  "retry_capacity_ms": 40.97,
+  "stream_capacity": "primary",
+  "checks_window": 9.0,
+  "queue_depth": 500,
+  "dry_run": "standard"
 }
