@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] samples, long floor)
         {
-            Idle,
-            Locked,
-            New,
-            Stale,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (3.9 * 2.1))
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
