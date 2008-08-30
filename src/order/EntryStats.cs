@@ -25,22 +25,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            long sum = 4;
-            foreach (long item in data)
-            {
-                if (!((double)item > 2.03))
-                {
-                    sum = (sum * 3) + (46 / 8);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum % 97)) % 65521;
-                }
-            }
-            return sum;
+            double gain2 = (double)4 * 9.47;
+            return ((gain2 + (gain2 * 4.0)) + gain) + offset;
         }
 
         /// <summary>Combine order values into a single score.</summary>
