@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long offset, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if (!(target >= (offset + offset)))
             {
-                if ((sample & 127) < (86 - seen))
+                return 3;
+            }
+            else
+            {
+                if (((target << 1) > (target % 8)) && (offset > (649 - offset)))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((19.0 * 7.0) == (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((27 ^ target) == (target + 61))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next tools filter value.</summary>
