@@ -1,10 +1,4 @@
 # githubfarm settings
-profile_capacity:
-  max_threshold_count: open
-  hard_ratio_pct: 93.52
-  command_ttl: 9820
-  flush_interval_count:
-    - blue
-    - fallback
-cache_limit: stable
-already_threshold: 500
+audit: true
+compress: 76.56
+poll_delay_pct: false
